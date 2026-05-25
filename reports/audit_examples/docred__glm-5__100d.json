@@ -1,0 +1,6633 @@
+{
+  "run": "docred__glm-5__100d",
+  "contracts": {
+    "K1": {
+      "contract_id": "K1",
+      "threshold": 0.85,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-847388a48e",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-b09d6289fd",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-78261c2199",
+          "jaccard": 0.2,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "lookin ass",
+                "P577",
+                "february 14, 2014"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-0108eea7fd",
+          "jaccard": 0.222,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "lookin ass",
+                "P577",
+                "march 11, 2014"
+              ],
+              [
+                "nicki minaj",
+                "P108",
+                "young money entertainment"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-ee84619648",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-df707bfbd6",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "lookin ass",
+                "P577",
+                "february 14, 2014"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-ee84619648",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-70354f83ea",
+          "jaccard": 0.286,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "lookin ass",
+                "P577",
+                "march 11, 2014"
+              ],
+              [
+                "nicki minaj",
+                "P108",
+                "young money entertainment"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-23e679db2b",
+          "jaccard": 0.75,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-6d4afd383e",
+          "jaccard": 0.688,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-1912504bb7",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-9392a79c1b",
+          "jaccard": 0.8,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "OTHER",
+                "conrad oberon johnson"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-1912504bb7",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-19166415b5",
+          "jaccard": 0.733,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "OTHER",
+                "conrad oberon johnson"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-d0c2ddcee8",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-7b24d9cf20",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-d0c2ddcee8",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-f3250ed8eb",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::rename",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-438e59e408",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-2a4c60454d",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000008-Urgut::iv::schema::docred_full::reorder",
+          "document_id": "docred-validation-000008-Urgut",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-docred-validation-000008-Urgut-fca1363e9b",
+          "cf_event": "evt-docred-validation-000008-Urgut-608a8b3f9b",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "samarkand",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "samarqand region",
+                "P17",
+                "uzbekistan"
+              ],
+              [
+                "urgut",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "urgut",
+                "P131",
+                "urgut district"
+              ],
+              [
+                "urgut",
+                "P17",
+                "uzbekistan"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K1b": {
+      "contract_id": "K1b",
+      "threshold": 0.8,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-0c285e9c6a",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-de01d5b4e2",
+          "jaccard": 0.636,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-669510e770",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-81343d4817",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ]
+            ],
+            "only_cf": [
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000002-IBM_Research___Brazil::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000002-IBM_Research___Brazil",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000002-IBM_Research___Brazil-15176cd684",
+          "cf_event": "evt-docred-validation-000002-IBM_Research___Brazil-6aadb55230",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "rio de janeiro"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "s\u00e3o paulo"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P17",
+                "brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm research"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm research \u2013 brazil"
+              ]
+            ],
+            "only_base": [
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P580",
+                "june 2010"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ibm research",
+                "P527",
+                "ibm research \u2013 brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "OTHER",
+                "south america"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000002-IBM_Research___Brazil::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000002-IBM_Research___Brazil",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000002-IBM_Research___Brazil-d37fa9c3bf",
+          "cf_event": "evt-docred-validation-000002-IBM_Research___Brazil-460dcde445",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "rio de janeiro"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "s\u00e3o paulo"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P17",
+                "brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm research"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm research \u2013 brazil"
+              ]
+            ],
+            "only_base": [
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P580",
+                "june 2010"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ibm research",
+                "P527",
+                "ibm research \u2013 brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "OTHER",
+                "south america"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-966af1d0d6",
+          "jaccard": 0.286,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-ee84619648",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-1435c5d266",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-b13b82aeea",
+          "jaccard": 0.765,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ],
+              [
+                "kashmere stage band",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-1912504bb7",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-95efc98b87",
+          "jaccard": 0.706,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "OTHER",
+                "conrad oberon johnson"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "kashmere stage band",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-b7ff988575",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-2a5d286466",
+          "jaccard": 0.1,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ]
+            ],
+            "only_base": [
+              [
+                "edward p. \"ned\" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_cf": [
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-d0c2ddcee8",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-69a2cc5816",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-a58f5d9efa",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000007-Portland_Golf_Club::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000007-Portland_Golf_Club",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000007-Portland_Golf_Club-e34b7d7347",
+          "cf_event": "evt-docred-validation-000007-Portland_Golf_Club-0ca29a5248",
+          "jaccard": 0.857,
+          "diff": {
+            "shared": [
+              [
+                "ben hogan",
+                "OTHER",
+                "pga championship"
+              ],
+              [
+                "ben hogan",
+                "OTHER",
+                "portland open"
+              ],
+              [
+                "oregon",
+                "P17",
+                "united states"
+              ],
+              [
+                "pga championship",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "portland",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "OTHER",
+                "1914"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "raleigh hills"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "washington county"
+              ],
+              [
+                "portland golf club",
+                "P17",
+                "united states"
+              ],
+              [
+                "raleigh hills",
+                "P131",
+                "washington county"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "portland golf club"
+              ]
+            ],
+            "only_base": [
+              [
+                "washington county",
+                "P131",
+                "oregon"
+              ]
+            ],
+            "only_cf": [
+              [
+                "portland golf club",
+                "P131",
+                "portland"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000008-Urgut::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000008-Urgut",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000008-Urgut-fca1363e9b",
+          "cf_event": "evt-docred-validation-000008-Urgut-a30d0d773b",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "samarkand",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "samarqand region",
+                "P17",
+                "uzbekistan"
+              ],
+              [
+                "urgut",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "urgut",
+                "P131",
+                "urgut district"
+              ],
+              [
+                "urgut",
+                "P17",
+                "uzbekistan"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000008-Urgut::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000008-Urgut",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000008-Urgut-809da5ed5f",
+          "cf_event": "evt-docred-validation-000008-Urgut-a55bf0660f",
+          "jaccard": 0.8,
+          "diff": {
+            "shared": [
+              [
+                "samarqand region",
+                "P17",
+                "uzbekistan"
+              ],
+              [
+                "urgut",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "urgut",
+                "P131",
+                "urgut district"
+              ],
+              [
+                "urgut",
+                "P17",
+                "uzbekistan"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "samarkand",
+                "P131",
+                "samarqand region"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "K1c": {
+      "contract_id": "K1c",
+      "threshold": 0.5,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-9ff9fbd89d",
+          "jaccard": 0.429,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": [
+              [
+                "skai tv",
+                "P495",
+                "greece"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-b691e3bd2f",
+          "jaccard": 0.308,
+          "diff": {
+            "shared": [
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "blacks hill",
+                "P361",
+                "romney"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-669510e770",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-031a5f4580",
+          "jaccard": 0.273,
+          "diff": {
+            "shared": [
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ]
+            ],
+            "only_base": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "blacks hill",
+                "P361",
+                "romney"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-2c1472bba4",
+          "jaccard": 0.2,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "nicki minaj",
+                "P108",
+                "young money entertainment"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-ee84619648",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-9f8b9c04f4",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "nicki minaj",
+                "P108",
+                "young money entertainment"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::hierarchical",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-ee84619648",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-fe61c4ae23",
+          "jaccard": 0.375,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ],
+            "only_cf": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "lookin ass",
+                "P577",
+                "march 11, 2014"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-de7b655e76",
+          "jaccard": 0.077,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ]
+            ],
+            "only_base": [
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_cf": [
+              [
+                "edward p. \"ned\" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::hierarchical",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-a05d54f87e",
+          "jaccard": 0.071,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ]
+            ],
+            "only_base": [
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_cf": [
+              [
+                "edward p. \"ned\" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P27",
+                "irish"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000007-Portland_Golf_Club::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000007-Portland_Golf_Club",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000007-Portland_Golf_Club-10780266ba",
+          "cf_event": "evt-docred-validation-000007-Portland_Golf_Club-88f4065839",
+          "jaccard": 0.357,
+          "diff": {
+            "shared": [
+              [
+                "pga championship",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "portland"
+              ],
+              [
+                "portland golf club",
+                "P17",
+                "united states"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "portland golf club"
+              ]
+            ],
+            "only_base": [
+              [
+                "portland",
+                "P131",
+                "oregon"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ben hogan",
+                "OTHER",
+                "pga championship"
+              ],
+              [
+                "ben hogan",
+                "OTHER",
+                "portland open"
+              ],
+              [
+                "pga championship",
+                "OTHER",
+                "1946"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "raleigh hills"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "washington county"
+              ],
+              [
+                "portland golf club",
+                "P580",
+                "1914"
+              ],
+              [
+                "raleigh hills",
+                "P131",
+                "washington county"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "1947"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::hierarchical",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-68b5b4741a",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-d0c2ddcee8",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-370d8b0cf4",
+          "jaccard": 0.6,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": [
+              [
+                "skai tv",
+                "P495",
+                "greece"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::hierarchical",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-d0c2ddcee8",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-8d97f210e3",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000002-IBM_Research___Brazil::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000002-IBM_Research___Brazil",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000002-IBM_Research___Brazil-15176cd684",
+          "cf_event": "evt-docred-validation-000002-IBM_Research___Brazil-bb6a804812",
+          "jaccard": 0.6,
+          "diff": {
+            "shared": [
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "rio de janeiro"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "s\u00e3o paulo"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P17",
+                "brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm research"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P580",
+                "june 2010"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm research \u2013 brazil"
+              ]
+            ],
+            "only_base": [
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ibm research",
+                "P527",
+                "ibm research \u2013 brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "south america"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000002-IBM_Research___Brazil::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000002-IBM_Research___Brazil",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000002-IBM_Research___Brazil-d37fa9c3bf",
+          "cf_event": "evt-docred-validation-000002-IBM_Research___Brazil-f91d0030e0",
+          "jaccard": 0.6,
+          "diff": {
+            "shared": [
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "rio de janeiro"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "s\u00e3o paulo"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P17",
+                "brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm research"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P580",
+                "june 2010"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm research \u2013 brazil"
+              ]
+            ],
+            "only_base": [
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ibm research",
+                "P527",
+                "ibm research \u2013 brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "south america"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "K2": {
+      "contract_id": "K2",
+      "threshold": 0.8,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::auditor",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-741b047124",
+          "jaccard": 0.571,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": [
+              [
+                "digea",
+                "P17",
+                "greece"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::expert",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-5eb8902a73",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::novice",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-96b6ebe47f",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::tone::permissive",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-7e9717fe2b",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::tone::strict",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-e4b0acdea6",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::tone::terse",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt tone to terse",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-24f7e3112d",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::auditor",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-3ac86ea3b5",
+          "jaccard": 0.462,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_cf": [
+              [
+                "susan blue parsons",
+                "P131",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::expert",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-f5af248570",
+          "jaccard": 0.467,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "emancipation proclamation",
+                "P577",
+                "1863"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P150",
+                "hampshire county"
+              ],
+              [
+                "west virginia route 28",
+                "P131",
+                "west virginia"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::novice",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-561dc30a1c",
+          "jaccard": 0.636,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::permissive",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-2d3a0d0ebd",
+          "jaccard": 0.438,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "annie washington",
+                "OTHER",
+                "washington place"
+              ],
+              [
+                "ralph w. haines",
+                "OTHER",
+                "washington place"
+              ],
+              [
+                "susan blue parsons",
+                "P131",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ],
+              [
+                "william washington",
+                "OTHER",
+                "washington place"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::prompt::base_v1::role::expert",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-d8f75855d5",
+          "jaccard": 0.875,
+          "diff": {
+            "shared": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "OTHER",
+                "conrad oberon johnson"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::prompt::base_v1::role::novice",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-e9fdaf4fa8",
+          "jaccard": 0.812,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::prompt::base_v1::tone::permissive",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-e6631bab97",
+          "jaccard": 0.824,
+          "diff": {
+            "shared": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad oberon johnson",
+                "P19",
+                "texas"
+              ],
+              [
+                "kashmere stage band",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::prompt::base_v1::tone::strict",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-5df07156b9",
+          "jaccard": 0.867,
+          "diff": {
+            "shared": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::prompt::base_v1::tone::terse",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Switch prompt tone to terse",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-0c91d6fa84",
+          "jaccard": 0.8,
+          "diff": {
+            "shared": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ]
+            ],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K3": {
+      "contract_id": "K3",
+      "threshold": 0.8,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::sent::doc::para_swap",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-517027e42f",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-ecdd3f9723",
+          "jaccard": 0.0,
+          "diff": {
+            "shared": [],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "lookin ass",
+                "P361",
+                "young money: rise of an empires"
+              ],
+              [
+                "young money: rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::sent::doc::para_swap",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-0c418ea1fd",
+          "jaccard": 0.2,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P50",
+                "nicki minaj"
+              ],
+              [
+                "lookin ass",
+                "P577",
+                "march 11, 2014"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::sent::doc::para_swap",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-9fbf5587b7",
+          "jaccard": 0.706,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ],
+              [
+                "kashmere stage band",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::sent::doc::para_swap",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-f9a84a1e81",
+          "jaccard": 0.071,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ]
+            ],
+            "only_base": [
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_cf": [
+              [
+                "edward p. \"ned\" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P27",
+                "irish"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \"ned\" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000007-Portland_Golf_Club::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000007-Portland_Golf_Club",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000007-Portland_Golf_Club-e34b7d7347",
+          "cf_event": "evt-docred-validation-000007-Portland_Golf_Club-7e38d03603",
+          "jaccard": 0.429,
+          "diff": {
+            "shared": [
+              [
+                "portland",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "raleigh hills"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "washington county"
+              ],
+              [
+                "portland golf club",
+                "P17",
+                "united states"
+              ],
+              [
+                "raleigh hills",
+                "P131",
+                "washington county"
+              ]
+            ],
+            "only_base": [
+              [
+                "ben hogan",
+                "OTHER",
+                "pga championship"
+              ],
+              [
+                "ben hogan",
+                "OTHER",
+                "portland open"
+              ],
+              [
+                "oregon",
+                "P17",
+                "united states"
+              ],
+              [
+                "pga championship",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "portland golf club",
+                "OTHER",
+                "1914"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "washington county",
+                "P131",
+                "oregon"
+              ]
+            ],
+            "only_cf": [
+              [
+                "portland golf club",
+                "P131",
+                "portland"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000007-Portland_Golf_Club::iv::sent::doc::para_swap",
+          "document_id": "docred-validation-000007-Portland_Golf_Club",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-docred-validation-000007-Portland_Golf_Club-e34b7d7347",
+          "cf_event": "evt-docred-validation-000007-Portland_Golf_Club-df62164835",
+          "jaccard": 0.429,
+          "diff": {
+            "shared": [
+              [
+                "portland",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "raleigh hills"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "washington county"
+              ],
+              [
+                "portland golf club",
+                "P17",
+                "united states"
+              ],
+              [
+                "raleigh hills",
+                "P131",
+                "washington county"
+              ]
+            ],
+            "only_base": [
+              [
+                "ben hogan",
+                "OTHER",
+                "pga championship"
+              ],
+              [
+                "ben hogan",
+                "OTHER",
+                "portland open"
+              ],
+              [
+                "oregon",
+                "P17",
+                "united states"
+              ],
+              [
+                "pga championship",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "portland golf club",
+                "OTHER",
+                "1914"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "washington county",
+                "P131",
+                "oregon"
+              ]
+            ],
+            "only_cf": [
+              [
+                "portland golf club",
+                "P131",
+                "portland"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000009-Robert_K__Huntington::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000009-Robert_K__Huntington",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000009-Robert_K__Huntington-3b2bea719d",
+          "cf_event": "evt-docred-validation-000009-Robert_K__Huntington-2b3037691b",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "los angeles",
+                "P131",
+                "california"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P19",
+                "los angeles"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P463",
+                "the united states navy"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P463",
+                "torpedo squadron 8"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P569",
+                "13 march 1921"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P570",
+                "5 june 1942"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "robert kingsbury huntington",
+                "OTHER",
+                "distinguished flying cross"
+              ],
+              [
+                "robert kingsbury huntington",
+                "OTHER",
+                "hornet"
+              ],
+              [
+                "robert kingsbury huntington",
+                "OTHER",
+                "lexington"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-0258b32fe7",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000002-IBM_Research___Brazil::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000002-IBM_Research___Brazil",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000002-IBM_Research___Brazil-15176cd684",
+          "cf_event": "evt-docred-validation-000002-IBM_Research___Brazil-d37fa9c3bf",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "rio de janeiro"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "s\u00e3o paulo"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P17",
+                "brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm research"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P580",
+                "june 2010"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm research \u2013 brazil"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-f4a7249343",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000005-Samsung_Galaxy_S_series::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000005-Samsung_Galaxy_S_series",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000005-Samsung_Galaxy_S_series-1c30f4d6e5",
+          "cf_event": "evt-docred-validation-000005-Samsung_Galaxy_S_series-59426e8b4c",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "galaxy tab s",
+                "P361",
+                "samsung galaxy s"
+              ],
+              [
+                "galaxy tab s4",
+                "P361",
+                "samsung galaxy s"
+              ],
+              [
+                "galaxy tab s4",
+                "P577",
+                "august 1, 2018"
+              ],
+              [
+                "samsung",
+                "P17",
+                "south korea"
+              ],
+              [
+                "samsung electronics",
+                "P17",
+                "south korea"
+              ],
+              [
+                "samsung electronics",
+                "P361",
+                "samsung"
+              ],
+              [
+                "samsung galaxy s9",
+                "P361",
+                "samsung galaxy s"
+              ],
+              [
+                "samsung galaxy s9 +",
+                "P361",
+                "samsung galaxy s"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::sent::doc::entity_alias",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-e62348bbc1",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K5": {
+      "contract_id": "K5",
+      "threshold": 0.5,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-9ff9fbd89d",
+          "jaccard": 0.429,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": [
+              [
+                "skai tv",
+                "P495",
+                "greece"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::auditor",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-3ac86ea3b5",
+          "jaccard": 0.462,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_cf": [
+              [
+                "susan blue parsons",
+                "P131",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::expert",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-f5af248570",
+          "jaccard": 0.467,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "emancipation proclamation",
+                "P577",
+                "1863"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P150",
+                "hampshire county"
+              ],
+              [
+                "west virginia route 28",
+                "P131",
+                "west virginia"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::permissive",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-2d3a0d0ebd",
+          "jaccard": 0.438,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "annie washington",
+                "OTHER",
+                "washington place"
+              ],
+              [
+                "ralph w. haines",
+                "OTHER",
+                "washington place"
+              ],
+              [
+                "susan blue parsons",
+                "P131",
+                "wappocomo plantation"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ],
+              [
+                "william washington",
+                "OTHER",
+                "washington place"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-b691e3bd2f",
+          "jaccard": 0.308,
+          "diff": {
+            "shared": [
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "blacks hill",
+                "P361",
+                "romney"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-669510e770",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-031a5f4580",
+          "jaccard": 0.273,
+          "diff": {
+            "shared": [
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ]
+            ],
+            "only_base": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_cf": [
+              [
+                "blacks hill",
+                "P361",
+                "romney"
+              ],
+              [
+                "west virginia",
+                "P131",
+                "united states"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::prompt::base_v1::role::auditor",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-c5b461220e",
+          "jaccard": 0.3,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::prompt::base_v1::tone::strict",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-8e276dffcc",
+          "jaccard": 0.125,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "young money : rise of an empires",
+                "P527",
+                "lookin ass"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_added",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-966af1d0d6",
+          "jaccard": 0.286,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_removed",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-2c1472bba4",
+          "jaccard": 0.2,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "OTHER",
+                "choppa boi"
+              ],
+              [
+                "lookin ass",
+                "OTHER",
+                "detail"
+              ],
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ],
+              [
+                "nicki minaj",
+                "P108",
+                "young money entertainment"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::auditor",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-741b047124",
+          "jaccard": 0.571,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": [
+              [
+                "digea",
+                "P17",
+                "greece"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::expert",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-5eb8902a73",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::novice",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-96b6ebe47f",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::tone::permissive",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-7e9717fe2b",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::tone::strict",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-e4b0acdea6",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K7": {
+      "contract_id": "K7",
+      "threshold": 0.9,
+      "violations": [
+        {
+          "intervention_id": "docred-validation-000000-Skai_TV::iv::noop::repeat::0",
+          "document_id": "docred-validation-000000-Skai_TV",
+          "description": "No-op re-run #0",
+          "base_event": "evt-docred-validation-000000-Skai_TV-080abc88db",
+          "cf_event": "evt-docred-validation-000000-Skai_TV-099311680a",
+          "jaccard": 0.667,
+          "diff": {
+            "shared": [
+              [
+                "skai tv",
+                "P159",
+                "piraeus"
+              ],
+              [
+                "skai tv",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai tv",
+                "P361",
+                "skai group"
+              ],
+              [
+                "skai tv",
+                "P463",
+                "digea"
+              ]
+            ],
+            "only_base": [
+              [
+                "piraeus",
+                "P17",
+                "greece"
+              ],
+              [
+                "skai group",
+                "P17",
+                "greece"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000001-Washington_Place__West_Virginia_::iv::noop::repeat::1",
+          "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-defff9cc8c",
+          "cf_event": "evt-docred-validation-000001-Washington_Place__West_Virginia_-669510e770",
+          "jaccard": 0.727,
+          "diff": {
+            "shared": [
+              [
+                "blacks hill",
+                "P131",
+                "romney"
+              ],
+              [
+                "hampshire county",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "romney",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "susan blue parsons",
+                "OTHER",
+                "wappocomo plantation"
+              ],
+              [
+                "washington place",
+                "P131",
+                "hampshire county"
+              ],
+              [
+                "washington place",
+                "P131",
+                "romney"
+              ],
+              [
+                "washington place",
+                "P17",
+                "united states"
+              ],
+              [
+                "west virginia",
+                "P17",
+                "united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "annie",
+                "OTHER",
+                "susan blue parsons"
+              ],
+              [
+                "washington place",
+                "P131",
+                "west virginia"
+              ],
+              [
+                "william washington",
+                "P26",
+                "annie washington"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000002-IBM_Research___Brazil::iv::noop::repeat::1",
+          "document_id": "docred-validation-000002-IBM_Research___Brazil",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000002-IBM_Research___Brazil-15176cd684",
+          "cf_event": "evt-docred-validation-000002-IBM_Research___Brazil-1f0585f186",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "rio de janeiro"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P131",
+                "s\u00e3o paulo"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P17",
+                "brazil"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm research"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm research \u2013 brazil"
+              ]
+            ],
+            "only_base": [
+              [
+                "ibm research \u2013 brazil",
+                "P361",
+                "ibm"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "P580",
+                "june 2010"
+              ],
+              [
+                "ulisses mello",
+                "P108",
+                "ibm"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ibm research \u2013 brazil",
+                "OTHER",
+                "june 2010"
+              ],
+              [
+                "ibm research \u2013 brazil",
+                "OTHER",
+                "south america"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000003-Lookin_Ass::iv::noop::repeat::0",
+          "document_id": "docred-validation-000003-Lookin_Ass",
+          "description": "No-op re-run #0",
+          "base_event": "evt-docred-validation-000003-Lookin_Ass-8ccef9bda1",
+          "cf_event": "evt-docred-validation-000003-Lookin_Ass-bfabe9dbd9",
+          "jaccard": 0.286,
+          "diff": {
+            "shared": [
+              [
+                "lookin ass",
+                "P361",
+                "young money : rise of an empires"
+              ],
+              [
+                "nicki minaj",
+                "P27",
+                "the united states"
+              ]
+            ],
+            "only_base": [
+              [
+                "choppa boi",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "detail",
+                "OTHER",
+                "lookin ass"
+              ],
+              [
+                "nicki minaj",
+                "P175",
+                "lookin ass"
+              ],
+              [
+                "young money : rise of an empires",
+                "P577",
+                "2014"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lookin ass",
+                "P175",
+                "nicki minaj"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::noop::repeat::0",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "No-op re-run #0",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-ed9a61e06e",
+          "jaccard": 0.8,
+          "diff": {
+            "shared": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000004-Conrad_O__Johnson::iv::noop::repeat::1",
+          "document_id": "docred-validation-000004-Conrad_O__Johnson",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000004-Conrad_O__Johnson-0cae3299e9",
+          "cf_event": "evt-docred-validation-000004-Conrad_O__Johnson-5894782d4f",
+          "jaccard": 0.765,
+          "diff": {
+            "shared": [
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "count basie"
+              ],
+              [
+                "conrad oberon johnson",
+                "OTHER",
+                "kashmere stage band"
+              ],
+              [
+                "conrad oberon johnson",
+                "P108",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P19",
+                "victoria"
+              ],
+              [
+                "conrad oberon johnson",
+                "P20",
+                "houston"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "omega psi phi fraternity"
+              ],
+              [
+                "conrad oberon johnson",
+                "P463",
+                "texas bandmasters hall of fame"
+              ],
+              [
+                "conrad oberon johnson",
+                "P569",
+                "november 15 , 1915"
+              ],
+              [
+                "conrad oberon johnson",
+                "P570",
+                "february 3 , 2008"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "houston college for negroes"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "wiley college"
+              ],
+              [
+                "conrad oberon johnson",
+                "P69",
+                "yates high school"
+              ],
+              [
+                "victoria",
+                "P131",
+                "texas"
+              ]
+            ],
+            "only_base": [
+              [
+                "conrad o. johnson school of fine arts",
+                "P131",
+                "kashmere high school"
+              ],
+              [
+                "conrad oberon johnson",
+                "P27",
+                "american"
+              ]
+            ],
+            "only_cf": [
+              [
+                "conrad o. johnson school of fine arts",
+                "OTHER",
+                "conrad oberon johnson"
+              ],
+              [
+                "conrad o. johnson school of fine arts",
+                "P361",
+                "kashmere high school"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000005-Samsung_Galaxy_S_series::iv::noop::repeat::1",
+          "document_id": "docred-validation-000005-Samsung_Galaxy_S_series",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000005-Samsung_Galaxy_S_series-1c30f4d6e5",
+          "cf_event": "evt-docred-validation-000005-Samsung_Galaxy_S_series-7bd815eaf1",
+          "jaccard": 0.636,
+          "diff": {
+            "shared": [
+              [
+                "galaxy tab s",
+                "P361",
+                "samsung galaxy s"
+              ],
+              [
+                "galaxy tab s4",
+                "P361",
+                "samsung galaxy s"
+              ],
+              [
+                "galaxy tab s4",
+                "P577",
+                "august 1, 2018"
+              ],
+              [
+                "samsung electronics",
+                "P17",
+                "south korea"
+              ],
+              [
+                "samsung electronics",
+                "P361",
+                "samsung"
+              ],
+              [
+                "samsung galaxy s9",
+                "P361",
+                "samsung galaxy s"
+              ],
+              [
+                "samsung galaxy s9 +",
+                "P361",
+                "samsung galaxy s"
+              ]
+            ],
+            "only_base": [
+              [
+                "samsung",
+                "P17",
+                "south korea"
+              ]
+            ],
+            "only_cf": [
+              [
+                "galaxy tab s",
+                "P577",
+                "june 2014"
+              ],
+              [
+                "samsung galaxy note",
+                "P577",
+                "2011"
+              ],
+              [
+                "samsung galaxy s",
+                "OTHER",
+                "samsung electronics"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000007-Portland_Golf_Club::iv::noop::repeat::0",
+          "document_id": "docred-validation-000007-Portland_Golf_Club",
+          "description": "No-op re-run #0",
+          "base_event": "evt-docred-validation-000007-Portland_Golf_Club-e34b7d7347",
+          "cf_event": "evt-docred-validation-000007-Portland_Golf_Club-2b322d5295",
+          "jaccard": 0.6,
+          "diff": {
+            "shared": [
+              [
+                "oregon",
+                "P17",
+                "united states"
+              ],
+              [
+                "pga championship",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "portland",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "raleigh hills"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "washington county"
+              ],
+              [
+                "portland golf club",
+                "P17",
+                "united states"
+              ],
+              [
+                "raleigh hills",
+                "P131",
+                "washington county"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "portland golf club"
+              ]
+            ],
+            "only_base": [
+              [
+                "ben hogan",
+                "OTHER",
+                "pga championship"
+              ],
+              [
+                "ben hogan",
+                "OTHER",
+                "portland open"
+              ],
+              [
+                "portland golf club",
+                "OTHER",
+                "1914"
+              ],
+              [
+                "washington county",
+                "P131",
+                "oregon"
+              ]
+            ],
+            "only_cf": [
+              [
+                "portland golf club",
+                "P131",
+                "portland"
+              ],
+              [
+                "portland golf club",
+                "P580",
+                "1914"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000007-Portland_Golf_Club::iv::noop::repeat::1",
+          "document_id": "docred-validation-000007-Portland_Golf_Club",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000007-Portland_Golf_Club-e34b7d7347",
+          "cf_event": "evt-docred-validation-000007-Portland_Golf_Club-779c6e1295",
+          "jaccard": 0.467,
+          "diff": {
+            "shared": [
+              [
+                "oregon",
+                "P17",
+                "united states"
+              ],
+              [
+                "portland",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "oregon"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "raleigh hills"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "washington county"
+              ],
+              [
+                "portland golf club",
+                "P17",
+                "united states"
+              ],
+              [
+                "raleigh hills",
+                "P131",
+                "washington county"
+              ]
+            ],
+            "only_base": [
+              [
+                "ben hogan",
+                "OTHER",
+                "pga championship"
+              ],
+              [
+                "ben hogan",
+                "OTHER",
+                "portland open"
+              ],
+              [
+                "pga championship",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "portland golf club",
+                "OTHER",
+                "1914"
+              ],
+              [
+                "ryder cup",
+                "OTHER",
+                "portland golf club"
+              ],
+              [
+                "washington county",
+                "P131",
+                "oregon"
+              ]
+            ],
+            "only_cf": [
+              [
+                "portland",
+                "P17",
+                "united states"
+              ],
+              [
+                "portland golf club",
+                "P131",
+                "portland"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::iv::noop::repeat::0",
+          "document_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_",
+          "description": "No-op re-run #0",
+          "base_event": "evt-docred-validation-000010-More__The_Sisters_of_Mercy_song_-c2cec81d3b",
+          "cf_event": "evt-docred-validation-000010-More__The_Sisters_of_Mercy_song_-fb4089dcbe",
+          "jaccard": 0.08,
+          "diff": {
+            "shared": [
+              [
+                "braver than we are",
+                "P577",
+                "2016"
+              ],
+              [
+                "more",
+                "P361",
+                "vision thing"
+              ]
+            ],
+            "only_base": [
+              [
+                "more",
+                "P175",
+                "erika christensen"
+              ],
+              [
+                "more",
+                "P175",
+                "gregorian"
+              ],
+              [
+                "more",
+                "P175",
+                "meat loaf"
+              ],
+              [
+                "more",
+                "P175",
+                "mike vogel"
+              ],
+              [
+                "more",
+                "P175",
+                "shaaman"
+              ],
+              [
+                "more",
+                "P175",
+                "sisters of mercy"
+              ],
+              [
+                "more",
+                "P361",
+                "braver than we are"
+              ],
+              [
+                "more",
+                "P361",
+                "reason"
+              ],
+              [
+                "more",
+                "P361",
+                "the dark side"
+              ],
+              [
+                "more",
+                "P50",
+                "andrew eldritch"
+              ],
+              [
+                "more",
+                "P50",
+                "jim steinman"
+              ]
+            ],
+            "only_cf": [
+              [
+                "andrew eldritch",
+                "P50",
+                "more"
+              ],
+              [
+                "erika christensen",
+                "P175",
+                "more"
+              ],
+              [
+                "gregorian",
+                "P175",
+                "more"
+              ],
+              [
+                "gregorian",
+                "P175",
+                "the dark side"
+              ],
+              [
+                "jim steinman",
+                "P50",
+                "more"
+              ],
+              [
+                "meat loaf",
+                "P175",
+                "braver than we are"
+              ],
+              [
+                "meat loaf",
+                "P175",
+                "more"
+              ],
+              [
+                "mike vogel",
+                "P175",
+                "more"
+              ],
+              [
+                "shaaman",
+                "P175",
+                "more"
+              ],
+              [
+                "shaaman",
+                "P175",
+                "reason"
+              ],
+              [
+                "sisters of mercy",
+                "P175",
+                "more"
+              ],
+              [
+                "steinman",
+                "P50",
+                "batman"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "docred-validation-000006-Ned_McEvoy::iv::noop::repeat::1",
+          "document_id": "docred-validation-000006-Ned_McEvoy",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000006-Ned_McEvoy-61c8413417",
+          "cf_event": "evt-docred-validation-000006-Ned_McEvoy-a9d96a5191",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "abbeyleix",
+                "P131",
+                "county laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P19",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "abbeyleix"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "dublin"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "laois"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P54",
+                "thomas davis club"
+              ],
+              [
+                "edward p. \" ned \" mcevoy",
+                "P569",
+                "1886"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000008-Urgut::iv::noop::repeat::1",
+          "document_id": "docred-validation-000008-Urgut",
+          "description": "No-op re-run #1",
+          "base_event": "evt-docred-validation-000008-Urgut-fca1363e9b",
+          "cf_event": "evt-docred-validation-000008-Urgut-e9c381ad71",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "samarkand",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "samarqand region",
+                "P17",
+                "uzbekistan"
+              ],
+              [
+                "urgut",
+                "P131",
+                "samarqand region"
+              ],
+              [
+                "urgut",
+                "P131",
+                "urgut district"
+              ],
+              [
+                "urgut",
+                "P17",
+                "uzbekistan"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "docred-validation-000009-Robert_K__Huntington::iv::noop::repeat::0",
+          "document_id": "docred-validation-000009-Robert_K__Huntington",
+          "description": "No-op re-run #0",
+          "base_event": "evt-docred-validation-000009-Robert_K__Huntington-3b2bea719d",
+          "cf_event": "evt-docred-validation-000009-Robert_K__Huntington-406f88a645",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "los angeles",
+                "P131",
+                "california"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P19",
+                "los angeles"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P463",
+                "the united states navy"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P463",
+                "torpedo squadron 8"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P569",
+                "13 march 1921"
+              ],
+              [
+                "robert kingsbury huntington",
+                "P570",
+                "5 june 1942"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    }
+  }
+}

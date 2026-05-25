@@ -1,0 +1,640 @@
+{
+  "summary": {
+    "n_contracts": 8,
+    "n_violated": 7,
+    "n_satisfied": 0,
+    "n_inconclusive": 1
+  },
+  "contracts": [
+    {
+      "contract_id": "K1",
+      "name": "Schema rename/reorder invariance (strict)",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "schema"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ],
+        "description_substring_in": [
+          "'rename'",
+          "'reorder'"
+        ]
+      },
+      "threshold": 0.85,
+      "direction": "min",
+      "n_pairs": 676,
+      "n_pass": 19,
+      "n_fail": 657,
+      "violation_rate": 0.9718934911242604,
+      "severity_mean": 0.5269160102619803,
+      "severity_p95": 0.85,
+      "metric_mean": 0.3402411981431178,
+      "metric_median": 0.3076923076923077,
+      "by_family": {
+        "schema": {
+          "n": 676,
+          "n_fail": 657,
+          "violation_rate": 0.9718934911242604,
+          "mean_metric": 0.3402411981431178
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7559171597633136,
+        "0.7": 0.9068047337278107,
+        "0.8": 0.9482248520710059,
+        "0.9": 0.9822485207100592
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000005-Samsung_Galaxy_S_series",
+          "intervention": "docred-validation-000005-Samsung_Galaxy_S_series::iv::schema::docred_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000005-Samsung_Galaxy_S_series",
+          "intervention": "docred-validation-000005-Samsung_Galaxy_S_series::iv::schema::docred_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000018-Quokka",
+          "intervention": "docred-validation-000018-Quokka::iv::schema::docred_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000018-Quokka",
+          "intervention": "docred-validation-000018-Quokka::iv::schema::docred_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000020-Memogate__Pakistan_",
+          "intervention": "docred-validation-000020-Memogate__Pakistan_::iv::schema::docred_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K1b",
+      "name": "Schema description-add invariance",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "schema"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ],
+        "description_substring_in": [
+          "'desc_added'"
+        ]
+      },
+      "threshold": 0.8,
+      "direction": "min",
+      "n_pairs": 337,
+      "n_pass": 22,
+      "n_fail": 315,
+      "violation_rate": 0.9347181008902077,
+      "severity_mean": 0.4826305342331535,
+      "severity_p95": 0.8,
+      "metric_mean": 0.3530880154646037,
+      "metric_median": 0.3333333333333333,
+      "by_family": {
+        "schema": {
+          "n": 337,
+          "n_fail": 315,
+          "violation_rate": 0.9347181008902077,
+          "mean_metric": 0.3530880154646037
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7477744807121661,
+        "0.7": 0.9020771513353115,
+        "0.8": 0.9347181008902077,
+        "0.9": 0.9821958456973294
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000039-Pointr",
+          "intervention": "docred-validation-000039-Pointr::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000039-Pointr",
+          "intervention": "docred-validation-000039-Pointr::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000061-Metropolitan_statistical_area",
+          "intervention": "docred-validation-000061-Metropolitan_statistical_area::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000075-Washington_v__Texas",
+          "intervention": "docred-validation-000075-Washington_v__Texas::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000092-Bantustan",
+          "intervention": "docred-validation-000092-Bantustan::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K1c",
+      "name": "Schema semantic-shading bounded drift",
+      "kind": "bounded_drift",
+      "scope": {
+        "cause_family_in": [
+          "schema"
+        ],
+        "description_substring_in": [
+          "'desc_removed'",
+          "'hierarchical'"
+        ]
+      },
+      "threshold": 0.5,
+      "direction": "min",
+      "n_pairs": 676,
+      "n_pass": 187,
+      "n_fail": 489,
+      "violation_rate": 0.7233727810650887,
+      "severity_mean": 0.2625632269708313,
+      "severity_p95": 0.5,
+      "metric_mean": 0.35404981702829463,
+      "metric_median": 0.3333333333333333,
+      "by_family": {
+        "schema": {
+          "n": 676,
+          "n_fail": 489,
+          "violation_rate": 0.7233727810650887,
+          "mean_metric": 0.35404981702829463
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7233727810650887,
+        "0.7": 0.8949704142011834,
+        "0.8": 0.9437869822485208,
+        "0.9": 0.9822485207100592
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+          "intervention": "docred-validation-000024-Beibu_Gulf_Economic_Rim::iv::schema::docred_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+          "intervention": "docred-validation-000024-Beibu_Gulf_Economic_Rim::iv::schema::docred_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000033-Queen_of_Housewives",
+          "intervention": "docred-validation-000033-Queen_of_Housewives::iv::schema::docred_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000061-Metropolitan_statistical_area",
+          "intervention": "docred-validation-000061-Metropolitan_statistical_area::iv::schema::docred_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000061-Metropolitan_statistical_area",
+          "intervention": "docred-validation-000061-Metropolitan_statistical_area::iv::schema::docred_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K2",
+      "name": "Prompt presentation invariance",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "prompt"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.8,
+      "direction": "min",
+      "n_pairs": 534,
+      "n_pass": 45,
+      "n_fail": 489,
+      "violation_rate": 0.9157303370786517,
+      "severity_mean": 0.47003277665158943,
+      "severity_p95": 0.8,
+      "metric_mean": 0.37923924768662703,
+      "metric_median": 0.3333333333333333,
+      "by_family": {
+        "prompt": {
+          "n": 534,
+          "n_fail": 489,
+          "violation_rate": 0.9157303370786517,
+          "mean_metric": 0.37923924768662703
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.6966292134831461,
+        "0.7": 0.8801498127340824,
+        "0.8": 0.9157303370786517,
+        "0.9": 0.9550561797752809
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000002-IBM_Research___Brazil",
+          "intervention": "docred-validation-000002-IBM_Research___Brazil::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000002-IBM_Research___Brazil",
+          "intervention": "docred-validation-000002-IBM_Research___Brazil::iv::prompt::base_v1::tone::permissive",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000005-Samsung_Galaxy_S_series",
+          "intervention": "docred-validation-000005-Samsung_Galaxy_S_series::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000006-Ned_McEvoy",
+          "intervention": "docred-validation-000006-Ned_McEvoy::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000006-Ned_McEvoy",
+          "intervention": "docred-validation-000006-Ned_McEvoy::iv::prompt::base_v1::tone::permissive",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K3",
+      "name": "Evidence/entity-alias reorder invariance",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "entity_alias",
+          "evidence"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.8,
+      "direction": "min",
+      "n_pairs": 78,
+      "n_pass": 28,
+      "n_fail": 50,
+      "violation_rate": 0.6410256410256411,
+      "severity_mean": 0.4462297334862584,
+      "severity_p95": 0.8,
+      "metric_mean": 0.5857501708421421,
+      "metric_median": 0.528782894736842,
+      "by_family": {
+        "entity_alias": {
+          "n": 39,
+          "n_fail": 13,
+          "violation_rate": 0.3333333333333333,
+          "mean_metric": 0.7876697939990442
+        },
+        "evidence": {
+          "n": 39,
+          "n_fail": 37,
+          "violation_rate": 0.9487179487179487,
+          "mean_metric": 0.38383054768523994
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.47435897435897434,
+        "0.7": 0.6410256410256411,
+        "0.8": 0.6410256410256411,
+        "0.9": 0.6410256410256411
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000013-Palestinian_National_Theatre",
+          "intervention": "docred-validation-000013-Palestinian_National_Theatre::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000016-Johan_Gottlieb_Gahn",
+          "intervention": "docred-validation-000016-Johan_Gottlieb_Gahn::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000029-Addy_Lee",
+          "intervention": "docred-validation-000029-Addy_Lee::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000035-Grand_Wing_Servo-Tech",
+          "intervention": "docred-validation-000035-Grand_Wing_Servo-Tech::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000020-Memogate__Pakistan_",
+          "intervention": "docred-validation-000020-Memogate__Pakistan_::iv::sent::doc::entity_alias",
+          "family": "entity_alias",
+          "semantic_class": "presentation",
+          "operator": "entity_alias",
+          "metric": 0.08
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4",
+      "name": "Multi-hop join robustness (Q3)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.5,
+      "direction": "min",
+      "n_pairs": 2301,
+      "n_pass": 264,
+      "n_fail": 2037,
+      "violation_rate": 0.8852672750977836,
+      "severity_mean": 0.38188189173372394,
+      "severity_p95": 0.5,
+      "metric_mean": 0.19415462104073994,
+      "metric_median": 0.10357142857142858,
+      "by_family": {
+        "prompt": {
+          "n": 534,
+          "n_fail": 454,
+          "violation_rate": 0.850187265917603,
+          "mean_metric": 0.22008989658004713
+        },
+        "schema": {
+          "n": 1689,
+          "n_fail": 1534,
+          "violation_rate": 0.9082297217288336,
+          "mean_metric": 0.17405210593442877
+        },
+        "entity_alias": {
+          "n": 39,
+          "n_fail": 13,
+          "violation_rate": 0.3333333333333333,
+          "mean_metric": 0.717608007744889
+        },
+        "evidence": {
+          "n": 39,
+          "n_fail": 36,
+          "violation_rate": 0.9230769230769231,
+          "mean_metric": 0.18618100040247623
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.8852672750977836,
+        "0.7": 0.9343763581051716,
+        "0.8": 0.9465449804432855,
+        "0.9": 0.9508909169926119
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::permissive",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K5",
+      "name": "Model swap recall stability",
+      "kind": "bounded_drift",
+      "scope": {
+        "operator_prefix": "model:"
+      },
+      "threshold": 0.4,
+      "direction": "min",
+      "n_pairs": 0,
+      "n_pass": 0,
+      "n_fail": 0,
+      "violation_rate": 0.0,
+      "severity_mean": 0.0,
+      "severity_p95": 0.0,
+      "metric_mean": 0.0,
+      "metric_median": 0.0,
+      "by_family": {},
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.0,
+        "0.7": 0.0,
+        "0.8": 0.0,
+        "0.9": 0.0
+      },
+      "examples": [],
+      "notes": "",
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "contract_id": "K6",
+      "name": "Stochastic repeatability",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "stochastic"
+        ]
+      },
+      "threshold": 0.9,
+      "direction": "min",
+      "n_pairs": 78,
+      "n_pass": 6,
+      "n_fail": 72,
+      "violation_rate": 0.9230769230769231,
+      "severity_mean": 0.4543485150854357,
+      "severity_p95": 0.7333333333333334,
+      "metric_mean": 0.48829367838267473,
+      "metric_median": 0.47058823529411764,
+      "by_family": {
+        "stochastic": {
+          "n": 78,
+          "n_fail": 72,
+          "violation_rate": 0.9230769230769231,
+          "mean_metric": 0.48829367838267473
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.5384615384615384,
+        "0.7": 0.7692307692307693,
+        "0.8": 0.8589743589743589,
+        "0.9": 0.9230769230769231
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000020-Memogate__Pakistan_",
+          "intervention": "docred-validation-000020-Memogate__Pakistan_::iv::noop::repeat::0",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000013-Palestinian_National_Theatre",
+          "intervention": "docred-validation-000013-Palestinian_National_Theatre::iv::noop::repeat::0",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.07142857142857142
+        },
+        {
+          "doc": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+          "intervention": "docred-validation-000024-Beibu_Gulf_Economic_Rim::iv::noop::repeat::0",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.08333333333333333
+        },
+        {
+          "doc": "docred-validation-000013-Palestinian_National_Theatre",
+          "intervention": "docred-validation-000013-Palestinian_National_Theatre::iv::noop::repeat::1",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.1
+        },
+        {
+          "doc": "docred-validation-000019-Dollar_General",
+          "intervention": "docred-validation-000019-Dollar_General::iv::noop::repeat::1",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.16666666666666666
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    }
+  ]
+}

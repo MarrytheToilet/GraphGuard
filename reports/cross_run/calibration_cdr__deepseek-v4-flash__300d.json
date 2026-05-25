@@ -1,0 +1,19 @@
+{
+  "n_pairs": 6071,
+  "u_thresh": 0.05,
+  "direction": "max",
+  "calibrations": {
+    "youden": {
+      "mode": "youden",
+      "target": 0.0,
+      "direction": "max",
+      "tau": 0.15476190476190477,
+      "alarm_rate": 0.44556086311974963,
+      "precision": 0.2861367837338262,
+      "recall": 0.7849898580121704,
+      "f1": 0.4193985369818477,
+      "n_pairs": 6071,
+      "harmful_base_rate": 0.1624114643386592
+    }
+  }
+}

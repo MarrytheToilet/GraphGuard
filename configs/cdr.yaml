@@ -1,0 +1,18 @@
+dataset:
+  name: cdr
+  hf_name: bc5cdr-local
+  doc_id_prefix: cdr
+  splits: [validation, train, test]
+  default_split: validation
+  cache_dir: data/cache/hf
+  loader: cdr
+  local_dir: data/raw/cdr/CDR_Data/CDR.Corpus.v010516
+
+storage:
+  db_path: data/processed/cdr.db
+
+extraction:
+  default_schema_id: cdr_full
+  default_prompt_id: base_v1
+  max_input_chars: 12000
+  max_entities_in_prompt: 80

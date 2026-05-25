@@ -1,0 +1,14 @@
+default: openai_compat
+models:
+  - id: openai_compat
+    provider: openai
+    # Reads from environment if not set here:
+    #   OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL, OPENAI_TEMPERATURE
+    api_key_env: OPENAI_API_KEY
+    base_url_env: OPENAI_BASE_URL
+    model_env:    OPENAI_MODEL
+    temperature: 0.0
+    max_tokens: 8192
+    timeout_s: 300
+    json_mode: true
+    seed: 7

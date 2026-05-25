@@ -1,0 +1,109 @@
+{
+  "n_pairs": 6071,
+  "total_harmful": 2073,
+  "base_rate": 0.3415,
+  "note": "audited_recall = harmful pairs actually inspected; family_inferred_recall = budget-aware's Wilson-stopping extrapolation. Baselines do not employ Wilson stopping, so their numbers correspond to audited_recall only.",
+  "rows": [
+    {
+      "budget_frac": 0.05,
+      "budget_pairs": 304,
+      "budget_aware": {
+        "audited_recall": 0.0328,
+        "family_inferred_recall": 0.8915,
+        "n_audited": 304,
+        "stopped_families": [
+          "prompt",
+          "schema"
+        ]
+      },
+      "random_audited_recall": 0.0531,
+      "round_robin_audited_recall": 0.0304,
+      "no_sequential_audited_recall": 0.0342
+    },
+    {
+      "budget_frac": 0.1,
+      "budget_pairs": 607,
+      "budget_aware": {
+        "audited_recall": 0.0637,
+        "family_inferred_recall": 1.0,
+        "n_audited": 562,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ]
+      },
+      "random_audited_recall": 0.1076,
+      "round_robin_audited_recall": 0.081,
+      "no_sequential_audited_recall": 0.0883
+    },
+    {
+      "budget_frac": 0.25,
+      "budget_pairs": 1518,
+      "budget_aware": {
+        "audited_recall": 0.0637,
+        "family_inferred_recall": 1.0,
+        "n_audited": 562,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ]
+      },
+      "random_audited_recall": 0.2648,
+      "round_robin_audited_recall": 0.2412,
+      "no_sequential_audited_recall": 0.2489
+    },
+    {
+      "budget_frac": 0.5,
+      "budget_pairs": 3036,
+      "budget_aware": {
+        "audited_recall": 0.0637,
+        "family_inferred_recall": 1.0,
+        "n_audited": 562,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ]
+      },
+      "random_audited_recall": 0.5147,
+      "round_robin_audited_recall": 0.5089,
+      "no_sequential_audited_recall": 0.4945
+    },
+    {
+      "budget_frac": 0.75,
+      "budget_pairs": 4553,
+      "budget_aware": {
+        "audited_recall": 0.0637,
+        "family_inferred_recall": 1.0,
+        "n_audited": 562,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ]
+      },
+      "random_audited_recall": 0.7675,
+      "round_robin_audited_recall": 0.7578,
+      "no_sequential_audited_recall": 0.7839
+    },
+    {
+      "budget_frac": 1.0,
+      "budget_pairs": 6071,
+      "budget_aware": {
+        "audited_recall": 0.0637,
+        "family_inferred_recall": 1.0,
+        "n_audited": 562,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ]
+      },
+      "random_audited_recall": 1.0,
+      "round_robin_audited_recall": 1.0,
+      "no_sequential_audited_recall": 1.0
+    }
+  ]
+}

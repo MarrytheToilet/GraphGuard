@@ -1,0 +1,19 @@
+dataset:
+  name: redocred
+  hf_name: redocred-local
+  doc_id_prefix: redocred
+  splits: [validation, train]
+  default_split: validation
+  cache_dir: data/cache/hf
+  local_files:
+    validation: data/raw/redocred/dev_revised.json
+    train:      data/raw/redocred/train_revised.json
+
+storage:
+  db_path: data/processed/redocred.db
+
+extraction:
+  default_schema_id: docred_full
+  default_prompt_id: base_v1
+  max_input_chars: 12000
+  max_entities_in_prompt: 60

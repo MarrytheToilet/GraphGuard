@@ -1,0 +1,66 @@
+name: cdr_paper
+description: >
+  BC5CDR (BioCreative V Chemical-Disease) cross-domain run for VLDB. Adds a
+  biomedical document-level dataset alongside DocRED/Re-DocRED/SciERC with the
+  same drift contract battery.
+
+paths:
+  data_root: data/processed/runs
+  report_root: reports/runs
+
+dataset:
+  config: configs/cdr.yaml
+  splits: validation
+
+prompt_schema:
+  prompt_config: configs/prompts.yaml
+  schema_config: configs/schemas.yaml
+  prompt_clauses_to_drop:
+    - C1_evidence_only
+    - C3_use_schema
+    - C4_allow_other
+  schema_variants:
+    - with_other
+    - coarse
+  max_drop_relations: 1
+
+models:
+  config: configs/models.yaml
+  primary: null
+  robustness:
+    - glm-5
+    - kimi-k2.5
+    - MiniMax-M2.5
+    - qwen3.6-flash
+
+profiles:
+  smoke:
+    docs: 12
+    oracle_docs: 4
+    main_budget: 8
+    oracle_budget: 999
+    e0_docs: 6
+    e0_runs: 3
+    workers: 6
+  pilot:
+    docs: 30
+    oracle_docs: 5
+    main_budget: 8
+    oracle_budget: 999
+    e0_docs: 10
+    e0_runs: 3
+    workers: 8
+  main300:
+    docs: 300
+    oracle_docs: 40
+    main_budget: 16
+    oracle_budget: 999
+    e0_docs: 80
+    e0_runs: 5
+    workers: 12
+
+experiments:
+  E0: { claim: drift exists on biomedical CDR }
+  E2: { label_modes: [strict, clean, wrong_only] }
+  E5: { claim: held-out faithfulness }
+  E6: { claim: query stability }

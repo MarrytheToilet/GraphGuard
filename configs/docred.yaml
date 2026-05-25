@@ -1,0 +1,15 @@
+dataset:
+  hf_name: docred
+  hf_config: default
+  splits: [validation, train]      # train_annotated 在 HF 上叫 train
+  default_split: validation
+  cache_dir: data/cache/hf
+
+storage:
+  db_path: data/processed/docred.db
+
+extraction:
+  default_schema_id: docred_full
+  default_prompt_id: base_v1
+  max_input_chars: 12000
+  max_entities_in_prompt: 60

@@ -1,0 +1,4711 @@
+{
+  "run": "cdr__deepseek-v4-flash__300d",
+  "contracts": {
+    "K1": {
+      "contract_id": "K1",
+      "threshold": 0.85,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-6f26d8da6a",
+          "jaccard": 0.364,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-d02b12ee10",
+          "jaccard": 0.571,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-300f3964af",
+          "jaccard": 0.308,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-c18405f7ba",
+          "jaccard": 0.3,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-57d977a326",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-893fa9a768",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000005-3131282-8b706d8f63",
+          "cf_event": "evt-cdr-validation-000005-3131282-dff8216fc1",
+          "jaccard": 0.3,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ]
+            ],
+            "only_base": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "squamous cell papilloma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_cf": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "tumors"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000005-3131282-8b706d8f63",
+          "cf_event": "evt-cdr-validation-000005-3131282-e4b60f9a66",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_base": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ],
+            "only_cf": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "tumors"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000005-3131282-64ca824feb",
+          "cf_event": "evt-cdr-validation-000005-3131282-754d254b3d",
+          "jaccard": 0.625,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ],
+            "only_base": [
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_cf": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "tumors"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "epithelial hyperplasia"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000005-3131282-64ca824feb",
+          "cf_event": "evt-cdr-validation-000005-3131282-17a2c635b9",
+          "jaccard": 0.75,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "tumors"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "epithelial hyperplasia"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-24d639aa7a",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-7918a9ccd5",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000001-6504332-3322007d6a",
+          "cf_event": "evt-cdr-validation-000001-6504332-c72dff27cd",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000001-6504332-3322007d6a",
+          "cf_event": "evt-cdr-validation-000001-6504332-1daedad34e",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000002-6436733-f1bd2cdff6",
+          "cf_event": "evt-cdr-validation-000002-6436733-5085c83a10",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K1b": {
+      "contract_id": "K1b",
+      "threshold": 0.8,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-943a83c4a6",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-5fafb845e1",
+          "jaccard": 0.231,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-67bf360c1f",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000005-3131282-8b706d8f63",
+          "cf_event": "evt-cdr-validation-000005-3131282-137f5e92f3",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ]
+            ],
+            "only_base": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "squamous cell papilloma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_cf": [
+              [
+                "retinyl acetate",
+                "OTHER",
+                "epithelial hyperplasia"
+              ],
+              [
+                "retinyl acetate",
+                "OTHER",
+                "forestomach carcinogenesis"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000005-3131282-64ca824feb",
+          "cf_event": "evt-cdr-validation-000005-3131282-6aa8f4f0e2",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ]
+            ],
+            "only_base": [
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_cf": [
+              [
+                "retinyl acetate",
+                "OTHER",
+                "epithelial hyperplasia"
+              ],
+              [
+                "retinyl acetate",
+                "OTHER",
+                "forestomach carcinogenesis"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000006-3115150::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000006-3115150",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000006-3115150-ad8a551a47",
+          "cf_event": "evt-cdr-validation-000006-3115150-15f1b63b5c",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "alfentanil",
+                "CID",
+                "muscle rigidity"
+              ]
+            ],
+            "only_base": [
+              [
+                "chlordiazepoxide",
+                "OTHER",
+                "muscle rigidity"
+              ],
+              [
+                "ketanserin",
+                "OTHER",
+                "alfentanil"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000006-3115150::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000006-3115150",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000006-3115150-f0264ca2e6",
+          "cf_event": "evt-cdr-validation-000006-3115150-f9225acece",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "alfentanil",
+                "CID",
+                "muscle rigidity"
+              ]
+            ],
+            "only_base": [
+              [
+                "ketanserin",
+                "OTHER",
+                "muscle rigidity"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000010-1545575::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000010-1545575",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000010-1545575-696fda0c72",
+          "cf_event": "evt-cdr-validation-000010-1545575-fa49d6cb62",
+          "jaccard": 0.0,
+          "diff": {
+            "shared": [],
+            "only_base": [
+              [
+                "cyclophosphamide",
+                "CID",
+                "mesna"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000010-1545575::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000010-1545575",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000010-1545575-b6f4f03ee5",
+          "cf_event": "evt-cdr-validation-000010-1545575-ce7f5b7f14",
+          "jaccard": 0.0,
+          "diff": {
+            "shared": [],
+            "only_base": [
+              [
+                "cyclophosphamide",
+                "CID",
+                "mesna"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000011-1286498::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000011-1286498",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000011-1286498-d742bab30e",
+          "cf_event": "evt-cdr-validation-000011-1286498-89ab1e24e8",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "flumazenil",
+                "CID",
+                "nausea"
+              ],
+              [
+                "flumazenil",
+                "CID",
+                "vomiting"
+              ]
+            ],
+            "only_base": [
+              [
+                "flumazenil",
+                "CID",
+                "pain"
+              ]
+            ],
+            "only_cf": [
+              [
+                "diazepam",
+                "CID",
+                "nausea"
+              ],
+              [
+                "diazepam",
+                "CID",
+                "pain"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-755a4e535d",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000001-6504332-3322007d6a",
+          "cf_event": "evt-cdr-validation-000001-6504332-07023c1310",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000002-6436733-f1bd2cdff6",
+          "cf_event": "evt-cdr-validation-000002-6436733-d38507cad9",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000003-6293644::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000003-6293644",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000003-6293644-ea0e9bb93f",
+          "cf_event": "evt-cdr-validation-000003-6293644-3b314a2d10",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "apomorphine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "haloperidol",
+                "CID",
+                "catalepsy"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000003-6293644::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000003-6293644",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000003-6293644-fac677023a",
+          "cf_event": "evt-cdr-validation-000003-6293644-d42d491853",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "apomorphine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "haloperidol",
+                "CID",
+                "catalepsy"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K1c": {
+      "contract_id": "K1c",
+      "threshold": 0.5,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-d35684b6f6",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium",
+                "CID",
+                "neurologic depression"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-d4cc572abc",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-ac24f8e190",
+          "jaccard": 0.077,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-0f701f6bb9",
+          "jaccard": 0.231,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-da100de8ec",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ]
+            ],
+            "only_base": [
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_cf": [
+              [
+                "phenobarbital",
+                "OTHER",
+                "movement disorders"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000001-6504332-3322007d6a",
+          "cf_event": "evt-cdr-validation-000001-6504332-a06d5a594b",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ]
+            ],
+            "only_base": [
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_cf": [
+              [
+                "phenobarbital",
+                "OTHER",
+                "movement disorders"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000005-3131282-64ca824feb",
+          "cf_event": "evt-cdr-validation-000005-3131282-125e81ea63",
+          "jaccard": 0.444,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_base": [
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ],
+            "only_cf": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "squamous cell papilloma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "epithelial hyperplasia"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000006-3115150::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000006-3115150",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000006-3115150-ad8a551a47",
+          "cf_event": "evt-cdr-validation-000006-3115150-e28e26d345",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "alfentanil",
+                "CID",
+                "muscle rigidity"
+              ]
+            ],
+            "only_base": [
+              [
+                "chlordiazepoxide",
+                "OTHER",
+                "muscle rigidity"
+              ],
+              [
+                "ketanserin",
+                "OTHER",
+                "alfentanil"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000006-3115150::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000006-3115150",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000006-3115150-f0264ca2e6",
+          "cf_event": "evt-cdr-validation-000006-3115150-b9b8e03819",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "alfentanil",
+                "CID",
+                "muscle rigidity"
+              ]
+            ],
+            "only_base": [
+              [
+                "ketanserin",
+                "OTHER",
+                "muscle rigidity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "chlordiazepoxide",
+                "OTHER",
+                "muscle rigidity"
+              ],
+              [
+                "ketanserin",
+                "OTHER",
+                "alfentanil"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000013-591536::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000013-591536",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000013-591536-8217907577",
+          "cf_event": "evt-cdr-validation-000013-591536-4aa2867951",
+          "jaccard": 0.429,
+          "diff": {
+            "shared": [
+              [
+                "heparin",
+                "CID",
+                "platelet aggregation"
+              ],
+              [
+                "heparin",
+                "CID",
+                "thrombocytopenia"
+              ],
+              [
+                "heparin",
+                "CID",
+                "thromboembolism"
+              ]
+            ],
+            "only_base": [
+              [
+                "heparin",
+                "CID",
+                "arterial occlusion"
+              ],
+              [
+                "heparin",
+                "CID",
+                "ischemia"
+              ]
+            ],
+            "only_cf": [
+              [
+                "thrombocytopenia",
+                "CID",
+                "arterial occlusion"
+              ],
+              [
+                "thrombocytopenia",
+                "CID",
+                "ischemia"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-ef97e36b85",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000001-6504332-3322007d6a",
+          "cf_event": "evt-cdr-validation-000001-6504332-badbc75ef3",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-41236f6413",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-3e9becb1f0",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000002-6436733-f1bd2cdff6",
+          "cf_event": "evt-cdr-validation-000002-6436733-b4f67b8c87",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K2": {
+      "contract_id": "K2",
+      "threshold": 0.8,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::auditor",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-0e51f6e9e4",
+          "jaccard": 0.3,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::expert",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-1ff21dfc76",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::novice",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-5af3eeda81",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::permissive",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-745b94cd0f",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "toxicity"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::terse",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to terse",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-9d31b6261e",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::auditor",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-30ba830703",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::expert",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-67d511e129",
+          "jaccard": 0.231,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::novice",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-d8ee62eef0",
+          "jaccard": 0.231,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::permissive",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-3ac39f4d54",
+          "jaccard": 0.286,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium",
+                "CID",
+                "toxicity"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::strict",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "cf_event": "evt-cdr-validation-000000-6794356-1aab2c7411",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::strict",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-2cce135f1f",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::prompt::base_v1::role::auditor",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-d65be7fd71",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::prompt::base_v1::role::expert",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-8a2b286259",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::prompt::base_v1::role::novice",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-f351d239ba",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::prompt::base_v1::tone::permissive",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-c8f707c4e4",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K3": {
+      "contract_id": "K3",
+      "threshold": 0.8,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-f1bd2cdff6",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000005-3131282-8b706d8f63",
+          "cf_event": "evt-cdr-validation-000005-3131282-64ca824feb",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_base": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ],
+            "only_cf": [
+              [
+                "retinyl acetate",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000006-3115150::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000006-3115150",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000006-3115150-ad8a551a47",
+          "cf_event": "evt-cdr-validation-000006-3115150-f0264ca2e6",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "alfentanil",
+                "CID",
+                "muscle rigidity"
+              ]
+            ],
+            "only_base": [
+              [
+                "chlordiazepoxide",
+                "OTHER",
+                "muscle rigidity"
+              ],
+              [
+                "ketanserin",
+                "OTHER",
+                "alfentanil"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ketanserin",
+                "OTHER",
+                "muscle rigidity"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000011-1286498::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000011-1286498",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000011-1286498-d742bab30e",
+          "cf_event": "evt-cdr-validation-000011-1286498-6ee1641694",
+          "jaccard": 0.75,
+          "diff": {
+            "shared": [
+              [
+                "flumazenil",
+                "CID",
+                "nausea"
+              ],
+              [
+                "flumazenil",
+                "CID",
+                "pain"
+              ],
+              [
+                "flumazenil",
+                "CID",
+                "vomiting"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "diazepam",
+                "CID",
+                "sedation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000014-20735774::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000014-20735774",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000014-20735774-e49ff0480d",
+          "cf_event": "evt-cdr-validation-000014-20735774-907003cc30",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "paracetamol",
+                "CID",
+                "acute liver failure"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "paracetamol",
+                "CID",
+                "acute liver injury"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000015-20705401::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000015-20705401",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000015-20705401-1189b60986",
+          "cf_event": "evt-cdr-validation-000015-20705401-eba9963cd9",
+          "jaccard": 0.222,
+          "diff": {
+            "shared": [
+              [
+                "d-amphetamine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "methamphetamine",
+                "CID",
+                "psychosis"
+              ]
+            ],
+            "only_base": [
+              [
+                "d-amphetamine",
+                "CID",
+                "psychosis"
+              ],
+              [
+                "methamphetamine",
+                "CID",
+                "paranoid type schizophrenia"
+              ],
+              [
+                "phencyclidine",
+                "CID",
+                "psychosis"
+              ]
+            ],
+            "only_cf": [
+              [
+                "clozapine",
+                "OTHER",
+                "schizophrenia"
+              ],
+              [
+                "d-amphetamine",
+                "CID",
+                "prepulse inhibition"
+              ],
+              [
+                "olanzapine",
+                "OTHER",
+                "schizophrenia"
+              ],
+              [
+                "phencyclidine",
+                "CID",
+                "prepulse inhibition"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000019-16192988::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000019-16192988",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000019-16192988-b3b52a3124",
+          "cf_event": "evt-cdr-validation-000019-16192988-ba575fb920",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "methamphetamine",
+                "CID",
+                "aggressiveness"
+              ]
+            ],
+            "only_base": [
+              [
+                "methamphetamine",
+                "CID",
+                "hyperactivity"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000021-16116131::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000021-16116131",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000021-16116131-85f96ab83a",
+          "cf_event": "evt-cdr-validation-000021-16116131-9f43acde0a",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "apomorphine",
+                "CID",
+                "dyskinesias"
+              ],
+              [
+                "levodopa",
+                "CID",
+                "dyskinesias"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "apomorphine",
+                "OTHER",
+                "parkinson disease"
+              ],
+              [
+                "levodopa",
+                "OTHER",
+                "parkinson disease"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000023-15867025::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000023-15867025",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000023-15867025-5c6e638676",
+          "cf_event": "evt-cdr-validation-000023-15867025-fc0c059574",
+          "jaccard": 0.0,
+          "diff": {
+            "shared": [],
+            "only_base": [
+              [
+                "hepatitis b surface antigen",
+                "OTHER",
+                "hepatitis b"
+              ]
+            ],
+            "only_cf": [
+              [
+                "hepatitis b surface antigen",
+                "CID",
+                "hepatitis b"
+              ],
+              [
+                "rubella",
+                "OTHER",
+                "rubella"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::sent::doc::entity_alias",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-5227e86257",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::sent::doc::entity_alias",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-f26ace6a10",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-3322007d6a",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::sent::doc::entity_alias",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-e7278564fe",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ],
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000003-6293644::iv::sent::doc::entity_alias",
+          "document_id": "cdr-validation-000003-6293644",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-cdr-validation-000003-6293644-ea0e9bb93f",
+          "cf_event": "evt-cdr-validation-000003-6293644-2d12f99b2e",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "apomorphine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "haloperidol",
+                "CID",
+                "catalepsy"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K5": {
+      "contract_id": "K5",
+      "threshold": 0.5,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::auditor",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-0e51f6e9e4",
+          "jaccard": 0.3,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::expert",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-1ff21dfc76",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::role::novice",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt role to novice",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-5af3eeda81",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::permissive",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to permissive",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-745b94cd0f",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "toxicity"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::terse",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to terse",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-9d31b6261e",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::desc_added",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'desc_added'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-943a83c4a6",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::desc_removed",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'desc_removed'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-d35684b6f6",
+          "jaccard": 0.333,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium",
+                "CID",
+                "neurologic depression"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::hierarchical",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'hierarchical'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-d4cc572abc",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::rename",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'rename'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-6f26d8da6a",
+          "jaccard": 0.364,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::sent::doc::para_swap",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Reorder sentences (paragraph swap)",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-2c0c3c0197",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium",
+                "CID",
+                "tricuspid valve regurgitation"
+              ],
+              [
+                "lithium compounds",
+                "CID",
+                "cardiac disease"
+              ]
+            ]
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::prompt::base_v1::tone::strict",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Switch prompt tone to strict",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-2cce135f1f",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::schema::cdr_full::reorder",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Presentation schema variant 'reorder'",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-d02b12ee10",
+          "jaccard": 0.571,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::sent::doc::entity_alias",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "Rewrite entities with aliases",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-5227e86257",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::prompt::base_v1::role::auditor",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Switch prompt role to auditor",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-d65be7fd71",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::prompt::base_v1::role::expert",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "Switch prompt role to expert",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-8a2b286259",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    },
+    "K7": {
+      "contract_id": "K7",
+      "threshold": 0.9,
+      "violations": [
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-2750c07695",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000000-6794356::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000000-6794356",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000000-6794356-7e5021d4a2",
+          "cf_event": "evt-cdr-validation-000000-6794356-07873595dc",
+          "jaccard": 0.4,
+          "diff": {
+            "shared": [
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac arrhythmia"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cyanosis"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "neurologic depression"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "toxicity"
+              ]
+            ],
+            "only_base": [
+              [
+                "lithium",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congenital heart disease"
+              ]
+            ],
+            "only_cf": [
+              [
+                "lithium carbonate",
+                "CID",
+                "atrial flutter"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "cardiac disease"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "congestive heart failure"
+              ],
+              [
+                "lithium carbonate",
+                "CID",
+                "tricuspid valve regurgitation"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-efdbd7838a",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000003-6293644::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000003-6293644",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000003-6293644-ea0e9bb93f",
+          "cf_event": "evt-cdr-validation-000003-6293644-5ed9506d74",
+          "jaccard": 0.0,
+          "diff": {
+            "shared": [],
+            "only_base": [
+              [
+                "apomorphine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "haloperidol",
+                "CID",
+                "catalepsy"
+              ]
+            ],
+            "only_cf": [
+              [
+                "apomorphine",
+                "OTHER",
+                "hyperactivity"
+              ],
+              [
+                "calcitonin",
+                "CID",
+                "catalepsy"
+              ],
+              [
+                "calcitonin",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "haloperidol",
+                "OTHER",
+                "catalepsy"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000005-3131282::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000005-3131282",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000005-3131282-8b706d8f63",
+          "cf_event": "evt-cdr-validation-000005-3131282-d696946a7f",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "carcinoma"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "epithelial hyperplasia"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "squamous cell papilloma"
+              ]
+            ],
+            "only_base": [
+              [
+                "retinyl acetate",
+                "CID",
+                "forestomach carcinogenesis"
+              ],
+              [
+                "retinyl acetate",
+                "CID",
+                "tumors"
+              ]
+            ],
+            "only_cf": [
+              [
+                "butylated hydroxyanisole",
+                "CID",
+                "tumors"
+              ],
+              [
+                "retinyl acetate",
+                "OTHER",
+                "butylated hydroxyanisole"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000006-3115150::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000006-3115150",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000006-3115150-ad8a551a47",
+          "cf_event": "evt-cdr-validation-000006-3115150-9fa5a1f7d7",
+          "jaccard": 0.5,
+          "diff": {
+            "shared": [
+              [
+                "alfentanil",
+                "CID",
+                "muscle rigidity"
+              ],
+              [
+                "chlordiazepoxide",
+                "OTHER",
+                "muscle rigidity"
+              ]
+            ],
+            "only_base": [
+              [
+                "ketanserin",
+                "OTHER",
+                "alfentanil"
+              ]
+            ],
+            "only_cf": [
+              [
+                "ketanserin",
+                "CID",
+                "muscle rigidity"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000014-20735774::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000014-20735774",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000014-20735774-e49ff0480d",
+          "cf_event": "evt-cdr-validation-000014-20735774-64aaba2ffd",
+          "jaccard": 0.25,
+          "diff": {
+            "shared": [
+              [
+                "paracetamol",
+                "CID",
+                "acute liver failure"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": [
+              [
+                "acute liver failure",
+                "OTHER",
+                "liver disease"
+              ],
+              [
+                "acute liver failure",
+                "OTHER",
+                "substance abuse"
+              ],
+              [
+                "paracetamol",
+                "CID",
+                "acute liver injury"
+              ]
+            ]
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000015-20705401::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000015-20705401",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000015-20705401-1189b60986",
+          "cf_event": "evt-cdr-validation-000015-20705401-e1b0767088",
+          "jaccard": 0.8,
+          "diff": {
+            "shared": [
+              [
+                "d-amphetamine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "d-amphetamine",
+                "CID",
+                "psychosis"
+              ],
+              [
+                "methamphetamine",
+                "CID",
+                "psychosis"
+              ],
+              [
+                "phencyclidine",
+                "CID",
+                "psychosis"
+              ]
+            ],
+            "only_base": [
+              [
+                "methamphetamine",
+                "CID",
+                "paranoid type schizophrenia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000015-20705401::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000015-20705401",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000015-20705401-1189b60986",
+          "cf_event": "evt-cdr-validation-000015-20705401-73d4261007",
+          "jaccard": 0.8,
+          "diff": {
+            "shared": [
+              [
+                "d-amphetamine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "d-amphetamine",
+                "CID",
+                "psychosis"
+              ],
+              [
+                "methamphetamine",
+                "CID",
+                "psychosis"
+              ],
+              [
+                "phencyclidine",
+                "CID",
+                "psychosis"
+              ]
+            ],
+            "only_base": [
+              [
+                "methamphetamine",
+                "CID",
+                "paranoid type schizophrenia"
+              ]
+            ],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000023-15867025::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000023-15867025",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000023-15867025-5c6e638676",
+          "cf_event": "evt-cdr-validation-000023-15867025-ac57ed894d",
+          "jaccard": 0.0,
+          "diff": {
+            "shared": [],
+            "only_base": [
+              [
+                "hepatitis b surface antigen",
+                "OTHER",
+                "hepatitis b"
+              ]
+            ],
+            "only_cf": []
+          }
+        }
+      ],
+      "passes": [
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-deb5361baa",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000001-6504332::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000001-6504332",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000001-6504332-63206add69",
+          "cf_event": "evt-cdr-validation-000001-6504332-151a819d36",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "phenobarbital",
+                "CID",
+                "dyskinesia"
+              ],
+              [
+                "phenobarbital",
+                "CID",
+                "movement disorders"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000002-6436733::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000002-6436733",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000002-6436733-bb0346e845",
+          "cf_event": "evt-cdr-validation-000002-6436733-0e313f9969",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "valproic acid",
+                "CID",
+                "ammonia"
+              ],
+              [
+                "valproic acid",
+                "CID",
+                "drowsiness"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000003-6293644::iv::noop::repeat::1",
+          "document_id": "cdr-validation-000003-6293644",
+          "description": "No-op re-run #1",
+          "base_event": "evt-cdr-validation-000003-6293644-ea0e9bb93f",
+          "cf_event": "evt-cdr-validation-000003-6293644-2f183fa0ae",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "apomorphine",
+                "CID",
+                "hyperactivity"
+              ],
+              [
+                "haloperidol",
+                "CID",
+                "catalepsy"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        },
+        {
+          "intervention_id": "cdr-validation-000004-6203632::iv::noop::repeat::0",
+          "document_id": "cdr-validation-000004-6203632",
+          "description": "No-op re-run #0",
+          "base_event": "evt-cdr-validation-000004-6203632-dffb1fa6df",
+          "cf_event": "evt-cdr-validation-000004-6203632-732e83aa68",
+          "jaccard": 1.0,
+          "diff": {
+            "shared": [
+              [
+                "isoproterenol",
+                "CID",
+                "cardiac hypertrophy"
+              ]
+            ],
+            "only_base": [],
+            "only_cf": []
+          }
+        }
+      ]
+    }
+  }
+}

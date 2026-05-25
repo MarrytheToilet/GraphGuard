@@ -1,0 +1,40 @@
+{
+  "overall": {
+    "n_pairs": 3989,
+    "drift_raw": 0.5715,
+    "drift_label_erased": 0.3629,
+    "drift_coarse_mapped": 0.5689
+  },
+  "by_family": {
+    "stochastic": {
+      "n_pairs": 58,
+      "drift_raw": 0.3897,
+      "drift_label_erased": 0.2774,
+      "drift_coarse_mapped": 0.3897
+    },
+    "prompt": {
+      "n_pairs": 950,
+      "drift_raw": 0.4576,
+      "drift_label_erased": 0.3266,
+      "drift_coarse_mapped": 0.4576
+    },
+    "schema": {
+      "n_pairs": 2500,
+      "drift_raw": 0.6349,
+      "drift_label_erased": 0.3749,
+      "drift_coarse_mapped": 0.6308
+    },
+    "entity_alias": {
+      "n_pairs": 29,
+      "drift_raw": 0.203,
+      "drift_label_erased": 0.1506,
+      "drift_coarse_mapped": 0.203
+    },
+    "evidence": {
+      "n_pairs": 452,
+      "drift_raw": 0.5071,
+      "drift_label_erased": 0.3971,
+      "drift_coarse_mapped": 0.5071
+    }
+  }
+}

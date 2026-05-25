@@ -1,0 +1,188 @@
+{
+  "n_pairs": 6295,
+  "harm_threshold_delta_f1": 0.05,
+  "harmful_base_rate": 0.3863,
+  "monitors_at_matched_alarm": {
+    "alarm_rate_target": 0.7708,
+    "tau_graph_fixed": 0.3,
+    "tau_query": 0.0,
+    "graph_only": {
+      "tp": 2082,
+      "fp": 2770,
+      "fn": 350,
+      "tn": 1093,
+      "alarm_rate": 0.77077045274027,
+      "precision": 0.4291,
+      "recall": 0.8561,
+      "f1": 0.5717
+    },
+    "query_aware": {
+      "tp": 2432,
+      "fp": 2212,
+      "fn": 0,
+      "tn": 1651,
+      "alarm_rate": 0.7377283558379666,
+      "precision": 0.5237,
+      "recall": 1.0,
+      "f1": 0.6874
+    },
+    "hybrid_or": {
+      "tp": 2432,
+      "fp": 3352,
+      "fn": 0,
+      "tn": 511,
+      "alarm_rate": 0.9188244638602066,
+      "precision": 0.4205,
+      "recall": 1.0,
+      "f1": 0.592
+    }
+  },
+  "sweep": [
+    {
+      "target_alarm": 0.3,
+      "tau_graph": 0.625,
+      "tau_query": 1.0,
+      "graph_only": {
+        "tp": 853,
+        "fp": 1010,
+        "fn": 1579,
+        "tn": 2853,
+        "alarm_rate": 0.2959491660047657,
+        "precision": 0.4579,
+        "recall": 0.3507,
+        "f1": 0.3972
+      },
+      "query_aware": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2432,
+        "tn": 3863,
+        "alarm_rate": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "hybrid_or": {
+        "tp": 853,
+        "fp": 1010,
+        "fn": 1579,
+        "tn": 2853,
+        "alarm_rate": 0.2959491660047657,
+        "precision": 0.4579,
+        "recall": 0.3507,
+        "f1": 0.3972
+      }
+    },
+    {
+      "target_alarm": 0.5,
+      "tau_graph": 0.5,
+      "tau_query": 0.3556,
+      "graph_only": {
+        "tp": 1343,
+        "fp": 1575,
+        "fn": 1089,
+        "tn": 2288,
+        "alarm_rate": 0.46354249404289116,
+        "precision": 0.4602,
+        "recall": 0.5522,
+        "f1": 0.5021
+      },
+      "query_aware": {
+        "tp": 2389,
+        "fp": 757,
+        "fn": 43,
+        "tn": 3106,
+        "alarm_rate": 0.4997617156473392,
+        "precision": 0.7594,
+        "recall": 0.9823,
+        "f1": 0.8566
+      },
+      "hybrid_or": {
+        "tp": 2411,
+        "fp": 1940,
+        "fn": 21,
+        "tn": 1923,
+        "alarm_rate": 0.6911834789515489,
+        "precision": 0.5541,
+        "recall": 0.9914,
+        "f1": 0.7109
+      }
+    },
+    {
+      "target_alarm": 0.7,
+      "tau_graph": 0.3571,
+      "tau_query": 0.0444,
+      "graph_only": {
+        "tp": 1943,
+        "fp": 2454,
+        "fn": 489,
+        "tn": 1409,
+        "alarm_rate": 0.6984908657664813,
+        "precision": 0.4419,
+        "recall": 0.7989,
+        "f1": 0.569
+      },
+      "query_aware": {
+        "tp": 2432,
+        "fp": 1969,
+        "fn": 0,
+        "tn": 1894,
+        "alarm_rate": 0.6991262907069102,
+        "precision": 0.5526,
+        "recall": 1.0,
+        "f1": 0.7118
+      },
+      "hybrid_or": {
+        "tp": 2432,
+        "fp": 3069,
+        "fn": 0,
+        "tn": 794,
+        "alarm_rate": 0.873868149324861,
+        "precision": 0.4421,
+        "recall": 1.0,
+        "f1": 0.6131
+      }
+    },
+    {
+      "target_alarm": 0.9,
+      "tau_graph": 0.1429,
+      "tau_query": 0.0,
+      "graph_only": {
+        "tp": 2293,
+        "fp": 3324,
+        "fn": 139,
+        "tn": 539,
+        "alarm_rate": 0.8922954725972995,
+        "precision": 0.4082,
+        "recall": 0.9428,
+        "f1": 0.5698
+      },
+      "query_aware": {
+        "tp": 2432,
+        "fp": 2212,
+        "fn": 0,
+        "tn": 1651,
+        "alarm_rate": 0.7377283558379666,
+        "precision": 0.5237,
+        "recall": 1.0,
+        "f1": 0.6874
+      },
+      "hybrid_or": {
+        "tp": 2432,
+        "fp": 3549,
+        "fn": 0,
+        "tn": 314,
+        "alarm_rate": 0.9501191421763304,
+        "precision": 0.4066,
+        "recall": 1.0,
+        "f1": 0.5782
+      }
+    }
+  ],
+  "disagreement_at_matched_alarm": {
+    "pairs_disagree": 2072,
+    "rate": 0.3292,
+    "graph_only_misses_harmful": 350,
+    "graph_only_false_alarms_on_benign": 1140
+  }
+}

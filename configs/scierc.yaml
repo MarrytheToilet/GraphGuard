@@ -1,0 +1,21 @@
+dataset:
+  name: scierc
+  hf_name: scierc-local
+  doc_id_prefix: scierc
+  splits: [dev, train, test]
+  default_split: "dev,test,train"
+  cache_dir: data/cache/hf
+  loader: scierc
+  local_files:
+    dev:   data/raw/scierc/processed_data/json/dev.json
+    train: data/raw/scierc/processed_data/json/train.json
+    test:  data/raw/scierc/processed_data/json/test.json
+
+storage:
+  db_path: data/processed/scierc.db
+
+extraction:
+  default_schema_id: scierc_full
+  default_prompt_id: base_v1
+  max_input_chars: 12000
+  max_entities_in_prompt: 60

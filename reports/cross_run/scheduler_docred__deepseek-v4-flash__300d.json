@@ -1,0 +1,262 @@
+{
+  "n_pairs": 6295,
+  "total_harmful": 2440,
+  "base_rate": 0.3876,
+  "rows": [
+    {
+      "budget_frac": 0.05,
+      "budget_pairs": 315,
+      "budget_aware": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema",
+          "stochastic"
+        ],
+        "n_pairs_covered_by_stop": 6256
+      },
+      "no_reuse": {
+        "n_audited": 315,
+        "audit_recall": 0.0357,
+        "contract_recall": 0.9906
+      },
+      "no_sequential": {
+        "n_audited": 315,
+        "recall": 0.0447
+      },
+      "no_workload": {
+        "n_audited": 200,
+        "audit_recall": 0.0258,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 315,
+        "recall": 0.0418
+      },
+      "round_robin": {
+        "n_audited": 315,
+        "recall": 0.0443
+      },
+      "graph_only": {
+        "n_audited": 315,
+        "recall": 0.0561
+      },
+      "history_only": {
+        "n_audited": 315,
+        "recall": 0.0607
+      }
+    },
+    {
+      "budget_frac": 0.1,
+      "budget_pairs": 630,
+      "budget_aware": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema",
+          "stochastic"
+        ],
+        "n_pairs_covered_by_stop": 6256
+      },
+      "no_reuse": {
+        "n_audited": 359,
+        "audit_recall": 0.0389,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 630,
+        "recall": 0.0959
+      },
+      "no_workload": {
+        "n_audited": 200,
+        "audit_recall": 0.0258,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 630,
+        "recall": 0.0902
+      },
+      "round_robin": {
+        "n_audited": 630,
+        "recall": 0.0898
+      },
+      "graph_only": {
+        "n_audited": 630,
+        "recall": 0.1135
+      },
+      "history_only": {
+        "n_audited": 630,
+        "recall": 0.1279
+      }
+    },
+    {
+      "budget_frac": 0.25,
+      "budget_pairs": 1574,
+      "budget_aware": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema",
+          "stochastic"
+        ],
+        "n_pairs_covered_by_stop": 6256
+      },
+      "no_reuse": {
+        "n_audited": 359,
+        "audit_recall": 0.0389,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 1574,
+        "recall": 0.2057
+      },
+      "no_workload": {
+        "n_audited": 200,
+        "audit_recall": 0.0258,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 1574,
+        "recall": 0.2361
+      },
+      "round_robin": {
+        "n_audited": 1574,
+        "recall": 0.2459
+      },
+      "graph_only": {
+        "n_audited": 1574,
+        "recall": 0.293
+      },
+      "history_only": {
+        "n_audited": 1574,
+        "recall": 0.2889
+      }
+    },
+    {
+      "budget_frac": 0.5,
+      "budget_pairs": 3148,
+      "budget_aware": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema",
+          "stochastic"
+        ],
+        "n_pairs_covered_by_stop": 6256
+      },
+      "no_reuse": {
+        "n_audited": 359,
+        "audit_recall": 0.0389,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 3148,
+        "recall": 0.4164
+      },
+      "no_workload": {
+        "n_audited": 200,
+        "audit_recall": 0.0258,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 3148,
+        "recall": 0.4939
+      },
+      "round_robin": {
+        "n_audited": 3148,
+        "recall": 0.4594
+      },
+      "graph_only": {
+        "n_audited": 3148,
+        "recall": 0.5955
+      },
+      "history_only": {
+        "n_audited": 3148,
+        "recall": 0.5807
+      }
+    },
+    {
+      "budget_frac": 1.0,
+      "budget_pairs": 6295,
+      "budget_aware": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema",
+          "stochastic"
+        ],
+        "n_pairs_covered_by_stop": 6256
+      },
+      "no_reuse": {
+        "n_audited": 359,
+        "audit_recall": 0.0389,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 6295,
+        "recall": 1.0
+      },
+      "no_workload": {
+        "n_audited": 200,
+        "audit_recall": 0.0258,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 297,
+        "audit_recall": 0.034,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 6295,
+        "recall": 1.0
+      },
+      "round_robin": {
+        "n_audited": 6295,
+        "recall": 1.0
+      },
+      "graph_only": {
+        "n_audited": 6295,
+        "recall": 1.0
+      },
+      "history_only": {
+        "n_audited": 6295,
+        "recall": 1.0
+      }
+    }
+  ]
+}

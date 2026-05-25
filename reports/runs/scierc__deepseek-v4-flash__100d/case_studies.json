@@ -1,0 +1,424 @@
+[
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::7d713bf1d9",
+      "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+      "subject_name": "RANSAC techniques",
+      "relation": "EVALUATE-FOR",
+      "object_name": "efficient robust estimation algorithm",
+      "confidence": 0.95,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "hierarchical",
+        "operator": "switch_schema",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::schema::scierc_full::hierarchical",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'hierarchical' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "wrong",
+    "matched_gold": "scierc-dev-000005-ICCV_2009_47_abs::g4",
+    "category": "prompt_induced_wrong"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::415c5ea5db",
+      "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+      "subject_name": "robust estimation",
+      "relation": "HYPONYM-OF",
+      "object_name": "robust estimation procedure",
+      "confidence": 0.9,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::8707ac8e07",
+      "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+      "subject_name": "sampling process",
+      "relation": "PART-OF",
+      "object_name": "RANSAC techniques",
+      "confidence": 0.7,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "with_other",
+        "operator": "switch_schema",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::schema::scierc_full::with_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'with_other' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000027-E99-1023-9f26051afa::dc8059c220",
+      "document_id": "scierc-dev-000027-E99-1023",
+      "subject_name": "chunking",
+      "relation": "HYPONYM-OF",
+      "object_name": "tagging task",
+      "confidence": 0.85,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": null,
+    "matched_gold": null,
+    "category": "prompt_induced_wrong"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000027-E99-1023-967567df38::390447830a",
+      "document_id": "scierc-dev-000027-E99-1023",
+      "subject_name": "data set",
+      "relation": "USED-FOR",
+      "object_name": "memory-based learning chunker",
+      "confidence": 0.8,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": null,
+    "matched_gold": null,
+    "category": "prompt_induced_wrong"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::2b38ceb012",
+      "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+      "subject_name": "strategies",
+      "relation": "CONJUNCTION",
+      "object_name": "technique",
+      "confidence": 0.8,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000036-IJCAI_2016_413_abs-0ec93059f7::f333f1e8bc",
+      "document_id": "scierc-dev-000036-IJCAI_2016_413_abs",
+      "subject_name": "core-selecting rules",
+      "relation": "HYPONYM-OF",
+      "object_name": "rules",
+      "confidence": 0.8,
+      "risk_score": 2.511111111111111,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 0.9444444444444444,
+      "schema_sensitivity": 0.9444444444444444,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C1_evidence_only",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000036-IJCAI_2016_413_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C1_evidence_only' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000036-IJCAI_2016_413_abs::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "scierc-dev-000036-IJCAI_2016_413_abs::iv::schema::scierc_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": null,
+    "matched_gold": null,
+    "category": "prompt_induced_wrong"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-scierc-dev-000019-A00-1024-e4ef1b30ac::b8571d8f54",
+      "document_id": "scierc-dev-000019-A00-1024",
+      "subject_name": "component",
+      "relation": "PART-OF",
+      "object_name": "components",
+      "confidence": 0.95,
+      "risk_score": 2.466666666666667,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 0.9166666666666666,
+      "schema_sensitivity": 0.9166666666666666,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C3_use_schema",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000019-A00-1024::iv::prompt::base_v1::drop::C3_use_schema",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C3_use_schema' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C4_allow_other",
+        "operator": "remove",
+        "intervention_id": "scierc-dev-000019-A00-1024::iv::prompt::base_v1::drop::C4_allow_other",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C4_allow_other' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "auditor",
+        "operator": "role_swap",
+        "intervention_id": "scierc-dev-000019-A00-1024::iv::prompt::base_v1::role::auditor",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "role_swap on prompt_clause 'auditor' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "hierarchical",
+        "operator": "switch_schema",
+        "intervention_id": "scierc-dev-000019-A00-1024::iv::schema::scierc_full::hierarchical",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'hierarchical' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  }
+]

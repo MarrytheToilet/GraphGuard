@@ -1,0 +1,188 @@
+{
+  "n_pairs": 4340,
+  "harm_threshold_delta_f1": 0.05,
+  "harmful_base_rate": 0.6959,
+  "monitors_at_matched_alarm": {
+    "alarm_rate_target": 0.9018,
+    "tau_graph_fixed": 0.3,
+    "tau_query": 0.0,
+    "graph_only": {
+      "tp": 2910,
+      "fp": 1004,
+      "fn": 110,
+      "tn": 316,
+      "alarm_rate": 0.9018433179723502,
+      "precision": 0.7435,
+      "recall": 0.9636,
+      "f1": 0.8393
+    },
+    "query_aware": {
+      "tp": 3020,
+      "fp": 362,
+      "fn": 0,
+      "tn": 958,
+      "alarm_rate": 0.7792626728110599,
+      "precision": 0.893,
+      "recall": 1.0,
+      "f1": 0.9435
+    },
+    "hybrid_or": {
+      "tp": 3020,
+      "fp": 1051,
+      "fn": 0,
+      "tn": 269,
+      "alarm_rate": 0.9380184331797236,
+      "precision": 0.7418,
+      "recall": 1.0,
+      "f1": 0.8518
+    }
+  },
+  "sweep": [
+    {
+      "target_alarm": 0.3,
+      "tau_graph": 0.75,
+      "tau_query": 1.0,
+      "graph_only": {
+        "tp": 1032,
+        "fp": 118,
+        "fn": 1988,
+        "tn": 1202,
+        "alarm_rate": 0.26497695852534564,
+        "precision": 0.8974,
+        "recall": 0.3417,
+        "f1": 0.495
+      },
+      "query_aware": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 3020,
+        "tn": 1320,
+        "alarm_rate": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "hybrid_or": {
+        "tp": 1032,
+        "fp": 118,
+        "fn": 1988,
+        "tn": 1202,
+        "alarm_rate": 0.26497695852534564,
+        "precision": 0.8974,
+        "recall": 0.3417,
+        "f1": 0.495
+      }
+    },
+    {
+      "target_alarm": 0.5,
+      "tau_graph": 0.6364,
+      "tau_query": 1.0,
+      "graph_only": {
+        "tp": 1788,
+        "fp": 361,
+        "fn": 1232,
+        "tn": 959,
+        "alarm_rate": 0.49516129032258066,
+        "precision": 0.832,
+        "recall": 0.5921,
+        "f1": 0.6918
+      },
+      "query_aware": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 3020,
+        "tn": 1320,
+        "alarm_rate": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "hybrid_or": {
+        "tp": 1788,
+        "fp": 361,
+        "fn": 1232,
+        "tn": 959,
+        "alarm_rate": 0.49516129032258066,
+        "precision": 0.832,
+        "recall": 0.5921,
+        "f1": 0.6918
+      }
+    },
+    {
+      "target_alarm": 0.7,
+      "tau_graph": 0.5,
+      "tau_query": 0.6667,
+      "graph_only": {
+        "tp": 2402,
+        "fp": 586,
+        "fn": 618,
+        "tn": 734,
+        "alarm_rate": 0.688479262672811,
+        "precision": 0.8039,
+        "recall": 0.7954,
+        "f1": 0.7996
+      },
+      "query_aware": {
+        "tp": 2571,
+        "fp": 123,
+        "fn": 449,
+        "tn": 1197,
+        "alarm_rate": 0.6207373271889401,
+        "precision": 0.9543,
+        "recall": 0.8513,
+        "f1": 0.8999
+      },
+      "hybrid_or": {
+        "tp": 2915,
+        "fp": 645,
+        "fn": 105,
+        "tn": 675,
+        "alarm_rate": 0.8202764976958525,
+        "precision": 0.8188,
+        "recall": 0.9652,
+        "f1": 0.886
+      }
+    },
+    {
+      "target_alarm": 0.9,
+      "tau_graph": 0.3,
+      "tau_query": 0.0,
+      "graph_only": {
+        "tp": 2906,
+        "fp": 993,
+        "fn": 114,
+        "tn": 327,
+        "alarm_rate": 0.8983870967741936,
+        "precision": 0.7453,
+        "recall": 0.9623,
+        "f1": 0.84
+      },
+      "query_aware": {
+        "tp": 3020,
+        "fp": 362,
+        "fn": 0,
+        "tn": 958,
+        "alarm_rate": 0.7792626728110599,
+        "precision": 0.893,
+        "recall": 1.0,
+        "f1": 0.9435
+      },
+      "hybrid_or": {
+        "tp": 3020,
+        "fp": 1044,
+        "fn": 0,
+        "tn": 276,
+        "alarm_rate": 0.936405529953917,
+        "precision": 0.7431,
+        "recall": 1.0,
+        "f1": 0.8526
+      }
+    }
+  ],
+  "disagreement_at_matched_alarm": {
+    "pairs_disagree": 846,
+    "rate": 0.1949,
+    "graph_only_misses_harmful": 110,
+    "graph_only_false_alarms_on_benign": 689
+  }
+}

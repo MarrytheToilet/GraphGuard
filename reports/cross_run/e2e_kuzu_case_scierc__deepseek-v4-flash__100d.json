@@ -1,0 +1,5872 @@
+{
+  "n_pairs": 60,
+  "n_queries_per_pair": "varies (lookup/neighbor/join/twohop)",
+  "harm_threshold_delta_f1": 0.05,
+  "tau_graph": 0.5,
+  "tau_query": 0.15,
+  "publish_all": {
+    "published": 60,
+    "regressions": 31,
+    "regression_rate": 0.5167
+  },
+  "contract_guard": {
+    "blocked": 43,
+    "published": 17,
+    "regressions": 0,
+    "regression_rate": 0.0,
+    "harmful_caught": 31,
+    "catch_rate": 1.0
+  },
+  "pair_records": [
+    {
+      "run_id": "run-36ac0c0be4",
+      "doc": "scierc-dev-000047-N03-1017",
+      "family": "schema",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.2857,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-54d88818c1",
+      "doc": "scierc-dev-000037-C08-3010",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-07461c5920",
+      "doc": "scierc-dev-000011-CVPR_2010_10_abs",
+      "family": "evidence",
+      "graph_drift": 0.4762,
+      "mean_df1": 0.1857,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ae11403ef8",
+      "doc": "scierc-dev-000007-H05-1041",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.4,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b0f2a3bb40",
+      "doc": "scierc-dev-000037-C08-3010",
+      "family": "evidence",
+      "graph_drift": 0.2857,
+      "mean_df1": 0.6,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.75,
+          "f1_cf": 0.75,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-72fd24cdf4",
+      "doc": "scierc-dev-000020-H01-1041",
+      "family": "schema",
+      "graph_drift": 0.6364,
+      "mean_df1": 0.1429,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-03c739d820",
+      "doc": "scierc-dev-000003-C88-1066",
+      "family": "prompt",
+      "graph_drift": 0.75,
+      "mean_df1": 0.1429,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-5b7000c7da",
+      "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+      "family": "prompt",
+      "graph_drift": 0.7692,
+      "mean_df1": 0.0705,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.5,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ff3a9a264f",
+      "doc": "scierc-dev-000012-H91-1010",
+      "family": "evidence",
+      "graph_drift": 0.8,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-da61f3bb09",
+      "doc": "scierc-dev-000006-C80-1073",
+      "family": "prompt",
+      "graph_drift": 0.625,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c523bce632",
+      "doc": "scierc-dev-000026-W03-0406",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-9270e95ae1",
+      "doc": "scierc-dev-000017-AAAI_2015_21_abs",
+      "family": "evidence",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-5bd2516963",
+      "doc": "scierc-dev-000018-C04-1147",
+      "family": "schema",
+      "graph_drift": 0.7273,
+      "mean_df1": 0.2748,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 0.5714,
+          "delta_f1": 0.4286
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        }
+      ]
+    },
+    {
+      "run_id": "run-4f9baa9f94",
+      "doc": "scierc-dev-000004-C04-1116",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-d018863a3a",
+      "doc": "scierc-dev-000012-H91-1010",
+      "family": "schema",
+      "graph_drift": 0.75,
+      "mean_df1": 0.48,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.8
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-5fd6c9ffe4",
+      "doc": "scierc-dev-000045-J81-1002",
+      "family": "schema",
+      "graph_drift": 0.8,
+      "mean_df1": 0.3333,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-eae7ea5ed6",
+      "doc": "scierc-dev-000009-NIPS_2014_10_abs",
+      "family": "evidence",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.1429,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-27cead0e7c",
+      "doc": "scierc-dev-000017-AAAI_2015_21_abs",
+      "family": "schema",
+      "graph_drift": 0.3077,
+      "mean_df1": 0.04,
+      "max_df1": 1.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-7be210a2d6",
+      "doc": "scierc-dev-000030-CVPR_2003_10_abs",
+      "family": "stochastic",
+      "graph_drift": 0.6842,
+      "mean_df1": 0.1817,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.3333
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.25,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.4167
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.2222,
+          "f1_cf": 0.5,
+          "delta_f1": 0.2778
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-8d55e50233",
+      "doc": "scierc-dev-000015-CVPR_2011_292_abs",
+      "family": "schema",
+      "graph_drift": 0.1,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-fc62c83c12",
+      "doc": "scierc-dev-000014-P05-1034",
+      "family": "prompt",
+      "graph_drift": 0.5714,
+      "mean_df1": 0.0538,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b2a94102ed",
+      "doc": "scierc-dev-000003-C88-1066",
+      "family": "schema",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-71ca66081e",
+      "doc": "scierc-dev-000008-NIPS_2014_18_abs",
+      "family": "schema",
+      "graph_drift": 0.625,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-839efc09fc",
+      "doc": "scierc-dev-000007-H05-1041",
+      "family": "schema",
+      "graph_drift": 0.4286,
+      "mean_df1": 0.218,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.4,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.3333,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-9459123724",
+      "doc": "scierc-dev-000002-P84-1047",
+      "family": "schema",
+      "graph_drift": 0.3077,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.4,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b209e4d196",
+      "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+      "family": "evidence",
+      "graph_drift": 0.2,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-9610285b83",
+      "doc": "scierc-dev-000003-C88-1066",
+      "family": "evidence",
+      "graph_drift": 0.8182,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-9f2b4e857a",
+      "doc": "scierc-dev-000026-W03-0406",
+      "family": "prompt",
+      "graph_drift": 0.2222,
+      "mean_df1": 0.0381,
+      "max_df1": 0.1333,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.8,
+          "delta_f1": 0.1333
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.8,
+          "delta_f1": 0.1333
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-0dd2af85c7",
+      "doc": "scierc-dev-000038-J88-3002",
+      "family": "evidence",
+      "graph_drift": 0.5,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-3a8cb1c599",
+      "doc": "scierc-dev-000021-N03-4010",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c03e37a51b",
+      "doc": "scierc-dev-000007-H05-1041",
+      "family": "evidence",
+      "graph_drift": 0.625,
+      "mean_df1": 0.0923,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.4,
+          "delta_f1": 0.1
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-a8adec6eed",
+      "doc": "scierc-dev-000011-CVPR_2010_10_abs",
+      "family": "prompt",
+      "graph_drift": 0.6957,
+      "mean_df1": 0.1524,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-eedd7838e5",
+      "doc": "scierc-dev-000034-E93-1023",
+      "family": "schema",
+      "graph_drift": 0.4444,
+      "mean_df1": 0.1191,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.5,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-dc76cbff07",
+      "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+      "family": "evidence",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-98806fa599",
+      "doc": "scierc-dev-000008-NIPS_2014_18_abs",
+      "family": "schema",
+      "graph_drift": 0.5714,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-8a83923746",
+      "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+      "family": "entity_alias",
+      "graph_drift": 0.8,
+      "mean_df1": 0.1538,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b16af55862",
+      "doc": "scierc-dev-000003-C88-1066",
+      "family": "stochastic",
+      "graph_drift": 0.7143,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-0b790c72aa",
+      "doc": "scierc-dev-000013-C88-2160",
+      "family": "evidence",
+      "graph_drift": 0.5,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-926f2a0e6c",
+      "doc": "scierc-dev-000011-CVPR_2010_10_abs",
+      "family": "evidence",
+      "graph_drift": 0.8235,
+      "mean_df1": 0.2524,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.5,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-67f0c2d3e7",
+      "doc": "scierc-dev-000013-C88-2160",
+      "family": "evidence",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-190346e15e",
+      "doc": "scierc-dev-000009-NIPS_2014_10_abs",
+      "family": "prompt",
+      "graph_drift": 0.625,
+      "mean_df1": 0.1429,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-3cea77ee97",
+      "doc": "scierc-dev-000002-P84-1047",
+      "family": "stochastic",
+      "graph_drift": 0.3333,
+      "mean_df1": 0.0125,
+      "max_df1": 0.1,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-6fc025fe47",
+      "doc": "scierc-dev-000007-H05-1041",
+      "family": "prompt",
+      "graph_drift": 0.4286,
+      "mean_df1": 0.0388,
+      "max_df1": 0.2667,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.2667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.3333,
+          "f1_cf": 0.5714,
+          "delta_f1": 0.2381
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-6638c63bfd",
+      "doc": "scierc-dev-000016-ECCV_2012_40_abs",
+      "family": "evidence",
+      "graph_drift": 0.6842,
+      "mean_df1": 0.0833,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.25,
+          "delta_f1": 0.25
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b512d2c664",
+      "doc": "scierc-dev-000009-NIPS_2014_10_abs",
+      "family": "schema",
+      "graph_drift": 0.3333,
+      "mean_df1": 0.1429,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-dce85cb343",
+      "doc": "scierc-dev-000017-AAAI_2015_21_abs",
+      "family": "schema",
+      "graph_drift": 0.8095,
+      "mean_df1": 0.08,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-8a7a18f964",
+      "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+      "family": "evidence",
+      "graph_drift": 0.4545,
+      "mean_df1": 0.0513,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-bd8500a0c2",
+      "doc": "scierc-dev-000018-C04-1147",
+      "family": "evidence",
+      "graph_drift": 0.9091,
+      "mean_df1": 0.2312,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.2857,
+          "delta_f1": 0.381
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c613a1df8b",
+      "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+      "family": "schema",
+      "graph_drift": 0.8571,
+      "mean_df1": 0.1795,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.1667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-e595429eb9",
+      "doc": "scierc-dev-000017-AAAI_2015_21_abs",
+      "family": "evidence",
+      "graph_drift": 0.5263,
+      "mean_df1": 0.2267,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.5,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 0.5,
+          "delta_f1": 0.5
+        }
+      ]
+    },
+    {
+      "run_id": "run-a887a016b6",
+      "doc": "scierc-dev-000016-ECCV_2012_40_abs",
+      "family": "evidence",
+      "graph_drift": 0.7,
+      "mean_df1": 0.0833,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.25,
+          "delta_f1": 0.25
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-1eb8992033",
+      "doc": "scierc-dev-000021-N03-4010",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-22c9f3a85d",
+      "doc": "scierc-dev-000004-C04-1116",
+      "family": "evidence",
+      "graph_drift": 0.75,
+      "mean_df1": 0.0909,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-4bb368ee47",
+      "doc": "scierc-dev-000038-J88-3002",
+      "family": "evidence",
+      "graph_drift": 0.25,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-8f8785fde7",
+      "doc": "scierc-dev-000010-P03-1022",
+      "family": "schema",
+      "graph_drift": 0.5714,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-951320a7a2",
+      "doc": "scierc-dev-000008-NIPS_2014_18_abs",
+      "family": "schema",
+      "graph_drift": 0.75,
+      "mean_df1": 0.5,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b72c835d87",
+      "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+      "family": "evidence",
+      "graph_drift": 0.875,
+      "mean_df1": 0.1859,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.5,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-2bee7509b1",
+      "doc": "scierc-dev-000002-P84-1047",
+      "family": "prompt",
+      "graph_drift": 0.4286,
+      "mean_df1": 0.1458,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.4,
+          "delta_f1": 0.4
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-29f9fc18f5",
+      "doc": "scierc-dev-000013-C88-2160",
+      "family": "schema",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "twohop",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b71699a6f2",
+      "doc": "scierc-dev-000008-NIPS_2014_18_abs",
+      "family": "schema",
+      "graph_drift": 0.5,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    }
+  ]
+}

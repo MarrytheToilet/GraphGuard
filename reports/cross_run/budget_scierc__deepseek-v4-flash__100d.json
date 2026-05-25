@@ -1,0 +1,37 @@
+{
+  "stochastic": {
+    "n_pairs": 194,
+    "full_verdict": "violated",
+    "full_violation_rate": 0.9124,
+    "early_stopping_avg_fraction_drawn": 0.0058,
+    "early_stopping_verdict_agreement": 1.0
+  },
+  "prompt": {
+    "n_pairs": 1305,
+    "full_verdict": "violated",
+    "full_violation_rate": 0.9793,
+    "early_stopping_avg_fraction_drawn": 0.0008,
+    "early_stopping_verdict_agreement": 1.0
+  },
+  "schema": {
+    "n_pairs": 1760,
+    "full_verdict": "violated",
+    "full_violation_rate": 0.9858,
+    "early_stopping_avg_fraction_drawn": 0.0006,
+    "early_stopping_verdict_agreement": 1.0
+  },
+  "entity_alias": {
+    "n_pairs": 93,
+    "full_verdict": "violated",
+    "full_violation_rate": 0.5914,
+    "early_stopping_avg_fraction_drawn": 0.0424,
+    "early_stopping_verdict_agreement": 1.0
+  },
+  "evidence": {
+    "n_pairs": 1146,
+    "full_verdict": "violated",
+    "full_violation_rate": 0.8639,
+    "early_stopping_avg_fraction_drawn": 0.0013,
+    "early_stopping_verdict_agreement": 1.0
+  }
+}

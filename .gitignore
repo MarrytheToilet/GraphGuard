@@ -1,0 +1,74 @@
+# ---------- Secrets ----------
+.env
+.env.backup_*
+.env.local
+*.pem
+*.key
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------- Editors ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ---------- Notebooks ----------
+.ipynb_checkpoints/
+
+# ---------- Project: generated data ----------
+*.db
+*.sqlite
+*.sqlite3
+# Raw corpora must be downloaded; processed runs and caches are regenerated.
+data/raw/
+data/cache/
+data/archive/
+data/processed/
+data/processed/**
+
+# Allow lightweight stubs / READMEs inside data/
+!data/README.md
+!data/processed/README.md
+
+# ---------- Project: logs ----------
+logs/
+
+# ---------- Project: pyvis HTML viewer assets (vendored) ----------
+lib/
+
+# ---------- LaTeX build artefacts (paper directory may not exist) ----------
+paper/main.aux
+paper/main.log
+paper/main.bbl
+paper/main.blg
+paper/main.out
+paper/main.toc
+paper/*.synctex.gz
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.toc
+*.synctex.gz
+
+# ---------- Misc ----------
+*.tmp
+*.bak

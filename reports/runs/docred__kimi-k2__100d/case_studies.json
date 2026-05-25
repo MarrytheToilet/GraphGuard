@@ -1,0 +1,444 @@
+[
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000033-Queen_of_Housewives-5a3aee97ee::7569946d40",
+      "document_id": "docred-validation-000033-Queen_of_Housewives",
+      "subject_name": "Queen of Housewives",
+      "relation": "P108",
+      "object_name": "MBC",
+      "confidence": 1.0,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C2_infer_implicit",
+        "operator": "remove",
+        "intervention_id": "docred-validation-000033-Queen_of_Housewives::iv::prompt::base_v1::drop::C2_infer_implicit",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C2_infer_implicit' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P161,P27,P495",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000033-Queen_of_Housewives::iv::schema::docred_full::ambiguous:P161,P27,P495",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P161,P27,P495' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "desc_added",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000033-Queen_of_Housewives::iv::schema::docred_full::desc_added",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'desc_added' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000033-Queen_of_Housewives::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "wrong",
+    "matched_gold": "docred-validation-000033-Queen_of_Housewives::g14",
+    "category": "prompt_induced_wrong"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000032-_I_Am__The_Seeker-7d89a74983::3f242cb0eb",
+      "document_id": "docred-validation-000032-_I_Am__The_Seeker",
+      "subject_name": "The Seeker",
+      "relation": "P495",
+      "object_name": "French",
+      "confidence": 0.8,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000032-_I_Am__The_Seeker::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "reorder",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000032-_I_Am__The_Seeker::iv::schema::docred_full::reorder",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'reorder' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000032-_I_Am__The_Seeker-7d89a74983::0e49bc87f7",
+      "document_id": "docred-validation-000032-_I_Am__The_Seeker",
+      "subject_name": "The Seeker",
+      "relation": "P577",
+      "object_name": "2007",
+      "confidence": 1.0,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P175,P577,P50",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000032-_I_Am__The_Seeker::iv::schema::docred_full::ambiguous:P175,P577,P50",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P175,P577,P50' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "desc_removed",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000032-_I_Am__The_Seeker::iv::schema::docred_full::desc_removed",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'desc_removed' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "drop:P577",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000032-_I_Am__The_Seeker::iv::schema::docred_full::drop::P577",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'drop:P577' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000032-_I_Am__The_Seeker::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000047-Chachalaca-572640671a::f84efc8874",
+      "document_id": "docred-validation-000047-Chachalaca",
+      "subject_name": "Central",
+      "relation": "OTHER",
+      "object_name": "South America",
+      "confidence": 0.9,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C2_infer_implicit",
+        "operator": "remove",
+        "intervention_id": "docred-validation-000047-Chachalaca::iv::prompt::base_v1::drop::C2_infer_implicit",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C2_infer_implicit' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P131,P361,P150",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000047-Chachalaca::iv::schema::docred_full::ambiguous:P131,P361,P150",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P131,P361,P150' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000047-Chachalaca::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000058-Wellywood-9ef85d5909::963bffae34",
+      "document_id": "docred-validation-000058-Wellywood",
+      "subject_name": "Wellywood",
+      "relation": "P131",
+      "object_name": "Miramar",
+      "confidence": 0.9,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P17,P159,P131",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000058-Wellywood::iv::schema::docred_full::ambiguous:P17,P159,P131",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P17,P159,P131' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000058-Wellywood::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "drop:P131",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000058-Wellywood::iv::schema::docred_full::drop::P131",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'drop:P131' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000041-America_s_Sweetheart__album_-283ceee190::51c6e0b8a5",
+      "document_id": "docred-validation-000041-America_s_Sweetheart__album_",
+      "subject_name": "America's Sweetheart",
+      "relation": "P131",
+      "object_name": "France",
+      "confidence": 0.8,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C2_infer_implicit",
+        "operator": "remove",
+        "intervention_id": "docred-validation-000041-America_s_Sweetheart__album_::iv::prompt::base_v1::drop::C2_infer_implicit",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C2_infer_implicit' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P175,P577,P527",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000041-America_s_Sweetheart__album_::iv::schema::docred_full::ambiguous:P175,P577,P527",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P175,P577,P527' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "desc_added",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000041-America_s_Sweetheart__album_::iv::schema::docred_full::desc_added",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'desc_added' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000041-America_s_Sweetheart__album_::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → relation type flips in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "rename",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000041-America_s_Sweetheart__album_::iv::schema::docred_full::rename",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'rename' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000063-Loopline_Bridge-2936817d63::616fa5b1d0",
+      "document_id": "docred-validation-000063-Loopline_Bridge",
+      "subject_name": "Liffey Viaduct",
+      "relation": "P577",
+      "object_name": "1891",
+      "confidence": 0.9,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C2_infer_implicit",
+        "operator": "remove",
+        "intervention_id": "docred-validation-000063-Loopline_Bridge::iv::prompt::base_v1::drop::C2_infer_implicit",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C2_infer_implicit' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P17,P108,P131",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000063-Loopline_Bridge::iv::schema::docred_full::ambiguous:P17,P108,P131",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P17,P108,P131' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000063-Loopline_Bridge::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "desc_removed",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000063-Loopline_Bridge::iv::schema::docred_full::desc_removed",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'desc_removed' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  },
+  {
+    "edge": {
+      "edge_id": "evt-docred-validation-000050-Gershonites-af4605130d::588955ed78",
+      "document_id": "docred-validation-000050-Gershonites",
+      "subject_name": "Gershonites",
+      "relation": "P527",
+      "object_name": "Golan",
+      "confidence": 1.0,
+      "risk_score": 2.6,
+      "stability_score": 0.0,
+      "text_responsibility": 0.0,
+      "prompt_sensitivity": 1.0,
+      "schema_sensitivity": 1.0,
+      "stochastic_variance": 0.0
+    },
+    "why_edge_top": [
+      {
+        "variable_type": "prompt_clause",
+        "variable_id": "C2_infer_implicit",
+        "operator": "remove",
+        "intervention_id": "docred-validation-000050-Gershonites::iv::prompt::base_v1::drop::C2_infer_implicit",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "remove on prompt_clause 'C2_infer_implicit' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "ambiguous:P527,P1441,P361",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000050-Gershonites::iv::schema::docred_full::ambiguous:P527,P1441,P361",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'ambiguous:P527,P1441,P361' → edge disappears in 1/1 runs"
+      },
+      {
+        "variable_type": "schema",
+        "variable_id": "desc_added",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000050-Gershonites::iv::schema::docred_full::desc_added",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'desc_added' → edge disappears in 1/1 runs"
+      }
+    ],
+    "why_type_top": [
+      {
+        "variable_type": "schema",
+        "variable_id": "coarse",
+        "operator": "switch_schema",
+        "intervention_id": "docred-validation-000050-Gershonites::iv::schema::docred_full::coarse",
+        "n_runs": 1,
+        "effect": 1.0,
+        "interpretation": "switch_schema on schema 'coarse' → relation type flips in 1/1 runs"
+      }
+    ],
+    "label": "unmatched",
+    "matched_gold": null,
+    "category": "schema_forced_flip"
+  }
+]

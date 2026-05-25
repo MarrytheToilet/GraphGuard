@@ -1,0 +1,64 @@
+name: scierc_smoke
+description: >
+  SciERC cross-domain smoke for VLDB defensibility (drift contracts on scientific abstracts).
+  30 docs from dev split; same drift contract battery as DocRED runs.
+
+paths:
+  data_root: data/processed/runs
+  report_root: reports/runs
+
+dataset:
+  config: configs/scierc.yaml
+  splits: "dev,test,train"
+
+prompt_schema:
+  prompt_config: configs/prompts.yaml
+  schema_config: configs/schemas.yaml
+  prompt_clauses_to_drop:
+    - C1_evidence_only
+    - C3_use_schema
+    - C4_allow_other
+  schema_variants:
+    - with_other
+    - coarse
+  max_drop_relations: 2
+
+models:
+  config: configs/models.yaml
+  primary: null
+  robustness:
+    - glm-5
+    - kimi-k2.5
+    - MiniMax-M2.5
+    - qwen3.6-flash
+
+profiles:
+  smoke:
+    docs: 30
+    oracle_docs: 5
+    main_budget: 8
+    oracle_budget: 999
+    e0_docs: 10
+    e0_runs: 3
+    workers: 6
+  main300:
+    docs: 300
+    oracle_docs: 40
+    main_budget: 16
+    oracle_budget: 999
+    e0_docs: 80
+    e0_runs: 5
+    workers: 12
+  main100:
+    docs: 100
+    oracle_docs: 20
+    main_budget: 12
+    oracle_budget: 999
+    e0_docs: 40
+    e0_runs: 4
+    workers: 8
+
+experiments:
+  E0: { claim: drift exists }
+  E5: { claim: held-out faithfulness }
+  E6: { claim: query stability }

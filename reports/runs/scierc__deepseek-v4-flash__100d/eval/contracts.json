@@ -1,0 +1,640 @@
+{
+  "summary": {
+    "n_contracts": 8,
+    "n_violated": 7,
+    "n_satisfied": 0,
+    "n_inconclusive": 1
+  },
+  "contracts": [
+    {
+      "contract_id": "K1",
+      "name": "Schema rename/reorder invariance (strict)",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "schema"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ],
+        "description_substring_in": [
+          "'rename'",
+          "'reorder'"
+        ]
+      },
+      "threshold": 0.85,
+      "direction": "min",
+      "n_pairs": 612,
+      "n_pass": 18,
+      "n_fail": 594,
+      "violation_rate": 0.9705882352941176,
+      "severity_mean": 0.5663303538930702,
+      "severity_p95": 0.85,
+      "metric_mean": 0.30417481955512427,
+      "metric_median": 0.25,
+      "by_family": {
+        "schema": {
+          "n": 612,
+          "n_fail": 594,
+          "violation_rate": 0.9705882352941176,
+          "mean_metric": 0.30417481955512427
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.795751633986928,
+        "0.7": 0.9395424836601307,
+        "0.8": 0.9640522875816994,
+        "0.9": 0.9738562091503268
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K1b",
+      "name": "Schema description-add invariance",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "schema"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ],
+        "description_substring_in": [
+          "'desc_added'"
+        ]
+      },
+      "threshold": 0.8,
+      "direction": "min",
+      "n_pairs": 302,
+      "n_pass": 9,
+      "n_fail": 293,
+      "violation_rate": 0.9701986754966887,
+      "severity_mean": 0.4880882448260576,
+      "severity_p95": 0.7444444444444445,
+      "metric_mean": 0.3307571976083769,
+      "metric_median": 0.2727272727272727,
+      "by_family": {
+        "schema": {
+          "n": 302,
+          "n_fail": 293,
+          "violation_rate": 0.9701986754966887,
+          "mean_metric": 0.3307571976083769
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7649006622516556,
+        "0.7": 0.956953642384106,
+        "0.8": 0.9701986754966887,
+        "0.9": 0.9801324503311258
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K1c",
+      "name": "Schema semantic-shading bounded drift",
+      "kind": "bounded_drift",
+      "scope": {
+        "cause_family_in": [
+          "schema"
+        ],
+        "description_substring_in": [
+          "'desc_removed'",
+          "'hierarchical'"
+        ]
+      },
+      "threshold": 0.5,
+      "direction": "min",
+      "n_pairs": 606,
+      "n_pass": 122,
+      "n_fail": 484,
+      "violation_rate": 0.7986798679867987,
+      "severity_mean": 0.28396283422065516,
+      "severity_p95": 0.5,
+      "metric_mean": 0.3037745366811227,
+      "metric_median": 0.25,
+      "by_family": {
+        "schema": {
+          "n": 606,
+          "n_fail": 484,
+          "violation_rate": 0.7986798679867987,
+          "mean_metric": 0.3037745366811227
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7986798679867987,
+        "0.7": 0.933993399339934,
+        "0.8": 0.9686468646864687,
+        "0.9": 0.9785478547854786
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::schema::scierc_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::schema::scierc_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::schema::scierc_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::schema::scierc_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::schema::scierc_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K2",
+      "name": "Prompt presentation invariance",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "prompt"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.8,
+      "direction": "min",
+      "n_pairs": 887,
+      "n_pass": 18,
+      "n_fail": 869,
+      "violation_rate": 0.979706877113867,
+      "severity_mean": 0.5372903147737408,
+      "severity_p95": 0.8,
+      "metric_mean": 0.2767713997893285,
+      "metric_median": 0.25,
+      "by_family": {
+        "prompt": {
+          "n": 887,
+          "n_fail": 869,
+          "violation_rate": 0.979706877113867,
+          "mean_metric": 0.2767713997893285
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.8579481397970687,
+        "0.7": 0.9706877113866967,
+        "0.8": 0.979706877113867,
+        "0.9": 0.9853438556933484
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000004-C04-1116",
+          "intervention": "scierc-dev-000004-C04-1116::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000004-C04-1116",
+          "intervention": "scierc-dev-000004-C04-1116::iv::prompt::base_v1::tone::terse",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000004-C04-1116",
+          "intervention": "scierc-dev-000004-C04-1116::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K3",
+      "name": "Evidence/entity-alias reorder invariance",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "entity_alias",
+          "evidence"
+        ],
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.8,
+      "direction": "min",
+      "n_pairs": 236,
+      "n_pass": 43,
+      "n_fail": 193,
+      "violation_rate": 0.8177966101694916,
+      "severity_mean": 0.5401007936536311,
+      "severity_p95": 0.8,
+      "metric_mean": 0.3940003230364997,
+      "metric_median": 0.2857142857142857,
+      "by_family": {
+        "entity_alias": {
+          "n": 118,
+          "n_fail": 78,
+          "violation_rate": 0.6610169491525424,
+          "mean_metric": 0.5191636006735645
+        },
+        "evidence": {
+          "n": 118,
+          "n_fail": 115,
+          "violation_rate": 0.9745762711864406,
+          "mean_metric": 0.26883704539943487
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7330508474576272,
+        "0.7": 0.8050847457627118,
+        "0.8": 0.8177966101694916,
+        "0.9": 0.8220338983050848
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::sent::doc::entity_alias",
+          "family": "entity_alias",
+          "semantic_class": "presentation",
+          "operator": "entity_alias",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::sent::doc::entity_alias",
+          "family": "entity_alias",
+          "semantic_class": "presentation",
+          "operator": "entity_alias",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000003-C88-1066",
+          "intervention": "scierc-dev-000003-C88-1066::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+          "intervention": "scierc-dev-000005-ICCV_2009_47_abs::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4",
+      "name": "Multi-hop join robustness (Q3)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.5,
+      "direction": "min",
+      "n_pairs": 2643,
+      "n_pass": 995,
+      "n_fail": 1648,
+      "violation_rate": 0.6235338630344306,
+      "severity_mean": 0.46611730498936776,
+      "severity_p95": 0.5,
+      "metric_mean": 0.3869980296987506,
+      "metric_median": 0.0,
+      "by_family": {
+        "prompt": {
+          "n": 887,
+          "n_fail": 572,
+          "violation_rate": 0.644870349492672,
+          "mean_metric": 0.3566457142859638
+        },
+        "schema": {
+          "n": 1520,
+          "n_fail": 963,
+          "violation_rate": 0.6335526315789474,
+          "mean_metric": 0.3823902424107055
+        },
+        "entity_alias": {
+          "n": 118,
+          "n_fail": 46,
+          "violation_rate": 0.3898305084745763,
+          "mean_metric": 0.6254097597317936
+        },
+        "evidence": {
+          "n": 118,
+          "n_fail": 67,
+          "violation_rate": 0.5677966101694916,
+          "mean_metric": 0.43609765940274414
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.6235338630344306,
+        "0.7": 0.6454786227771472,
+        "0.8": 0.6477487703367385,
+        "0.9": 0.6485054861899356
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K5",
+      "name": "Model swap recall stability",
+      "kind": "bounded_drift",
+      "scope": {
+        "operator_prefix": "model:"
+      },
+      "threshold": 0.4,
+      "direction": "min",
+      "n_pairs": 0,
+      "n_pass": 0,
+      "n_fail": 0,
+      "violation_rate": 0.0,
+      "severity_mean": 0.0,
+      "severity_p95": 0.0,
+      "metric_mean": 0.0,
+      "metric_median": 0.0,
+      "by_family": {},
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.0,
+        "0.7": 0.0,
+        "0.8": 0.0,
+        "0.9": 0.0
+      },
+      "examples": [],
+      "notes": "",
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "contract_id": "K6",
+      "name": "Stochastic repeatability",
+      "kind": "invariance",
+      "scope": {
+        "cause_family_in": [
+          "stochastic"
+        ]
+      },
+      "threshold": 0.9,
+      "direction": "min",
+      "n_pairs": 238,
+      "n_pass": 23,
+      "n_fail": 215,
+      "violation_rate": 0.9033613445378151,
+      "severity_mean": 0.543754280496964,
+      "severity_p95": 0.8166666666666667,
+      "metric_mean": 0.4184572676182889,
+      "metric_median": 0.3693181818181818,
+      "by_family": {
+        "stochastic": {
+          "n": 238,
+          "n_fail": 215,
+          "violation_rate": 0.9033613445378151,
+          "mean_metric": 0.4184572676182889
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.6428571428571429,
+        "0.7": 0.8487394957983193,
+        "0.8": 0.8865546218487395,
+        "0.9": 0.9033613445378151
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000007-H05-1041",
+          "intervention": "scierc-dev-000007-H05-1041::iv::noop::repeat::0",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000007-H05-1041",
+          "intervention": "scierc-dev-000007-H05-1041::iv::noop::repeat::1",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000024-L08-1260",
+          "intervention": "scierc-dev-000024-L08-1260::iv::noop::repeat::0",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000024-L08-1260",
+          "intervention": "scierc-dev-000024-L08-1260::iv::noop::repeat::1",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000014-P05-1034",
+          "intervention": "scierc-dev-000014-P05-1034::iv::noop::repeat::0",
+          "family": "stochastic",
+          "semantic_class": "stochastic",
+          "operator": "repeat",
+          "metric": 0.041666666666666664
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    }
+  ]
+}

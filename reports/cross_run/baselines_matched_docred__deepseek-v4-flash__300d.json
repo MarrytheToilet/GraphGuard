@@ -1,0 +1,249 @@
+{
+  "n_pairs": 6324,
+  "harmful_base_rate": 0.4333,
+  "graphguard_alarm_rate": 0.9497,
+  "graphguard_at_fixed_threshold": {
+    "threshold": 1.0,
+    "alarm_rate": 0.9497,
+    "precision": 0.4466,
+    "recall": 0.9788,
+    "f1": 0.6133
+  },
+  "by_monitor": {
+    "confidence_inv": [
+      {
+        "threshold": 0.2,
+        "alarm_rate": 0.1067,
+        "precision": 0.4044,
+        "recall": 0.0996,
+        "f1": 0.1599,
+        "target_alarm_rate": 0.1,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.1548,
+        "alarm_rate": 0.2,
+        "precision": 0.419,
+        "recall": 0.1934,
+        "f1": 0.2647,
+        "target_alarm_rate": 0.2,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.13,
+        "alarm_rate": 0.3023,
+        "precision": 0.4174,
+        "recall": 0.2912,
+        "f1": 0.3431,
+        "target_alarm_rate": 0.3,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.0923,
+        "alarm_rate": 0.5003,
+        "precision": 0.4232,
+        "recall": 0.4887,
+        "f1": 0.4536,
+        "target_alarm_rate": 0.5,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.0,
+        "alarm_rate": 1.0,
+        "precision": 0.4333,
+        "recall": 1.0,
+        "f1": 0.6046,
+        "target_alarm_rate": 0.9497,
+        "cost_per_flag_relative": 1
+      }
+    ],
+    "min_confidence_inv": [
+      {
+        "threshold": 0.5,
+        "alarm_rate": 0.1395,
+        "precision": 0.4501,
+        "recall": 0.1449,
+        "f1": 0.2192,
+        "target_alarm_rate": 0.1,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.4,
+        "alarm_rate": 0.2336,
+        "precision": 0.4347,
+        "recall": 0.2343,
+        "f1": 0.3045,
+        "target_alarm_rate": 0.2,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.3,
+        "alarm_rate": 0.4527,
+        "precision": 0.4324,
+        "recall": 0.4518,
+        "f1": 0.4419,
+        "target_alarm_rate": 0.3,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.2,
+        "alarm_rate": 0.6417,
+        "precision": 0.4325,
+        "recall": 0.6405,
+        "f1": 0.5163,
+        "target_alarm_rate": 0.5,
+        "cost_per_flag_relative": 1
+      },
+      {
+        "threshold": 0.0,
+        "alarm_rate": 1.0,
+        "precision": 0.4333,
+        "recall": 1.0,
+        "f1": 0.6046,
+        "target_alarm_rate": 0.9497,
+        "cost_per_flag_relative": 1
+      }
+    ],
+    "self_consistency": [
+      {
+        "threshold": 0.8333,
+        "alarm_rate": 0.1014,
+        "precision": 0.61,
+        "recall": 0.1427,
+        "f1": 0.2313,
+        "target_alarm_rate": 0.1,
+        "cost_per_flag_relative": 5
+      },
+      {
+        "threshold": 0.6316,
+        "alarm_rate": 0.2015,
+        "precision": 0.5306,
+        "recall": 0.2467,
+        "f1": 0.3368,
+        "target_alarm_rate": 0.2,
+        "cost_per_flag_relative": 5
+      },
+      {
+        "threshold": 0.4,
+        "alarm_rate": 0.3034,
+        "precision": 0.4768,
+        "recall": 0.3339,
+        "f1": 0.3928,
+        "target_alarm_rate": 0.3,
+        "cost_per_flag_relative": 5
+      },
+      {
+        "threshold": 0.0,
+        "alarm_rate": 1.0,
+        "precision": 0.4333,
+        "recall": 1.0,
+        "f1": 0.6046,
+        "target_alarm_rate": 0.5,
+        "cost_per_flag_relative": 5
+      },
+      {
+        "threshold": 0.0,
+        "alarm_rate": 1.0,
+        "precision": 0.4333,
+        "recall": 1.0,
+        "f1": 0.6046,
+        "target_alarm_rate": 0.9497,
+        "cost_per_flag_relative": 5
+      }
+    ],
+    "graph_only_drift": [
+      {
+        "threshold": 1.0,
+        "alarm_rate": 0.1608,
+        "precision": 0.7001,
+        "recall": 0.2599,
+        "f1": 0.379,
+        "target_alarm_rate": 0.1,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 0.931,
+        "alarm_rate": 0.2,
+        "precision": 0.6569,
+        "recall": 0.3033,
+        "f1": 0.415,
+        "target_alarm_rate": 0.2,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 0.85,
+        "alarm_rate": 0.3022,
+        "precision": 0.5965,
+        "recall": 0.4161,
+        "f1": 0.4902,
+        "target_alarm_rate": 0.3,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 0.7222,
+        "alarm_rate": 0.5009,
+        "precision": 0.5448,
+        "recall": 0.6299,
+        "f1": 0.5843,
+        "target_alarm_rate": 0.5,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 0.2,
+        "alarm_rate": 0.9543,
+        "precision": 0.45,
+        "recall": 0.9912,
+        "f1": 0.619,
+        "target_alarm_rate": 0.9497,
+        "cost_per_flag_relative": 2
+      }
+    ],
+    "contract_severity": [
+      {
+        "threshold": 10.0,
+        "alarm_rate": 0.1414,
+        "precision": 0.7036,
+        "recall": 0.2296,
+        "f1": 0.3462,
+        "target_alarm_rate": 0.1,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 8.8889,
+        "alarm_rate": 0.2067,
+        "precision": 0.6511,
+        "recall": 0.3106,
+        "f1": 0.4206,
+        "target_alarm_rate": 0.2,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 7.7778,
+        "alarm_rate": 0.3022,
+        "precision": 0.5997,
+        "recall": 0.4182,
+        "f1": 0.4928,
+        "target_alarm_rate": 0.3,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 5.6667,
+        "alarm_rate": 0.5009,
+        "precision": 0.5335,
+        "recall": 0.6168,
+        "f1": 0.5721,
+        "target_alarm_rate": 0.5,
+        "cost_per_flag_relative": 2
+      },
+      {
+        "threshold": 1.0,
+        "alarm_rate": 0.9497,
+        "precision": 0.4466,
+        "recall": 0.9788,
+        "f1": 0.6133,
+        "target_alarm_rate": 0.9497,
+        "cost_per_flag_relative": 2
+      }
+    ]
+  }
+}

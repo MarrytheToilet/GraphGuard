@@ -1,0 +1,29 @@
+{
+  "n_pairs": 6425,
+  "buckets": {
+    "strict": {
+      "n_pairs": 412,
+      "harmful_rate": 0.2767,
+      "violation_rate_tau0p5": 0.7112,
+      "mean_graph_drift": 0.4874,
+      "mean_query_drift": 0.6336,
+      "mean_u": 0.0428
+    },
+    "ablation": {
+      "n_pairs": 4467,
+      "harmful_rate": 0.3427,
+      "violation_rate_tau0p5": 0.7804,
+      "mean_graph_drift": 0.5023,
+      "mean_query_drift": 0.689,
+      "mean_u": 0.0496
+    },
+    "soft": {
+      "n_pairs": 1546,
+      "harmful_rate": 0.3545,
+      "violation_rate_tau0p5": 0.7704,
+      "mean_graph_drift": 0.4869,
+      "mean_query_drift": 0.705,
+      "mean_u": 0.0541
+    }
+  }
+}

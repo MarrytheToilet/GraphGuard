@@ -1,0 +1,1942 @@
+{
+  "n_pairs": 80,
+  "n_queries_per_pair": "varies (lookup/neighbor/join/twohop)",
+  "harm_threshold_delta_f1": 0.05,
+  "tau_graph": 0.3,
+  "tau_query": 0.1,
+  "publish_all": {
+    "published": 80,
+    "regressions": 33,
+    "regression_rate": 0.4125
+  },
+  "contract_guard": {
+    "blocked": 38,
+    "published": 42,
+    "regressions": 1,
+    "regression_rate": 0.0238,
+    "harmful_caught": 32,
+    "catch_rate": 0.9697
+  },
+  "pair_records": [
+    {
+      "run_id": "run-096d732a8f",
+      "doc": "cdr-validation-000186-9226773",
+      "family": "prompt",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-da2ee229a0",
+      "doc": "cdr-validation-000024-14975762",
+      "family": "evidence",
+      "graph_drift": 0.5,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-767343a698",
+      "doc": "cdr-validation-000234-20683499",
+      "family": "prompt",
+      "graph_drift": 0.4,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c8a04d74f4",
+      "doc": "cdr-validation-000042-19135948",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-01a8e39822",
+      "doc": "cdr-validation-000184-9669632",
+      "family": "schema",
+      "graph_drift": 0.6,
+      "mean_df1": 0.5,
+      "max_df1": 0.5,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        }
+      ]
+    },
+    {
+      "run_id": "run-a0086cf0c2",
+      "doc": "cdr-validation-000284-326460",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ecc9ea8526",
+      "doc": "cdr-validation-000103-18541230",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.3333,
+          "f1_cf": 0.3333,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-792e8b37e3",
+      "doc": "cdr-validation-000175-11860278",
+      "family": "schema",
+      "graph_drift": 0.2222,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-4cbab53bfb",
+      "doc": "cdr-validation-000011-1286498",
+      "family": "prompt",
+      "graph_drift": 0.6,
+      "mean_df1": 0.2,
+      "max_df1": 0.2,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.8,
+          "f1_cf": 1.0,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.8,
+          "f1_cf": 1.0,
+          "delta_f1": 0.2
+        }
+      ]
+    },
+    {
+      "run_id": "run-45a0e7ac11",
+      "doc": "cdr-validation-000184-9669632",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.5,
+      "max_df1": 0.5,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        }
+      ]
+    },
+    {
+      "run_id": "run-9953d4beb1",
+      "doc": "cdr-validation-000001-6504332",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-f8456e934f",
+      "doc": "cdr-validation-000008-2564649",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ce74bfc27f",
+      "doc": "cdr-validation-000137-6127992",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-fbce8dcbd2",
+      "doc": "cdr-validation-000098-2422478",
+      "family": "prompt",
+      "graph_drift": 0.6667,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-efb130c167",
+      "doc": "cdr-validation-000280-3108839",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5714,
+          "f1_cf": 0.5714,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5714,
+          "f1_cf": 0.5714,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-d5f53578c2",
+      "doc": "cdr-validation-000093-6674249",
+      "family": "schema",
+      "graph_drift": 0.5,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-7edc0a150b",
+      "doc": "cdr-validation-000164-19944333",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-e17a612816",
+      "doc": "cdr-validation-000026-11573852",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c4e3aae074",
+      "doc": "cdr-validation-000200-11912119",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-dd648de0e3",
+      "doc": "cdr-validation-000037-2819587",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-35c699a3f6",
+      "doc": "cdr-validation-000149-11705128",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-f6e741924d",
+      "doc": "cdr-validation-000059-10539815",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-0883536a41",
+      "doc": "cdr-validation-000008-2564649",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-682615bc37",
+      "doc": "cdr-validation-000161-20510337",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.4,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-444a8b73eb",
+      "doc": "cdr-validation-000015-20705401",
+      "family": "evidence",
+      "graph_drift": 0.2,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-fe5669c69c",
+      "doc": "cdr-validation-000055-17511042",
+      "family": "prompt",
+      "graph_drift": 0.3333,
+      "mean_df1": 0.3333,
+      "max_df1": 0.5,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 1.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.5,
+          "f1_cf": 1.0,
+          "delta_f1": 0.5
+        }
+      ]
+    },
+    {
+      "run_id": "run-d161994589",
+      "doc": "cdr-validation-000152-625456",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ba657859ad",
+      "doc": "cdr-validation-000170-15517007",
+      "family": "prompt",
+      "graph_drift": 0.25,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-d58ac0bca5",
+      "doc": "cdr-validation-000248-17574447",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-41b5f444e3",
+      "doc": "cdr-validation-000267-11078231",
+      "family": "prompt",
+      "graph_drift": 0.3333,
+      "mean_df1": 0.3,
+      "max_df1": 0.3,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.8,
+          "delta_f1": 0.3
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.8,
+          "delta_f1": 0.3
+        }
+      ]
+    },
+    {
+      "run_id": "run-9f06277220",
+      "doc": "cdr-validation-000269-9867728",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-b95ee6acbe",
+      "doc": "cdr-validation-000075-19940105",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c9941c8c20",
+      "doc": "cdr-validation-000077-19058474",
+      "family": "prompt",
+      "graph_drift": 0.25,
+      "mean_df1": 0.0556,
+      "max_df1": 0.1667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-d49a7ba745",
+      "doc": "cdr-validation-000235-20466178",
+      "family": "schema",
+      "graph_drift": 0.4,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-4d45824a82",
+      "doc": "cdr-validation-000016-19105845",
+      "family": "evidence",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-77cdc1f3cc",
+      "doc": "cdr-validation-000059-10539815",
+      "family": "schema",
+      "graph_drift": 0.4,
+      "mean_df1": 0.1111,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.3333
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-693195a88e",
+      "doc": "cdr-validation-000019-16192988",
+      "family": "schema",
+      "graph_drift": 0.5,
+      "mean_df1": 1.0,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-77d4c435ab",
+      "doc": "cdr-validation-000078-18808529",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-4b32563ac0",
+      "doc": "cdr-validation-000235-20466178",
+      "family": "prompt",
+      "graph_drift": 0.4,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-e13c0f13fc",
+      "doc": "cdr-validation-000021-16116131",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-a7609420ec",
+      "doc": "cdr-validation-000181-9952311",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-dabe1cee78",
+      "doc": "cdr-validation-000244-3653576",
+      "family": "schema",
+      "graph_drift": 0.5,
+      "mean_df1": 0.6,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 0.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        }
+      ]
+    },
+    {
+      "run_id": "run-ad665b3707",
+      "doc": "cdr-validation-000175-11860278",
+      "family": "prompt",
+      "graph_drift": 0.2222,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ef91949b92",
+      "doc": "cdr-validation-000104-18177388",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-eba349788e",
+      "doc": "cdr-validation-000299-9514561",
+      "family": "schema",
+      "graph_drift": 0.5,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-cf053a162b",
+      "doc": "cdr-validation-000033-8012887",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-eed680704b",
+      "doc": "cdr-validation-000207-7263204",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-daf630fc24",
+      "doc": "cdr-validation-000117-7072798",
+      "family": "prompt",
+      "graph_drift": 0.25,
+      "mean_df1": 0.1,
+      "max_df1": 0.1,
+      "harmful": true,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1
+        }
+      ]
+    },
+    {
+      "run_id": "run-2739576d14",
+      "doc": "cdr-validation-000209-7007443",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-b6ad59acea",
+      "doc": "cdr-validation-000000-6794356",
+      "family": "schema",
+      "graph_drift": 0.6,
+      "mean_df1": 0.2571,
+      "max_df1": 0.2571,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.8571,
+          "f1_cf": 0.6,
+          "delta_f1": 0.2571
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.8571,
+          "f1_cf": 0.6,
+          "delta_f1": 0.2571
+        }
+      ]
+    },
+    {
+      "run_id": "run-47ac38eef9",
+      "doc": "cdr-validation-000066-15266215",
+      "family": "schema",
+      "graph_drift": 0.375,
+      "mean_df1": 1.0,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-810918721b",
+      "doc": "cdr-validation-000044-12549952",
+      "family": "schema",
+      "graph_drift": 0.3333,
+      "mean_df1": 0.2778,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 1.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.8,
+          "f1_cf": 0.8,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.5,
+          "f1_cf": 1.0,
+          "delta_f1": 0.5
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.8,
+          "f1_cf": 0.8,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        }
+      ]
+    },
+    {
+      "run_id": "run-7fdd3cdec6",
+      "doc": "cdr-validation-000025-14736955",
+      "family": "evidence",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.4,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-91f218215a",
+      "doc": "cdr-validation-000158-2533791",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-8623487409",
+      "doc": "cdr-validation-000031-9041081",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 1.0,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-6b3ea1b769",
+      "doc": "cdr-validation-000000-6794356",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.8571,
+          "f1_cf": 0.8571,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.8571,
+          "f1_cf": 0.8571,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-aa21e1c173",
+      "doc": "cdr-validation-000298-12571256",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 1.0,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.0,
+          "delta_f1": 1.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c20bceb063",
+      "doc": "cdr-validation-000032-8305357",
+      "family": "evidence",
+      "graph_drift": 0.25,
+      "mean_df1": 0.6,
+      "max_df1": 0.6,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 1.0,
+          "delta_f1": 0.6
+        }
+      ]
+    },
+    {
+      "run_id": "run-8e1e4a4137",
+      "doc": "cdr-validation-000063-20195852",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c2b5f16bb6",
+      "doc": "cdr-validation-000030-9305828",
+      "family": "evidence",
+      "graph_drift": 0.4,
+      "mean_df1": 0.1667,
+      "max_df1": 0.1667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.3333,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1667
+        }
+      ]
+    },
+    {
+      "run_id": "run-1c057965e9",
+      "doc": "cdr-validation-000202-8599504",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-056190fd60",
+      "doc": "cdr-validation-000024-14975762",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-c16d20f3e9",
+      "doc": "cdr-validation-000005-3131282",
+      "family": "prompt",
+      "graph_drift": 0.4286,
+      "mean_df1": 0.6667,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        }
+      ]
+    },
+    {
+      "run_id": "run-cf4422f2ed",
+      "doc": "cdr-validation-000237-19721134",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-d8e4588cfa",
+      "doc": "cdr-validation-000178-11077455",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-7bac7ca0b4",
+      "doc": "cdr-validation-000297-12745515",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-f07008e6a7",
+      "doc": "cdr-validation-000029-9321531",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-ec3c4b97f5",
+      "doc": "cdr-validation-000270-9636837",
+      "family": "schema",
+      "graph_drift": 0.4,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-9652a26393",
+      "doc": "cdr-validation-000270-9636837",
+      "family": "prompt",
+      "graph_drift": 0.4,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.5,
+          "f1_cf": 0.5,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-223f0a7f5a",
+      "doc": "cdr-validation-000005-3131282",
+      "family": "evidence",
+      "graph_drift": 0.625,
+      "mean_df1": 0.2667,
+      "max_df1": 0.2667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.2667
+        }
+      ]
+    },
+    {
+      "run_id": "run-79338a7de9",
+      "doc": "cdr-validation-000001-6504332",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-949ded421d",
+      "doc": "cdr-validation-000117-7072798",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.4,
+          "f1_cf": 0.4,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-004a73dd97",
+      "doc": "cdr-validation-000129-3535719",
+      "family": "prompt",
+      "graph_drift": 0.2857,
+      "mean_df1": 0.1208,
+      "max_df1": 0.2,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.0,
+          "delta_f1": 0.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.6667,
+          "f1_cf": 0.5,
+          "delta_f1": 0.1667
+        }
+      ]
+    },
+    {
+      "run_id": "run-caec58668c",
+      "doc": "cdr-validation-000064-18997632",
+      "family": "schema",
+      "graph_drift": 0.3333,
+      "mean_df1": 0.2667,
+      "max_df1": 0.2667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.4,
+          "delta_f1": 0.2667
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.6667,
+          "f1_cf": 0.4,
+          "delta_f1": 0.2667
+        }
+      ]
+    },
+    {
+      "run_id": "run-ae051d2c16",
+      "doc": "cdr-validation-000236-19944736",
+      "family": "schema",
+      "graph_drift": 0.5714,
+      "mean_df1": 0.6222,
+      "max_df1": 1.0,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "lookup",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 1.0,
+          "f1_cf": 0.8,
+          "delta_f1": 0.2
+        },
+        {
+          "family": "neighbor",
+          "f1_base": 0.0,
+          "f1_cf": 1.0,
+          "delta_f1": 1.0
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        },
+        {
+          "family": "join",
+          "f1_base": 0.0,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.6667
+        }
+      ]
+    },
+    {
+      "run_id": "run-c74c6c6c7c",
+      "doc": "cdr-validation-000290-18405372",
+      "family": "prompt",
+      "graph_drift": 0.6,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.3333,
+          "f1_cf": 0.6667,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-ea32293266",
+      "doc": "cdr-validation-000199-15814210",
+      "family": "prompt",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 1.0,
+          "f1_cf": 1.0,
+          "delta_f1": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "run-a6e26aef3c",
+      "doc": "cdr-validation-000260-16471092",
+      "family": "prompt",
+      "graph_drift": 0.5,
+      "mean_df1": 0.3333,
+      "max_df1": 0.3333,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 1.0,
+          "delta_f1": 0.3333
+        }
+      ]
+    },
+    {
+      "run_id": "run-4e3b9a22a8",
+      "doc": "cdr-validation-000001-6504332",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.6667,
+      "max_df1": 0.6667,
+      "harmful": true,
+      "contract_flag": true,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.6667,
+          "f1_cf": 0.0,
+          "delta_f1": 0.6667
+        }
+      ]
+    },
+    {
+      "run_id": "run-5631871e81",
+      "doc": "cdr-validation-000290-18405372",
+      "family": "schema",
+      "graph_drift": 0.0,
+      "mean_df1": 0.0,
+      "max_df1": 0.0,
+      "harmful": false,
+      "contract_flag": false,
+      "per_query": [
+        {
+          "family": "lookup",
+          "f1_base": 0.3333,
+          "f1_cf": 0.3333,
+          "delta_f1": 0.0
+        }
+      ]
+    }
+  ]
+}

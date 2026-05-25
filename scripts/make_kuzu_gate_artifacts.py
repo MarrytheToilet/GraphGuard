@@ -1,0 +1,218 @@
+"""Build expanded release-gate table + risk-coverage curve from Kuzu N=300 runs."""
+from __future__ import annotations
+import json
+import random
+from pathlib import Path
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+from graphguard.viz import style as gg_style  # noqa: F401
+
+DATASETS = [
+    ("DocRED",    "docred__deepseek-v4-flash__300d"),
+    ("Re-DocRED", "redocred__deepseek-v4-flash__300d"),
+    ("SciERC",    "scierc__deepseek-v4-flash__100d"),
+    ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
+]
+OUT_TABLE = Path("paper/tables/tab_e2ekuzu_v2.tex")
+OUT_FIG   = Path("paper/figures/fig_riskcoverage.png")
+
+TAU_GRAPH_DEFAULT = 0.45
+TAU_QUERY_DEFAULT = 0.70
+
+
+def load_pairs(run: str):
+    j = json.loads(Path(f"reports/cross_run/e2e_kuzu_case_{run}__N300.json").read_text())
+    pairs = []
+    for r in j["pair_records"]:
+        # Deployable query-side signal: max answer-set Jaccard drift across the workload (no gold needed).
+        max_dq = float(r.get("max_answer_drift", 0.0))
+        pairs.append({
+            "graph_drift": float(r.get("graph_drift", 0.0)),
+            "max_dq": max_dq,
+            "mean_df1": float(r.get("mean_df1", 0.0)),                  # absolute, retained for utility metric only
+            "mean_df1_signed": float(r.get("mean_df1_signed", 0.0)),    # signed: positive = regression
+            "harmful": bool(r.get("harmful", False)),                    # directional: mean signed ΔF1 > 0.05
+        })
+    return pairs
+
+
+def gate_metrics(pairs, blocked_mask):
+    n = len(pairs)
+    n_blocked = sum(blocked_mask)
+    n_published = n - n_blocked
+    harm_total = sum(p["harmful"] for p in pairs)
+    benign_total = n - harm_total
+    harm_blocked = sum(1 for p, b in zip(pairs, blocked_mask) if b and p["harmful"])
+    benign_blocked = n_blocked - harm_blocked
+    harm_published = harm_total - harm_blocked
+    pub_harm_rate = (harm_published / n_published) if n_published else 0.0
+    harm_recall = (harm_blocked / harm_total) if harm_total else 0.0
+    harm_precision = (harm_blocked / n_blocked) if n_blocked else 0.0
+    false_block_rate = (benign_blocked / benign_total) if benign_total else 0.0
+    retained = [1.0 - abs(p["mean_df1"]) for p, b in zip(pairs, blocked_mask) if not b]
+    retained_util = (sum(retained) / len(retained)) if retained else 0.0
+    # Bootstrap 95% CIs for the two headline metrics.
+    rng = np.random.default_rng(0)
+    n_boot = 1000
+    pub_idx = [i for i, b in enumerate(blocked_mask) if not b]
+    if pub_idx:
+        pub_arr = np.array(pub_idx)
+        boot_pub_harm = []
+        boot_util = []
+        harm_arr = np.array([pairs[i]["harmful"] for i in pub_idx], dtype=float)
+        util_arr = np.array([1.0 - abs(pairs[i]["mean_df1"]) for i in pub_idx])
+        for _ in range(n_boot):
+            idx = rng.integers(0, len(pub_arr), size=len(pub_arr))
+            boot_pub_harm.append(harm_arr[idx].mean())
+            boot_util.append(util_arr[idx].mean())
+        pub_harm_lo, pub_harm_hi = np.quantile(boot_pub_harm, [0.025, 0.975])
+        util_lo, util_hi = np.quantile(boot_util, [0.025, 0.975])
+    else:
+        pub_harm_lo = pub_harm_hi = 0.0
+        util_lo = util_hi = 0.0
+    return {
+        "published_pct": 100.0 * n_published / n,
+        "blocked_pct":   100.0 * n_blocked / n,
+        "harm_recall":   harm_recall,
+        "harm_precision": harm_precision,
+        "false_block_rate": false_block_rate,
+        "published_harmful_rate": pub_harm_rate,
+        "pub_harm_ci": (float(pub_harm_lo), float(pub_harm_hi)),
+        "retained_utility": retained_util,
+        "retained_util_ci": (float(util_lo), float(util_hi)),
+    }
+
+
+def policy_publish_all(pairs):
+    return [False] * len(pairs)
+
+
+def policy_graph_only(pairs, tau_g):
+    return [p["graph_drift"] >= tau_g for p in pairs]
+
+
+def policy_graphguard(pairs, tau_g, tau_q):
+    return [(p["graph_drift"] >= tau_g) or (p["max_dq"] >= tau_q) for p in pairs]
+
+
+def policy_random(pairs, block_rate, seed=0):
+    rng = random.Random(seed)
+    return [rng.random() < block_rate for _ in pairs]
+
+
+def fmt(x, pct=False):
+    return (f"{100*x:.0f}\\%" if pct else f"{x:.2f}")
+
+
+def build_table():
+    L = []
+    L.append(r"\begin{table*}[t]")
+    L.append(r"\centering\small")
+    L.append(r"\caption{End-to-end Kuzu ingestion guard at $N{=}300$ pairs per corpus. \emph{Publish-all} ingests every extracted graph; \emph{Graph-only} blocks when edge-Jaccard drift $\geq\tau_g{=}0.45$; \emph{GraphGuard} additionally blocks when any workload query has gold-free answer-set Jaccard drift $\geq\tau_q{=}0.70$ (the blocking signal does \emph{not} use gold answers); \emph{Random} is matched to GraphGuard's block rate as a baseline. Harm is a directional regression in mean per-query $F_1$ ($f_1^{\mathrm{base}}{-}f_1^{\mathrm{cf}}>0.05$); cf graphs that \emph{improve} over base are counted as benign (not harmful). Pub.HarmRate and RetainUtil are reported with bootstrap 95\% CIs ($1{,}000$ resamples over published pairs). The full risk-coverage trade-off across all thresholds is in Figure~\ref{fig:riskcoverage}; the table reports one operating point.}")
+    L.append(r"\label{tab:e2ekuzu}")
+    L.append(r"\begin{tabular}{llcccccll}")
+    L.append(r"\toprule")
+    L.append(r"Dataset & Policy & Pub.\% & Blk.\% & HarmRec. & HarmPrec. & FalseBlk. & Pub.HarmRate [CI] & RetainUtil. [CI] \\")
+    L.append(r"\midrule")
+    for ds_name, run in DATASETS:
+        pairs = load_pairs(run)
+        rows = []
+        m_pub = gate_metrics(pairs, policy_publish_all(pairs))
+        rows.append(("Publish-all", m_pub))
+        m_g  = gate_metrics(pairs, policy_graph_only(pairs, TAU_GRAPH_DEFAULT))
+        rows.append(("Graph-only gate", m_g))
+        gg_mask = policy_graphguard(pairs, TAU_GRAPH_DEFAULT, TAU_QUERY_DEFAULT)
+        m_gg = gate_metrics(pairs, gg_mask)
+        rows.append(("GraphGuard", m_gg))
+        block_rate = sum(gg_mask) / len(pairs)
+        m_r  = gate_metrics(pairs, policy_random(pairs, block_rate, seed=0))
+        rows.append(("Random (matched)", m_r))
+        for i, (name, m) in enumerate(rows):
+            ds_cell = ds_name if i == 0 else ""
+            ph_lo, ph_hi = m["pub_harm_ci"]
+            ut_lo, ut_hi = m["retained_util_ci"]
+            L.append(
+                f"{ds_cell} & {name} & "
+                f"{m['published_pct']:.0f} & {m['blocked_pct']:.0f} & "
+                f"{m['harm_recall']:.2f} & {m['harm_precision']:.2f} & "
+                f"{m['false_block_rate']:.2f} & "
+                f"{m['published_harmful_rate']:.2f} [{ph_lo:.2f},{ph_hi:.2f}] & "
+                f"{m['retained_utility']:.2f} [{ut_lo:.2f},{ut_hi:.2f}] \\\\"
+            )
+        L.append(r"\midrule")
+    L.pop()
+    L.append(r"\bottomrule")
+    L.append(r"\end{tabular}")
+    L.append(r"\end{table*}")
+    OUT_TABLE.write_text("\n".join(L) + "\n")
+    print("wrote", OUT_TABLE)
+
+
+def risk_coverage_curve(pairs, score_fn):
+    # score per pair (higher = more likely to block); sweep threshold producing (coverage, pub_harm_rate)
+    scored = [(score_fn(p), p) for p in pairs]
+    scored.sort(key=lambda x: x[0])  # ascending; small score = published first
+    n = len(scored)
+    pts = []
+    # Iterate cumulative published prefix (lowest-score = safest = published)
+    cum_harm = 0
+    for k in range(n + 1):
+        published = scored[:k] if k > 0 else []
+        n_pub = len(published)
+        if n_pub == 0:
+            continue
+        harm_pub = sum(p["harmful"] for _, p in published)
+        coverage = n_pub / n
+        pub_harm = harm_pub / n_pub
+        pts.append((coverage, pub_harm))
+    return pts
+
+
+def build_figure():
+    gg_style.apply_rc(font_size=10)
+    # Same canvas/spec as Figure 6 (noise floor): scaled to \linewidth.
+    fig, axes = plt.subplots(1, 4, figsize=(7.6, 2.6), sharey=True)
+    for ax, (ds_name, run) in zip(axes, DATASETS):
+        pairs = load_pairs(run)
+        n = len(pairs)
+        base_harm_rate = sum(p["harmful"] for p in pairs) / n
+        g_pts = risk_coverage_curve(pairs, lambda p: p["graph_drift"])
+        scale = TAU_GRAPH_DEFAULT / TAU_QUERY_DEFAULT
+        gg_pts = risk_coverage_curve(pairs, lambda p: max(p["graph_drift"], p["max_dq"] * scale))
+        rng = np.random.default_rng(0)
+        rand_scores = rng.random(n).tolist()
+        r_pts = risk_coverage_curve(pairs, lambda p, _it=iter(rand_scores): next(_it))
+        line_handles = []
+        line_labels = []
+        for pts, label, kw in [
+            (r_pts,  "Random",      dict(color=gg_style.GRAY,      ls=":",  lw=1.2)),
+            (g_pts,  "Graph-only",  dict(color=gg_style.BLUE_DARK,           lw=1.4)),
+            (gg_pts, "GraphGuard",  dict(color=gg_style.PINK_DARK,           lw=1.4)),
+        ]:
+            xs = [c for c, _ in pts]
+            ys = [h for _, h in pts]
+            (ln,) = ax.plot(xs, ys, **kw)
+            line_handles.append(ln); line_labels.append(label)
+        ax.axhline(base_harm_rate, color=gg_style.BLACK, ls="--", lw=0.6, alpha=0.5)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, max(0.5, base_harm_rate * 1.2))
+        ax.set_title(ds_name, fontsize=11, fontweight="bold")
+        ax.tick_params(labelsize=9)
+        ax.set_xticks([0, 0.5, 1.0])
+        ax.set_xlabel("Published coverage", fontsize=10)
+        ax.grid(alpha=0.3, ls=":")
+        for s in ("top", "right"):
+            ax.spines[s].set_visible(False)
+    axes[0].set_ylabel("Pub. harm rate", fontsize=10)
+    fig.legend(line_handles, line_labels, loc="lower center", ncol=3,
+               fontsize=9.5, frameon=False, bbox_to_anchor=(0.5, -0.04))
+    fig.tight_layout()
+    fig.savefig(OUT_FIG, dpi=200, bbox_inches="tight")
+    print("wrote", OUT_FIG)
+
+
+if __name__ == "__main__":
+    build_table()
+    build_figure()

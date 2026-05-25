@@ -1,0 +1,257 @@
+{
+  "n_pairs": 6071,
+  "total_harmful": 2073,
+  "base_rate": 0.3415,
+  "rows": [
+    {
+      "budget_frac": 0.1,
+      "budget_pairs": 607,
+      "budget_aware": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ],
+        "n_pairs_covered_by_stop": 5959
+      },
+      "no_reuse": {
+        "n_audited": 187,
+        "audit_recall": 0.0246,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 607,
+        "recall": 0.0883
+      },
+      "no_workload": {
+        "n_audited": 607,
+        "audit_recall": 0.0589,
+        "contract_recall": 0.5277
+      },
+      "no_history": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 607,
+        "recall": 0.1076
+      },
+      "round_robin": {
+        "n_audited": 607,
+        "recall": 0.081
+      },
+      "graph_only": {
+        "n_audited": 607,
+        "recall": 0.2214
+      },
+      "history_only": {
+        "n_audited": 607,
+        "recall": 0.1076
+      }
+    },
+    {
+      "budget_frac": 0.25,
+      "budget_pairs": 1518,
+      "budget_aware": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ],
+        "n_pairs_covered_by_stop": 5959
+      },
+      "no_reuse": {
+        "n_audited": 187,
+        "audit_recall": 0.0246,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 1518,
+        "recall": 0.2489
+      },
+      "no_workload": {
+        "n_audited": 907,
+        "audit_recall": 0.1032,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 1518,
+        "recall": 0.2648
+      },
+      "round_robin": {
+        "n_audited": 1518,
+        "recall": 0.2412
+      },
+      "graph_only": {
+        "n_audited": 1518,
+        "recall": 0.5258
+      },
+      "history_only": {
+        "n_audited": 1518,
+        "recall": 0.2803
+      }
+    },
+    {
+      "budget_frac": 0.5,
+      "budget_pairs": 3036,
+      "budget_aware": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ],
+        "n_pairs_covered_by_stop": 5959
+      },
+      "no_reuse": {
+        "n_audited": 187,
+        "audit_recall": 0.0246,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 3036,
+        "recall": 0.4945
+      },
+      "no_workload": {
+        "n_audited": 907,
+        "audit_recall": 0.1032,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 3036,
+        "recall": 0.5152
+      },
+      "round_robin": {
+        "n_audited": 3036,
+        "recall": 0.5089
+      },
+      "graph_only": {
+        "n_audited": 3036,
+        "recall": 0.9016
+      },
+      "history_only": {
+        "n_audited": 3036,
+        "recall": 0.5683
+      }
+    },
+    {
+      "budget_frac": 0.75,
+      "budget_pairs": 4553,
+      "budget_aware": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ],
+        "n_pairs_covered_by_stop": 5959
+      },
+      "no_reuse": {
+        "n_audited": 187,
+        "audit_recall": 0.0246,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 4553,
+        "recall": 0.7839
+      },
+      "no_workload": {
+        "n_audited": 907,
+        "audit_recall": 0.1032,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 4553,
+        "recall": 0.7675
+      },
+      "round_robin": {
+        "n_audited": 4553,
+        "recall": 0.7578
+      },
+      "graph_only": {
+        "n_audited": 4553,
+        "recall": 0.9498
+      },
+      "history_only": {
+        "n_audited": 4553,
+        "recall": 0.7902
+      }
+    },
+    {
+      "budget_frac": 1.0,
+      "budget_pairs": 6071,
+      "budget_aware": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0,
+        "stopped_families": [
+          "evidence",
+          "prompt",
+          "schema"
+        ],
+        "n_pairs_covered_by_stop": 5959
+      },
+      "no_reuse": {
+        "n_audited": 187,
+        "audit_recall": 0.0246,
+        "contract_recall": 1.0
+      },
+      "no_sequential": {
+        "n_audited": 6071,
+        "recall": 1.0
+      },
+      "no_workload": {
+        "n_audited": 907,
+        "audit_recall": 0.1032,
+        "contract_recall": 1.0
+      },
+      "no_history": {
+        "n_audited": 561,
+        "audit_recall": 0.0637,
+        "contract_recall": 1.0
+      },
+      "random": {
+        "n_audited": 6071,
+        "recall": 1.0
+      },
+      "round_robin": {
+        "n_audited": 6071,
+        "recall": 1.0
+      },
+      "graph_only": {
+        "n_audited": 6071,
+        "recall": 1.0
+      },
+      "history_only": {
+        "n_audited": 6071,
+        "recall": 1.0
+      }
+    }
+  ]
+}

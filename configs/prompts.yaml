@@ -1,0 +1,55 @@
+prompts:
+  - id: base_v1
+    name: "Base relation extraction"
+    clauses:
+      - id: C1_evidence_only
+        type: evidence_only
+        text: "Extract only relations explicitly supported by the evidence sentences."
+      - id: C2_infer_implicit
+        type: infer_implicit
+        text: "You may extract a relation when it is strongly implied by the document, but still cite the best supporting sentence IDs."
+      - id: C3_use_schema
+        type: use_schema_strictly
+        text: "Use only relation types from the provided schema. Do not invent relation types."
+      - id: C4_allow_other
+        type: allow_unknown
+        text: "If no relation in the schema fits, output the relation as OTHER."
+      - id: C5_cite_evidence
+        type: cite_evidence
+        text: "For each edge, list the 1-based sentence indices that provide direct evidence."
+      - id: C6_return_confidence
+        type: return_confidence
+        text: "For each edge, return a calibrated confidence in [0,1]."
+      - id: C7_json_only
+        type: format
+        text: "Return strictly valid JSON conforming to the response schema. Do not include any prose, comments, or markdown fences."
+    template: |
+      You are an information extraction system. Extract entity-pair relations from the document below using ONLY the given schema and the given entity list.
+
+      ## Instructions
+      {clauses}
+
+      ## Relation schema
+      {schema}
+
+      ## Document (sentences are 1-indexed)
+      {document}
+
+      ## Candidate entities
+      {entities}
+
+      ## Response JSON schema
+      {{
+        "edges": [
+          {{
+            "subject": "<entity canonical name from the candidate list>",
+            "relation": "<relation id from the schema, or OTHER>",
+            "object":  "<entity canonical name from the candidate list>",
+            "evidence_sentences": [<1-based sentence ids>],
+            "confidence": <float in [0,1]>,
+            "rationale": "<one short sentence>"
+          }}
+        ]
+      }}
+
+      Return JSON only.

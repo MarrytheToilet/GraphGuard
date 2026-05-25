@@ -1,0 +1,74 @@
+name: redocred_paper
+description: >
+  Re-DocRED secondary run for cross-dataset reproducibility of GraphGuard findings.
+
+paths:
+  data_root: data/processed/runs
+  report_root: reports/runs
+
+dataset:
+  config: configs/redocred.yaml
+  splits: validation
+
+prompt_schema:
+  prompt_config: configs/prompts.yaml
+  schema_config: configs/schemas.yaml
+  prompt_clauses_to_drop:
+    - C1_evidence_only
+    - C2_infer_implicit
+    - C3_use_schema
+    - C4_allow_other
+    - C5_cite_evidence
+    - C6_return_confidence
+  schema_variants:
+    - with_other
+    - coarse
+    - ambiguous
+  max_drop_relations: 3
+
+models:
+  config: configs/models.yaml
+  primary: null
+  robustness:
+    - glm-5
+    - kimi-k2.5
+    - MiniMax-M2.5
+    - qwen3.6-flash
+
+profiles:
+  smoke:
+    docs: 12
+    oracle_docs: 4
+    main_budget: 8
+    oracle_budget: 999
+    e0_docs: 6
+    e0_runs: 3
+    workers: 8
+  pilot:
+    docs: 30
+    oracle_docs: 5
+    main_budget: 8
+    oracle_budget: 999
+    e0_docs: 10
+    e0_runs: 3
+    workers: 8
+  main:
+    docs: 200
+    oracle_docs: 30
+    main_budget: 14
+    oracle_budget: 999
+    e0_docs: 60
+    e0_runs: 5
+    workers: 12
+  main300:
+    docs: 300
+    oracle_docs: 40
+    main_budget: 16
+    oracle_budget: 999
+    e0_docs: 80
+    e0_runs: 5
+    workers: 16
+
+experiments:
+  E0: { claim: drift exists }
+  E2: { label_modes: [strict, clean, wrong_only] }

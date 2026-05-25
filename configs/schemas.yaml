@@ -1,0 +1,125 @@
+# Base schema for v1. Uses a small subset of DocRED Wikidata-style relations.
+# Later schema variants (S_with_other, S_coarse, ...) will be generated programmatically.
+schemas:
+  - id: docred_full
+    name: "DocRED base subset"
+    description: "Subset of DocRED relations covering common biographical/organizational facts."
+    relations:
+      - id: P17
+        label: country
+        description: "Sovereign state where the subject is located."
+      - id: P19
+        label: place_of_birth
+        description: "Place where the person was born."
+      - id: P20
+        label: place_of_death
+        description: "Place where the person died."
+      - id: P26
+        label: spouse
+        description: "Spouse of a person."
+      - id: P27
+        label: country_of_citizenship
+        description: "Country of citizenship of a person."
+      - id: P40
+        label: child
+        description: "Subject's child."
+      - id: P50
+        label: author
+        description: "Main author of a creative work."
+      - id: P54
+        label: member_of_sports_team
+        description: "Sports team the subject played for."
+      - id: P57
+        label: director
+        description: "Director of a film or work."
+      - id: P69
+        label: educated_at
+        description: "Educational institution attended."
+      - id: P108
+        label: employer
+        description: "Person/organization that employs the subject."
+      - id: P131
+        label: located_in
+        description: "Administrative territorial entity containing the subject."
+      - id: P150
+        label: contains_administrative_territorial_entity
+        description: "Direct subdivision contained by the subject."
+      - id: P159
+        label: headquarters_location
+        description: "City/place where an organization's headquarters is located."
+      - id: P161
+        label: cast_member
+        description: "Actor in the cast of a work."
+      - id: P175
+        label: performer
+        description: "Performer of a song/album."
+      - id: P361
+        label: part_of
+        description: "Object that the subject is a part of."
+      - id: P463
+        label: member_of
+        description: "Organization or group of which the subject is a member."
+      - id: P495
+        label: country_of_origin
+        description: "Country in which the work originated."
+      - id: P527
+        label: has_part
+        description: "Part this subject is composed of."
+      - id: P569
+        label: date_of_birth
+        description: "Date on which the subject was born."
+      - id: P570
+        label: date_of_death
+        description: "Date on which the subject died."
+      - id: P577
+        label: publication_date
+        description: "Date a work was first published or released."
+      - id: P580
+        label: start_time
+        description: "Time a relationship/role started."
+      - id: P582
+        label: end_time
+        description: "Time a relationship/role ended."
+      - id: OTHER
+        label: other
+        description: "Use only if no schema relation fits."
+
+  - id: scierc_full
+    name: "SciERC scientific IE schema"
+    description: "Relations from SciERC (Luan et al.) for scientific abstracts: methods, tasks, materials, metrics."
+    relations:
+      - id: USED-FOR
+        label: used_for
+        description: "B is used for A; B models/applies/optimizes/solves/uses A."
+      - id: FEATURE-OF
+        label: feature_of
+        description: "B is a feature/attribute of A."
+      - id: HYPONYM-OF
+        label: hyponym_of
+        description: "B is a hyponym (subtype/instance) of A."
+      - id: PART-OF
+        label: part_of
+        description: "B is a part of A."
+      - id: COMPARE
+        label: compare
+        description: "Symmetric: A is compared with B (or contrasted)."
+      - id: CONJUNCTION
+        label: conjunction
+        description: "Symmetric: A and B function together / are coordinated."
+      - id: EVALUATE-FOR
+        label: evaluate_for
+        description: "A evaluates B; A is the evaluation target/metric for B."
+      - id: OTHER
+        label: other
+        description: "Use only if no schema relation fits."
+
+  - id: cdr_full
+    name: "BC5CDR Chemical-Disease schema"
+    description: "BioCreative V CDR: chemical-induces-disease relations from PubMed abstracts. Entities are Chemical or Disease (MeSH-canonicalised); the only document-level relation is CID."
+    relations:
+      - id: CID
+        label: chemical_induces_disease
+        description: "Head Chemical induces / causes / is associated with onset of tail Disease (any document-level evidence in the abstract)."
+      - id: OTHER
+        label: other
+        description: "Use only if no schema relation fits."

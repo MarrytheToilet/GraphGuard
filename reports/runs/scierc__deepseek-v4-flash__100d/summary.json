@@ -1,0 +1,2099 @@
+{
+  "db_counts": {
+    "documents": 150,
+    "sentences": 826,
+    "entities": 2004,
+    "schemas": 15,
+    "prompts": 10,
+    "extraction_events": 7004,
+    "extracted_edges": 55697,
+    "intervention_candidates": 3306,
+    "counterfactual_runs": 6336,
+    "edge_outcomes": 47057,
+    "edge_reliability_scores": 3338,
+    "edge_correctness": 1208,
+    "gold_edges": 1429
+  },
+  "case_studies": [
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::415c5ea5db",
+        "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+        "subject_name": "robust estimation",
+        "relation": "HYPONYM-OF",
+        "object_name": "robust estimation procedure",
+        "confidence": 0.9,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::415c5ea5db",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:51.409029+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::7d713bf1d9",
+        "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+        "subject_name": "RANSAC techniques",
+        "relation": "EVALUATE-FOR",
+        "object_name": "efficient robust estimation algorithm",
+        "confidence": 0.95,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [
+        {
+          "variable_type": "schema",
+          "variable_id": "hierarchical",
+          "operator": "switch_schema",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::schema::scierc_full::hierarchical",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "switch_schema on schema 'hierarchical' \u2192 relation type flips in 1/1 runs"
+        }
+      ],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::7d713bf1d9",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:51.413568+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::8707ac8e07",
+        "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+        "subject_name": "sampling process",
+        "relation": "PART-OF",
+        "object_name": "RANSAC techniques",
+        "confidence": 0.7,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [
+        {
+          "variable_type": "schema",
+          "variable_id": "with_other",
+          "operator": "switch_schema",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::schema::scierc_full::with_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "switch_schema on schema 'with_other' \u2192 relation type flips in 1/1 runs"
+        }
+      ],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-914bbc41d2::8707ac8e07",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:51.415707+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000027-E99-1023-9f26051afa::dc8059c220",
+        "document_id": "scierc-dev-000027-E99-1023",
+        "subject_name": "chunking",
+        "relation": "HYPONYM-OF",
+        "object_name": "tagging task",
+        "confidence": 0.85,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000027-E99-1023-9f26051afa::dc8059c220",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:51.700229+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000027-E99-1023-967567df38::390447830a",
+        "document_id": "scierc-dev-000027-E99-1023",
+        "subject_name": "data set",
+        "relation": "USED-FOR",
+        "object_name": "memory-based learning chunker",
+        "confidence": 0.8,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000027-E99-1023::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000027-E99-1023-967567df38::390447830a",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:53.527273+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::2759be138d",
+        "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+        "subject_name": "robust estimation",
+        "relation": "HYPONYM-OF",
+        "object_name": "robust estimation procedure",
+        "confidence": 0.9,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::2759be138d",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:53.183558+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::2b38ceb012",
+        "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+        "subject_name": "strategies",
+        "relation": "CONJUNCTION",
+        "object_name": "technique",
+        "confidence": 0.8,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::2b38ceb012",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:53.185889+00:00"
+      }
+    },
+    {
+      "edge": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::f054efa525",
+        "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+        "subject_name": "RANSAC techniques",
+        "relation": "EVALUATE-FOR",
+        "object_name": "efficient robust estimation algorithm",
+        "confidence": 0.95,
+        "risk_score": 2.6,
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0
+      },
+      "why_edge_top": [
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C1_evidence_only",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C1_evidence_only",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C1_evidence_only' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C3_use_schema",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C3_use_schema",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C3_use_schema' \u2192 edge disappears in 1/1 runs"
+        },
+        {
+          "variable_type": "prompt_clause",
+          "variable_id": "C4_allow_other",
+          "operator": "remove",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::drop::C4_allow_other",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "remove on prompt_clause 'C4_allow_other' \u2192 edge disappears in 1/1 runs"
+        }
+      ],
+      "why_type_top": [
+        {
+          "variable_type": "schema",
+          "variable_id": "hierarchical",
+          "operator": "switch_schema",
+          "intervention_id": "scierc-dev-000005-ICCV_2009_47_abs::iv::schema::scierc_full::hierarchical",
+          "n_runs": 1,
+          "effect": 1.0,
+          "interpretation": "switch_schema on schema 'hierarchical' \u2192 relation type flips in 1/1 runs"
+        }
+      ],
+      "risk": {
+        "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-2cf5bcbd23::f054efa525",
+        "stability_score": 0.0,
+        "text_responsibility": 0.0,
+        "prompt_sensitivity": 1.0,
+        "schema_sensitivity": 1.0,
+        "stochastic_variance": 0.0,
+        "risk_score": 2.6,
+        "computed_at": "2026-05-25T10:40:53.188196+00:00"
+      }
+    }
+  ],
+  "artifacts": {
+    "e0": {
+      "docs": [
+        {
+          "document_id": "scierc-dev-000000-ICCV_2003_158_abs",
+          "event_ids": [
+            "evt-scierc-dev-000000-ICCV_2003_158_abs-2738a23cba",
+            "evt-scierc-dev-000000-ICCV_2003_158_abs-bdbba3e5f7",
+            "evt-scierc-dev-000000-ICCV_2003_158_abs-02995e2d07",
+            "evt-scierc-dev-000000-ICCV_2003_158_abs-9a9da739a7"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3247,
+            "type_agreement": 0.8,
+            "disappearance_rate": 0.5039,
+            "type_flip_rate": 0.1096,
+            "new_edge_rate": 0.5427
+          }
+        },
+        {
+          "document_id": "scierc-dev-000001-C04-1096",
+          "event_ids": [
+            "evt-scierc-dev-000001-C04-1096-2a965e0bcf",
+            "evt-scierc-dev-000001-C04-1096-aabdbc3988",
+            "evt-scierc-dev-000001-C04-1096-0568f8f2a1",
+            "evt-scierc-dev-000001-C04-1096-a9640f34e9"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 1.0,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.0,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0
+          }
+        },
+        {
+          "document_id": "scierc-dev-000002-P84-1047",
+          "event_ids": [
+            "evt-scierc-dev-000002-P84-1047-4151ac27bb",
+            "evt-scierc-dev-000002-P84-1047-772f1d013d",
+            "evt-scierc-dev-000002-P84-1047-400a1c5654",
+            "evt-scierc-dev-000002-P84-1047-7e4c9abf2a"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3574,
+            "type_agreement": 0.75,
+            "disappearance_rate": 0.4744,
+            "type_flip_rate": 0.1848,
+            "new_edge_rate": 0.4953
+          }
+        },
+        {
+          "document_id": "scierc-dev-000003-C88-1066",
+          "event_ids": [
+            "evt-scierc-dev-000003-C88-1066-2b2fdf06c4",
+            "evt-scierc-dev-000003-C88-1066-cdef677950",
+            "evt-scierc-dev-000003-C88-1066-2e3c4a1bdc",
+            "evt-scierc-dev-000003-C88-1066-15257255e2"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.9375,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.0417,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0208
+          }
+        },
+        {
+          "document_id": "scierc-dev-000004-C04-1116",
+          "event_ids": [
+            "evt-scierc-dev-000004-C04-1116-8610972310",
+            "evt-scierc-dev-000004-C04-1116-5e36d3684a",
+            "evt-scierc-dev-000004-C04-1116-a7ee54c580",
+            "evt-scierc-dev-000004-C04-1116-0bbf5647cc"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5179,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.3333,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.3333
+          }
+        },
+        {
+          "document_id": "scierc-dev-000005-ICCV_2009_47_abs",
+          "event_ids": [
+            "evt-scierc-dev-000005-ICCV_2009_47_abs-9fca8d8115",
+            "evt-scierc-dev-000005-ICCV_2009_47_abs-5db5c652c4",
+            "evt-scierc-dev-000005-ICCV_2009_47_abs-d97ff4cd5c",
+            "evt-scierc-dev-000005-ICCV_2009_47_abs-e9d72596f6"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 1.0,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.0,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0
+          }
+        },
+        {
+          "document_id": "scierc-dev-000006-C80-1073",
+          "event_ids": [
+            "evt-scierc-dev-000006-C80-1073-10d715be7d",
+            "evt-scierc-dev-000006-C80-1073-5147eea0b0",
+            "evt-scierc-dev-000006-C80-1073-367261de8a",
+            "evt-scierc-dev-000006-C80-1073-652d529dd0"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5643,
+            "type_agreement": 0.5,
+            "disappearance_rate": 0.3667,
+            "type_flip_rate": 0.2833,
+            "new_edge_rate": 0.2833
+          }
+        },
+        {
+          "document_id": "scierc-dev-000007-H05-1041",
+          "event_ids": [
+            "evt-scierc-dev-000007-H05-1041-4455caa48a",
+            "evt-scierc-dev-000007-H05-1041-07c60849f3",
+            "evt-scierc-dev-000007-H05-1041-fe33acada3",
+            "evt-scierc-dev-000007-H05-1041-975b4c387c"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 1.0,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.0,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0
+          }
+        },
+        {
+          "document_id": "scierc-dev-000008-NIPS_2014_18_abs",
+          "event_ids": [
+            "evt-scierc-dev-000008-NIPS_2014_18_abs-716c2e7061",
+            "evt-scierc-dev-000008-NIPS_2014_18_abs-b9d165e29f",
+            "evt-scierc-dev-000008-NIPS_2014_18_abs-f80ba40dd8",
+            "evt-scierc-dev-000008-NIPS_2014_18_abs-fdc7c6da93"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3333,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.5278,
+            "type_flip_rate": 0.125,
+            "new_edge_rate": 0.4667
+          }
+        },
+        {
+          "document_id": "scierc-dev-000009-NIPS_2014_10_abs",
+          "event_ids": [
+            "evt-scierc-dev-000009-NIPS_2014_10_abs-73863ca90c",
+            "evt-scierc-dev-000009-NIPS_2014_10_abs-b3e09e26f2",
+            "evt-scierc-dev-000009-NIPS_2014_10_abs-f6dcb18c5e",
+            "evt-scierc-dev-000009-NIPS_2014_10_abs-73db98c1a6"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5345,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.2946,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.3214
+          }
+        },
+        {
+          "document_id": "scierc-dev-000010-P03-1022",
+          "event_ids": [
+            "evt-scierc-dev-000010-P03-1022-bc7351c2bb",
+            "evt-scierc-dev-000010-P03-1022-491f1a400b",
+            "evt-scierc-dev-000010-P03-1022-847a7cc936",
+            "evt-scierc-dev-000010-P03-1022-88d53b3489"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5496,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.3444,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.2611
+          }
+        },
+        {
+          "document_id": "scierc-dev-000011-CVPR_2010_10_abs",
+          "event_ids": [
+            "evt-scierc-dev-000011-CVPR_2010_10_abs-5ef2c620bf",
+            "evt-scierc-dev-000011-CVPR_2010_10_abs-3e3e1c102b",
+            "evt-scierc-dev-000011-CVPR_2010_10_abs-b067f3ef54",
+            "evt-scierc-dev-000011-CVPR_2010_10_abs-12910b5c42"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.725,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.2,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.1786
+          }
+        },
+        {
+          "document_id": "scierc-dev-000012-H91-1010",
+          "event_ids": [
+            "evt-scierc-dev-000012-H91-1010-d9d8a6de30",
+            "evt-scierc-dev-000012-H91-1010-f4c5630e42",
+            "evt-scierc-dev-000012-H91-1010-cfd2e43233",
+            "evt-scierc-dev-000012-H91-1010-bffb2b55c5"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5682,
+            "type_agreement": 0.8333,
+            "disappearance_rate": 0.2735,
+            "type_flip_rate": 0.0833,
+            "new_edge_rate": 0.2851
+          }
+        },
+        {
+          "document_id": "scierc-dev-000013-C88-2160",
+          "event_ids": [
+            "evt-scierc-dev-000013-C88-2160-f962252efd",
+            "evt-scierc-dev-000013-C88-2160-cadb2295fb",
+            "evt-scierc-dev-000013-C88-2160-6c8e6454ca",
+            "evt-scierc-dev-000013-C88-2160-6db360fc1d"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.4944,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.3333,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.4028
+          }
+        },
+        {
+          "document_id": "scierc-dev-000014-P05-1034",
+          "event_ids": [
+            "evt-scierc-dev-000014-P05-1034-6185db5954",
+            "evt-scierc-dev-000014-P05-1034-926b9d08d6",
+            "evt-scierc-dev-000014-P05-1034-62e30c8e6f",
+            "evt-scierc-dev-000014-P05-1034-2403e1682d"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.2339,
+            "type_agreement": 0.4,
+            "disappearance_rate": 0.649,
+            "type_flip_rate": 0.3288,
+            "new_edge_rate": 0.6253
+          }
+        },
+        {
+          "document_id": "scierc-dev-000015-CVPR_2011_292_abs",
+          "event_ids": [
+            "evt-scierc-dev-000015-CVPR_2011_292_abs-c4e0b46dab",
+            "evt-scierc-dev-000015-CVPR_2011_292_abs-3ab80cc153",
+            "evt-scierc-dev-000015-CVPR_2011_292_abs-09e47df438",
+            "evt-scierc-dev-000015-CVPR_2011_292_abs-cdfc08b538"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6567,
+            "type_agreement": 0.875,
+            "disappearance_rate": 0.2116,
+            "type_flip_rate": 0.0787,
+            "new_edge_rate": 0.2066
+          }
+        },
+        {
+          "document_id": "scierc-dev-000016-ECCV_2012_40_abs",
+          "event_ids": [
+            "evt-scierc-dev-000016-ECCV_2012_40_abs-98a7be8054",
+            "evt-scierc-dev-000016-ECCV_2012_40_abs-555ec2a3f4",
+            "evt-scierc-dev-000016-ECCV_2012_40_abs-5f822e508a",
+            "evt-scierc-dev-000016-ECCV_2012_40_abs-4aa940fa53"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.7651,
+            "type_agreement": 0.9231,
+            "disappearance_rate": 0.1486,
+            "type_flip_rate": 0.0477,
+            "new_edge_rate": 0.1222
+          }
+        },
+        {
+          "document_id": "scierc-dev-000017-AAAI_2015_21_abs",
+          "event_ids": [
+            "evt-scierc-dev-000017-AAAI_2015_21_abs-989553c4b7",
+            "evt-scierc-dev-000017-AAAI_2015_21_abs-eb3e827941",
+            "evt-scierc-dev-000017-AAAI_2015_21_abs-2dcbf3c2d3",
+            "evt-scierc-dev-000017-AAAI_2015_21_abs-12c81816f3"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3001,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.5694,
+            "type_flip_rate": 0.1756,
+            "new_edge_rate": 0.5278
+          }
+        },
+        {
+          "document_id": "scierc-dev-000018-C04-1147",
+          "event_ids": [
+            "evt-scierc-dev-000018-C04-1147-f1d23339f7",
+            "evt-scierc-dev-000018-C04-1147-ad251f8999",
+            "evt-scierc-dev-000018-C04-1147-060bee19a4",
+            "evt-scierc-dev-000018-C04-1147-e63f7d1b39"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6523,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.2262,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.256
+          }
+        },
+        {
+          "document_id": "scierc-dev-000019-A00-1024",
+          "event_ids": [
+            "evt-scierc-dev-000019-A00-1024-06f5484e92",
+            "evt-scierc-dev-000019-A00-1024-3b72027c2d",
+            "evt-scierc-dev-000019-A00-1024-fe81289929",
+            "evt-scierc-dev-000019-A00-1024-be3ff98c4d"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.8287,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.1071,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0833
+          }
+        },
+        {
+          "document_id": "scierc-dev-000020-H01-1041",
+          "event_ids": [
+            "evt-scierc-dev-000020-H01-1041-3de6650778",
+            "evt-scierc-dev-000020-H01-1041-bdac67332a",
+            "evt-scierc-dev-000020-H01-1041-a758cb2e3e",
+            "evt-scierc-dev-000020-H01-1041-75d6dc68e0"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6786,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.2407,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.2315
+          }
+        },
+        {
+          "document_id": "scierc-dev-000021-N03-4010",
+          "event_ids": [
+            "evt-scierc-dev-000021-N03-4010-f2eb47c37f",
+            "evt-scierc-dev-000021-N03-4010-7a810e98ac",
+            "evt-scierc-dev-000021-N03-4010-7c1c2ebbd6",
+            "evt-scierc-dev-000021-N03-4010-9b13d31a6d"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6667,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.25,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.25
+          }
+        },
+        {
+          "document_id": "scierc-dev-000022-P04-1030",
+          "event_ids": [
+            "evt-scierc-dev-000022-P04-1030-21bab4f7ea",
+            "evt-scierc-dev-000022-P04-1030-c52c8b2a20",
+            "evt-scierc-dev-000022-P04-1030-e8aaee1e94",
+            "evt-scierc-dev-000022-P04-1030-36309cac7f"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3528,
+            "type_agreement": 0.0,
+            "disappearance_rate": 0.5167,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.325
+          }
+        },
+        {
+          "document_id": "scierc-dev-000023-CVPR_2004_10_abs",
+          "event_ids": [
+            "evt-scierc-dev-000023-CVPR_2004_10_abs-d05b119615",
+            "evt-scierc-dev-000023-CVPR_2004_10_abs-a6375ef55e",
+            "evt-scierc-dev-000023-CVPR_2004_10_abs-58c4f792e0",
+            "evt-scierc-dev-000023-CVPR_2004_10_abs-a1f3330f9e"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.8571,
+            "type_agreement": 0.8333,
+            "disappearance_rate": 0.0833,
+            "type_flip_rate": 0.0833,
+            "new_edge_rate": 0.0833
+          }
+        },
+        {
+          "document_id": "scierc-dev-000024-L08-1260",
+          "event_ids": [
+            "evt-scierc-dev-000024-L08-1260-ddb40c3990",
+            "evt-scierc-dev-000024-L08-1260-2b333f5408",
+            "evt-scierc-dev-000024-L08-1260-f28555b9b5",
+            "evt-scierc-dev-000024-L08-1260-5c3c9f7664"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.8889,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.0625,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0625
+          }
+        },
+        {
+          "document_id": "scierc-dev-000025-IJCAI_2016_412_abs",
+          "event_ids": [
+            "evt-scierc-dev-000025-IJCAI_2016_412_abs-b04aca59c7",
+            "evt-scierc-dev-000025-IJCAI_2016_412_abs-8954757670",
+            "evt-scierc-dev-000025-IJCAI_2016_412_abs-03fcc11a07",
+            "evt-scierc-dev-000025-IJCAI_2016_412_abs-257ce9627c"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.3667,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.4
+          }
+        },
+        {
+          "document_id": "scierc-dev-000026-W03-0406",
+          "event_ids": [
+            "evt-scierc-dev-000026-W03-0406-5a861e116b",
+            "evt-scierc-dev-000026-W03-0406-992043656e",
+            "evt-scierc-dev-000026-W03-0406-7a723471bd",
+            "evt-scierc-dev-000026-W03-0406-c7bbf55937"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6528,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.2143,
+            "type_flip_rate": 0.0794,
+            "new_edge_rate": 0.2143
+          }
+        },
+        {
+          "document_id": "scierc-dev-000027-E99-1023",
+          "event_ids": [
+            "evt-scierc-dev-000027-E99-1023-abbc48aa9d",
+            "evt-scierc-dev-000027-E99-1023-935c08561d",
+            "evt-scierc-dev-000027-E99-1023-a324082d6b",
+            "evt-scierc-dev-000027-E99-1023-75965c67be"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 1.0,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.0,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0
+          }
+        },
+        {
+          "document_id": "scierc-dev-000028-N04-1008",
+          "event_ids": [
+            "evt-scierc-dev-000028-N04-1008-7133cc7f99",
+            "evt-scierc-dev-000028-N04-1008-6c1f9b33a4",
+            "evt-scierc-dev-000028-N04-1008-d0978c710a",
+            "evt-scierc-dev-000028-N04-1008-435e76d226"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6125,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.2262,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.2857
+          }
+        },
+        {
+          "document_id": "scierc-dev-000029-ICASSP_2011_598_abs",
+          "event_ids": [
+            "evt-scierc-dev-000029-ICASSP_2011_598_abs-c9f5a31af7",
+            "evt-scierc-dev-000029-ICASSP_2011_598_abs-d2deeedf62",
+            "evt-scierc-dev-000029-ICASSP_2011_598_abs-5b17f5590b",
+            "evt-scierc-dev-000029-ICASSP_2011_598_abs-952a9c1d60"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3972,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.4336,
+            "type_flip_rate": 0.072,
+            "new_edge_rate": 0.4497
+          }
+        },
+        {
+          "document_id": "scierc-dev-000030-CVPR_2003_10_abs",
+          "event_ids": [
+            "evt-scierc-dev-000030-CVPR_2003_10_abs-3513d70b8a",
+            "evt-scierc-dev-000030-CVPR_2003_10_abs-e6199e7dfd",
+            "evt-scierc-dev-000030-CVPR_2003_10_abs-1db35c9840",
+            "evt-scierc-dev-000030-CVPR_2003_10_abs-a412e65f8c"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.7122,
+            "type_agreement": 0.7692,
+            "disappearance_rate": 0.1733,
+            "type_flip_rate": 0.1126,
+            "new_edge_rate": 0.1847
+          }
+        },
+        {
+          "document_id": "scierc-dev-000031-P06-3008",
+          "event_ids": [
+            "evt-scierc-dev-000031-P06-3008-41d2706f7c",
+            "evt-scierc-dev-000031-P06-3008-59d8bb84ed",
+            "evt-scierc-dev-000031-P06-3008-1d06b211d0",
+            "evt-scierc-dev-000031-P06-3008-6090df704f"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5449,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.4343,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.0818
+          }
+        },
+        {
+          "document_id": "scierc-dev-000032-CVPR_2003_11_abs",
+          "event_ids": [
+            "evt-scierc-dev-000032-CVPR_2003_11_abs-70f1c22bc4",
+            "evt-scierc-dev-000032-CVPR_2003_11_abs-bbd0bf831c",
+            "evt-scierc-dev-000032-CVPR_2003_11_abs-03d91832aa",
+            "evt-scierc-dev-000032-CVPR_2003_11_abs-f622e9b2f7"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.7798,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.127,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.127
+          }
+        },
+        {
+          "document_id": "scierc-dev-000033-P05-1073",
+          "event_ids": [
+            "evt-scierc-dev-000033-P05-1073-f5e5b31d85",
+            "evt-scierc-dev-000033-P05-1073-0c6d7d0119",
+            "evt-scierc-dev-000033-P05-1073-d641203d39",
+            "evt-scierc-dev-000033-P05-1073-54d8544a8e"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.4343,
+            "type_agreement": 0.75,
+            "disappearance_rate": 0.4654,
+            "type_flip_rate": 0.1378,
+            "new_edge_rate": 0.3485
+          }
+        },
+        {
+          "document_id": "scierc-dev-000034-E93-1023",
+          "event_ids": [
+            "evt-scierc-dev-000034-E93-1023-134f587a79",
+            "evt-scierc-dev-000034-E93-1023-2c3b799076",
+            "evt-scierc-dev-000034-E93-1023-329c70fd23",
+            "evt-scierc-dev-000034-E93-1023-483f6cd196"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.6212,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.25,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.2649
+          }
+        },
+        {
+          "document_id": "scierc-dev-000035-C90-3014",
+          "event_ids": [
+            "evt-scierc-dev-000035-C90-3014-72b3cdce36",
+            "evt-scierc-dev-000035-C90-3014-2940676b96",
+            "evt-scierc-dev-000035-C90-3014-185959cb52",
+            "evt-scierc-dev-000035-C90-3014-f9254d5247"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5139,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.3667,
+            "type_flip_rate": 0.0667,
+            "new_edge_rate": 0.3667
+          }
+        },
+        {
+          "document_id": "scierc-dev-000036-IJCAI_2016_413_abs",
+          "event_ids": [
+            "evt-scierc-dev-000036-IJCAI_2016_413_abs-58a8229977",
+            "evt-scierc-dev-000036-IJCAI_2016_413_abs-5eea71aeb9",
+            "evt-scierc-dev-000036-IJCAI_2016_413_abs-c580c46c83",
+            "evt-scierc-dev-000036-IJCAI_2016_413_abs-35a2f3fe97"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.7946,
+            "type_agreement": 0.8333,
+            "disappearance_rate": 0.0833,
+            "type_flip_rate": 0.0833,
+            "new_edge_rate": 0.1508
+          }
+        },
+        {
+          "document_id": "scierc-dev-000037-C08-3010",
+          "event_ids": [
+            "evt-scierc-dev-000037-C08-3010-0c2e668c74",
+            "evt-scierc-dev-000037-C08-3010-4a31dcba8f",
+            "evt-scierc-dev-000037-C08-3010-695c91660f",
+            "evt-scierc-dev-000037-C08-3010-cccdf0be56"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.5238,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.3333,
+            "type_flip_rate": 0.0,
+            "new_edge_rate": 0.3333
+          }
+        },
+        {
+          "document_id": "scierc-dev-000038-J88-3002",
+          "event_ids": [
+            "evt-scierc-dev-000038-J88-3002-f0a8e814e4",
+            "evt-scierc-dev-000038-J88-3002-6a405fbfa0",
+            "evt-scierc-dev-000038-J88-3002-89490acfd0",
+            "evt-scierc-dev-000038-J88-3002-50af3df65f"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.4389,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.4583,
+            "type_flip_rate": 0.0833,
+            "new_edge_rate": 0.4028
+          }
+        },
+        {
+          "document_id": "scierc-dev-000039-N04-4028",
+          "event_ids": [
+            "evt-scierc-dev-000039-N04-4028-b40a8d1b83",
+            "evt-scierc-dev-000039-N04-4028-8f7e8522be",
+            "evt-scierc-dev-000039-N04-4028-f8f96e4960",
+            "evt-scierc-dev-000039-N04-4028-37bdaac8e0"
+          ],
+          "metrics": {
+            "avg_edge_overlap": 0.3264,
+            "type_agreement": 1.0,
+            "disappearance_rate": 0.5625,
+            "type_flip_rate": 0.2321,
+            "new_edge_rate": 0.4861
+          }
+        }
+      ],
+      "summary": {
+        "n_documents": 40,
+        "n_runs_per_doc": 4,
+        "temperature": 0.3,
+        "avg_edge_overlap": 0.616,
+        "type_agreement": 0.9067,
+        "disappearance_rate": 0.2813,
+        "type_flip_rate": 0.0592,
+        "new_edge_rate": 0.2615,
+        "edges_with_variance_updated": 319
+      }
+    },
+    "e1": {
+      "n": 25,
+      "top1_acc": 1.0,
+      "top3_recall": 1.0,
+      "mrr": 1.0,
+      "macro_f1": 1.0,
+      "per_cause_f1": {
+        "schema": 1.0
+      },
+      "per_cause_n": {
+        "schema": 25
+      },
+      "details": [
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-ed0d69f36a::f9526fbc7f",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-ed0d69f36a::21f7228ff8",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-ed0d69f36a::259f39ba92",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-ed0d69f36a::b93fd4967a",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-ed0d69f36a::ba23cac387",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-e2c0966a95::ab17fbd234",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-e2c0966a95::6c5b9397cd",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-e2c0966a95::a20f647292",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-e2c0966a95::dd7080c7e5",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-e2c0966a95::743a3cab2f",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000000-Skai_TV-e2c0966a95::496c7bcf0e",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::33ec7c565c",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::d220e53c92",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::4339809af0",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::f397dac433",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::3e72b078f2",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "prompt_clause"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::44641cc7b6",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000001-Washington_Place__West_Virginia_-892b77c1e4::2f827bf1dc",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::f52dae807f",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::787d3b9ea8",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::3604c90b68",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::cfbd176481",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema",
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::a1b2bd6c32",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::b5b1c16159",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        },
+        {
+          "edge_id": "evt-docred-validation-000002-IBM_Research___Brazil-cba33caa79::3c32b01606",
+          "gold_cause_type": "schema",
+          "pred_cause_type": "schema",
+          "pred_top_k": [
+            "schema"
+          ],
+          "rr": 1.0
+        }
+      ]
+    },
+    "e2": {
+      "n_edges": 509,
+      "n_wrong": 71,
+      "n_unmatched": 324,
+      "positive_labels": [
+        "wrong",
+        "unmatched"
+      ],
+      "metrics": {
+        "risk": {
+          "auc_pr": 0.797,
+          "roc_auc": 0.5289,
+          "p@5pct": 0.92,
+          "p@10pct": 0.8627,
+          "p@1": 1.0,
+          "p@3": 1.0
+        },
+        "prompt_sensitivity": {
+          "auc_pr": 0.8001,
+          "roc_auc": 0.5139,
+          "p@5pct": 0.92,
+          "p@10pct": 0.8627,
+          "p@1": 1.0,
+          "p@3": 1.0
+        },
+        "schema_sensitivity": {
+          "auc_pr": 0.7898,
+          "roc_auc": 0.5287,
+          "p@5pct": 0.92,
+          "p@10pct": 0.8627,
+          "p@1": 0.0,
+          "p@3": 0.3333
+        },
+        "stochastic_variance": {
+          "auc_pr": 0.8408,
+          "roc_auc": 0.5592,
+          "p@5pct": 0.96,
+          "p@10pct": 0.9412,
+          "p@1": 1.0,
+          "p@3": 1.0
+        },
+        "1_minus_stability": {
+          "auc_pr": 0.7972,
+          "roc_auc": 0.529,
+          "p@5pct": 0.92,
+          "p@10pct": 0.8627,
+          "p@1": 1.0,
+          "p@3": 1.0
+        },
+        "random": {
+          "auc_pr": 0.7765,
+          "roc_auc": 0.4742,
+          "p@5pct": 0.88,
+          "p@10pct": 0.8039,
+          "p@1": 1.0,
+          "p@3": 1.0
+        }
+      }
+    },
+    "e3": {
+      "confusion_matrix": {
+        "P131": {
+          "location": 9,
+          "P131": 12,
+          "person_origin": 1,
+          "<DISAPPEARED>": 3,
+          "OTHER": 2,
+          "P17": 1
+        },
+        "P361": {
+          "OTHER": 3,
+          "P361": 3
+        },
+        "P580": {
+          "creation": 3,
+          "P580": 3
+        },
+        "P463": {
+          "OTHER": 2,
+          "P463": 2
+        },
+        "P17": {
+          "location": 2,
+          "P131": 2
+        },
+        "P108": {
+          "creation": 2,
+          "OTHER": 2,
+          "P108": 5,
+          "career": 1
+        },
+        "OTHER": {
+          "<DISAPPEARED>": 1,
+          "OTHER": 1
+        },
+        "P159": {
+          "location": 2,
+          "P131": 2
+        }
+      },
+      "flip_rates": {
+        "coarse": {
+          "n_observations": 32,
+          "type_flip_rate": 0.84375,
+          "disappearance_rate": 0.125,
+          "percent_downgraded_to_other": 0.25,
+          "percent_correct_to_wrong": 0.0625,
+          "percent_wrong_to_correct": 0.0
+        },
+        "with_other": {
+          "n_observations": 32,
+          "type_flip_rate": 0.1875,
+          "disappearance_rate": 0.0,
+          "percent_downgraded_to_other": 0.0625,
+          "percent_correct_to_wrong": 0.0625,
+          "percent_wrong_to_correct": 0.0
+        }
+      }
+    },
+    "e4": [
+      {
+        "planner": "exhaustive",
+        "budget": 1,
+        "n_chosen": 59,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.2542372881355932
+      },
+      {
+        "planner": "exhaustive",
+        "budget": 2,
+        "n_chosen": 59,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.2542372881355932
+      },
+      {
+        "planner": "exhaustive",
+        "budget": 3,
+        "n_chosen": 59,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.2542372881355932
+      },
+      {
+        "planner": "exhaustive",
+        "budget": 4,
+        "n_chosen": 59,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.2542372881355932
+      },
+      {
+        "planner": "exhaustive",
+        "budget": 6,
+        "n_chosen": 59,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.2542372881355932
+      },
+      {
+        "planner": "exhaustive",
+        "budget": 8,
+        "n_chosen": 59,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.2542372881355932
+      },
+      {
+        "planner": "random",
+        "budget": 1,
+        "n_chosen": 3,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "random",
+        "budget": 2,
+        "n_chosen": 6,
+        "n_chosen_with_data": 1,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.16666666666666666
+      },
+      {
+        "planner": "random",
+        "budget": 3,
+        "n_chosen": 9,
+        "n_chosen_with_data": 3,
+        "cause_recall_at_k": 0.046875,
+        "cache_hit_rate": 0.3333333333333333
+      },
+      {
+        "planner": "random",
+        "budget": 4,
+        "n_chosen": 12,
+        "n_chosen_with_data": 4,
+        "cause_recall_at_k": 0.359375,
+        "cache_hit_rate": 0.3333333333333333
+      },
+      {
+        "planner": "random",
+        "budget": 6,
+        "n_chosen": 18,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.4687500000000001,
+        "cache_hit_rate": 0.3333333333333333
+      },
+      {
+        "planner": "random",
+        "budget": 8,
+        "n_chosen": 24,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.4687500000000001,
+        "cache_hit_rate": 0.25
+      },
+      {
+        "planner": "span_only",
+        "budget": 1,
+        "n_chosen": 3,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "span_only",
+        "budget": 2,
+        "n_chosen": 6,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "span_only",
+        "budget": 3,
+        "n_chosen": 9,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "span_only",
+        "budget": 4,
+        "n_chosen": 12,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "span_only",
+        "budget": 6,
+        "n_chosen": 18,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "span_only",
+        "budget": 8,
+        "n_chosen": 24,
+        "n_chosen_with_data": 0,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 0.0
+      },
+      {
+        "planner": "prompt_only",
+        "budget": 1,
+        "n_chosen": 3,
+        "n_chosen_with_data": 3,
+        "cause_recall_at_k": 0.0,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "prompt_only",
+        "budget": 2,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.10937500000000001,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "prompt_only",
+        "budget": 3,
+        "n_chosen": 9,
+        "n_chosen_with_data": 9,
+        "cause_recall_at_k": 0.19791666666666669,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "prompt_only",
+        "budget": 4,
+        "n_chosen": 9,
+        "n_chosen_with_data": 9,
+        "cause_recall_at_k": 0.19791666666666669,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "prompt_only",
+        "budget": 6,
+        "n_chosen": 9,
+        "n_chosen_with_data": 9,
+        "cause_recall_at_k": 0.19791666666666669,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "prompt_only",
+        "budget": 8,
+        "n_chosen": 9,
+        "n_chosen_with_data": 9,
+        "cause_recall_at_k": 0.19791666666666669,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "schema_only",
+        "budget": 1,
+        "n_chosen": 3,
+        "n_chosen_with_data": 3,
+        "cause_recall_at_k": 0.10416666666666666,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "schema_only",
+        "budget": 2,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.8020833333333333,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "schema_only",
+        "budget": 3,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.8020833333333333,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "schema_only",
+        "budget": 4,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.8020833333333333,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "schema_only",
+        "budget": 6,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.8020833333333333,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "schema_only",
+        "budget": 8,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.8020833333333333,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "graphguard",
+        "budget": 1,
+        "n_chosen": 3,
+        "n_chosen_with_data": 3,
+        "cause_recall_at_k": 0.6979166666666666,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "graphguard",
+        "budget": 2,
+        "n_chosen": 6,
+        "n_chosen_with_data": 6,
+        "cause_recall_at_k": 0.8020833333333333,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "graphguard",
+        "budget": 3,
+        "n_chosen": 9,
+        "n_chosen_with_data": 9,
+        "cause_recall_at_k": 0.8697916666666667,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "graphguard",
+        "budget": 4,
+        "n_chosen": 12,
+        "n_chosen_with_data": 12,
+        "cause_recall_at_k": 0.9583333333333334,
+        "cache_hit_rate": 1.0
+      },
+      {
+        "planner": "graphguard",
+        "budget": 6,
+        "n_chosen": 18,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.8333333333333334
+      },
+      {
+        "planner": "graphguard",
+        "budget": 8,
+        "n_chosen": 24,
+        "n_chosen_with_data": 15,
+        "cause_recall_at_k": 1.0,
+        "cache_hit_rate": 0.625
+      }
+    ],
+    "repair": [
+      {
+        "method": "raw",
+        "fraction_removed": 0.0,
+        "n_kept": 1208,
+        "tp": 331,
+        "fp": 877,
+        "fn": 124,
+        "precision": 0.2740066225165563,
+        "recall": 0.7274725274725274,
+        "f1": 0.3980757666867108
+      },
+      {
+        "method": "random",
+        "fraction_removed": 0.0,
+        "n_kept": 1208,
+        "tp": 331,
+        "fp": 877,
+        "fn": 124,
+        "precision": 0.2740066225165563,
+        "recall": 0.7274725274725274,
+        "f1": 0.3980757666867108
+      },
+      {
+        "method": "by_confidence",
+        "fraction_removed": 0.0,
+        "n_kept": 1208,
+        "tp": 331,
+        "fp": 877,
+        "fn": 124,
+        "precision": 0.2740066225165563,
+        "recall": 0.7274725274725274,
+        "f1": 0.3980757666867108
+      },
+      {
+        "method": "by_risk",
+        "fraction_removed": 0.0,
+        "n_kept": 1208,
+        "tp": 331,
+        "fp": 877,
+        "fn": 124,
+        "precision": 0.2740066225165563,
+        "recall": 0.7274725274725274,
+        "f1": 0.3980757666867108
+      },
+      {
+        "method": "by_schema_sens",
+        "fraction_removed": 0.0,
+        "n_kept": 1208,
+        "tp": 331,
+        "fp": 877,
+        "fn": 124,
+        "precision": 0.2740066225165563,
+        "recall": 0.7274725274725274,
+        "f1": 0.3980757666867108
+      },
+      {
+        "method": "by_stability",
+        "fraction_removed": 0.0,
+        "n_kept": 1208,
+        "tp": 331,
+        "fp": 877,
+        "fn": 124,
+        "precision": 0.2740066225165563,
+        "recall": 0.7274725274725274,
+        "f1": 0.3980757666867108
+      },
+      {
+        "method": "random",
+        "fraction_removed": 0.1,
+        "n_kept": 1087,
+        "tp": 305,
+        "fp": 782,
+        "fn": 150,
+        "precision": 0.28058877644894203,
+        "recall": 0.6703296703296703,
+        "f1": 0.3955901426718547
+      },
+      {
+        "method": "by_confidence",
+        "fraction_removed": 0.1,
+        "n_kept": 1087,
+        "tp": 316,
+        "fp": 771,
+        "fn": 139,
+        "precision": 0.2907083716651334,
+        "recall": 0.6945054945054945,
+        "f1": 0.4098573281452659
+      },
+      {
+        "method": "by_risk",
+        "fraction_removed": 0.1,
+        "n_kept": 1087,
+        "tp": 314,
+        "fp": 773,
+        "fn": 141,
+        "precision": 0.2888684452621895,
+        "recall": 0.6901098901098901,
+        "f1": 0.40726329442282755
+      },
+      {
+        "method": "by_schema_sens",
+        "fraction_removed": 0.1,
+        "n_kept": 1087,
+        "tp": 315,
+        "fp": 772,
+        "fn": 140,
+        "precision": 0.28978840846366144,
+        "recall": 0.6923076923076923,
+        "f1": 0.4085603112840467
+      },
+      {
+        "method": "by_stability",
+        "fraction_removed": 0.1,
+        "n_kept": 1087,
+        "tp": 315,
+        "fp": 772,
+        "fn": 140,
+        "precision": 0.28978840846366144,
+        "recall": 0.6923076923076923,
+        "f1": 0.4085603112840467
+      },
+      {
+        "method": "random",
+        "fraction_removed": 0.2,
+        "n_kept": 966,
+        "tp": 269,
+        "fp": 697,
+        "fn": 186,
+        "precision": 0.2784679089026915,
+        "recall": 0.5912087912087912,
+        "f1": 0.3786066150598171
+      },
+      {
+        "method": "by_confidence",
+        "fraction_removed": 0.2,
+        "n_kept": 966,
+        "tp": 295,
+        "fp": 671,
+        "fn": 160,
+        "precision": 0.3053830227743271,
+        "recall": 0.6483516483516484,
+        "f1": 0.4152005629838142
+      },
+      {
+        "method": "by_risk",
+        "fraction_removed": 0.2,
+        "n_kept": 966,
+        "tp": 292,
+        "fp": 674,
+        "fn": 163,
+        "precision": 0.3022774327122153,
+        "recall": 0.6417582417582418,
+        "f1": 0.41097818437719913
+      },
+      {
+        "method": "by_schema_sens",
+        "fraction_removed": 0.2,
+        "n_kept": 966,
+        "tp": 294,
+        "fp": 672,
+        "fn": 161,
+        "precision": 0.30434782608695654,
+        "recall": 0.6461538461538462,
+        "f1": 0.41379310344827586
+      },
+      {
+        "method": "by_stability",
+        "fraction_removed": 0.2,
+        "n_kept": 966,
+        "tp": 297,
+        "fp": 669,
+        "fn": 158,
+        "precision": 0.30745341614906835,
+        "recall": 0.6527472527472528,
+        "f1": 0.4180154820548909
+      },
+      {
+        "method": "random",
+        "fraction_removed": 0.3,
+        "n_kept": 846,
+        "tp": 236,
+        "fp": 610,
+        "fn": 219,
+        "precision": 0.2789598108747045,
+        "recall": 0.5186813186813187,
+        "f1": 0.3627978478093774
+      },
+      {
+        "method": "by_confidence",
+        "fraction_removed": 0.3,
+        "n_kept": 846,
+        "tp": 256,
+        "fp": 590,
+        "fn": 199,
+        "precision": 0.30260047281323876,
+        "recall": 0.5626373626373626,
+        "f1": 0.393543428132206
+      },
+      {
+        "method": "by_risk",
+        "fraction_removed": 0.3,
+        "n_kept": 846,
+        "tp": 273,
+        "fp": 573,
+        "fn": 182,
+        "precision": 0.32269503546099293,
+        "recall": 0.6,
+        "f1": 0.4196771714066103
+      },
+      {
+        "method": "by_schema_sens",
+        "fraction_removed": 0.3,
+        "n_kept": 846,
+        "tp": 275,
+        "fp": 571,
+        "fn": 180,
+        "precision": 0.32505910165484636,
+        "recall": 0.6043956043956044,
+        "f1": 0.42275172943889316
+      },
+      {
+        "method": "by_stability",
+        "fraction_removed": 0.3,
+        "n_kept": 846,
+        "tp": 271,
+        "fp": 575,
+        "fn": 184,
+        "precision": 0.3203309692671395,
+        "recall": 0.5956043956043956,
+        "f1": 0.4166026133743274
+      },
+      {
+        "method": "random",
+        "fraction_removed": 0.5,
+        "n_kept": 604,
+        "tp": 175,
+        "fp": 429,
+        "fn": 280,
+        "precision": 0.2897350993377483,
+        "recall": 0.38461538461538464,
+        "f1": 0.3305004721435317
+      },
+      {
+        "method": "by_confidence",
+        "fraction_removed": 0.5,
+        "n_kept": 604,
+        "tp": 215,
+        "fp": 389,
+        "fn": 240,
+        "precision": 0.35596026490066224,
+        "recall": 0.4725274725274725,
+        "f1": 0.40604343720491026
+      },
+      {
+        "method": "by_risk",
+        "fraction_removed": 0.5,
+        "n_kept": 604,
+        "tp": 219,
+        "fp": 385,
+        "fn": 236,
+        "precision": 0.36258278145695366,
+        "recall": 0.48131868131868133,
+        "f1": 0.41359773371104824
+      },
+      {
+        "method": "by_schema_sens",
+        "fraction_removed": 0.5,
+        "n_kept": 604,
+        "tp": 206,
+        "fp": 398,
+        "fn": 249,
+        "precision": 0.34105960264900664,
+        "recall": 0.45274725274725275,
+        "f1": 0.3890462700661001
+      },
+      {
+        "method": "by_stability",
+        "fraction_removed": 0.5,
+        "n_kept": 604,
+        "tp": 216,
+        "fp": 388,
+        "fn": 239,
+        "precision": 0.3576158940397351,
+        "recall": 0.4747252747252747,
+        "f1": 0.40793201133144474
+      }
+    ]
+  }
+}
