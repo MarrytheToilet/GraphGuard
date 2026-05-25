@@ -26,7 +26,7 @@ DATASETS = [
     ("SciERC",    "scierc__deepseek-v4-flash__100d"),
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
-OUT_FIG = Path("paper/figures/fig_budget_planner.png")
+OUT_FIG = Path("assets/figures/fig_budget_planner.png")
 OUT_JSON = Path("reports/cross_run/budget_planner.json")
 
 BUDGETS = [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]

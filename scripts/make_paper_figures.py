@@ -1,7 +1,7 @@
 """Regenerate all paper figures with publication-ready styling.
 
 Reads from existing report artefacts (no extraction re-run) and writes
-PNGs into paper/figures/ with friendly labels, larger fonts, and
+PNGs into assets/figures/ with friendly labels, larger fonts, and
 consistent palette.  Replaces the ad-hoc generators that leaked variable
 names (run IDs, family slugs, P-codes) into the camera-ready figures.
 
@@ -15,7 +15,7 @@ Inputs (relative to repo root):
   data/processed/runs/<run>/reports/e5_faithfulness.json
   data/processed/runs/<run>/reports/e6_query_stability.json
 
-Outputs (paper/figures/):
+Outputs (assets/figures/):
   fig_crossrun_violations.png   contract violation rates run x contract
   fig_amp_crossrun.png          Amp(Q) cross-run consistency
   fig_strict_vs_soft.png        strict vs soft perturbation comparison
@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "paper" / "figures"
+OUT = ROOT / "assets" / "figures"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # ---------- palette --------------------------------------------------------
@@ -393,7 +393,7 @@ _BLACK       = _S.BLACK
 
 REPORTS  = ROOT / "reports" / "cross_run"
 RUNS_DIR = ROOT / "data" / "processed" / "runs"
-FIG_DIR  = ROOT / "paper" / "figures"
+FIG_DIR  = ROOT / "assets" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 CORPORA = [

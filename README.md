@@ -36,12 +36,6 @@ GraphGuard fixes this with a contracts-first design: instability is reframed as 
 
 ## 🧪 Method
 
-<div align="center">
-  <img src="paper/figures/fig_contract_overview.png" alt="Drift contract overview" width="92%">
-  <br/>
-  <sub><b>Drift-contract overview.</b> A base extraction and a controlled counterfactual produce two materialized graph views; contracts compare them at the graph level and through downstream graph queries.</sub>
-</div>
-
 GraphGuard has three layers.
 
 ### 1. 📐 Stochastic graph views and drift contracts
@@ -79,7 +73,7 @@ When document, schema, prompt, evidence, model, seed, and output format are all 
 On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1), schema-description (K1c), prompt-presentation (K1b), and decoding-resample (K6) contracts all have **violation rates above 0.90**; evidence-presentation invariance (K3) stays lower but still violates its budget at 0.64. The query-level robustness contract reaches a violation rate of 0.93 on join queries, and cross-model recall stability is the only contract that stays low (0.13).
 
 <div align="center">
-  <img src="paper/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
+  <img src="assets/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
   <br/>
   <sub><b>Cross-run violations.</b> Darker cells = higher violation rates. The same qualitative pattern reappears across DocRED, Re-DocRED, SciERC, BC5CDR and four LLM extractors; BC5CDR drift is lower but still non-negligible.</sub>
 </div>
@@ -89,25 +83,25 @@ On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1), schema-
 GraphGuard does **not** treat its default tolerances as universal constants. Three complementary checks confirm the diagnostics are robust:
 
 <div align="center">
-  <img src="paper/figures/fig_noise_floor.png" alt="Baseline-normalized drift" width="80%">
+  <img src="assets/figures/fig_noise_floor.png" alt="Baseline-normalized drift" width="80%">
   <br/>
   <sub><b>Baseline-normalized drift.</b> Schema-presentation and evidence-order perturbations retain positive excess drift above the repeated-extraction baseline; pure entity-alias perturbations fall back to baseline after canonicalization.</sub>
 </div>
 
 <div align="center">
-  <img src="paper/figures/fig_calibration.png" alt="SLA-driven threshold calibration" width="80%">
+  <img src="assets/figures/fig_calibration.png" alt="SLA-driven threshold calibration" width="80%">
   <br/>
   <sub><b>SLA calibration.</b> Coverage and harmful-publication rate as the graph-drift threshold τ varies, with τ* = the largest τ satisfying a 5% harm-rate target. Re-DocRED and SciERC admit feasible thresholds under graph drift alone; DocRED and BC5CDR require the answer-aware gate.</sub>
 </div>
 
 <div align="center">
-  <img src="paper/figures/fig_2d_sensitivity.png" alt="Two-dimensional gate sensitivity" width="80%">
+  <img src="assets/figures/fig_2d_sensitivity.png" alt="Two-dimensional gate sensitivity" width="80%">
   <br/>
   <sub><b>2D sensitivity.</b> The chosen operating point τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70 (gold-bordered cell) sits inside a contiguous low-risk region where harm ≤ 0.05 and retained utility ≥ 0.90 on all four corpora.</sub>
 </div>
 
 <div align="center">
-  <img src="paper/figures/fig_strict_vs_soft.png" alt="Stability buckets" width="80%">
+  <img src="assets/figures/fig_strict_vs_soft.png" alt="Stability buckets" width="80%">
   <br/>
   <sub><b>Stability buckets.</b> Instability already shows up under L1 (repeated extraction + order-only changes): DocRED L1 violation rate 0.69, harmful-regression rate 0.35. Failures are not only artifacts of presentation or schema-definition rewrites.</sub>
 </div>
@@ -117,7 +111,7 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 Graph-level drift does not translate uniformly into query-answer drift. On the DocRED primary run, **join-query amplification reaches 1.32 (95% bootstrap CI [1.25, 1.40])**, while lookup, neighbor, and two-hop queries absorb part of the edge drift. Schema-density matters: on the sparser SciERC and BC5CDR schemas, join amplification falls to 0.68 and 0.02, because paired join answers are often empty on both sides. Query-visible drift depends on **both schema density and query topology**.
 
 <div align="center">
-  <img src="paper/figures/fig_amp_crossrun.png" alt="Cross-run query amplification" width="92%">
+  <img src="assets/figures/fig_amp_crossrun.png" alt="Cross-run query amplification" width="92%">
   <br/>
   <sub><b>Query amplification.</b> Lookup and join amplification across the paper runs; the dashed line marks no amplification. Join amplification stays above 1 on the DocRED family.</sub>
 </div>
@@ -127,7 +121,7 @@ Graph-level drift does not translate uniformly into query-answer drift. On the D
 On 3,921 gold-annotated paired comparisons with at least one non-empty answer, the harmful-regression base rate is **38.7%**. Drift correlates with answer-side error: ρ(Drift, |ΔR|) = 0.345 and ρ(Drift, |ΔP|) = 0.208 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean ΔR = 0.064 and ΔP = 0.091, vs. 0.003 and 0.009 for satisfied pairs. Across the four corpora, **AUROC is 0.56–0.73 for graph drift and 0.64–0.91 for answer-set drift**, and the combined GraphGuard gate tracks the answer-side signal.
 
 <div align="center">
-  <img src="paper/figures/fig_auroc.png" alt="ROC and PR curves" width="92%">
+  <img src="assets/figures/fig_auroc.png" alt="ROC and PR curves" width="92%">
   <br/>
   <sub><b>Threshold-free harmful-regression detection.</b> Answer-set drift is a stronger predictor than graph drift; the combined GraphGuard gate follows the answer-side curve.</sub>
 </div>
@@ -137,13 +131,13 @@ On 3,921 gold-annotated paired comparisons with at least one non-empty answer, t
 Deployed as a release gate before Kuzu ingestion, GraphGuard uses only gold-free signals — edge-set drift and Cypher answer-set drift — to publish or block each counterfactual graph. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **18–31% of evaluated pairs are true regressions**, 9–22% are improvements, and the gate reduces direct two-hop violations relative to confidence-only and self-consistency baselines.
 
 <div align="center">
-  <img src="paper/figures/fig_riskcoverage.png" alt="Risk-coverage of the Kuzu gate" width="80%">
+  <img src="assets/figures/fig_riskcoverage.png" alt="Risk-coverage of the Kuzu gate" width="80%">
   <br/>
   <sub><b>Kuzu gate risk–coverage.</b> Decision-time signals are gold-free; gold labels are used only for offline harm annotation.</sub>
 </div>
 
 <div align="center">
-  <img src="paper/figures/fig_budget_planner.png" alt="Budget planner" width="80%">
+  <img src="assets/figures/fig_budget_planner.png" alt="Budget planner" width="80%">
   <br/>
   <sub><b>Materialization planner.</b> Token-budget vs. discovered-violation curve for the contract-prioritized scheduler.</sub>
 </div>
@@ -169,11 +163,61 @@ cp .env.example .env
 # Set OPENAI_BASE_URL, OPENAI_API_KEY, OPENAI_MODEL in .env
 ```
 
-### 2. 🖼️ Regenerate the figures and dependent tables (no API calls)
+### 2. 📦 Dataset setup
+
+Raw corpora are **not** shipped with the repo (they have separate licences); you only need them if you plan to re-run the extraction pipeline. All paper figures and tables can be regenerated from the cached reports in `reports/` without any raw data.
+
+If you do want to re-extract, place each corpus under `data/raw/` exactly as below — every adapter under `graphguard/data/` and every config in `configs/*.yaml` expects this layout.
+
+```text
+data/raw/
+├── docred/                                        # auto-downloaded via 🤗 datasets ("docred")
+│   └── (left empty — cached into data/cache/hf/ on first run)
+├── redocred/                                      # Re-DocRED revised splits
+│   ├── train_revised.json
+│   └── dev_revised.json
+├── scierc/processed_data/json/                    # SciERC official JSON release
+│   ├── train.json
+│   ├── dev.json
+│   └── test.json
+└── cdr/CDR_Data/CDR.Corpus.v010516/               # BioCreative V CDR corpus
+    ├── CDR_TrainingSet.BioC.xml
+    ├── CDR_DevelopmentSet.BioC.xml
+    └── CDR_TestSet.BioC.xml
+```
+
+Where to download each one:
+
+| Corpus       | Source                                                                                          | Notes                                                                                                  |
+| ------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **DocRED**     | Hugging Face hub: [`docred`](https://huggingface.co/datasets/docred)                            | Fetched automatically by `graphguard/data/docred.py` on first call; cached under `data/cache/hf/`.     |
+| **Re-DocRED**  | GitHub: [`tonytan48/Re-DocRED`](https://github.com/tonytan48/Re-DocRED) → `data/`                | Copy `train_revised.json` and `dev_revised.json` into `data/raw/redocred/`.                            |
+| **SciERC**     | AllenAI release: [`sciie.tar.gz`](http://nlp.cs.washington.edu/sciIE/data/sciie.tar.gz)         | Untar and keep the inner `processed_data/json/{train,dev,test}.json`.                                  |
+| **BC5CDR**     | BioCreative V CDR: [BioC.zip](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-v/track-3-cdr/) | Place the `CDR.Corpus.v010516/` directory (BioC XML files) under `data/raw/cdr/CDR_Data/`.             |
+
+Each dataset path is referenced exactly once, from its YAML in `configs/`:
+
+| Config                  | `local_files` / `local_dir`                                       |
+| ----------------------- | ----------------------------------------------------------------- |
+| `configs/docred.yaml`   | none (Hugging Face `hf_name: docred`)                             |
+| `configs/redocred.yaml` | `data/raw/redocred/{train,dev}_revised.json`                       |
+| `configs/scierc.yaml`   | `data/raw/scierc/processed_data/json/{train,dev,test}.json`        |
+| `configs/cdr.yaml`      | `data/raw/cdr/CDR_Data/CDR.Corpus.v010516/`                        |
+
+You can sanity-check the layout with:
+
+```bash
+ls data/raw/redocred/{train,dev}_revised.json \
+   data/raw/scierc/processed_data/json/{train,dev,test}.json \
+   data/raw/cdr/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.BioC.xml \
+  && echo "raw data layout OK"
+```
+
+### 3. 🖼️ Regenerate the figures and dependent tables (no API calls)
 
 ```bash
 # All 7 figures produced by the unified figure script
-python scripts/make_paper_figures.py            # writes paper/figures/*.png
+python scripts/make_paper_figures.py            # writes assets/figures/*.png
 
 # Risk-coverage figure (fig_riskcoverage) + tab_e2ekuzu table
 python scripts/make_kuzu_gate_artifacts.py
@@ -183,12 +227,6 @@ python scripts/run_budget_planner.py
 ```
 
 `make_paper_figures.py` accepts a target argument: `all` (default), `replacement` (cross-run violations / amp / strict-vs-soft) or `phase_w` (noise-floor / calibration / 2D-sensitivity / AUROC).
-
-### 3. 📄 Rebuild the PDF
-
-```bash
-cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
-```
 
 ### 4. 🔁 Re-run an experiment end to end (needs API credentials)
 
@@ -278,38 +316,17 @@ GraphGuard/
 │   ├── run_budget_planner.py
 │   ├── aggregate_cross_run.py
 │   └── compute_amp_ci.py
-├── paper/             # 📝 LaTeX source, figures/, tables/, references
+├── paper/             # 📝 LaTeX source (out-of-tree; see paper PDF in releases)
+├── data/raw/          # 🌐 Raw corpora — populate per "Dataset setup" above
 ├── data/processed/    # 🗄️ Per-run lineage SQLite (re-buildable from scripts/)
 ├── reports/runs/      # 📊 Per-run JSON reports (contracts, e0, baselines, evals, …)
 ├── reports/cross_run/ # 📈 Cross-run aggregations consumed by paper figures
-└── assets/            # 🖼️ README header image (pr_fig.png)
+└── assets/            # 🖼️ README header image + regenerated paper figures (assets/figures/)
 ```
 
 Useful documentation:
 
 | Document                                       | Focus                                                            |
 | ---------------------------------------------- | ---------------------------------------------------------------- |
-| 📝 [`paper/main.tex`](paper/main.tex)          | Full method, formal definitions, and result tables.              |
 | 🚀 [`scripts/README.md`](scripts/README.md)    | Per-script inventory and CLI flags for every stage.              |
 | ⚙️ `configs/experiments/`                      | Run profiles (document count, budgets, oracle/e0 subsets).       |
-
----
-
-## 📚 Citation
-
-If you use GraphGuard, please cite the companion paper:
-
-```bibtex
-@misc{graphguard2026,
-  title  = {GraphGuard: Reliability Auditing for LLM-Extracted Graph Databases},
-  author = {Anonymous},
-  year   = {2026},
-  note   = {Manuscript},
-}
-```
-
----
-
-## 📄 License and data
-
-Code is released for research use. Raw corpus text from DocRED, Re-DocRED, SciERC, and BC5CDR is **not** redistributed — see the per-dataset YAMLs under `configs/` for download instructions. The released artifact ships configs, schema/prompt templates, contract definitions, analysis scripts, figure-generation scripts, sampled document identifiers, and the tested Kuzu dependency pin, together with cached extraction events for offline replay.

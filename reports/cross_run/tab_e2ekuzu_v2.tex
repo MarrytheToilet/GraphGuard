@@ -1,0 +1,30 @@
+\begin{table*}[t]
+\centering\small
+\caption{End-to-end Kuzu ingestion guard at $N{=}300$ pairs per corpus. \emph{Publish-all} ingests every extracted graph; \emph{Graph-only} blocks when edge-Jaccard drift $\geq\tau_g{=}0.45$; \emph{GraphGuard} additionally blocks when any workload query has gold-free answer-set Jaccard drift $\geq\tau_q{=}0.70$ (the blocking signal does \emph{not} use gold answers); \emph{Random} is matched to GraphGuard's block rate as a baseline. Harm is a directional regression in mean per-query $F_1$ ($f_1^{\mathrm{base}}{-}f_1^{\mathrm{cf}}>0.05$); cf graphs that \emph{improve} over base are counted as benign (not harmful). Pub.HarmRate and RetainUtil are reported with bootstrap 95\% CIs ($1{,}000$ resamples over published pairs). The full risk-coverage trade-off across all thresholds is in Figure~\ref{fig:riskcoverage}; the table reports one operating point.}
+\label{tab:e2ekuzu}
+\begin{tabular}{llcccccll}
+\toprule
+Dataset & Policy & Pub.\% & Blk.\% & HarmRec. & HarmPrec. & FalseBlk. & Pub.HarmRate [CI] & RetainUtil. [CI] \\
+\midrule
+DocRED & Publish-all & 100 & 0 & 0.00 & 0.00 & 0.00 & 0.24 [0.19,0.29] & 0.92 [0.90,0.93] \\
+ & Graph-only gate & 41 & 59 & 0.72 & 0.29 & 0.55 & 0.16 [0.10,0.23] & 0.95 [0.93,0.97] \\
+ & GraphGuard & 24 & 76 & 0.97 & 0.31 & 0.69 & 0.03 [0.00,0.07] & 0.99 [0.99,1.00] \\
+ & Random (matched) & 24 & 76 & 0.78 & 0.24 & 0.76 & 0.23 [0.13,0.31] & 0.91 [0.88,0.94] \\
+\midrule
+Re-DocRED & Publish-all & 100 & 0 & 0.00 & 0.00 & 0.00 & 0.18 [0.14,0.23] & 0.96 [0.95,0.96] \\
+ & Graph-only gate & 45 & 55 & 0.67 & 0.22 & 0.53 & 0.13 [0.07,0.19] & 0.96 [0.96,0.97] \\
+ & GraphGuard & 12 & 88 & 1.00 & 0.21 & 0.85 & 0.00 [0.00,0.00] & 1.00 [1.00,1.00] \\
+ & Random (matched) & 13 & 87 & 0.85 & 0.18 & 0.88 & 0.21 [0.08,0.34] & 0.94 [0.92,0.96] \\
+\midrule
+SciERC & Publish-all & 100 & 0 & 0.00 & 0.00 & 0.00 & 0.31 [0.25,0.36] & 0.86 [0.84,0.88] \\
+ & Graph-only gate & 23 & 77 & 0.88 & 0.35 & 0.72 & 0.16 [0.07,0.25] & 0.91 [0.87,0.95] \\
+ & GraphGuard & 13 & 87 & 1.00 & 0.35 & 0.82 & 0.00 [0.00,0.00] & 0.99 [0.98,1.00] \\
+ & Random (matched) & 14 & 86 & 0.82 & 0.29 & 0.88 & 0.41 [0.27,0.56] & 0.83 [0.78,0.88] \\
+\midrule
+BC5CDR & Publish-all & 100 & 0 & 0.00 & 0.00 & 0.00 & 0.19 [0.15,0.24] & 0.84 [0.80,0.87] \\
+ & Graph-only gate & 68 & 32 & 0.57 & 0.34 & 0.26 & 0.12 [0.08,0.16] & 0.91 [0.88,0.94] \\
+ & GraphGuard & 60 & 40 & 0.86 & 0.42 & 0.29 & 0.04 [0.02,0.07] & 0.97 [0.96,0.98] \\
+ & Random (matched) & 62 & 38 & 0.34 & 0.18 & 0.38 & 0.20 [0.14,0.26] & 0.84 [0.80,0.88] \\
+\bottomrule
+\end{tabular}
+\end{table*}

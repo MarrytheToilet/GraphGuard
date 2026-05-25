@@ -15,8 +15,8 @@ DATASETS = [
     ("SciERC",    "scierc__deepseek-v4-flash__100d"),
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
-OUT_TABLE = Path("paper/tables/tab_e2ekuzu_v2.tex")
-OUT_FIG   = Path("paper/figures/fig_riskcoverage.png")
+OUT_TABLE = Path("reports/cross_run/tab_e2ekuzu_v2.tex")
+OUT_FIG   = Path("assets/figures/fig_riskcoverage.png")
 
 TAU_GRAPH_DEFAULT = 0.45
 TAU_QUERY_DEFAULT = 0.70
@@ -146,6 +146,7 @@ def build_table():
     L.append(r"\bottomrule")
     L.append(r"\end{tabular}")
     L.append(r"\end{table*}")
+    OUT_TABLE.parent.mkdir(parents=True, exist_ok=True)
     OUT_TABLE.write_text("\n".join(L) + "\n")
     print("wrote", OUT_TABLE)
 
