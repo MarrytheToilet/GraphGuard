@@ -1,0 +1,52 @@
+{
+ "toolchain": "langchain.LLMGraphTransformer",
+ "model": "deepseek-v4-flash",
+ "n_docs": 100,
+ "summary": {
+  "resample": {
+   "n": 99,
+   "errors": 1,
+   "mean_drift": 0.5927,
+   "median_drift": 0.619,
+   "tau": 0.15,
+   "violation_rate": 0.9495,
+   "verdict": "VIOLATED"
+  },
+  "schema_reorder": {
+   "n": 99,
+   "errors": 0,
+   "mean_drift": 0.6248,
+   "median_drift": 0.6471,
+   "tau": 0.15,
+   "violation_rate": 0.9798,
+   "verdict": "VIOLATED"
+  },
+  "schema_rename": {
+   "n": 99,
+   "errors": 1,
+   "mean_drift": 0.6482,
+   "median_drift": 0.6667,
+   "tau": 0.15,
+   "violation_rate": 1.0,
+   "verdict": "VIOLATED"
+  },
+  "prompt_para": {
+   "n": 99,
+   "errors": 1,
+   "mean_drift": 0.5899,
+   "median_drift": 0.6429,
+   "tau": 0.2,
+   "violation_rate": 0.9192,
+   "verdict": "VIOLATED"
+  },
+  "evidence_reorder": {
+   "n": 99,
+   "errors": 1,
+   "mean_drift": 0.6271,
+   "median_drift": 0.6522,
+   "tau": 0.2,
+   "violation_rate": 0.9293,
+   "verdict": "VIOLATED"
+  }
+ }
+}

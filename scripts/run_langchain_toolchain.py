@@ -82,14 +82,23 @@ RENAME_INV = {v: k for k, v in RENAME.items()}
 CONDITIONS = ["base", "resample", "schema_reorder", "schema_rename",
               "prompt_para", "evidence_reorder"]
 
-PARA_SYSTEM = (
-    "You are an information-extraction assistant building a knowledge graph. "
-    "Read the passage and identify the entities it mentions together with the "
-    "relationships that hold between them, using only the permitted relationship "
-    "types. Be faithful to the text: never invent facts that the passage does "
-    "not support, and keep entity names exactly as written. Output must follow "
-    "the requested structured format."
-)
+def para_system(rels: list[str]) -> str:
+    """Paraphrased system prompt (K1b axis). Keeps the output contract of the
+    transformer's default unstructured prompt (JSON list with head / head_type /
+    relation / tail / tail_type) and the permitted relation list, so only the
+    instruction wording changes."""
+    return (
+        "You are an information-extraction assistant that turns text passages "
+        "into knowledge-graph triples. Read the passage and identify the "
+        "entities it mentions and the relationships between them. The only "
+        "relationship types you may use are: " + ", ".join(rels) + ". "
+        "Respond with JSON only: a list of objects, each having exactly the "
+        'keys "head", "head_type", "relation", "tail", and "tail_type". Use '
+        "the most complete name for every entity and keep entity references "
+        "consistent across triples. Extract every relationship the passage "
+        "supports, invent nothing, and include no prose or explanations "
+        "outside the JSON list."
+    )
 
 
 def relation_labels() -> list[str]:
@@ -133,7 +142,8 @@ def make_transformer(condition: str, labels: list[str], ignore_tools: bool):
     if condition == "prompt_para":
         from langchain_core.prompts import ChatPromptTemplate
         kwargs["prompt"] = ChatPromptTemplate.from_messages(
-            [("system", PARA_SYSTEM), ("human", "{input}")])
+            [("system", para_system(rels)),
+             ("human", "Extract the entities and relationships from this text.\nText: {input}")])
     return LLMGraphTransformer(**kwargs)
 
 
