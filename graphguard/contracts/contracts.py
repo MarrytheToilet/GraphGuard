@@ -110,7 +110,10 @@ register(Contract(
         "semantic_class_in": {"presentation"},  # only presentation perturbations
     },
     direction="min",
-    threshold=0.50,
+    # Catalogue tolerance tau=0.30 on answer drift, i.e. violate when the
+    # Q3 answer Jaccard falls below 0.70 (paper Table 1; primary-run
+    # violation rate 0.93 at this threshold).
+    threshold=0.70,
     metric_fn=M.edge_jaccard,                 # per-pair: Q3 jaccard, computed in runner
     description="Multi-hop join answers should not collapse under presentation drift.",
     query_scoped=True,

@@ -1,0 +1,79 @@
+{
+  "tau": 0.2,
+  "alpha": 0.2,
+  "shared_docs": 99,
+  "mean_recall": {
+    "Qwen3-8B": 0.10188936863697173,
+    "Qwen3-14B": 0.1194746861862679,
+    "Qwen3-32B": 0.13807671501991267,
+    "DeepSeek-V4-Flash": 0.20570432678546086
+  },
+  "pairs": {
+    "Qwen3-8B vs Qwen3-14B": {
+      "n": 99,
+      "mean_recall_A": 0.10188936863697173,
+      "mean_recall_B": 0.1194746861862679,
+      "mean_abs_diff": 0.08250717543167232,
+      "frac_above_tau": 0.09090909090909091,
+      "ci_low": 0.04040404040404041,
+      "ci_high": 0.15151515151515152,
+      "mean_graph_drift": 0.856976227029058,
+      "verdict": "SATISFIED"
+    },
+    "Qwen3-8B vs Qwen3-32B": {
+      "n": 99,
+      "mean_recall_A": 0.10188936863697173,
+      "mean_recall_B": 0.13807671501991267,
+      "mean_abs_diff": 0.08458636481553693,
+      "frac_above_tau": 0.09090909090909091,
+      "ci_low": 0.04040404040404041,
+      "ci_high": 0.15151515151515152,
+      "mean_graph_drift": 0.8681077440461251,
+      "verdict": "SATISFIED"
+    },
+    "Qwen3-8B vs DeepSeek-V4-Flash": {
+      "n": 99,
+      "mean_recall_A": 0.10188936863697173,
+      "mean_recall_B": 0.20570432678546086,
+      "mean_abs_diff": 0.11127012715727473,
+      "frac_above_tau": 0.15151515151515152,
+      "ci_low": 0.08080808080808081,
+      "ci_high": 0.2222222222222222,
+      "mean_graph_drift": 0.8426452133892249,
+      "verdict": "INCONCLUSIVE"
+    },
+    "Qwen3-14B vs Qwen3-32B": {
+      "n": 99,
+      "mean_recall_A": 0.1194746861862679,
+      "mean_recall_B": 0.13807671501991267,
+      "mean_abs_diff": 0.04983203988821721,
+      "frac_above_tau": 0.050505050505050504,
+      "ci_low": 0.010101010101010102,
+      "ci_high": 0.10101010101010101,
+      "mean_graph_drift": 0.7991857899805449,
+      "verdict": "SATISFIED"
+    },
+    "Qwen3-14B vs DeepSeek-V4-Flash": {
+      "n": 99,
+      "mean_recall_A": 0.1194746861862679,
+      "mean_recall_B": 0.20570432678546086,
+      "mean_abs_diff": 0.11858682589755465,
+      "frac_above_tau": 0.15151515151515152,
+      "ci_low": 0.08080808080808081,
+      "ci_high": 0.2222222222222222,
+      "mean_graph_drift": 0.8136342727518179,
+      "verdict": "INCONCLUSIVE"
+    },
+    "Qwen3-32B vs DeepSeek-V4-Flash": {
+      "n": 99,
+      "mean_recall_A": 0.13807671501991267,
+      "mean_recall_B": 0.20570432678546086,
+      "mean_abs_diff": 0.10465621783440192,
+      "frac_above_tau": 0.15151515151515152,
+      "ci_low": 0.08080808080808081,
+      "ci_high": 0.2222222222222222,
+      "mean_graph_drift": 0.7574244417869614,
+      "verdict": "INCONCLUSIVE"
+    }
+  }
+}
