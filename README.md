@@ -243,15 +243,15 @@ set -a && . ./.env && set +a   # so subprocesses inherit API credentials
 
 # Primary DocRED run (300 docs, DeepSeek-V4-Flash)
 python scripts/run_paper_experiment.py \
-  --config  configs/experiments/docred_smoke.yaml \
+  --config  configs/experiments/docred_paper.yaml \
   --profile main300 \
   --run-name docred__deepseek-v4-flash__300d \
   --workers 8
 
 # Replication runs (uses the same driver with different configs/profiles):
-#   configs/experiments/redocred_smoke.yaml  --profile main300
-#   configs/experiments/cdr_smoke.yaml       --profile main300
-#   configs/experiments/scierc_smoke.yaml    --profile main100
+#   configs/experiments/redocred_paper.yaml  --profile main300
+#   configs/experiments/cdr_paper.yaml       --profile main300
+#   configs/experiments/scierc_paper.yaml    --profile main100
 ```
 
 Use `--start-at <stage>` to resume from any stage; `--skip-extracted` is applied automatically so cached extractions are not re-issued.
@@ -280,10 +280,10 @@ bash scripts/run_crossmodel_medium.sh
 
 | Corpus     | Run size | Profile / config                              | Lineage DB                                                              |
 | ---------- | -------: | --------------------------------------------- | ----------------------------------------------------------------------- |
-| DocRED     | 300 docs | `main300` / `configs/experiments/docred_smoke.yaml` | `data/processed/runs/docred__deepseek-v4-flash__300d/…`        |
-| Re-DocRED  | 300 docs | `main300` / `configs/experiments/redocred_smoke.yaml` | `data/processed/runs/redocred__deepseek-v4-flash__300d/…`     |
-| SciERC     | 100 docs | `main100` / `configs/experiments/scierc_smoke.yaml`   | `data/processed/runs/scierc__deepseek-v4-flash__100d/…`        |
-| BC5CDR     | 300 docs | `main300` / `configs/experiments/cdr_smoke.yaml`      | `data/processed/runs/cdr__deepseek-v4-flash__300d/…`           |
+| DocRED     | 300 docs | `main300` / `configs/experiments/docred_paper.yaml` | `data/processed/runs/docred__deepseek-v4-flash__300d/…`        |
+| Re-DocRED  | 300 docs | `main300` / `configs/experiments/redocred_paper.yaml` | `data/processed/runs/redocred__deepseek-v4-flash__300d/…`     |
+| SciERC     | 100 docs | `main100` / `configs/experiments/scierc_paper.yaml`   | `data/processed/runs/scierc__deepseek-v4-flash__100d/…`        |
+| BC5CDR     | 300 docs | `main300` / `configs/experiments/cdr_paper.yaml`      | `data/processed/runs/cdr__deepseek-v4-flash__300d/…`           |
 | DocRED ×3  | 100 docs | cross-model swap (Kimi-K2 / Qwen3-32B / GLM-5) | `data/processed/runs/docred__<model>__100d/…`                          |
 
 Primary extractor is **DeepSeek-V4-Flash**; cross-model checks add **Kimi-K2-Instruct**, **Qwen3-32B**, and **GLM-5** (all via the Alibaba Cloud Bailian OpenAI-compatible chat-completion API). All runs use the validation split with deterministic positional sampling — the first $N$ documents from the validation iterator. Default decoding is temperature 0.0 with seed 7; K6 deliberately uses temperature 0.2.

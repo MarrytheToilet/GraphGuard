@@ -53,14 +53,9 @@ logs/
 # ---------- Project: pyvis HTML viewer assets (vendored) ----------
 lib/
 
-# ---------- LaTeX build artefacts (paper directory may not exist) ----------
-paper/main.aux
-paper/main.log
-paper/main.bbl
-paper/main.blg
-paper/main.out
-paper/main.toc
-paper/*.synctex.gz
+# ---------- Manuscript & reviews (kept out of the public repo) ----------
+paper/
+review.md
 *.aux
 *.log
 *.bbl

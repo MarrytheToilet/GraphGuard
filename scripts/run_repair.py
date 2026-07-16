@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """M6/E5: graph repair — evaluate filtering strategies vs DocRED gold.
 
-Requires `edge_correctness` to be populated (run scripts/run_e2_error_detection.py first).
+Uses `edge_correctness` labels when present (populated via
+graphguard.experiments.e2_error_detection.label_extracted_edges).
 
 Example:
   python scripts/run_repair.py --report data/processed/repair_report.json

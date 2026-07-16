@@ -1,7 +1,7 @@
-name: scierc_smoke
+name: scierc_paper
 description: >
-  SciERC cross-domain smoke for VLDB defensibility (drift contracts on scientific abstracts).
-  30 docs from dev split; same drift contract battery as DocRED runs.
+  SciERC cross-domain run (drift contracts on scientific abstracts).
+  Same drift contract battery as the DocRED runs; the paper run uses main100.
 
 paths:
   data_root: data/processed/runs

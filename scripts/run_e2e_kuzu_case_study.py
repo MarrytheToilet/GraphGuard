@@ -20,14 +20,16 @@ Output: reports/cross_run/e2e_kuzu_case_<dataset>__deepseek-v4-flash__<n>d.json
 """
 
 from __future__ import annotations
-import argparse, json, sqlite3, random, importlib.util, shutil, tempfile, os
+import argparse, json, sqlite3, random, shutil, sys, tempfile, os
 from pathlib import Path
 from collections import defaultdict
 
 import kuzu
 
-spec = importlib.util.spec_from_file_location("rq", "scripts/run_e2e_qa.py")
-rq = importlib.util.module_from_spec(spec); spec.loader.exec_module(rq)
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from graphguard import qa as rq  # noqa: E402
 
 
 def safe_id(x):

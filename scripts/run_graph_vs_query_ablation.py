@@ -14,14 +14,14 @@ Outputs:
 """
 
 from __future__ import annotations
-import argparse, json, sqlite3, random
+import argparse, json, sqlite3, random, sys
 from collections import defaultdict
 from pathlib import Path
 
-# reuse helpers from run_e2e_qa
-import importlib.util, sys
-spec = importlib.util.spec_from_file_location("rq", "scripts/run_e2e_qa.py")
-rq = importlib.util.module_from_spec(spec); spec.loader.exec_module(rq)
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from graphguard import qa as rq  # noqa: E402
 
 
 def confusion(flags, harm):
