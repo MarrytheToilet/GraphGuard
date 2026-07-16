@@ -40,7 +40,8 @@ UTIL = {
     "Graph-only":  [(0.95, 0.93, 0.97), (0.96, 0.96, 0.97), (0.91, 0.87, 0.95), (0.91, 0.88, 0.94)],
     "GraphGuard":  [(0.99, 0.99, 1.00), (1.00, 1.00, 1.00), (0.99, 0.98, 1.00), (0.97, 0.96, 0.98)],
 }
-COLORS = {"Publish-all": _S.GRAY, "Graph-only": _S.BLUE_DARK, "GraphGuard": _S.PINK_DARK}
+FILLS  = {"Publish-all": _S.GRAY_LIGHT, "Graph-only": _S.BLUE, "GraphGuard": _S.PINK}
+EDGES  = {"Publish-all": _S.GRAY, "Graph-only": _S.BLUE_DARK, "GraphGuard": _S.PINK_DARK}
 
 
 def panel(ax, data, ylabel, ylim, annotate=True):
@@ -49,12 +50,15 @@ def panel(ax, data, ylabel, ylim, annotate=True):
     for i, pol in enumerate(POLICIES):
         vals = [v[0] for v in data[pol]]
         err = np.array([[v[0] - v[1], v[2] - v[0]] for v in data[pol]]).T
-        bars = ax.bar(x + (i - 1) * w, vals, width=w * 0.9,
-                      color=COLORS[pol], label=pol)
+        bars = ax.bar(x + (i - 1) * w, vals, width=w * 0.9, color=FILLS[pol],
+                      edgecolor=EDGES[pol], linewidth=0.8, label=pol)
         ax.errorbar(x + (i - 1) * w, vals, yerr=err, fmt="none",
-                    ecolor=_S.BLACK, elinewidth=0.7, capsize=1.5)
+                    ecolor=EDGES[pol], elinewidth=0.8, capsize=1.5)
         if annotate:
-            _S.annotate_bars(ax, bars, vals, fmt="{:.2f}", fontsize=5.3)
+            # place value labels just above the CI whisker top to avoid overlap
+            for xi, v, hi in zip(x + (i - 1) * w, vals, (d[2] for d in data[pol])):
+                ax.text(xi, hi + 0.012, f"{v:.2f}", ha="center", va="bottom",
+                        fontsize=6, color=_S.BLACK)
     ax.set_xticks(x)
     ax.set_xticklabels(CORPORA)
     ax.set_ylabel(ylabel)
@@ -63,16 +67,16 @@ def panel(ax, data, ylabel, ylim, annotate=True):
 
 
 def main() -> int:
-    _S.apply_rc(font_size=8)
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.4, 3.3),
-                                   gridspec_kw={"hspace": 0.42})
-    panel(ax1, HARM, "published-harm rate", (0, 0.42))
-    ax1.legend(fontsize=6, ncol=3, frameon=False, loc="upper right",
+    _S.apply_rc(font_size=9)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 3.5),
+                                   gridspec_kw={"hspace": 0.46})
+    panel(ax1, HARM, "published-harm rate", (0, 0.50))
+    ax1.legend(fontsize=7, ncol=3, frameon=False, loc="upper left",
                handlelength=1.0, columnspacing=0.8)
-    ax1.set_title("(a) Harm among published graphs", fontsize=8)
+    ax1.set_title("(a) Harm among published graphs", fontsize=9, fontweight="bold")
     panel(ax2, UTIL, "retained utility", (0.75, 1.06), annotate=False)
     ax2.axhline(1.0, color=_S.GRAY, linestyle=":", linewidth=0.7)
-    ax2.set_title("(b) Retained utility", fontsize=8)
+    ax2.set_title("(b) Retained utility", fontsize=9, fontweight="bold")
 
     out = ROOT / "assets" / "figures" / "fig_gate.png"
     _S.save_fig(fig, out)

@@ -352,6 +352,7 @@ def make_figure(runs: list[str]) -> None:
 
     label = {"docred": "DocRED", "redocred": "Re-DocRED",
              "scierc": "SciERC", "cdr": "BC5CDR"}
+    fills = [_S.BLUE, _S.PINK, _S.GREEN, _S.GRAY_LIGHT]
     colors = [_S.BLUE_DARK, _S.PINK_DARK, _S.GREEN_DARK, _S.GRAY]
 
     data = {}
@@ -362,8 +363,8 @@ def make_figure(runs: list[str]) -> None:
     if not data:
         return
 
-    _S.apply_rc(font_size=8)
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.2))
+    _S.apply_rc(font_size=9)
+    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.25))
 
     # -- Panel A: presentation-level saturation (kind, not degree) ----------
     ax = axes[0]
@@ -384,12 +385,14 @@ def make_figure(runs: list[str]) -> None:
         vals = [cat_mean(d, c) for c in cats]
         xs = [j + i * w for j in range(len(cats))]
         ax.bar(xs, [v or 0 for v in vals], width=w * 0.9,
-               color=colors[i % len(colors)], label=label.get(corpus, corpus))
+               color=fills[i % len(fills)], edgecolor=colors[i % len(colors)],
+               linewidth=0.8, label=label.get(corpus, corpus))
     ax.set_xticks([j + w * (len(data) - 1) / 2 for j in range(len(cats))])
-    ax.set_xticklabels(["rerun\n(no-op)", "schema\npresentation", "prompt\n(1 clause)", "evidence\norder/mask"])
-    ax.set_ylabel("mean graph drift")
-    ax.set_title("Presentation families: kind, not degree", fontsize=8)
-    ax.legend(fontsize=6, ncol=2, frameon=False)
+    ax.set_xticklabels(["rerun\n(no-op)", "schema\npres.", "prompt\n(1 clause)", "evidence"])
+    ax.set_ylabel("mean graph drift", fontsize=9)
+    ax.set_title("Presentation families: kind, not degree", fontsize=9, fontweight="bold")
+    ax.set_ylim(0, 0.95)
+    ax.legend(fontsize=7, ncol=2, frameon=False, loc="upper left")
     _S.despine(ax)
 
     # -- Panel B: semantic dose-response (removal-type edits only) ----------
@@ -412,7 +415,8 @@ def make_figure(runs: list[str]) -> None:
         pts.sort()
         if pts:
             ax.plot([x for x, _, _ in pts], [y for _, y, _ in pts], "o-",
-                    color=colors[i % len(colors)], markersize=4, linewidth=1.2,
+                    color=colors[i % len(colors)], markerfacecolor=fills[i % len(fills)],
+                    markeredgecolor=colors[i % len(colors)], markersize=5, linewidth=1.3,
                     label=label.get(corpus, corpus))
         noop = (d["summary"].get("stochastic") or {}).get("mean_drift")
         if noop is not None:
@@ -421,10 +425,10 @@ def make_figure(runs: list[str]) -> None:
     # BC5CDR's single point (x=1.0) is "drop the only CID relation";
     # explained in the figure caption rather than an in-axes annotation.
     ax.set_xscale("log")
-    ax.set_xlabel("fraction of schema relations removed / made ambiguous")
-    ax.set_ylabel("mean graph drift")
-    ax.set_title("Semantic edits: dose–response", fontsize=8)
-    ax.legend(fontsize=6, frameon=False, loc="lower right")
+    ax.set_xlabel("fraction of schema relations edited", fontsize=9)
+    ax.set_ylabel("mean graph drift", fontsize=9)
+    ax.set_title("Semantic edits: dose–response", fontsize=9, fontweight="bold")
+    ax.legend(fontsize=7, frameon=False, loc="lower right")
     _S.despine(ax)
 
     out = ROOT / "assets" / "figures" / "fig_magnitude.png"
