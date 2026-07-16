@@ -68,8 +68,8 @@ def panel(ax, data, ylabel, ylim, annotate=True):
 
 def main() -> int:
     _S.apply_rc(font_size=9)
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 3.5),
-                                   gridspec_kw={"hspace": 0.46})
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.9),
+                                   gridspec_kw={"hspace": 0.52})
     panel(ax1, HARM, "published-harm rate", (0, 0.50))
     ax1.legend(fontsize=7, ncol=3, frameon=False, loc="upper left",
                handlelength=1.0, columnspacing=0.8)
