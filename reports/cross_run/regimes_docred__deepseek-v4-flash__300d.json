@@ -1,0 +1,49 @@
+{
+ "run": "docred__deepseek-v4-flash__300d",
+ "n_pairs": 6295,
+ "harm_tau": 0.05,
+ "regimes": {
+  "local": {
+   "n": 5753,
+   "harm_base_rate": 0.5114,
+   "tau_graph": 0.7,
+   "cmp_graph": ">=",
+   "tau_query": 1.0,
+   "cmp_query": ">=",
+   "graph_only": {
+    "alarm_rate": 0.5152094559360334,
+    "precision": 0.6417,
+    "recall": 0.6465,
+    "f1": 0.6441
+   },
+   "query_aware": {
+    "alarm_rate": 0.6533982270119938,
+    "precision": 0.7313,
+    "recall": 0.9344,
+    "f1": 0.8205
+   },
+   "delta_f1": 0.1764
+  },
+  "multihop": {
+   "n": 675,
+   "harm_base_rate": 0.7022,
+   "tau_graph": 0.5455,
+   "cmp_graph": ">",
+   "tau_query": 1.0,
+   "cmp_query": ">=",
+   "graph_only": {
+    "alarm_rate": 0.7007407407407408,
+    "precision": 0.7822,
+    "recall": 0.7806,
+    "f1": 0.7814
+   },
+   "query_aware": {
+    "alarm_rate": 0.7985185185185185,
+    "precision": 0.8646,
+    "recall": 0.9831,
+    "f1": 0.92
+   },
+   "delta_f1": 0.1386
+  }
+ }
+}

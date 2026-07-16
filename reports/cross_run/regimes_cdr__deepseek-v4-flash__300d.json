@@ -1,0 +1,49 @@
+{
+ "run": "cdr__deepseek-v4-flash__300d",
+ "n_pairs": 6071,
+ "harm_tau": 0.05,
+ "regimes": {
+  "local": {
+   "n": 5927,
+   "harm_base_rate": 0.3491,
+   "tau_graph": 0.4444,
+   "cmp_graph": ">",
+   "tau_query": 0.2222,
+   "cmp_query": ">=",
+   "graph_only": {
+    "alarm_rate": 0.34874304032394127,
+    "precision": 0.7378,
+    "recall": 0.7371,
+    "f1": 0.7374
+   },
+   "query_aware": {
+    "alarm_rate": 0.34908047916315166,
+    "precision": 0.9468,
+    "recall": 0.9468,
+    "f1": 0.9468
+   },
+   "delta_f1": 0.2094
+  },
+  "multihop": {
+   "n": 872,
+   "harm_base_rate": 0.3291,
+   "tau_graph": 0.4444,
+   "cmp_graph": ">=",
+   "tau_query": 0.3333,
+   "cmp_query": ">",
+   "graph_only": {
+    "alarm_rate": 0.3302752293577982,
+    "precision": 0.7396,
+    "recall": 0.7422,
+    "f1": 0.7409
+   },
+   "query_aware": {
+    "alarm_rate": 0.31536697247706424,
+    "precision": 0.92,
+    "recall": 0.8815,
+    "f1": 0.9004
+   },
+   "delta_f1": 0.1595
+  }
+ }
+}
