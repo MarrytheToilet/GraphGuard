@@ -1,0 +1,40 @@
+{
+ "run": "docred__deepseek-v4-flash__300d",
+ "n_pairs": 6419,
+ "amp_eps": 0.05,
+ "summary": {
+  "Q_deg": {
+   "n": 6419,
+   "query_drift_mean": 0.3245988471724568,
+   "graph_drift_mean": 0.6617071950331542,
+   "amp_mean": 0.4362564205472971,
+   "amp_ci_lo": 0.42478315474677303,
+   "amp_ci_hi": 0.4481310597879955,
+   "n_presentation": 2301,
+   "viol_rate_jaccard_lt_0.50": 0.27162103433289875,
+   "viol_rate_drift_gt_0.30": 0.560625814863103
+  },
+  "Q_path": {
+   "n": 2415,
+   "query_drift_mean": 0.7519668737060041,
+   "graph_drift_mean": 0.7012665393940191,
+   "amp_mean": 1.0231469612426962,
+   "amp_ci_lo": 0.9981406480267279,
+   "amp_ci_hi": 1.0491253864076377,
+   "n_presentation": 866,
+   "viol_rate_jaccard_lt_0.50": 0.7217090069284064,
+   "viol_rate_drift_gt_0.30": 0.825635103926097
+  },
+  "Q_rag": {
+   "n": 6419,
+   "query_drift_mean": 0.6716889548460055,
+   "graph_drift_mean": 0.6617071950331542,
+   "amp_mean": 0.9248994605686961,
+   "amp_ci_lo": 0.9162325030859622,
+   "amp_ci_hi": 0.9364571440020018,
+   "n_presentation": 2301,
+   "viol_rate_jaccard_lt_0.50": 0.7101260321599304,
+   "viol_rate_drift_gt_0.30": 0.8909169926119078
+  }
+ }
+}
