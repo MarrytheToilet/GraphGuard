@@ -146,7 +146,8 @@ def main():
     }, indent=2))
     # Native single-column canvas so fonts render ~1:1 in the PDF.
     gg_style.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.36), sharey=True)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
+                             gridspec_kw={"wspace": 0.20})
     line_handles = None
     line_labels = None
     for ax, (ds_name, _) in zip(axes, DATASETS):
@@ -169,17 +170,22 @@ def main():
         ax.set_title(ds_name, fontsize=7, fontweight="bold")
         ax.tick_params(labelsize=9)
         ax.set_xticks([0, 0.5, 1.0])
+        ax.set_xticklabels(["0", ".5", "1"])
         ax.set_yticks([0, 0.5, 1.0])
         ax.set_xlabel("Budget (frac.)", fontsize=6.5)
         ax.grid(alpha=0.3, ls=":")
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
     axes[0].set_ylabel("Harm recall", fontsize=6.5)
-    fig.legend(line_handles, line_labels, loc="lower center", ncol=4,
-               fontsize=6.0, frameon=False, bbox_to_anchor=(0.5, -0.06),
-               handlelength=1.2, columnspacing=0.8)
+    short = {"Random": "Rand.", "Family-bal.": "Fam-bal.",
+             "Greedy": "Greedy", "Oracle (UB)": "Oracle"}
+    axes[0].legend(line_handles, [short.get(l, l) for l in line_labels],
+                   loc="lower right", fontsize=4.4, frameon=True,
+                   framealpha=0.9, edgecolor="none", borderpad=0.2,
+                   handlelength=0.9, borderaxespad=0.1, labelspacing=0.2,
+                   handletextpad=0.3)
     fig.tight_layout(w_pad=0.4)
-    fig.savefig(OUT_FIG, dpi=200, bbox_inches="tight")
+    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight")
     print("wrote", OUT_FIG)
     # Print summary headline numbers.
     for ds_name, _ in DATASETS:

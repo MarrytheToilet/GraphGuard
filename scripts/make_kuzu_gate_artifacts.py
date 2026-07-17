@@ -202,14 +202,15 @@ def build_figure():
         ax.set_title(ds_name, fontsize=7, fontweight="bold")
         ax.tick_params(labelsize=6)
         ax.set_xticks([0, 0.5, 1.0])
+        ax.set_xticklabels(["0", ".5", "1"])
         ax.set_xlabel("Pub. coverage", fontsize=6.5)
         ax.grid(alpha=0.3, ls=":")
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
     axes[0].set_ylabel("Pub. harm rate", fontsize=6.5)
-    fig.legend(line_handles, line_labels, loc="lower center", ncol=3,
-               fontsize=6.5, frameon=False, bbox_to_anchor=(0.5, -0.06),
-               handlelength=1.4, columnspacing=1.0)
+    axes[0].legend(line_handles, line_labels, loc="upper left",
+                   fontsize=5, frameon=False, handlelength=1.2,
+                   borderaxespad=0.1, labelspacing=0.25, handletextpad=0.4)
     fig.tight_layout()
     fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight")
     print("wrote", OUT_FIG)

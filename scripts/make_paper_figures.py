@@ -450,7 +450,7 @@ def make_calibration_figure():
     # Native single-column canvas (like fig_riskcoverage): fonts render ~1:1.
     _S.apply_rc(font_size=7)
     fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
-                             gridspec_kw={"wspace": 0.14})
+                             gridspec_kw={"wspace": 0.20})
     eps = 0.05  # SLA: <=5% harmful publication rate
 
     blue_line = _BLUE
@@ -478,7 +478,7 @@ def make_calibration_figure():
                     rf"$\tau^*$={tau_star:.2f}",
                     fontsize=6.5, color=green, fontweight="bold")
         else:
-            ax.text(0.5, 0.6, "infeasible",
+            ax.text(0.55, 0.45, "infeasible",
                     ha="center", va="center", fontsize=6.5,
                     color=red_line, fontweight="bold",
                     transform=ax.transAxes)
@@ -495,7 +495,12 @@ def make_calibration_figure():
         if ax is axes[0]:
             ax.set_ylabel("Rate", fontsize=6.5)
 
-    # Line styles are explained in the LaTeX caption; no in-figure legend.
+    axes[0].legend(loc="upper left", fontsize=5, frameon=False,
+                   handlelength=1.2, borderaxespad=0.1, labelspacing=0.25,
+                   handletextpad=0.4)
+    axes[0].text(0.96, eps + 0.04, rf"$\epsilon$={eps}", fontsize=5,
+                  color=red_line, ha="right", va="bottom",
+                  transform=axes[0].get_yaxis_transform())
     fig.tight_layout()
     out = FIG_DIR / "fig_calibration.png"
     fig.savefig(str(out), dpi=400, bbox_inches="tight")
@@ -523,7 +528,7 @@ def make_noise_floor_figure():
     floor_line   = _PINK
 
     fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
-                             gridspec_kw={"wspace": 0.14})
+                             gridspec_kw={"wspace": 0.20})
 
     for ax, (tag, name) in zip(axes, CORPORA):
         pairs = load_pairs(tag)
@@ -565,8 +570,13 @@ def make_noise_floor_figure():
             ax.spines[sp].set_visible(False)
     axes[0].set_ylabel("Mean drift", fontsize=6.5)
 
-    # Colors are explained in the LaTeX caption; no in-figure legend, so the
-    # rendered height stays at the original footprint.
+    from matplotlib.patches import Patch
+    axes[3].legend(handles=[
+        Patch(facecolor=base_color,   edgecolor=_BLUE, label=r"base $D_0$"),
+        Patch(facecolor=excess_color, edgecolor=_PINK, label="excess"),
+    ], loc="upper right", bbox_to_anchor=(1.0, 0.84), fontsize=5,
+       frameon=False, handlelength=1.0, borderaxespad=0.1,
+       labelspacing=0.25, handletextpad=0.4)
     fig.tight_layout()
     out = FIG_DIR / "fig_noise_floor.png"
     fig.savefig(str(out), dpi=400, bbox_inches="tight")
