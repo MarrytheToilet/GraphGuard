@@ -1,0 +1,602 @@
+{
+  "run": "cdr__deepseek-v4-flash__300d",
+  "disappeared": {
+    "n": 11,
+    "pass": 11,
+    "candidates": []
+  },
+  "flip_or_ambiguous": {
+    "n": 23,
+    "id_anchor": 0,
+    "surface_anchor": 20,
+    "containment_anchor": 3,
+    "review": [
+      {
+        "outcome_id": "oc-ec46d3e7e0",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "caffeine",
+          "rel": "CID",
+          "obj": "stroke",
+          "subj_id": "cdr-validation-000225-6695415::e2",
+          "obj_id": "cdr-validation-000225-6695415::e3"
+        },
+        "cf": {
+          "subj": "caffeine",
+          "rel": "CID",
+          "obj": "Cerebral hemorrhage",
+          "subj_id": "cdr-validation-000225-6695415::e2",
+          "obj_id": "cdr-validation-000225-6695415::e0"
+        },
+        "evidence": [
+          "In order to determine if PPA/caffeine can lead to stroke in normotensive and/or hypertensive rats, we administered the combination in six times the allowed human dose calculated on a per weight basis for the rats two times per day for five days.",
+          "A single PPA/caffeine administration ( same dose) lead to acute hypertension in both the normotensive and hypertensive animals."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-1d4474d7be",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "bupropion",
+          "rel": "CID",
+          "obj": "liver failure",
+          "subj_id": "cdr-validation-000044-12549952::e1",
+          "obj_id": "cdr-validation-000044-12549952::e3"
+        },
+        "cf": {
+          "subj": "bupropion",
+          "rel": "CID",
+          "obj": "Acute liver failure",
+          "subj_id": "cdr-validation-000044-12549952::e1",
+          "obj_id": "cdr-validation-000044-12549952::e0"
+        },
+        "evidence": [
+          "OBJECTIVE: To report a case of fatal liver failure possibly associated with concurrent use of bupropion and carbimazole.",
+          "DISCUSSION: Although there is increasing evidence of hepatotoxicity induced by bupropion, this is the first case of fatality that could have resulted from acute liver failure in a patient receiving bupropion while on concomitant treatment with carbimazole."
+        ],
+        "anchor": [
+          "id",
+          "containment"
+        ]
+      },
+      {
+        "outcome_id": "oc-8edc65f6ad",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "warfarin",
+          "rel": "CID",
+          "obj": "stroke",
+          "subj_id": "cdr-validation-000258-19319147::e1",
+          "obj_id": "cdr-validation-000258-19319147::e3"
+        },
+        "cf": {
+          "subj": "warfarin",
+          "rel": "CID",
+          "obj": "intracerebral hemorrhage",
+          "subj_id": "cdr-validation-000258-19319147::e1",
+          "obj_id": "cdr-validation-000258-19319147::e2"
+        },
+        "evidence": [
+          "Warfarin-associated intracerebral hemorrhage ( W-ICH) is a severe type of stroke."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-d84fdb7931",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "epsilon-aminocaproic acid",
+          "rel": "CID",
+          "obj": "thromboembolic disease",
+          "subj_id": "cdr-validation-000009-2339463::e2",
+          "obj_id": "cdr-validation-000009-2339463::e4"
+        },
+        "cf": {
+          "subj": "epsilon-aminocaproic acid",
+          "rel": "CID",
+          "obj": "Cerebral sinus thrombosis",
+          "subj_id": "cdr-validation-000009-2339463::e2",
+          "obj_id": "cdr-validation-000009-2339463::e0"
+        },
+        "evidence": [
+          "Although increased risk of thromboembolic disease has been reported during treatment with epsilon-aminocaproic acid, cerebral sinus thrombosis has not been previously described."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-83ca042639",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "lithium",
+          "rel": "CID",
+          "obj": "congestive heart failure",
+          "subj_id": "cdr-validation-000000-6794356::e5",
+          "obj_id": "cdr-validation-000000-6794356::e4"
+        },
+        "cf": {
+          "subj": "lithium carbonate",
+          "rel": "CID",
+          "obj": "congestive heart failure",
+          "subj_id": "cdr-validation-000000-6794356::e1",
+          "obj_id": "cdr-validation-000000-6794356::e4"
+        },
+        "evidence": [
+          "A newborn with massive tricuspid regurgitation, atrial flutter, congestive heart failure, and a high serum lithium level is described."
+        ],
+        "anchor": [
+          "containment",
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-507e6d0dcb",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Chloroquine",
+          "rel": "CID",
+          "obj": "fatiguability",
+          "subj_id": "cdr-validation-000221-1628552::e0",
+          "obj_id": "cdr-validation-000221-1628552::e4"
+        },
+        "cf": {
+          "subj": "Chloroquine",
+          "rel": "CID",
+          "obj": "heart block",
+          "subj_id": "cdr-validation-000221-1628552::e0",
+          "obj_id": "cdr-validation-000221-1628552::e1"
+        },
+        "evidence": [
+          "A 27-year old African woman with history of regular chloroquine ingestion presented with progressive deterioration of vision, easy fatiguability, dyspnoea, dizziness progressing to syncopal attacks."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-6beca6dc56",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "pilocarpine",
+          "rel": "CID",
+          "obj": "epilepsy",
+          "subj_id": "cdr-validation-000030-9305828::e0",
+          "obj_id": "cdr-validation-000030-9305828::e3"
+        },
+        "cf": {
+          "subj": "pilocarpine",
+          "rel": "CID",
+          "obj": "status epilepticus",
+          "subj_id": "cdr-validation-000030-9305828::e0",
+          "obj_id": "cdr-validation-000030-9305828::e4"
+        },
+        "evidence": [
+          "The pilocarpine ( PILO) model of epilepsy is characterized by an acute period of status epilepticus followed by spontaneous recurrent seizures and related brain damage."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-f1c5c0bae4",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "retinyl acetate",
+          "rel": "CID",
+          "obj": "Tumors",
+          "subj_id": "cdr-validation-000005-3131282::e1",
+          "obj_id": "cdr-validation-000005-3131282::e7"
+        },
+        "cf": {
+          "subj": "retinyl acetate",
+          "rel": "CID",
+          "obj": "forestomach carcinogenesis",
+          "subj_id": "cdr-validation-000005-3131282::e1",
+          "obj_id": "cdr-validation-000005-3131282::e2"
+        },
+        "evidence": [
+          "Tumors, all papillomas, were induced in 3 rats ( 17 %) with 0. 25 % RA and in one rat ( 10 %) with 0. 05 % RA co-administration."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-1e5ae0dc8f",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "calcium chloride",
+          "rel": "CID",
+          "obj": "toxicity",
+          "subj_id": "cdr-validation-000227-8800187::e0",
+          "obj_id": "cdr-validation-000227-8800187::e3"
+        },
+        "cf": {
+          "subj": "desipramine",
+          "rel": "CID",
+          "obj": "toxicity",
+          "subj_id": "cdr-validation-000227-8800187::e2",
+          "obj_id": "cdr-validation-000227-8800187::e3"
+        },
+        "evidence": [
+          "CaCl2 therapy may possibly worsen both cardiovascular and central nervous system toxicity."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-57563bee4b",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "butylated hydroxyanisole",
+          "rel": "CID",
+          "obj": "carcinoma",
+          "subj_id": "cdr-validation-000005-3131282::e3",
+          "obj_id": "cdr-validation-000005-3131282::e5"
+        },
+        "cf": {
+          "subj": "butylated hydroxyanisole",
+          "rel": "CID",
+          "obj": "forestomach carcinogenesis",
+          "subj_id": "cdr-validation-000005-3131282::e3",
+          "obj_id": "cdr-validation-000005-3131282::e2"
+        },
+        "evidence": [
+          "In groups given 2 % BHA, although marked hyperplastic changes of the forestomach epithelium were observed in all animals, co-administration of 0. 25 % RA significantly ( P less than 0. 05) increased the incidence of forestomach tumors ( squamous cell papilloma and carcinoma) to 60 % ( 9/15, 2 rats with carcinoma) from 15 % ( 3/20, one rat with carcinoma) in the group given RA-free water."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-a840e75bfe",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "levobupivacaine",
+          "rel": "CID",
+          "obj": "cardiac arrest",
+          "subj_id": "cdr-validation-000222-11524350::e2",
+          "obj_id": null
+        },
+        "cf": {
+          "subj": "levobupivacaine",
+          "rel": "CID",
+          "obj": "toxicity",
+          "subj_id": "cdr-validation-000222-11524350::e2",
+          "obj_id": "cdr-validation-000222-11524350::e0"
+        },
+        "evidence": [
+          "We conclude that the systemic toxicity of levobupivacaine is intermediate between that of ropivacaine and bupivacaine when administered at the same rate and that ropivacaine-induced cardiac arrest appears to be more susceptible to treatment than that induced by bupivacaine or levobupivacaine."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-941d5953c1",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "tobramycin",
+          "rel": "CID",
+          "obj": "toxicity",
+          "subj_id": "cdr-validation-000027-9875685::e0",
+          "obj_id": "cdr-validation-000027-9875685::e1"
+        },
+        "cf": {
+          "subj": "tobramycin",
+          "rel": "CID",
+          "obj": "nephrotoxicity",
+          "subj_id": "cdr-validation-000027-9875685::e0",
+          "obj_id": "cdr-validation-000027-9875685::e3"
+        },
+        "evidence": [
+          "OBJECTIVE: To evaluate the effect of dosage regimen ( once-daily vs. twice-daily) of tobramicyn on steady-state serum concentrations and toxicity.",
+          "CONCLUSION: This small study suggests that a once-daily dosing regimen of tobramycin is at least as effective as and is no more and possibly less toxic than the twice-daily regimen."
+        ],
+        "anchor": [
+          "id",
+          "containment"
+        ]
+      },
+      {
+        "outcome_id": "oc-c71921e091",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "d-amphetamine",
+          "rel": "CID",
+          "obj": "psychosis",
+          "subj_id": "cdr-validation-000015-20705401::e6",
+          "obj_id": "cdr-validation-000015-20705401::e2"
+        },
+        "cf": {
+          "subj": "methamphetamine",
+          "rel": "CID",
+          "obj": "psychosis",
+          "subj_id": "cdr-validation-000015-20705401::e1",
+          "obj_id": "cdr-validation-000015-20705401::e2"
+        },
+        "evidence": [
+          "In addition, the disrupted prepulse inhibition induced by d-amphetamine or phencyclidine was restored by 5-HT6 receptor antagonist in an animal study using rats."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-f842a19ee0",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "furosemide",
+          "rel": "CID",
+          "obj": "hypokalemia",
+          "subj_id": "cdr-validation-000189-8492347::e2",
+          "obj_id": "cdr-validation-000189-8492347::e4"
+        },
+        "cf": {
+          "subj": "furosemide",
+          "rel": "CID",
+          "obj": "Tetany",
+          "subj_id": "cdr-validation-000189-8492347::e2",
+          "obj_id": "cdr-validation-000189-8492347::e0"
+        },
+        "evidence": [
+          "Diuretics may induce hypokalemia, hypocalcemia and hypomagnesemia."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-441d407e65",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "azelastine",
+          "rel": "CID",
+          "obj": "spring allergic rhinitis",
+          "subj_id": "cdr-validation-000151-3057041::e0",
+          "obj_id": "cdr-validation-000151-3057041::e2"
+        },
+        "cf": {
+          "subj": "azelastine",
+          "rel": "CID",
+          "obj": "Drowsiness",
+          "subj_id": "cdr-validation-000151-3057041::e0",
+          "obj_id": "cdr-validation-000151-3057041::e3"
+        },
+        "evidence": [
+          "Multicenter, double-blind, multiple-dose, parallel-groups efficacy and safety trial of azelastine, chlorpheniramine, and placebo in the treatment of spring allergic rhinitis.",
+          "Azelastine, a novel antiallergic medication, was compared with chlorpheniramine maleate and placebo for efficacy and safety in the treatment of spring allergic rhinitis in a multicenter, double-blind, multiple-dose, parallel-groups study.",
+          "Azelastine appears to be a safe, efficacious medication for seasonal allergic rhinitis."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-d3195ea079",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "adriamycin",
+          "rel": "CID",
+          "obj": "myocardial lesions",
+          "subj_id": "cdr-validation-000277-6769133::e1",
+          "obj_id": "cdr-validation-000277-6769133::e3"
+        },
+        "cf": {
+          "subj": "adriamycin",
+          "rel": "CID",
+          "obj": "cardiotoxic",
+          "subj_id": "cdr-validation-000277-6769133::e1",
+          "obj_id": "cdr-validation-000277-6769133::e0"
+        },
+        "evidence": [
+          "Histologically, the myocardial lesions resembled those found in human anthracycline-induced cardiomyopathy. 1 of the 10 monkeys developed acute myeloblastic leukemia after receiving 324 mg/m2 of adriamycin; the 10th monkey is alive and well 26 months after the last dose of drug."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-c6cd4d0441",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "methamphetamine",
+          "rel": "CID",
+          "obj": "paranoid type schizophrenia",
+          "subj_id": "cdr-validation-000015-20705401::e1",
+          "obj_id": "cdr-validation-000015-20705401::e9"
+        },
+        "cf": {
+          "subj": "methamphetamine",
+          "rel": "CID",
+          "obj": "psychosis",
+          "subj_id": "cdr-validation-000015-20705401::e1",
+          "obj_id": "cdr-validation-000015-20705401::e2"
+        },
+        "evidence": [
+          "The symptoms of methamphetamine ( METH) - induced psychosis are similar to those of paranoid type schizophrenia."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-cb97d9b7b1",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "ritanserin",
+          "rel": "OTHER",
+          "obj": "amnesia",
+          "subj_id": "cdr-validation-000168-16364460::e0",
+          "obj_id": "cdr-validation-000168-16364460::e2"
+        },
+        "cf": {
+          "subj": "scopolamine",
+          "rel": "OTHER",
+          "obj": "amnesia",
+          "subj_id": "cdr-validation-000168-16364460::e1",
+          "obj_id": "cdr-validation-000168-16364460::e2"
+        },
+        "evidence": [
+          "Microinjection of ritanserin into the CA1 region of hippocampus improves scopolamine-induced amnesia in adult male rats.",
+          "Our findings show that microinjection of ritanserin into the CA1 region of the hippocampus improves the scopolamine-induced amnesia."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-13c0ceb1b9",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "daunorubicin",
+          "rel": "CID",
+          "obj": "Kaposi's sarcoma",
+          "subj_id": "cdr-validation-000032-8305357::e0",
+          "obj_id": "cdr-validation-000032-8305357::e1"
+        },
+        "cf": {
+          "subj": "daunorubicin",
+          "rel": "CID",
+          "obj": "neutropenia",
+          "subj_id": "cdr-validation-000032-8305357::e0",
+          "obj_id": "cdr-validation-000032-8305357::e5"
+        },
+        "evidence": [
+          "We report a non-randomized Phase II clinical trial to assess the efficacy and safety of liposomal daunorubicin ( DaunoXome) in the treatment of AIDS related Kaposi ' s sarcoma.",
+          "In this small patient sample, liposomal daunorubicin was an effective and well tolerated agent in the treatment of Kaposi ' s sarcoma."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-60f948988b",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "testosterone",
+          "rel": "CID",
+          "obj": "prostate adenocarcinomas",
+          "subj_id": "cdr-validation-000279-3969369::e0",
+          "obj_id": "cdr-validation-000279-3969369::e2"
+        },
+        "cf": {
+          "subj": "testosterone",
+          "rel": "CID",
+          "obj": "carcinogenesis",
+          "subj_id": "cdr-validation-000279-3969369::e0",
+          "obj_id": "cdr-validation-000279-3969369::e1"
+        },
+        "evidence": [
+          "Conventional LW rats, implanted with testosterone at age 4 months, developed a higher incidence of prostate cancer after an average interval of 14 months: 24 % had developed gross tumors, and 40 % when it included microscopic tumors."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-bdc27fb3b7",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "cardiac disease",
+          "rel": "CID",
+          "obj": "sudden death",
+          "subj_id": "cdr-validation-000252-10074612::e5",
+          "obj_id": "cdr-validation-000252-10074612::e11"
+        },
+        "cf": {
+          "subj": "methylprednisolone",
+          "rel": "CID",
+          "obj": "sudden death",
+          "subj_id": "cdr-validation-000252-10074612::e3",
+          "obj_id": "cdr-validation-000252-10074612::e11"
+        },
+        "evidence": [
+          "There was a history of ischemic cardiac disease 9 years earlier.",
+          "Rapid infusion and underlying cardiac disease were important risk factors in the case reported here, and the authors discount ventricular arrhythmia as the main mechanism."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-a75080d05e",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "caffeine",
+          "rel": "CID",
+          "obj": "ventricular ectopy",
+          "subj_id": "cdr-validation-000064-18997632::e1",
+          "obj_id": "cdr-validation-000064-18997632::e3"
+        },
+        "cf": {
+          "subj": "caffeine",
+          "rel": "CID",
+          "obj": "ventricular tachycardia",
+          "subj_id": "cdr-validation-000064-18997632::e1",
+          "obj_id": "cdr-validation-000064-18997632::e0"
+        },
+        "evidence": [
+          "Intravenous caffeine is commonly used to improve seizure duration and quality in such patients and is generally well tolerated aside from occasional reports of relatively benign ventricular ectopy."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-de1cda66b9",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "chondroitin sulfate",
+          "rel": "CID",
+          "obj": "hypotensive",
+          "subj_id": "cdr-validation-000288-19289093::e0",
+          "obj_id": "cdr-validation-000288-19289093::e2"
+        },
+        "cf": {
+          "subj": "heparin",
+          "rel": "CID",
+          "obj": "hypotensive",
+          "subj_id": "cdr-validation-000288-19289093::e1",
+          "obj_id": "cdr-validation-000288-19289093::e2"
+        },
+        "evidence": [
+          "Recently, a number of commercial lots of heparin products were found to be contaminated with an oversulfated chondroitin sulfate ( OSCS) derivative that could elicit a hypotensive response in pigs following a single high-dose infusion.",
+          "Using both contaminated heparin products and the synthetically produced derivative, we showed that the OSCS produces dose-dependent hypotension in pigs."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      }
+    ]
+  },
+  "id_exact": 166,
+  "id_disagree": 0
+}

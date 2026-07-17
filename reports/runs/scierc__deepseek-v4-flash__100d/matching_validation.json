@@ -1,0 +1,4435 @@
+{
+  "summary": {
+    "n_sampled": 200,
+    "auto_check": {
+      "id_match_same_outcome": 104,
+      "id_match_disagree": 0,
+      "no_id_overlap": 96
+    },
+    "auto_precision_upper_bound": 0.52
+  },
+  "samples": [
+    {
+      "outcome_id": "oc-05e8cc714d",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "sentence:scierc-dev-000014-P05-1034::s2:mask",
+      "base": {
+        "subj": "source-language dependency parser",
+        "rel": "PART-OF",
+        "obj": "method",
+        "subj_id": "scierc-dev-000014-P05-1034::e5",
+        "obj_id": null
+      },
+      "cf": {
+        "subj": "source-language dependency parser",
+        "rel": "PART-OF",
+        "obj": "approach",
+        "subj_id": "scierc-dev-000014-P05-1034::e5",
+        "obj_id": "scierc-dev-000014-P05-1034::e13"
+      },
+      "evidence": [
+        "This method requires a source-language dependency parser, target language word segmentation and an unsupervised word alignment component."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-248ef6b6b3",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "JAVELIN system",
+        "rel": "PART-OF",
+        "obj": "language processing modules",
+        "subj_id": "scierc-dev-000021-N03-4010::e0",
+        "obj_id": "scierc-dev-000021-N03-4010::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "The JAVELIN system integrates a flexible, planning-based architecture with a variety of language processing modules to provide an open-domain question answering capability on free text."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5840e399e5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:CONJUNCTION:switch_schema",
+      "base": {
+        "subj": "Locally inferred surface elements",
+        "rel": "FEATURE-OF",
+        "obj": "local shapes",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e11",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e13"
+      },
+      "cf": {
+        "subj": "Locally inferred surface elements",
+        "rel": "FEATURE-OF",
+        "obj": "local shapes",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e11",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e13"
+      },
+      "evidence": [
+        "Locally inferred surface elements are robust to noise and better capture local shapes."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ad73c99731",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "closed-form -LRB- analytical -RRB- solution",
+        "rel": "USED-FOR",
+        "obj": "cross-entropy",
+        "subj_id": "scierc-test-000035-C04-1011::e3",
+        "obj_id": "scierc-test-000035-C04-1011::e4"
+      },
+      "cf": {
+        "subj": "closed-form -LRB- analytical -RRB- solution",
+        "rel": "USED-FOR",
+        "obj": "cross-entropy",
+        "subj_id": "scierc-test-000035-C04-1011::e3",
+        "obj_id": "scierc-test-000035-C04-1011::e4"
+      },
+      "evidence": [
+        "We show that there is a closed-form -LRB- analytical -RRB- solution for one part of the Kullback-Leibler distance, viz the cross-entropy."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5686b7b502",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:EVALUATE-FOR:switch_schema",
+      "base": {
+        "subj": "suffix analysis",
+        "rel": "USED-FOR",
+        "obj": "unlexicalized parser",
+        "subj_id": "scierc-test-000007-P05-1039::e3",
+        "obj_id": "scierc-test-000007-P05-1039::e0"
+      },
+      "cf": {
+        "subj": "suffix analysis",
+        "rel": "USED-FOR",
+        "obj": "unlexicalized parser",
+        "subj_id": "scierc-test-000007-P05-1039::e3",
+        "obj_id": "scierc-test-000007-P05-1039::e0"
+      },
+      "evidence": [
+        "In this paper, we present an unlexicalized parser for German which employs smoothing and suffix analysis to achieve a labelled bracket F-score of 76.2, higher than previously reported results on the NEGRA corpus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d17f808004",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "attention mechanism",
+        "rel": "PART-OF",
+        "obj": "architecture",
+        "subj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e7",
+        "obj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e0"
+      },
+      "cf": {
+        "subj": "trigger words",
+        "rel": "PART-OF",
+        "obj": "architecture",
+        "subj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e6",
+        "obj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e0"
+      },
+      "evidence": [
+        "To incorporate the trigger words whose effectiveness have been experimentally evaluated in several previous works, we propose a novel architecture with an attention mechanism."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6e4eeea213",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "rel": "PART-OF",
+        "obj": "core modules",
+        "subj_id": "scierc-dev-000020-H01-1041::e0",
+        "obj_id": "scierc-dev-000020-H01-1041::e1"
+      },
+      "cf": {
+        "subj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "rel": "PART-OF",
+        "obj": "core modules",
+        "subj_id": "scierc-dev-000020-H01-1041::e0",
+        "obj_id": "scierc-dev-000020-H01-1041::e1"
+      },
+      "evidence": [
+        "The CCLINC Korean-to-English translation system consists of two core modules, language understanding and generation modules mediated by a language neutral meaning representation called a semantic frame."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-17254fa64c",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:scierc-dev-000012-H91-1010::s6:mask",
+      "base": {
+        "subj": "duration model",
+        "rel": "USED-FOR",
+        "obj": "error rate",
+        "subj_id": "scierc-dev-000012-H91-1010::e2",
+        "obj_id": "scierc-dev-000012-H91-1010::e3"
+      },
+      "cf": {
+        "subj": "duration model",
+        "rel": "EVALUATE-FOR",
+        "obj": "error rate",
+        "subj_id": "scierc-dev-000012-H91-1010::e2",
+        "obj_id": "scierc-dev-000012-H91-1010::e3"
+      },
+      "evidence": [
+        "A very simple improved duration model has reduced the error rate by about 10 % in both triphone and semiphone systems."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6686a892fd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "lexical weighting of phrase translations",
+        "rel": "PART-OF",
+        "obj": "means",
+        "subj_id": "scierc-dev-000047-N03-1017::e7",
+        "obj_id": "scierc-dev-000047-N03-1017::e4"
+      },
+      "cf": {
+        "subj": "lexical weighting of phrase translations",
+        "rel": "PART-OF",
+        "obj": "means",
+        "subj_id": "scierc-dev-000047-N03-1017::e7",
+        "obj_id": "scierc-dev-000047-N03-1017::e4"
+      },
+      "evidence": [
+        "Our empirical results, which hold for all examined language pairs, suggest that the highest levels of performance can be obtained through relatively simple means: heuristic learning of phrase translations from word-based alignments and lexical weighting of phrase translations."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-545f90503c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000011-CVPR_2010_10_abs::s0:remove",
+      "base": {
+        "subj": "changing illumination conditions",
+        "rel": "PART-OF",
+        "obj": "conditions",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e20",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e18"
+      },
+      "cf": null,
+      "evidence": [
+        "We show these properties by thorough testing on standard databases and on a new database made of motorbikes under planar rotations, and with challenging conditions such as cluttered backgrounds, changing illumination conditions and partial occlusions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4f11f85795",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "occlusion reasoning",
+        "rel": "PART-OF",
+        "obj": "track clustering cost function",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e13",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e12"
+      },
+      "cf": {
+        "subj": "occlusion reasoning",
+        "rel": "FEATURE-OF",
+        "obj": "track clustering cost function",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e13",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e12"
+      },
+      "evidence": [
+        "Second, we devise a new track clustering cost function that includes occlusion reasoning, in the form of depth ordering constraints, as well as motion similarity along the tracks."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8187c75f59",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000002-P84-1047::s5:remove",
+      "base": {
+        "subj": "structure and surface representation of domain entities",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e5",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "In this approach, the definitions of the structure and surface representation of domain entities are grouped together."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-134a70af80",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "corpus-based approach",
+        "rel": "USED-FOR",
+        "obj": "verb-noun collocation dictionary",
+        "subj_id": "scierc-dev-000024-L08-1260::e8",
+        "obj_id": "scierc-dev-000024-L08-1260::e9"
+      },
+      "cf": {
+        "subj": "corpus-based approach",
+        "rel": "USED-FOR",
+        "obj": "verb-noun collocation dictionary",
+        "subj_id": "scierc-dev-000024-L08-1260::e8",
+        "obj_id": "scierc-dev-000024-L08-1260::e9"
+      },
+      "evidence": [
+        "The presented here corpus-based approach permitted us to triple the size the verb-noun collocation dictionary for Polish."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7a97683652",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:HYPONYM-OF:switch_schema",
+      "base": {
+        "subj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "rel": "PART-OF",
+        "obj": "core modules",
+        "subj_id": "scierc-dev-000020-H01-1041::e0",
+        "obj_id": "scierc-dev-000020-H01-1041::e1"
+      },
+      "cf": {
+        "subj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "rel": "PART-OF",
+        "obj": "core modules",
+        "subj_id": "scierc-dev-000020-H01-1041::e0",
+        "obj_id": "scierc-dev-000020-H01-1041::e1"
+      },
+      "evidence": [
+        "The CCLINC Korean-to-English translation system consists of two core modules, language understanding and generation modules mediated by a language neutral meaning representation called a semantic frame."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-54ad62a023",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "expert competence levels",
+        "rel": "FEATURE-OF",
+        "obj": "optimal rule",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e3",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e5"
+      },
+      "cf": null,
+      "evidence": [
+        "In the case of known expert competence levels, we give sharp error estimates for the optimal rule."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f5032d6a75",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "track clustering cost function",
+        "rel": "FEATURE-OF",
+        "obj": "spatio-temporal video segmentation algorithm",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e12",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9"
+      },
+      "cf": {
+        "subj": "track clustering cost function",
+        "rel": "FEATURE-OF",
+        "obj": "spatio-temporal video segmentation algorithm",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e12",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9"
+      },
+      "evidence": [
+        "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion.",
+        "Second, we devise a new track clustering cost function that includes occlusion reasoning, in the form of depth ordering constraints, as well as motion similarity along the tracks."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f4fd625887",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000000-ICCV_2003_158_abs::s2:remove",
+      "base": {
+        "subj": "latter",
+        "rel": "USED-FOR",
+        "obj": "surface orientation",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e11",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e12"
+      },
+      "cf": null,
+      "evidence": [
+        "The algorithm utilizes both spatial and temporal intensity variation as cues: the former constrains flow and the latter constrains surface orientation; combining both cues enables dense reconstruction of both textured and texture-less surfaces."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7d6bb4e992",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "scanning method",
+        "rel": "USED-FOR",
+        "obj": "dense sub-pixel camera-projector correspondence",
+        "subj_id": "scierc-test-000026-ICCV_2013_25_abs::e0",
+        "obj_id": "scierc-test-000026-ICCV_2013_25_abs::e1"
+      },
+      "cf": {
+        "subj": "scanning method",
+        "rel": "USED-FOR",
+        "obj": "dense sub-pixel camera-projector correspondence",
+        "subj_id": "scierc-test-000026-ICCV_2013_25_abs::e0",
+        "obj_id": "scierc-test-000026-ICCV_2013_25_abs::e1"
+      },
+      "evidence": [
+        "We present a scanning method that recovers dense sub-pixel camera-projector correspondence without requiring any photometric calibration nor preliminary knowledge of their relative geometry."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-eea1fbd49a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "entity-oriented approach",
+        "rel": "USED-FOR",
+        "obj": "restricted-domain parsing",
+        "subj_id": "scierc-dev-000002-P84-1047::e1",
+        "obj_id": "scierc-dev-000002-P84-1047::e4"
+      },
+      "cf": {
+        "subj": "entity-oriented approach",
+        "rel": "USED-FOR",
+        "obj": "restricted-domain parsing",
+        "subj_id": "scierc-dev-000002-P84-1047::e1",
+        "obj_id": "scierc-dev-000002-P84-1047::e4"
+      },
+      "evidence": [
+        "An entity-oriented approach to restricted-domain parsing is proposed."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-af8bcdc4a8",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "human agreement",
+        "rel": "EVALUATE-FOR",
+        "obj": "evaluation criterion",
+        "subj_id": "scierc-test-000043-C04-1036::e3",
+        "obj_id": "scierc-test-000043-C04-1036::e0"
+      },
+      "cf": {
+        "subj": "human agreement",
+        "rel": "EVALUATE-FOR",
+        "obj": "evaluation criterion",
+        "subj_id": "scierc-test-000043-C04-1036::e3",
+        "obj_id": "scierc-test-000043-C04-1036::e0"
+      },
+      "evidence": [
+        "The new criterion -- meaning-entailing substitutability -- fits the needs of semantic-oriented NLP applications and can be evaluated directly -LRB- independent of an application -RRB- at a good level of human agreement."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-72bdfcf818",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000005-ICCV_2009_47_abs::s3:remove",
+      "base": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "HYPONYM-OF",
+        "obj": "technique",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "In this work, we present a technique for robust estimation, which by explicitly incorporating the inherent uncertainty of the estimation procedure, results in a more efficient robust estimation algorithm."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4d1bbfc28a",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "tree-based ordering model",
+        "rel": "USED-FOR",
+        "obj": "statistical machine translation",
+        "subj_id": "scierc-dev-000014-P05-1034::e0",
+        "obj_id": "scierc-dev-000014-P05-1034::e2"
+      },
+      "cf": {
+        "subj": "approach",
+        "rel": "USED-FOR",
+        "obj": "statistical machine translation",
+        "subj_id": "scierc-dev-000014-P05-1034::e13",
+        "obj_id": "scierc-dev-000014-P05-1034::e2"
+      },
+      "evidence": [
+        "We align a parallel corpus, project the source dependency parse onto the target sentence, extract dependency treelet translation pairs, and train a tree-based ordering model."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-bc68385025",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "Turkish dependency treebank",
+        "rel": "HYPONYM-OF",
+        "obj": "treebank",
+        "subj_id": "scierc-test-000021-P05-2013::e2",
+        "obj_id": "scierc-test-000021-P05-2013::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "This paper presents the results of automatically inducing a Combinatory Categorial Grammar -LRB- CCG -RRB- lexicon from a Turkish dependency treebank."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f747de225b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "interaction",
+        "rel": "PART-OF",
+        "obj": "translation process",
+        "subj_id": null,
+        "obj_id": "scierc-dev-000013-C88-2160::e3"
+      },
+      "cf": {
+        "subj": "interaction",
+        "rel": "PART-OF",
+        "obj": "translation process",
+        "subj_id": null,
+        "obj_id": "scierc-dev-000013-C88-2160::e3"
+      },
+      "evidence": [
+        "The interaction is limited to the analysis step of the translation process."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-eb24be6c25",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "phrase-based translation model",
+        "rel": "COMPARE",
+        "obj": "phrase-based translation models",
+        "subj_id": "scierc-dev-000047-N03-1017::e0",
+        "obj_id": "scierc-dev-000047-N03-1017::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "We propose a new phrase-based translation model and decoding algorithm that enables us to evaluate and compare several, previously proposed phrase-based translation models."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-035e35a438",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:EVALUATE-FOR:switch_schema",
+      "base": {
+        "subj": "linear-chain conditional random field -LRB- CRF -RRB-",
+        "rel": "USED-FOR",
+        "obj": "information extraction tasks",
+        "subj_id": "scierc-dev-000039-N04-4028::e7",
+        "obj_id": "scierc-dev-000039-N04-4028::e9"
+      },
+      "cf": {
+        "subj": "linear-chain conditional random field -LRB- CRF -RRB-",
+        "rel": "USED-FOR",
+        "obj": "information extraction tasks",
+        "subj_id": "scierc-dev-000039-N04-4028::e7",
+        "obj_id": "scierc-dev-000039-N04-4028::e9"
+      },
+      "evidence": [
+        "The information extraction system we evaluate is based on a linear-chain conditional random field -LRB- CRF -RRB-, a probabilistic model which has performed well on information extraction tasks because of its ability to capture arbitrary, overlapping features of the input in a Markov model."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d619a4d258",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "algorithm",
+        "rel": "USED-FOR",
+        "obj": "dense reconstruction of both textured and texture-less surfaces",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e13"
+      },
+      "cf": {
+        "subj": "algorithm",
+        "rel": "USED-FOR",
+        "obj": "dense reconstruction of both textured and texture-less surfaces",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e13"
+      },
+      "evidence": [
+        "The algorithm utilizes both spatial and temporal intensity variation as cues: the former constrains flow and the latter constrains surface orientation; combining both cues enables dense reconstruction of both textured and texture-less surfaces."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ddff836a7d",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:CONJUNCTION:switch_schema",
+      "base": {
+        "subj": "source-language dependency parser",
+        "rel": "PART-OF",
+        "obj": "method",
+        "subj_id": "scierc-dev-000014-P05-1034::e5",
+        "obj_id": null
+      },
+      "cf": null,
+      "evidence": [
+        "This method requires a source-language dependency parser, target language word segmentation and an unsupervised word alignment component."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-29f6182937",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000015-CVPR_2011_292_abs::s0:mask",
+      "base": {
+        "subj": "spatio-temporal video segmentation algorithm",
+        "rel": "USED-FOR",
+        "obj": "long-range motion cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10"
+      },
+      "cf": null,
+      "evidence": [
+        "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ff91bde199",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "CID/DRAM analog array prototype",
+        "rel": "EVALUATE-FOR",
+        "obj": "mixed-signal paradigm",
+        "subj_id": "scierc-test-000010-NIPS_2001_11_abs::e15",
+        "obj_id": "scierc-test-000010-NIPS_2001_11_abs::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "The approach is validated with real image data, and with experimental results from a CID/DRAM analog array prototype in 0.5 cents m CMOS."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3fb14d0427",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "probabilistic context-free grammar -LRB- PCFG -RRB-",
+        "rel": "USED-FOR",
+        "obj": "morphological parsing",
+        "subj_id": "scierc-dev-000034-E93-1023::e1",
+        "obj_id": "scierc-dev-000034-E93-1023::e9"
+      },
+      "cf": {
+        "subj": "probabilistic context-free grammar -LRB- PCFG -RRB-",
+        "rel": "USED-FOR",
+        "obj": "ambiguity",
+        "subj_id": "scierc-dev-000034-E93-1023::e1",
+        "obj_id": "scierc-dev-000034-E93-1023::e4"
+      },
+      "evidence": [
+        "Test performance data will show that a PCFG yields good results in morphological parsing."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2379f49e48",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "Web",
+        "rel": "USED-FOR",
+        "obj": "language model",
+        "subj_id": "scierc-dev-000028-N04-1008::e5",
+        "obj_id": "scierc-dev-000028-N04-1008::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "We focus on FAQ-like questions and answers, and build our system around a noisy-channel architecture which exploits both a language model for answers and a transformation model for answer/question terms, trained on a corpus of 1 million question/answer pairs collected from the Web."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0f26264dd0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "system",
+        "rel": "USED-FOR",
+        "obj": "acquiring adjectival subcategorization frames -LRB- scfs -RRB-",
+        "subj_id": "scierc-test-000027-P05-1076::e0",
+        "obj_id": "scierc-test-000027-P05-1076::e2"
+      },
+      "cf": {
+        "subj": "system",
+        "rel": "USED-FOR",
+        "obj": "acquiring adjectival subcategorization frames -LRB- scfs -RRB-",
+        "subj_id": "scierc-test-000027-P05-1076::e0",
+        "obj_id": "scierc-test-000027-P05-1076::e2"
+      },
+      "evidence": [
+        "This paper describes a novel system for acquiring adjectival subcategorization frames -LRB- scfs -RRB- and associated frequency information from English corpus data."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c97df05e48",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000032-CVPR_2003_11_abs::s0:remove",
+      "base": {
+        "subj": "approximate least squares estimate -LRB- ALSE -RRB- method",
+        "rel": "USED-FOR",
+        "obj": "parameters of the ACGMRF model",
+        "subj_id": "scierc-dev-000032-CVPR_2003_11_abs::e9",
+        "obj_id": "scierc-dev-000032-CVPR_2003_11_abs::e1"
+      },
+      "cf": {
+        "subj": "approximate least squares estimate -LRB- ALSE -RRB- method",
+        "rel": "USED-FOR",
+        "obj": "parameters of the ACGMRF model",
+        "subj_id": "scierc-dev-000032-CVPR_2003_11_abs::e9",
+        "obj_id": "scierc-dev-000032-CVPR_2003_11_abs::e1"
+      },
+      "evidence": [
+        "To overcome the singularity problem of the least squares estimate -LRB- LSE -RRB- method, an approximate least squares estimate -LRB- ALSE -RRB- method is proposed to estimate the parameters of the ACGMRF model."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c44ebde06a",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "morpho-syntactic and semantic characteristics",
+        "rel": "USED-FOR",
+        "obj": "productive rules of interpretation",
+        "subj_id": "scierc-test-000004-C96-1062::e5",
+        "obj_id": "scierc-test-000004-C96-1062::e4"
+      },
+      "cf": null,
+      "evidence": [
+        "This model is meant to account for productive rules of interpretation which are inferred from the morpho-syntactic and semantic characteristics of the nominal constituents."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-928bf70220",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "duration model",
+        "rel": "USED-FOR",
+        "obj": "triphone and semiphone systems",
+        "subj_id": "scierc-dev-000012-H91-1010::e2",
+        "obj_id": "scierc-dev-000012-H91-1010::e4"
+      },
+      "cf": {
+        "subj": "duration model",
+        "rel": "USED-FOR",
+        "obj": "triphone and semiphone systems",
+        "subj_id": "scierc-dev-000012-H91-1010::e2",
+        "obj_id": "scierc-dev-000012-H91-1010::e4"
+      },
+      "evidence": [
+        "A very simple improved duration model has reduced the error rate by about 10 % in both triphone and semiphone systems."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fa5c9e71a2",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "structure and surface representation of domain entities",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e5",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": {
+        "subj": "structure and surface representation of domain entities",
+        "rel": "PART-OF",
+        "obj": "this",
+        "subj_id": "scierc-dev-000002-P84-1047::e5",
+        "obj_id": "scierc-dev-000002-P84-1047::e0"
+      },
+      "evidence": [
+        "In this approach, the definitions of the structure and surface representation of domain entities are grouped together."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-bda9a594b1",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "synthetic speech",
+        "rel": "COMPARE",
+        "obj": "natural speech",
+        "subj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e18",
+        "obj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e19"
+      },
+      "cf": {
+        "subj": "synthesized speech",
+        "rel": "COMPARE",
+        "obj": "natural speech",
+        "subj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e4",
+        "obj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e19"
+      },
+      "evidence": [
+        "All measures gave less accurate predictions of intelligibility for synthetic speech than have previously been found for natural speech; in particular the SII measure."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0c1692ade0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000003-C88-1066::s3:mask",
+      "base": {
+        "subj": "logical well-formedness conditions",
+        "rel": "PART-OF",
+        "obj": "trees",
+        "subj_id": "scierc-dev-000003-C88-1066::e11",
+        "obj_id": "scierc-dev-000003-C88-1066::e12"
+      },
+      "cf": {
+        "subj": "logical well-formedness conditions",
+        "rel": "PART-OF",
+        "obj": "trees",
+        "subj_id": "scierc-dev-000003-C88-1066::e11",
+        "obj_id": "scierc-dev-000003-C88-1066::e12"
+      },
+      "evidence": [
+        "Special attention is given to the part of the parser that checks the fulfillment of logical well-formedness conditions on trees."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fb0b9a9a2a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "MORphological PArser MORPA",
+        "rel": "USED-FOR",
+        "obj": "morphological parsing",
+        "subj_id": "scierc-dev-000034-E93-1023::e0",
+        "obj_id": "scierc-dev-000034-E93-1023::e9"
+      },
+      "cf": {
+        "subj": "MORphological PArser MORPA",
+        "rel": "USED-FOR",
+        "obj": "morphological parsing",
+        "subj_id": "scierc-dev-000034-E93-1023::e0",
+        "obj_id": "scierc-dev-000034-E93-1023::e9"
+      },
+      "evidence": [
+        "In order to deal with ambiguity, the MORphological PArser MORPA is provided with a probabilistic context-free grammar -LRB- PCFG -RRB-, i.e. it combines a `` conventional '' context-free morphological grammar to filter out ungrammatical segmentations with a probability-based scoring function which determines the likelihood of each successful parse.",
+        "MORPA is a fully implemented parser developed for use in a text-to-speech conversion system."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e0ba8bba64",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "mathematical formalism",
+        "rel": "USED-FOR",
+        "obj": "grammar formalisms",
+        "subj_id": "scierc-test-000009-P06-1018::e1",
+        "obj_id": "scierc-test-000009-P06-1018::e8"
+      },
+      "cf": {
+        "subj": "mathematical formalism",
+        "rel": "USED-FOR",
+        "obj": "grammar formalisms",
+        "subj_id": "scierc-test-000009-P06-1018::e1",
+        "obj_id": "scierc-test-000009-P06-1018::e8"
+      },
+      "evidence": [
+        "This formalism is both elementary and powerful enough to strongly simulate many grammar formalisms, such as rewriting systems, dependency grammars, TAG, HPSG and LFG."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-45b093cd02",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "spatial and temporal intensity variation",
+        "rel": "USED-FOR",
+        "obj": "algorithm",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e2",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1"
+      },
+      "cf": {
+        "subj": "spatial and temporal intensity variation",
+        "rel": "USED-FOR",
+        "obj": "computing optical flow , shape , motion , lighting , and albedo",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e2",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0"
+      },
+      "evidence": [
+        "The algorithm utilizes both spatial and temporal intensity variation as cues: the former constrains flow and the latter constrains surface orientation; combining both cues enables dense reconstruction of both textured and texture-less surfaces."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8512d1300e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "models",
+        "rel": "USED-FOR",
+        "obj": "co-occurrence patterns",
+        "subj_id": "scierc-dev-000018-C04-1147::e6",
+        "obj_id": "scierc-dev-000018-C04-1147::e11"
+      },
+      "cf": null,
+      "evidence": [
+        "In comparison with previous models, which either use arbitrary windows to compute similarity between words or use lexical affinity to create sequential models, in this paper we focus on models intended to capture the co-occurrence patterns of any pair of words or phrases at any distance in the corpus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-bf22c2ba46",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "mi-cro phase shifting",
+        "rel": "CONJUNCTION",
+        "obj": "modulated phase shifting",
+        "subj_id": "scierc-test-000026-ICCV_2013_25_abs::e15",
+        "obj_id": "scierc-test-000026-ICCV_2013_25_abs::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "We compare our results to state of the art methods such as mi-cro phase shifting and modulated phase shifting."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ef7ad21d2b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "entity-oriented approach",
+        "rel": "USED-FOR",
+        "obj": "fragmentary recognition",
+        "subj_id": "scierc-dev-000002-P84-1047::e1",
+        "obj_id": "scierc-dev-000002-P84-1047::e8"
+      },
+      "cf": {
+        "subj": "entity-oriented approach",
+        "rel": "USED-FOR",
+        "obj": "fragmentary recognition",
+        "subj_id": "scierc-dev-000002-P84-1047::e1",
+        "obj_id": "scierc-dev-000002-P84-1047::e8"
+      },
+      "evidence": [
+        "In addition, it facilitates fragmentary recognition and the use of multiple parsing strategies, and so is particularly useful for robust recognition of extra-grammatical input."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-55d3a5679f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000020-H01-1041::s4:mask",
+      "base": {
+        "subj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "rel": "USED-FOR",
+        "obj": "Korean-to-English machine translation system",
+        "subj_id": "scierc-dev-000020-H01-1041::e0",
+        "obj_id": "scierc-dev-000020-H01-1041::e2"
+      },
+      "cf": {
+        "subj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "rel": "USED-FOR",
+        "obj": "Korean-to-English machine translation system",
+        "subj_id": "scierc-dev-000020-H01-1041::e0",
+        "obj_id": "scierc-dev-000020-H01-1041::e2"
+      },
+      "evidence": [
+        "At MIT Lincoln Laboratory, we have been developing a Korean-to-English machine translation system CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8613aa6dc4",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "rules",
+        "rel": "USED-FOR",
+        "obj": "auction domains",
+        "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e7",
+        "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e0"
+      },
+      "cf": {
+        "subj": "design of core-selecting payment rules",
+        "rel": "USED-FOR",
+        "obj": "auction domains",
+        "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e5",
+        "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e0"
+      },
+      "evidence": [
+        "However, we show that by designing rules that are '' execution-contingent, '' i.e., by charging payments that are conditioned on the realization of the availability of the goods, we can reduce IR violations."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b9e9724553",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "NEGRA corpus",
+        "rel": "USED-FOR",
+        "obj": "unlexicalized parser",
+        "subj_id": "scierc-test-000007-P05-1039::e5",
+        "obj_id": "scierc-test-000007-P05-1039::e0"
+      },
+      "cf": {
+        "subj": "smoothing",
+        "rel": "USED-FOR",
+        "obj": "unlexicalized parser",
+        "subj_id": "scierc-test-000007-P05-1039::e8",
+        "obj_id": "scierc-test-000007-P05-1039::e0"
+      },
+      "evidence": [
+        "In this paper, we present an unlexicalized parser for German which employs smoothing and suffix analysis to achieve a labelled bracket F-score of 76.2, higher than previously reported results on the NEGRA corpus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-512d4b0d2a",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "long-range motion cues",
+        "rel": "FEATURE-OF",
+        "obj": "spatio-temporal video segmentation algorithm",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9"
+      },
+      "cf": null,
+      "evidence": [
+        "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d838384c08",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000009-NIPS_2014_10_abs::s3:remove",
+      "base": {
+        "subj": "cycle structure",
+        "rel": "FEATURE-OF",
+        "obj": "region graph",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e15",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e4"
+      },
+      "cf": null,
+      "evidence": [
+        "Finally, we provide an explicit characterization of the polytope of concavity in terms of the cycle structure of the region graph."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-77aee940f5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "on-line encyclopedias and dictionaries",
+        "rel": "USED-FOR",
+        "obj": "positive and negative definition examples",
+        "subj_id": "scierc-dev-000007-H05-1041::e4",
+        "obj_id": "scierc-dev-000007-H05-1041::e5"
+      },
+      "cf": {
+        "subj": "on-line encyclopedias and dictionaries",
+        "rel": "USED-FOR",
+        "obj": "positive and negative definition examples",
+        "subj_id": "scierc-dev-000007-H05-1041::e4",
+        "obj_id": "scierc-dev-000007-H05-1041::e5"
+      },
+      "evidence": [
+        "The method exploits on-line encyclopedias and dictionaries to generate automatically an arbitrarily large number of positive and negative definition examples, which are then used to train an svm to separate the two classes."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-84745c75fa",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "entity-oriented language definition",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e11",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": {
+        "subj": "entity-oriented language definition",
+        "rel": "FEATURE-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e11",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "evidence": [
+        "Representative samples from an entity-oriented language definition are presented, along with a control structure for an entity-oriented parser, some parsing strategies that use the control structure, and worked examples of parses."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b9d2229319",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "local reconstruction algorithm",
+        "rel": "HYPONYM-OF",
+        "obj": "tensor voting",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e21",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e5"
+      },
+      "cf": {
+        "subj": "local reconstruction algorithm",
+        "rel": "HYPONYM-OF",
+        "obj": "tensor voting",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e21",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e5"
+      },
+      "evidence": [
+        "The local reconstruction algorithm is tensor voting."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-96f5c496bd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "positive and negative definition examples",
+        "rel": "USED-FOR",
+        "obj": "svm",
+        "subj_id": "scierc-dev-000007-H05-1041::e5",
+        "obj_id": "scierc-dev-000007-H05-1041::e6"
+      },
+      "cf": {
+        "subj": "positive and negative definition examples",
+        "rel": "USED-FOR",
+        "obj": "svm",
+        "subj_id": "scierc-dev-000007-H05-1041::e5",
+        "obj_id": "scierc-dev-000007-H05-1041::e6"
+      },
+      "evidence": [
+        "The method exploits on-line encyclopedias and dictionaries to generate automatically an arbitrarily large number of positive and negative definition examples, which are then used to train an svm to separate the two classes."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fd2befc0da",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000016-ECCV_2012_40_abs::s2:remove",
+      "base": {
+        "subj": "Gaussian blurring",
+        "rel": "COMPARE",
+        "obj": "nonlinear diffusion filtering",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e6",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "However, Gaussian blurring does not respect the natural boundaries of objects and smoothes to the same degree both details and noise, reducing localization accuracy and distinctiveness.",
+        "In contrast, we detect and describe 2D features in a nonlinear scale space by means of nonlinear diffusion filtering."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-dfa62b3216",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Creating summaries",
+        "rel": "USED-FOR",
+        "obj": "identification of the corresponding entity",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e4"
+      },
+      "cf": {
+        "subj": "automatic summa-rization techniques",
+        "rel": "USED-FOR",
+        "obj": "identification of the corresponding entity",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e5",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e4"
+      },
+      "evidence": [
+        "Creating summaries on lengthy Semantic Web documents for quick identification of the corresponding entity has been of great contemporary interest."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ce00955730",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "methods",
+        "rel": "USED-FOR",
+        "obj": "creating natural language text",
+        "subj_id": "scierc-dev-000045-J81-1002::e1",
+        "obj_id": "scierc-dev-000045-J81-1002::e2"
+      },
+      "cf": {
+        "subj": "methods",
+        "rel": "USED-FOR",
+        "obj": "creating natural language text",
+        "subj_id": "scierc-dev-000045-J81-1002::e1",
+        "obj_id": "scierc-dev-000045-J81-1002::e2"
+      },
+      "evidence": [
+        "This paper reports recent research into methods for creating natural language text."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3491dea9ef",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "linear-chain conditional random field -LRB- CRF -RRB-",
+        "rel": "USED-FOR",
+        "obj": "input",
+        "subj_id": "scierc-dev-000039-N04-4028::e7",
+        "obj_id": "scierc-dev-000039-N04-4028::e11"
+      },
+      "cf": {
+        "subj": "linear-chain conditional random field -LRB- CRF -RRB-",
+        "rel": "USED-FOR",
+        "obj": "information extraction tasks",
+        "subj_id": "scierc-dev-000039-N04-4028::e7",
+        "obj_id": "scierc-dev-000039-N04-4028::e9"
+      },
+      "evidence": [
+        "The information extraction system we evaluate is based on a linear-chain conditional random field -LRB- CRF -RRB-, a probabilistic model which has performed well on information extraction tasks because of its ability to capture arbitrary, overlapping features of the input in a Markov model."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4b539b177f",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "core-selecting rules",
+        "rel": "HYPONYM-OF",
+        "obj": "rules",
+        "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e4",
+        "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e7"
+      },
+      "cf": null,
+      "evidence": [
+        "In this paper, we study the design of core-selecting payment rules for such domains.",
+        "We design two core-selecting rules that always satisfy IR in expectation.",
+        "We show that, in equilibrium, our new rules have better incentives, higher efficiency, and a lower rate of ex-post IR violations than standard core-selecting rules."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-600bffb8c2",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "classifier",
+        "rel": "USED-FOR",
+        "obj": "classification",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e4",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e10"
+      },
+      "cf": {
+        "subj": "classifier",
+        "rel": "USED-FOR",
+        "obj": "classification",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e4",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e10"
+      },
+      "evidence": [
+        "The estimator yields an initial set of potential object poses that are then validated by the classifier.",
+        "The classifier we use in both stages is based on a boosted combination of Random Ferns over local histograms of oriented gradients -LRB- HOGs -RRB-, which we compute during a pre-processing step."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b4eefc9806",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "training strategy",
+        "rel": "USED-FOR",
+        "obj": "rapid adaptation technique",
+        "subj_id": "scierc-dev-000012-H91-1010::e5",
+        "obj_id": "scierc-dev-000012-H91-1010::e6"
+      },
+      "cf": {
+        "subj": "training strategy",
+        "rel": "USED-FOR",
+        "obj": "rapid adaptation technique",
+        "subj_id": "scierc-dev-000012-H91-1010::e5",
+        "obj_id": "scierc-dev-000012-H91-1010::e6"
+      },
+      "evidence": [
+        "A new training strategy has been tested which, by itself, did not provide useful improvements but suggests that improvements can be obtained by a related rapid adaptation technique."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e23d6fc4aa",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "spatial overlap",
+        "rel": "FEATURE-OF",
+        "obj": "sequence",
+        "subj_id": "scierc-dev-000023-CVPR_2004_10_abs::e9",
+        "obj_id": null
+      },
+      "cf": null,
+      "evidence": [
+        "Global registration is achieved by combining a graph-based technique -- that exploits the topological structure of the sequence induced by the spatial overlap -- with a bundle adjustment which uses only the homographies computed in the previous steps."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6f749a6cef",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "tree-based ordering model",
+        "rel": "CONJUNCTION",
+        "obj": "SMT models",
+        "subj_id": "scierc-dev-000014-P05-1034::e0",
+        "obj_id": "scierc-dev-000014-P05-1034::e12"
+      },
+      "cf": {
+        "subj": "tree-based ordering model",
+        "rel": "CONJUNCTION",
+        "obj": "SMT models",
+        "subj_id": "scierc-dev-000014-P05-1034::e0",
+        "obj_id": "scierc-dev-000014-P05-1034::e12"
+      },
+      "evidence": [
+        "We describe an efficient decoder and show that using these tree-based models in combination with conventional SMT models provides a promising approach that incorporates the power of phrasal SMT with the linguistic generality available in a parser."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8a189b5383",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "distant illumination",
+        "rel": "USED-FOR",
+        "obj": "computing optical flow , shape , motion , lighting , and albedo",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e5",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0"
+      },
+      "cf": {
+        "subj": "spatial and temporal intensity variation",
+        "rel": "USED-FOR",
+        "obj": "computing optical flow , shape , motion , lighting , and albedo",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e2",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0"
+      },
+      "evidence": [
+        "This paper presents an algorithm for computing optical flow, shape, motion, lighting, and albedo from an image sequence of a rigidly-moving Lambertian object under distant illumination."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ed6b0b6956",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "dialog model",
+        "rel": "USED-FOR",
+        "obj": "verbal interaction",
+        "subj_id": "scierc-dev-000006-C80-1073::e3",
+        "obj_id": "scierc-dev-000006-C80-1073::e0"
+      },
+      "cf": {
+        "subj": "dialog model",
+        "rel": "USED-FOR",
+        "obj": "verbal interaction",
+        "subj_id": "scierc-dev-000006-C80-1073::e3",
+        "obj_id": "scierc-dev-000006-C80-1073::e0"
+      },
+      "evidence": [
+        "The development of such a model appears to be important in several respects: as a device to represent and to use different dialog schemata proposed in empirical conversation analysis; as a device to represent and to use models of verbal interaction; as a device combining knowledge about dialog schemata and about verbal interaction with knowledge about task-oriented and goal-directed dialogs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ac134f6156",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "entity-oriented language definition",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e11",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": {
+        "subj": "entity-oriented language definition",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e11",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "evidence": [
+        "In this approach, the definitions of the structure and surface representation of domain entities are grouped together.",
+        "Representative samples from an entity-oriented language definition are presented, along with a control structure for an entity-oriented parser, some parsing strategies that use the control structure, and worked examples of parses."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-463c39e0e3",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "efficiency",
+        "rel": "FEATURE-OF",
+        "obj": "entity summarization",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e13",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e14"
+      },
+      "cf": null,
+      "evidence": [
+        "We evaluate our approach against the state-of-the-art techniques and show that our work improves both the quality and the efficiency of entity summarization."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7d38c3b06d",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:scierc-dev-000002-P84-1047::s2:mask",
+      "base": {
+        "subj": "entity-oriented parser",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e12",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": {
+        "subj": "structure and surface representation of domain entities",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e5",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "evidence": [
+        "Representative samples from an entity-oriented language definition are presented, along with a control structure for an entity-oriented parser, some parsing strategies that use the control structure, and worked examples of parses."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9a9dc645c0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "motorbikes under planar rotations",
+        "rel": "PART-OF",
+        "obj": "database",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e17",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e16"
+      },
+      "cf": {
+        "subj": "motorbikes under planar rotations",
+        "rel": "PART-OF",
+        "obj": "database",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e17",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e16"
+      },
+      "evidence": [
+        "We show these properties by thorough testing on standard databases and on a new database made of motorbikes under planar rotations, and with challenging conditions such as cluttered backgrounds, changing illumination conditions and partial occlusions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6777d00b01",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:scierc-dev-000017-AAAI_2015_21_abs::s3:mask",
+      "base": {
+        "subj": "Semantic Web documents",
+        "rel": "USED-FOR",
+        "obj": "Creating summaries",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e1",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2"
+      },
+      "cf": {
+        "subj": "diversity-aware entity summarization approach",
+        "rel": "USED-FOR",
+        "obj": "Creating summaries",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2"
+      },
+      "evidence": [
+        "Semantic Web documents that encode facts about entities on the Web have been growing rapidly in size and evolving over time.",
+        "Creating summaries on lengthy Semantic Web documents for quick identification of the corresponding entity has been of great contemporary interest."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-beddc9592a",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "video segmentation",
+        "rel": "COMPARE",
+        "obj": "action proposals",
+        "subj_id": "scierc-dev-000044-CVPR_2015_303_abs::e17",
+        "obj_id": "scierc-dev-000044-CVPR_2015_303_abs::e14"
+      },
+      "cf": {
+        "subj": "action proposal approaches",
+        "rel": "COMPARE",
+        "obj": "action proposals",
+        "subj_id": "scierc-dev-000044-CVPR_2015_303_abs::e16",
+        "obj_id": "scierc-dev-000044-CVPR_2015_303_abs::e14"
+      },
+      "evidence": [
+        "Compared with existing action proposal approaches, our action proposals do not rely on video segmentation and can be generated in nearly real-time."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-11415c76e3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Plume",
+        "rel": "USED-FOR",
+        "obj": "relative clauses",
+        "subj_id": "scierc-test-000006-P85-1019::e0",
+        "obj_id": "scierc-test-000006-P85-1019::e9"
+      },
+      "cf": {
+        "subj": "Plume",
+        "rel": "USED-FOR",
+        "obj": "relative clauses",
+        "subj_id": "scierc-test-000006-P85-1019::e0",
+        "obj_id": "scierc-test-000006-P85-1019::e9"
+      },
+      "evidence": [
+        "While Plume is well adapted to simple declarative and imperative utterances, it handles passives, relative clauses and interrogatives in an ad hoc manner leading to patchy syntactic coverage.",
+        "This paper outlines Plume as it currently exists and describes our detailed design for extending Plume to handle passives, relative clauses, and interrogatives in a general manner."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-27d32079b7",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "spatio-temporal video segmentation algorithm",
+        "rel": "USED-FOR",
+        "obj": "long-range motion cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10"
+      },
+      "cf": {
+        "subj": "spatio-temporal video segmentation algorithm",
+        "rel": "FEATURE-OF",
+        "obj": "long-range motion cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10"
+      },
+      "evidence": [
+        "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-97b4791f26",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "distributional hypothesis",
+        "rel": "USED-FOR",
+        "obj": "text mining method",
+        "subj_id": "scierc-dev-000004-C04-1116::e3",
+        "obj_id": "scierc-dev-000004-C04-1116::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "We present a text mining method for finding synonymous expressions based on the distributional hypothesis in a set of coherent corpora."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-bca1287d87",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:scierc-dev-000012-H91-1010::s3:remove",
+      "base": {
+        "subj": "recognizer",
+        "rel": "USED-FOR",
+        "obj": "bigram back-off language models",
+        "subj_id": "scierc-dev-000012-H91-1010::e7",
+        "obj_id": "scierc-dev-000012-H91-1010::e8"
+      },
+      "cf": {
+        "subj": "Lincoln CSR system",
+        "rel": "USED-FOR",
+        "obj": "bigram back-off language models",
+        "subj_id": "scierc-dev-000012-H91-1010::e0",
+        "obj_id": "scierc-dev-000012-H91-1010::e8"
+      },
+      "evidence": [
+        "Finally, the recognizer has been modified to use bigram back-off language models."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d6842425b6",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000033-P05-1073::s3:remove",
+      "base": {
+        "subj": "features",
+        "rel": "PART-OF",
+        "obj": "joint model of argument frames",
+        "subj_id": "scierc-dev-000033-P05-1073::e6",
+        "obj_id": "scierc-dev-000033-P05-1073::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "We show how to build a joint model of argument frames, incorporating novel features that model these interactions into discriminative log-linear models."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c2f0ab6fa5",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000016-ECCV_2012_40_abs::s3:remove",
+      "base": {
+        "subj": "matching application on deformable surfaces",
+        "rel": "USED-FOR",
+        "obj": "KAZE features",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e14",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "We present an extensive evaluation on benchmark datasets and a practical matching application on deformable surfaces."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-50004fdb53",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Video",
+        "rel": "FEATURE-OF",
+        "obj": "visual cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e1",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e2"
+      },
+      "cf": {
+        "subj": "Video",
+        "rel": "FEATURE-OF",
+        "obj": "visual cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e1",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e2"
+      },
+      "evidence": [
+        "Video provides not only rich visual cues such as motion and appearance, but also much less explored long-range temporal interactions among objects."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-be5d7e6860",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "system",
+        "rel": "PART-OF",
+        "obj": "multi-component architecture",
+        "subj_id": "scierc-dev-000019-A00-1024::e1",
+        "obj_id": "scierc-dev-000019-A00-1024::e3"
+      },
+      "cf": {
+        "subj": "system",
+        "rel": "PART-OF",
+        "obj": "components",
+        "subj_id": "scierc-dev-000019-A00-1024::e1",
+        "obj_id": "scierc-dev-000019-A00-1024::e0"
+      },
+      "evidence": [
+        "The system is based on a multi-component architecture where each component is responsible for identifying one class of unknown words."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-62d381fc15",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "search tool",
+        "rel": "USED-FOR",
+        "obj": "ngrams",
+        "subj_id": "scierc-dev-000037-C08-3010::e0",
+        "obj_id": "scierc-dev-000037-C08-3010::e1"
+      },
+      "cf": {
+        "subj": "search tool",
+        "rel": "OTHER",
+        "obj": "ngrams",
+        "subj_id": "scierc-dev-000037-C08-3010::e0",
+        "obj_id": "scierc-dev-000037-C08-3010::e1"
+      },
+      "evidence": [
+        "In this paper, we will describe a search tool for a huge set of ngrams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-365b093986",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "dictionary-based acquisition of collocation lexicon",
+        "rel": "PART-OF",
+        "obj": "phases",
+        "subj_id": "scierc-dev-000024-L08-1260::e4",
+        "obj_id": "scierc-dev-000024-L08-1260::e3"
+      },
+      "cf": {
+        "subj": "dictionary-based acquisition of collocation lexicon",
+        "rel": "PART-OF",
+        "obj": "phases",
+        "subj_id": "scierc-dev-000024-L08-1260::e4",
+        "obj_id": "scierc-dev-000024-L08-1260::e3"
+      },
+      "evidence": [
+        "We present methodology and resources obtained in three main project phases which are: dictionary-based acquisition of collocation lexicon, feasibility study for corpus-based lexicon enlargement phase, corpus-based lexicon enlargement and collocation description."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e23d4ac9e0",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "relevant approach",
+        "rel": "HYPONYM-OF",
+        "obj": "independent and relevant event-based extractive mutli-document summarization approaches",
+        "subj_id": "scierc-test-000025-P06-3007::e2",
+        "obj_id": "scierc-test-000025-P06-3007::e0"
+      },
+      "cf": {
+        "subj": "relevant approach",
+        "rel": "PART-OF",
+        "obj": "independent and relevant event-based extractive mutli-document summarization approaches",
+        "subj_id": "scierc-test-000025-P06-3007::e2",
+        "obj_id": "scierc-test-000025-P06-3007::e0"
+      },
+      "evidence": [
+        "We investigate independent and relevant event-based extractive mutli-document summarization approaches."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a0bace7dbd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "classifier",
+        "rel": "USED-FOR",
+        "obj": "object poses",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e4",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e8"
+      },
+      "cf": {
+        "subj": "classifier",
+        "rel": "USED-FOR",
+        "obj": "object poses",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e4",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e8"
+      },
+      "evidence": [
+        "The estimator yields an initial set of potential object poses that are then validated by the classifier."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6228732b6e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "models",
+        "rel": "USED-FOR",
+        "obj": "co-occurrence patterns",
+        "subj_id": "scierc-dev-000018-C04-1147::e6",
+        "obj_id": "scierc-dev-000018-C04-1147::e11"
+      },
+      "cf": null,
+      "evidence": [
+        "In comparison with previous models, which either use arbitrary windows to compute similarity between words or use lexical affinity to create sequential models, in this paper we focus on models intended to capture the co-occurrence patterns of any pair of words or phrases at any distance in the corpus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4f1f09fb8e",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "reweighted version of the sum product algorithm",
+        "rel": "USED-FOR",
+        "obj": "Kikuchi region graph",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e0",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e9"
+      },
+      "cf": {
+        "subj": "reweighted version of the sum product algorithm",
+        "rel": "USED-FOR",
+        "obj": "Kikuchi approximation",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e0",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e1"
+      },
+      "evidence": [
+        "We establish sufficient conditions for the concavity of our reweighted objective function in terms of weight assignments in the Kikuchi expansion, and show that a reweighted version of the sum product algorithm applied to the Kikuchi region graph will produce global optima of the Kikuchi approximation whenever the algorithm converges."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3d39fd4987",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "syntactic structure features",
+        "rel": "PART-OF",
+        "obj": "parse tree",
+        "subj_id": "scierc-test-000020-N06-1037::e1",
+        "obj_id": "scierc-test-000020-N06-1037::e4"
+      },
+      "cf": {
+        "subj": "syntactic structure features",
+        "rel": "FEATURE-OF",
+        "obj": "parse tree",
+        "subj_id": "scierc-test-000020-N06-1037::e1",
+        "obj_id": "scierc-test-000020-N06-1037::e4"
+      },
+      "evidence": [
+        "Our study reveals that the syntactic structure features embedded in a parse tree are very effective for relation extraction and these features can be well captured by the convolution tree kernel."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-057a71de32",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "robust principal component analysis -LRB- robust PCA -RRB- problem",
+        "rel": "USED-FOR",
+        "obj": "machine learning applications",
+        "subj_id": "scierc-test-000016-ICML_2016_11_abs::e1",
+        "obj_id": "scierc-test-000016-ICML_2016_11_abs::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "The robust principal component analysis -LRB- robust PCA -RRB- problem has been considered in many machine learning applications, where the goal is to decompose the data matrix to a low rank part plus a sparse residual."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-013086809a",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "multi-document summarization",
+        "rel": "USED-FOR",
+        "obj": "multilingual summaries",
+        "subj_id": "scierc-dev-000040-H05-1005::e4",
+        "obj_id": "scierc-dev-000040-H05-1005::e3"
+      },
+      "cf": {
+        "subj": "information redundancy in multilingual input",
+        "rel": "USED-FOR",
+        "obj": "multilingual summaries",
+        "subj_id": "scierc-dev-000040-H05-1005::e1",
+        "obj_id": "scierc-dev-000040-H05-1005::e3"
+      },
+      "evidence": [
+        "We consider the case of multi-document summarization, where the input documents are in Arabic, and the output summary is in English."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cc2d30803e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "region graph",
+        "rel": "PART-OF",
+        "obj": "Kikuchi approximation",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e4",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "We analyze a reweighted version of the Kikuchi approximation for estimating the log partition function of a product distribution defined over a region graph.",
+        "We establish sufficient conditions for the concavity of our reweighted objective function in terms of weight assignments in the Kikuchi expansion, and show that a reweighted version of the sum product algorithm applied to the Kikuchi region graph will produce global optima of the Kikuchi approximation whenever the algorithm converges."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9667f7d8df",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "parser",
+        "rel": "USED-FOR",
+        "obj": "structural and lexical dependencies",
+        "subj_id": "scierc-dev-000022-P04-1030::e3",
+        "obj_id": "scierc-dev-000022-P04-1030::e7"
+      },
+      "cf": {
+        "subj": "parser",
+        "rel": "USED-FOR",
+        "obj": "structural and lexical dependencies",
+        "subj_id": "scierc-dev-000022-P04-1030::e3",
+        "obj_id": "scierc-dev-000022-P04-1030::e7"
+      },
+      "evidence": [
+        "The parser uses structural and lexical dependencies not considered by n-gram models, conditioning recognition on more linguistically-grounded relationships."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4c1d473bad",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "user modeling",
+        "rel": "USED-FOR",
+        "obj": "intelligent interactive systems",
+        "subj_id": "scierc-dev-000038-J88-3002::e2",
+        "obj_id": "scierc-dev-000038-J88-3002::e1"
+      },
+      "cf": {
+        "subj": "user modeling",
+        "rel": "USED-FOR",
+        "obj": "intelligent interactive systems",
+        "subj_id": "scierc-dev-000038-J88-3002::e2",
+        "obj_id": "scierc-dev-000038-J88-3002::e1"
+      },
+      "evidence": [
+        "This paper explores the role of user modeling in such systems."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-839fbeaa30",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:scierc-dev-000008-NIPS_2014_18_abs::s2:mask",
+      "base": {
+        "subj": "sharp error estimates",
+        "rel": "EVALUATE-FOR",
+        "obj": "optimal rule",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e4",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e5"
+      },
+      "cf": {
+        "subj": "sharp error estimates",
+        "rel": "OTHER",
+        "obj": "optimal rule",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e4",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e5"
+      },
+      "evidence": [
+        "In the case of known expert competence levels, we give sharp error estimates for the optimal rule."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-96c341cc85",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "algorithm",
+        "rel": "USED-FOR",
+        "obj": "estimating affine camera parameters , illumination , shape , and albedo",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e14"
+      },
+      "cf": {
+        "subj": "algorithm",
+        "rel": "USED-FOR",
+        "obj": "estimating affine camera parameters , illumination , shape , and albedo",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e14"
+      },
+      "evidence": [
+        "The algorithm works by iteratively estimating affine camera parameters, illumination, shape, and albedo in an alternating fashion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c4c1347620",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "unsupervised learning method",
+        "rel": "USED-FOR",
+        "obj": "single-snippet answers",
+        "subj_id": "scierc-dev-000007-H05-1041::e0",
+        "obj_id": "scierc-dev-000007-H05-1041::e3"
+      },
+      "cf": {
+        "subj": "unsupervised learning method",
+        "rel": "USED-FOR",
+        "obj": "single-snippet answers",
+        "subj_id": "scierc-dev-000007-H05-1041::e0",
+        "obj_id": "scierc-dev-000007-H05-1041::e3"
+      },
+      "evidence": [
+        "We present a practically unsupervised learning method to produce single-snippet answers to definition questions in question answering systems that supplement Web search engines."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1913ff446d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "user model",
+        "rel": "FEATURE-OF",
+        "obj": "user modeling",
+        "subj_id": "scierc-dev-000038-J88-3002::e0",
+        "obj_id": "scierc-dev-000038-J88-3002::e2"
+      },
+      "cf": {
+        "subj": "user model",
+        "rel": "FEATURE-OF",
+        "obj": "user modeling",
+        "subj_id": "scierc-dev-000038-J88-3002::e0",
+        "obj_id": "scierc-dev-000038-J88-3002::e2"
+      },
+      "evidence": [
+        "It begins with a characterization of what a user model is and how it can be used."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1ba9d9363e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "spatio-temporal over-segmentation",
+        "rel": "USED-FOR",
+        "obj": "object boundaries",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e7",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "Motivated by this goal, we seek to obtain spatio-temporal over-segmentation of a video into regions that respect object boundaries and, at the same time, associate object pix-els over many video frames."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d4c02e00ca",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Bethe approximation",
+        "rel": "HYPONYM-OF",
+        "obj": "Kikuchi approximation",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e12",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e1"
+      },
+      "cf": {
+        "subj": "Bethe approximation",
+        "rel": "HYPONYM-OF",
+        "obj": "Kikuchi approximation",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e12",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e1"
+      },
+      "evidence": [
+        "When the region graph has two layers, corresponding to a Bethe approximation, we show that our sufficient conditions for concavity are also necessary."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-54c87f940e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "system",
+        "rel": "EVALUATE-FOR",
+        "obj": "live closed captions",
+        "subj_id": "scierc-dev-000019-A00-1024::e1",
+        "obj_id": "scierc-dev-000019-A00-1024::e10"
+      },
+      "cf": {
+        "subj": "system",
+        "rel": "EVALUATE-FOR",
+        "obj": "live closed captions",
+        "subj_id": "scierc-dev-000019-A00-1024::e1",
+        "obj_id": "scierc-dev-000019-A00-1024::e10"
+      },
+      "evidence": [
+        "The system is evaluated using data from live closed captions - a genre replete with a wide variety of unknown words."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9038c01528",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "long-range motion cues",
+        "rel": "FEATURE-OF",
+        "obj": "spatio-temporal video segmentation algorithm",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9"
+      },
+      "cf": null,
+      "evidence": [
+        "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-29bac93c1e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000002-P84-1047::s4:mask",
+      "base": {
+        "subj": "control structure",
+        "rel": "PART-OF",
+        "obj": "entity-oriented parser",
+        "subj_id": "scierc-dev-000002-P84-1047::e3",
+        "obj_id": "scierc-dev-000002-P84-1047::e12"
+      },
+      "cf": {
+        "subj": "control structure",
+        "rel": "PART-OF",
+        "obj": "entity-oriented parser",
+        "subj_id": "scierc-dev-000002-P84-1047::e3",
+        "obj_id": "scierc-dev-000002-P84-1047::e12"
+      },
+      "evidence": [
+        "Representative samples from an entity-oriented language definition are presented, along with a control structure for an entity-oriented parser, some parsing strategies that use the control structure, and worked examples of parses."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3b425f3492",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:scierc-dev-000012-H91-1010::s0:mask",
+      "base": {
+        "subj": "RM and ATIS CSR tasks",
+        "rel": "CONJUNCTION",
+        "obj": "Lincoln CSR system",
+        "subj_id": "scierc-dev-000012-H91-1010::e11",
+        "obj_id": "scierc-dev-000012-H91-1010::e0"
+      },
+      "cf": {
+        "subj": "RM and ATIS CSR tasks",
+        "rel": "EVALUATE-FOR",
+        "obj": "Lincoln CSR system",
+        "subj_id": "scierc-dev-000012-H91-1010::e11",
+        "obj_id": "scierc-dev-000012-H91-1010::e0"
+      },
+      "evidence": [
+        "The system was then transferred from the RM task to the ATIS CSR task and a limited number of development tests performed.",
+        "Evaluation test results are presented for both the RM and ATIS CSR tasks."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-77413fccf2",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000018-C04-1147::s2:mask",
+      "base": {
+        "subj": "co-occurrence distribution",
+        "rel": "FEATURE-OF",
+        "obj": "algorithm",
+        "subj_id": "scierc-dev-000018-C04-1147::e3",
+        "obj_id": "scierc-dev-000018-C04-1147::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "The framework is composed of a novel algorithm to efficiently compute the co-occurrence distribution between pairs of terms, an independence model, and a parametric affinity model."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-41e1dfee63",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Gaussian scale space",
+        "rel": "COMPARE",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e5",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "Previous approaches detect and describe features at different scale levels by building or approximating the Gaussian scale space of an image.",
+        "In contrast, we detect and describe 2D features in a nonlinear scale space by means of nonlinear diffusion filtering."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b10df6d507",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "multi-view constraints",
+        "rel": "COMPARE",
+        "obj": "baseline single-view method",
+        "subj_id": "scierc-dev-000048-CVPR_2011_293_abs::e17",
+        "obj_id": "scierc-dev-000048-CVPR_2011_293_abs::e19"
+      },
+      "cf": null,
+      "evidence": [
+        "Our results show that multi-view constraints can significantly improve estimates of both scene illuminants and object color -LRB- surface reflectance -RRB- when compared to a baseline single-view method."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c09a7c08c1",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "co-occurrence distribution",
+        "rel": "FEATURE-OF",
+        "obj": "algorithm",
+        "subj_id": "scierc-dev-000018-C04-1147::e3",
+        "obj_id": "scierc-dev-000018-C04-1147::e2"
+      },
+      "cf": {
+        "subj": "framework",
+        "rel": "FEATURE-OF",
+        "obj": "algorithm",
+        "subj_id": "scierc-dev-000018-C04-1147::e0",
+        "obj_id": "scierc-dev-000018-C04-1147::e2"
+      },
+      "evidence": [
+        "The framework is composed of a novel algorithm to efficiently compute the co-occurrence distribution between pairs of terms, an independence model, and a parametric affinity model."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5194837c15",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "video sequences",
+        "rel": "USED-FOR",
+        "obj": "face recognition",
+        "subj_id": "scierc-test-000036-ECCV_2006_13_abs::e5",
+        "obj_id": "scierc-test-000036-ECCV_2006_13_abs::e4"
+      },
+      "cf": {
+        "subj": "video sequences",
+        "rel": "USED-FOR",
+        "obj": "face recognition",
+        "subj_id": "scierc-test-000036-ECCV_2006_13_abs::e5",
+        "obj_id": "scierc-test-000036-ECCV_2006_13_abs::e4"
+      },
+      "evidence": [
+        "The objective of this work is to recognize faces using video sequences both for training and recognition input, in a realistic, unconstrained setup in which lighting, pose and user motion pattern have a wide variability and face images are of low resolution."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-039ccf1049",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "multi-view constraints",
+        "rel": "USED-FOR",
+        "obj": "estimates of both scene illuminants and object color -LRB- surface reflectance -RRB-",
+        "subj_id": "scierc-dev-000048-CVPR_2011_293_abs::e17",
+        "obj_id": "scierc-dev-000048-CVPR_2011_293_abs::e18"
+      },
+      "cf": null,
+      "evidence": [
+        "Our results show that multi-view constraints can significantly improve estimates of both scene illuminants and object color -LRB- surface reflectance -RRB- when compared to a baseline single-view method."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-48bb2905be",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "dialog schemata",
+        "rel": "PART-OF",
+        "obj": "dialog model",
+        "subj_id": "scierc-dev-000006-C80-1073::e2",
+        "obj_id": "scierc-dev-000006-C80-1073::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "The development of such a model appears to be important in several respects: as a device to represent and to use different dialog schemata proposed in empirical conversation analysis; as a device to represent and to use models of verbal interaction; as a device combining knowledge about dialog schemata and about verbal interaction with knowledge about task-oriented and goal-directed dialogs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-09afb06c21",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "distinctive textured patterns",
+        "rel": "FEATURE-OF",
+        "obj": "interest point detectors",
+        "subj_id": "scierc-test-000005-CVPR_2009_18_abs::e7",
+        "obj_id": "scierc-test-000005-CVPR_2009_18_abs::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "The proposed detectors are able to capture large-scale structures and distinctive textured patterns, and exhibit strong invariance to rotation, illumination variation, and blur."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d4e749b505",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:HYPONYM-OF:switch_schema",
+      "base": {
+        "subj": "topic signature",
+        "rel": "FEATURE-OF",
+        "obj": "concept",
+        "subj_id": "scierc-test-000048-P04-2005::e5",
+        "obj_id": "scierc-test-000048-P04-2005::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "Given a particular concept, or word sense, a topic signature is a set of words that tend to co-occur with it."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c812f79426",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "rhetorical structure",
+        "rel": "CONJUNCTION",
+        "obj": "punctuation",
+        "subj_id": "scierc-dev-000031-P06-3008::e1",
+        "obj_id": "scierc-dev-000031-P06-3008::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "Both rhetorical structure and punctuation have been helpful in discourse processing."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-99c32e7094",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "type of unit classifier",
+        "rel": "HYPONYM-OF",
+        "obj": "classifier",
+        "subj_id": "scierc-test-000012-C94-1091::e7",
+        "obj_id": "scierc-test-000012-C94-1091::e6"
+      },
+      "cf": {
+        "subj": "type of unit classifier",
+        "rel": "HYPONYM-OF",
+        "obj": "classifier",
+        "subj_id": "scierc-test-000012-C94-1091::e7",
+        "obj_id": "scierc-test-000012-C94-1091::e6"
+      },
+      "evidence": [
+        "Registration of classifier for each noun is limited to the type of unit classifier because other types are open due to the meaning of representation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8d077ab97b",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000003-C88-1066::s2:remove",
+      "base": {
+        "subj": "Category Cooccurrence Restrictions -LRB- CCRs -RRB-",
+        "rel": "USED-FOR",
+        "obj": "statement of generalizations",
+        "subj_id": "scierc-dev-000003-C88-1066::e0",
+        "obj_id": "scierc-dev-000003-C88-1066::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "CCRs are Boolean conditions on the cooccurrence of categories in local trees which allow the statement of generalizations which can not be captured in other current syntax formalisms."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0b9eeb90c2",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "long-range temporal interactions",
+        "rel": "FEATURE-OF",
+        "obj": "Video",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e0",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "Video provides not only rich visual cues such as motion and appearance, but also much less explored long-range temporal interactions among objects."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b29c53055a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "anisotropic circular Gaussian MRF -LRB- ACGMRF -RRB- model",
+        "rel": "USED-FOR",
+        "obj": "modelling rotated image textures",
+        "subj_id": "scierc-dev-000032-CVPR_2003_11_abs::e0",
+        "obj_id": "scierc-dev-000032-CVPR_2003_11_abs::e5"
+      },
+      "cf": {
+        "subj": "anisotropic circular Gaussian MRF -LRB- ACGMRF -RRB- model",
+        "rel": "USED-FOR",
+        "obj": "modelling rotated image textures",
+        "subj_id": "scierc-dev-000032-CVPR_2003_11_abs::e0",
+        "obj_id": "scierc-dev-000032-CVPR_2003_11_abs::e5"
+      },
+      "evidence": [
+        "This paper develops an anisotropic circular Gaussian MRF -LRB- ACGMRF -RRB- model for modelling rotated image textures and retrieving rotation-invariant texture features."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2b817a7329",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "RANSAC techniques",
+        "rel": "EVALUATE-FOR",
+        "obj": "efficient robust estimation algorithm",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0"
+      },
+      "cf": {
+        "subj": "geometric estimation problems",
+        "rel": "EVALUATE-FOR",
+        "obj": "efficient robust estimation algorithm",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e10",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0"
+      },
+      "evidence": [
+        "In particular, our algorithm requires, on average, 3-10 times fewer samples than standard RANSAC, which is in close agreement with theoretical predictions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f87e320d38",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "approach",
+        "rel": "USED-FOR",
+        "obj": "Interactive Machine Translation",
+        "subj_id": "scierc-dev-000013-C88-2160::e0",
+        "obj_id": "scierc-dev-000013-C88-2160::e1"
+      },
+      "cf": {
+        "subj": "approach",
+        "rel": "USED-FOR",
+        "obj": "Interactive Machine Translation",
+        "subj_id": "scierc-dev-000013-C88-2160::e0",
+        "obj_id": "scierc-dev-000013-C88-2160::e1"
+      },
+      "evidence": [
+        "A new approach for Interactive Machine Translation where the author interacts during the creation or the modification of the document is proposed."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8f3283b2e1",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "linguistic theory",
+        "rel": "OTHER",
+        "obj": "approach",
+        "subj_id": "scierc-dev-000013-C88-2160::e2",
+        "obj_id": "scierc-dev-000013-C88-2160::e0"
+      },
+      "cf": {
+        "subj": "linguistic theory",
+        "rel": "OTHER",
+        "obj": "explanation of an ambiguity or an error",
+        "subj_id": "scierc-dev-000013-C88-2160::e2",
+        "obj_id": null
+      },
+      "evidence": [
+        "The explanation of an ambiguity or an error for the purposes of correction does not use any concepts of the underlying linguistic theory: it is a reformulation of the erroneous or ambiguous sentence."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-19f37c2e32",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "language processing modules",
+        "rel": "PART-OF",
+        "obj": "JAVELIN system",
+        "subj_id": "scierc-dev-000021-N03-4010::e2",
+        "obj_id": "scierc-dev-000021-N03-4010::e0"
+      },
+      "cf": {
+        "subj": "language processing modules",
+        "rel": "FEATURE-OF",
+        "obj": "JAVELIN system",
+        "subj_id": "scierc-dev-000021-N03-4010::e2",
+        "obj_id": "scierc-dev-000021-N03-4010::e0"
+      },
+      "evidence": [
+        "The JAVELIN system integrates a flexible, planning-based architecture with a variety of language processing modules to provide an open-domain question answering capability on free text."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cd412943e8",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "computing optical flow , shape , motion , lighting , and albedo",
+        "rel": "USED-FOR",
+        "obj": "algorithm",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "This paper presents an algorithm for computing optical flow, shape, motion, lighting, and albedo from an image sequence of a rigidly-moving Lambertian object under distant illumination."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-43bbbd7ce3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "diversity-aware entity summarization approach",
+        "rel": "USED-FOR",
+        "obj": "entity summarization",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e14"
+      },
+      "cf": {
+        "subj": "diversity-aware entity summarization approach",
+        "rel": "USED-FOR",
+        "obj": "entity summarization",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e14"
+      },
+      "evidence": [
+        "Our novel diversity-aware entity summarization approach mimics human conceptual clustering techniques to group facts, and picks representative facts from each group to form concise -LRB- i.e., short -RRB- and comprehensive -LRB- i.e., improved coverage through diversity -RRB- summaries."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3e5d4d28fd",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000037-C08-3010::s0:remove",
+      "base": {
+        "subj": "search tool",
+        "rel": "PART-OF",
+        "obj": "disk space",
+        "subj_id": "scierc-dev-000037-C08-3010::e0",
+        "obj_id": "scierc-dev-000037-C08-3010::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "The system runs on a single Linux PC with reasonable size memory -LRB- less than 4GB -RRB- and disk space -LRB- less than 400GB -RRB-."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5d82f426fb",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "Bayesian learning algorithm",
+        "rel": "USED-FOR",
+        "obj": "probability distribution",
+        "subj_id": "scierc-test-000047-ICML_2006_119_abs::e12",
+        "obj_id": "scierc-test-000047-ICML_2006_119_abs::e1"
+      },
+      "cf": {
+        "subj": "expert games",
+        "rel": "USED-FOR",
+        "obj": "probability distribution",
+        "subj_id": "scierc-test-000047-ICML_2006_119_abs::e14",
+        "obj_id": "scierc-test-000047-ICML_2006_119_abs::e1"
+      },
+      "evidence": [
+        "Our method has two major components: a -RRB- a pattern extraction scheme for efficiently harvesting patterns of given size and shape from expert game records and b -RRB- a Bayesian learning algorithm -LRB- in two variants -RRB- that learns a distribution over the values of a move given a board position based on the local pattern context."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b9eca018b8",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "motion",
+        "rel": "FEATURE-OF",
+        "obj": "Video",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e3",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "Video provides not only rich visual cues such as motion and appearance, but also much less explored long-range temporal interactions among objects."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7f7b1734cc",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "photo-metric stereo",
+        "rel": "HYPONYM-OF",
+        "obj": "structure from motion",
+        "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e8",
+        "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "The problem is formulated in a manner that subsumes structure from motion, multi-view stereo, and photo-metric stereo as special cases."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ce734a6488",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000002-P84-1047::s5:mask",
+      "base": {
+        "subj": "control structure",
+        "rel": "PART-OF",
+        "obj": "entity-oriented parser",
+        "subj_id": "scierc-dev-000002-P84-1047::e3",
+        "obj_id": "scierc-dev-000002-P84-1047::e12"
+      },
+      "cf": null,
+      "evidence": [
+        "Representative samples from an entity-oriented language definition are presented, along with a control structure for an entity-oriented parser, some parsing strategies that use the control structure, and worked examples of parses."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-79b3b89513",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:FEATURE-OF:switch_schema",
+      "base": {
+        "subj": "convolutional neural networks -LRB- CNNs -RRB-",
+        "rel": "USED-FOR",
+        "obj": "natural language processing tasks",
+        "subj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e1",
+        "obj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e5"
+      },
+      "cf": {
+        "subj": "convolutional neural networks -LRB- CNNs -RRB-",
+        "rel": "USED-FOR",
+        "obj": "natural language processing tasks",
+        "subj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e1",
+        "obj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e5"
+      },
+      "evidence": [
+        "Motivated by the successful use of convolutional neural networks -LRB- CNNs -RRB- for many natural language processing tasks, in this paper, we adopt CNNs to perform the hashtag recommendation problem."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0f0dce8d92",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000016-ECCV_2012_40_abs::s2:remove",
+      "base": {
+        "subj": "KAZE features",
+        "rel": "USED-FOR",
+        "obj": "description",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e18"
+      },
+      "cf": {
+        "subj": "KAZE features",
+        "rel": "USED-FOR",
+        "obj": "description",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e18"
+      },
+      "evidence": [
+        "In this paper, we introduce KAZE features, a novel multiscale 2D feature detection and description algorithm in nonlinear scale spaces.",
+        "Even though our features are somewhat more expensive to compute than SURF due to the construction of the nonlinear scale space, but comparable to SIFT, our results reveal a step forward in performance both in detection and description against previous state-of-the-art methods."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-89dd2f5a95",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "technique",
+        "rel": "USED-FOR",
+        "obj": "robust estimation",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e3",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e4"
+      },
+      "cf": {
+        "subj": "technique",
+        "rel": "USED-FOR",
+        "obj": "robust estimation",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e3",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e4"
+      },
+      "evidence": [
+        "In this work, we present a technique for robust estimation, which by explicitly incorporating the inherent uncertainty of the estimation procedure, results in a more efficient robust estimation algorithm."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1fea886882",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "sentence:scierc-dev-000015-CVPR_2011_292_abs::s6:remove",
+      "base": {
+        "subj": "spatio-temporal video segmentation algorithm",
+        "rel": "USED-FOR",
+        "obj": "long-range motion cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10"
+      },
+      "cf": {
+        "subj": "spatio-temporal video segmentation algorithm",
+        "rel": "USED-FOR",
+        "obj": "spatio-temporal over-segmentation",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e7"
+      },
+      "evidence": [
+        "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-118f6e6358",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "understanding",
+        "rel": "CONJUNCTION",
+        "obj": "generation",
+        "subj_id": "scierc-dev-000049-P05-3001::e2",
+        "obj_id": "scierc-dev-000049-P05-3001::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "Our contributions include a concise, modular architecture with reversible processes of understanding and generation, an information-state model of reference, and flexible links between semantics and collaborative problem solving."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-256d2e4ec9",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "ROD-TV",
+        "rel": "USED-FOR",
+        "obj": "multiscale feature extraction algorithm",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e0",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e19"
+      },
+      "cf": {
+        "subj": "ROD-TV",
+        "rel": "PART-OF",
+        "obj": "multiscale feature extraction algorithm",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e0",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e19"
+      },
+      "evidence": [
+        "By relaxing the mesh connectivity requirement, we extend ROD-TV and propose a simple but effective multiscale feature extraction algorithm."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f2373e5817",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "transfer component",
+        "rel": "USED-FOR",
+        "obj": "parse reduction",
+        "subj_id": "scierc-test-000015-N03-1026::e6",
+        "obj_id": "scierc-test-000015-N03-1026::e7"
+      },
+      "cf": {
+        "subj": "transfer component",
+        "rel": "USED-FOR",
+        "obj": "parse reduction",
+        "subj_id": "scierc-test-000015-N03-1026::e6",
+        "obj_id": "scierc-test-000015-N03-1026::e7"
+      },
+      "evidence": [
+        "Our system incorporates a linguistic parser/generator for LFG, a transfer component for parse reduction operating on packed parse forests, and a maximum-entropy model for stochastic output selection."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0c5ff8504c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000017-AAAI_2015_21_abs::s4:mask",
+      "base": {
+        "subj": "popularity",
+        "rel": "PART-OF",
+        "obj": "diversified -LRB- faceted -RRB- summaries",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e9",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "Specifically, we highlight the importance of diversified -LRB- faceted -RRB- summaries by combining three dimensions: diversity, uniqueness, and popularity."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b566b8f8cb",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "Chinese punctuation marks",
+        "rel": "HYPONYM-OF",
+        "obj": "punctuation",
+        "subj_id": "scierc-dev-000031-P06-3008::e0",
+        "obj_id": "scierc-dev-000031-P06-3008::e2"
+      },
+      "cf": {
+        "subj": "Chinese punctuation marks",
+        "rel": "HYPONYM-OF",
+        "obj": "punctuation",
+        "subj_id": "scierc-dev-000031-P06-3008::e0",
+        "obj_id": "scierc-dev-000031-P06-3008::e2"
+      },
+      "evidence": [
+        "Based on a corpus annotation project, this paper reports the discursive usage of 6 Chinese punctuation marks in news commentary texts: Colon, Dash, Ellipsis, Exclamation Mark, Question Mark, and Semicolon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6bb6d33fb6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Chinese punctuation marks",
+        "rel": "HYPONYM-OF",
+        "obj": "punctuation",
+        "subj_id": "scierc-dev-000031-P06-3008::e0",
+        "obj_id": "scierc-dev-000031-P06-3008::e2"
+      },
+      "cf": {
+        "subj": "Chinese punctuation marks",
+        "rel": "HYPONYM-OF",
+        "obj": "punctuation",
+        "subj_id": "scierc-dev-000031-P06-3008::e0",
+        "obj_id": "scierc-dev-000031-P06-3008::e2"
+      },
+      "evidence": [
+        "Based on a corpus annotation project, this paper reports the discursive usage of 6 Chinese punctuation marks in news commentary texts: Colon, Dash, Ellipsis, Exclamation Mark, Question Mark, and Semicolon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-327799dbf8",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "approach",
+        "rel": "USED-FOR",
+        "obj": "Interactive Machine Translation",
+        "subj_id": "scierc-dev-000013-C88-2160::e0",
+        "obj_id": "scierc-dev-000013-C88-2160::e1"
+      },
+      "cf": {
+        "subj": "approach",
+        "rel": "FEATURE-OF",
+        "obj": "Interactive Machine Translation",
+        "subj_id": "scierc-dev-000013-C88-2160::e0",
+        "obj_id": "scierc-dev-000013-C88-2160::e1"
+      },
+      "evidence": [
+        "A new approach for Interactive Machine Translation where the author interacts during the creation or the modification of the document is proposed."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-282a89d16e",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:scierc-dev-000016-ECCV_2012_40_abs::s6:mask",
+      "base": {
+        "subj": "Additive Operator Splitting -LRB- AOS -RRB- techniques",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e11",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": {
+        "subj": "Additive Operator Splitting -LRB- AOS -RRB- techniques",
+        "rel": "PART-OF",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e11",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "evidence": [
+        "The nonlinear scale space is built using efficient Additive Operator Splitting -LRB- AOS -RRB- techniques and variable con-ductance diffusion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-59dbcdb031",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "partial occlusions",
+        "rel": "PART-OF",
+        "obj": "conditions",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e21",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e18"
+      },
+      "cf": {
+        "subj": "partial occlusions",
+        "rel": "FEATURE-OF",
+        "obj": "conditions",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e21",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e18"
+      },
+      "evidence": [
+        "We show these properties by thorough testing on standard databases and on a new database made of motorbikes under planar rotations, and with challenging conditions such as cluttered backgrounds, changing illumination conditions and partial occlusions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2366805291",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000003-C88-1066::s1:remove",
+      "base": {
+        "subj": "formalism of Category Cooccurrence Restrictions -LRB- CCRs -RRB-",
+        "rel": "USED-FOR",
+        "obj": "parsing algorithms",
+        "subj_id": "scierc-dev-000003-C88-1066::e2",
+        "obj_id": "scierc-dev-000003-C88-1066::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "This paper summarizes the formalism of Category Cooccurrence Restrictions -LRB- CCRs -RRB- and describes two parsing algorithms that interpret it."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-890c9162ec",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "differential features",
+        "rel": "USED-FOR",
+        "obj": "reconstruction",
+        "subj_id": "scierc-test-000001-ICCV_2001_47_abs::e19",
+        "obj_id": "scierc-test-000001-ICCV_2001_47_abs::e1"
+      },
+      "cf": {
+        "subj": "differential features",
+        "rel": "USED-FOR",
+        "obj": "reconstruction",
+        "subj_id": "scierc-test-000001-ICCV_2001_47_abs::e19",
+        "obj_id": "scierc-test-000001-ICCV_2001_47_abs::e1"
+      },
+      "evidence": [
+        "The strong description and modeling properties of differential features make them useful tools that can be efficiently used as constraints for 3 -- D reconstruction."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9bc30db3f0",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "loss",
+        "rel": "OTHER",
+        "obj": "regressed-to values",
+        "subj_id": "scierc-test-000034-ICML_2016_10_abs::e7",
+        "obj_id": "scierc-test-000034-ICML_2016_10_abs::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "Unlike standard regression problems, the loss is inversely proportional to the regressed-to values."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2343b526ee",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000007-H05-1041::s1:mask",
+      "base": {
+        "subj": "on-line encyclopedias and dictionaries",
+        "rel": "USED-FOR",
+        "obj": "positive and negative definition examples",
+        "subj_id": "scierc-dev-000007-H05-1041::e4",
+        "obj_id": "scierc-dev-000007-H05-1041::e5"
+      },
+      "cf": null,
+      "evidence": [
+        "The method exploits on-line encyclopedias and dictionaries to generate automatically an arbitrarily large number of positive and negative definition examples, which are then used to train an svm to separate the two classes."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6d89dbdfa2",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:HYPONYM-OF:switch_schema",
+      "base": {
+        "subj": "corpus-based lexicon enlargement phase",
+        "rel": "PART-OF",
+        "obj": "phases",
+        "subj_id": "scierc-dev-000024-L08-1260::e6",
+        "obj_id": "scierc-dev-000024-L08-1260::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "We present methodology and resources obtained in three main project phases which are: dictionary-based acquisition of collocation lexicon, feasibility study for corpus-based lexicon enlargement phase, corpus-based lexicon enlargement and collocation description."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-41e7caae49",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "variable con-ductance diffusion",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e12",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": {
+        "subj": "variable con-ductance diffusion",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e12",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "evidence": [
+        "The nonlinear scale space is built using efficient Additive Operator Splitting -LRB- AOS -RRB- techniques and variable con-ductance diffusion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5ebf813d18",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000011-CVPR_2010_10_abs::s4:remove",
+      "base": {
+        "subj": "approach",
+        "rel": "EVALUATE-FOR",
+        "obj": "database",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e0",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "We show these properties by thorough testing on standard databases and on a new database made of motorbikes under planar rotations, and with challenging conditions such as cluttered backgrounds, changing illumination conditions and partial occlusions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-909381fb16",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "features of entities",
+        "rel": "USED-FOR",
+        "obj": "recovery",
+        "subj_id": "scierc-test-000016-ICML_2016_11_abs::e11",
+        "obj_id": "scierc-test-000016-ICML_2016_11_abs::e12"
+      },
+      "cf": {
+        "subj": "features of entities",
+        "rel": "USED-FOR",
+        "obj": "recovery",
+        "subj_id": "scierc-test-000016-ICML_2016_11_abs::e11",
+        "obj_id": "scierc-test-000016-ICML_2016_11_abs::e12"
+      },
+      "evidence": [
+        "Thus, in this paper, we study the problem of robust PCA with side information, where both prior structure and features of entities are exploited for recovery."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2aa7c249f8",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "core modules",
+        "rel": "PART-OF",
+        "obj": "CCLINC -LRB- Common Coalition Language System at Lincoln Laboratory -RRB-",
+        "subj_id": "scierc-dev-000020-H01-1041::e1",
+        "obj_id": "scierc-dev-000020-H01-1041::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "The CCLINC Korean-to-English translation system consists of two core modules, language understanding and generation modules mediated by a language neutral meaning representation called a semantic frame."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3d7b9b2158",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "framework",
+        "rel": "USED-FOR",
+        "obj": "fast computation of lexical affinity models",
+        "subj_id": "scierc-dev-000018-C04-1147::e0",
+        "obj_id": "scierc-dev-000018-C04-1147::e1"
+      },
+      "cf": {
+        "subj": "framework",
+        "rel": "USED-FOR",
+        "obj": "fast computation of lexical affinity models",
+        "subj_id": "scierc-dev-000018-C04-1147::e0",
+        "obj_id": "scierc-dev-000018-C04-1147::e1"
+      },
+      "evidence": [
+        "We present a framework for the fast computation of lexical affinity models."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-073a01ff2a",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "utterance",
+        "rel": "USED-FOR",
+        "obj": "addressee of a dialogue act",
+        "subj_id": "scierc-test-000039-E06-1022::e6",
+        "obj_id": "scierc-test-000039-E06-1022::e4"
+      },
+      "cf": null,
+      "evidence": [
+        "First, we investigate how well the addressee of a dialogue act can be predicted based on gaze, utterance and conversational context features."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-336b63cdbf",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "weight assignments",
+        "rel": "HYPONYM-OF",
+        "obj": "Kikuchi expansion",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e7",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "We establish sufficient conditions for the concavity of our reweighted objective function in terms of weight assignments in the Kikuchi expansion, and show that a reweighted version of the sum product algorithm applied to the Kikuchi region graph will produce global optima of the Kikuchi approximation whenever the algorithm converges."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2ac849d5db",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:scierc-dev-000002-P84-1047::s0:remove",
+      "base": {
+        "subj": "structure and surface representation of domain entities",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e5",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": {
+        "subj": "entity-oriented language definition",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e11",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "evidence": [
+        "In this approach, the definitions of the structure and surface representation of domain entities are grouped together."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-84add357d8",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "spatio-temporal over-segmentation",
+        "rel": "USED-FOR",
+        "obj": "object boundaries",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e7",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e8"
+      },
+      "cf": {
+        "subj": "spatio-temporal over-segmentation",
+        "rel": "USED-FOR",
+        "obj": "object boundaries",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e7",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e8"
+      },
+      "evidence": [
+        "Motivated by this goal, we seek to obtain spatio-temporal over-segmentation of a video into regions that respect object boundaries and, at the same time, associate object pix-els over many video frames."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-213869399b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000019-A00-1024::s0:mask",
+      "base": {
+        "subj": "component",
+        "rel": "USED-FOR",
+        "obj": "spelling errors",
+        "subj_id": "scierc-dev-000019-A00-1024::e4",
+        "obj_id": "scierc-dev-000019-A00-1024::e7"
+      },
+      "cf": {
+        "subj": "component",
+        "rel": "USED-FOR",
+        "obj": "spelling errors",
+        "subj_id": "scierc-dev-000019-A00-1024::e4",
+        "obj_id": "scierc-dev-000019-A00-1024::e7"
+      },
+      "evidence": [
+        "The focus of this paper is the components that identify names and spelling errors."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ae6c6d6999",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "LCS-Marine",
+        "rel": "HYPONYM-OF",
+        "obj": "Listen-Communicate-Show -LRB- LCS -RRB-",
+        "subj_id": "scierc-test-000003-H01-1049::e1",
+        "obj_id": "scierc-test-000003-H01-1049::e2"
+      },
+      "cf": {
+        "subj": "LCS-Marine",
+        "rel": "HYPONYM-OF",
+        "obj": "Listen-Communicate-Show -LRB- LCS -RRB-",
+        "subj_id": "scierc-test-000003-H01-1049::e1",
+        "obj_id": "scierc-test-000003-H01-1049::e2"
+      },
+      "evidence": [
+        "We have built and will demonstrate an application of this approach called LCS-Marine."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-eacf2c2c26",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:scierc-dev-000012-H91-1010::s3:remove",
+      "base": {
+        "subj": "Lincoln CSR system",
+        "rel": "USED-FOR",
+        "obj": "RM task",
+        "subj_id": "scierc-dev-000012-H91-1010::e0",
+        "obj_id": "scierc-dev-000012-H91-1010::e9"
+      },
+      "cf": {
+        "subj": "Lincoln CSR system",
+        "rel": "EVALUATE-FOR",
+        "obj": "RM task",
+        "subj_id": "scierc-dev-000012-H91-1010::e0",
+        "obj_id": "scierc-dev-000012-H91-1010::e9"
+      },
+      "evidence": [
+        "The system was then transferred from the RM task to the ATIS CSR task and a limited number of development tests performed."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a91397286b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "KAZE features",
+        "rel": "COMPARE",
+        "obj": "SIFT",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e16"
+      },
+      "cf": {
+        "subj": "KAZE features",
+        "rel": "COMPARE",
+        "obj": "SIFT",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e16"
+      },
+      "evidence": [
+        "Even though our features are somewhat more expensive to compute than SURF due to the construction of the nonlinear scale space, but comparable to SIFT, our results reveal a step forward in performance both in detection and description against previous state-of-the-art methods."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b2c5a94d9d",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Polish",
+        "rel": "OTHER",
+        "obj": "lexicon grammar for Polish -LRB- SyntLex -RRB-",
+        "subj_id": "scierc-dev-000024-L08-1260::e2",
+        "obj_id": "scierc-dev-000024-L08-1260::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "The project presented here is a part of a long term research program aiming at a full lexicon grammar for Polish -LRB- SyntLex -RRB-."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-47526340e4",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "objectness",
+        "rel": "USED-FOR",
+        "obj": "object regions",
+        "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e7",
+        "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e5"
+      },
+      "cf": {
+        "subj": "approach",
+        "rel": "USED-FOR",
+        "obj": "object regions",
+        "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e0",
+        "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e5"
+      },
+      "evidence": [
+        "To this end, we propose to efficiently locate object regions according to pixelwise object probability, rather than measuring the objectness from a set of sampled windows."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4f65872f7d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "COMPARE",
+        "obj": "RANSAC techniques",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1"
+      },
+      "cf": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "COMPARE",
+        "obj": "RANSAC techniques",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1"
+      },
+      "evidence": [
+        "The combination of these two strategies results in a robust estimation procedure that provides a significant speed-up over existing RANSAC techniques, while requiring no prior information to guide the sampling process.",
+        "In particular, our algorithm requires, on average, 3-10 times fewer samples than standard RANSAC, which is in close agreement with theoretical predictions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-35e1c85adf",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:FEATURE-OF:switch_schema",
+      "base": {
+        "subj": "shapes of the proposals",
+        "rel": "FEATURE-OF",
+        "obj": "proposals",
+        "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e16",
+        "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "Second, as the shapes of the proposals may vary to fit the objects, the resulting proposals are tighter than the sampling windows with fixed sizes."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0086453cb8",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "user model",
+        "rel": "FEATURE-OF",
+        "obj": "user modeling",
+        "subj_id": "scierc-dev-000038-J88-3002::e0",
+        "obj_id": "scierc-dev-000038-J88-3002::e2"
+      },
+      "cf": {
+        "subj": "user model",
+        "rel": "PART-OF",
+        "obj": "user modeling",
+        "subj_id": "scierc-dev-000038-J88-3002::e0",
+        "obj_id": "scierc-dev-000038-J88-3002::e2"
+      },
+      "evidence": [
+        "It begins with a characterization of what a user model is and how it can be used.",
+        "The types of information that a user model may be required to keep about a user are then identified and discussed.",
+        "User models themselves can vary greatly depending on the requirements of the situation and the implementation, so several dimensions along which they can be classified are presented."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f09af9cb2c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "action proposal generation",
+        "rel": "USED-FOR",
+        "obj": "maximum set coverage problem",
+        "subj_id": "scierc-dev-000044-CVPR_2015_303_abs::e11",
+        "obj_id": "scierc-dev-000044-CVPR_2015_303_abs::e12"
+      },
+      "cf": null,
+      "evidence": [
+        "After picking those spatiotem-poral paths of high actionness scores, our action proposal generation is formulated as a maximum set coverage problem, where greedy search is performed to select a set of action proposals that can maximize the overall actionness score."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1283de92dc",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "online left to right chart-parser",
+        "rel": "USED-FOR",
+        "obj": "word lattices",
+        "subj_id": "scierc-dev-000022-P04-1030::e0",
+        "obj_id": "scierc-dev-000022-P04-1030::e5"
+      },
+      "cf": {
+        "subj": "online left to right chart-parser",
+        "rel": "USED-FOR",
+        "obj": "word lattices",
+        "subj_id": "scierc-dev-000022-P04-1030::e0",
+        "obj_id": "scierc-dev-000022-P04-1030::e5"
+      },
+      "evidence": [
+        "The model is adapted to an online left to right chart-parser for word lattices, integrating acoustic, n-gram, and parser probabilities."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e4098328fd",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:PART-OF:switch_schema",
+      "base": {
+        "subj": "graph-based technique",
+        "rel": "PART-OF",
+        "obj": "Global registration",
+        "subj_id": "scierc-dev-000023-CVPR_2004_10_abs::e0",
+        "obj_id": "scierc-dev-000023-CVPR_2004_10_abs::e7"
+      },
+      "cf": {
+        "subj": "graph-based technique",
+        "rel": "USED-FOR",
+        "obj": "Global registration",
+        "subj_id": "scierc-dev-000023-CVPR_2004_10_abs::e0",
+        "obj_id": "scierc-dev-000023-CVPR_2004_10_abs::e7"
+      },
+      "evidence": [
+        "Global registration is achieved by combining a graph-based technique -- that exploits the topological structure of the sequence induced by the spatial overlap -- with a bundle adjustment which uses only the homographies computed in the previous steps."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-46bdc0612e",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "conditions",
+        "rel": "OTHER",
+        "obj": "changing illumination conditions",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e18",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e20"
+      },
+      "cf": {
+        "subj": "conditions",
+        "rel": "HYPONYM-OF",
+        "obj": "changing illumination conditions",
+        "subj_id": "scierc-dev-000011-CVPR_2010_10_abs::e18",
+        "obj_id": "scierc-dev-000011-CVPR_2010_10_abs::e20"
+      },
+      "evidence": [
+        "We show these properties by thorough testing on standard databases and on a new database made of motorbikes under planar rotations, and with challenging conditions such as cluttered backgrounds, changing illumination conditions and partial occlusions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e2f0bfea8b",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "unknown words",
+        "rel": "PART-OF",
+        "obj": "live closed captions",
+        "subj_id": "scierc-dev-000019-A00-1024::e5",
+        "obj_id": "scierc-dev-000019-A00-1024::e10"
+      },
+      "cf": null,
+      "evidence": [
+        "The system is evaluated using data from live closed captions - a genre replete with a wide variety of unknown words."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-55e97a9c29",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "reweighted objective function",
+        "rel": "FEATURE-OF",
+        "obj": "reweighted version of the Kikuchi approximation",
+        "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e6",
+        "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "We establish sufficient conditions for the concavity of our reweighted objective function in terms of weight assignments in the Kikuchi expansion, and show that a reweighted version of the sum product algorithm applied to the Kikuchi region graph will produce global optima of the Kikuchi approximation whenever the algorithm converges."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c951248f78",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "KAZE features",
+        "rel": "EVALUATE-FOR",
+        "obj": "benchmark datasets",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e13"
+      },
+      "cf": {
+        "subj": "KAZE features",
+        "rel": "EVALUATE-FOR",
+        "obj": "benchmark datasets",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e13"
+      },
+      "evidence": [
+        "We present an extensive evaluation on benchmark datasets and a practical matching application on deformable surfaces."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-65baa21d86",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "user model",
+        "rel": "FEATURE-OF",
+        "obj": "user modeling",
+        "subj_id": "scierc-dev-000038-J88-3002::e0",
+        "obj_id": "scierc-dev-000038-J88-3002::e2"
+      },
+      "cf": {
+        "subj": "user model",
+        "rel": "FEATURE-OF",
+        "obj": "user modeling",
+        "subj_id": "scierc-dev-000038-J88-3002::e0",
+        "obj_id": "scierc-dev-000038-J88-3002::e2"
+      },
+      "evidence": [
+        "It begins with a characterization of what a user model is and how it can be used."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3714437698",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "tree-based models",
+        "rel": "USED-FOR",
+        "obj": "statistical machine translation",
+        "subj_id": null,
+        "obj_id": "scierc-dev-000014-P05-1034::e2"
+      },
+      "cf": {
+        "subj": "approach",
+        "rel": "USED-FOR",
+        "obj": "statistical machine translation",
+        "subj_id": "scierc-dev-000014-P05-1034::e13",
+        "obj_id": "scierc-dev-000014-P05-1034::e2"
+      },
+      "evidence": [
+        "We describe an efficient decoder and show that using these tree-based models in combination with conventional SMT models provides a promising approach that incorporates the power of phrasal SMT with the linguistic generality available in a parser."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ec097c95fa",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "image data",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e9",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": {
+        "subj": "nonlinear diffusion filtering",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e8",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "evidence": [
+        "In this way, we can make blurring locally adaptive to the image data, reducing noise but retaining object boundaries, obtaining superior localization accuracy and distinctiviness."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0b775f3a92",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "diversity-aware entity summarization approach",
+        "rel": "USED-FOR",
+        "obj": "entity summarization",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e14"
+      },
+      "cf": {
+        "subj": "diversity-aware entity summarization approach",
+        "rel": "USED-FOR",
+        "obj": "entity summarization",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e14"
+      },
+      "evidence": [
+        "Our novel diversity-aware entity summarization approach mimics human conceptual clustering techniques to group facts, and picks representative facts from each group to form concise -LRB- i.e., short -RRB- and comprehensive -LRB- i.e., improved coverage through diversity -RRB- summaries."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-208ebc9408",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "suffix analysis",
+        "rel": "USED-FOR",
+        "obj": "unlexicalized parser",
+        "subj_id": "scierc-test-000007-P05-1039::e3",
+        "obj_id": "scierc-test-000007-P05-1039::e0"
+      },
+      "cf": {
+        "subj": "suffix analysis",
+        "rel": "USED-FOR",
+        "obj": "unlexicalized parser",
+        "subj_id": "scierc-test-000007-P05-1039::e3",
+        "obj_id": "scierc-test-000007-P05-1039::e0"
+      },
+      "evidence": [
+        "In this paper, we present an unlexicalized parser for German which employs smoothing and suffix analysis to achieve a labelled bracket F-score of 76.2, higher than previously reported results on the NEGRA corpus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d45cb80fbf",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "track clustering cost function",
+        "rel": "FEATURE-OF",
+        "obj": "occlusion reasoning",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e12",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e13"
+      },
+      "cf": {
+        "subj": "track clustering cost function",
+        "rel": "FEATURE-OF",
+        "obj": "occlusion reasoning",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e12",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e13"
+      },
+      "evidence": [
+        "Second, we devise a new track clustering cost function that includes occlusion reasoning, in the form of depth ordering constraints, as well as motion similarity along the tracks."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-84c7d1957e",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "sharp error estimates",
+        "rel": "EVALUATE-FOR",
+        "obj": "optimal rule",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e4",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e5"
+      },
+      "cf": {
+        "subj": "sharp error estimates",
+        "rel": "FEATURE-OF",
+        "obj": "optimal rule",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e4",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e5"
+      },
+      "evidence": [
+        "In the case of known expert competence levels, we give sharp error estimates for the optimal rule."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6bfba971c7",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "variable con-ductance diffusion",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e12",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": {
+        "subj": "variable con-ductance diffusion",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e12",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "evidence": [
+        "The nonlinear scale space is built using efficient Additive Operator Splitting -LRB- AOS -RRB- techniques and variable con-ductance diffusion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-16af6093f6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:COMPARE:switch_schema",
+      "base": {
+        "subj": "unsupervised learning method",
+        "rel": "USED-FOR",
+        "obj": "question answering systems",
+        "subj_id": "scierc-dev-000007-H05-1041::e0",
+        "obj_id": "scierc-dev-000007-H05-1041::e2"
+      },
+      "cf": {
+        "subj": "unsupervised learning method",
+        "rel": "USED-FOR",
+        "obj": "question answering systems",
+        "subj_id": "scierc-dev-000007-H05-1041::e0",
+        "obj_id": "scierc-dev-000007-H05-1041::e2"
+      },
+      "evidence": [
+        "We present a practically unsupervised learning method to produce single-snippet answers to definition questions in question answering systems that supplement Web search engines."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b10a1f0d3c",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "phrase-based translation model",
+        "rel": "EVALUATE-FOR",
+        "obj": "phrase-based translation models",
+        "subj_id": "scierc-dev-000047-N03-1017::e0",
+        "obj_id": "scierc-dev-000047-N03-1017::e1"
+      },
+      "cf": {
+        "subj": "phrase-based translation model",
+        "rel": "HYPONYM-OF",
+        "obj": "phrase-based translation models",
+        "subj_id": "scierc-dev-000047-N03-1017::e0",
+        "obj_id": "scierc-dev-000047-N03-1017::e1"
+      },
+      "evidence": [
+        "We propose a new phrase-based translation model and decoding algorithm that enables us to evaluate and compare several, previously proposed phrase-based translation models."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cc8820906a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "features",
+        "rel": "USED-FOR",
+        "obj": "pronoun resolution",
+        "subj_id": "scierc-dev-000010-P03-1022::e6",
+        "obj_id": "scierc-dev-000010-P03-1022::e0"
+      },
+      "cf": {
+        "subj": "features",
+        "rel": "USED-FOR",
+        "obj": "pronoun resolution",
+        "subj_id": "scierc-dev-000010-P03-1022::e6",
+        "obj_id": "scierc-dev-000010-P03-1022::e0"
+      },
+      "evidence": [
+        "We present a set of features designed for pronoun resolution in spoken dialogue and determine the most promising features."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b148c84920",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:drop:CONJUNCTION:switch_schema",
+      "base": {
+        "subj": "motion trajectories",
+        "rel": "USED-FOR",
+        "obj": "detecting reflections in image sequences",
+        "subj_id": "scierc-test-000044-CVPR_2011_10_abs::e8",
+        "obj_id": "scierc-test-000044-CVPR_2011_10_abs::e7"
+      },
+      "cf": {
+        "subj": "technique",
+        "rel": "USED-FOR",
+        "obj": "detecting reflections in image sequences",
+        "subj_id": "scierc-test-000044-CVPR_2011_10_abs::e0",
+        "obj_id": "scierc-test-000044-CVPR_2011_10_abs::e7"
+      },
+      "evidence": [
+        "This work presents an automated technique for detecting reflections in image sequences by analyzing motion trajectories of feature points."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1ca9dd47cf",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "COMPARE",
+        "obj": "RANSAC techniques",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1"
+      },
+      "cf": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "COMPARE",
+        "obj": "RANSAC techniques",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1"
+      },
+      "evidence": [
+        "In particular, our algorithm requires, on average, 3-10 times fewer samples than standard RANSAC, which is in close agreement with theoretical predictions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6648d423a0",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "classical decision-theoretic problem of weighted expert voting",
+        "rel": "USED-FOR",
+        "obj": "statistical learning perspective",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e0",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e1"
+      },
+      "cf": {
+        "subj": "classical decision-theoretic problem of weighted expert voting",
+        "rel": "OTHER",
+        "obj": "statistical learning perspective",
+        "subj_id": "scierc-dev-000008-NIPS_2014_18_abs::e0",
+        "obj_id": "scierc-dev-000008-NIPS_2014_18_abs::e1"
+      },
+      "evidence": [
+        "We revisit the classical decision-theoretic problem of weighted expert voting from a statistical learning perspective."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a999e59b4f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000016-ECCV_2012_40_abs::s6:remove",
+      "base": {
+        "subj": "variable con-ductance diffusion",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e12",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": {
+        "subj": "variable con-ductance diffusion",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e12",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "evidence": [
+        "The nonlinear scale space is built using efficient Additive Operator Splitting -LRB- AOS -RRB- techniques and variable con-ductance diffusion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f20b91bb5a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000015-CVPR_2011_292_abs::s1:mask",
+      "base": {
+        "subj": "Video",
+        "rel": "FEATURE-OF",
+        "obj": "visual cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e1",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e2"
+      },
+      "cf": {
+        "subj": "Video",
+        "rel": "FEATURE-OF",
+        "obj": "visual cues",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e1",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e2"
+      },
+      "evidence": [
+        "Video provides not only rich visual cues such as motion and appearance, but also much less explored long-range temporal interactions among objects."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0c27aaf455",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:USED-FOR:switch_schema",
+      "base": {
+        "subj": "global alignment",
+        "rel": "USED-FOR",
+        "obj": "Image composition -LRB- or mosaicing -RRB-",
+        "subj_id": "scierc-dev-000023-CVPR_2004_10_abs::e3",
+        "obj_id": "scierc-dev-000023-CVPR_2004_10_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "Image composition -LRB- or mosaicing -RRB- has attracted a growing attention in recent years as one of the main elements in video analysis and representation.",
+        "In this paper we deal with the problem of global alignment and super-resolution."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-37a37061a9",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "diversity",
+        "rel": "PART-OF",
+        "obj": "diversified -LRB- faceted -RRB- summaries",
+        "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e7",
+        "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "Specifically, we highlight the importance of diversified -LRB- faceted -RRB- summaries by combining three dimensions: diversity, uniqueness, and popularity.",
+        "Our novel diversity-aware entity summarization approach mimics human conceptual clustering techniques to group facts, and picks representative facts from each group to form concise -LRB- i.e., short -RRB- and comprehensive -LRB- i.e., improved coverage through diversity -RRB- summaries."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2bb3641b6e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:scierc-dev-000015-CVPR_2011_292_abs::s5:mask",
+      "base": {
+        "subj": "intermediate-level video representation",
+        "rel": "USED-FOR",
+        "obj": "recognition",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e5",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e6"
+      },
+      "cf": {
+        "subj": "intermediate-level video representation",
+        "rel": "USED-FOR",
+        "obj": "recognition",
+        "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e5",
+        "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e6"
+      },
+      "evidence": [
+        "We aim to capture such interactions and to construct a powerful intermediate-level video representation for subsequent recognition."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8af0949892",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "technique",
+        "rel": "USED-FOR",
+        "obj": "robust estimation",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e3",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e4"
+      },
+      "cf": {
+        "subj": "technique",
+        "rel": "USED-FOR",
+        "obj": "robust estimation",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e3",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e4"
+      },
+      "evidence": [
+        "In this work, we present a technique for robust estimation, which by explicitly incorporating the inherent uncertainty of the estimation procedure, results in a more efficient robust estimation algorithm."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6f419277ec",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "USED-FOR",
+        "obj": "robust estimation",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e4"
+      },
+      "cf": {
+        "subj": "efficient robust estimation algorithm",
+        "rel": "USED-FOR",
+        "obj": "robust estimation",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e4"
+      },
+      "evidence": [
+        "In this work, we present a technique for robust estimation, which by explicitly incorporating the inherent uncertainty of the estimation procedure, results in a more efficient robust estimation algorithm."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b5d5a3f25c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "per-vertex normals",
+        "rel": "USED-FOR",
+        "obj": "interpolative shading",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e14",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e16"
+      },
+      "cf": {
+        "subj": "per-vertex normals",
+        "rel": "USED-FOR",
+        "obj": "interpolative shading",
+        "subj_id": "scierc-dev-000030-CVPR_2003_10_abs::e14",
+        "obj_id": "scierc-dev-000030-CVPR_2003_10_abs::e16"
+      },
+      "evidence": [
+        "By inferring per-vertex normals at sub-voxel precision on the fly, we can achieve interpolative shading."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d74a8c6e7d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Additive Operator Splitting -LRB- AOS -RRB- techniques",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e11",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "cf": {
+        "subj": "Additive Operator Splitting -LRB- AOS -RRB- techniques",
+        "rel": "USED-FOR",
+        "obj": "nonlinear scale space",
+        "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e11",
+        "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+      },
+      "evidence": [
+        "The nonlinear scale space is built using efficient Additive Operator Splitting -LRB- AOS -RRB- techniques and variable con-ductance diffusion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2d73f36080",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "sampling process",
+        "rel": "PART-OF",
+        "obj": "RANSAC techniques",
+        "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e8",
+        "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "In particular, our algorithm requires, on average, 3-10 times fewer samples than standard RANSAC, which is in close agreement with theoretical predictions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-172879b857",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "proposed method",
+        "rel": "EVALUATE-FOR",
+        "obj": "accuracy",
+        "subj_id": null,
+        "obj_id": "scierc-dev-000004-C04-1116::e7"
+      },
+      "cf": null,
+      "evidence": [
+        "Our proposed method improves the accuracy of our term aggregation system, showing that our approach is successful."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cb68cd306e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "component",
+        "rel": "USED-FOR",
+        "obj": "names",
+        "subj_id": "scierc-dev-000019-A00-1024::e4",
+        "obj_id": "scierc-dev-000019-A00-1024::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "The focus of this paper is the components that identify names and spelling errors."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4a9e8614a7",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "pronouns",
+        "rel": "FEATURE-OF",
+        "obj": "NP - and non-NP-antecedents",
+        "subj_id": "scierc-dev-000010-P03-1022::e3",
+        "obj_id": "scierc-dev-000010-P03-1022::e4"
+      },
+      "cf": null,
+      "evidence": [
+        "Our system deals with pronouns with NP - and non-NP-antecedents."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4aad0db2c9",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Image composition -LRB- or mosaicing -RRB-",
+        "rel": "USED-FOR",
+        "obj": "video analysis and representation",
+        "subj_id": "scierc-dev-000023-CVPR_2004_10_abs::e1",
+        "obj_id": "scierc-dev-000023-CVPR_2004_10_abs::e2"
+      },
+      "cf": {
+        "subj": "Image composition -LRB- or mosaicing -RRB-",
+        "rel": "USED-FOR",
+        "obj": "video analysis and representation",
+        "subj_id": "scierc-dev-000023-CVPR_2004_10_abs::e1",
+        "obj_id": "scierc-dev-000023-CVPR_2004_10_abs::e2"
+      },
+      "evidence": [
+        "Image composition -LRB- or mosaicing -RRB- has attracted a growing attention in recent years as one of the main elements in video analysis and representation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f12f526df1",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "entity-oriented approach",
+        "rel": "USED-FOR",
+        "obj": "fragmentary recognition",
+        "subj_id": "scierc-dev-000002-P84-1047::e1",
+        "obj_id": "scierc-dev-000002-P84-1047::e8"
+      },
+      "cf": {
+        "subj": "entity-oriented approach",
+        "rel": "USED-FOR",
+        "obj": "fragmentary recognition",
+        "subj_id": "scierc-dev-000002-P84-1047::e1",
+        "obj_id": "scierc-dev-000002-P84-1047::e8"
+      },
+      "evidence": [
+        "In addition, it facilitates fragmentary recognition and the use of multiple parsing strategies, and so is particularly useful for robust recognition of extra-grammatical input."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1677743e1f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "parsing algorithms",
+        "rel": "USED-FOR",
+        "obj": "formalism of Category Cooccurrence Restrictions -LRB- CCRs -RRB-",
+        "subj_id": "scierc-dev-000003-C88-1066::e1",
+        "obj_id": "scierc-dev-000003-C88-1066::e2"
+      },
+      "cf": {
+        "subj": "parsing algorithms",
+        "rel": "USED-FOR",
+        "obj": "formalism of Category Cooccurrence Restrictions -LRB- CCRs -RRB-",
+        "subj_id": "scierc-dev-000003-C88-1066::e1",
+        "obj_id": "scierc-dev-000003-C88-1066::e2"
+      },
+      "evidence": [
+        "This paper summarizes the formalism of Category Cooccurrence Restrictions -LRB- CCRs -RRB- and describes two parsing algorithms that interpret it."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-288bc1fc4f",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:scierc-dev-000002-P84-1047::s3:mask",
+      "base": {
+        "subj": "structure and surface representation of domain entities",
+        "rel": "PART-OF",
+        "obj": "entity-oriented approach",
+        "subj_id": "scierc-dev-000002-P84-1047::e5",
+        "obj_id": "scierc-dev-000002-P84-1047::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "In this approach, the definitions of the structure and surface representation of domain entities are grouped together."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    }
+  ]
+}

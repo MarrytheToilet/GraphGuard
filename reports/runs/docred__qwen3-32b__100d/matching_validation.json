@@ -1,0 +1,4571 @@
+{
+  "summary": {
+    "n_sampled": 200,
+    "auto_check": {
+      "id_match_same_outcome": 143,
+      "id_match_disagree": 0,
+      "no_id_overlap": 57
+    },
+    "auto_precision_upper_bound": 0.715
+  },
+  "samples": [
+    {
+      "outcome_id": "oc-678cccb8fb",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-919da0691d",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P27:switch_schema",
+      "base": {
+        "subj": "Queen of Housewives",
+        "rel": "P161",
+        "obj": "Yoon Sang-hyun",
+        "subj_id": "docred-validation-000033-Queen_of_Housewives::e0",
+        "obj_id": "docred-validation-000033-Queen_of_Housewives::e5"
+      },
+      "cf": null,
+      "evidence": [
+        "Queen of Housewives (; also known as My Wife Is a Superwoman) is a 2009 South Korean romantic comedy television series, starring Kim Nam - joo, Oh Ji - ho, Yoon Sang - hyun, Lee Hye - young, Choi Cheol - ho, and Sunwoo Sun."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d19b057bae",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Antony Noghès",
+        "rel": "P40",
+        "obj": "Agent general de la Regie des tabacs",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": null
+      },
+      "cf": {
+        "subj": "Antony Noghès",
+        "rel": "P40",
+        "obj": "Alexandre - Athenase Noghès",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": "docred-validation-000051-Antony_Noghès::e10"
+      },
+      "evidence": [
+        "As \" Agent general de la Regie des tabacs \" he was the Director of the Public administration responsible for the management of the monopoly of procurement, manufacturing, and selling of tobacco in the Principality."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-be5056e80e",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P108",
+        "obj": "Ralph W. Haines",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e18"
+      },
+      "cf": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P161",
+        "obj": "Ralph W. Haines",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e18"
+      },
+      "evidence": [
+        "Washington Place was bought and restored by Ralph W. Haines, a local attorney and historic preservationist."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6b79743e1d",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Achilles Last Stand",
+        "rel": "P361",
+        "obj": "Presence",
+        "subj_id": "docred-validation-000069-Achilles_Last_Stand::e0",
+        "obj_id": "docred-validation-000069-Achilles_Last_Stand::e9"
+      },
+      "cf": {
+        "subj": "Achilles Last Stand",
+        "rel": "P463",
+        "obj": "Presence",
+        "subj_id": "docred-validation-000069-Achilles_Last_Stand::e0",
+        "obj_id": "docred-validation-000069-Achilles_Last_Stand::e9"
+      },
+      "evidence": [
+        "It was released in March 1976 as the opening track for their seventh studio album, Presence."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-132b4c2592",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P161",
+        "obj": "Gregorian",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e10"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Gregorian",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e10"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-269cba6c45",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P495,P57,P577:switch_schema",
+      "base": {
+        "subj": "La prima notte di quiete",
+        "rel": "OTHER",
+        "obj": "Le Professeur",
+        "subj_id": "docred-validation-000062-La_prima_notte_di_quiete::e0",
+        "obj_id": "docred-validation-000062-La_prima_notte_di_quiete::e11"
+      },
+      "cf": null,
+      "evidence": [
+        "It is known and available on DVD in France as Le Professeur ( The Professor) and in Germany as Oktober in Rimini ( October in Rimini)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-14a23e0d4d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e05e63e85d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P50",
+        "obj": "Jim Steinman",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e7"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "author",
+        "obj": "Jim Steinman",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e7"
+      },
+      "evidence": [
+        "The song was co - written and co - produced by Andrew Eldritch and Jim Steinman."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-02d106cf70",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "El-Hakawati Theatre",
+        "rel": "P131",
+        "obj": "American Colony",
+        "subj_id": "docred-validation-000013-Palestinian_National_Theatre::e1",
+        "obj_id": "docred-validation-000013-Palestinian_National_Theatre::e4"
+      },
+      "cf": {
+        "subj": "Palestinian National Theatre",
+        "rel": "P131",
+        "obj": "American Colony",
+        "subj_id": "docred-validation-000013-Palestinian_National_Theatre::e0",
+        "obj_id": "docred-validation-000013-Palestinian_National_Theatre::e4"
+      },
+      "evidence": [
+        "The Palestinian National Theatre or El - Hakawati Theatre () is a Palestinian - owned theatre in Jerusalem's American Colony neighbourhood, near New Orient House."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-325aa1588a",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:docred-validation-000008-Urgut::s1:remove",
+      "base": {
+        "subj": "Urguti",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e10",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgutlik ( also known as Urguti in Tajik) people are a subgroup of ethnic Uzbeks who track their ancestry to people from a town of Urgut."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-573c98f513",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Levy Mwanawasa",
+        "rel": "P463",
+        "obj": "Movement for Multi - party Democracy",
+        "subj_id": "docred-validation-000093-Frederick_Chiluba::e10",
+        "obj_id": "docred-validation-000093-Frederick_Chiluba::e6"
+      },
+      "cf": {
+        "subj": "Levy Mwanawasa",
+        "rel": "P463",
+        "obj": "Movement for Multi - party Democracy",
+        "subj_id": "docred-validation-000093-Frederick_Chiluba::e10",
+        "obj_id": "docred-validation-000093-Frederick_Chiluba::e6"
+      },
+      "evidence": [
+        "As he was unable to run for a third term in 2001, former Vice President Levy Mwanawasa instead ran as the MMD candidate and succeeded him."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c5eb008365",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P570",
+        "obj": "7 February 1852",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e2"
+      },
+      "cf": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "person_endpoint",
+        "obj": "7 February 1852",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e2"
+      },
+      "evidence": [
+        "Pedro León Díaz Gallo ( 29 June 1782 – 7 February 1852) was an Argentine statesman and priest."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-45c5ca1bcb",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P54:switch_schema",
+      "base": {
+        "subj": "Lookin Ass",
+        "rel": "P54",
+        "obj": "Detail",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "It was produced by Detail and Choppa Boi."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0b0eca05fe",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Joseph Octave Mousseau",
+        "rel": "P69",
+        "obj": "Nicolet",
+        "subj_id": "docred-validation-000091-Joseph_Octave_Mousseau::e0",
+        "obj_id": "docred-validation-000091-Joseph_Octave_Mousseau::e15"
+      },
+      "cf": {
+        "subj": "Joseph Octave Mousseau",
+        "rel": "P69",
+        "obj": "Nicolet",
+        "subj_id": "docred-validation-000091-Joseph_Octave_Mousseau::e0",
+        "obj_id": "docred-validation-000091-Joseph_Octave_Mousseau::e15"
+      },
+      "evidence": [
+        "Mousseau was educated at Montreal and Nicolet."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6446b2c5e2",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Morogoro Region",
+        "rel": "P131",
+        "obj": "Tanzania",
+        "subj_id": "docred-validation-000077-Morogoro_Region::e0",
+        "obj_id": "docred-validation-000077-Morogoro_Region::e1"
+      },
+      "cf": {
+        "subj": "Morogoro Region",
+        "rel": "located_in_country",
+        "obj": "Tanzania",
+        "subj_id": "docred-validation-000077-Morogoro_Region::e0",
+        "obj_id": "docred-validation-000077-Morogoro_Region::e1"
+      },
+      "evidence": [
+        "Morogoro Region is one of Tanzania's 31 administrative regions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-09d0dc166e",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "More",
+        "rel": "P161",
+        "obj": "Mike Vogel",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e13"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "OTHER",
+        "obj": "Mike Vogel",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e13"
+      },
+      "evidence": [
+        "Steinman produced a cover of the song, by Mike Vogel and Erika Christensen, for the soundtrack of the MTV film Wuthering Heights."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8552e2186e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8).",
+        "He served on board Lexington ( CV-2) and was rated aviation radioman third class before being transferred to Torpedo Squadron 8 on board Hornet ( CV-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7f8846ecad",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s6:mask",
+      "base": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P463",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P463",
+        "obj": "Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e4"
+      },
+      "evidence": [
+        "He also won a championship medal with the Thomas Davis club."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d5243b94f4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-32ebf40cb8",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Antony Noghès",
+        "rel": "P40",
+        "obj": "checkered flag",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": null
+      },
+      "cf": null,
+      "evidence": [
+        "He suggested the international adoption of the checkered flag to end races."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-efde93e93c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Confucius Prize",
+        "rel": "P495",
+        "obj": "People's Republic of China",
+        "subj_id": "docred-validation-000046-UNESCO_Confucius_Prize_for_Literacy::e0",
+        "obj_id": "docred-validation-000046-UNESCO_Confucius_Prize_for_Literacy::e2"
+      },
+      "cf": {
+        "subj": "Confucius Prize",
+        "rel": "P495",
+        "obj": "People's Republic of China",
+        "subj_id": "docred-validation-000046-UNESCO_Confucius_Prize_for_Literacy::e0",
+        "obj_id": "docred-validation-000046-UNESCO_Confucius_Prize_for_Literacy::e2"
+      },
+      "evidence": [
+        "The Prize was established in 2005 through the support of the Government of the People's Republic of China in honour of the great Chinese scholar Confucius."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-095f99f820",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b66b855281",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:docred-validation-000002-IBM_Research___Brazil::s2:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P463",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a90cbfe797",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Loud",
+        "rel": "P131",
+        "obj": "United Kingdom",
+        "subj_id": "docred-validation-000082-Loud_Tour::e0",
+        "obj_id": "docred-validation-000082-Loud_Tour::e7"
+      },
+      "cf": {
+        "subj": "Loud",
+        "rel": "P131",
+        "obj": "United Kingdom",
+        "subj_id": "docred-validation-000082-Loud_Tour::e0",
+        "obj_id": "docred-validation-000082-Loud_Tour::e7"
+      },
+      "evidence": [
+        "The Loud Tour was a large commercial success, experiencing demand for an extension of shows in the United Kingdom due to popularity."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-24f120deec",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Beibu Gulf Economic Rim",
+        "rel": "P361",
+        "obj": "Hainan",
+        "subj_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim::e0",
+        "obj_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim::e11"
+      },
+      "cf": {
+        "subj": "Beibu Gulf Economic Rim",
+        "rel": "P361",
+        "obj": "Hainan",
+        "subj_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim::e0",
+        "obj_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim::e11"
+      },
+      "evidence": [
+        "It covers Guangdong, Hainan and Guangxi, and northern and central Vietnam."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b7b5906e8c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Transkei",
+        "rel": "P361",
+        "obj": "Bantustans",
+        "subj_id": "docred-validation-000092-Bantustan::e16",
+        "obj_id": "docred-validation-000092-Bantustan::e6"
+      },
+      "cf": {
+        "subj": "Transkei",
+        "rel": "P361",
+        "obj": "Bantustans",
+        "subj_id": "docred-validation-000092-Bantustan::e16",
+        "obj_id": "docred-validation-000092-Bantustan::e6"
+      },
+      "evidence": [
+        "Four of the South African Bantustans — Transkei, Bophuthatswana, Venda, and Ciskei ( the so - called \" TBVC States\")—were declared independent, but this was not recognised outside South Africa."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6ba5579b18",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P161:switch_schema",
+      "base": {
+        "subj": "Wuthering Heights",
+        "rel": "P159",
+        "obj": "MTV",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e16",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e15"
+      },
+      "cf": null,
+      "evidence": [
+        "Steinman produced a cover of the song, by Mike Vogel and Erika Christensen, for the soundtrack of the MTV film Wuthering Heights."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c0cb3f9ff7",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P175,P361,P264:switch_schema",
+      "base": {
+        "subj": "Live in New York",
+        "rel": "P361",
+        "obj": "United States Live",
+        "subj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e0",
+        "obj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e12"
+      },
+      "cf": {
+        "subj": "Live in New York",
+        "rel": "P527",
+        "obj": "United States Live",
+        "subj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e0",
+        "obj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e12"
+      },
+      "evidence": [
+        "Recorded less than 10 days after the September 11, 2001, attacks on New York City, the album was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and newer works, including songs from her then - recent album Life on a String, as well as earlier albums such as United States Live, Big Science, Bright Red, Home of the Brave and Strange Angels."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9ef74f6e73",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C6_return_confidence:remove",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P361",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "evidence": [
+        "He served on board Lexington ( CV-2) and was rated aviation radioman third class before being transferred to Torpedo Squadron 8 on board Hornet ( CV-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e18d1803c2",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Allen Francis Moore",
+        "rel": "P495",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e0",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e3"
+      },
+      "cf": {
+        "subj": "Allen Francis Moore",
+        "rel": "P27",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e0",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e3"
+      },
+      "evidence": [
+        "Moore was elected as a Republican to the Sixty - seventh and Sixty - eighth Congresses ( March 4, 1921 – March 3, 1925)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-70f4caf517",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "America's Sweetheart",
+        "rel": "P527",
+        "obj": "Mono",
+        "subj_id": null,
+        "obj_id": "docred-validation-000041-America_s_Sweetheart__album_::e21"
+      },
+      "cf": {
+        "subj": "America's Sweetheart",
+        "rel": "P527",
+        "obj": "Mono",
+        "subj_id": null,
+        "obj_id": "docred-validation-000041-America_s_Sweetheart__album_::e21"
+      },
+      "evidence": [
+        "Upon its release, it received little promotion, with the main source of media exposure being a music video for the album's first single, \" Mono, \" and Love's highly publicised drug issues."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-633186ecc3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Pennsylvania",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000022-Norvelt__Pennsylvania::e3",
+        "obj_id": "docred-validation-000022-Norvelt__Pennsylvania::e4"
+      },
+      "cf": {
+        "subj": "Pennsylvania",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000022-Norvelt__Pennsylvania::e3",
+        "obj_id": "docred-validation-000022-Norvelt__Pennsylvania::e4"
+      },
+      "evidence": [
+        "Norvelt is a census - designated place in Mount Pleasant Township, Westmoreland County, Pennsylvania, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cd06b6f25e",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Magnolia Beach",
+        "rel": "P131",
+        "obj": "Lavaca Bay",
+        "subj_id": "docred-validation-000056-Lavaca_Bay::e13",
+        "obj_id": "docred-validation-000056-Lavaca_Bay::e0"
+      },
+      "cf": {
+        "subj": "Magnolia Beach",
+        "rel": "location",
+        "obj": "Lavaca Bay",
+        "subj_id": "docred-validation-000056-Lavaca_Bay::e13",
+        "obj_id": "docred-validation-000056-Lavaca_Bay::e0"
+      },
+      "evidence": [
+        "Smaller communities include Olivia, Alamo Beach and Magnolia Beach."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-67882796cb",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Kavangoland",
+        "rel": "P361",
+        "obj": "Bantustans",
+        "subj_id": "docred-validation-000092-Bantustan::e25",
+        "obj_id": "docred-validation-000092-Bantustan::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "In South West Africa, Ovamboland, Kavangoland, and East Caprivi were granted self - determination."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b13551beaf",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4ab7b1cb18",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Joseph Daniel Gates",
+        "rel": "P569",
+        "obj": "October 3 , 1954",
+        "subj_id": "docred-validation-000096-Joe_Gates::e0",
+        "obj_id": "docred-validation-000096-Joe_Gates::e1"
+      },
+      "cf": {
+        "subj": "Joseph Daniel Gates",
+        "rel": "person_origin",
+        "obj": "October 3 , 1954",
+        "subj_id": "docred-validation-000096-Joe_Gates::e0",
+        "obj_id": "docred-validation-000096-Joe_Gates::e1"
+      },
+      "evidence": [
+        "Joseph Daniel Gates ( October 3, 1954 – March 28, 2010) was a professional baseball player."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3155a54a2d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "James Llewellyn \" Jimmy \" Frise",
+        "rel": "P108",
+        "obj": "Toronto Stars",
+        "subj_id": "docred-validation-000060-Jimmy_Frise::e1",
+        "obj_id": "docred-validation-000060-Jimmy_Frise::e10"
+      },
+      "cf": {
+        "subj": "James Llewellyn \" Jimmy \" Frise",
+        "rel": "P108",
+        "obj": "Toronto Stars",
+        "subj_id": "docred-validation-000060-Jimmy_Frise::e1",
+        "obj_id": "docred-validation-000060-Jimmy_Frise::e10"
+      },
+      "evidence": [
+        "Born in Scugog Island, Ontario, Frise moved to Toronto at 19 and found illustration work on the Toronto Stars Star Weekly supplement."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c2d5fb46e5",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Delaware Senate",
+        "rel": "P361",
+        "obj": "Delaware General Assembly",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e3",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e0"
+      },
+      "cf": {
+        "subj": "Delaware Senate",
+        "rel": "P527",
+        "obj": "Delaware General Assembly",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e3",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e0"
+      },
+      "evidence": [
+        "It is a bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a645cc916c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "P19",
+        "obj": "Danish",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e3"
+      },
+      "cf": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "place_of_birth",
+        "obj": "Danish",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e3"
+      },
+      "evidence": [
+        "Wilhelm Lanzky - Otto ( January 30, 1909 – April 13, 1991) was a Danish - born horn player."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5d5bbb0930",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C5_cite_evidence:remove",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9de5e182cc",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "James De Alwis",
+        "rel": "P19",
+        "obj": "Ceylon",
+        "subj_id": "docred-validation-000049-James_De_Alwis::e0",
+        "obj_id": "docred-validation-000049-James_De_Alwis::e3"
+      },
+      "cf": {
+        "subj": "James De Alwis",
+        "rel": "P17",
+        "obj": "Ceylon",
+        "subj_id": "docred-validation-000049-James_De_Alwis::e0",
+        "obj_id": "docred-validation-000049-James_De_Alwis::e3"
+      },
+      "evidence": [
+        "James De Alwis ( 1823 – 1878) was a lawyer, writer, poet and a prominent colonial era legislator from Ceylon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f976768b82",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P175:switch_schema",
+      "base": {
+        "subj": "Olof Mörck",
+        "rel": "P580",
+        "obj": "2006",
+        "subj_id": "docred-validation-000070-Olof_Mörck::e0",
+        "obj_id": "docred-validation-000070-Olof_Mörck::e7"
+      },
+      "cf": {
+        "subj": "Olof Mörck",
+        "rel": "P580",
+        "obj": "2006",
+        "subj_id": "docred-validation-000070-Olof_Mörck::e0",
+        "obj_id": "docred-validation-000070-Olof_Mörck::e7"
+      },
+      "evidence": [
+        "He was also a member of Nightrage between 2006 and 2011 as a guitarist."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-61a835336f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P159",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "cf": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P159",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "evidence": [
+        "Washington Place was built by William and Annie Washington in north Romney between 1863 and 1874 on land given to Annie by her former owner, Susan Blue Parsons of Wappocomo plantation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9f1bbe0d7e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P580",
+        "obj": "June 2010",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e4"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P580",
+        "obj": "June 2010",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e4"
+      },
+      "evidence": [
+        "It was established in June 2010, with locations in São Paulo and Rio de Janeiro."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a878cef269",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:drop:P26:switch_schema",
+      "base": {
+        "subj": "Manon Balletti",
+        "rel": "P40",
+        "obj": "Silvia Balletti",
+        "subj_id": "docred-validation-000068-Manon_Balletti::e0",
+        "obj_id": "docred-validation-000068-Manon_Balletti::e7"
+      },
+      "cf": {
+        "subj": "Manon Balletti",
+        "rel": "P40",
+        "obj": "Giacomo Casanova",
+        "subj_id": "docred-validation-000068-Manon_Balletti::e0",
+        "obj_id": "docred-validation-000068-Manon_Balletti::e5"
+      },
+      "evidence": [
+        "She was ten years old when she first met him; she happened to be the daughter of Silvia Balletti, an actress of the Comédie Italienne company and younger sister of Casanova's closest friend."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1cae9a24e6",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Wuthering Heights",
+        "rel": "P159",
+        "obj": "MTV",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e16",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e15"
+      },
+      "cf": null,
+      "evidence": [
+        "Steinman produced a cover of the song, by Mike Vogel and Erika Christensen, for the soundtrack of the MTV film Wuthering Heights."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-151533e4e6",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P495:switch_schema",
+      "base": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P463",
+        "obj": "Roger Yuan",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e14"
+      },
+      "cf": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P161",
+        "obj": "Roger Yuan",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e14"
+      },
+      "evidence": [
+        "The film stars Donnie Yen, Michelle Yeoh, Harry Shum, Jr., Jason Scott Lee, Roger Yuan, Woon Young Park, Eugenia Yuan, JuJu Chan, Chris Pang, Veronica Ngo, Shuya Chang and Natasha Liu Bordizzo."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ca40280745",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Allen Francis Moore",
+        "rel": "P159",
+        "obj": "Monticello",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e0",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e9"
+      },
+      "cf": {
+        "subj": "Allen Francis Moore",
+        "rel": "located_in_admin_unit",
+        "obj": "Monticello",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e0",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e9"
+      },
+      "evidence": [
+        "He served as member of the Republican National Committee in 1925, and resumed his former business pursuits in Monticello, Illinois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2288f72bb6",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "Hull",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e11"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "located_in_admin_unit",
+        "obj": "Hull",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e11"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-dfb6673f5c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C5_cite_evidence:remove",
+      "base": {
+        "subj": "Ben Hogan",
+        "rel": "P108",
+        "obj": "Portland Open",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e13",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1f2d18d3fc",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Albemarle County",
+        "rel": "P131",
+        "obj": "Commonwealth of Virginia",
+        "subj_id": "docred-validation-000026-Albemarle_County__Virginia::e0",
+        "obj_id": "docred-validation-000026-Albemarle_County__Virginia::e2"
+      },
+      "cf": {
+        "subj": "Albemarle County",
+        "rel": "P131",
+        "obj": "Commonwealth of Virginia",
+        "subj_id": "docred-validation-000026-Albemarle_County__Virginia::e0",
+        "obj_id": "docred-validation-000026-Albemarle_County__Virginia::e2"
+      },
+      "evidence": [
+        "Albemarle County is a county located in the Piedmont region of the Commonwealth of Virginia."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e849a5bee9",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P108:switch_schema",
+      "base": {
+        "subj": "El-Hakawati Theatre",
+        "rel": "P463",
+        "obj": "NGOs",
+        "subj_id": "docred-validation-000013-Palestinian_National_Theatre::e1",
+        "obj_id": "docred-validation-000013-Palestinian_National_Theatre::e7"
+      },
+      "cf": {
+        "subj": "El-Hakawati Theatre",
+        "rel": "P463",
+        "obj": "NGOs",
+        "subj_id": "docred-validation-000013-Palestinian_National_Theatre::e1",
+        "obj_id": "docred-validation-000013-Palestinian_National_Theatre::e7"
+      },
+      "evidence": [
+        "The theatre has been serving to actively encourage and promote Palestinian artistic and cultural activities and collaborates with the Palestinian ministry of culture, several United Nations organisations, and a wide range of local and international NGOs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0d2cf95189",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Solingen",
+        "rel": "P131",
+        "obj": "North Rhine-Westphalia",
+        "subj_id": "docred-validation-000084-Solingen::e0",
+        "obj_id": "docred-validation-000084-Solingen::e1"
+      },
+      "cf": {
+        "subj": "Solingen",
+        "rel": "P131",
+        "obj": "North Rhine-Westphalia",
+        "subj_id": "docred-validation-000084-Solingen::e0",
+        "obj_id": "docred-validation-000084-Solingen::e1"
+      },
+      "evidence": [
+        "Solingen () is a city in North Rhine - Westphalia, Germany."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-122a823cb4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "evidence": [
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-943f8a3ac4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P569",
+        "obj": "November 15 , 1915",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e1"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P569",
+        "obj": "November 15 , 1915",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e1"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3e1b88a052",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ba98b08c81",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Texas",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000056-Lavaca_Bay::e3",
+        "obj_id": "docred-validation-000056-Lavaca_Bay::e4"
+      },
+      "cf": {
+        "subj": "Lavaca Bay",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000056-Lavaca_Bay::e0",
+        "obj_id": "docred-validation-000056-Lavaca_Bay::e4"
+      },
+      "evidence": [
+        "Lavaca Bay () is a northwestern extension of the Matagorda Bay system found mostly in Calhoun County, Texas, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-60585ae687",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-613f549b23",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P17,P131,P150:switch_schema",
+      "base": {
+        "subj": "Allen County",
+        "rel": "P131",
+        "obj": "Lima",
+        "subj_id": "docred-validation-000012-Allen_County__Ohio::e0",
+        "obj_id": "docred-validation-000012-Allen_County__Ohio::e5"
+      },
+      "cf": {
+        "subj": "Allen County",
+        "rel": "P159",
+        "obj": "Lima",
+        "subj_id": "docred-validation-000012-Allen_County__Ohio::e0",
+        "obj_id": "docred-validation-000012-Allen_County__Ohio::e5"
+      },
+      "evidence": [
+        "The county seat is Lima."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6045afbf8f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "WUIS",
+        "rel": "P131",
+        "obj": "Springfield",
+        "subj_id": null,
+        "obj_id": "docred-validation-000097-WUIS::e2"
+      },
+      "cf": {
+        "subj": "WUIS",
+        "rel": "P131",
+        "obj": "Springfield",
+        "subj_id": null,
+        "obj_id": "docred-validation-000097-WUIS::e2"
+      },
+      "evidence": [
+        "WUIS ( 91.9 FM), is the National Public Radio member station in Springfield, Illinois, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-dac122b1d0",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Will Weng",
+        "rel": "P50",
+        "obj": "Eugene T. Maleska",
+        "subj_id": "docred-validation-000055-Will_Weng::e0",
+        "obj_id": "docred-validation-000055-Will_Weng::e18"
+      },
+      "cf": {
+        "subj": "Will Weng",
+        "rel": "person_relation",
+        "obj": "Eugene T. Maleska",
+        "subj_id": "docred-validation-000055-Will_Weng::e0",
+        "obj_id": "docred-validation-000055-Will_Weng::e18"
+      },
+      "evidence": [
+        "Weng had succeeded Margaret Farrar as crossword puzzle editor, and was himself succeeded by Eugene T. Maleska."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1a76efe01c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P361:switch_schema",
+      "base": {
+        "subj": "Samuel C. Brightman",
+        "rel": "P108",
+        "obj": "Courier-Journal",
+        "subj_id": "docred-validation-000073-Samuel_C__Brightman::e0",
+        "obj_id": "docred-validation-000073-Samuel_C__Brightman::e10"
+      },
+      "cf": {
+        "subj": "Samuel C. Brightman",
+        "rel": "P108",
+        "obj": "Courier-Journal",
+        "subj_id": "docred-validation-000073-Samuel_C__Brightman::e0",
+        "obj_id": "docred-validation-000073-Samuel_C__Brightman::e10"
+      },
+      "evidence": [
+        "Brightman started his career with the Louisville ( KY) Courier - Journal covering education and politics and eventually becoming their Washington correspondent."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-788b19bf65",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Villanova Preparatory School",
+        "rel": "P17",
+        "obj": "Roman Catholic Archdiocese",
+        "subj_id": "docred-validation-000040-Villanova_Preparatory_School::e0",
+        "obj_id": "docred-validation-000040-Villanova_Preparatory_School::e7"
+      },
+      "cf": {
+        "subj": "Villanova Preparatory School",
+        "rel": "P17",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000040-Villanova_Preparatory_School::e0",
+        "obj_id": "docred-validation-000040-Villanova_Preparatory_School::e2"
+      },
+      "evidence": [
+        "The school is located in the Roman Catholic Archdiocese of Los Angeles, and is a member of the Augustinian Secondary Education Association."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-351d1324e0",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P495:switch_schema",
+      "base": {
+        "subj": "Peder Anker",
+        "rel": "P108",
+        "obj": "Union",
+        "subj_id": "docred-validation-000087-Riksakten::e11",
+        "obj_id": "docred-validation-000087-Riksakten::e15"
+      },
+      "cf": null,
+      "evidence": [
+        "The Act of Union ( Riksakten) was negotiated during the spring of 1815, with prime minister Peder Anker leading the Norwegian delegation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-903d149263",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "The Sisters of Mercy",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e1"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "The Sisters of Mercy",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e1"
+      },
+      "evidence": [
+        "\" More \" is a song by The Sisters of Mercy, from their album Vision Thing."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9643d28e21",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "Sheffield",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e13"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "P131",
+        "obj": "Sheffield",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e13"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9398a57e4d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Dollar General Corporation",
+        "rel": "P159",
+        "obj": "Goodlettsville",
+        "subj_id": "docred-validation-000019-Dollar_General::e0",
+        "obj_id": "docred-validation-000019-Dollar_General::e2"
+      },
+      "cf": {
+        "subj": "Dollar General Corporation",
+        "rel": "P159",
+        "obj": "Goodlettsville",
+        "subj_id": "docred-validation-000019-Dollar_General::e0",
+        "obj_id": "docred-validation-000019-Dollar_General::e2"
+      },
+      "evidence": [
+        "Dollar General Corporation is an American chain of variety stores headquartered in Goodlettsville, Tennessee."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1b8cb362ab",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Penedo da Saudade",
+        "rel": "P159",
+        "obj": "Coimbra",
+        "subj_id": "docred-validation-000054-Penedo_da_Saudade::e0",
+        "obj_id": "docred-validation-000054-Penedo_da_Saudade::e1"
+      },
+      "cf": {
+        "subj": "Penedo da Saudade",
+        "rel": "P159",
+        "obj": "Coimbra",
+        "subj_id": "docred-validation-000054-Penedo_da_Saudade::e0",
+        "obj_id": "docred-validation-000054-Penedo_da_Saudade::e1"
+      },
+      "evidence": [
+        "The garden have partial views of Coimbra skyline and the Coimbra City Stadium."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-37dd3b0e17",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P175:switch_schema",
+      "base": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P131",
+        "obj": "Miami",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e13"
+      },
+      "cf": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P131",
+        "obj": "Miami",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e13"
+      },
+      "evidence": [
+        "It was recorded in Havana, Miami, Bahamas and Madrid, with most recording taking place in a studio that Sanz has at his house in Miami."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0b9340caac",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-989d8731b6",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "Westminster",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e15"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "located_in_admin_unit",
+        "obj": "Westminster",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e15"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-92645b2329",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Will Weng",
+        "rel": "P69",
+        "obj": "Indiana State Teachers College",
+        "subj_id": "docred-validation-000055-Will_Weng::e0",
+        "obj_id": "docred-validation-000055-Will_Weng::e9"
+      },
+      "cf": {
+        "subj": "Will Weng",
+        "rel": "P69",
+        "obj": "Indiana State Teachers College",
+        "subj_id": "docred-validation-000055-Will_Weng::e0",
+        "obj_id": "docred-validation-000055-Will_Weng::e9"
+      },
+      "evidence": [
+        "Born in Terre Haute, Indiana, he attended Indiana State Teachers College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-93fccc9308",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P40:switch_schema",
+      "base": {
+        "subj": "Antony Noghès",
+        "rel": "P40",
+        "obj": "Alexandre - Athenase Noghès",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": "docred-validation-000051-Antony_Noghès::e10"
+      },
+      "cf": {
+        "subj": "Antony Noghès",
+        "rel": "P26",
+        "obj": "Alexandre - Athenase Noghès",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": "docred-validation-000051-Antony_Noghès::e10"
+      },
+      "evidence": [
+        "He was the father of Alexandre - Athenase Noghès, himself father of Lionel Noghès, Elisabeth - Anne, Christian Louis, and Christine Alix de Massy and the father of Bathilde Livieratos, mother of Marie Livieratos, Hélène Tchomlekdjoglou and Athanase ( Tasso) Livieratos."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1bdc08464c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8).",
+        "He served on board Lexington ( CV-2) and was rated aviation radioman third class before being transferred to Torpedo Squadron 8 on board Hornet ( CV-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a9fa4b7548",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "The Dream Before",
+        "rel": "OTHER",
+        "obj": "What You Mean We?",
+        "subj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e20",
+        "obj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e22"
+      },
+      "cf": null,
+      "evidence": [
+        "One song, \" Progress \", is a retitled performance of the song \" The Dream Before \" which Anderson debuted in her 1986 short film What You Mean We?"
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e1b87c9f49",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Jeanne Thérèse du Han de Martigny",
+        "rel": "P27",
+        "obj": "Lorraine",
+        "subj_id": "docred-validation-000031-Jeanne_Thérèse_du_Han::e0",
+        "obj_id": "docred-validation-000031-Jeanne_Thérèse_du_Han::e5"
+      },
+      "cf": null,
+      "evidence": [
+        "Jeanne Thérèse du Han de Martigny ( 30 October 1707 in Lunéville – 7 May 1748 in Nancy) was born and baptized the same day in Lunéville, in the duchy of Lorraine, now part of France."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-268c18b999",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "Harrogate",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e10"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "P150",
+        "obj": "Harrogate",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e10"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4639c61182",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "P19",
+        "obj": "Danish",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e3"
+      },
+      "cf": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "P19",
+        "obj": "Danish",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e3"
+      },
+      "evidence": [
+        "Wilhelm Lanzky - Otto ( January 30, 1909 – April 13, 1991) was a Danish - born horn player."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ca1cd1c827",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P17,P463,P30:switch_schema",
+      "base": {
+        "subj": "South Sudan",
+        "rel": "P463",
+        "obj": "United Nations",
+        "subj_id": "docred-validation-000038-Outline_of_South_Sudan::e0",
+        "obj_id": "docred-validation-000038-Outline_of_South_Sudan::e2"
+      },
+      "cf": {
+        "subj": "South Sudan",
+        "rel": "related_to",
+        "obj": "United Nations",
+        "subj_id": "docred-validation-000038-Outline_of_South_Sudan::e0",
+        "obj_id": "docred-validation-000038-Outline_of_South_Sudan::e2"
+      },
+      "evidence": [
+        "It is a United Nations member state, a member state of the African Union, and a member state of the Intergovernmental Authority on Development."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1b7deb72ec",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Each Time You Break My Heart",
+        "rel": "P463",
+        "obj": "United Kingdom",
+        "subj_id": "docred-validation-000045-Each_Time_You_Break_My_Heart::e0",
+        "obj_id": "docred-validation-000045-Each_Time_You_Break_My_Heart::e1"
+      },
+      "cf": {
+        "subj": "Each Time You Break My Heart",
+        "rel": "location",
+        "obj": "United Kingdom",
+        "subj_id": "docred-validation-000045-Each_Time_You_Break_My_Heart::e0",
+        "obj_id": "docred-validation-000045-Each_Time_You_Break_My_Heart::e1"
+      },
+      "evidence": [
+        "\" Each Time You Break My Heart \" is a song recorded by British singer Nick Kamen, for his eponymous debut studio album ( 1987).",
+        "It attained Silver certification in France and the United Kingdom, and a remix of the track became a dance hit in the United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-db29d2e656",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Darren Davies",
+        "rel": "P463",
+        "obj": "Australia's coaching staff",
+        "subj_id": "docred-validation-000085-Darren_Davies__Welsh_footballer_::e0",
+        "obj_id": "docred-validation-000085-Darren_Davies__Welsh_footballer_::e12"
+      },
+      "cf": {
+        "subj": "Darren Davies",
+        "rel": "P463",
+        "obj": "Australia's coaching staff",
+        "subj_id": "docred-validation-000085-Darren_Davies__Welsh_footballer_::e0",
+        "obj_id": "docred-validation-000085-Darren_Davies__Welsh_footballer_::e12"
+      },
+      "evidence": [
+        "In June 2017, Davies, along with Kevin Muscat and Ross Aloisi, were called up by Ange Postecoglou to serve as members of Australia's coaching staff for the 2017 FIFA Confederations Cup."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-382086d383",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P131,P17,P159:switch_schema",
+      "base": {
+        "subj": "Angleton High School",
+        "rel": "P131",
+        "obj": "Angleton",
+        "subj_id": "docred-validation-000057-Angleton_High_School::e0",
+        "obj_id": "docred-validation-000057-Angleton_High_School::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "Angleton High School is a public high school located in the city of Angleton, Texas ( United States) in Brazoria County."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c652adf6b0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P161:switch_schema",
+      "base": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P57",
+        "obj": "Yuen Woo-ping",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e4"
+      },
+      "cf": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P57",
+        "obj": "Yuen Woo-ping",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e4"
+      },
+      "evidence": [
+        "Crouching Tiger, Hidden Dragon: Sword of Destiny () is a 2016 American - Chinese martial arts film directed by Yuen Woo - ping and written by John Fusco, based on the novel Iron Knight, Silver Vase by Wang Dulu."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7462b70949",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Wiley College",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e12"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Wiley College",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e12"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-54dac57536",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Grand Wing Servo-Tech Co., Ltd.",
+        "rel": "P463",
+        "obj": "GWS China",
+        "subj_id": "docred-validation-000035-Grand_Wing_Servo-Tech::e0",
+        "obj_id": "docred-validation-000035-Grand_Wing_Servo-Tech::e11"
+      },
+      "cf": null,
+      "evidence": [
+        "The company designs and manufactures all of its own products in their own factories in both Taiwan and China, while mainly in China by now."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3ede6d6799",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P150,P131,P17:switch_schema",
+      "base": {
+        "subj": "Morogoro Region",
+        "rel": "P150",
+        "obj": "Iringa",
+        "subj_id": "docred-validation-000077-Morogoro_Region::e0",
+        "obj_id": "docred-validation-000077-Morogoro_Region::e15"
+      },
+      "cf": {
+        "subj": "Morogoro Region",
+        "rel": "related_to",
+        "obj": "Iringa",
+        "subj_id": "docred-validation-000077-Morogoro_Region::e0",
+        "obj_id": "docred-validation-000077-Morogoro_Region::e15"
+      },
+      "evidence": [
+        "Morogoro Region is bordered to the north by the Tanga Region, to the east by the Pwani and Lindi Regions, to the south by the Ruvuma Region and to the west by the Iringa and Dodoma Regions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0b60fc8dda",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "James Llewellyn \" Jimmy \" Frise",
+        "rel": "P50",
+        "obj": "Greg Clark",
+        "subj_id": "docred-validation-000060-Jimmy_Frise::e1",
+        "obj_id": "docred-validation-000060-Jimmy_Frise::e5"
+      },
+      "cf": {
+        "subj": "James Llewellyn \" Jimmy \" Frise",
+        "rel": "P50",
+        "obj": "Greg Clark",
+        "subj_id": "docred-validation-000060-Jimmy_Frise::e1",
+        "obj_id": "docred-validation-000060-Jimmy_Frise::e5"
+      },
+      "evidence": [
+        "The Canadian cartoonist James Llewellyn \" Jimmy \" Frise (, 16 October 1891   – 13 June 1948) is best known for his work on the comic strip Birdseye and his illustrations of humorous prose pieces by Greg Clark."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e41b42708f",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Allen Francis Moore",
+        "rel": "P27",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e0",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e3"
+      },
+      "cf": {
+        "subj": "Allen Francis Moore",
+        "rel": "P17",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e0",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e3"
+      },
+      "evidence": [
+        "Allen Francis Moore ( September 30, 1869 – August 18, 1945) was a U.S. Representative from Illinois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-062e537d41",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000004-Conrad_O__Johnson::s10:mask",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e8264dd053",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P131,P17,P150:switch_schema",
+      "base": {
+        "subj": "Siberia Governorate",
+        "rel": "P131",
+        "obj": "Pacific Oceans",
+        "subj_id": "docred-validation-000017-Siberia_Governorate::e0",
+        "obj_id": "docred-validation-000017-Siberia_Governorate::e10"
+      },
+      "cf": {
+        "subj": "Siberia Governorate",
+        "rel": "related_to",
+        "obj": "Pacific Oceans",
+        "subj_id": "docred-validation-000017-Siberia_Governorate::e0",
+        "obj_id": "docred-validation-000017-Siberia_Governorate::e10"
+      },
+      "evidence": [
+        "In the north and the east, the governorate was limited by the seas of the Arctic and Pacific Oceans."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a064183b8c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P57",
+        "obj": "Yuen Woo-ping",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e4"
+      },
+      "cf": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P57",
+        "obj": "Yuen Woo-ping",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e4"
+      },
+      "evidence": [
+        "Crouching Tiger, Hidden Dragon: Sword of Destiny () is a 2016 American - Chinese martial arts film directed by Yuen Woo - ping and written by John Fusco, based on the novel Iron Knight, Silver Vase by Wang Dulu."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b9dc681a5b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000001-Washington_Place__West_Virginia_::s2:mask",
+      "base": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "cf": {
+        "subj": "Washington Place (William Washington House)",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c4559c7345",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P17,P131,P27:switch_schema",
+      "base": {
+        "subj": "Blacks Hill",
+        "rel": "P131",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e17",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "One of his subdivisions is the \" Blacks Hill \" neighborhood of Romney, adjacent to the Washington Place homestead."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b7271cec64",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s6:mask",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P463",
+        "obj": "Digea",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e8"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P463",
+        "obj": "Digea",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e8"
+      },
+      "evidence": [
+        "Skai TV is also a member of Digea, a consortium of private television networks introducing digital terrestrial transmission in Greece."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b05b9923dd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Book of Degrees of the Royal Genealogy",
+        "rel": "P495",
+        "obj": "Russian",
+        "subj_id": "docred-validation-000078-Book_of_Royal_Degrees::e0",
+        "obj_id": "docred-validation-000078-Book_of_Royal_Degrees::e1"
+      },
+      "cf": {
+        "subj": "Book of Degrees of the Royal Genealogy",
+        "rel": "P495",
+        "obj": "Russian",
+        "subj_id": "docred-validation-000078-Book_of_Royal_Degrees::e0",
+        "obj_id": "docred-validation-000078-Book_of_Royal_Degrees::e1"
+      },
+      "evidence": [
+        "The Book of Degrees of the Royal Genealogy ( Степенная книга) was the first official work of historiography produced in the nascent Tsardom of Russia."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fd052f8b70",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Each Time You Break My Heart",
+        "rel": "P463",
+        "obj": "France",
+        "subj_id": "docred-validation-000045-Each_Time_You_Break_My_Heart::e0",
+        "obj_id": "docred-validation-000045-Each_Time_You_Break_My_Heart::e18"
+      },
+      "cf": null,
+      "evidence": [
+        "It attained Silver certification in France and the United Kingdom, and a remix of the track became a dance hit in the United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a0cbf5f1e3",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P361:switch_schema",
+      "base": {
+        "subj": "Ortalis",
+        "rel": "P361",
+        "obj": "Chachalacas",
+        "subj_id": "docred-validation-000047-Chachalaca::e1",
+        "obj_id": "docred-validation-000047-Chachalaca::e12"
+      },
+      "cf": null,
+      "evidence": [
+        "Chachalacas are galliform birds from the genus Ortalis."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9f4f03f8cf",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Chachalacas",
+        "rel": "P17",
+        "obj": "South America",
+        "subj_id": "docred-validation-000047-Chachalaca::e12",
+        "obj_id": "docred-validation-000047-Chachalaca::e6"
+      },
+      "cf": {
+        "subj": "Chachalacas",
+        "rel": "P131",
+        "obj": "South America",
+        "subj_id": "docred-validation-000047-Chachalaca::e12",
+        "obj_id": "docred-validation-000047-Chachalaca::e6"
+      },
+      "evidence": [
+        "These birds are found in wooded habitats in far southern United States ( Texas), Mexico, and Central and South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-92c43ffd16",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Chachalacas",
+        "rel": "P17",
+        "obj": "South America",
+        "subj_id": "docred-validation-000047-Chachalaca::e12",
+        "obj_id": "docred-validation-000047-Chachalaca::e6"
+      },
+      "cf": {
+        "subj": "Chachalacas",
+        "rel": "location",
+        "obj": "South America",
+        "subj_id": "docred-validation-000047-Chachalaca::e12",
+        "obj_id": "docred-validation-000047-Chachalaca::e6"
+      },
+      "evidence": [
+        "These birds are found in wooded habitats in far southern United States ( Texas), Mexico, and Central and South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-69225c8aa2",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P161:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Gregorian",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e10"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Gregorian",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e10"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-83a66e0271",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Hurt Report",
+        "rel": "P527",
+        "obj": "900",
+        "subj_id": "docred-validation-000053-Think_Bike::e13",
+        "obj_id": "docred-validation-000053-Think_Bike::e15"
+      },
+      "cf": null,
+      "evidence": [
+        "More than 900 motorcycle accidents were investigated in the Los Angeles area, and the results showed that:"
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-93fbd3fc7a",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s0:remove",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P463",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cdf36fe856",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "P69",
+        "obj": "Copenhagen",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e5"
+      },
+      "cf": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "P19",
+        "obj": "Copenhagen",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e5"
+      },
+      "evidence": [
+        "He was educated in Copenhagen as a pianist, organist and horn player."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-29e0b30e38",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:drop:P50:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P161",
+        "obj": "Gregorian",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e10"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P161",
+        "obj": "Mike Vogel",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e13"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b3db453464",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P569",
+        "obj": "13 March 1921",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e1"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "person_origin",
+        "obj": "13 March 1921",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e1"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d1948a439e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P463,P577,P175:switch_schema",
+      "base": {
+        "subj": "The Seeker",
+        "rel": "OTHER",
+        "obj": "English",
+        "subj_id": "docred-validation-000032-_I_Am__The_Seeker::e0",
+        "obj_id": "docred-validation-000032-_I_Am__The_Seeker::e13"
+      },
+      "cf": null,
+      "evidence": [
+        "A. Robertson, and recorded for the English language cast album."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-00fe24a2af",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000003-Lookin_Ass::s3:mask",
+      "base": {
+        "subj": "Lookin Ass",
+        "rel": "P463",
+        "obj": "Young Money : Rise of an Empires",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e10"
+      },
+      "cf": null,
+      "evidence": [
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-dd37a31b96",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P69",
+        "obj": "University of San Carlos",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e11"
+      },
+      "cf": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P69",
+        "obj": "University of San Carlos",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e11"
+      },
+      "evidence": [
+        "Gallo was born in Santiago del Estero and studied at the Monserrat School in Córdoba until he was ordained, graduating as a teacher of art ( or philosophy according to other sources) at the University of San Carlos."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-466e159571",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P580",
+        "obj": "1st of April 2006",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e4"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P580",
+        "obj": "1st of April 2006",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e4"
+      },
+      "evidence": [
+        "It was relaunched in its present form on 1st of April 2006 in the Athens metropolitan area, and gradually spread its coverage nationwide."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4d6bdc39df",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P577:switch_schema",
+      "base": {
+        "subj": "Olof Mörck",
+        "rel": "P577",
+        "obj": "2010",
+        "subj_id": "docred-validation-000070-Olof_Mörck::e0",
+        "obj_id": "docred-validation-000070-Olof_Mörck::e13"
+      },
+      "cf": null,
+      "evidence": [
+        "Mörck appears on the 2010 album The History of Saints by the North Carolina band Vanisher, performing the solo for the song \" Oceans. \""
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-535559381f",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000010-More__The_Sisters_of_Mercy_song_::s0:mask",
+      "base": {
+        "subj": "More",
+        "rel": "P54",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "\" More \" is a song by The Sisters of Mercy, from their album Vision Thing."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-acfc0d7767",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Parvathy",
+        "rel": "P40",
+        "obj": "Kalidas Jayaram",
+        "subj_id": null,
+        "obj_id": "docred-validation-000083-Parvathy_Jayaram::e26"
+      },
+      "cf": {
+        "subj": "Parvathy",
+        "rel": "P40",
+        "obj": "Kalidas Jayaram",
+        "subj_id": null,
+        "obj_id": "docred-validation-000083-Parvathy_Jayaram::e26"
+      },
+      "evidence": [
+        "She has two children, Kalidas Jayaram and Malavika Jayaram."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ee59ebe756",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Orb",
+        "rel": "P108",
+        "obj": "Sanctuary Records",
+        "subj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e1",
+        "obj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e17"
+      },
+      "cf": {
+        "subj": "Orb",
+        "rel": "P108",
+        "obj": "Sanctuary Records",
+        "subj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e1",
+        "obj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e17"
+      },
+      "evidence": [
+        "After departing from Island Records, The Orb released Bicycles & Tricycles in 2004 on Cooking Vinyl in the United Kingdom and Sanctuary Records in the United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2c0f42cdb0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "cf": {
+        "subj": "Washington Place ( William Washington House)",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fd634a196e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Wolfgang Thüne",
+        "rel": "P27",
+        "obj": "East German",
+        "subj_id": "docred-validation-000090-Wolfgang_Thüne::e0",
+        "obj_id": "docred-validation-000090-Wolfgang_Thüne::e4"
+      },
+      "cf": {
+        "subj": "Wolfgang Thüne",
+        "rel": "P27",
+        "obj": "East German",
+        "subj_id": "docred-validation-000090-Wolfgang_Thüne::e0",
+        "obj_id": "docred-validation-000090-Wolfgang_Thüne::e4"
+      },
+      "evidence": [
+        "He competed at the 1972 Summer Olympics in all artistic gymnastics events and won a bronze medal with the East German team."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-42965a94a2",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P150",
+        "obj": "Spokane",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e9"
+      },
+      "cf": null,
+      "evidence": [
+        "The present site was chosen due to its relation to the Spokane, Portland and Seattle Railway's interurban railroad line with frequent passenger service to the site because automobiles and roads were few."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2e2f68a1ce",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Haqqani",
+        "rel": "P108",
+        "obj": "US",
+        "subj_id": "docred-validation-000020-Memogate__Pakistan_::e9",
+        "obj_id": "docred-validation-000020-Memogate__Pakistan_::e11"
+      },
+      "cf": null,
+      "evidence": [
+        "Central actors in the plot include Pakistani - American businessman Mansoor Ijaz, who alleged that long - time friend and former Pakistan Ambassador to the United States Husain Haqqani asked him to deliver a confidential memo asking for US assistance."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-60154e5511",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P175:switch_schema",
+      "base": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P175",
+        "obj": "Calle 13",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e9"
+      },
+      "cf": {
+        "subj": "El Tren de los Momentos",
+        "rel": "OTHER",
+        "obj": "Calle 13",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e9"
+      },
+      "evidence": [
+        "which counts with the collaborations of Juanes, Antonio Carmona ( ex - Ketama), Shakira and Calle 13."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5b189b5ec3",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Brooks Pharmacy",
+        "rel": "P131",
+        "obj": "Vermont",
+        "subj_id": "docred-validation-000042-Brooks_Pharmacy::e0",
+        "obj_id": "docred-validation-000042-Brooks_Pharmacy::e9"
+      },
+      "cf": {
+        "subj": "Brooks Pharmacy",
+        "rel": "P150",
+        "obj": "Vermont",
+        "subj_id": "docred-validation-000042-Brooks_Pharmacy::e0",
+        "obj_id": "docred-validation-000042-Brooks_Pharmacy::e9"
+      },
+      "evidence": [
+        "During its heyday in the late 1990s and early 2000s, Brooks was one of the premier regional drug chains in the United States, and was the second largest drug chain in New England, maintaining an especially strong presence in the states of Vermont, New Hampshire, and Rhode Island."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-db3fdc2b2a",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Lookin Ass",
+        "rel": "P495",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "On March 11, 2014, \" Lookin Ass \" was serviced to urban contemporary radio in the United States as Young Money: Rise of an Empires third official single."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c0926b3aca",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Jack Gantos",
+        "rel": "P19",
+        "obj": "Norvelt",
+        "subj_id": "docred-validation-000022-Norvelt__Pennsylvania::e10",
+        "obj_id": "docred-validation-000022-Norvelt__Pennsylvania::e0"
+      },
+      "cf": {
+        "subj": "Jack Gantos",
+        "rel": "P19",
+        "obj": "Norvelt",
+        "subj_id": "docred-validation-000022-Norvelt__Pennsylvania::e10",
+        "obj_id": "docred-validation-000022-Norvelt__Pennsylvania::e0"
+      },
+      "evidence": [
+        "Award winning writer Jack Gantos was born in the village and wrote a book about it"
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-648021c7ad",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P17,P131,P150:switch_schema",
+      "base": {
+        "subj": "Sixty - ninth Congress",
+        "rel": "P131",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000015-Allen_F__Moore::e23",
+        "obj_id": "docred-validation-000015-Allen_F__Moore::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "He declined to be a candidate for reelection in 1924 to the Sixty - ninth Congress."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-acbdc5ec8c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000003-Lookin_Ass::s0:remove",
+      "base": {
+        "subj": "Lookin Ass",
+        "rel": "P463",
+        "obj": "Young Money : Rise of an Empires",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e10"
+      },
+      "cf": {
+        "subj": "Lookin Ass",
+        "rel": "P463",
+        "obj": "Young Money : Rise of an Empires",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e10"
+      },
+      "evidence": [
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6bd6d7233b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "The Sisters of Mercy",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e1"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "The Sisters of Mercy",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e1"
+      },
+      "evidence": [
+        "\" More \" is a song by The Sisters of Mercy, from their album Vision Thing."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b62b4f3ee7",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "York",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e14"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "York",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e14"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-31f589c8bb",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Julian Reinard",
+        "rel": "P108",
+        "obj": "Hakoah Amidar",
+        "subj_id": "docred-validation-000023-Julian_Reinard::e0",
+        "obj_id": "docred-validation-000023-Julian_Reinard::e8"
+      },
+      "cf": {
+        "subj": "Julian Reinard",
+        "rel": "member_of_sports_team",
+        "obj": "Hakoah Amidar / Ramat Gan",
+        "subj_id": "docred-validation-000023-Julian_Reinard::e0",
+        "obj_id": "docred-validation-000023-Julian_Reinard::e8"
+      },
+      "evidence": [
+        "While plying his trade at Hakoah Amidar / Ramat Gan on 23 October 2006 he became the first German footballer ever to play a professional match in Israel."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b2b1ea1b80",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P176,P361,P17:switch_schema",
+      "base": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P361",
+        "obj": "Samsung Galaxy S",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "As of 2018, the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 +, both released on 16 March 2018, and the latest tablet is the Samsung Galaxy Tab S4 released on August 1, 2018."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cf8b998742",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P577:switch_schema",
+      "base": {
+        "subj": "Crisis : Behind a Presidential Commitment",
+        "rel": "P361",
+        "obj": "National Film Registry",
+        "subj_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment::e0",
+        "obj_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "It was added to the National Film Registry of the Library of Congress on December 28, 2011."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8675fcd746",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Wilhelm Lanzky-Otto",
+        "rel": "P570",
+        "obj": "April 13 , 1991",
+        "subj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e0",
+        "obj_id": "docred-validation-000030-Wilhelm_Lanzky-Otto::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "Wilhelm Lanzky - Otto ( January 30, 1909 – April 13, 1991) was a Danish - born horn player."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-38d337666d",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Gershonites",
+        "rel": "P361",
+        "obj": "Levites",
+        "subj_id": "docred-validation-000050-Gershonites::e0",
+        "obj_id": "docred-validation-000050-Gershonites::e2"
+      },
+      "cf": {
+        "subj": "Gershonites",
+        "rel": "career",
+        "obj": "Levites",
+        "subj_id": "docred-validation-000050-Gershonites::e0",
+        "obj_id": "docred-validation-000050-Gershonites::e2"
+      },
+      "evidence": [
+        "The Gershonites were one of the four main divisions among the Levites in Biblical times."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-38ab84d146",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "More",
+        "rel": "P161",
+        "obj": "Meat Loaf",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e18"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Meat Loaf",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e18"
+      },
+      "evidence": [
+        "The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c834d4b927",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Bantustan",
+        "rel": "P131",
+        "obj": "South Africa",
+        "subj_id": "docred-validation-000092-Bantustan::e14",
+        "obj_id": "docred-validation-000092-Bantustan::e2"
+      },
+      "cf": {
+        "subj": "Bantustan",
+        "rel": "P131",
+        "obj": "South Africa",
+        "subj_id": "docred-validation-000092-Bantustan::e14",
+        "obj_id": "docred-validation-000092-Bantustan::e2"
+      },
+      "evidence": [
+        "A Bantustan ( also known as Bantu homeland, black homeland, black state or simply homeland;) was a territory set aside for black inhabitants of South Africa and South West Africa ( now Namibia), as part of the policy of apartheid."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cc94d13867",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P131,P577,P17:switch_schema",
+      "base": {
+        "subj": "Loud",
+        "rel": "OTHER",
+        "obj": "1,200,800",
+        "subj_id": "docred-validation-000082-Loud_Tour::e0",
+        "obj_id": "docred-validation-000082-Loud_Tour::e13"
+      },
+      "cf": {
+        "subj": "Loud",
+        "rel": "related_to",
+        "obj": "1,200,800",
+        "subj_id": "docred-validation-000082-Loud_Tour::e0",
+        "obj_id": "docred-validation-000082-Loud_Tour::e13"
+      },
+      "evidence": [
+        "The tour ultimately grossed an estimated value of US$ 90 million from 98 reported shows and a total audience of 1,200,800."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a4d326ef43",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P27",
+        "obj": "Argentine",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e3"
+      },
+      "cf": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P27",
+        "obj": "Argentine",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e3"
+      },
+      "evidence": [
+        "Pedro León Díaz Gallo ( 29 June 1782 – 7 February 1852) was an Argentine statesman and priest."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-07a626ba65",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P463",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P463",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "evidence": [
+        "At club level McEvoy won several championship medals as a dual player with Abbeyleix."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-45e5cfd9fa",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Siberia Governorate",
+        "rel": "P150",
+        "obj": "Urals",
+        "subj_id": "docred-validation-000017-Siberia_Governorate::e0",
+        "obj_id": "docred-validation-000017-Siberia_Governorate::e11"
+      },
+      "cf": {
+        "subj": "Siberia Governorate",
+        "rel": "P150",
+        "obj": "Urals",
+        "subj_id": "docred-validation-000017-Siberia_Governorate::e0",
+        "obj_id": "docred-validation-000017-Siberia_Governorate::e11"
+      },
+      "evidence": [
+        "In therms of the area, Siberia Governorate was by far the biggest among all the governorates, as it included areas in the Urals, Siberia, and the Russian Far East some of which were not yet even settled by Russians at the time."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-12f9c3ea17",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "York",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e14"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "P150",
+        "obj": "York",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e14"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a8664f4c95",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:ambiguous:P17,P361,P576:switch_schema",
+      "base": {
+        "subj": "Bantustan",
+        "rel": "P131",
+        "obj": "South West Africa",
+        "subj_id": "docred-validation-000092-Bantustan::e14",
+        "obj_id": "docred-validation-000092-Bantustan::e3"
+      },
+      "cf": {
+        "subj": "Bantustan",
+        "rel": "P131",
+        "obj": "South West Africa",
+        "subj_id": "docred-validation-000092-Bantustan::e14",
+        "obj_id": "docred-validation-000092-Bantustan::e3"
+      },
+      "evidence": [
+        "A Bantustan ( also known as Bantu homeland, black homeland, black state or simply homeland;) was a territory set aside for black inhabitants of South Africa and South West Africa ( now Namibia), as part of the policy of apartheid."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1b01be3ba5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P569",
+        "obj": "November 15 , 1915",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e1"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P569",
+        "obj": "November 15 , 1915",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e1"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c4e32e2def",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Kerstin Thorborg",
+        "rel": "P108",
+        "obj": "Städtische Oper",
+        "subj_id": "docred-validation-000094-Kerstin_Thorborg::e0",
+        "obj_id": "docred-validation-000094-Kerstin_Thorborg::e14"
+      },
+      "cf": {
+        "subj": "Kerstin Thorborg",
+        "rel": "member_of_sports_team",
+        "obj": "Städtische Oper",
+        "subj_id": "docred-validation-000094-Kerstin_Thorborg::e0",
+        "obj_id": "docred-validation-000094-Kerstin_Thorborg::e14"
+      },
+      "evidence": [
+        "Eight years later, the famed conductor Bruno Walter engaged her for the Städtische Oper in Berlin and became her mentor."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-da43b3c6a0",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P17",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "cf": null,
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-545e26c026",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P570:switch_schema",
+      "base": {
+        "subj": "Frederick Jacob Titus Chiluba",
+        "rel": "P580",
+        "obj": "1991",
+        "subj_id": "docred-validation-000093-Frederick_Chiluba::e0",
+        "obj_id": "docred-validation-000093-Frederick_Chiluba::e4"
+      },
+      "cf": {
+        "subj": "Frederick Jacob Titus Chiluba",
+        "rel": "P580",
+        "obj": "1991",
+        "subj_id": "docred-validation-000093-Frederick_Chiluba::e0",
+        "obj_id": "docred-validation-000093-Frederick_Chiluba::e4"
+      },
+      "evidence": [
+        "Chiluba, a trade union leader, won the country's multi - party presidential election in 1991 as the candidate of the Movement for Multi - party Democracy ( MMD), defeating long - time President Kenneth Kaunda."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f45b144942",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Ashwathy Kurup",
+        "rel": "P26",
+        "obj": "Jayaram",
+        "subj_id": "docred-validation-000083-Parvathy_Jayaram::e0",
+        "obj_id": "docred-validation-000083-Parvathy_Jayaram::e20"
+      },
+      "cf": {
+        "subj": "Ashwathy Kurup",
+        "rel": "P26",
+        "obj": "Jayaram",
+        "subj_id": "docred-validation-000083-Parvathy_Jayaram::e0",
+        "obj_id": "docred-validation-000083-Parvathy_Jayaram::e20"
+      },
+      "evidence": [
+        "Parvathy married film actor Jayaram who was her co - star in many films on"
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b59000881c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P175",
+        "obj": "Juanes",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "which counts with the collaborations of Juanes, Antonio Carmona ( ex - Ketama), Shakira and Calle 13."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-bd3ab82951",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Siberia Governorate",
+        "rel": "P131",
+        "obj": "Pacific Oceans",
+        "subj_id": "docred-validation-000017-Siberia_Governorate::e0",
+        "obj_id": "docred-validation-000017-Siberia_Governorate::e10"
+      },
+      "cf": {
+        "subj": "Siberia Governorate",
+        "rel": "located_in_admin_unit",
+        "obj": "Arctic",
+        "subj_id": "docred-validation-000017-Siberia_Governorate::e0",
+        "obj_id": "docred-validation-000017-Siberia_Governorate::e9"
+      },
+      "evidence": [
+        "In the north and the east, the governorate was limited by the seas of the Arctic and Pacific Oceans."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-76bd74bb25",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P150:switch_schema",
+      "base": {
+        "subj": "Morogoro Region",
+        "rel": "P150",
+        "obj": "Ruvuma Region",
+        "subj_id": "docred-validation-000077-Morogoro_Region::e0",
+        "obj_id": "docred-validation-000077-Morogoro_Region::e14"
+      },
+      "cf": {
+        "subj": "Morogoro Region",
+        "rel": "P361",
+        "obj": "Ruvuma Region",
+        "subj_id": "docred-validation-000077-Morogoro_Region::e0",
+        "obj_id": "docred-validation-000077-Morogoro_Region::e14"
+      },
+      "evidence": [
+        "Morogoro Region is bordered to the north by the Tanga Region, to the east by the Pwani and Lindi Regions, to the south by the Ruvuma Region and to the west by the Iringa and Dodoma Regions."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-74824bf091",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Gahn",
+        "rel": "P108",
+        "obj": "The Swedish Board of Mines Bergskollegium",
+        "subj_id": "docred-validation-000016-Johan_Gottlieb_Gahn::e0",
+        "obj_id": "docred-validation-000016-Johan_Gottlieb_Gahn::e15"
+      },
+      "cf": {
+        "subj": "Gahn",
+        "rel": "P108",
+        "obj": "The Swedish Board of Mines Bergskollegium",
+        "subj_id": "docred-validation-000016-Johan_Gottlieb_Gahn::e0",
+        "obj_id": "docred-validation-000016-Johan_Gottlieb_Gahn::e15"
+      },
+      "evidence": [
+        "He was the chemist for The Swedish Board of Mines Bergskollegium from 1773 – 1817."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-45e2eb584b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P577:switch_schema",
+      "base": {
+        "subj": "Loud",
+        "rel": "OTHER",
+        "obj": "US$90 million",
+        "subj_id": "docred-validation-000082-Loud_Tour::e0",
+        "obj_id": "docred-validation-000082-Loud_Tour::e11"
+      },
+      "cf": {
+        "subj": "Loud",
+        "rel": "OTHER",
+        "obj": "US$90 million",
+        "subj_id": "docred-validation-000082-Loud_Tour::e0",
+        "obj_id": "docred-validation-000082-Loud_Tour::e11"
+      },
+      "evidence": [
+        "The tour ultimately grossed an estimated value of US$ 90 million from 98 reported shows and a total audience of 1,200,800."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f78f294a19",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Elias Brown",
+        "rel": "P19",
+        "obj": "Baltimore",
+        "subj_id": "docred-validation-000076-Elias_Brown::e0",
+        "obj_id": "docred-validation-000076-Elias_Brown::e5"
+      },
+      "cf": {
+        "subj": "Elias Brown",
+        "rel": "P19",
+        "obj": "Baltimore",
+        "subj_id": "docred-validation-000076-Elias_Brown::e0",
+        "obj_id": "docred-validation-000076-Elias_Brown::e5"
+      },
+      "evidence": [
+        "Born near Baltimore, Maryland, Brown attended the common schools."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4c0bd12907",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Ben Hogan",
+        "rel": "P108",
+        "obj": "Portland Open",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e13",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e16"
+      },
+      "cf": {
+        "subj": "Ben Hogan",
+        "rel": "P108",
+        "obj": "Portland Open",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e13",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e16"
+      },
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f92f397b42",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-69fea081cd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Urguti",
+        "rel": "P131",
+        "obj": "Urgut",
+        "subj_id": "docred-validation-000008-Urgut::e10",
+        "obj_id": "docred-validation-000008-Urgut::e0"
+      },
+      "cf": {
+        "subj": "Urguti",
+        "rel": "P131",
+        "obj": "Urgut",
+        "subj_id": "docred-validation-000008-Urgut::e10",
+        "obj_id": "docred-validation-000008-Urgut::e0"
+      },
+      "evidence": [
+        "Urgutlik ( also known as Urguti in Tajik) people are a subgroup of ethnic Uzbeks who track their ancestry to people from a town of Urgut."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ed7af1ad2b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:terse:tone",
+      "base": {
+        "subj": "Conrad O. Johnson School of Fine Arts",
+        "rel": "P131",
+        "obj": "Kashmere High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e21",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e16"
+      },
+      "cf": {
+        "subj": "Conrad O. Johnson School of Fine Arts",
+        "rel": "P131",
+        "obj": "Kashmere High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e21",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e16"
+      },
+      "evidence": [
+        "The Conrad O. Johnson School of Fine Arts at Kashmere High School is named after him."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1dc2e04129",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "QwaQwa",
+        "rel": "P361",
+        "obj": "Bantustans",
+        "subj_id": "docred-validation-000092-Bantustan::e23",
+        "obj_id": "docred-validation-000092-Bantustan::e6"
+      },
+      "cf": {
+        "subj": "QwaQwa",
+        "rel": "P361",
+        "obj": "Bantustans",
+        "subj_id": "docred-validation-000092-Bantustan::e23",
+        "obj_id": "docred-validation-000092-Bantustan::e6"
+      },
+      "evidence": [
+        "Other South African Bantustans ( like KwaZulu, Lebowa, and QwaQwa) received partial autonomy but were never granted independence."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d7672828be",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "William Washington",
+        "rel": "P108",
+        "obj": "African",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e13",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e15"
+      },
+      "cf": null,
+      "evidence": [
+        "William Washington later acquired other properties on the hills north of Romney along West Virginia Route 28 and became the first African - American land developer in the state of West Virginia."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2b1e6de7e0",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000007-Portland_Golf_Club::s7:mask",
+      "base": {
+        "subj": "U.S.",
+        "rel": "OTHER",
+        "obj": "Great Britain",
+        "subj_id": null,
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e20"
+      },
+      "cf": null,
+      "evidence": [
+        "The U.S. team defeated Great Britain 11 to 1 in wet conditions in early November."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8ccd00296c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Mike Vogel",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e13"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Mike Vogel",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e13"
+      },
+      "evidence": [
+        "Steinman produced a cover of the song, by Mike Vogel and Erika Christensen, for the soundtrack of the MTV film Wuthering Heights."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f9c4a32945",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Rose Porteous",
+        "rel": "P131",
+        "obj": "Perth",
+        "subj_id": "docred-validation-000052-Rose_Porteous::e0",
+        "obj_id": "docred-validation-000052-Rose_Porteous::e11"
+      },
+      "cf": {
+        "subj": "Rose Porteous",
+        "rel": "P131",
+        "obj": "Perth",
+        "subj_id": "docred-validation-000052-Rose_Porteous::e0",
+        "obj_id": "docred-validation-000052-Rose_Porteous::e11"
+      },
+      "evidence": [
+        "Porteous, who lives in Perth and Melbourne, Victoria, is often referred to by the media as a socialite."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0f7f8b29be",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P27",
+        "obj": "American",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e3"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P27",
+        "obj": "American",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e3"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5a7222e731",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Crisis : Behind a Presidential Commitment",
+        "rel": "P577",
+        "obj": "1963",
+        "subj_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment::e0",
+        "obj_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment::e1"
+      },
+      "cf": {
+        "subj": "Crisis : Behind a Presidential Commitment",
+        "rel": "P577",
+        "obj": "1963",
+        "subj_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment::e0",
+        "obj_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment::e1"
+      },
+      "evidence": [
+        "Crisis: Behind a Presidential Commitment is a 1963 cinéma vérité documentary film directed by Robert Drew."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3bbf6854d4",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000004-Conrad_O__Johnson::s9:remove",
+      "base": {
+        "subj": "Conrad O. Johnson School of Fine Arts",
+        "rel": "P131",
+        "obj": "Kashmere High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e21",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "The Conrad O. Johnson School of Fine Arts at Kashmere High School is named after him."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4909fcdf5c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Liffey Viaduct",
+        "rel": "P463",
+        "obj": "An Bord Pleanála",
+        "subj_id": "docred-validation-000063-Loopline_Bridge::e0",
+        "obj_id": "docred-validation-000063-Loopline_Bridge::e18"
+      },
+      "cf": null,
+      "evidence": [
+        ", the company has scaled back the bridge's use for this purpose to reduce impact on the city skyline, following input from An Bord Pleanála and Dublin City Council."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-bf28b87b8f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000004-Conrad_O__Johnson::s0:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P582",
+        "obj": "1978",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e17"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P582",
+        "obj": "1978",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e17"
+      },
+      "evidence": [
+        "He started his career in music education in 1941 and, following a thirty - seven - year career, retired from his position at Kashmere High School in 1978, but continued to remain active in shaping music in Houston by conducting summer programs and in - home tutoring."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2131836f52",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P131,P17,P361:switch_schema",
+      "base": {
+        "subj": "Old Loggers Path",
+        "rel": "P361",
+        "obj": "Central Pennsylvania Lumber Company",
+        "subj_id": "docred-validation-000034-Old_Loggers_Path::e0",
+        "obj_id": "docred-validation-000034-Old_Loggers_Path::e8"
+      },
+      "cf": null,
+      "evidence": [
+        "The land the Old Loggers Path is on was initially owned and clear - cut by the Union Tanning Company, followed by the Central Pennsylvania Lumber Company."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3e791e3ba4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P361:switch_schema",
+      "base": {
+        "subj": "Gershonites",
+        "rel": "P131",
+        "obj": "Issachar",
+        "subj_id": "docred-validation-000050-Gershonites::e0",
+        "obj_id": "docred-validation-000050-Gershonites::e16"
+      },
+      "cf": {
+        "subj": "Gershonites",
+        "rel": "P131",
+        "obj": "Issachar",
+        "subj_id": "docred-validation-000050-Gershonites::e0",
+        "obj_id": "docred-validation-000050-Gershonites::e16"
+      },
+      "evidence": [
+        "in the territory of Issachar: Kishon, Dabareh, Jarmuth, and En - gannim"
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9be9de7d61",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Ortalis",
+        "rel": "P108",
+        "obj": "Greek",
+        "subj_id": "docred-validation-000047-Chachalaca::e1",
+        "obj_id": "docred-validation-000047-Chachalaca::e10"
+      },
+      "cf": {
+        "subj": "Ortalis",
+        "rel": "P108",
+        "obj": "Greek",
+        "subj_id": "docred-validation-000047-Chachalaca::e1",
+        "obj_id": "docred-validation-000047-Chachalaca::e10"
+      },
+      "evidence": [
+        "The generic name is derived from the Greek word όρταλις, meaning \" pullet \" or \" domestic hen. \""
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fe0ef72b5d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Lookin Ass",
+        "rel": "P108",
+        "obj": "Young Money Entertainment",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e5"
+      },
+      "cf": {
+        "subj": "Lookin Ass",
+        "rel": "P108",
+        "obj": "Young Money Entertainment",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e5"
+      },
+      "evidence": [
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-16aa0e6617",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Bald Island",
+        "rel": "P131",
+        "obj": "Western Australia",
+        "subj_id": "docred-validation-000018-Quokka::e3",
+        "obj_id": "docred-validation-000018-Quokka::e0"
+      },
+      "cf": {
+        "subj": "Bald Island",
+        "rel": "P131",
+        "obj": "Western Australia",
+        "subj_id": "docred-validation-000018-Quokka::e3",
+        "obj_id": "docred-validation-000018-Quokka::e0"
+      },
+      "evidence": [
+        "Quokkas are found on some smaller islands off the coast of Western Australia, particularly Rottnest Island, just off Perth, and also Bald Island near Albany, and in isolated scattered populations in forest and coastal heath between Perth and Albany."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-012e94fec8",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P57",
+        "obj": "Yuen Woo-ping",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e4"
+      },
+      "cf": {
+        "subj": "Crouching Tiger , Hidden Dragon : Sword of Destiny",
+        "rel": "P57",
+        "obj": "Yuen Woo-ping",
+        "subj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e0",
+        "obj_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of::e4"
+      },
+      "evidence": [
+        "Crouching Tiger, Hidden Dragon: Sword of Destiny () is a 2016 American - Chinese martial arts film directed by Yuen Woo - ping and written by John Fusco, based on the novel Iron Knight, Silver Vase by Wang Dulu."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f4d1384f17",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Paul Charles Morphy",
+        "rel": "P570",
+        "obj": "July 10 , 1884",
+        "subj_id": "docred-validation-000036-Paul_Morphy::e0",
+        "obj_id": "docred-validation-000036-Paul_Morphy::e2"
+      },
+      "cf": {
+        "subj": "Paul Charles Morphy",
+        "rel": "date_of_death",
+        "obj": "July 10 , 1884",
+        "subj_id": "docred-validation-000036-Paul_Morphy::e0",
+        "obj_id": "docred-validation-000036-Paul_Morphy::e2"
+      },
+      "evidence": [
+        "Paul Charles Morphy ( June 22, 1837   – July 10, 1884) was an American chess player."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-adc24a7bed",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Gahn",
+        "rel": "P580",
+        "obj": "1773",
+        "subj_id": "docred-validation-000016-Johan_Gottlieb_Gahn::e0",
+        "obj_id": "docred-validation-000016-Johan_Gottlieb_Gahn::e16"
+      },
+      "cf": null,
+      "evidence": [
+        "He was the chemist for The Swedish Board of Mines Bergskollegium from 1773 – 1817."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9706b78cc6",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P463",
+        "obj": "Congress of Tucumán",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e4"
+      },
+      "cf": {
+        "subj": "Pedro León Díaz Gallo",
+        "rel": "P50",
+        "obj": "Congress of Tucumán",
+        "subj_id": "docred-validation-000067-Pedro_León_Gallo::e0",
+        "obj_id": "docred-validation-000067-Pedro_León_Gallo::e4"
+      },
+      "evidence": [
+        "He was a representative to the Congress of Tucumán which on 9 July 1816 declared the Independence of Argentina.",
+        "Gallo was elected to represent Santiago del Estero in the Tucumán Congress and served for the declaration in 1816."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7f6ddad28b",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Ryder Cup",
+        "rel": "P569",
+        "obj": "1947",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e18"
+      },
+      "cf": {
+        "subj": "Ryder Cup",
+        "rel": "P580",
+        "obj": "1947",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e18"
+      },
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ee3cceb5cf",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s4:mask",
+      "base": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-831dfcca7a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s6:mask",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a7f80c44ac",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:ambiguous:P17,P69,P131:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Omega Psi Phi Fraternity",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e13"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Omega Psi Phi Fraternity",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e13"
+      },
+      "evidence": [
+        "He was an active member of Omega Psi Phi Fraternity."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4bb39bd28a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P40",
+        "obj": "Alejandro Sanz",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e2"
+      },
+      "cf": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P40",
+        "obj": "Alejandro Sanz",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e2"
+      },
+      "evidence": [
+        "It contains ten songs produced by him and Lulo Pérez and this diversity of voices allows approaching social, political and faith topics from differing points of view."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f2949d3bd8",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "sentence:docred-validation-000002-IBM_Research___Brazil::s5:mask",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P463",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1645e2770e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Live in New York",
+        "rel": "P361",
+        "obj": "Big Science",
+        "subj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e0",
+        "obj_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_::e13"
+      },
+      "cf": null,
+      "evidence": [
+        "Recorded less than 10 days after the September 11, 2001, attacks on New York City, the album was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and newer works, including songs from her then - recent album Life on a String, as well as earlier albums such as United States Live, Big Science, Bright Red, Home of the Brave and Strange Angels."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-418a6eb02d",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Paul Charles Morphy",
+        "rel": "OTHER",
+        "obj": "World Chess Champion",
+        "subj_id": "docred-validation-000036-Paul_Morphy::e0",
+        "obj_id": "docred-validation-000036-Paul_Morphy::e4"
+      },
+      "cf": {
+        "subj": "Paul Charles Morphy",
+        "rel": "OTHER",
+        "obj": "The Pride and Sorrow of Chess",
+        "subj_id": "docred-validation-000036-Paul_Morphy::e0",
+        "obj_id": "docred-validation-000036-Paul_Morphy::e5"
+      },
+      "evidence": [
+        "He is considered to have been the greatest chess master of his era and an unofficial World Chess Champion."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-63840cbc23",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Antony Noghès",
+        "rel": "P40",
+        "obj": "checkered flag",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": null
+      },
+      "cf": {
+        "subj": "Antony Noghès",
+        "rel": "P40",
+        "obj": "Alexandre - Athenase Noghès",
+        "subj_id": "docred-validation-000051-Antony_Noghès::e0",
+        "obj_id": "docred-validation-000051-Antony_Noghès::e10"
+      },
+      "evidence": [
+        "He suggested the international adoption of the checkered flag to end races."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-649385121b",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Olof Mörck",
+        "rel": "P27",
+        "obj": "Sweden",
+        "subj_id": "docred-validation-000070-Olof_Mörck::e0",
+        "obj_id": "docred-validation-000070-Olof_Mörck::e3"
+      },
+      "cf": {
+        "subj": "Olof Mörck",
+        "rel": "P17",
+        "obj": "Sweden",
+        "subj_id": "docred-validation-000070-Olof_Mörck::e0",
+        "obj_id": "docred-validation-000070-Olof_Mörck::e3"
+      },
+      "evidence": [
+        "Olof Mörck ( born 12 December 1981 in Gothenburg, Sweden) is the guitarist and one of the songwriters of the metal band Amaranthe, as well as guitarist of the power metal band Dragonland."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-62f31bb34f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "James Llewellyn \" Jimmy \" Frise",
+        "rel": "P19",
+        "obj": "Scugog Island",
+        "subj_id": "docred-validation-000060-Jimmy_Frise::e1",
+        "obj_id": "docred-validation-000060-Jimmy_Frise::e6"
+      },
+      "cf": {
+        "subj": "James Llewellyn \" Jimmy \" Frise",
+        "rel": "P19",
+        "obj": "Scugog Island",
+        "subj_id": "docred-validation-000060-Jimmy_Frise::e1",
+        "obj_id": "docred-validation-000060-Jimmy_Frise::e6"
+      },
+      "evidence": [
+        "Born in Scugog Island, Ontario, Frise moved to Toronto at 19 and found illustration work on the Toronto Stars Star Weekly supplement."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ccee183c6c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P150:switch_schema",
+      "base": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "Harrogate",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e10"
+      },
+      "cf": {
+        "subj": "The Yorkshire Post",
+        "rel": "OTHER",
+        "obj": "Harrogate",
+        "subj_id": "docred-validation-000028-The_Yorkshire_Post::e0",
+        "obj_id": "docred-validation-000028-The_Yorkshire_Post::e10"
+      },
+      "evidence": [
+        "It has satellite offices in Harrogate, Hull, Scarborough, Sheffield and York, as well as correspondents in Westminster and the City of London."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-23e698ba00",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Ryder Cup",
+        "rel": "P569",
+        "obj": "1947",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e18"
+      },
+      "cf": {
+        "subj": "Ryder Cup",
+        "rel": "creation",
+        "obj": "1947",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e18"
+      },
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1c6d1e804b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P108:switch_schema",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9cabc600da",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "South Sudan",
+        "rel": "P131",
+        "obj": "Eastern Africa",
+        "subj_id": "docred-validation-000038-Outline_of_South_Sudan::e0",
+        "obj_id": "docred-validation-000038-Outline_of_South_Sudan::e3"
+      },
+      "cf": {
+        "subj": "South Sudan",
+        "rel": "P131",
+        "obj": "Juba",
+        "subj_id": "docred-validation-000038-Outline_of_South_Sudan::e0",
+        "obj_id": "docred-validation-000038-Outline_of_South_Sudan::e13"
+      },
+      "evidence": [
+        "South Sudan – landlocked country in east - central Africa that is part of the United Nations subregion of Eastern Africa."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d8a220e58c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000002-IBM_Research___Brazil::s1:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-aa3604f5c3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P54:switch_schema",
+      "base": {
+        "subj": "Lookin Ass",
+        "rel": "P175",
+        "obj": "Nicki Minaj",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e2"
+      },
+      "cf": {
+        "subj": "Lookin Ass",
+        "rel": "P175",
+        "obj": "Nicki Minaj",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e0",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e2"
+      },
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-245340ebbd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Orb",
+        "rel": "P108",
+        "obj": "Sanctuary Records",
+        "subj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e1",
+        "obj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e17"
+      },
+      "cf": {
+        "subj": "Orb",
+        "rel": "P108",
+        "obj": "Sanctuary Records",
+        "subj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e1",
+        "obj_id": "docred-validation-000044-Bicycles__amp__Tricycles::e17"
+      },
+      "evidence": [
+        "After departing from Island Records, The Orb released Bicycles & Tricycles in 2004 on Cooking Vinyl in the United Kingdom and Sanctuary Records in the United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7b9996a5d7",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:ambiguous:P131,P17,P150:switch_schema",
+      "base": {
+        "subj": "Urgutlik",
+        "rel": "P361",
+        "obj": "Uzbeks",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e6"
+      },
+      "cf": null,
+      "evidence": [
+        "Urgutlik ( also known as Urguti in Tajik) people are a subgroup of ethnic Uzbeks who track their ancestry to people from a town of Urgut."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-aed40727fc",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "El Tren de los Momentos",
+        "rel": "P131",
+        "obj": "Bahamas",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e14"
+      },
+      "cf": {
+        "subj": "El Tren de los Momentos",
+        "rel": "located_in_admin_unit",
+        "obj": "Bahamas",
+        "subj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e0",
+        "obj_id": "docred-validation-000079-El_Tren_de_los_Momentos::e14"
+      },
+      "evidence": [
+        "It was recorded in Havana, Miami, Bahamas and Madrid, with most recording taking place in a studio that Sanz has at his house in Miami."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d04729ab56",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:drop:P161:switch_schema",
+      "base": {
+        "subj": "Parvathy",
+        "rel": "P40",
+        "obj": "Thoovanathumbikal",
+        "subj_id": null,
+        "obj_id": "docred-validation-000083-Parvathy_Jayaram::e12"
+      },
+      "cf": {
+        "subj": "Parvathy",
+        "rel": "P40",
+        "obj": "Lenin Rajendran",
+        "subj_id": null,
+        "obj_id": "docred-validation-000083-Parvathy_Jayaram::e6"
+      },
+      "evidence": [
+        "Her notable works include Amrutham Gamaya, Oru Minnaminunginte Nurunguvettam, Thoovanathumbikal ( 1987), Ponmuttayidunna Tharavu ( 1988), Vadakkunokkiyantram, Peruvannapurathe Visheshangal and Kireedam ( 1989)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3434dcda3c",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Queen of Housewives",
+        "rel": "P582",
+        "obj": "May 19 , 2009",
+        "subj_id": "docred-validation-000033-Queen_of_Housewives::e0",
+        "obj_id": "docred-validation-000033-Queen_of_Housewives::e11"
+      },
+      "cf": null,
+      "evidence": [
+        "It aired on MBC from March 16 to May 19, 2009 on Mondays and Tuesdays at 21:55 for 20 episodes."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-516472177b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Riksakten",
+        "rel": "P580",
+        "obj": "the spring of 1815",
+        "subj_id": "docred-validation-000087-Riksakten::e0",
+        "obj_id": "docred-validation-000087-Riksakten::e10"
+      },
+      "cf": {
+        "subj": "Riksakten",
+        "rel": "P580",
+        "obj": "the spring of 1815",
+        "subj_id": "docred-validation-000087-Riksakten::e0",
+        "obj_id": "docred-validation-000087-Riksakten::e10"
+      },
+      "evidence": [
+        "The Act of Union ( Riksakten) was negotiated during the spring of 1815, with prime minister Peder Anker leading the Norwegian delegation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cb810ed211",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P463:switch_schema",
+      "base": {
+        "subj": "Mark Harmsworth",
+        "rel": "P463",
+        "obj": "Washington House of Representatives",
+        "subj_id": "docred-validation-000099-Mark_Harmsworth::e0",
+        "obj_id": "docred-validation-000099-Mark_Harmsworth::e3"
+      },
+      "cf": {
+        "subj": "Mark Harmsworth",
+        "rel": "P108",
+        "obj": "Washington House of Representatives",
+        "subj_id": "docred-validation-000099-Mark_Harmsworth::e0",
+        "obj_id": "docred-validation-000099-Mark_Harmsworth::e3"
+      },
+      "evidence": [
+        "A Republican, he has served in the Washington House of Representatives since November 25, 2014, when he was sworn in early after winning election that month."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-64125a2475",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P159:switch_schema",
+      "base": {
+        "subj": "Entreat",
+        "rel": "P131",
+        "obj": "London",
+        "subj_id": "docred-validation-000059-Entreat::e0",
+        "obj_id": "docred-validation-000059-Entreat::e3"
+      },
+      "cf": {
+        "subj": "Entreat",
+        "rel": "P131",
+        "obj": "London",
+        "subj_id": "docred-validation-000059-Entreat::e0",
+        "obj_id": "docred-validation-000059-Entreat::e3"
+      },
+      "evidence": [
+        "Entreat is a live album by British alternative rock band The Cure, recorded at London's Wembley Arena in July 1989."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4113156877",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Inland Empire",
+        "rel": "P131",
+        "obj": "Riverside",
+        "subj_id": "docred-validation-000061-Metropolitan_statistical_area::e12",
+        "obj_id": "docred-validation-000061-Metropolitan_statistical_area::e10"
+      },
+      "cf": null,
+      "evidence": [
+        "However, some metropolitan areas contain more than one large city with no single municipality holding a substantially dominant position ( e.g.,   Dallas – Fort Worth metroplex, Norfolk - Virginia Beach ( Hampton Roads), Riverside – San Bernardino ( Inland Empire) or Minneapolis – Saint Paul ( Twin Cities))."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-80d86f6c64",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "South West Africa",
+        "rel": "P17",
+        "obj": "Namibia",
+        "subj_id": "docred-validation-000092-Bantustan::e3",
+        "obj_id": "docred-validation-000092-Bantustan::e4"
+      },
+      "cf": {
+        "subj": "South West Africa",
+        "rel": "P17",
+        "obj": "Namibia",
+        "subj_id": "docred-validation-000092-Bantustan::e3",
+        "obj_id": "docred-validation-000092-Bantustan::e4"
+      },
+      "evidence": [
+        "A Bantustan ( also known as Bantu homeland, black homeland, black state or simply homeland;) was a territory set aside for black inhabitants of South Africa and South West Africa ( now Namibia), as part of the policy of apartheid."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    }
+  ]
+}

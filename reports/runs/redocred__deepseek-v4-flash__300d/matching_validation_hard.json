@@ -1,0 +1,647 @@
+{
+  "run": "redocred__deepseek-v4-flash__300d",
+  "disappeared": {
+    "n": 44,
+    "pass": 41,
+    "candidates": [
+      {
+        "outcome_id": "oc-02c34e8c1d",
+        "base": {
+          "subj": "Amos J. Hochstein",
+          "rel": "P17",
+          "obj": "U.S.",
+          "subj_id": "redocred-validation-000196-Amos_Hochstein::e0",
+          "obj_id": "redocred-validation-000196-Amos_Hochstein::e2"
+        },
+        "evidence": [
+          "Amos J. Hochstein ( born January 4, 1973) is a U.S. businessman, former diplomat and national security and energy expert."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-redocred-validation-000196-Amos_Hochstein-d191f58351::bb7fed8d35",
+            "subj": "Amos J. Hochstein",
+            "rel": "career",
+            "obj": "U.S. Congress",
+            "subj_id": "redocred-validation-000196-Amos_Hochstein::e0",
+            "obj_id": "redocred-validation-000196-Amos_Hochstein::e3"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-8062040467",
+        "base": {
+          "subj": "Lappeenranta",
+          "rel": "P159",
+          "obj": "Lappeenranta University of Technology",
+          "subj_id": "redocred-validation-000242-Lappeenranta::e0",
+          "obj_id": "redocred-validation-000242-Lappeenranta::e9"
+        },
+        "evidence": [
+          "Lappeenranta is known as an international university city in Finland with Lappeenranta University of Technology and Saimaa University of Applied Sciences which together have approximately 13,000 students from 68 countries."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-redocred-validation-000242-Lappeenranta-f192e3ed23::9c95c85e07",
+            "subj": "Lappeenranta University of Technology",
+            "rel": "P131",
+            "obj": "Lappeenranta",
+            "subj_id": "redocred-validation-000242-Lappeenranta::e9",
+            "obj_id": "redocred-validation-000242-Lappeenranta::e0"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-0976bed8e3",
+        "base": {
+          "subj": "Carl Dix",
+          "rel": "P463",
+          "obj": "Refuse Fascism",
+          "subj_id": "redocred-validation-000237-Carl_Dix::e0",
+          "obj_id": "redocred-validation-000237-Carl_Dix::e11"
+        },
+        "evidence": [
+          "As of August 2017, Dix is a member of Refuse Fascism, an organization founded in 2016 to oppose the presidency of Donald Trump."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-redocred-validation-000237-Carl_Dix-dfc7eef96e::5605484478",
+            "subj": "Dix",
+            "rel": "P54",
+            "obj": "Refuse Fascism",
+            "subj_id": "redocred-validation-000237-Carl_Dix::e3",
+            "obj_id": "redocred-validation-000237-Carl_Dix::e11"
+          }
+        ]
+      }
+    ]
+  },
+  "flip_or_ambiguous": {
+    "n": 22,
+    "id_anchor": 0,
+    "surface_anchor": 20,
+    "containment_anchor": 2,
+    "review": [
+      {
+        "outcome_id": "oc-f06f79ea1c",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "Roald Municipality",
+          "rel": "P131",
+          "obj": "Roald",
+          "subj_id": "redocred-validation-000290-Roald::e13",
+          "obj_id": "redocred-validation-000290-Roald::e0"
+        },
+        "cf": {
+          "subj": "Vigra Church",
+          "rel": "P131",
+          "obj": "Roald",
+          "subj_id": "redocred-validation-000290-Roald::e10",
+          "obj_id": "redocred-validation-000290-Roald::e0"
+        },
+        "evidence": [
+          "The village of Roald was the administrative centre of the old Roald Municipality that existed from 1890 until 1964."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-0a88188deb",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Angleton High School",
+          "rel": "P131",
+          "obj": "1",
+          "subj_id": "redocred-validation-000074-Angleton_High_School::e0",
+          "obj_id": "redocred-validation-000074-Angleton_High_School::e12"
+        },
+        "cf": {
+          "subj": "Angleton High School",
+          "rel": "P131",
+          "obj": "Angleton",
+          "subj_id": "redocred-validation-000074-Angleton_High_School::e0",
+          "obj_id": "redocred-validation-000074-Angleton_High_School::e1"
+        },
+        "evidence": [
+          "The recently built high school is located at 1 Campus Dr. on the outskirts of Angleton."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-f705f783ca",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "Nexus   Q",
+          "rel": "P577",
+          "obj": "July 2012",
+          "subj_id": "redocred-validation-000027-Nexus_Q::e0",
+          "obj_id": "redocred-validation-000027-Nexus_Q::e16"
+        },
+        "cf": {
+          "subj": "Nexus   Q",
+          "rel": "P577",
+          "obj": "June 2012",
+          "subj_id": "redocred-validation-000027-Nexus_Q::e0",
+          "obj_id": "redocred-validation-000027-Nexus_Q::e3"
+        },
+        "evidence": [
+          "The Nexus \u00a0 Q was given away at no cost to attendees of Google I / O 27 - 29 June 2012, but the product's consumer launch was postponed in July 2012, purportedly to collect additional feedback."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-7b9d4327bd",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "Rogaland County Municipality",
+          "rel": "P131",
+          "obj": "Rogaland county",
+          "subj_id": "redocred-validation-000032-Rogaland_County_Municipality::e0",
+          "obj_id": "redocred-validation-000032-Rogaland_County_Municipality::e1"
+        },
+        "cf": {
+          "subj": "Rogaland County Municipality",
+          "rel": "P131",
+          "obj": "Rogaland",
+          "subj_id": "redocred-validation-000032-Rogaland_County_Municipality::e0",
+          "obj_id": "redocred-validation-000032-Rogaland_County_Municipality::e11"
+        },
+        "evidence": [
+          "Rogaland County Municipality () is the governing administration of Rogaland county, Norway."
+        ],
+        "anchor": [
+          "id",
+          "containment"
+        ]
+      },
+      {
+        "outcome_id": "oc-31b3dcc1cc",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Chachalacas",
+          "rel": "P131",
+          "obj": "Texas",
+          "subj_id": "redocred-validation-000190-Chachalaca::e12",
+          "obj_id": "redocred-validation-000190-Chachalaca::e3"
+        },
+        "cf": {
+          "subj": "Chachalacas",
+          "rel": "P131",
+          "obj": "United States",
+          "subj_id": "redocred-validation-000190-Chachalaca::e12",
+          "obj_id": "redocred-validation-000190-Chachalaca::e2"
+        },
+        "evidence": [
+          "These birds are found in wooded habitats in far southern United States ( Texas), Mexico, and Central and South America."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-97ef790725",
+        "type": "TYPE_FLIP",
+        "base": {
+          "subj": "CKNL - FM",
+          "rel": "P580",
+          "obj": "2003",
+          "subj_id": null,
+          "obj_id": "redocred-validation-000210-CKNL-FM::e17"
+        },
+        "cf": {
+          "subj": "CKNL - FM",
+          "rel": "P582",
+          "obj": "2003",
+          "subj_id": null,
+          "obj_id": "redocred-validation-000210-CKNL-FM::e17"
+        },
+        "evidence": [
+          "The station originally began broadcasting June 20, 1962 at 970 AM, and later moved to 560 AM and finally to the FM dial at 101.5 FM in 2003."
+        ],
+        "anchor": [
+          "surface",
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-5e04b53a4f",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Amos J. Hochstein",
+          "rel": "P108",
+          "obj": "U.S. Congress",
+          "subj_id": "redocred-validation-000196-Amos_Hochstein::e0",
+          "obj_id": "redocred-validation-000196-Amos_Hochstein::e3"
+        },
+        "cf": {
+          "subj": "Amos J. Hochstein",
+          "rel": "P108",
+          "obj": "State Department",
+          "subj_id": "redocred-validation-000196-Amos_Hochstein::e0",
+          "obj_id": "redocred-validation-000196-Amos_Hochstein::e11"
+        },
+        "evidence": [
+          "He has worked in the U.S. Congress, has testified before congressional panels and has served under the Barack Obama administration under Secretaries of State Clinton and Kerry."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-d4b181f7bb",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "H\u00e9l\u00e9 B\u00e9ji",
+          "rel": "P161",
+          "obj": "Prix de l\u2019Afrique m\u00e9diterran\u00e9enne",
+          "subj_id": "redocred-validation-000151-H\u00e9l\u00e9_B\u00e9ji::e0",
+          "obj_id": "redocred-validation-000151-H\u00e9l\u00e9_B\u00e9ji::e13"
+        },
+        "cf": {
+          "subj": "H\u00e9l\u00e9 B\u00e9ji",
+          "rel": "P161",
+          "obj": "Tarak Ben Ammar",
+          "subj_id": "redocred-validation-000151-H\u00e9l\u00e9_B\u00e9ji::e0",
+          "obj_id": "redocred-validation-000151-H\u00e9l\u00e9_B\u00e9ji::e17"
+        },
+        "evidence": [
+          "In 1983, she received the Prix de l\u2019Afrique m\u00e9diterran\u00e9enne awarded by the Association des \u00e9crivains de langue fran\u00e7aise."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-6f849a867c",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "They Shoot Horses , Don't They",
+          "rel": "P161",
+          "obj": "Michael Sarrazin",
+          "subj_id": null,
+          "obj_id": "redocred-validation-000291-They_Shoot_Horses__Don_t_They___film_::e11"
+        },
+        "cf": {
+          "subj": "They Shoot Horses , Do n't They",
+          "rel": "P161",
+          "obj": "Michael Sarrazin",
+          "subj_id": "redocred-validation-000291-They_Shoot_Horses__Don_t_They___film_::e0",
+          "obj_id": "redocred-validation-000291-They_Shoot_Horses__Don_t_They___film_::e11"
+        },
+        "evidence": [
+          "It stars Jane Fonda, Michael Sarrazin, Susannah York, Red Buttons, Bruce Dern, Bonnie Bedelia and Gig Young."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-01f32da77b",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Henrik August Angell",
+          "rel": "P27",
+          "obj": "Norwegian",
+          "subj_id": "redocred-validation-000016-Henrik_Angell::e0",
+          "obj_id": "redocred-validation-000016-Henrik_Angell::e3"
+        },
+        "cf": {
+          "subj": "Henrik August Angell",
+          "rel": "P27",
+          "obj": "Norway",
+          "subj_id": "redocred-validation-000016-Henrik_Angell::e0",
+          "obj_id": "redocred-validation-000016-Henrik_Angell::e8"
+        },
+        "evidence": [
+          "Henrik August Angell ( 22 August 1861 \u2013 26 January 1922) was a Norwegian military officer, sportsman, and writer.",
+          "Henrik Angell was born at Luster in Sogn og Fjordane and grew up in Bergen, Norway."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-c328788538",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "General Motors New Zealand Limited",
+          "rel": "P17",
+          "obj": "General Motors of Detroit",
+          "subj_id": "redocred-validation-000247-Holden_New_Zealand::e0",
+          "obj_id": "redocred-validation-000247-Holden_New_Zealand::e2"
+        },
+        "cf": {
+          "subj": "Holden New Zealand Limited",
+          "rel": "P17",
+          "obj": "General Motors of Detroit",
+          "subj_id": "redocred-validation-000247-Holden_New_Zealand::e21",
+          "obj_id": "redocred-validation-000247-Holden_New_Zealand::e2"
+        },
+        "evidence": [
+          "Holden New Zealand Limited, named until 1994 as General Motors New Zealand Limited, is a subsidiary of General Motors of Detroit and distributes General Motors ' motor vehicles, engines, components and parts in New Zealand."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-3726d99cb6",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Proctor",
+          "rel": "P175",
+          "obj": "Where I Belong",
+          "subj_id": "redocred-validation-000153-Rachel_Proctor::e0",
+          "obj_id": "redocred-validation-000153-Rachel_Proctor::e10"
+        },
+        "cf": {
+          "subj": "Proctor",
+          "rel": "P175",
+          "obj": "Days Like This",
+          "subj_id": "redocred-validation-000153-Rachel_Proctor::e0",
+          "obj_id": "redocred-validation-000153-Rachel_Proctor::e8"
+        },
+        "evidence": [
+          "This song, which peaked at number 24 on the country charts, was the first of four singles from her 2004 debut album Where I Belong.",
+          "Proctor's only album for the label, it also produced her highest - charting single in the number 18 \" Me and Emily \"."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-2b1500f130",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "Mark McNamara",
+          "rel": "P108",
+          "obj": "NBA",
+          "subj_id": "redocred-validation-000026-Mark_McNamara::e0",
+          "obj_id": "redocred-validation-000026-Mark_McNamara::e5"
+        },
+        "cf": {
+          "subj": "Mark McNamara",
+          "rel": "P108",
+          "obj": "Haines High School",
+          "subj_id": "redocred-validation-000026-Mark_McNamara::e0",
+          "obj_id": "redocred-validation-000026-Mark_McNamara::e22"
+        },
+        "evidence": [
+          "Mark McNamara ( born June 8, 1959), is an American former professional basketball player who was selected by the Philadelphia 76ers in the first round ( 22nd overall) of the 1982 NBA draft.",
+          "A 6'11 \" power forward - center from the University of California, McNamara played in 8 NBA seasons from 1982 to 1985 and from 1986 to 1991.",
+          "In his NBA career, McNamara played in 278 games and scored a total of 980 points."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-063441be25",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Escuela Latinoamericana de Medicina",
+          "rel": "P17",
+          "obj": "United States",
+          "subj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e0",
+          "obj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e15"
+        },
+        "cf": {
+          "subj": "Escuela Latinoamericana de Medicina",
+          "rel": "P17",
+          "obj": "Cuba",
+          "subj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e0",
+          "obj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e5"
+        },
+        "evidence": [
+          "The school accepts students from the United States \u2014 91 were reportedly enrolled as of January 2007."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-d234002b46",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Kamikaze",
+          "rel": "P17",
+          "obj": "Argentina",
+          "subj_id": "redocred-validation-000252-Argentine_heavy_metal::e11",
+          "obj_id": "redocred-validation-000252-Argentine_heavy_metal::e1"
+        },
+        "cf": {
+          "subj": "Argentine",
+          "rel": "P17",
+          "obj": "Argentina",
+          "subj_id": "redocred-validation-000252-Argentine_heavy_metal::e0",
+          "obj_id": "redocred-validation-000252-Argentine_heavy_metal::e1"
+        },
+        "evidence": [
+          "The Argentine heavy metal is a heavy metal music movement that originated in Argentina in the 1980s.",
+          "The second half of the 1980s saw the success of hard rock bands such as Kamikaze, Alakran and Rata Blanca, with an aesthetic similar to the contemporary glam metal."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-df79746332",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Ronald Leonard",
+          "rel": "P108",
+          "obj": "USC Thornton Symphony",
+          "subj_id": "redocred-validation-000299-Ronald_Leonard::e0",
+          "obj_id": "redocred-validation-000299-Ronald_Leonard::e19"
+        },
+        "cf": {
+          "subj": "Ronald Leonard",
+          "rel": "employer",
+          "obj": "Eastman School of Music",
+          "subj_id": "redocred-validation-000299-Ronald_Leonard::e0",
+          "obj_id": "redocred-validation-000299-Ronald_Leonard::e11"
+        },
+        "evidence": [
+          "Conducting is his most recent activity; Mr. Leonard is the conductor of the Colburn School Chamber Orchestra and he has been very involved at the USC Thornton School of Music, working with the string sections of both the USC Thornton Symphony and the USC Thornton Chamber Orchestra."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-3644fa1c6e",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Beibu Gulf Economic Rim",
+          "rel": "P150",
+          "obj": "Beibu Gulf Rim",
+          "subj_id": "redocred-validation-000058-Beibu_Gulf_Economic_Rim::e0",
+          "obj_id": "redocred-validation-000058-Beibu_Gulf_Economic_Rim::e6"
+        },
+        "cf": {
+          "subj": "Beibu Gulf Economic Rim",
+          "rel": "P150",
+          "obj": "Guangdong",
+          "subj_id": "redocred-validation-000058-Beibu_Gulf_Economic_Rim::e0",
+          "obj_id": "redocred-validation-000058-Beibu_Gulf_Economic_Rim::e10"
+        },
+        "evidence": [
+          "The Beibu Gulf Economic Rim or Beibu Economic Belt () also known as Gulf of Tonkin Economic Belt in ( Vietnamese: V\u00e0nh \u0111ai kinh t\u1ebf v\u1ecbnh B\u1eafc B\u1ed9) defines the economic region or rim surrounding around China's southwestern coastal region and cities around the Gulf of Tonkin.",
+          "The implementation of the campaign, has resulted in many construction projects in cities on the Beibu Gulf Rim, especially in Guangxi."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-b8f1319765",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Foots Creek",
+          "rel": "OTHER",
+          "obj": "Rogue River",
+          "subj_id": "redocred-validation-000254-Foots_Creek__Oregon::e0",
+          "obj_id": "redocred-validation-000254-Foots_Creek__Oregon::e5"
+        },
+        "cf": {
+          "subj": "Foots Creek",
+          "rel": "OTHER",
+          "obj": "Bolt",
+          "subj_id": "redocred-validation-000254-Foots_Creek__Oregon::e0",
+          "obj_id": null
+        },
+        "evidence": [
+          "It lies along Oregon Route 99 near the mouth of Foots Creek, where it empties into the Rogue River."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-ba4e181f60",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Paul Desmarais Jr.",
+          "rel": "P40",
+          "obj": "Paul Desmarais Sr",
+          "subj_id": "redocred-validation-000010-Paul_Desmarais_Jr_::e0",
+          "obj_id": "redocred-validation-000010-Paul_Desmarais_Jr_::e4"
+        },
+        "cf": {
+          "subj": "Paul Desmarais Jr.",
+          "rel": "P40",
+          "obj": "Paul",
+          "subj_id": "redocred-validation-000010-Paul_Desmarais_Jr_::e0",
+          "obj_id": "redocred-validation-000010-Paul_Desmarais_Jr_::e22"
+        },
+        "evidence": [
+          "He is the eldest son of Paul Desmarais Sr. and Jacqueline ( Maranger) Desmarais."
+        ],
+        "anchor": [
+          "id",
+          "containment"
+        ]
+      },
+      {
+        "outcome_id": "oc-1916724c96",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Ronald Leonard",
+          "rel": "P108",
+          "obj": "Gregor Piatigorsky",
+          "subj_id": "redocred-validation-000299-Ronald_Leonard::e0",
+          "obj_id": "redocred-validation-000299-Ronald_Leonard::e23"
+        },
+        "cf": {
+          "subj": "Ronald Leonard",
+          "rel": "P108",
+          "obj": "USC Thornton School of Music",
+          "subj_id": "redocred-validation-000299-Ronald_Leonard::e0",
+          "obj_id": "redocred-validation-000299-Ronald_Leonard::e2"
+        },
+        "evidence": [
+          "From 1993 to 2003, he held the prestigious post of \" Gregor Piatigorsky Endowed Chair in Violoncello \" at the USC Thornton School of Music."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-81daf74354",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "Escuela Latinoamericana de Medicina",
+          "rel": "P131",
+          "obj": "United States",
+          "subj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e0",
+          "obj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e15"
+        },
+        "cf": {
+          "subj": "Escuela Latinoamericana de Medicina",
+          "rel": "P131",
+          "obj": "Cuba",
+          "subj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e0",
+          "obj_id": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::e5"
+        },
+        "evidence": [
+          "The school accepts students from the United States \u2014 91 were reportedly enrolled as of January 2007."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-2cd408e5e2",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "Ross Patterson Alger",
+          "rel": "P131",
+          "obj": "Calgary",
+          "subj_id": "redocred-validation-000001-Ross_Alger::e0",
+          "obj_id": "redocred-validation-000001-Ross_Alger::e5"
+        },
+        "cf": {
+          "subj": "Ross Patterson Alger",
+          "rel": "P131",
+          "obj": "Alberta",
+          "subj_id": "redocred-validation-000001-Ross_Alger::e0",
+          "obj_id": "redocred-validation-000001-Ross_Alger::e4"
+        },
+        "evidence": [
+          "Ross Patterson Alger ( August 20, 1920 \u2013 January 16, 1992) was a politician in the Canadian province of Alberta, who served as mayor of Calgary from 1977 to 1980."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      }
+    ]
+  },
+  "id_exact": 134,
+  "id_disagree": 0
+}

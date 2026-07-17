@@ -1,0 +1,4661 @@
+{
+  "summary": {
+    "n_sampled": 200,
+    "auto_check": {
+      "id_match_same_outcome": 145,
+      "id_match_disagree": 0,
+      "no_id_overlap": 55
+    },
+    "auto_precision_upper_bound": 0.725
+  },
+  "samples": [
+    {
+      "outcome_id": "oc-190aa5eda2",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s0:remove",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8).",
+        "He served on board Lexington ( CV-2) and was rated aviation radioman third class before being transferred to Torpedo Squadron 8 on board Hornet ( CV-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3c20d024ae",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "Samsung Galaxy S9 +",
+        "rel": "P361",
+        "obj": "Samsung Galaxy S",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e15",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e0"
+      },
+      "cf": {
+        "subj": "Samsung Galaxy S9 +",
+        "rel": "P361",
+        "obj": "Samsung Galaxy S",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e15",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e0"
+      },
+      "evidence": [
+        "As of 2018, the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 +, both released on 16 March 2018, and the latest tablet is the Samsung Galaxy Tab S4 released on August 1, 2018."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f479eee628",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s0:mask",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b22c3372b0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s2:remove",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e3caa0cfce",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s3:mask",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Urgut District",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e3"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Urgut District",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e3"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-aeb038487a",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "Ryder Cup",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8edb7e9b61",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Washington County",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e5",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon.",
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e9c4c78c04",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s1:mask",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4de727b81f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "OTHER",
+        "obj": "Kashmere Stage Band",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e20"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "OTHER",
+        "obj": "Kashmere Stage Band",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e20"
+      },
+      "evidence": [
+        "Later, Johnson made his lasting contribution to music by forming the Kashmere Stage Band, a renowned school orchestra that won a number of awards during its decade - long run."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1c2614afe1",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P20",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P20",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "evidence": [
+        "Conrad O. Johnson died in Houston days after his former students staged a celebration in his honor."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8c61104420",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "PGA Championship",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e11",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "The PGA Championship, then a match play competition, was held at the club in 1946."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-12784dfd52",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-86173807aa",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P131,P17,P150:switch_schema",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "related_to",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-36332225d6",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P495",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-180a39db11",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "cf": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1094509a77",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9fa483ee42",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P527",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "On March 11, 2014, \" Lookin Ass \" was serviced to urban contemporary radio in the United States as Young Money: Rise of an Empires third official single."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-dadd6d5403",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Sisters of Mercy",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e1"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Sisters of Mercy",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e1"
+      },
+      "evidence": [
+        "\" More \" is a song by The Sisters of Mercy, from their album Vision Thing."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-eb8c040151",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "career",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-aacaa29d01",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P108:switch_schema",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Rio de Janeiro",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e6"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Rio de Janeiro",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e6"
+      },
+      "evidence": [
+        "It was established in June 2010, with locations in São Paulo and Rio de Janeiro."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-37e910d11f",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s0:remove",
+      "base": {
+        "subj": "Piraeus",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e2",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3d6e1e4d06",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e4"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams.",
+        "He arrived on the inter - county scene when he first linked up with the Laois senior team before later joining the Dublin senior team before returning to Laois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-288e1776e6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-534dd03904",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e4"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "member_of_sports_team",
+        "obj": "Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e4"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams.",
+        "He arrived on the inter - county scene when he first linked up with the Laois senior team before later joining the Dublin senior team before returning to Laois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d3ba5cecfd",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "OTHER",
+        "obj": "1914",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e7"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P580",
+        "obj": "1914",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e7"
+      },
+      "evidence": [
+        "PGC was established in the winter of 1914, when a group of nine businessmen assembled to form a new club after leaving their respective clubs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3b8dc3047b",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000008-Urgut::s0:mask",
+      "base": {
+        "subj": "Samarqand Region",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": null,
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-efc1e94c8a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C6_return_confidence:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e98628d100",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Braver Than We Are",
+        "rel": "P577",
+        "obj": "2016",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e20",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e19"
+      },
+      "cf": {
+        "subj": "Braver Than We Are",
+        "rel": "P577",
+        "obj": "2016",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e20",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e19"
+      },
+      "evidence": [
+        "The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ab463c40d5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Blacks Hill",
+        "rel": "P131",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e17",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "cf": {
+        "subj": "Blacks Hill",
+        "rel": "P131",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e17",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "evidence": [
+        "One of his subdivisions is the \" Blacks Hill \" neighborhood of Romney, adjacent to the Washington Place homestead."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c90e1afb5e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Braver Than We Are",
+        "rel": "P577",
+        "obj": "2016",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e20",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e19"
+      },
+      "cf": null,
+      "evidence": [
+        "The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4aa5f7f4d3",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P27",
+        "obj": "American",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9bb58f9a9a",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3a92cd7015",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C6_return_confidence:remove",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d92096eade",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Reason",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e9"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-170b5a8636",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM Research – Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e0"
+      },
+      "cf": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM Research – Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e0"
+      },
+      "evidence": [
+        "Engineer and associate lab director Ulisses Mello explains that IBM has four priority areas in Brazil: \" The main area is related to natural resources management, involving oil and gas, mining and agricultural sectors."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1ea98eb0e6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Rio de Janeiro",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e6"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "Rio de Janeiro",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e6"
+      },
+      "evidence": [
+        "It was established in June 2010, with locations in São Paulo and Rio de Janeiro."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4ee8b4ba78",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "Ben Hogan",
+        "rel": "OTHER",
+        "obj": "Portland Open",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e13",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e16"
+      },
+      "cf": {
+        "subj": "Ben Hogan",
+        "rel": "OTHER",
+        "obj": "Portland Open",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e13",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e16"
+      },
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-048c764d12",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7e63226b39",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Oregon",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e3",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7d0f393388",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:ambiguous:P570,P137,P19:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "related_to",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b41d651451",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P527",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "On March 11, 2014, \" Lookin Ass \" was serviced to urban contemporary radio in the United States as Young Money: Rise of an Empires third official single."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-daee2523d8",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P361:switch_schema",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "OTHER",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1e6754f870",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a9d88fd7f2",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM Research – Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e0"
+      },
+      "evidence": [
+        "Engineer and associate lab director Ulisses Mello explains that IBM has four priority areas in Brazil: \" The main area is related to natural resources management, involving oil and gas, mining and agricultural sectors."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-86a08c5ba5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "evidence": [
+        "He also won a championship medal with the Thomas Davis club."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7ecedba2ed",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P580",
+        "obj": "June 2010",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e4"
+      },
+      "cf": null,
+      "evidence": [
+        "It was established in June 2010, with locations in São Paulo and Rio de Janeiro."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ba77afaa99",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b9239c92e3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s9:remove",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-dae10009dc",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000003-Lookin_Ass::s2:mask",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P175",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj.",
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-542dc0eca3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C5_cite_evidence:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P20",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P20",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "evidence": [
+        "Conrad O. Johnson died in Houston days after his former students staged a celebration in his honor."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-74cf9dac32",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "person_endpoint",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-013114c72d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C6_return_confidence:remove",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c3b6e66692",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "Oregon",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e3",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-429ba5fb52",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Washington Place",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e5"
+      },
+      "cf": {
+        "subj": "Washington Place",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e5"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-32129b02e4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Hampshire County",
+        "rel": "P131",
+        "obj": "West Virginia",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e4"
+      },
+      "cf": {
+        "subj": "Hampshire County",
+        "rel": "P131",
+        "obj": "West Virginia",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e4"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c1e458fdf4",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "cf": {
+        "subj": "Abbeyleix",
+        "rel": "location",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-be781a379b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s2:mask",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P361",
+        "obj": "Skai Group",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e3"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c87d69c186",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000003-Lookin_Ass::s1:mask",
+      "base": {
+        "subj": "Detail",
+        "rel": "OTHER",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e3",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "It was produced by Detail and Choppa Boi."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-654c700f9a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-183250fae4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "São Paulo",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e5"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P131",
+        "obj": "São Paulo",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e5"
+      },
+      "evidence": [
+        "It was established in June 2010, with locations in São Paulo and Rio de Janeiro."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0bbb24a901",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s0:remove",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d7c32e8f68",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s1:remove",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P54",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "evidence": [
+        "At club level McEvoy won several championship medals as a dual player with Abbeyleix."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0c66d8aa5e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3acc377b6c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Washington Place",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "cf": {
+        "subj": "Washington Place",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0d776574cc",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P19:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "OTHER",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a686125320",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Yates High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e10"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e1b284be3f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "evidence": [
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-29b3fd84ca",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2ff0c3caff",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Delaware",
+        "rel": "P361",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e2",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e1"
+      },
+      "cf": {
+        "subj": "Delaware",
+        "rel": "P361",
+        "obj": "U.S.",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e2",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e1"
+      },
+      "evidence": [
+        "The Delaware General Assembly is the legislature of the U.S. state of Delaware."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7787e39bf0",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s1:mask",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P19",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "cf": null,
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d1b079e1bb",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Samsung Electronics",
+        "rel": "P361",
+        "obj": "Samsung",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e3",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e4"
+      },
+      "cf": {
+        "subj": "Samsung Electronics",
+        "rel": "P361",
+        "obj": "Samsung",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e3",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e4"
+      },
+      "evidence": [
+        "The Samsung Galaxy S ( Super Smart) series is a line of high - end Android - powered mobile devices produced by Samsung Electronics, a division of Samsung from South Korea."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-51a268449e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P19",
+        "obj": "Victoria",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e7"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "place_of_birth",
+        "obj": "Victoria",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e7"
+      },
+      "evidence": [
+        "Born in Victoria, Texas, Conrad Johnson was nine when his family moved to Houston."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0a3924839e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s0:remove",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b8cb572802",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P19",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P19",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f65a737afe",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P570",
+        "obj": "February 3 , 2008",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e2"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4853563440",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Braver Than We Are",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e20"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "evidence": [
+        "The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-341839bb4a",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ddc97fe2f4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P577",
+        "obj": "August 1, 2018",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e17"
+      },
+      "cf": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P577",
+        "obj": "August 1, 2018",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e17"
+      },
+      "evidence": [
+        "As of 2018, the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 +, both released on 16 March 2018, and the latest tablet is the Samsung Galaxy Tab S4 released on August 1, 2018."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b717db82e8",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000003-Lookin_Ass::s2:remove",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P175",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj.",
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4e810c8381",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Raleigh Hills",
+        "rel": "P131",
+        "obj": "Washington County",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e4",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e5"
+      },
+      "cf": {
+        "subj": "Raleigh Hills",
+        "rel": "P131",
+        "obj": "Washington County",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e4",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e5"
+      },
+      "evidence": [
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a858902764",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a39b41b8e3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P108:switch_schema",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P17",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P17",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America.",
+        "In collaboration with Brazil's government, it will help IBM to develop technology systems around natural resource development and large - scale events such as the 2016 Summer Olympics."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a1afe207bb",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Washington Place",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "cf": {
+        "subj": "Washington Place",
+        "rel": "P131",
+        "obj": "Hampshire County",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-847900b018",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "Choppa Boi",
+        "rel": "OTHER",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e4",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": {
+        "subj": "Choppa Boi",
+        "rel": "OTHER",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e4",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "evidence": [
+        "It was produced by Detail and Choppa Boi."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e1971658f4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P108",
+        "obj": "Kashmere High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e16"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P108",
+        "obj": "Kashmere High School",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e16"
+      },
+      "evidence": [
+        "He started his career in music education in 1941 and, following a thirty - seven - year career, retired from his position at Kashmere High School in 1978, but continued to remain active in shaping music in Houston by conducting summer programs and in - home tutoring."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5436319332",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000003-Lookin_Ass::s1:mask",
+      "base": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P577",
+        "obj": "2014",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e6"
+      },
+      "cf": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P577",
+        "obj": "2014",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e6"
+      },
+      "evidence": [
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-92627e5087",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P577",
+        "obj": "August 1, 2018",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e17"
+      },
+      "cf": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P577",
+        "obj": "August 1, 2018",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e17"
+      },
+      "evidence": [
+        "As of 2018, the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 +, both released on 16 March 2018, and the latest tablet is the Samsung Galaxy Tab S4 released on August 1, 2018."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e94dddde19",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s0:mask",
+      "base": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "cf": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ad5c575961",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P175",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj.",
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-705ac6e276",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d939364003",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Braver Than We Are",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e20"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "evidence": [
+        "The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-377b8b4a05",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b4365bb47b",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:terse:tone",
+      "base": {
+        "subj": "Ryder Cup",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-eb0c258bfb",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e2",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2c8b53dad8",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P69:switch_schema",
+      "base": {
+        "subj": "Victoria",
+        "rel": "P131",
+        "obj": "Texas",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e7",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e8"
+      },
+      "cf": {
+        "subj": "Victoria",
+        "rel": "P131",
+        "obj": "Texas",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e7",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e8"
+      },
+      "evidence": [
+        "Born in Victoria, Texas, Conrad Johnson was nine when his family moved to Houston."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2fa390fb18",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P361",
+        "obj": "Samsung Galaxy S",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e0"
+      },
+      "cf": {
+        "subj": "Galaxy Tab S4",
+        "rel": "P361",
+        "obj": "Samsung Galaxy S",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e16",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e0"
+      },
+      "evidence": [
+        "Samsung later expanded the Galaxy S line to tablet computers with the announcement of the Galaxy Tab S in June 2014 and released the next month.",
+        "As of 2018, the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 +, both released on 16 March 2018, and the latest tablet is the Samsung Galaxy Tab S4 released on August 1, 2018."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fdcfc1110b",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:hierarchical:switch_schema",
+      "base": {
+        "subj": "Skai Group",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e3",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "It is part of the Skai Group, one of the largest media groups in the country."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-49d2956b99",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P19:switch_schema",
+      "base": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "cf": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-08a55859bd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P577",
+        "obj": "2014",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e6"
+      },
+      "cf": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P577",
+        "obj": "2014",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e6"
+      },
+      "evidence": [
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-803e278d32",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-841077c492",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P175",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj.",
+        "It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-afc9a45823",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Susan Blue Parsons",
+        "rel": "OTHER",
+        "obj": "Wappocomo plantation",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e11",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e12"
+      },
+      "cf": {
+        "subj": "Susan Blue Parsons",
+        "rel": "OTHER",
+        "obj": "Wappocomo plantation",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e11",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e12"
+      },
+      "evidence": [
+        "Washington Place was built by William and Annie Washington in north Romney between 1863 and 1874 on land given to Annie by her former owner, Susan Blue Parsons of Wappocomo plantation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-86d78e12f8",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P569",
+        "obj": "13 March 1921",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e1"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P569",
+        "obj": "13 March 1921",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e1"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-edaab17a30",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "PGA Championship",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e11",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": {
+        "subj": "PGA Championship",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e11",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "evidence": [
+        "The PGA Championship, then a match play competition, was held at the club in 1946."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-674b046ef4",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "The Dark Side",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e11"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-82c0cf1dfb",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "PGA Championship",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e11",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "The PGA Championship, then a match play competition, was held at the club in 1946."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0202e7a1e5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Wiley College",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e12"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Wiley College",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e12"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cca5708310",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P20",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P20",
+        "obj": "Houston",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e4"
+      },
+      "evidence": [
+        "Conrad O. Johnson died in Houston days after his former students staged a celebration in his honor."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6eeec070b3",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "The Dark Side",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e11"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b9417d3374",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P570:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-357c15695a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:ambiguous:P570,P137,P19:switch_schema",
+      "base": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "cf": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7d9a80e25c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4664463525",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P17:switch_schema",
+      "base": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P54",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P54",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "evidence": [],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-78fc7b74c9",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Houston College for Negroes",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e11"
+      },
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1d3b331bd0",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Reason",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e9"
+      },
+      "cf": {
+        "subj": "More",
+        "rel": "P361",
+        "obj": "Vision Thing",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e2"
+      },
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-71d97546bc",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P175:switch_schema",
+      "base": {
+        "subj": "Young Money : Rise of an Empires",
+        "rel": "P527",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e10",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "On March 11, 2014, \" Lookin Ass \" was serviced to urban contemporary radio in the United States as Young Money: Rise of an Empires third official single."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ccd2f9adf6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s7:mask",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5ddafa23fa",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P569",
+        "obj": "November 15 , 1915",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e1"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P569",
+        "obj": "November 15 , 1915",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e1"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-97f25f98bd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "evidence": [
+        "At club level McEvoy won several championship medals as a dual player with Abbeyleix."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-499be0eef6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s5:remove",
+      "base": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "cf": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9c8779cb14",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Portland",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e2"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1b207e3eeb",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000000-Skai_TV::s4:remove",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P159",
+        "obj": "Piraeus",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e2"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P159",
+        "obj": "Piraeus",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e2"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-5a2d303f8c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000007-Portland_Golf_Club::s0:remove",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "OTHER",
+        "obj": "1914",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e7"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "OTHER",
+        "obj": "1914",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e7"
+      },
+      "evidence": [
+        "PGC was established in the winter of 1914, when a group of nine businessmen assembled to form a new club after leaving their respective clubs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-944867578e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P17",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P17",
+        "obj": "Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e9"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America.",
+        "In collaboration with Brazil's government, it will help IBM to develop technology systems around natural resource development and large - scale events such as the 2016 Summer Olympics."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c5bfcd4ff4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P19",
+        "obj": "Victoria",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e7"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P19",
+        "obj": "Victoria",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e7"
+      },
+      "evidence": [
+        "Born in Victoria, Texas, Conrad Johnson was nine when his family moved to Houston."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c269824659",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "Washington Place",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e5"
+      },
+      "cf": {
+        "subj": "Washington Place",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e0",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e5"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-eedb702b34",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "schema:drop:P150:switch_schema",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P54",
+        "obj": "Thomas Davis club",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e14"
+      },
+      "evidence": [
+        "He also won a championship medal with the Thomas Davis club."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4dde78f19c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s1:mask",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8ca7e0ad6c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P159",
+        "obj": "Piraeus",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e2"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P159",
+        "obj": "Piraeus",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e2"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e37d236762",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P19",
+        "obj": "Victoria",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e7"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P19",
+        "obj": "Victoria",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e7"
+      },
+      "evidence": [
+        "Born in Victoria, Texas, Conrad Johnson was nine when his family moved to Houston."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-50f09de968",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s5:mask",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Dublin",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e3"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Dublin",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e3"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams.",
+        "He arrived on the inter - county scene when he first linked up with the Laois senior team before later joining the Dublin senior team before returning to Laois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fbbda0101a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "evidence": [
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-52eb621f7c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:permissive:tone",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Urgut District",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e3"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Urgut District",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e3"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2ad43a299c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P27",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e1"
+      },
+      "cf": {
+        "subj": "Nicki Minaj",
+        "rel": "P27",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e1"
+      },
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8f0df5ec5f",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e4"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e4"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams.",
+        "He arrived on the inter - county scene when he first linked up with the Laois senior team before later joining the Dublin senior team before returning to Laois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9fb5ff2a8c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-7a586f86a5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s5:mask",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "the United States Navy",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e10"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "the United States Navy",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e10"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-148ad2976c",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM Research – Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e0"
+      },
+      "evidence": [
+        "Engineer and associate lab director Ulisses Mello explains that IBM has four priority areas in Brazil: \" The main area is related to natural resources management, involving oil and gas, mining and agricultural sectors."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8c69e325fc",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-f9eff674c0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:terse:tone",
+      "base": {
+        "subj": "Samarkand",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e11",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "cf": {
+        "subj": "Samarkand",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e11",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "evidence": [
+        "Urgut's biggest market with varied and relatively inexpensive merchandise attracts folks even from Samarkand, the capital of the Region."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2d9407e9b7",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Hampshire County",
+        "rel": "P131",
+        "obj": "West Virginia",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e4"
+      },
+      "cf": {
+        "subj": "Hampshire County",
+        "rel": "P131",
+        "obj": "West Virginia",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e4"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9046de56d7",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b010b7ae4d",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:docred-validation-000006-Ned_McEvoy::s4:remove",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P54",
+        "obj": "Dublin",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams.",
+        "He arrived on the inter - county scene when he first linked up with the Laois senior team before later joining the Dublin senior team before returning to Laois."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-33ea4cc309",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Piraeus",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e2",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fb2b555da3",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P150:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Portland",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e2"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Portland",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e2"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9e6445393c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s5:remove",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "the United States Navy",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e10"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "the United States Navy",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e10"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d391f2b3db",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s6:mask",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fb8dc0f625",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C6_return_confidence:remove",
+      "base": {
+        "subj": "Ryder Cup",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e17",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "He had won the Portland Open the previous year in early autumn with a score of The following year, PGC hosted the Ryder Cup matches of 1947, the first renewal in a decade, due to World War II."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6a84014ede",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-c0692aa02e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Raleigh Hills",
+        "rel": "P131",
+        "obj": "Washington County",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e4",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e5"
+      },
+      "cf": {
+        "subj": "Raleigh Hills",
+        "rel": "P131",
+        "obj": "Washington County",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e4",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e5"
+      },
+      "evidence": [
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3da0750037",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s1:mask",
+      "base": {
+        "subj": "Samarqand Region",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Samarqand Region",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-845eaf7c5c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:reorder:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-63adf4796a",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_added:switch_schema",
+      "base": {
+        "subj": "Samarqand Region",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Samarqand Region",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4c862f6675",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-acd03ca7f0",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P19",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P19",
+        "obj": "Abbeyleix",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e5"
+      },
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-005e3ce1fd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:drop:P137:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "the United States Navy",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e10"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "the United States Navy",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e10"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0e3546b5e5",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "Piraeus",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e2",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "cf": {
+        "subj": "Skai TV",
+        "rel": "P17",
+        "obj": "Greece",
+        "subj_id": "docred-validation-000000-Skai_TV::e0",
+        "obj_id": "docred-validation-000000-Skai_TV::e9"
+      },
+      "evidence": [
+        "Skai TV is a Greek free - to - air television network based in Piraeus."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-79564203d3",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P27",
+        "obj": "American",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e3"
+      },
+      "cf": null,
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-08d2ace58b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Legislative Hall",
+        "rel": "P131",
+        "obj": "Dover",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e7",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e8"
+      },
+      "cf": {
+        "subj": "Legislative Hall",
+        "rel": "P131",
+        "obj": "Dover",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e7",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e8"
+      },
+      "evidence": [
+        "It meets at Legislative Hall in Dover, Delaware, convening on the second Tuesday of January of odd - numbered years, with a second session of the same Assembly convening likewise in even - numbered years."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a4942e8afd",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P19",
+        "obj": "Los Angeles",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e8"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d5d814ffae",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "prompt_clause:C5_cite_evidence:remove",
+      "base": {
+        "subj": "Washington County",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e5",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon.",
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-cb42c6fdef",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:ambiguous:P17,P69,P131:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "OTHER",
+        "obj": "Count Basie",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e18"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "OTHER",
+        "obj": "Count Basie",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e18"
+      },
+      "evidence": [
+        "Johnson was a proficient musician in his own right and, at one point, played with Count Basie."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-20fbd4ed9e",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P27",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e1"
+      },
+      "cf": null,
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a2009ab4ed",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P463",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "cf": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "career",
+        "obj": "Texas Bandmasters Hall of Fame",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e5"
+      },
+      "evidence": [
+        "Conrad Oberon Johnson ( November 15, 1915 – February 3, 2008) was an American music educator, long associated with the city of Houston, who was inducted into the Texas Bandmasters Hall of Fame in 2000."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-2a2f4f398b",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Urgut District",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e3"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Urgut District",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e3"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b0f2e9b9a9",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-39a5ae6d8f",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Blacks Hill",
+        "rel": "P131",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e17",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "cf": {
+        "subj": "Blacks Hill",
+        "rel": "location",
+        "obj": "Romney",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e17",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e8"
+      },
+      "evidence": [
+        "One of his subdivisions is the \" Blacks Hill \" neighborhood of Romney, adjacent to the Washington Place homestead."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-61aaaa5fac",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "Delaware House of Representatives",
+        "rel": "P361",
+        "obj": "Delaware General Assembly",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e5",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e0"
+      },
+      "cf": {
+        "subj": "Delaware House of Representatives",
+        "rel": "P361",
+        "obj": "Delaware General Assembly",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e5",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e0"
+      },
+      "evidence": [
+        "It is a bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-310964bb79",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P69:switch_schema",
+      "base": {
+        "subj": "Conrad Oberon Johnson",
+        "rel": "P69",
+        "obj": "Wiley College",
+        "subj_id": "docred-validation-000004-Conrad_O__Johnson::e0",
+        "obj_id": "docred-validation-000004-Conrad_O__Johnson::e12"
+      },
+      "cf": null,
+      "evidence": [
+        "Following studies at Yates High School, he attended Houston College for Negroes and graduated from Wiley College."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d2c2ffc152",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "cf": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a5f78e9850",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:strict:tone",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P463",
+        "obj": "Torpedo Squadron 8",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e3"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8).",
+        "He served on board Lexington ( CV-2) and was rated aviation radioman third class before being transferred to Torpedo Squadron 8 on board Hornet ( CV-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e69d52e830",
+      "outcome_type": "SUBJECT_FLIP",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Edward P. \" Ned \" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e7",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "cf": {
+        "subj": "Edward P. \"Ned\" McEvoy",
+        "rel": "P569",
+        "obj": "1886",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e0",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e1"
+      },
+      "evidence": [
+        "Edward P. \" Ned \" McEvoy ( born 1886) was an Irish hurler who played for the Dublin and Laois senior teams."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a48bdd0787",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "prompt_clause:C1_evidence_only:remove",
+      "base": {
+        "subj": "Washington County",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e5",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon.",
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-4dfdd77518",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "The new lab, IBM's ninth at the time of opening and first in 12 years, underscores the growing importance of emerging markets and the globalization of innovation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8ce0b8259d",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C4_allow_other:remove",
+      "base": {
+        "subj": "Nicki Minaj",
+        "rel": "P27",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e1"
+      },
+      "cf": {
+        "subj": "Nicki Minaj",
+        "rel": "P27",
+        "obj": "the United States",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e2",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e1"
+      },
+      "evidence": [
+        "\" Lookin Ass \" ( originally titled \" Lookin Ass Nigga \") is a song by American rapper and singer Nicki Minaj."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9222fc63d9",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "Delaware General Assembly",
+        "rel": "P527",
+        "obj": "Delaware House of Representatives",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e0",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e5"
+      },
+      "cf": {
+        "subj": "Delaware General Assembly",
+        "rel": "P527",
+        "obj": "Delaware House of Representatives",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e0",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e5"
+      },
+      "evidence": [
+        "It is a bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-9add7a9568",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s1:mask",
+      "base": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "cf": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-fb6f7502f5",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Delaware General Assembly",
+        "rel": "P527",
+        "obj": "Delaware Senate",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e0",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e3"
+      },
+      "cf": {
+        "subj": "Delaware General Assembly",
+        "rel": "P527",
+        "obj": "Delaware Senate",
+        "subj_id": "docred-validation-000011-Delaware_General_Assembly::e0",
+        "obj_id": "docred-validation-000011-Delaware_General_Assembly::e3"
+      },
+      "evidence": [
+        "It is a bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d2e6de66a6",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "Ulisses Mello",
+        "rel": "P108",
+        "obj": "IBM Research – Brazil",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e12",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e0"
+      },
+      "evidence": [
+        "Engineer and associate lab director Ulisses Mello explains that IBM has four priority areas in Brazil: \" The main area is related to natural resources management, involving oil and gas, mining and agricultural sectors."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-41838b33ab",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:with_other:switch_schema",
+      "base": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "cf": {
+        "subj": "Abbeyleix",
+        "rel": "P131",
+        "obj": "County Laois",
+        "subj_id": "docred-validation-000006-Ned_McEvoy::e5",
+        "obj_id": "docred-validation-000006-Ned_McEvoy::e6"
+      },
+      "evidence": [
+        "Born in Abbeyleix, County Laois, McEvoy first played competitive hurling and Gaelic football in his youth."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b2c580ac83",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed1:repeat",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Gregorian",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e10"
+      },
+      "cf": null,
+      "evidence": [
+        "It was covered by Shaaman on their album Reason, and Gregorian for their album The Dark Side."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e15c9a1cb8",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P17",
+        "obj": "United States",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e1"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e7a64c7397",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "IBM Research – Brazil is one of twelve research laboratories comprising IBM Research, its first in South America."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-b5dfd0e6d7",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:novice:role_swap",
+      "base": {
+        "subj": "Hampshire County",
+        "rel": "P131",
+        "obj": "West Virginia",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e4"
+      },
+      "cf": {
+        "subj": "Hampshire County",
+        "rel": "P131",
+        "obj": "West Virginia",
+        "subj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e3",
+        "obj_id": "docred-validation-000001-Washington_Place__West_Virginia_::e4"
+      },
+      "evidence": [
+        "Washington Place ( William Washington House) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County, West Virginia, United States."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-ac99ceaa5d",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:drop:P131:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "OTHER",
+        "obj": "1914",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e7"
+      },
+      "cf": null,
+      "evidence": [
+        "PGC was established in the winter of 1914, when a group of nine businessmen assembled to form a new club after leaving their respective clubs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-88e24608d6",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000008-Urgut::s4:mask",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-8aa1ae8728",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "sentence:doc:para_swap",
+      "base": {
+        "subj": "Washington County",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e5",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon.",
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-3fbff49cb4",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:C2_infer_implicit:remove",
+      "base": {
+        "subj": "Samsung Electronics",
+        "rel": "P361",
+        "obj": "Samsung",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e3",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e4"
+      },
+      "cf": {
+        "subj": "Samsung Electronics",
+        "rel": "P361",
+        "obj": "Samsung",
+        "subj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e3",
+        "obj_id": "docred-validation-000005-Samsung_Galaxy_S_series::e4"
+      },
+      "evidence": [
+        "The Samsung Galaxy S ( Super Smart) series is a line of high - end Android - powered mobile devices produced by Samsung Electronics, a division of Samsung from South Korea."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-e1d08f13a6",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Samarqand Region",
+        "rel": "P17",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "cf": {
+        "subj": "Samarqand Region",
+        "rel": "location",
+        "obj": "Uzbekistan",
+        "subj_id": "docred-validation-000008-Urgut::e1",
+        "obj_id": "docred-validation-000008-Urgut::e2"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-1927f6891a",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Detail",
+        "rel": "OTHER",
+        "obj": "Lookin Ass",
+        "subj_id": "docred-validation-000003-Lookin_Ass::e3",
+        "obj_id": "docred-validation-000003-Lookin_Ass::e0"
+      },
+      "cf": null,
+      "evidence": [
+        "It was produced by Detail and Choppa Boi."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-26e4979723",
+      "outcome_type": "AMBIGUOUS",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Portland",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e2"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "located_in_admin_unit",
+        "obj": "Oregon",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e3"
+      },
+      "evidence": [
+        "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-6875bae2e9",
+      "outcome_type": "OBJECT_FLIP",
+      "intervention": "prompt_clause:auditor:role_swap",
+      "base": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e7"
+      },
+      "cf": {
+        "subj": "IBM Research – Brazil",
+        "rel": "P361",
+        "obj": "IBM Research",
+        "subj_id": "docred-validation-000002-IBM_Research___Brazil::e0",
+        "obj_id": "docred-validation-000002-IBM_Research___Brazil::e2"
+      },
+      "evidence": [
+        "The new lab, IBM's ninth at the time of opening and first in 12 years, underscores the growing importance of emerging markets and the globalization of innovation."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-23ce7b868c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:docred-validation-000009-Robert_K__Huntington::s3:mask",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-213ae2c9dc",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "noop:seed0:repeat",
+      "base": {
+        "subj": "More",
+        "rel": "P175",
+        "obj": "Mike Vogel",
+        "subj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e0",
+        "obj_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_::e13"
+      },
+      "cf": null,
+      "evidence": [
+        "Steinman produced a cover of the song, by Mike Vogel and Erika Christensen, for the soundtrack of the MTV film Wuthering Heights."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-77c8a1afbd",
+      "outcome_type": "DISAPPEARED",
+      "intervention": "prompt_clause:C3_use_schema:remove",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "OTHER",
+        "obj": "1914",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e7"
+      },
+      "cf": null,
+      "evidence": [
+        "PGC was established in the winter of 1914, when a group of nine businessmen assembled to form a new club after leaving their respective clubs."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-0d32eda751",
+      "outcome_type": "TYPE_FLIP",
+      "intervention": "schema:coarse:switch_schema",
+      "base": {
+        "subj": "Los Angeles",
+        "rel": "P131",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "cf": {
+        "subj": "Los Angeles",
+        "rel": "location",
+        "obj": "California",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e8",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e9"
+      },
+      "evidence": [
+        "Born in Los Angeles, California, enlisted in the United States Navy 21 April 1941."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-657e8eb144",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "prompt_clause:expert:role_swap",
+      "base": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "cf": {
+        "subj": "Urgut",
+        "rel": "P131",
+        "obj": "Samarqand Region",
+        "subj_id": "docred-validation-000008-Urgut::e0",
+        "obj_id": "docred-validation-000008-Urgut::e1"
+      },
+      "evidence": [
+        "Urgut (;) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-a00f3cf67c",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:desc_removed:switch_schema",
+      "base": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "cf": {
+        "subj": "Robert Kingsbury Huntington",
+        "rel": "P570",
+        "obj": "5 June 1942",
+        "subj_id": "docred-validation-000009-Robert_K__Huntington::e0",
+        "obj_id": "docred-validation-000009-Robert_K__Huntington::e2"
+      },
+      "evidence": [
+        "Robert Kingsbury Huntington ( 13 March 1921 – 5 June 1942), was a naval aircrewman and member of Torpedo Squadron 8 ( or VT-8)."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-980c66d649",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "schema:rename:switch_schema",
+      "base": {
+        "subj": "PGA Championship",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e11",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "cf": {
+        "subj": "PGA Championship",
+        "rel": "OTHER",
+        "obj": "Portland Golf Club",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e11",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e0"
+      },
+      "evidence": [
+        "The PGA Championship, then a match play competition, was held at the club in 1946."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    },
+    {
+      "outcome_id": "oc-d7d0f2964e",
+      "outcome_type": "EXACT_SAME",
+      "intervention": "sentence:doc:entity_alias",
+      "base": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "cf": {
+        "subj": "Portland Golf Club",
+        "rel": "P131",
+        "obj": "Raleigh Hills",
+        "subj_id": "docred-validation-000007-Portland_Golf_Club::e0",
+        "obj_id": "docred-validation-000007-Portland_Golf_Club::e4"
+      },
+      "evidence": [
+        "It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton."
+      ],
+      "reviewer_label": null,
+      "reviewer_note": ""
+    }
+  ]
+}

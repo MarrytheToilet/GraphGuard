@@ -97,7 +97,7 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 <div align="center">
   <img src="assets/figures/fig_2d_sensitivity.png" alt="Two-dimensional gate sensitivity" width="80%">
   <br/>
-  <sub><b>2D sensitivity.</b> The chosen operating point τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70 (gold-bordered cell) sits inside a contiguous low-risk region where harm ≤ 0.05 and retained utility ≥ 0.90 on all four corpora.</sub>
+  <sub><b>2D sensitivity.</b> The chosen operating point τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70 (gold-bordered cell) sits inside a contiguous low-risk region where harm ≤ 0.05 and retained utility ≥ 0.90 on all four corpora (the two corpora with nontrivial grid structure are shown; Re-DocRED and SciERC sit at 0.00 harm / ≥ 0.99 utility over the entire grid).</sub>
 </div>
 
 <div align="center">
@@ -128,7 +128,7 @@ On 3,921 gold-annotated paired comparisons with at least one non-empty answer, t
 
 ### 🚦 Kuzu release gate reduces direct violations with gold-free signals
 
-Deployed as a release gate before Kuzu ingestion, GraphGuard uses only gold-free signals — edge-set drift and Cypher answer-set drift — to publish or block each counterfactual graph. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **18–31% of evaluated pairs are true regressions**, 9–22% are improvements, and the gate reduces direct two-hop violations relative to confidence-only and self-consistency baselines.
+Deployed as a release gate before Kuzu ingestion, GraphGuard uses only gold-free signals (edge-set drift and Cypher answer-set drift) to publish or block each counterfactual graph. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **18–31% of evaluated pairs are true regressions**; the gate cuts published harm to **0–4% at retained utility 0.97–1.00**, while a block-rate-matched random gate still leaks 20–41%. Under a strict 50/50 document-level calibration/deployment split (thresholds selected on the calibration half only, then frozen), held-out published harm stays at 0–6% (`reports/cross_run/gate_split.json`).
 
 <div align="center">
   <img src="assets/figures/fig_riskcoverage.png" alt="Risk-coverage of the Kuzu gate" width="80%">
@@ -139,7 +139,7 @@ Deployed as a release gate before Kuzu ingestion, GraphGuard uses only gold-free
 <div align="center">
   <img src="assets/figures/fig_budget_planner.png" alt="Budget planner" width="80%">
   <br/>
-  <sub><b>Materialization planner.</b> Token-budget vs. discovered-violation curve for the contract-prioritized scheduler.</sub>
+  <sub><b>Materialization planner.</b> Harm recall on the held-out deployment split vs. fraction of the full endpoint-union budget: the family-prior greedy planner beats uniform random and family-balanced sampling (43–54% recall at a 40% budget).</sub>
 </div>
 
 ---
@@ -216,17 +216,30 @@ ls data/raw/redocred/{train,dev}_revised.json \
 ### 3. 🖼️ Regenerate the figures and dependent tables (no API calls)
 
 ```bash
-# All 7 figures produced by the unified figure script
+# Core figure set (cross-run violations, noise floor, calibration,
+# 2-D sensitivity, strict-vs-soft, Amp(Q) consistency, AUROC)
 python scripts/make_paper_figures.py            # writes assets/figures/*.png
 
-# Risk-coverage figure (fig_riskcoverage) + tab_e2ekuzu table
+# Perturbation-magnitude figure (paper Fig. 7)
+python scripts/run_magnitude_analysis.py --fig-only
+
+# Extended-query + regime figure (paper Fig. 9)
+python scripts/make_extqueries_figure.py
+
+# Release-gate outcome bars (paper Fig. 10)
+python scripts/make_gate_figure.py
+
+# Risk-coverage figure (paper Fig. 11) + per-policy gate table
 python scripts/make_kuzu_gate_artifacts.py
 
-# Budget-planner figure (fig_budget_planner)
+# Budget-planner curves (artifact figure referenced from Sec. 6.4)
 python scripts/run_budget_planner.py
+
+# Release-gate calibration/deployment split analysis (Sec. 6.4)
+python scripts/run_gate_split_analysis.py       # writes reports/cross_run/gate_split.json
 ```
 
-`make_paper_figures.py` accepts a target argument: `all` (default), `replacement` (cross-run violations / amp / strict-vs-soft) or `phase_w` (noise-floor / calibration / 2D-sensitivity / AUROC).
+`make_paper_figures.py` accepts a target argument: `all` (default), `replacement` (cross-run violations / amp / strict-vs-soft) or `phase_w` (noise-floor / calibration / 2D-sensitivity / AUROC). Every command above consumes only the cached JSONs under `reports/`, so none of them needs raw data, run databases, or API access.
 
 ### 4. 🔁 Re-run an experiment end to end (needs API credentials)
 
@@ -274,6 +287,29 @@ python scripts/make_paper_figures.py    # regenerate every figure that consumes 
 bash scripts/run_crossmodel_medium.sh
 ```
 
+### 7. 🔁 Revision analyses
+
+The cached outputs of every revision analysis already ship under
+`reports/cross_run/` and `reports/runs/<run>/` (magnitude, extended queries,
+regimes, per-family decomposition, LangChain toolchain, K5 model-size ladder
+and its expressible-schema sensitivity, gate calibration/deployment split,
+matcher validation and its hard-sample audit), so the paper numbers are
+verifiable without re-running anything. Re-computing them from scratch needs
+the per-run lineage databases under `data/processed/runs/` (rebuilt by step 4;
+`run_langchain_toolchain.py` additionally needs API credentials):
+
+```bash
+python scripts/run_magnitude_analysis.py        # Sec. 5.5: magnitude vs. drift
+python scripts/run_family_decomposition.py      # Sec. 5.1: per-family decomposition
+python scripts/run_extended_queries.py          # Sec. 6.1: Q5-Q7 amplification
+python scripts/run_regime_analysis.py           # Sec. 6.2: regime detection
+python scripts/run_model_size_k5.py             # Sec. 5.2: Qwen3 size ladder
+python scripts/run_model_size_k5_expressible.py # Sec. 5.2: expressible-schema recall
+python scripts/run_matching_validation_hard.py --run docred__deepseek-v4-flash__300d
+                                                # Sec. 3.3: matcher hard-sample audit
+python scripts/run_langchain_toolchain.py       # Sec. 5.6: LangChain end to end
+```
+
 ---
 
 ## 📊 Paper runs and where they live
@@ -303,7 +339,7 @@ GraphGuard/
 │   ├── matching/      #    Entity canonicalization and edge alignment
 │   ├── metrics/       #    Edge / type / answer-set drift metrics
 │   ├── planning/      #    Materialization scheduler / budget planner
-│   ├── queries.py     #    Cypher-style query templates (lookup/neighbor/join/two-hop)
+│   ├── queries.py     #    Cypher-style query templates (Q1–Q4 lookup/neighbor/join/two-hop; Q5–Q7 in scripts/run_extended_queries.py)
 │   ├── scoring/       #    Per-edge risk scoring
 │   ├── reports/       #    Report builders consumed by paper figures
 │   └── viz/           #    Plot primitives
@@ -311,11 +347,12 @@ GraphGuard/
 │   └── experiments/   #    Per-run profiles (main100, main300, pilot, …)
 ├── scripts/           # 🚀 Stage-by-stage drivers + paper figure/table generators
 │   ├── run_paper_experiment.py   # the end-to-end pipeline driver
-│   ├── make_paper_figures.py     # unified figure generator (7 figures)
-│   ├── make_kuzu_gate_artifacts.py
-│   ├── run_budget_planner.py
-│   ├── aggregate_cross_run.py
-│   └── compute_amp_ci.py
+│   ├── make_paper_figures.py     # core figure generator
+│   ├── make_gate_figure.py / make_extqueries_figure.py / make_kuzu_gate_artifacts.py
+│   ├── run_magnitude_analysis.py / run_extended_queries.py / run_regime_analysis.py
+│   ├── run_gate_split_analysis.py / run_matching_validation_hard.py
+│   ├── run_model_size_k5.py / run_model_size_k5_expressible.py
+│   └── aggregate_cross_run.py / compute_amp_ci.py   # (full inventory: scripts/README.md)
 ├── paper/             # 📝 LaTeX source (out-of-tree; see paper PDF in releases)
 ├── data/raw/          # 🌐 Raw corpora — populate per "Dataset setup" above
 ├── data/processed/    # 🗄️ Per-run lineage SQLite (re-buildable from scripts/)

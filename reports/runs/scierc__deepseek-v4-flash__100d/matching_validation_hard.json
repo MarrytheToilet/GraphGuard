@@ -1,0 +1,917 @@
+{
+  "run": "scierc__deepseek-v4-flash__100d",
+  "disappeared": {
+    "n": 66,
+    "pass": 60,
+    "candidates": [
+      {
+        "outcome_id": "oc-72bdfcf818",
+        "base": {
+          "subj": "efficient robust estimation algorithm",
+          "rel": "HYPONYM-OF",
+          "obj": "technique",
+          "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+          "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e3"
+        },
+        "evidence": [
+          "In this work, we present a technique for robust estimation, which by explicitly incorporating the inherent uncertainty of the estimation procedure, results in a more efficient robust estimation algorithm."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-scierc-dev-000005-ICCV_2009_47_abs-ce7b714626::ac9270450b",
+            "subj": "efficient robust estimation algorithm",
+            "rel": "COMPARE",
+            "obj": "RANSAC techniques",
+            "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0",
+            "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-4b539b177f",
+        "base": {
+          "subj": "core-selecting rules",
+          "rel": "HYPONYM-OF",
+          "obj": "rules",
+          "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e4",
+          "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e7"
+        },
+        "evidence": [
+          "In this paper, we study the design of core-selecting payment rules for such domains.",
+          "We design two core-selecting rules that always satisfy IR in expectation.",
+          "We show that, in equilibrium, our new rules have better incentives, higher efficiency, and a lower rate of ex-post IR violations than standard core-selecting rules."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-scierc-dev-000036-IJCAI_2016_413_abs-bc19698171::54d9ccf70a",
+            "subj": "core-selecting rules",
+            "rel": "USED-FOR",
+            "obj": "design of core-selecting payment rules",
+            "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e4",
+            "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e5"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-463c39e0e3",
+        "base": {
+          "subj": "efficiency",
+          "rel": "FEATURE-OF",
+          "obj": "entity summarization",
+          "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e13",
+          "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e14"
+        },
+        "evidence": [
+          "We evaluate our approach against the state-of-the-art techniques and show that our work improves both the quality and the efficiency of entity summarization."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-scierc-dev-000017-AAAI_2015_21_abs-afadea9c93::f259617bee",
+            "subj": "efficiency",
+            "rel": "EVALUATE-FOR",
+            "obj": "diversity-aware entity summarization approach",
+            "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e13",
+            "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-c2f0ab6fa5",
+        "base": {
+          "subj": "matching application on deformable surfaces",
+          "rel": "USED-FOR",
+          "obj": "KAZE features",
+          "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e14",
+          "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0"
+        },
+        "evidence": [
+          "We present an extensive evaluation on benchmark datasets and a practical matching application on deformable surfaces."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-scierc-dev-000016-ECCV_2012_40_abs-8e92268b38::9a1248ccfe",
+            "subj": "SURF",
+            "rel": "COMPARE",
+            "obj": "KAZE features",
+            "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e15",
+            "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e0"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-35e1c85adf",
+        "base": {
+          "subj": "shapes of the proposals",
+          "rel": "FEATURE-OF",
+          "obj": "proposals",
+          "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e16",
+          "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e16"
+        },
+        "evidence": [
+          "Second, as the shapes of the proposals may vary to fit the objects, the resulting proposals are tighter than the sampling windows with fixed sizes."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-scierc-dev-000041-ICCV_2015_392_abs-7c9f1e421f::e00d7c2957",
+            "subj": "shapes",
+            "rel": "PART-OF",
+            "obj": "object proposals",
+            "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e10",
+            "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e9"
+          }
+        ]
+      },
+      {
+        "outcome_id": "oc-37a37061a9",
+        "base": {
+          "subj": "diversity",
+          "rel": "PART-OF",
+          "obj": "diversified -LRB- faceted -RRB- summaries",
+          "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e7",
+          "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e6"
+        },
+        "evidence": [
+          "Specifically, we highlight the importance of diversified -LRB- faceted -RRB- summaries by combining three dimensions: diversity, uniqueness, and popularity.",
+          "Our novel diversity-aware entity summarization approach mimics human conceptual clustering techniques to group facts, and picks representative facts from each group to form concise -LRB- i.e., short -RRB- and comprehensive -LRB- i.e., improved coverage through diversity -RRB- summaries."
+        ],
+        "missed": [
+          {
+            "level": "containment",
+            "edge_id": "evt-scierc-dev-000017-AAAI_2015_21_abs-92a8f4f97f::deb1d3b241",
+            "subj": "diversity-aware entity summarization approach",
+            "rel": "USED-FOR",
+            "obj": "summaries",
+            "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+            "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2"
+          }
+        ]
+      }
+    ]
+  },
+  "flip_or_ambiguous": {
+    "n": 30,
+    "id_anchor": 0,
+    "surface_anchor": 29,
+    "containment_anchor": 1,
+    "review": [
+      {
+        "outcome_id": "oc-05e8cc714d",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "source-language dependency parser",
+          "rel": "PART-OF",
+          "obj": "method",
+          "subj_id": "scierc-dev-000014-P05-1034::e5",
+          "obj_id": null
+        },
+        "cf": {
+          "subj": "source-language dependency parser",
+          "rel": "PART-OF",
+          "obj": "approach",
+          "subj_id": "scierc-dev-000014-P05-1034::e5",
+          "obj_id": "scierc-dev-000014-P05-1034::e13"
+        },
+        "evidence": [
+          "This method requires a source-language dependency parser, target language word segmentation and an unsupervised word alignment component."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-d17f808004",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "attention mechanism",
+          "rel": "PART-OF",
+          "obj": "architecture",
+          "subj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e7",
+          "obj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e0"
+        },
+        "cf": {
+          "subj": "trigger words",
+          "rel": "PART-OF",
+          "obj": "architecture",
+          "subj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e6",
+          "obj_id": "scierc-dev-000025-IJCAI_2016_412_abs::e0"
+        },
+        "evidence": [
+          "To incorporate the trigger words whose effectiveness have been experimentally evaluated in several previous works, we propose a novel architecture with an attention mechanism."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-4d1bbfc28a",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "tree-based ordering model",
+          "rel": "USED-FOR",
+          "obj": "statistical machine translation",
+          "subj_id": "scierc-dev-000014-P05-1034::e0",
+          "obj_id": "scierc-dev-000014-P05-1034::e2"
+        },
+        "cf": {
+          "subj": "approach",
+          "rel": "USED-FOR",
+          "obj": "statistical machine translation",
+          "subj_id": "scierc-dev-000014-P05-1034::e13",
+          "obj_id": "scierc-dev-000014-P05-1034::e2"
+        },
+        "evidence": [
+          "We align a parallel corpus, project the source dependency parse onto the target sentence, extract dependency treelet translation pairs, and train a tree-based ordering model."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-f747de225b",
+        "type": "EXACT_SAME",
+        "base": {
+          "subj": "interaction",
+          "rel": "PART-OF",
+          "obj": "translation process",
+          "subj_id": null,
+          "obj_id": "scierc-dev-000013-C88-2160::e3"
+        },
+        "cf": {
+          "subj": "interaction",
+          "rel": "PART-OF",
+          "obj": "translation process",
+          "subj_id": null,
+          "obj_id": "scierc-dev-000013-C88-2160::e3"
+        },
+        "evidence": [
+          "The interaction is limited to the analysis step of the translation process."
+        ],
+        "anchor": [
+          "surface",
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-3fb14d0427",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "probabilistic context-free grammar -LRB- PCFG -RRB-",
+          "rel": "USED-FOR",
+          "obj": "morphological parsing",
+          "subj_id": "scierc-dev-000034-E93-1023::e1",
+          "obj_id": "scierc-dev-000034-E93-1023::e9"
+        },
+        "cf": {
+          "subj": "probabilistic context-free grammar -LRB- PCFG -RRB-",
+          "rel": "USED-FOR",
+          "obj": "ambiguity",
+          "subj_id": "scierc-dev-000034-E93-1023::e1",
+          "obj_id": "scierc-dev-000034-E93-1023::e4"
+        },
+        "evidence": [
+          "Test performance data will show that a PCFG yields good results in morphological parsing."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-fa5c9e71a2",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "structure and surface representation of domain entities",
+          "rel": "PART-OF",
+          "obj": "entity-oriented approach",
+          "subj_id": "scierc-dev-000002-P84-1047::e5",
+          "obj_id": "scierc-dev-000002-P84-1047::e1"
+        },
+        "cf": {
+          "subj": "structure and surface representation of domain entities",
+          "rel": "PART-OF",
+          "obj": "this",
+          "subj_id": "scierc-dev-000002-P84-1047::e5",
+          "obj_id": "scierc-dev-000002-P84-1047::e0"
+        },
+        "evidence": [
+          "In this approach, the definitions of the structure and surface representation of domain entities are grouped together."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-bda9a594b1",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "synthetic speech",
+          "rel": "COMPARE",
+          "obj": "natural speech",
+          "subj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e18",
+          "obj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e19"
+        },
+        "cf": {
+          "subj": "synthesized speech",
+          "rel": "COMPARE",
+          "obj": "natural speech",
+          "subj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e4",
+          "obj_id": "scierc-dev-000029-ICASSP_2011_598_abs::e19"
+        },
+        "evidence": [
+          "All measures gave less accurate predictions of intelligibility for synthetic speech than have previously been found for natural speech; in particular the SII measure."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-45b093cd02",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "spatial and temporal intensity variation",
+          "rel": "USED-FOR",
+          "obj": "algorithm",
+          "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e2",
+          "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e1"
+        },
+        "cf": {
+          "subj": "spatial and temporal intensity variation",
+          "rel": "USED-FOR",
+          "obj": "computing optical flow , shape , motion , lighting , and albedo",
+          "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e2",
+          "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0"
+        },
+        "evidence": [
+          "The algorithm utilizes both spatial and temporal intensity variation as cues: the former constrains flow and the latter constrains surface orientation; combining both cues enables dense reconstruction of both textured and texture-less surfaces."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-8613aa6dc4",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "rules",
+          "rel": "USED-FOR",
+          "obj": "auction domains",
+          "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e7",
+          "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e0"
+        },
+        "cf": {
+          "subj": "design of core-selecting payment rules",
+          "rel": "USED-FOR",
+          "obj": "auction domains",
+          "subj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e5",
+          "obj_id": "scierc-dev-000036-IJCAI_2016_413_abs::e0"
+        },
+        "evidence": [
+          "However, we show that by designing rules that are '' execution-contingent, '' i.e., by charging payments that are conditioned on the realization of the availability of the goods, we can reduce IR violations."
+        ],
+        "anchor": [
+          "containment",
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-b9e9724553",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "NEGRA corpus",
+          "rel": "USED-FOR",
+          "obj": "unlexicalized parser",
+          "subj_id": "scierc-test-000007-P05-1039::e5",
+          "obj_id": "scierc-test-000007-P05-1039::e0"
+        },
+        "cf": {
+          "subj": "smoothing",
+          "rel": "USED-FOR",
+          "obj": "unlexicalized parser",
+          "subj_id": "scierc-test-000007-P05-1039::e8",
+          "obj_id": "scierc-test-000007-P05-1039::e0"
+        },
+        "evidence": [
+          "In this paper, we present an unlexicalized parser for German which employs smoothing and suffix analysis to achieve a labelled bracket F-score of 76.2, higher than previously reported results on the NEGRA corpus."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-dfa62b3216",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "Creating summaries",
+          "rel": "USED-FOR",
+          "obj": "identification of the corresponding entity",
+          "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2",
+          "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e4"
+        },
+        "cf": {
+          "subj": "automatic summa-rization techniques",
+          "rel": "USED-FOR",
+          "obj": "identification of the corresponding entity",
+          "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e5",
+          "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e4"
+        },
+        "evidence": [
+          "Creating summaries on lengthy Semantic Web documents for quick identification of the corresponding entity has been of great contemporary interest."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-3491dea9ef",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "linear-chain conditional random field -LRB- CRF -RRB-",
+          "rel": "USED-FOR",
+          "obj": "input",
+          "subj_id": "scierc-dev-000039-N04-4028::e7",
+          "obj_id": "scierc-dev-000039-N04-4028::e11"
+        },
+        "cf": {
+          "subj": "linear-chain conditional random field -LRB- CRF -RRB-",
+          "rel": "USED-FOR",
+          "obj": "information extraction tasks",
+          "subj_id": "scierc-dev-000039-N04-4028::e7",
+          "obj_id": "scierc-dev-000039-N04-4028::e9"
+        },
+        "evidence": [
+          "The information extraction system we evaluate is based on a linear-chain conditional random field -LRB- CRF -RRB-, a probabilistic model which has performed well on information extraction tasks because of its ability to capture arbitrary, overlapping features of the input in a Markov model."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-8a189b5383",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "distant illumination",
+          "rel": "USED-FOR",
+          "obj": "computing optical flow , shape , motion , lighting , and albedo",
+          "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e5",
+          "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0"
+        },
+        "cf": {
+          "subj": "spatial and temporal intensity variation",
+          "rel": "USED-FOR",
+          "obj": "computing optical flow , shape , motion , lighting , and albedo",
+          "subj_id": "scierc-dev-000000-ICCV_2003_158_abs::e2",
+          "obj_id": "scierc-dev-000000-ICCV_2003_158_abs::e0"
+        },
+        "evidence": [
+          "This paper presents an algorithm for computing optical flow, shape, motion, lighting, and albedo from an image sequence of a rigidly-moving Lambertian object under distant illumination."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-7d38c3b06d",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "entity-oriented parser",
+          "rel": "PART-OF",
+          "obj": "entity-oriented approach",
+          "subj_id": "scierc-dev-000002-P84-1047::e12",
+          "obj_id": "scierc-dev-000002-P84-1047::e1"
+        },
+        "cf": {
+          "subj": "structure and surface representation of domain entities",
+          "rel": "PART-OF",
+          "obj": "entity-oriented approach",
+          "subj_id": "scierc-dev-000002-P84-1047::e5",
+          "obj_id": "scierc-dev-000002-P84-1047::e1"
+        },
+        "evidence": [
+          "Representative samples from an entity-oriented language definition are presented, along with a control structure for an entity-oriented parser, some parsing strategies that use the control structure, and worked examples of parses."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-6777d00b01",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "Semantic Web documents",
+          "rel": "USED-FOR",
+          "obj": "Creating summaries",
+          "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e1",
+          "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2"
+        },
+        "cf": {
+          "subj": "diversity-aware entity summarization approach",
+          "rel": "USED-FOR",
+          "obj": "Creating summaries",
+          "subj_id": "scierc-dev-000017-AAAI_2015_21_abs::e0",
+          "obj_id": "scierc-dev-000017-AAAI_2015_21_abs::e2"
+        },
+        "evidence": [
+          "Semantic Web documents that encode facts about entities on the Web have been growing rapidly in size and evolving over time.",
+          "Creating summaries on lengthy Semantic Web documents for quick identification of the corresponding entity has been of great contemporary interest."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-beddc9592a",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "video segmentation",
+          "rel": "COMPARE",
+          "obj": "action proposals",
+          "subj_id": "scierc-dev-000044-CVPR_2015_303_abs::e17",
+          "obj_id": "scierc-dev-000044-CVPR_2015_303_abs::e14"
+        },
+        "cf": {
+          "subj": "action proposal approaches",
+          "rel": "COMPARE",
+          "obj": "action proposals",
+          "subj_id": "scierc-dev-000044-CVPR_2015_303_abs::e16",
+          "obj_id": "scierc-dev-000044-CVPR_2015_303_abs::e14"
+        },
+        "evidence": [
+          "Compared with existing action proposal approaches, our action proposals do not rely on video segmentation and can be generated in nearly real-time."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-bca1287d87",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "recognizer",
+          "rel": "USED-FOR",
+          "obj": "bigram back-off language models",
+          "subj_id": "scierc-dev-000012-H91-1010::e7",
+          "obj_id": "scierc-dev-000012-H91-1010::e8"
+        },
+        "cf": {
+          "subj": "Lincoln CSR system",
+          "rel": "USED-FOR",
+          "obj": "bigram back-off language models",
+          "subj_id": "scierc-dev-000012-H91-1010::e0",
+          "obj_id": "scierc-dev-000012-H91-1010::e8"
+        },
+        "evidence": [
+          "Finally, the recognizer has been modified to use bigram back-off language models."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-be5d7e6860",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "system",
+          "rel": "PART-OF",
+          "obj": "multi-component architecture",
+          "subj_id": "scierc-dev-000019-A00-1024::e1",
+          "obj_id": "scierc-dev-000019-A00-1024::e3"
+        },
+        "cf": {
+          "subj": "system",
+          "rel": "PART-OF",
+          "obj": "components",
+          "subj_id": "scierc-dev-000019-A00-1024::e1",
+          "obj_id": "scierc-dev-000019-A00-1024::e0"
+        },
+        "evidence": [
+          "The system is based on a multi-component architecture where each component is responsible for identifying one class of unknown words."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-4f1f09fb8e",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "reweighted version of the sum product algorithm",
+          "rel": "USED-FOR",
+          "obj": "Kikuchi region graph",
+          "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e0",
+          "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e9"
+        },
+        "cf": {
+          "subj": "reweighted version of the sum product algorithm",
+          "rel": "USED-FOR",
+          "obj": "Kikuchi approximation",
+          "subj_id": "scierc-dev-000009-NIPS_2014_10_abs::e0",
+          "obj_id": "scierc-dev-000009-NIPS_2014_10_abs::e1"
+        },
+        "evidence": [
+          "We establish sufficient conditions for the concavity of our reweighted objective function in terms of weight assignments in the Kikuchi expansion, and show that a reweighted version of the sum product algorithm applied to the Kikuchi region graph will produce global optima of the Kikuchi approximation whenever the algorithm converges."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-013086809a",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "multi-document summarization",
+          "rel": "USED-FOR",
+          "obj": "multilingual summaries",
+          "subj_id": "scierc-dev-000040-H05-1005::e4",
+          "obj_id": "scierc-dev-000040-H05-1005::e3"
+        },
+        "cf": {
+          "subj": "information redundancy in multilingual input",
+          "rel": "USED-FOR",
+          "obj": "multilingual summaries",
+          "subj_id": "scierc-dev-000040-H05-1005::e1",
+          "obj_id": "scierc-dev-000040-H05-1005::e3"
+        },
+        "evidence": [
+          "We consider the case of multi-document summarization, where the input documents are in Arabic, and the output summary is in English."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-c09a7c08c1",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "co-occurrence distribution",
+          "rel": "FEATURE-OF",
+          "obj": "algorithm",
+          "subj_id": "scierc-dev-000018-C04-1147::e3",
+          "obj_id": "scierc-dev-000018-C04-1147::e2"
+        },
+        "cf": {
+          "subj": "framework",
+          "rel": "FEATURE-OF",
+          "obj": "algorithm",
+          "subj_id": "scierc-dev-000018-C04-1147::e0",
+          "obj_id": "scierc-dev-000018-C04-1147::e2"
+        },
+        "evidence": [
+          "The framework is composed of a novel algorithm to efficiently compute the co-occurrence distribution between pairs of terms, an independence model, and a parametric affinity model."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-2b817a7329",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "RANSAC techniques",
+          "rel": "EVALUATE-FOR",
+          "obj": "efficient robust estimation algorithm",
+          "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e1",
+          "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0"
+        },
+        "cf": {
+          "subj": "geometric estimation problems",
+          "rel": "EVALUATE-FOR",
+          "obj": "efficient robust estimation algorithm",
+          "subj_id": "scierc-dev-000005-ICCV_2009_47_abs::e10",
+          "obj_id": "scierc-dev-000005-ICCV_2009_47_abs::e0"
+        },
+        "evidence": [
+          "In particular, our algorithm requires, on average, 3-10 times fewer samples than standard RANSAC, which is in close agreement with theoretical predictions."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-8f3283b2e1",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "linguistic theory",
+          "rel": "OTHER",
+          "obj": "approach",
+          "subj_id": "scierc-dev-000013-C88-2160::e2",
+          "obj_id": "scierc-dev-000013-C88-2160::e0"
+        },
+        "cf": {
+          "subj": "linguistic theory",
+          "rel": "OTHER",
+          "obj": "explanation of an ambiguity or an error",
+          "subj_id": "scierc-dev-000013-C88-2160::e2",
+          "obj_id": null
+        },
+        "evidence": [
+          "The explanation of an ambiguity or an error for the purposes of correction does not use any concepts of the underlying linguistic theory: it is a reformulation of the erroneous or ambiguous sentence."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-5d82f426fb",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "Bayesian learning algorithm",
+          "rel": "USED-FOR",
+          "obj": "probability distribution",
+          "subj_id": "scierc-test-000047-ICML_2006_119_abs::e12",
+          "obj_id": "scierc-test-000047-ICML_2006_119_abs::e1"
+        },
+        "cf": {
+          "subj": "expert games",
+          "rel": "USED-FOR",
+          "obj": "probability distribution",
+          "subj_id": "scierc-test-000047-ICML_2006_119_abs::e14",
+          "obj_id": "scierc-test-000047-ICML_2006_119_abs::e1"
+        },
+        "evidence": [
+          "Our method has two major components: a -RRB- a pattern extraction scheme for efficiently harvesting patterns of given size and shape from expert game records and b -RRB- a Bayesian learning algorithm -LRB- in two variants -RRB- that learns a distribution over the values of a move given a board position based on the local pattern context."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-1fea886882",
+        "type": "OBJECT_FLIP",
+        "base": {
+          "subj": "spatio-temporal video segmentation algorithm",
+          "rel": "USED-FOR",
+          "obj": "long-range motion cues",
+          "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+          "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e10"
+        },
+        "cf": {
+          "subj": "spatio-temporal video segmentation algorithm",
+          "rel": "USED-FOR",
+          "obj": "spatio-temporal over-segmentation",
+          "subj_id": "scierc-dev-000015-CVPR_2011_292_abs::e9",
+          "obj_id": "scierc-dev-000015-CVPR_2011_292_abs::e7"
+        },
+        "evidence": [
+          "First, we develop an efficient spatio-temporal video segmentation algorithm, which naturally incorporates long-range motion cues from the past and future frames in the form of clusters of point tracks with coherent motion."
+        ],
+        "anchor": [
+          "id",
+          null
+        ]
+      },
+      {
+        "outcome_id": "oc-2ac849d5db",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "structure and surface representation of domain entities",
+          "rel": "PART-OF",
+          "obj": "entity-oriented approach",
+          "subj_id": "scierc-dev-000002-P84-1047::e5",
+          "obj_id": "scierc-dev-000002-P84-1047::e1"
+        },
+        "cf": {
+          "subj": "entity-oriented language definition",
+          "rel": "PART-OF",
+          "obj": "entity-oriented approach",
+          "subj_id": "scierc-dev-000002-P84-1047::e11",
+          "obj_id": "scierc-dev-000002-P84-1047::e1"
+        },
+        "evidence": [
+          "In this approach, the definitions of the structure and surface representation of domain entities are grouped together."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-47526340e4",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "objectness",
+          "rel": "USED-FOR",
+          "obj": "object regions",
+          "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e7",
+          "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e5"
+        },
+        "cf": {
+          "subj": "approach",
+          "rel": "USED-FOR",
+          "obj": "object regions",
+          "subj_id": "scierc-dev-000041-ICCV_2015_392_abs::e0",
+          "obj_id": "scierc-dev-000041-ICCV_2015_392_abs::e5"
+        },
+        "evidence": [
+          "To this end, we propose to efficiently locate object regions according to pixelwise object probability, rather than measuring the objectness from a set of sampled windows."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-3714437698",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "tree-based models",
+          "rel": "USED-FOR",
+          "obj": "statistical machine translation",
+          "subj_id": null,
+          "obj_id": "scierc-dev-000014-P05-1034::e2"
+        },
+        "cf": {
+          "subj": "approach",
+          "rel": "USED-FOR",
+          "obj": "statistical machine translation",
+          "subj_id": "scierc-dev-000014-P05-1034::e13",
+          "obj_id": "scierc-dev-000014-P05-1034::e2"
+        },
+        "evidence": [
+          "We describe an efficient decoder and show that using these tree-based models in combination with conventional SMT models provides a promising approach that incorporates the power of phrasal SMT with the linguistic generality available in a parser."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-ec097c95fa",
+        "type": "AMBIGUOUS",
+        "base": {
+          "subj": "image data",
+          "rel": "USED-FOR",
+          "obj": "nonlinear scale space",
+          "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e9",
+          "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+        },
+        "cf": {
+          "subj": "nonlinear diffusion filtering",
+          "rel": "USED-FOR",
+          "obj": "nonlinear scale space",
+          "subj_id": "scierc-dev-000016-ECCV_2012_40_abs::e8",
+          "obj_id": "scierc-dev-000016-ECCV_2012_40_abs::e1"
+        },
+        "evidence": [
+          "In this way, we can make blurring locally adaptive to the image data, reducing noise but retaining object boundaries, obtaining superior localization accuracy and distinctiviness."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      },
+      {
+        "outcome_id": "oc-b148c84920",
+        "type": "SUBJECT_FLIP",
+        "base": {
+          "subj": "motion trajectories",
+          "rel": "USED-FOR",
+          "obj": "detecting reflections in image sequences",
+          "subj_id": "scierc-test-000044-CVPR_2011_10_abs::e8",
+          "obj_id": "scierc-test-000044-CVPR_2011_10_abs::e7"
+        },
+        "cf": {
+          "subj": "technique",
+          "rel": "USED-FOR",
+          "obj": "detecting reflections in image sequences",
+          "subj_id": "scierc-test-000044-CVPR_2011_10_abs::e0",
+          "obj_id": "scierc-test-000044-CVPR_2011_10_abs::e7"
+        },
+        "evidence": [
+          "This work presents an automated technique for detecting reflections in image sequences by analyzing motion trajectories of feature points."
+        ],
+        "anchor": [
+          null,
+          "id"
+        ]
+      }
+    ]
+  },
+  "id_exact": 104,
+  "id_disagree": 0
+}
