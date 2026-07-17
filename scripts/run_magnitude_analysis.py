@@ -387,11 +387,11 @@ def make_figure(runs: list[str]) -> None:
         xs = [j + i * w for j in range(len(cats))]
         ax.bar(xs, [v or 0 for v in vals], width=w * 0.9,
                color=fills[i % len(fills)], edgecolor=colors[i % len(colors)],
-               linewidth=0.8, label=label.get(corpus, corpus))
+               linewidth=1.0, label=label.get(corpus, corpus))
         for x, v in zip(xs, vals):
             if v:
                 ax.text(x, v + 0.015, f"{v:.2f}", rotation=90,
-                        ha="center", va="bottom", fontsize=6, color=_S.BLACK)
+                        ha="center", va="bottom", fontsize=6.5, color=_S.BLACK)
     ax.set_xticks([j + w * (len(data) - 1) / 2 for j in range(len(cats))])
     ax.set_xticklabels(["rerun\n(no-op)", "schema\npres.", "prompt\n(1 clause)", "evidence"])
     ax.set_ylabel("mean graph drift", fontsize=10)
@@ -424,7 +424,7 @@ def make_figure(runs: list[str]) -> None:
         if pts:
             ax.plot([x for x, _, _ in pts], [y for _, y, _ in pts], "o-",
                     color=colors[i % len(colors)], markerfacecolor=fills[i % len(fills)],
-                    markeredgecolor=colors[i % len(colors)], markersize=5, linewidth=1.3,
+                    markeredgecolor=colors[i % len(colors)], markersize=6, linewidth=1.5,
                     label=label.get(corpus, corpus))
         noop = (d["summary"].get("stochastic") or {}).get("mean_drift")
         if noop is not None:

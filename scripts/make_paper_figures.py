@@ -447,11 +447,11 @@ def noise_floor_from_db(tag: str) -> float:
 # ──────────────────────────────────────────────────────────────────────────────
 
 def make_calibration_figure():
-    _S.apply_rc(font_size=10)
-    # Single-column display ~3.5" wide → 2x2 grid keeps each subplot ~1.75" wide.
-    # Keep 1x4 layout per user request, but small canvas so native fonts render large.
-    fig, axes = plt.subplots(1, 4, figsize=(7.6, 2.3), sharey=True)
-    eps = 0.05  # SLA: ≤5% harmful publication rate
+    # Native single-column canvas (like fig_riskcoverage): fonts render ~1:1.
+    _S.apply_rc(font_size=7)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.4), sharey=True,
+                             gridspec_kw={"wspace": 0.14})
+    eps = 0.05  # SLA: <=5% harmful publication rate
 
     blue_line = _BLUE
     red_line  = _PINK
@@ -462,60 +462,52 @@ def make_calibration_figure():
         pairs = load_pairs(tag)
         taus, cov, harm = compute_calibration(pairs, score_key="graph_drift")
 
-        # Largest τ such that publication harm rate still satisfies SLA.
-        # Smaller τ trivially passes (publishes nothing) → not useful as
-        # an operating point.
         feasible = np.where(harm <= eps)[0]
         if len(feasible):
-            idx_star = feasible[-1]
-            tau_star = taus[idx_star]
-            cov_star = cov[idx_star]
+            tau_star = taus[feasible[-1]]
         else:
-            tau_star = cov_star = None
+            tau_star = None
 
         ax.fill_between(taus, cov, alpha=0.25, color=gray_fill)
-        ax.plot(taus, cov, color=blue_line, lw=1.6, label="Coverage")
-        ax.plot(taus, harm, color=red_line, lw=1.6, ls="--", label="Pub. harm")
-        ax.axhline(eps, color=red_line, lw=0.8, ls=":", alpha=0.7)
+        ax.plot(taus, cov, color=blue_line, lw=1.1, label="Coverage")
+        ax.plot(taus, harm, color=red_line, lw=1.1, ls="--", label="Pub. harm")
+        ax.axhline(eps, color=red_line, lw=0.7, ls=":", alpha=0.7)
         if tau_star is not None:
-            ax.axvline(tau_star, color=green, lw=1.4, ls="-.")
-            ax.text(min(tau_star + 0.04, 0.80), 0.92,
+            ax.axvline(tau_star, color=green, lw=1.1, ls="-.")
+            ax.text(min(tau_star + 0.06, 0.62), 0.9,
                     rf"$\tau^*$={tau_star:.2f}",
-                    fontsize=9, color=green, fontweight="bold")
+                    fontsize=6.5, color=green, fontweight="bold")
         else:
-            ax.text(0.5, 0.5, "infeasible\nunder graph-only gate",
-                    ha="center", va="center", fontsize=9,
+            ax.text(0.5, 0.6, "infeasible",
+                    ha="center", va="center", fontsize=6.5,
                     color=red_line, fontweight="bold",
                     transform=ax.transAxes)
 
         ax.set_xlim(0, 1)
         ax.set_ylim(-0.02, 1.08)
-        ax.set_xlabel(r"$\tau$", fontsize=11)
-        ax.set_title(name, fontsize=11, fontweight="bold")
-        ax.tick_params(labelsize=9)
-        ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+        ax.set_xlabel(r"$\tau$", fontsize=7)
+        ax.set_title(name, fontsize=7, fontweight="bold")
+        ax.tick_params(labelsize=6)
+        ax.set_xticks([0, 0.5, 1.0])
+        ax.set_xticklabels(["0", ".5", "1"])
         ax.grid(axis="y", ls=":", alpha=0.4)
-        for s in ("top", "right"):
-            ax.spines[s].set_visible(False)
+        for sp in ("top", "right"):
+            ax.spines[sp].set_visible(False)
         if ax is axes[0]:
-            ax.set_ylabel("Rate", fontsize=11)
+            ax.set_ylabel("Rate", fontsize=6.5)
 
     handles, labels = axes[0].get_legend_handles_labels()
-    handles.append(plt.Line2D([0], [0], color=green, lw=1.4, ls="-."))
-    labels.append(r"$\tau^*$ (operating point)")
-    handles.append(plt.Line2D([0], [0], color=red_line, lw=0.8, ls=":"))
+    handles.append(plt.Line2D([0], [0], color=green, lw=1.1, ls="-."))
+    labels.append(r"$\tau^*$")
+    handles.append(plt.Line2D([0], [0], color=red_line, lw=0.7, ls=":"))
     labels.append(rf"SLA $\epsilon$={eps}")
-    fig.legend(handles, labels, ncol=4, loc="upper center",
-               bbox_to_anchor=(0.5, 0.04), fontsize=10,
-               frameon=False, handlelength=2.0)
+    fig.legend(handles, labels, ncol=4, loc="lower center",
+               bbox_to_anchor=(0.5, -0.26), fontsize=6,
+               frameon=False, handlelength=1.4, columnspacing=1.0)
 
-    fig.suptitle(
-        rf"SLA-driven $\tau$ calibration (SLA $\epsilon$={eps})",
-        fontsize=11, y=1.02
-    )
     fig.tight_layout()
     out = FIG_DIR / "fig_calibration.png"
-    fig.savefig(str(out), dpi=200, bbox_inches="tight")
+    fig.savefig(str(out), dpi=400, bbox_inches="tight")
     plt.close(fig)
     print(f"[W2] saved {out}")
 
@@ -525,28 +517,22 @@ def make_calibration_figure():
 # ──────────────────────────────────────────────────────────────────────────────
 
 def make_noise_floor_figure():
-    _S.apply_rc(font_size=10)
+    # Native single-column 1x4 row: same footprint as before, fonts ~1:1.
+    _S.apply_rc(font_size=7)
     FAMILY_LABELS = {
         "stochastic":   "Stoch.",
-        "entity_alias": "Ent.alias",
+        "entity_alias": "Alias",
         "prompt":       "Prompt",
         "evidence":     "Evid.",
         "schema":       "Schema",
     }
     ORDER = ["stochastic", "entity_alias", "prompt", "evidence", "schema"]
-    # Use unified palette: gradient from light to dark within blue family.
-    colors = {
-        "stochastic":   _GRAY_LIGHT,
-        "entity_alias": _BLUE_LIGHT,
-        "prompt":       _BLUE,
-        "evidence":     _PINK,
-        "schema":       _PINK_LIGHT,
-    }
     excess_color = _PINK
     base_color   = _BLUE_LIGHT
     floor_line   = _PINK
 
-    fig, axes = plt.subplots(1, 4, figsize=(7.6, 2.6), sharey=True)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.45), sharey=True,
+                             gridspec_kw={"wspace": 0.14})
 
     for ax, (tag, name) in zip(axes, CORPORA):
         pairs = load_pairs(tag)
@@ -557,7 +543,7 @@ def make_noise_floor_figure():
             by_fam.setdefault(p["family"], []).append(p["graph_drift"])
 
         x = np.arange(len(ORDER))
-        bar_w = 0.62
+        bar_w = 0.68
         for i, fam in enumerate(ORDER):
             drifts = by_fam.get(fam, [])
             if not drifts:
@@ -566,27 +552,27 @@ def make_noise_floor_figure():
             base = min(D0, mean_d)
             excess = max(0.0, mean_d - D0)
             ax.bar(i, base, bar_w, color=base_color, edgecolor=_BLUE,
-                   linewidth=0.5, zorder=3)
+                   linewidth=0.7, zorder=3)
             ax.bar(i, excess, bar_w, bottom=base, color=excess_color,
-                   edgecolor=_PINK, linewidth=0.5, zorder=3)
-            ax.text(i, mean_d + 0.02, f"{mean_d:.2f}", ha="center",
-                    va="bottom", fontsize=8, color=_BLACK)
+                   edgecolor=_PINK, linewidth=0.7, zorder=3)
+            ax.text(i, mean_d + 0.03, f"{mean_d:.2f}", rotation=90,
+                    ha="center", va="bottom", fontsize=5.5, color=_BLACK)
 
-        ax.axhline(D0, color=floor_line, lw=1.2, ls="--",
-                   label=fr"$D_0$={D0:.2f}")
+        ax.axhline(D0, color=floor_line, lw=1.0, ls="--")
+        ax.text(0.96, 0.96, rf"$D_0$={D0:.2f}", transform=ax.transAxes,
+                ha="right", va="top", fontsize=5.5, color=floor_line,
+                fontweight="bold")
         ax.set_xticks(x)
         ax.set_xticklabels([FAMILY_LABELS[f] for f in ORDER],
-                           fontsize=8.5, rotation=30, ha="right")
-        ax.set_title(name, fontsize=11, fontweight="bold")
-        ax.tick_params(axis="y", labelsize=9)
-        ax.set_ylim(0, 1.05)
+                           fontsize=5.5, rotation=42, ha="right")
+        ax.set_title(name, fontsize=7, fontweight="bold", pad=3)
+        ax.tick_params(axis="y", labelsize=6)
+        ax.set_ylim(0, 1.12)
+        ax.set_yticks([0, 0.5, 1.0])
         ax.grid(axis="y", ls=":", alpha=0.4)
-        ax.legend(fontsize=8.5, loc="upper left", framealpha=0.9,
-                  handlelength=1.5)
-        for s in ("top", "right"):
-            ax.spines[s].set_visible(False)
-        if ax is axes[0]:
-            ax.set_ylabel("Mean graph drift", fontsize=10)
+        for sp in ("top", "right"):
+            ax.spines[sp].set_visible(False)
+    axes[0].set_ylabel("Mean drift", fontsize=6.5)
 
     from matplotlib.patches import Patch
     legend_handles = [
@@ -594,14 +580,11 @@ def make_noise_floor_figure():
         Patch(facecolor=excess_color, edgecolor=_PINK, label="Excess drift"),
     ]
     fig.legend(handles=legend_handles, loc="lower center", ncol=2,
-               fontsize=9.5, bbox_to_anchor=(0.5, -0.04), frameon=False)
-    fig.suptitle(
-        r"Perturbation drift vs. stochastic noise floor $D_0$",
-        fontsize=11, y=1.02
-    )
+               fontsize=6, bbox_to_anchor=(0.5, -0.30), frameon=False,
+               handlelength=1.2, columnspacing=1.0)
     fig.tight_layout()
     out = FIG_DIR / "fig_noise_floor.png"
-    fig.savefig(str(out), dpi=200, bbox_inches="tight")
+    fig.savefig(str(out), dpi=400, bbox_inches="tight")
     plt.close(fig)
     print(f"[W1] saved {out}")
 
