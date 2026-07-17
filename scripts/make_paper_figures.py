@@ -449,7 +449,7 @@ def noise_floor_from_db(tag: str) -> float:
 def make_calibration_figure():
     # Native single-column canvas (like fig_riskcoverage): fonts render ~1:1.
     _S.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.4), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
                              gridspec_kw={"wspace": 0.14})
     eps = 0.05  # SLA: <=5% harmful publication rate
 
@@ -485,7 +485,6 @@ def make_calibration_figure():
 
         ax.set_xlim(0, 1)
         ax.set_ylim(-0.02, 1.08)
-        ax.set_xlabel(r"$\tau$", fontsize=7)
         ax.set_title(name, fontsize=7, fontweight="bold")
         ax.tick_params(labelsize=6)
         ax.set_xticks([0, 0.5, 1.0])
@@ -496,15 +495,7 @@ def make_calibration_figure():
         if ax is axes[0]:
             ax.set_ylabel("Rate", fontsize=6.5)
 
-    handles, labels = axes[0].get_legend_handles_labels()
-    handles.append(plt.Line2D([0], [0], color=green, lw=1.1, ls="-."))
-    labels.append(r"$\tau^*$")
-    handles.append(plt.Line2D([0], [0], color=red_line, lw=0.7, ls=":"))
-    labels.append(rf"SLA $\epsilon$={eps}")
-    fig.legend(handles, labels, ncol=4, loc="lower center",
-               bbox_to_anchor=(0.5, -0.26), fontsize=6,
-               frameon=False, handlelength=1.4, columnspacing=1.0)
-
+    # Line styles are explained in the LaTeX caption; no in-figure legend.
     fig.tight_layout()
     out = FIG_DIR / "fig_calibration.png"
     fig.savefig(str(out), dpi=400, bbox_inches="tight")
@@ -531,7 +522,7 @@ def make_noise_floor_figure():
     base_color   = _BLUE_LIGHT
     floor_line   = _PINK
 
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.45), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
                              gridspec_kw={"wspace": 0.14})
 
     for ax, (tag, name) in zip(axes, CORPORA):
@@ -564,7 +555,7 @@ def make_noise_floor_figure():
                 fontweight="bold")
         ax.set_xticks(x)
         ax.set_xticklabels([FAMILY_LABELS[f] for f in ORDER],
-                           fontsize=5.5, rotation=42, ha="right")
+                           fontsize=5.2, rotation=35, ha="right")
         ax.set_title(name, fontsize=7, fontweight="bold", pad=3)
         ax.tick_params(axis="y", labelsize=6)
         ax.set_ylim(0, 1.12)
@@ -574,14 +565,8 @@ def make_noise_floor_figure():
             ax.spines[sp].set_visible(False)
     axes[0].set_ylabel("Mean drift", fontsize=6.5)
 
-    from matplotlib.patches import Patch
-    legend_handles = [
-        Patch(facecolor=base_color,   edgecolor=_BLUE, label=r"Baseline $D_0$"),
-        Patch(facecolor=excess_color, edgecolor=_PINK, label="Excess drift"),
-    ]
-    fig.legend(handles=legend_handles, loc="lower center", ncol=2,
-               fontsize=6, bbox_to_anchor=(0.5, -0.30), frameon=False,
-               handlelength=1.2, columnspacing=1.0)
+    # Colors are explained in the LaTeX caption; no in-figure legend, so the
+    # rendered height stays at the original footprint.
     fig.tight_layout()
     out = FIG_DIR / "fig_noise_floor.png"
     fig.savefig(str(out), dpi=400, bbox_inches="tight")
