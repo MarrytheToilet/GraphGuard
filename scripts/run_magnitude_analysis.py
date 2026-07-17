@@ -364,7 +364,7 @@ def make_figure(runs: list[str]) -> None:
         return
 
     _S.apply_rc(font_size=10)
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.25),
+    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.18),
                              gridspec_kw={"width_ratios": [1.35, 1]})
 
     # -- Panel A: presentation-level saturation (kind, not degree) ----------

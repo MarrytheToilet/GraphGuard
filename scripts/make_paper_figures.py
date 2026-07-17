@@ -241,7 +241,7 @@ def replacement_crossrun_violations() -> None:
     short_runs = ["DR\nDSV4", "RDR\nDSV4", "SE\nDSV4", "CDR\nDSV4",
                   "DR\nGLM5", "DR\nKimi", "DR\nQwen3"]
 
-    fig, ax = plt.subplots(figsize=(3.5, 2.0))
+    fig, ax = plt.subplots(figsize=(3.5, 1.64))
     from matplotlib.colors import LinearSegmentedColormap
     cmap = LinearSegmentedColormap.from_list(
         "ggblues", [_S.WHITE, _S.BLUE, _S.BLUE_DARK, "#1F4F70"])
@@ -285,7 +285,7 @@ def replacement_amp_crossrun() -> None:
     x = np.arange(len(rows))
     w = 0.38
 
-    fig, ax = plt.subplots(figsize=(3.5, 1.56))
+    fig, ax = plt.subplots(figsize=(3.5, 1.27))
     b1 = ax.bar(x - w/2, q1, w, color=_S.BLUE, edgecolor=_S.BLUE_DARK,
                 linewidth=0.6, label=r"$Q_1$ (single-hop)")
     b2 = ax.bar(x + w/2, q3, w, color=_S.PINK, edgecolor=_S.PINK_DARK,
@@ -341,7 +341,7 @@ def replacement_strict_vs_soft() -> None:
     labels = list(rows.keys())
     x = np.arange(len(labels))
     w = 0.25
-    fig, axes = plt.subplots(1, 2, figsize=(3.5, 1.7), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(3.5, 1.56), sharey=True)
 
     def plot_one(ax, data, title):
         l1 = [data[l][0] for l in labels]
@@ -527,7 +527,7 @@ def make_noise_floor_figure():
     base_color   = _BLUE_LIGHT
     floor_line   = _PINK
 
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.85), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.83), sharey=True,
                              gridspec_kw={"wspace": 0.20})
 
     for ax, (tag, name) in zip(axes, CORPORA):
@@ -599,7 +599,7 @@ def make_2d_sensitivity_figure():
     # Re-DocRED and SciERC sit at 0.00 harm / >=0.99 utility over the whole
     # grid and ship in the artifact.
     shown = [c for c in CORPORA if c[1] in ("DocRED", "BC5CDR")]
-    fig, axes = plt.subplots(2, 2, figsize=(3.5, 2.05))
+    fig, axes = plt.subplots(2, 2, figsize=(3.5, 1.88))
 
     cmap_harm = mcolors.LinearSegmentedColormap.from_list(
         "harm", ["#FFFFFF", _S.PINK, _S.PINK_DARK, "#8B2D44"])
@@ -729,21 +729,19 @@ def _scores_from_baselines(tag: str) -> dict[str, np.ndarray]:
 
 
 def make_auroc_figure():
-    _S.apply_rc(font_size=10)
-    # Single-column, 2 rows (ROC top, PR bottom) x 4 cols (corpora).
-    fig, axes = plt.subplots(2, 4, figsize=(7.6, 4.4), sharex=True, sharey=True)
-    axes_roc = axes[0]
-    axes_pr = axes[1]
+    # Native single-column 1x4 row, ROC only (PR curves ship in the
+    # artifact); style matches the other 1x4 panel figures.
+    _S.apply_rc(font_size=7)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.73), sharey=True,
+                             gridspec_kw={"wspace": 0.20})
 
     roc_summary = {}
-
-    for ax_r, ax_p, (tag, name) in zip(axes_roc, axes_pr, CORPORA):
+    for ax_r, (tag, name) in zip(axes, CORPORA):
         pairs = load_pairs(tag)
         labels = np.array([int(p["harmful"]) for p in pairs])
-
         if labels.sum() == 0 or labels.sum() == len(labels):
-            ax_r.text(0.5, 0.5, "No var.", ha="center", transform=ax_r.transAxes, fontsize=9)
-            ax_p.text(0.5, 0.5, "No var.", ha="center", transform=ax_p.transAxes, fontsize=9)
+            ax_r.text(0.5, 0.5, "No var.", ha="center",
+                      transform=ax_r.transAxes, fontsize=6)
             continue
 
         scores_map = {
@@ -754,81 +752,49 @@ def make_auroc_figure():
                 [p["max_answer_drift"] for p in pairs]
             ),
         }
-
-        try:
-            fb = json.loads((REPORTS / f"fair_budget_{tag}.json").read_text())
-            if isinstance(fb, list) and fb and "confidence" in fb[0]:
-                conf = np.array([r.get("confidence", 0.5) for r in fb])
-                if len(conf) == len(labels):
-                    scores_map["confidence_inv"] = 1.0 - conf
-        except Exception:
-            pass
-
         roc_summary[name] = {}
         roc_text_lines = []
-        pr_text_lines = []
         for mkey, scores in scores_map.items():
             label = MONITOR_LABELS.get(mkey, mkey)
             color = MONITOR_COLORS.get(mkey, "#888888")
             ls = MONITOR_LS.get(mkey, "-")
-            try:
-                fpr, tpr, _ = roc_curve(labels, scores)
-                auroc = auc(fpr, tpr)
-                ax_r.plot(fpr, tpr, color=color, ls=ls, lw=1.4, label=label)
+            fpr, tpr, _ = roc_curve(labels, scores)
+            auroc = auc(fpr, tpr)
+            ax_r.plot(fpr, tpr, color=color, ls=ls, lw=0.9, label=label)
+            roc_text_lines.append(f"{auroc:.2f}")
+            roc_summary[name][label] = {"auroc": round(auroc, 3)}
 
-                prec, rec, _ = precision_recall_curve(labels, scores)
-                auprc = auc(rec, prec)
-                ax_p.plot(rec, prec, color=color, ls=ls, lw=1.4, label=label)
+        ax_r.text(0.95, 0.06, "\n".join(roc_text_lines),
+                  transform=ax_r.transAxes, ha="right", va="bottom",
+                  fontsize=4.6, family="monospace",
+                  bbox=dict(boxstyle="round,pad=0.15", fc="white",
+                            ec="#cccccc", alpha=0.85))
+        ax_r.plot([0, 1], [0, 1], color=_GRAY, ls=":", lw=0.5, alpha=0.6)
+        ax_r.set_xlim(0, 1)
+        ax_r.set_ylim(0, 1.02)
+        ax_r.tick_params(labelsize=6)
+        ax_r.set_xticks([0, 0.5, 1.0])
+        ax_r.set_xticklabels(["0", ".5", "1"])
+        ax_r.set_yticks([0, 0.5, 1.0])
+        ax_r.grid(ls=":", alpha=0.4)
+        for sp in ("top", "right"):
+            ax_r.spines[sp].set_visible(False)
+        ax_r.set_title(name, fontsize=7, fontweight="bold")
 
-                roc_text_lines.append(f"{auroc:.2f}")
-                pr_text_lines.append(f"{auprc:.2f}")
-                roc_summary[name][label] = {"auroc": round(auroc, 3),
-                                             "auprc": round(auprc, 3)}
-            except Exception:
-                pass
-
-        if roc_text_lines:
-            ax_r.text(0.97, 0.05, "\n".join(roc_text_lines),
-                      transform=ax_r.transAxes, ha="right", va="bottom",
-                      fontsize=7.5, family="monospace",
-                      bbox=dict(boxstyle="round,pad=0.18", fc="white",
-                                ec="#cccccc", alpha=0.85))
-        if pr_text_lines:
-            ax_p.text(0.97, 0.95, "\n".join(pr_text_lines),
-                      transform=ax_p.transAxes, ha="right", va="top",
-                      fontsize=7.5, family="monospace",
-                      bbox=dict(boxstyle="round,pad=0.18", fc="white",
-                                ec="#cccccc", alpha=0.85))
-
-        ax_r.plot([0, 1], [0, 1], color=_GRAY, ls=":", lw=0.6, alpha=0.6)
-        ax_r.set_xlim(0, 1); ax_r.set_ylim(0, 1.02)
-        ax_p.set_xlim(0, 1); ax_p.set_ylim(0, 1.02)
-
-        for ax in (ax_r, ax_p):
-            ax.tick_params(labelsize=8.5)
-            ax.set_xticks([0, 0.5, 1.0])
-            ax.set_yticks([0, 0.5, 1.0])
-            ax.grid(ls=":", alpha=0.4)
-            for s in ("top", "right"):
-                ax.spines[s].set_visible(False)
-
-        ax_r.set_title(name, fontsize=10.5, fontweight="bold")
-
-    axes_roc[0].set_ylabel("TPR", fontsize=10)
-    axes_pr[0].set_ylabel("Precision", fontsize=10)
-    for ax in axes_pr:
-        ax.set_xlabel("FPR / Recall", fontsize=9.5)
-
-    handles, labels_ = axes_roc[0].get_legend_handles_labels()
+    axes[0].set_ylabel("TPR", fontsize=6.5)
+    for ax in axes:
+        ax.set_xlabel("FPR", fontsize=6.5)
+    handles, labels_ = axes[0].get_legend_handles_labels()
     if handles:
-        fig.legend(handles, labels_, loc="lower center",
-                   ncol=len(handles), fontsize=9, frameon=False,
-                   bbox_to_anchor=(0.5, -0.04), handlelength=1.8,
-                   columnspacing=1.2)
+        axes[0].legend(handles, labels_, loc="upper left",
+                       bbox_to_anchor=(-0.02, 1.04), fontsize=4.4,
+                       frameon=True, framealpha=0.9, edgecolor="none",
+                       borderpad=0.2, handlelength=1.0,
+                       labelspacing=0.2, handletextpad=0.3)
 
-    fig.tight_layout(h_pad=0.3, w_pad=0.3, rect=(0, 0.04, 1, 1))
+    fig.tight_layout()
     out = FIG_DIR / "fig_auroc.png"
-    fig.savefig(str(out), dpi=260, bbox_inches="tight")
+    fig.savefig(str(out), dpi=400, bbox_inches="tight")
     plt.close(fig)
 
     print(f"[W4] saved {out}")
@@ -836,7 +802,7 @@ def make_auroc_figure():
     for corpus, ms in roc_summary.items():
         print(f"  {corpus}:")
         for m, vals in ms.items():
-            print(f"    {m}: AUROC={vals['auroc']:.3f}  AUPRC={vals['auprc']:.3f}")
+            print(f"    {m}: AUROC={vals['auroc']:.3f}")
 
 
 if __name__ == "__main__":

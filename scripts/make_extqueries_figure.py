@@ -45,7 +45,7 @@ def main() -> int:
     x = np.arange(len(labels))
 
     _S.apply_rc(font_size=9)
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.85),
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.50),
                                    gridspec_kw={"hspace": 0.5})
 
     # ---- (a) amplification ------------------------------------------------
