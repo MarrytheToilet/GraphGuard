@@ -174,7 +174,7 @@ def risk_coverage_curve(pairs, score_fn):
 def build_figure():
     # Native single-column canvas so fonts render ~1:1 in the PDF.
     gg_style.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.15), sharey=True)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.28), sharey=True)
     for ax, (ds_name, run) in zip(axes, DATASETS):
         pairs = load_pairs(run)
         n = len(pairs)
@@ -211,7 +211,7 @@ def build_figure():
                fontsize=6.5, frameon=False, bbox_to_anchor=(0.5, -0.06),
                handlelength=1.4, columnspacing=1.0)
     fig.tight_layout()
-    fig.savefig(OUT_FIG, dpi=200, bbox_inches="tight")
+    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight")
     print("wrote", OUT_FIG)
 
 

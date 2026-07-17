@@ -285,7 +285,7 @@ def replacement_amp_crossrun() -> None:
     x = np.arange(len(rows))
     w = 0.38
 
-    fig, ax = plt.subplots(figsize=(3.5, 1.62))
+    fig, ax = plt.subplots(figsize=(3.5, 1.56))
     b1 = ax.bar(x - w/2, q1, w, color=_S.BLUE, edgecolor=_S.BLUE_DARK,
                 linewidth=0.6, label=r"$Q_1$ (single-hop)")
     b2 = ax.bar(x + w/2, q3, w, color=_S.PINK, edgecolor=_S.PINK_DARK,
@@ -621,7 +621,7 @@ def make_2d_sensitivity_figure():
     # Re-DocRED and SciERC sit at 0.00 harm / >=0.99 utility over the whole
     # grid and ship in the artifact.
     shown = [c for c in CORPORA if c[1] in ("DocRED", "BC5CDR")]
-    fig, axes = plt.subplots(2, 2, figsize=(3.5, 2.2))
+    fig, axes = plt.subplots(2, 2, figsize=(3.5, 2.05))
 
     cmap_harm = mcolors.LinearSegmentedColormap.from_list(
         "harm", ["#FFFFFF", _S.PINK, _S.PINK_DARK, "#8B2D44"])
