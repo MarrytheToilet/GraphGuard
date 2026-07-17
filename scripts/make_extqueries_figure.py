@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT))
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 
 from graphguard.viz import style as _S
@@ -40,6 +41,16 @@ def main() -> int:
     for run, label in RUNS:
         ext[label] = json.loads((REP / f"extqueries_{run}.json").read_text())["summary"]
         reg[label] = json.loads((REP / f"regimes_{run}.json").read_text())["regimes"]
+
+    # Per-corpus no-amplification reference: the lookup query Q1, whose answer set
+    # equals the edge set by construction. epsilon-damping places it below 1
+    # (mean-of-ratios); its ratio-of-means value is exactly 1.
+    amp = json.loads((REP / "amp_ci.json").read_text())
+    q1_run = {"DocRED": "docred__deepseek-v4-flash__300d",
+              "Re-DocRED": "redocred__deepseek-v4-flash__300d",
+              "SciERC": "scierc__deepseek-v4-flash__100d",
+              "BC5CDR": "cdr__deepseek-v4-flash__300d"}
+    q1_ref = {l: amp[r]["Q1_single_edge"]["amp_mean"] for l, r in q1_run.items()}
 
     labels = [l for _, l in RUNS]
     x = np.arange(len(labels))
@@ -64,12 +75,17 @@ def main() -> int:
             ax1.errorbar(x + (i - 1) * w, vals, yerr=err, fmt="none",
                          ecolor=_S.BLACK, elinewidth=0.7, capsize=1.5)
         _S.annotate_bars(ax1, bars, vals, fmt="{:.2f}", fontsize=6)
-    ax1.axhline(1.0, color=_S.GRAY, linestyle="--", linewidth=0.8)
+    for i, l in enumerate(labels):
+        ax1.hlines(q1_ref[l], x[i] - 1.6 * w, x[i] + 1.6 * w,
+                   color=_S.GRAY, linestyle="--", linewidth=0.8, zorder=0)
     ax1.set_xticks(x); ax1.set_xticklabels(labels)
     ax1.set_ylabel(r"$\overline{\mathrm{Amp}}(Q)$")
     ax1.set_ylim(0, 1.92)
-    ax1.legend(fontsize=6.5, ncol=3, frameon=False, loc="upper center",
-               bbox_to_anchor=(0.5, 1.03), handlelength=1.0, columnspacing=1.0)
+    handles, labs = ax1.get_legend_handles_labels()
+    handles.append(Line2D([0], [0], color=_S.GRAY, linestyle="--", linewidth=0.8))
+    labs.append(r"$Q_1$ ref.")
+    ax1.legend(handles, labs, fontsize=6.5, ncol=4, frameon=False, loc="upper center",
+               bbox_to_anchor=(0.5, 1.06), handlelength=1.0, columnspacing=0.8)
     ax1.set_title("(a) Extended-template amplification", fontsize=9, fontweight="bold")
     _S.despine(ax1)
 
