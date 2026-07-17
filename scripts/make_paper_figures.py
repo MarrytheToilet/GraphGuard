@@ -285,7 +285,7 @@ def replacement_amp_crossrun() -> None:
     x = np.arange(len(rows))
     w = 0.38
 
-    fig, ax = plt.subplots(figsize=(3.5, 1.9))
+    fig, ax = plt.subplots(figsize=(3.5, 1.62))
     b1 = ax.bar(x - w/2, q1, w, color=_S.BLUE, edgecolor=_S.BLUE_DARK,
                 linewidth=0.6, label=r"$Q_1$ (single-hop)")
     b2 = ax.bar(x + w/2, q3, w, color=_S.PINK, edgecolor=_S.PINK_DARK,
@@ -308,7 +308,6 @@ def replacement_amp_crossrun() -> None:
     ax.set_ylim(0, y_top)
     ax.set_ylabel(r"$\overline{\mathrm{Amp}}$", fontsize=9)
     ax.tick_params(axis="y", labelsize=7)
-    ax.set_title("Cross-run query amplification", fontsize=9, fontweight="bold")
     fig.legend([b1, b2],
                [r"$Q_1$ (single-hop)", r"$Q_3$ (join, 95% CI)"],
                loc="lower center", ncol=2, fontsize=7, frameon=False,
@@ -612,25 +611,40 @@ def make_noise_floor_figure():
 # ──────────────────────────────────────────────────────────────────────────────
 
 def make_2d_sensitivity_figure():
-    _S.apply_rc(font_size=10)
-    TAU_G = [0.20, 0.30, 0.40, 0.45, 0.50, 0.60]
-    TAU_Q = [0.50, 0.60, 0.70, 0.80, 0.90]
+    # Native single-column canvas, corpora as rows and {harm, utility} as
+    # columns, so every annotated cell stays legible in print.
+    _S.apply_rc(font_size=7)
+    TAU_G = [0.20, 0.30, 0.45, 0.60]
+    TAU_Q = [0.50, 0.70, 0.90]
 
-    # Single-column 2x4 grid: keep canvas narrow so native fonts dominate.
-    fig, axes = plt.subplots(2, 4, figsize=(7.6, 4.4))
-    axes_harm = axes[0]
-    axes_util = axes[1]
+    # DocRED and BC5CDR are the two corpora with nontrivial grid structure;
+    # Re-DocRED and SciERC sit at 0.00 harm / >=0.99 utility over the whole
+    # grid and ship in the artifact.
+    shown = [c for c in CORPORA if c[1] in ("DocRED", "BC5CDR")]
+    fig, axes = plt.subplots(2, 2, figsize=(3.5, 2.2))
 
-    # Clean monochrome ramps consistent with the rest of the paper:
-    # harm uses a single warm hue (white -> dark pink), utility uses cool hue
-    # (white -> dark blue). Both go from neutral background to saturated edge,
-    # avoiding multi-hue gradients that read as muddy.
     cmap_harm = mcolors.LinearSegmentedColormap.from_list(
         "harm", ["#FFFFFF", _S.PINK, _S.PINK_DARK, "#8B2D44"])
     cmap_util = mcolors.LinearSegmentedColormap.from_list(
         "util", ["#FFFFFF", _S.BLUE, _S.BLUE_DARK, "#1F4F70"])
 
-    for ax_h, ax_u, (tag, name) in zip(axes_harm, axes_util, CORPORA):
+    def _draw_heatmap(ax, grid, cmap, vmin=0, vmax=1):
+        ax.imshow(grid, cmap=cmap, vmin=vmin, vmax=vmax,
+                  aspect="auto", interpolation="nearest")
+        ax.set_xticks(range(len(TAU_Q)))
+        ax.set_xticklabels([f"{t:.1f}" for t in TAU_Q], fontsize=6.5)
+        ax.set_yticks(range(len(TAU_G)))
+        ax.set_yticklabels([f"{t:.2f}" for t in TAU_G], fontsize=6.5)
+        for i in range(len(TAU_G)):
+            for j in range(len(TAU_Q)):
+                v = grid[i, j]
+                thresh = vmin + 0.55 * (vmax - vmin)
+                ax.text(j, i, f"{v:.2f}", ha="center", va="center",
+                        fontsize=6.5,
+                        color="white" if v > thresh else _BLACK,
+                        fontweight="bold")
+
+    for row, (tag, name) in enumerate(shown):
         pairs = load_pairs(tag)
         gd = np.array([p["graph_drift"] for p in pairs])
         aq = np.array([p["max_answer_drift"] for p in pairs])
@@ -638,65 +652,41 @@ def make_2d_sensitivity_figure():
 
         harm_grid = np.zeros((len(TAU_G), len(TAU_Q)))
         util_grid = np.zeros((len(TAU_G), len(TAU_Q)))
-
         for i, tg in enumerate(TAU_G):
             for j, tq in enumerate(TAU_Q):
                 blocked = (gd > tg) | (aq > tq)
                 published = ~blocked
                 n_pub = published.sum()
-                n_harmful_pub = (published & (harm == 1)).sum()
-                harm_grid[i, j] = n_harmful_pub / max(n_pub, 1)
-                benign = harm == 0
-                n_benign_pub = (published & benign).sum()
-                util_grid[i, j] = n_benign_pub / max(benign.sum(), 1)
+                harm_grid[i, j] = (published & (harm == 1)).sum() / max(n_pub, 1)
+                # retained utility: mean per-pair 1-|dF1| over published pairs
+                df1 = np.array([abs(p["mean_df1"]) for p in pairs])
+                util_grid[i, j] = ((1.0 - df1)[published].mean()
+                                   if n_pub else 0.0)
 
-        def _draw_heatmap(ax, grid, cmap, vmin=0, vmax=1):
-            im = ax.imshow(grid, cmap=cmap, vmin=vmin, vmax=vmax,
-                           aspect="auto", interpolation="nearest")
-            ax.set_xticks(range(len(TAU_Q)))
-            ax.set_xticklabels([f"{t:.1f}" for t in TAU_Q], fontsize=9)
-            ax.set_yticks(range(len(TAU_G)))
-            ax.set_yticklabels([f"{t:.1f}" for t in TAU_G], fontsize=9)
-            for i in range(len(TAU_G)):
-                for j in range(len(TAU_Q)):
-                    v = grid[i, j]
-                    ax.text(j, i, f"{v:.2f}", ha="center", va="center",
-                            fontsize=7.0,
-                            color="white" if v > 0.55 else _BLACK,
-                            fontweight="bold")
-            return im
-
+        ax_h, ax_u = axes[row]
         _draw_heatmap(ax_h, harm_grid, cmap_harm)
-        _draw_heatmap(ax_u, util_grid, cmap_util)
+        _draw_heatmap(ax_u, util_grid, cmap_util, vmin=0.90, vmax=1.0)
+        ax_h.set_ylabel(name + "\n" + r"$\tau_g$", fontsize=7, fontweight="bold")
+        if row == 0:
+            ax_h.set_title("Published-harm rate", fontsize=8, fontweight="bold")
+            ax_u.set_title("Retained utility", fontsize=8, fontweight="bold")
+        if row == len(shown) - 1:
+            ax_h.set_xlabel(r"$\tau_q$", fontsize=7)
+            ax_u.set_xlabel(r"$\tau_q$", fontsize=7)
 
-        ax_h.set_title(name, fontsize=11, fontweight="bold")
-        ax_u.set_xlabel(r"$\tau_q$", fontsize=10)
-        if ax_h is axes_harm[0]:
-            ax_h.set_ylabel(r"$\tau_g$" + "\n(Harm rate)", fontsize=10)
-        if ax_u is axes_util[0]:
-            ax_u.set_ylabel(r"$\tau_g$" + "\n(Utility)", fontsize=10)
-
-    # Gold star at default operating point τ_g=0.45, τ_q=0.70 (matches Table 9).
-    for ax_h, ax_u in zip(axes_harm, axes_util):
-        # Find the closest grid cell to (0.45, 0.70).
-        r = min(range(len(TAU_G)), key=lambda i: abs(TAU_G[i] - 0.45))
-        c = min(range(len(TAU_Q)), key=lambda j: abs(TAU_Q[j] - 0.70))
+        # Gold box at the operating point tau_g=0.45, tau_q=0.70.
+        r = TAU_G.index(0.45)
+        c = TAU_Q.index(0.70)
         for ax in (ax_h, ax_u):
             ax.add_patch(plt.Rectangle((c - 0.45, r - 0.45), 0.9, 0.9,
                                        fill=False, edgecolor="#D4A017",
-                                       linewidth=1.6, zorder=5))
+                                       linewidth=1.4, zorder=5))
 
-    fig.suptitle(
-        r"Gate sensitivity to $(\tau_g,\tau_q)$: harm (top), utility (bottom). "
-        r"$\bigstar$ = paper's operating point",
-        fontsize=10.5, y=1.01
-    )
-    fig.tight_layout(h_pad=0.6, w_pad=0.4)
+    fig.tight_layout(h_pad=0.6, w_pad=0.5)
     out = FIG_DIR / "fig_2d_sensitivity.png"
     fig.savefig(str(out), dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"[W3] saved {out}")
-
 
 # ──────────────────────────────────────────────────────────────────────────────
 # W4: AUROC + AUPRC figure

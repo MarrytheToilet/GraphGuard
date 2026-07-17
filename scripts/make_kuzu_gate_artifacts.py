@@ -172,9 +172,9 @@ def risk_coverage_curve(pairs, score_fn):
 
 
 def build_figure():
-    gg_style.apply_rc(font_size=10)
-    # Same canvas/spec as Figure 6 (noise floor): scaled to \linewidth.
-    fig, axes = plt.subplots(1, 4, figsize=(7.6, 2.6), sharey=True)
+    # Native single-column canvas so fonts render ~1:1 in the PDF.
+    gg_style.apply_rc(font_size=7)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.15), sharey=True)
     for ax, (ds_name, run) in zip(axes, DATASETS):
         pairs = load_pairs(run)
         n = len(pairs)
@@ -199,16 +199,17 @@ def build_figure():
         ax.axhline(base_harm_rate, color=gg_style.BLACK, ls="--", lw=0.6, alpha=0.5)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, max(0.5, base_harm_rate * 1.2))
-        ax.set_title(ds_name, fontsize=11, fontweight="bold")
-        ax.tick_params(labelsize=9)
+        ax.set_title(ds_name, fontsize=7, fontweight="bold")
+        ax.tick_params(labelsize=6)
         ax.set_xticks([0, 0.5, 1.0])
-        ax.set_xlabel("Published coverage", fontsize=10)
+        ax.set_xlabel("Pub. coverage", fontsize=6.5)
         ax.grid(alpha=0.3, ls=":")
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
-    axes[0].set_ylabel("Pub. harm rate", fontsize=10)
+    axes[0].set_ylabel("Pub. harm rate", fontsize=6.5)
     fig.legend(line_handles, line_labels, loc="lower center", ncol=3,
-               fontsize=9.5, frameon=False, bbox_to_anchor=(0.5, -0.04))
+               fontsize=6.5, frameon=False, bbox_to_anchor=(0.5, -0.06),
+               handlelength=1.4, columnspacing=1.0)
     fig.tight_layout()
     fig.savefig(OUT_FIG, dpi=200, bbox_inches="tight")
     print("wrote", OUT_FIG)

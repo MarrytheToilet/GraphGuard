@@ -144,8 +144,9 @@ def main():
         "budgets": BUDGETS,
         "datasets": {ds: {m: agg[ds][m].tolist() for m in agg[ds]} for ds in agg},
     }, indent=2))
-    gg_style.apply_rc(font_size=10)
-    fig, axes = plt.subplots(1, 4, figsize=(7.6, 2.6), sharey=True)
+    # Native single-column canvas so fonts render ~1:1 in the PDF.
+    gg_style.apply_rc(font_size=7)
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.36), sharey=True)
     line_handles = None
     line_labels = None
     for ax, (ds_name, _) in zip(axes, DATASETS):
@@ -165,17 +166,18 @@ def main():
         ax.plot([0, 1], [0, 1], color=gg_style.GRAY_LIGHT, lw=0.6, zorder=0)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1.02)
-        ax.set_title(ds_name, fontsize=11, fontweight="bold")
+        ax.set_title(ds_name, fontsize=7, fontweight="bold")
         ax.tick_params(labelsize=9)
         ax.set_xticks([0, 0.5, 1.0])
         ax.set_yticks([0, 0.5, 1.0])
-        ax.set_xlabel("Budget (frac.)", fontsize=10)
+        ax.set_xlabel("Budget (frac.)", fontsize=6.5)
         ax.grid(alpha=0.3, ls=":")
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
-    axes[0].set_ylabel("Harm recall", fontsize=10)
+    axes[0].set_ylabel("Harm recall", fontsize=6.5)
     fig.legend(line_handles, line_labels, loc="lower center", ncol=4,
-               fontsize=9.5, frameon=False, bbox_to_anchor=(0.5, -0.04))
+               fontsize=6.0, frameon=False, bbox_to_anchor=(0.5, -0.06),
+               handlelength=1.2, columnspacing=0.8)
     fig.tight_layout(w_pad=0.4)
     fig.savefig(OUT_FIG, dpi=200, bbox_inches="tight")
     print("wrote", OUT_FIG)
