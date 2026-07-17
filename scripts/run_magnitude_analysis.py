@@ -363,8 +363,9 @@ def make_figure(runs: list[str]) -> None:
     if not data:
         return
 
-    _S.apply_rc(font_size=9)
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.25))
+    _S.apply_rc(font_size=10)
+    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.25),
+                             gridspec_kw={"width_ratios": [1.35, 1]})
 
     # -- Panel A: presentation-level saturation (kind, not degree) ----------
     ax = axes[0]
@@ -390,13 +391,16 @@ def make_figure(runs: list[str]) -> None:
         for x, v in zip(xs, vals):
             if v:
                 ax.text(x, v + 0.015, f"{v:.2f}", rotation=90,
-                        ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
+                        ha="center", va="bottom", fontsize=6, color=_S.BLACK)
     ax.set_xticks([j + w * (len(data) - 1) / 2 for j in range(len(cats))])
     ax.set_xticklabels(["rerun\n(no-op)", "schema\npres.", "prompt\n(1 clause)", "evidence"])
-    ax.set_ylabel("mean graph drift", fontsize=9)
-    ax.set_title("Presentation families: kind, not degree", fontsize=9, fontweight="bold")
-    ax.set_ylim(0, 1.0)
-    ax.legend(fontsize=7, ncol=2, frameon=False, loc="upper left")
+    ax.set_ylabel("mean graph drift", fontsize=10)
+    ax.set_title("Presentation families: kind, not degree", fontsize=10, fontweight="bold")
+    ax.set_ylim(0, 1.14)
+    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
+    ax.legend(fontsize=7.5, ncol=4, frameon=False, loc="upper left",
+              handlelength=1.0, columnspacing=0.7, handletextpad=0.4,
+              borderaxespad=0.1)
     _S.despine(ax)
 
     # -- Panel B: semantic dose-response (removal-type edits only) ----------
@@ -429,10 +433,10 @@ def make_figure(runs: list[str]) -> None:
     # BC5CDR's single point (x=1.0) is "drop the only CID relation";
     # explained in the figure caption rather than an in-axes annotation.
     ax.set_xscale("log")
-    ax.set_xlabel("fraction of schema relations edited", fontsize=9)
-    ax.set_ylabel("mean graph drift", fontsize=9)
-    ax.set_title("Semantic edits: dose–response", fontsize=9, fontweight="bold")
-    ax.legend(fontsize=7, frameon=False, loc="lower right")
+    ax.set_xlabel("fraction of schema\nrelations edited", fontsize=10)
+    ax.set_ylabel("mean graph drift", fontsize=10)
+    ax.set_title("Semantic edits: dose–response", fontsize=10, fontweight="bold")
+    ax.legend(fontsize=8, frameon=False, loc="lower right")
     _S.despine(ax)
 
     out = ROOT / "assets" / "figures" / "fig_magnitude.png"
