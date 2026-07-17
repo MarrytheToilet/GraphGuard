@@ -67,9 +67,9 @@ def main() -> int:
     ax1.axhline(1.0, color=_S.GRAY, linestyle="--", linewidth=0.8)
     ax1.set_xticks(x); ax1.set_xticklabels(labels)
     ax1.set_ylabel(r"$\overline{\mathrm{Amp}}(Q)$")
-    ax1.set_ylim(0, 1.55)
-    ax1.legend(fontsize=7, ncol=3, frameon=False, loc="upper left",
-               handlelength=1.0, columnspacing=0.9)
+    ax1.set_ylim(0, 1.92)
+    ax1.legend(fontsize=6.5, ncol=3, frameon=False, loc="upper center",
+               bbox_to_anchor=(0.5, 1.03), handlelength=1.0, columnspacing=1.0)
     ax1.set_title("(a) Extended-template amplification", fontsize=9, fontweight="bold")
     _S.despine(ax1)
 
@@ -96,7 +96,7 @@ def main() -> int:
     ax2.set_ylabel("detector F1")
     ax2.set_ylim(0.46, 1.02)
     ax2.legend(fontsize=6.5, ncol=2, frameon=False, loc="lower right",
-               handletextpad=0.3, columnspacing=0.8)
+               bbox_to_anchor=(1.0, 0.0), handletextpad=0.3, columnspacing=0.8)
     ax2.set_title("(b) Workload-visible harm: graph-only vs. query-aware", fontsize=9, fontweight="bold")
     _S.despine(ax2)
 

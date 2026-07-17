@@ -146,7 +146,7 @@ def main():
     }, indent=2))
     # Native single-column canvas so fonts render ~1:1 in the PDF.
     gg_style.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.60), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.62), sharey=True,
                              gridspec_kw={"wspace": 0.20})
     line_handles = None
     line_labels = None
@@ -177,15 +177,13 @@ def main():
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
     axes[0].set_ylabel("Harm recall", fontsize=6.5)
-    short = {"Random": "Rand.", "Family-bal.": "Fam-bal.",
-             "Greedy": "Greedy", "Oracle (UB)": "Oracle"}
-    axes[0].legend(line_handles, [short.get(l, l) for l in line_labels],
-                   loc="lower right", fontsize=4.4, frameon=True,
-                   framealpha=0.9, edgecolor="none", borderpad=0.2,
-                   handlelength=0.9, borderaxespad=0.1, labelspacing=0.2,
-                   handletextpad=0.3)
     fig.tight_layout(w_pad=0.4)
-    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight")
+    leg = fig.legend(line_handles, line_labels, loc="upper center", ncol=4,
+                     bbox_to_anchor=(0.5, -0.46), bbox_transform=fig.transFigure,
+                     fontsize=6, frameon=False, handlelength=1.5,
+                     columnspacing=1.5, handletextpad=0.4)
+    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight",
+                bbox_extra_artists=[leg])
     print("wrote", OUT_FIG)
     # Print summary headline numbers.
     for ds_name, _ in DATASETS:

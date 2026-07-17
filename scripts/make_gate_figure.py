@@ -68,11 +68,11 @@ def panel(ax, data, ylabel, ylim, annotate=True):
 
 def main() -> int:
     _S.apply_rc(font_size=9)
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 1.98),
-                                   gridspec_kw={"hspace": 0.62})
-    panel(ax1, HARM, "pub. harm rate", (0, 0.58))
-    ax1.legend(fontsize=7, ncol=3, frameon=False, loc="upper left",
-               handlelength=1.0, columnspacing=0.8)
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.05),
+                                   gridspec_kw={"hspace": 0.85})
+    panel(ax1, HARM, "pub. harm rate", (0, 0.72))
+    ax1.legend(fontsize=6.5, ncol=3, frameon=False, loc="upper center",
+               bbox_to_anchor=(0.5, 1.02), handlelength=1.0, columnspacing=1.0)
     ax1.set_title("(a) Harm among published graphs", fontsize=8, fontweight="bold", pad=4)
     panel(ax2, UTIL, "utility", (0.75, 1.09))
     ax2.axhline(1.0, color=_S.GRAY, linestyle=":", linewidth=0.7)

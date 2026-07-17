@@ -761,14 +761,14 @@ def make_auroc_figure():
             fpr, tpr, _ = roc_curve(labels, scores)
             auroc = auc(fpr, tpr)
             ax_r.plot(fpr, tpr, color=color, ls=ls, lw=0.9, label=label)
-            roc_text_lines.append(f"{auroc:.2f}")
+            roc_text_lines.append((auroc, color))
             roc_summary[name][label] = {"auroc": round(auroc, 3)}
 
-        ax_r.text(0.95, 0.06, "\n".join(roc_text_lines),
-                  transform=ax_r.transAxes, ha="right", va="bottom",
-                  fontsize=4.6, family="monospace",
-                  bbox=dict(boxstyle="round,pad=0.15", fc="white",
-                            ec="#cccccc", alpha=0.85))
+        for j, (val, col) in enumerate(roc_text_lines):
+            ax_r.text(0.97, 0.05 + (len(roc_text_lines) - 1 - j) * 0.14,
+                      f"{val:.2f}", transform=ax_r.transAxes, ha="right",
+                      va="bottom", fontsize=5.5, fontweight="bold",
+                      family="monospace", color=col)
         ax_r.plot([0, 1], [0, 1], color=_GRAY, ls=":", lw=0.5, alpha=0.6)
         ax_r.set_xlim(0, 1)
         ax_r.set_ylim(0, 1.02)
@@ -784,13 +784,8 @@ def make_auroc_figure():
     axes[0].set_ylabel("TPR", fontsize=6.5)
     for ax in axes:
         ax.set_xlabel("FPR", fontsize=6.5)
-    handles, labels_ = axes[0].get_legend_handles_labels()
-    if handles:
-        axes[0].legend(handles, labels_, loc="upper left",
-                       bbox_to_anchor=(-0.02, 1.04), fontsize=4.4,
-                       frameon=True, framealpha=0.9, edgecolor="none",
-                       borderpad=0.2, handlelength=1.0,
-                       labelspacing=0.2, handletextpad=0.3)
+    # legend omitted: the in-panel AUROC numbers are color-coded to the curves
+    #   (blue = graph drift, pink = answer-set drift, green = GraphGuard gate).
 
     fig.tight_layout()
     out = FIG_DIR / "fig_auroc.png"
