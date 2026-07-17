@@ -69,14 +69,14 @@ def panel(ax, data, ylabel, ylim, annotate=True):
 def main() -> int:
     _S.apply_rc(font_size=9)
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.35),
-                                   gridspec_kw={"hspace": 0.5})
-    panel(ax1, HARM, "published-harm rate", (0, 0.50))
+                                   gridspec_kw={"hspace": 0.62})
+    panel(ax1, HARM, "pub. harm rate", (0, 0.58))
     ax1.legend(fontsize=7, ncol=3, frameon=False, loc="upper left",
                handlelength=1.0, columnspacing=0.8)
-    ax1.set_title("(a) Harm among published graphs", fontsize=9, fontweight="bold")
-    panel(ax2, UTIL, "retained utility", (0.75, 1.06), annotate=False)
+    ax1.set_title("(a) Harm among published graphs", fontsize=8, fontweight="bold", pad=4)
+    panel(ax2, UTIL, "utility", (0.75, 1.06), annotate=False)
     ax2.axhline(1.0, color=_S.GRAY, linestyle=":", linewidth=0.7)
-    ax2.set_title("(b) Retained utility", fontsize=9, fontweight="bold")
+    ax2.set_title("(b) Retained utility", fontsize=8, fontweight="bold", pad=4)
 
     out = ROOT / "assets" / "figures" / "fig_gate.png"
     _S.save_fig(fig, out)
