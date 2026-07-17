@@ -8,6 +8,8 @@
 
 **📜 Drift contracts · 🧩 Lineage-based counterfactuals · 🚦 Kuzu release gate**
 
+📄 Paper: *Drift Contracts for Stochastic Graph Views Extracted by LLMs* \[Experiment, Analysis & Benchmark\]
+
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Kuzu](https://img.shields.io/badge/Kuzu-0.4+-orange.svg)](https://kuzudb.com/)
 [![License](https://img.shields.io/badge/License-Research-green.svg)](#)
@@ -40,17 +42,19 @@ GraphGuard has three layers.
 
 ### 1. 📐 Stochastic graph views and drift contracts
 
-Each extraction is modelled as a sample from a configuration-conditioned distribution $P(G \mid C, \theta)$ over graph views. A **drift contract** $\mathcal{K} = (\mathcal{F}, \mathcal{M}, \tau, \alpha, \kappa)$ specifies a perturbation family $\mathcal{F}$ (e.g. schema-presentation, prompt paraphrase, decoding resample), a metric $\mathcal{M}$ (edge Jaccard, type agreement, answer-set drift, …), a tolerance $\tau$, a population budget $\alpha$, and a severity $\kappa$. The paper instantiates six families:
+Each extraction is modelled as a sample from a configuration-conditioned distribution $P(G \mid C, \theta)$ over graph views. A **drift contract** $\mathcal{K} = (\mathcal{F}, \mathcal{M}, \tau, \alpha, \kappa)$ specifies a perturbation family $\mathcal{F}$ (e.g. schema-presentation, prompt paraphrase, decoding resample), a metric $\mathcal{M}$ (edge Jaccard, type agreement, answer-set drift, …), a tolerance $\tau$, a population budget $\alpha$, and a severity $\kappa$. The default catalogue (paper Table 1):
 
-| ID  | Contract                       | Perturbation                                          |
-| --- | ------------------------------ | ----------------------------------------------------- |
-| K1  | Schema-presentation invariance | Relation reorder / rename, keeping semantics fixed    |
-| K1b | Prompt-paraphrase invariance   | Paraphrased prompt template                           |
-| K1c | Schema-description invariance  | Added / removed schema descriptions                   |
-| K2  | Evidence-presentation invariance | Sentence reorder, entity-alias substitution         |
-| K3  | Evidence-masking robustness    | Removing irrelevant sentences                         |
-| K4  | Query-answer robustness        | Answer-set drift across lookup / neighbor / join / two-hop |
-| K6  | Decoding-resample stability    | Repeated extraction at temperature 0.2                |
+| ID    | Operator expectation                                | Perturbation family / metric                          |
+| ----- | --------------------------------------------------- | ----------------------------------------------------- |
+| K1    | Schema names and order should not change the view   | `schema_rename`, `schema_reorder` (invariance)        |
+| K1b   | Schema descriptions should not change the view      | `schema_desc` (invariance)                            |
+| K1c   | Schema edits should have bounded graph drift        | `schema_coarse`, `schema_drop` (bounded drift)        |
+| K2    | Prompt presentation should preserve the view        | `prompt_tone`, `persona`, `schema_first` (invariance) |
+| K3    | Evidence order and aliases should preserve the view | `entity_alias`, `evidence_reorder` (invariance)       |
+| K4    | Join-query drift should remain bounded              | answer-set drift on Q3 (bounded, query-level)         |
+| K4b–d | Path / aggregation / RAG-retrieval drift bounded    | answer-set drift on Q5–Q7 (bounded, query-level)      |
+| K5    | Model replacement should not cause large recall drift | `model_swap`, per-document \|Δrecall\| (bounded)    |
+| K6    | Repeated extraction should produce a stable view    | `decoding_resample` (invariance)                      |
 
 ### 2. 🧩 Lineage layer and paired counterfactuals
 
@@ -70,7 +74,7 @@ When document, schema, prompt, evidence, model, seed, and output format are all 
 
 ### ⚠️ Most stability contracts fail under default tolerances
 
-On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1), schema-description (K1c), prompt-presentation (K1b), and decoding-resample (K6) contracts all have **violation rates above 0.90**; evidence-presentation invariance (K3) stays lower but still violates its budget at 0.64. The query-level robustness contract reaches a violation rate of 0.93 on join queries, and cross-model recall stability is the only contract that stays low (0.13).
+On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), and decoding-resample (K6, 0.92) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. The join-query robustness contract (K4) is violated on 0.89 of pairs, while cross-model recall stability (K5) is the only contract that stays clean (0.00).
 
 <div align="center">
   <img src="assets/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
