@@ -74,7 +74,7 @@ When document, schema, prompt, evidence, model, seed, and output format are all 
 
 ### ⚠️ Most stability contracts fail under default tolerances
 
-On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), and decoding-resample (K6, 0.92) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. The join-query robustness contract (K4) is violated on 0.89 of pairs, while cross-model recall stability (K5) is the only contract that stays clean (0.00).
+On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), join-query robustness (K4, 0.93), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) is the only contract that stays low (0.13), matching the paper's Table 4.
 
 <div align="center">
   <img src="assets/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
