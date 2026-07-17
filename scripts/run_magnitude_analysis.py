@@ -387,11 +387,15 @@ def make_figure(runs: list[str]) -> None:
         ax.bar(xs, [v or 0 for v in vals], width=w * 0.9,
                color=fills[i % len(fills)], edgecolor=colors[i % len(colors)],
                linewidth=0.8, label=label.get(corpus, corpus))
+        for x, v in zip(xs, vals):
+            if v:
+                ax.text(x, v + 0.015, f"{v:.2f}", rotation=90,
+                        ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
     ax.set_xticks([j + w * (len(data) - 1) / 2 for j in range(len(cats))])
     ax.set_xticklabels(["rerun\n(no-op)", "schema\npres.", "prompt\n(1 clause)", "evidence"])
     ax.set_ylabel("mean graph drift", fontsize=9)
     ax.set_title("Presentation families: kind, not degree", fontsize=9, fontweight="bold")
-    ax.set_ylim(0, 0.95)
+    ax.set_ylim(0, 1.0)
     ax.legend(fontsize=7, ncol=2, frameon=False, loc="upper left")
     _S.despine(ax)
 

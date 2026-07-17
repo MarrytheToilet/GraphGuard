@@ -74,7 +74,7 @@ def main() -> int:
     ax1.legend(fontsize=7, ncol=3, frameon=False, loc="upper left",
                handlelength=1.0, columnspacing=0.8)
     ax1.set_title("(a) Harm among published graphs", fontsize=8, fontweight="bold", pad=4)
-    panel(ax2, UTIL, "utility", (0.75, 1.06), annotate=False)
+    panel(ax2, UTIL, "utility", (0.75, 1.09))
     ax2.axhline(1.0, color=_S.GRAY, linestyle=":", linewidth=0.7)
     ax2.set_title("(b) Retained utility", fontsize=8, fontweight="bold", pad=4)
 
