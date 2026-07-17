@@ -155,12 +155,12 @@ def main():
         local_handles = []
         local_labels = []
         for m, label, kw in [
-            ("random",   "Random",         dict(color=gg_style.GRAY,       ls=":",  lw=1.2)),
-            ("balanced", "Family-bal.",    dict(color=gg_style.BLUE_DARK,  ls="--", lw=1.2)),
-            ("greedy",   "Greedy",         dict(color=gg_style.PINK_DARK,            lw=1.5)),
-            ("oracle",   "Oracle (UB)",    dict(color=gg_style.GREEN_DARK, ls="-.", lw=1.2)),
+            ("random",   "Random",         dict(color=gg_style.GRAY,       ls=":",  lw=0.9)),
+            ("balanced", "Family-bal.",    dict(color=gg_style.BLUE_DARK,  ls="--", lw=0.9)),
+            ("greedy",   "Greedy",         dict(color=gg_style.PINK_DARK,            lw=1.1)),
+            ("oracle",   "Oracle (UB)",    dict(color=gg_style.GREEN_DARK, ls="-.", lw=0.9)),
         ]:
-            (ln,) = ax.plot(BUDGETS, r[m], marker="o", markersize=3.4, **kw)
+            (ln,) = ax.plot(BUDGETS, r[m], marker="o", markersize=1.8, **kw)
             local_handles.append(ln); local_labels.append(label)
         if line_handles is None:
             line_handles, line_labels = local_handles, local_labels
