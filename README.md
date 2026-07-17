@@ -74,7 +74,7 @@ When document, schema, prompt, evidence, model, seed, and output format are all 
 
 ### ⚠️ Most stability contracts fail under default tolerances
 
-On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), join-query robustness (K4, 0.93), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) is the only contract that stays low (0.13), matching the paper's Table 4.
+On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), join-query robustness (K4, 0.93), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) is the only contract that stays low (0.14), matching the paper's Table 4.
 
 <div align="center">
   <img src="assets/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
@@ -112,12 +112,12 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 
 ### 🔁 Queries can amplify or absorb graph drift
 
-Graph-level drift does not translate uniformly into query-answer drift. On the DocRED primary run, **join-query amplification reaches 1.32 (95% bootstrap CI [1.25, 1.40])**, while lookup, neighbor, and two-hop queries absorb part of the edge drift. Schema-density matters: on the sparser SciERC and BC5CDR schemas, join amplification falls to 0.68 and 0.02, because paired join answers are often empty on both sides. Query-visible drift depends on **both schema density and query topology**.
+Graph-level drift does not translate uniformly into query-answer drift. On the DocRED primary run, **join-query amplification reaches 1.32 (95% bootstrap CI [1.25, 1.40])**, while neighbor and two-hop queries absorb part of the edge drift (the single-edge lookup Q1 reproduces the edge set and serves as the no-amplification reference). Schema-density matters: on the sparser SciERC and BC5CDR schemas, join amplification falls to 0.68 and 0.02, because paired join answers are often empty on both sides. Query-visible drift depends on **both schema density and query topology**.
 
 <div align="center">
   <img src="assets/figures/fig_amp_crossrun.png" alt="Cross-run query amplification" width="92%">
   <br/>
-  <sub><b>Query amplification.</b> Lookup and join amplification across the paper runs; the dashed line marks no amplification. Join amplification stays above 1 on the DocRED family.</sub>
+  <sub><b>Query amplification.</b> Lookup (Q1) and join (Q3) amplification across the paper runs; the dashed line marks Amp=1, while the lookup Q1 is the empirical no-amplification reference (ε-damping places it below 1). Join amplification stays above 1 on the DocRED family.</sub>
 </div>
 
 ### 🎯 Drift signals predict harmful query regression
@@ -127,12 +127,12 @@ On 3,921 gold-annotated paired comparisons with at least one non-empty answer, t
 <div align="center">
   <img src="assets/figures/fig_auroc.png" alt="ROC and PR curves" width="92%">
   <br/>
-  <sub><b>Threshold-free harmful-regression detection.</b> Answer-set drift is a stronger predictor than graph drift; the combined GraphGuard gate follows the answer-side curve.</sub>
+  <sub><b>Threshold-free harmful-regression detection.</b> Answer-set drift is the stronger predictor on three of the four corpora (SciERC ties); the combined GraphGuard gate follows the stronger curve.</sub>
 </div>
 
 ### 🚦 Kuzu release gate reduces direct violations with gold-free signals
 
-Deployed as a release gate before Kuzu ingestion, GraphGuard uses only gold-free signals (edge-set drift and Cypher answer-set drift) to publish or block each counterfactual graph. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **18–31% of evaluated pairs are true regressions**; the gate cuts published harm to **0–4% at retained utility 0.97–1.00**, while a block-rate-matched random gate still leaks 20–41%. Under a strict 50/50 document-level calibration/deployment split (thresholds selected on the calibration half only, then frozen), held-out published harm stays at 0–6% (`reports/cross_run/gate_split.json`).
+Deployed as a release gate before Kuzu ingestion, GraphGuard uses only gold-free signals (edge-set drift and Cypher answer-set drift) to publish or block each counterfactual graph. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **18–31% of evaluated pairs are true regressions**; the gate cuts published harm to **0–4% at retained utility 0.97–1.00**, while a block-rate-matched random gate still leaks 20–41%. Under a strict 50/50 document-level calibration/deployment split, holding the operating point fixed at (τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70) gives held-out published harm of **0–8%** (BC5CDR 7.6%, the other three corpora ≤ 2.4%) at retained utility ≥ 0.96; letting the calibration half re-select thresholds gives 0–6% (`reports/cross_run/gate_split.json`).
 
 <div align="center">
   <img src="assets/figures/fig_riskcoverage.png" alt="Risk-coverage of the Kuzu gate" width="80%">
@@ -230,13 +230,13 @@ python scripts/run_magnitude_analysis.py --fig-only
 # Extended-query + regime figure (paper Fig. 9)
 python scripts/make_extqueries_figure.py
 
-# Release-gate outcome bars (paper Fig. 10)
+# Release-gate outcome bars (paper Fig. 11)
 python scripts/make_gate_figure.py
 
-# Risk-coverage figure (paper Fig. 11) + per-policy gate table
+# Risk-coverage figure (paper Fig. 12, top) + per-policy gate table
 python scripts/make_kuzu_gate_artifacts.py
 
-# Budget-planner curves (artifact figure referenced from Sec. 6.4)
+# Budget-planner curves (paper Fig. 12, bottom)
 python scripts/run_budget_planner.py
 
 # Release-gate calibration/deployment split analysis (Sec. 6.4)

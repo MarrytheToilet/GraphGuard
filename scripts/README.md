@@ -64,11 +64,11 @@ Anything not listed here has been retired.
   violation heatmap, Amp(Q) consistency, strict-vs-soft bars, calibration,
   noise floor, 2-D sensitivity, AUROC/AUPRC). CLI targets:
   `replacement`, `phase_w`, `all`.
-- `make_kuzu_gate_artifacts.py` — risk-coverage figure (paper Fig. 11) + the
+- `make_kuzu_gate_artifacts.py` — risk-coverage figure (paper Fig. 12, top) + the
   per-policy gate table shipped as an artifact.
 - `run_budget_planner.py` — budget-planner curves (greedy / balanced / random / oracle;
-  artifact figure referenced from Sec. 6.4).
-- `make_gate_figure.py` — release-gate outcome bars (paper Fig. 10).
+  paper Fig. 12, bottom).
+- `make_gate_figure.py` — release-gate outcome bars (paper Fig. 11).
 - `make_extqueries_figure.py` — extended-template amplification + regime
   dumbbells (paper Fig. 9).
 - `make_baseline_table.py` — baseline LaTeX tables.
