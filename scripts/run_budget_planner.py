@@ -146,7 +146,7 @@ def main():
     }, indent=2))
     # Native single-column canvas so fonts render ~1:1 in the PDF.
     gg_style.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.68), sharey=True,
                              gridspec_kw={"wspace": 0.20})
     line_handles = None
     line_labels = None

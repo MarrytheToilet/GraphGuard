@@ -449,7 +449,7 @@ def noise_floor_from_db(tag: str) -> float:
 def make_calibration_figure():
     # Native single-column canvas (like fig_riskcoverage): fonts render ~1:1.
     _S.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.68), sharey=True,
                              gridspec_kw={"wspace": 0.20})
     eps = 0.05  # SLA: <=5% harmful publication rate
 
@@ -527,7 +527,7 @@ def make_noise_floor_figure():
     base_color   = _BLUE_LIGHT
     floor_line   = _PINK
 
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.0), sharey=True,
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.85), sharey=True,
                              gridspec_kw={"wspace": 0.20})
 
     for ax, (tag, name) in zip(axes, CORPORA):
