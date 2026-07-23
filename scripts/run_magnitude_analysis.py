@@ -348,6 +348,7 @@ def make_figure(runs: list[str]) -> None:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    import numpy as np
     from graphguard.viz import style as _S
 
     label = {"docred": "DocRED", "redocred": "Re-DocRED",
@@ -363,80 +364,59 @@ def make_figure(runs: list[str]) -> None:
     if not data:
         return
 
-    _S.apply_rc(font_size=10)
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.18),
-                             gridspec_kw={"width_ratios": [1.35, 1]})
+    # Mean graph drift per presentation family, corpora on the x-axis (matching
+    # the house layout). Bars are pooled per-pair means with 95% normal CIs; the
+    # semantics-touching dose-response is reported quantitatively in the text.
+    import math
 
-    # -- Panel A: presentation-level saturation (kind, not degree) ----------
-    ax = axes[0]
-    cats = ["noop", "presentation", "prompt (1 clause)", "evidence"]
-    def cat_mean(d, cat):
-        s = d["summary"]
-        if cat == "noop":
-            return (s.get("stochastic") or {}).get("mean_drift")
-        if cat == "presentation":
-            lv = (s.get("schema") or {}).get("levels", {})
-            vals = [v["mean_drift"] for k, v in lv.items() if k.startswith("pres-")]
-            return sum(vals) / len(vals) if vals else None
-        if cat.startswith("prompt"):
-            return (s.get("prompt") or {}).get("mean_drift")
-        return (s.get("evidence") or {}).get("mean_drift")
-    w = 0.8 / len(data)
-    for i, (corpus, d) in enumerate(data.items()):
-        vals = [cat_mean(d, c) for c in cats]
-        xs = [j + i * w for j in range(len(cats))]
-        ax.bar(xs, [v or 0 for v in vals], width=w * 0.9,
-               color=fills[i % len(fills)], edgecolor=colors[i % len(colors)],
-               linewidth=1.0, label=label.get(corpus, corpus))
-        for x, v in zip(xs, vals):
-            if v:
-                ax.text(x, v + 0.015, f"{v:.2f}", rotation=90,
-                        ha="center", va="bottom", fontsize=6.5, color=_S.BLACK)
-    ax.set_xticks([j + w * (len(data) - 1) / 2 for j in range(len(cats))])
-    ax.set_xticklabels(["rerun\n(no-op)", "schema\npres.", "prompt\n(1 clause)", "evidence"])
-    ax.set_ylabel("mean graph drift", fontsize=10)
-    ax.set_title("Presentation families: kind, not degree", fontsize=10, fontweight="bold")
-    ax.set_ylim(0, 1.14)
-    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
-    ax.legend(fontsize=7.5, ncol=4, frameon=False, loc="upper left",
-              handlelength=1.0, columnspacing=0.7, handletextpad=0.4,
-              borderaxespad=0.1)
-    _S.despine(ax)
-
-    # -- Panel B: semantic dose-response (removal-type edits only) ----------
-    # add-other and coarse are excluded here: adding an escape-hatch relation
-    # and bucket-matched coarsening are not removal doses (kept in the JSON).
-    ax = axes[1]
-    sem_levels = ["sem-drop-1", "sem-ambig-3"]
-    for i, (corpus, d) in enumerate(data.items()):
-        lv = (d["summary"].get("schema") or {}).get("levels", {})
+    def fam_stat(d, key):
         pairs = d.get("pairs", [])
-        pts = []
-        for sl in sem_levels:
-            if sl not in lv or lv[sl]["n"] < 20:
-                continue
-            mags = [p["magnitude"] for p in pairs
-                    if p.get("level") == sl and p.get("magnitude") is not None]
-            if not mags:
-                continue
-            pts.append((sum(mags) / len(mags), lv[sl]["mean_drift"], sl))
-        pts.sort()
-        if pts:
-            ax.plot([x for x, _, _ in pts], [y for _, y, _ in pts], "o-",
-                    color=colors[i % len(colors)], markerfacecolor=fills[i % len(fills)],
-                    markeredgecolor=colors[i % len(colors)], markersize=6, linewidth=1.5,
-                    label=label.get(corpus, corpus))
-        noop = (d["summary"].get("stochastic") or {}).get("mean_drift")
-        if noop is not None:
-            ax.axhline(noop, color=colors[i % len(colors)], linestyle=":",
-                       linewidth=0.7, alpha=0.6)
-    # BC5CDR's single point (x=1.0) is "drop the only CID relation";
-    # explained in the figure caption rather than an in-axes annotation.
-    ax.set_xscale("log")
-    ax.set_xlabel("fraction of schema\nrelations edited", fontsize=10)
-    ax.set_ylabel("mean graph drift", fontsize=10)
-    ax.set_title("Semantic edits: dose–response", fontsize=10, fontweight="bold")
-    ax.legend(fontsize=8, frameon=False, loc="lower right")
+        if key == "noop":
+            vals = [p["drift"] for p in pairs if p.get("level") == "noop"]
+        elif key == "presentation":
+            vals = [p["drift"] for p in pairs if str(p.get("level", "")).startswith("pres-")]
+        elif key == "prompt":
+            vals = [p["drift"] for p in pairs if p.get("family") == "prompt"]
+        else:  # evidence
+            vals = [p["drift"] for p in pairs if p.get("family") == "evidence"]
+        if not vals:
+            return 0.0, 0.0
+        m = sum(vals) / len(vals)
+        ci = 1.96 * statistics.pstdev(vals) / math.sqrt(len(vals)) if len(vals) > 1 else 0.0
+        return m, ci
+
+    _S.apply_rc(font_size=8)
+    fig, ax = plt.subplots(figsize=(3.5, 1.42))
+
+    fams = [("noop", "rerun"), ("presentation", "schema"),
+            ("prompt", "prompt"), ("evidence", "evidence")]
+    fam_fill = [_S.BLUE, _S.PINK, _S.GREEN, _S.GRAY_LIGHT]
+    fam_edge = [_S.BLUE_DARK, _S.PINK_DARK, _S.GREEN_DARK, _S.GRAY]
+    short = {"docred": "DR", "redocred": "RDR", "scierc": "SE", "cdr": "CDR"}
+    corpora = list(data.keys())
+    x = np.arange(len(corpora))
+    nb = len(fams)
+    w = 0.82 / nb
+    for j, (key, lab) in enumerate(fams):
+        stats = [fam_stat(data[c], key) for c in corpora]
+        vals = [s[0] for s in stats]
+        errs = [s[1] for s in stats]
+        xs = x + (j - (nb - 1) / 2) * w
+        ax.bar(xs, vals, width=w * 0.9, color=fam_fill[j],
+               edgecolor=fam_edge[j], linewidth=0.5, label=lab,
+               yerr=errs, error_kw=dict(ecolor=fam_edge[j], elinewidth=0.6, capsize=1.0))
+        for xi, v, e in zip(xs, vals, errs):
+            ax.text(xi, v + e + 0.015, f"{v:.2f}",
+                    ha="center", va="bottom", fontsize=4.5, color=_S.BLACK)
+    ax.set_xticks(x)
+    ax.set_xticklabels([short.get(c, c) for c in corpora], fontsize=7)
+    ax.set_ylabel("mean graph drift", fontsize=8)
+    ax.set_ylim(0, 0.85)
+    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
+    ax.set_title("Presentation drift", fontsize=8, fontweight="bold", pad=16)
+    ax.legend(fontsize=6, ncol=4, frameon=False, loc="lower center",
+              bbox_to_anchor=(0.5, 1.0), handlelength=1.0,
+              columnspacing=1.0, handletextpad=0.4)
     _S.despine(ax)
 
     out = ROOT / "assets" / "figures" / "fig_magnitude.png"

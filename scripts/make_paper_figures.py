@@ -326,44 +326,59 @@ def replacement_amp_crossrun() -> None:
 
 def replacement_strict_vs_soft() -> None:
     _S.apply_rc(font_size=8)
-    rows = {
-        "DocRED":    (0.69, 0.75, 0.76),
-        "Re-DocRED": (0.71, 0.77, 0.78),
-        "SciERC":    (0.72, 0.79, 0.83),
-        "BC5CDR":    (0.18, 0.17, 0.27),
-    }
-    rows_h = {
-        "DocRED":    (0.35, 0.42, 0.43),
-        "Re-DocRED": (0.28, 0.35, 0.34),
-        "SciERC":    (0.62, 0.62, 0.67),
-        "BC5CDR":    (0.12, 0.12, 0.21),
-    }
+    REP = ROOT / "reports" / "cross_run"
+    runs = {"DocRED": "docred__deepseek-v4-flash__300d",
+            "Re-DocRED": "redocred__deepseek-v4-flash__300d",
+            "SciERC": "scierc__deepseek-v4-flash__100d",
+            "BC5CDR": "cdr__deepseek-v4-flash__300d"}
+    order = ["strict", "soft", "ablation"]  # L1 / L2 / L3
+    rows, rows_h, ns = {}, {}, {}
+    for name, run in runs.items():
+        b = json.loads((REP / f"strict_vs_soft_{run}.json").read_text())["buckets"]
+        rows[name]   = tuple(b[o]["violation_rate_tau0p5"] for o in order)
+        rows_h[name] = tuple(b[o]["harmful_rate"] for o in order)
+        ns[name]     = tuple(b[o]["n_pairs"] for o in order)
+
+    def ci(p, n):
+        return 1.96 * float(np.sqrt(p * (1 - p) / n)) if n else 0.0
+
     labels = list(rows.keys())
     x = np.arange(len(labels))
     w = 0.25
-    fig, axes = plt.subplots(1, 2, figsize=(3.5, 1.56), sharey=True)
+    fills = [_S.BLUE, _S.PINK, _S.GREEN]
+    edges = [_S.BLUE_DARK, _S.PINK_DARK, _S.GREEN_DARK]
+    # Two panels stacked vertically (full column width each, like fig_extqueries)
+    # so horizontal value labels fit without occlusion.
+    fig, axes = plt.subplots(2, 1, figsize=(3.5, 2.12), sharex=True,
+                             gridspec_kw={"hspace": 0.32})
 
-    def plot_one(ax, data, title):
-        l1 = [data[l][0] for l in labels]
-        l2 = [data[l][1] for l in labels]
-        l3 = [data[l][2] for l in labels]
-        ax.bar(x - w, l1, w, color=_S.BLUE,  edgecolor=_S.BLUE_DARK,  linewidth=0.5, label="L1")
-        ax.bar(x,     l2, w, color=_S.PINK,  edgecolor=_S.PINK_DARK,  linewidth=0.5, label="L2")
-        ax.bar(x + w, l3, w, color=_S.GREEN, edgecolor=_S.GREEN_DARK, linewidth=0.5, label="L3")
-        short_lbl = {"DocRED":"DR","Re-DocRED":"RDR","SciERC":"SE","BC5CDR":"CDR"}
-        xl = [short_lbl.get(l, l) for l in labels]
-        ax.set_xticks(x); ax.set_xticklabels(xl, rotation=0, ha="center", fontsize=6.5)
-        ax.set_title(title, fontsize=8.5, fontweight="bold")
+    def plot_one(ax, data, title, add_legend=False):
+        for k in range(3):
+            vals = [data[l][k] for l in labels]
+            errs = [ci(data[l][k], ns[l][k]) for l in labels]
+            xs = x + (k - 1) * w
+            ax.bar(xs, vals, w, color=fills[k], edgecolor=edges[k], linewidth=0.5,
+                   label=f"L{k+1}", yerr=errs,
+                   error_kw=dict(ecolor=edges[k], elinewidth=0.6, capsize=1.2))
+            for xi, v, e in zip(xs, vals, errs):
+                ax.text(xi, v + e + 0.02, f"{v:.2f}", ha="center", va="bottom",
+                        fontsize=5, color=_S.BLACK)
+        ax.set_ylabel("rate", fontsize=8)
+        ax.set_title(title, fontsize=8, fontweight="bold")
         ax.tick_params(axis="y", labelsize=7)
-        ax.set_ylim(0, 1.0)
+        ax.set_ylim(0, 1.12)
+        ax.set_yticks([0, 0.5, 1.0])
+        if add_legend:
+            ax.legend(loc="upper right", fontsize=6.5, ncol=3, frameon=False,
+                      handlelength=1.0, columnspacing=0.9, handletextpad=0.4,
+                      bbox_to_anchor=(1.0, 1.12))
         _S.despine(ax)
 
-    plot_one(axes[0], rows,   r"Violation @ $\tau{=}0.5$")
+    plot_one(axes[0], rows,   r"Violation @ $\tau{=}0.5$", add_legend=True)
     plot_one(axes[1], rows_h, "Harmful regression")
-    axes[0].set_ylabel("rate", fontsize=8)
-    axes[1].legend(loc="upper right", fontsize=6.5, ncol=1,
-                   framealpha=0.9, handlelength=1.2)
-    fig.suptitle("L1–L3 stability buckets", fontsize=9, y=1.02)
+    short_lbl = {"DocRED":"DR","Re-DocRED":"RDR","SciERC":"SE","BC5CDR":"CDR"}
+    axes[1].set_xticks(x)
+    axes[1].set_xticklabels([short_lbl.get(l, l) for l in labels], fontsize=7)
     _S.save_fig(fig, OUT / "fig_strict_vs_soft.png")
 
 
