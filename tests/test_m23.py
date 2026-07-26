@@ -1,4 +1,4 @@
-"""Tests for interventions, schema variants, edge matcher and risk scoring (no LLM)."""
+"""Tests for interventions, schema variants, edge matching, and the LLM cache."""
 from __future__ import annotations
 
 import sys
@@ -16,7 +16,6 @@ from graphguard.interventions.schema import (                          # noqa: E
 )
 from graphguard.interventions.text import mask_sentence, remove_sentence, to_mutable  # noqa: E402
 from graphguard.matching.edge_matcher import match_edges, persist_outcomes  # noqa: E402
-from graphguard.scoring.risk import compute_all                        # noqa: E402
 
 
 def _seed_doc(conn, doc="d1"):
@@ -117,59 +116,6 @@ def test_edge_matcher_outcome_categories(tmp_path):
     # One-to-one alignment reserves c1 for e1, leaving c2 as the unique
     # type-flip match for e2.
     assert by_orig["e2"] == "TYPE_FLIP"
-
-
-def test_risk_score_aggregation(tmp_path):
-    """End-to-end: seed events/edges/interventions/runs/outcomes -> compute_all -> read scores."""
-    conn = open_db(tmp_path / "t.db")
-    doc = _seed_doc(conn)
-    # base event + edge
-    repo.insert_event(conn, repo.ExtractionEvent(
-        "evt-base", doc, "base_v1", "docred_full", "m", 0.0, 7, [], []))
-    repo.insert_edges(conn, [_mk_edge("e1", "evt-base", doc, f"{doc}::e0", "Obama",
-                                      "P19", f"{doc}::e1", "Honolulu")])
-    # 2 sentence interventions, 1 prompt intervention, 1 schema intervention
-    iv_rows = [
-        ("iv-rm", doc, "sentence", f"{doc}::s0", "remove", "rm s0", 1.0, None),
-        ("iv-mk", doc, "sentence", f"{doc}::s1", "mask",   "mk s1", 1.0, None),
-        ("iv-pc", doc, "prompt_clause", "C1_evidence_only", "remove", "drop C1", 1.0, None),
-        ("iv-sc", doc, "schema", "with_other", "switch_schema", "with other", 1.0, None),
-    ]
-    conn.executemany(
-        "INSERT INTO intervention_candidates"
-        "(intervention_id,document_id,target_type,target_id,operator,description,"
-        "estimated_cost,group_id) VALUES (?,?,?,?,?,?,?,?)",
-        iv_rows,
-    )
-    # corresponding runs
-    runs = [("run-rm", "evt-base", "iv-rm"),
-            ("run-mk", "evt-base", "iv-mk"),
-            ("run-pc", "evt-base", "iv-pc"),
-            ("run-sc", "evt-base", "iv-sc")]
-    for rid, beid, ivid in runs:
-        conn.execute(
-            "INSERT INTO counterfactual_runs(run_id, base_event_id, intervention_id, document_id, "
-            "model_id, temperature, seed, status, created_at) VALUES (?,?,?,?,?,?,?,?,?)",
-            (rid, beid, ivid, doc, "m", 0.0, 7, "ok", "now"))
-    # outcomes: text changes 1/2; prompt changes 1/1; schema changes 0/1 -> EXACT
-    outs = [("oc-1", "run-rm", "e1", "DISAPPEARED", None, None, None, 0.0),
-            ("oc-2", "run-mk", "e1", "EXACT_SAME",  "c", "P19", 0.9, 1.0),
-            ("oc-3", "run-pc", "e1", "TYPE_FLIP",   "c", "P17", 0.8, 0.85),
-            ("oc-4", "run-sc", "e1", "EXACT_SAME",  "c", "P19", 0.9, 1.0)]
-    conn.executemany("INSERT INTO edge_outcomes VALUES (?,?,?,?,?,?,?,?)", outs)
-    conn.commit()
-
-    n = compute_all(conn)
-    assert n == 1
-    s = conn.execute("SELECT * FROM edge_reliability_scores WHERE edge_id='e1'").fetchone()
-    # 2/4 outcomes are changes -> stability = 0.5
-    assert abs(s["stability_score"] - 0.5) < 1e-9
-    # text: 1/2; prompt: 1/1; schema: 0/1
-    assert abs(s["text_responsibility"] - 0.5) < 1e-9
-    assert abs(s["prompt_sensitivity"] - 1.0) < 1e-9
-    assert abs(s["schema_sensitivity"] - 0.0) < 1e-9
-    # risk = 1*(1-0.5) + 0.8*1 + 0.8*0 + 0.5*0 - 0.7*0.5 = 0.5 + 0.8 - 0.35 = 0.95
-    assert abs(s["risk_score"] - 0.95) < 1e-9
 
 
 def test_llm_cache_roundtrip(tmp_path):

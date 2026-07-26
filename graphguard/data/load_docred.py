@@ -6,7 +6,7 @@ DocRED structure per example:
   - vertexSet:  list[list[mention_dict]]  # entity clusters; mentions have name/sent_id/...
   - labels:     list[{head, tail, relation_id, relation_text, evidence}]  (only labelled splits)
 
-We do not import labels into Milestone 1 storage: the read-out is left to evaluation code.
+Available reference labels are normalized and stored in `gold_edges` during import.
 """
 from __future__ import annotations
 

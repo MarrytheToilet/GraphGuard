@@ -20,7 +20,7 @@ from evaluation:
 No new LLM calls: everything replays from the registered actual-Kuzu
 N=300 artifacts.
 
-Writes reports/cross_run/gate_split_formal_v1.json and prints a summary.
+Writes reports/cross_run/gate_split.json and prints a summary.
 """
 from __future__ import annotations
 
@@ -29,10 +29,10 @@ import json
 from pathlib import Path
 
 import numpy as np
-from graphguard.formal_artifacts import (
+from graphguard.deployment_evidence import (
     DEFAULT_INDEX,
     load_artifact_index,
-    load_formal_kuzu,
+    load_kuzu_evidence,
 )
 from graphguard.sqlite_snapshot import sha256_file
 
@@ -50,7 +50,7 @@ FULL_DATA_POINT = (0.45, 0.70)
 
 
 def load_pairs(run: str):
-    artifact = load_formal_kuzu(ROOT, run)
+    artifact = load_kuzu_evidence(ROOT, run)
     pairs = []
     for record in artifact["per_pair"]:
         pairs.append({
@@ -136,7 +136,7 @@ def main() -> int:
         "artifact_type": "graphguard.gate_split_analysis",
         "artifact_version": 1,
         "sources": {
-            "formal_index": {
+            "evidence_index": {
                 "path": str(DEFAULT_INDEX),
                 "sha256": sha256_file(ROOT / DEFAULT_INDEX),
             },
@@ -174,7 +174,7 @@ def main() -> int:
               f"cov={d['coverage']:.2f} rec={d['harm_recall']:.2f} | "
               f"paper-point deploy harm={pp['pub_harm_rate']:.3f} fid={pp['f1_fidelity']:.3f} | "
               f"publish-all harm={entry['deploy_publish_all']['pub_harm_rate']:.3f}")
-    out = ROOT / "reports/cross_run/gate_split_formal_v1.json"
+    out = ROOT / "reports/cross_run/gate_split.json"
     out.write_text(json.dumps(report, indent=2) + "\n")
     print("wrote", out)
     return 0

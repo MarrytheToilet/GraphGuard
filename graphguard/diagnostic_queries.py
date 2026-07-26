@@ -12,10 +12,7 @@ from collections import defaultdict, deque
 from itertools import combinations
 from typing import FrozenSet, Iterable, TypeVar
 
-from graphguard.query_catalog import (
-    DIAGNOSTIC_QUERIES,
-    by_legacy_artifact_id,
-)
+from graphguard.query_catalog import DIAGNOSTIC_QUERIES
 
 
 Triple = tuple[str, str, str]
@@ -140,13 +137,13 @@ def short_connectivity_answers(
 
 def _canonical_diagnostic_id(query_id: str) -> str:
     canonical_ids = {spec.canonical_id for spec in DIAGNOSTIC_QUERIES}
-    if query_id in canonical_ids:
-        return query_id
-    return by_legacy_artifact_id(query_id).canonical_id
+    if query_id not in canonical_ids:
+        raise KeyError(query_id)
+    return query_id
 
 
 def execute_diagnostic(query_id: str, triples: Iterable[Triple]) -> FrozenSet:
-    """Execute one diagnostic query by canonical ID or legacy artifact alias."""
+    """Execute one diagnostic query by canonical ID."""
     canonical_id = _canonical_diagnostic_id(query_id)
     if canonical_id == "diagnostic.edge_identity":
         return edge_identity_answers(triples)

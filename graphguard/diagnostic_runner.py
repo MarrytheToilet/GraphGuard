@@ -199,7 +199,6 @@ def evaluate_pair(
             answer_metric = "exact_answer_set_jaccard"
         query_drift = 1.0 - answer_similarity
         query_results[specification.canonical_id] = {
-            "legacy_artifact_id": specification.legacy_artifact_id,
             "n_base_answers": len(base_answers),
             "n_cf_answers": len(cf_answers),
             "answer_metric": answer_metric,

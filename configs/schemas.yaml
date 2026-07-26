@@ -1,5 +1,5 @@
-# Base schema for v1. Uses a small subset of DocRED Wikidata-style relations.
-# Later schema variants (S_with_other, S_coarse, ...) will be generated programmatically.
+# Base extraction schemas, including a DocRED Wikidata-style relation subset.
+# Counterfactual schema variants are generated programmatically.
 schemas:
   - id: docred_full
     name: "DocRED base subset"

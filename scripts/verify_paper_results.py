@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Verify the paper's headline results against the shipped artifacts.
 
-The default check is API-free and uses only versioned JSON under reports/.
+The default check is API-free and uses only canonical JSON under reports/.
 Pass --lineage to additionally recount events, edges, counterfactual views,
 and tokens from the local per-run SQLite lineage databases.
 """
@@ -13,13 +13,15 @@ import json
 import math
 import random
 import sqlite3
+import statistics
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from graphguard.formal_artifacts import (
+from graphguard.deployment_evidence import (
     PRIMARY_RUNS,
-    load_formal_kuzu,
-    validate_formal_package,
+    load_kuzu_evidence,
+    validate_evidence_package,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -134,12 +136,12 @@ def pr_auc(labels: list[int], scores: list[float]) -> float:
 def verify_artifact_inventory() -> None:
     required = [
         RC / "amp_ci.json",
-        RC / "budget_planner_formal_v1.json",
+        RC / "budget_planner.json",
         RC / "cross_run_summary.json",
-        RC / f"drift_accuracy_formal_v1_{RUNS['DocRED']}.json",
+        RC / f"drift_accuracy_{RUNS['DocRED']}.json",
         RC / "endpoint_reuse.json",
-        RC / "formal_artifacts_v1.json",
-        RC / "gate_split_formal_v1.json",
+        RC / "deployment_evidence.json",
+        RC / "gate_split.json",
         RC / "k5_cross_model.json",
         RC / "k5_model_size.json",
         RC / "k5_model_size_expressible.json",
@@ -148,26 +150,25 @@ def verify_artifact_inventory() -> None:
         RC / "sampled_document_ids.json",
     ]
     required.extend(
-        RC / f"diagnostic_v2_{run}.json"
+        RC / f"diagnostic_{run}.json"
         for run in LINEAGE_RUNS.values()
     )
     for run in RUNS.values():
         required.extend([
-            RC / f"e2e_kuzu_case_{run}__N300.json",
             RC / f"extqueries_{run}.json",
             RC / f"family_decomp_{run}.json",
-            RC / f"graph_vs_query_formal_v1_{run}.json",
+            RC / f"graph_vs_query_{run}.json",
             RC / f"magnitude_{run}.json",
-            RC / f"regimes_formal_v1_{run}.json",
+            RC / f"regimes_{run}.json",
             RC / f"strict_vs_soft_{run}.json",
             RR / run / "eval" / "contracts.json",
         ])
     for path in required:
         load(path)
-    package = validate_formal_package(ROOT)
+    package = validate_evidence_package(ROOT)
     require(
         set(package) == set(PRIMARY_RUNS),
-        "formal package run inventory mismatch",
+        "deployment evidence run inventory mismatch",
     )
     print(f"[PASS] artifact inventory ({len(required)} JSON files)")
 
@@ -226,6 +227,23 @@ def verify_sampled_documents(*, lineage: bool) -> None:
 
 def verify_reproducibility_manifest() -> None:
     manifest = load(RC / "reproducibility_manifest.json")
+    require(
+        manifest["schema_version"] == 2,
+        "reproducibility manifest schema mismatch",
+    )
+    producer = manifest["producer"]
+    producer_path = ROOT / producer["script"]
+    require(
+        producer["command"]
+        == "python scripts/build_reproducibility_manifest.py"
+        and producer_path.is_file()
+        and producer["script_sha256"] == sha256_file(producer_path),
+        "reproducibility manifest producer mismatch",
+    )
+    require(
+        set(manifest["source_databases"]) == set(LINEAGE_RUNS.values()),
+        "reproducibility manifest source-run inventory mismatch",
+    )
     totals = manifest["lineage_totals"]
     require(totals["extraction_events"] == 33043, "event total mismatch")
     require(totals["primary_events"] == 28482, "primary event total mismatch")
@@ -342,12 +360,146 @@ def verify_revision_analyses() -> None:
     )
 
     toolchain = load(RC / "langchain_toolchain.json")
+    producer = toolchain["provenance"]["producer"]
+    require(
+        toolchain["schema_version"] == 2
+        and producer[
+            "future_extraction_evidence_seed_rule"
+        ].startswith("sha256(doc_id")
+        and toolchain["provenance"]["extraction_environment"] == {
+            "recorded": False,
+            "metadata_source": "hash-bound checkpoint metadata",
+            "model": "deepseek-v4-flash",
+            "ignore_tool_usage": True,
+            "evidence_seed_rule": None,
+            "evidence_seed_recorded": False,
+            "dependency_versions": None,
+        },
+        "LangChain provenance metadata mismatch",
+    )
+    checkpoint = toolchain["provenance"]["checkpoint"]
+    checkpoint_path = ROOT / checkpoint["path"]
+    require(
+        checkpoint_path.is_file(),
+        f"published LangChain checkpoint missing: {checkpoint_path}",
+    )
+    checkpoint_records = [
+        json.loads(line)
+        for line in checkpoint_path.read_text(encoding="utf-8").splitlines()
+    ]
+    require(
+        checkpoint["bytes"] == checkpoint_path.stat().st_size
+        and checkpoint["sha256"] == sha256_file(checkpoint_path)
+        and checkpoint["records"] == len(checkpoint_records)
+        and checkpoint["format"] == "published-checkpoint"
+        and not checkpoint["contains_fingerprinted_records"]
+        and not checkpoint["fully_fingerprinted"],
+        "LangChain checkpoint provenance mismatch",
+    )
+    metadata_ref = toolchain["provenance"]["checkpoint_metadata"]
+    metadata_path = ROOT / metadata_ref["path"]
+    require(
+        metadata_path.is_file()
+        and metadata_ref["sha256"] == sha256_file(metadata_path),
+        "LangChain checkpoint metadata provenance mismatch",
+    )
+    checkpoint_metadata = load(metadata_path)
+    require(
+        checkpoint_metadata["checkpoint"]["path"] == checkpoint["path"]
+        and checkpoint_metadata["checkpoint"]["bytes"] == checkpoint["bytes"]
+        and checkpoint_metadata["checkpoint"]["sha256"]
+        == checkpoint["sha256"]
+        and checkpoint_metadata["checkpoint"]["records"]
+        == checkpoint["records"]
+        and checkpoint_metadata["extraction_environment"]["model"]
+        == toolchain["model"],
+        "LangChain metadata does not bind the published checkpoint",
+    )
+
+    rename_inv = {
+        "sovereign_state": "country",
+        "situated_in": "located_in",
+        "hq_place": "headquarters_location",
+        "birthplace": "place_of_birth",
+        "deathplace": "place_of_death",
+        "works_for": "employer",
+        "component_of": "part_of",
+        "affiliated_with": "member_of",
+        "released_on": "publication_date",
+        "performed_by": "performer",
+        "written_by": "author",
+        "directed_by": "director",
+    }
+
+    def canonical_edges(edges: list) -> set:
+        canonical = set()
+        for subject, relation, obj in edges or []:
+            relation = str(relation).lower().strip().replace(" ", "_")
+            canonical.add((
+                str(subject).lower().strip(),
+                rename_inv.get(relation, relation),
+                str(obj).lower().strip(),
+            ))
+        return canonical
+
+    cached = defaultdict(dict)
+    cached_errors = defaultdict(int)
+    for record in checkpoint_records:
+        if record.get("edges") is None:
+            cached_errors[record["condition"]] += 1
+        else:
+            cached[record["doc"]][record["condition"]] = record["edges"]
+    require(
+        len(cached) == toolchain["n_docs"] == 100,
+        "LangChain checkpoint document count mismatch",
+    )
+    for condition, reported in toolchain["summary"].items():
+        drifts = []
+        for by_condition in cached.values():
+            if "base" not in by_condition or condition not in by_condition:
+                continue
+            base = canonical_edges(by_condition["base"])
+            counterfactual = canonical_edges(by_condition[condition])
+            if not base and not counterfactual:
+                continue
+            union = base | counterfactual
+            drifts.append(
+                1.0 - (len(base & counterfactual) / len(union))
+            )
+        violation_rate = (
+            sum(drift > reported["tau"] for drift in drifts) / len(drifts)
+        )
+        require(
+            reported["n"] == len(drifts)
+            and reported["errors"] == cached_errors[condition],
+            f"LangChain checkpoint population mismatch for {condition}",
+        )
+        close(
+            reported["mean_drift"],
+            round(statistics.mean(drifts), 4),
+        )
+        close(
+            reported["median_drift"],
+            round(statistics.median(drifts), 4),
+        )
+        close(
+            reported["violation_rate"],
+            round(violation_rate, 4),
+        )
     rates = [
         row["violation_rate"] for row in toolchain["summary"].values()
     ]
     require(min(rates) >= 0.91, "LangChain violation range mismatch")
 
     for run in RUNS.values():
+        family = load(RC / f"family_decomp_{run}.json")
+        require(
+            all(
+                0.0 <= row["type_agree"] <= 1.0
+                for row in family["summary"].values()
+            ),
+            f"{run}: invalid relation-set agreement",
+        )
         buckets = load(RC / f"strict_vs_soft_{run}.json")
         require(
             buckets["n_pairs"]
@@ -361,9 +513,16 @@ def verify_revision_analyses() -> None:
     )["buckets"]["strict"]
     close(docred_l1["violation_rate_tau0p5"], 0.69, tol=0.01)
     close(docred_l1["query_divergence_rate"], 0.35, tol=0.01)
+    docred_family = load(
+        RC / f"family_decomp_{RUNS['DocRED']}.json"
+    )["summary"]
+    close(docred_family["stochastic"]["type_agree"], 0.80, tol=0.01)
+    close(docred_family["prompt"]["type_agree"], 0.76, tol=0.01)
+    close(docred_family["schema-sem"]["type_agree"], 0.50, tol=0.01)
     print(
-        "[PASS] revision analyses "
-        "(magnitude, stability buckets, K5 ladder, LangChain)"
+        "[PASS] additional analyses "
+        "(magnitude, family decomposition, stability buckets, "
+        "K5 ladder, LangChain)"
     )
 
 
@@ -375,7 +534,7 @@ def verify_query_results() -> None:
     )
     diagnostic_runs = amp["runs"]
     for run in LINEAGE_RUNS.values():
-        source = load(RC / f"diagnostic_v2_{run}.json")
+        source = load(RC / f"diagnostic_{run}.json")
         require(
             source["artifact_version"] == 2,
             f"{run}: diagnostic artifact version mismatch",
@@ -476,11 +635,27 @@ def verify_query_results() -> None:
         f"RAG amplification mismatch: {rag}",
     )
     close(ext["BC5CDR"]["Q_path"]["amp_mean"], 1.27, tol=0.02)
+    docred_contracts = {
+        row["contract_id"]: row
+        for row in load(
+            RR / RUNS["DocRED"] / "eval" / "contracts.json"
+        )["contracts"]
+    }
+    for contract_id, query_key in {
+        "K4b": "Q_path",
+        "K4c": "Q_deg",
+        "K4d": "Q_rag",
+    }.items():
+        close(
+            ext["DocRED"][query_key]["viol_rate_drift_gt_0.30"],
+            docred_contracts[contract_id]["violation_rate"],
+            tol=1e-12,
+        )
 
     pooled_deltas = []
     for run in RUNS.values():
         monitors = load(
-            RC / f"graph_vs_query_formal_v1_{run}.json"
+            RC / f"graph_vs_query_{run}.json"
         )["monitors_at_matched_alarm"]
         close(
             monitors["query_aware"]["alarm_rate"],
@@ -499,7 +674,7 @@ def verify_query_results() -> None:
     unequal_alarm_regimes = 0
     for run in RUNS.values():
         regimes = load(
-            RC / f"regimes_formal_v1_{run}.json"
+            RC / f"regimes_{run}.json"
         )["regimes"]
         for row in regimes.values():
             regime_deltas.append(row["delta_f1"])
@@ -521,7 +696,7 @@ def verify_query_results() -> None:
 
 def verify_drift_accuracy() -> None:
     data = load(
-        RC / f"drift_accuracy_formal_v1_{RUNS['DocRED']}.json"
+        RC / f"drift_accuracy_{RUNS['DocRED']}.json"
     )
     population = data["query_population"]
     require(population["n_pairs"] == 4000, "query-divergence n mismatch")
@@ -590,7 +765,7 @@ def verify_harm_detection_and_gate() -> None:
         return best
 
     for run in RUNS.values():
-        pairs = load_formal_kuzu(ROOT, run)["per_pair"]
+        pairs = load_kuzu_evidence(ROOT, run)["per_pair"]
         labels = [
             int(float(row["mean_delta_f1_signed"]) > 0.05)
             for row in pairs
@@ -737,7 +912,7 @@ def verify_harm_detection_and_gate() -> None:
         f"15% joint threshold coverage mismatch: {joint_coverage_at_15}",
     )
 
-    split = load(RC / "gate_split_formal_v1.json")["corpora"]
+    split = load(RC / "gate_split.json")["corpora"]
     paper_point = [
         row["deploy_graphguard_paper_point"] for row in split.values()
     ]
@@ -766,7 +941,7 @@ def verify_harm_detection_and_gate() -> None:
         "held-out publish-all harm is outside reported 21–29%",
     )
 
-    planner = load(RC / "budget_planner_formal_v1.json")
+    planner = load(RC / "budget_planner.json")
     budget_index = planner["budgets"].index(0.4)
     budget_index_60 = planner["budgets"].index(0.6)
     recall_at_40 = [
@@ -814,10 +989,17 @@ def verify_lineage() -> None:
             actual == EXPECTED_LINEAGE[label],
             f"{label}: expected {EXPECTED_LINEAGE[label]}, got {actual}",
         )
-        diagnostic = load(RC / f"diagnostic_v2_{run}.json")
+        diagnostic = load(RC / f"diagnostic_{run}.json")
+        source = manifest["source_databases"][run]
+        require(
+            source["path"] == db_path.relative_to(ROOT).as_posix()
+            and source["bytes"] == db_path.stat().st_size
+            and source["sha256"] == sha256_file(db_path),
+            f"{label}: reproducibility-manifest database identity mismatch",
+        )
         require(
             diagnostic["source_database"]["sha256"]
-            == sha256_file(db_path),
+            == source["sha256"],
             f"{label}: diagnostic source database SHA-256 mismatch",
         )
         totals = [left + right for left, right in zip(totals, actual)]

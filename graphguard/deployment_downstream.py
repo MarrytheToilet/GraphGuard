@@ -58,7 +58,7 @@ def _read_only_connection(db_path: Path) -> sqlite3.Connection:
     return connection
 
 
-def load_formal_inputs(
+def load_registered_inputs(
     db_path: str | Path,
     deployment_artifact_path: str | Path,
 ) -> FormalInputs:
@@ -202,11 +202,11 @@ def _validate_query_inventory(
     pair: dict,
     queries: list[tuple[str, dict]],
 ) -> dict[str, dict]:
-    """Require the formal pair to contain exactly the rebuilt query catalog."""
+    """Require the registered pair to contain exactly the rebuilt query catalog."""
     expected_families = set(FAMILY_TO_QUERY_ID.values())
     if set(pair["families"]) != expected_families:
         raise ValueError(
-            f"{pair['run_id']}: formal family inventory mismatch"
+            f"{pair['run_id']}: registered family inventory mismatch"
         )
     actual_by_family: dict[str, list[str]] = defaultdict(list)
     for query in queries:
@@ -231,18 +231,18 @@ def _validate_query_inventory(
             raise ValueError(
                 f"{pair['run_id']}/{family_id}: query count mismatch"
             )
-        formal_queries = family["queries"]
-        formal_ids = [record["query_id"] for record in formal_queries]
-        if len(formal_ids) != len(set(formal_ids)):
+        registered_queries = family["queries"]
+        registered_ids = [record["query_id"] for record in registered_queries]
+        if len(registered_ids) != len(set(registered_ids)):
             raise ValueError(
-                f"{pair['run_id']}/{family_id}: duplicate formal query"
+                f"{pair['run_id']}/{family_id}: duplicate registered query"
             )
-        if set(formal_ids) != set(actual_ids):
+        if set(registered_ids) != set(actual_ids):
             raise ValueError(
                 f"{pair['run_id']}/{family_id}: query inventory mismatch"
             )
         expected_by_id.update(
-            (record["query_id"], record) for record in formal_queries
+            (record["query_id"], record) for record in registered_queries
         )
     return expected_by_id
 
@@ -267,7 +267,7 @@ def evaluate_utility_pair(
     """Evaluate F1 and gold-free answer drift on one registered pair.
 
     Optional executors let the caller substitute actual Kuzu execution.  Every
-    returned answer set is checked against the formal deployment artifact.
+    returned answer set is checked against the registered deployment artifact.
     """
     base_edges = inputs.edges_by_event[pair["base_event_id"]]
     cf_edges = inputs.edges_by_event[pair["cf_event_id"]]
@@ -429,7 +429,7 @@ def load_kuzu_parity_evidence(
     selection_max_pairs: int | None = None,
     expected_kuzu_version: str = REGISTERED_KUZU_VERSION,
 ) -> dict:
-    """Validate and compactly register the formal Kuzu parity evidence."""
+    """Validate and compactly register the registered Kuzu parity evidence."""
     parity_path = Path(parity_artifact_path)
     parity = json.loads(parity_path.read_text(encoding="utf-8"))
     if parity.get("artifact_type") != PARITY_ARTIFACT_TYPE:
@@ -529,10 +529,10 @@ def build_downstream_artifact(inputs: FormalInputs) -> dict:
             "execution_backend": "offline_set_semantics",
             "execution_validation": (
                 "exact answer count, hash, Jaccard, state, and query-drift "
-                "agreement with the formal deployment artifact"
+                "agreement with the registered deployment artifact"
             ),
             "query_catalog": (
-                "formal schema-eligible deployment Q1-Q4 artifact"
+                "registered schema-eligible deployment Q1-Q4 artifact"
             ),
             "query_utility": (
                 "F1 against complete schema-eligible gold answer sets"

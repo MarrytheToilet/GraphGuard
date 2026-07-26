@@ -1,44 +1,54 @@
 {
+  "artifact_type": "graphguard.graph_vs_query_ablation",
+  "artifact_version": 1,
+  "run": "cdr__deepseek-v4-flash__300d",
+  "source": {
+    "evidence_index": {
+      "path": "reports/cross_run/deployment_evidence.json",
+      "sha256": "938c428ed3ec51917b6dacd58e624115cbbc949c758785c94c053bb23d22584b"
+    },
+    "downstream_sha256": "6046ab543068b6511fc2f1b0bb3770e4bf7be4a61d2aef7b20e36f0d6b9acd29"
+  },
   "n_pairs": 6189,
   "label_definition": "mean absolute per-query F1 change > threshold",
   "query_monitor": "max answer-set Jaccard drift (gold-free at decision time)",
   "graph_monitor": "canonicalized typed-edge Jaccard drift",
   "matched_alarm_ties": "exact top-k selection; score ties broken by SHA-256(run_id), without target labels",
   "harm_threshold_delta_f1": 0.05,
-  "harmful_base_rate": 0.3506,
+  "harmful_base_rate": 0.3501,
   "monitors_at_matched_alarm": {
     "alarm_rate_target": 0.4345,
     "tau_graph_fixed": 0.3,
     "tau_query": 0.0,
     "graph_only": {
-      "tp": 1896,
-      "fp": 793,
+      "tp": 1893,
+      "fp": 796,
       "fn": 274,
       "tn": 3226,
       "alarm_rate": 0.4344805299725319,
-      "precision": 0.7051,
-      "recall": 0.8737,
-      "f1": 0.7804
+      "precision": 0.704,
+      "recall": 0.8736,
+      "f1": 0.7797
     },
     "query_aware": {
-      "tp": 2170,
-      "fp": 519,
+      "tp": 2167,
+      "fp": 522,
       "fn": 0,
       "tn": 3500,
       "alarm_rate": 0.4344805299725319,
-      "precision": 0.807,
+      "precision": 0.8059,
       "recall": 1.0,
-      "f1": 0.8932
+      "f1": 0.8925
     },
     "hybrid_or": {
-      "tp": 2170,
-      "fp": 1135,
+      "tp": 2167,
+      "fp": 1138,
       "fn": 0,
       "tn": 2884,
       "alarm_rate": 0.5340119566973663,
-      "precision": 0.6566,
+      "precision": 0.6557,
       "recall": 1.0,
-      "f1": 0.7927
+      "f1": 0.792
     }
   },
   "sweep": [
@@ -47,34 +57,34 @@
       "tau_graph": 0.5,
       "tau_query": 0.3333,
       "graph_only": {
-        "tp": 1395,
-        "fp": 462,
-        "fn": 775,
-        "tn": 3557,
+        "tp": 1394,
+        "fp": 463,
+        "fn": 773,
+        "tn": 3559,
         "alarm_rate": 0.30004847309743093,
-        "precision": 0.7512,
-        "recall": 0.6429,
+        "precision": 0.7507,
+        "recall": 0.6433,
         "f1": 0.6928
       },
       "query_aware": {
-        "tp": 1754,
-        "fp": 103,
-        "fn": 416,
-        "tn": 3916,
+        "tp": 1750,
+        "fp": 107,
+        "fn": 417,
+        "tn": 3915,
         "alarm_rate": 0.30004847309743093,
-        "precision": 0.9445,
-        "recall": 0.8083,
-        "f1": 0.8711
+        "precision": 0.9424,
+        "recall": 0.8076,
+        "f1": 0.8698
       },
       "hybrid_or": {
-        "tp": 1816,
-        "fp": 513,
-        "fn": 354,
-        "tn": 3506,
+        "tp": 1812,
+        "fp": 517,
+        "fn": 355,
+        "tn": 3505,
         "alarm_rate": 0.3763128130554209,
-        "precision": 0.7797,
-        "recall": 0.8369,
-        "f1": 0.8073
+        "precision": 0.778,
+        "recall": 0.8362,
+        "f1": 0.806
       }
     },
     {
@@ -82,34 +92,34 @@
       "tau_graph": 0.1667,
       "tau_query": 0.0,
       "graph_only": {
-        "tp": 2138,
-        "fp": 956,
+        "tp": 2135,
+        "fp": 959,
         "fn": 32,
         "tn": 3063,
         "alarm_rate": 0.4999192115042818,
-        "precision": 0.691,
-        "recall": 0.9853,
-        "f1": 0.8123
+        "precision": 0.69,
+        "recall": 0.9852,
+        "f1": 0.8116
       },
       "query_aware": {
-        "tp": 2170,
-        "fp": 924,
+        "tp": 2167,
+        "fp": 927,
         "fn": 0,
         "tn": 3095,
         "alarm_rate": 0.4999192115042818,
-        "precision": 0.7014,
+        "precision": 0.7004,
         "recall": 1.0,
-        "f1": 0.8245
+        "f1": 0.8238
       },
       "hybrid_or": {
-        "tp": 2170,
-        "fp": 1589,
+        "tp": 2167,
+        "fp": 1592,
         "fn": 0,
         "tn": 2430,
         "alarm_rate": 0.6073679108095007,
-        "precision": 0.5773,
+        "precision": 0.5765,
         "recall": 1.0,
-        "f1": 0.732
+        "f1": 0.7314
       }
     },
     {
@@ -117,34 +127,34 @@
       "tau_graph": 0.0,
       "tau_query": 0.0,
       "graph_only": {
-        "tp": 2170,
-        "fp": 2162,
+        "tp": 2167,
+        "fp": 2165,
         "fn": 0,
         "tn": 1857,
         "alarm_rate": 0.6999515269025691,
-        "precision": 0.5009,
+        "precision": 0.5002,
         "recall": 1.0,
-        "f1": 0.6675
+        "f1": 0.6669
       },
       "query_aware": {
-        "tp": 2170,
-        "fp": 2162,
+        "tp": 2167,
+        "fp": 2165,
         "fn": 0,
         "tn": 1857,
         "alarm_rate": 0.6999515269025691,
-        "precision": 0.5009,
+        "precision": 0.5002,
         "recall": 1.0,
-        "f1": 0.6675
+        "f1": 0.6669
       },
       "hybrid_or": {
-        "tp": 2170,
-        "fp": 2602,
+        "tp": 2167,
+        "fp": 2605,
         "fn": 0,
         "tn": 1417,
         "alarm_rate": 0.7710454031345937,
-        "precision": 0.4547,
+        "precision": 0.4541,
         "recall": 1.0,
-        "f1": 0.6252
+        "f1": 0.6246
       }
     },
     {
@@ -152,34 +162,34 @@
       "tau_graph": 0.0,
       "tau_query": 0.0,
       "graph_only": {
-        "tp": 2170,
-        "fp": 3400,
+        "tp": 2167,
+        "fp": 3403,
         "fn": 0,
         "tn": 619,
         "alarm_rate": 0.8999838423008564,
-        "precision": 0.3896,
+        "precision": 0.389,
         "recall": 1.0,
-        "f1": 0.5607
+        "f1": 0.5602
       },
       "query_aware": {
-        "tp": 2170,
-        "fp": 3400,
+        "tp": 2167,
+        "fp": 3403,
         "fn": 0,
         "tn": 619,
         "alarm_rate": 0.8999838423008564,
-        "precision": 0.3896,
+        "precision": 0.389,
         "recall": 1.0,
-        "f1": 0.5607
+        "f1": 0.5602
       },
       "hybrid_or": {
-        "tp": 2170,
-        "fp": 3539,
+        "tp": 2167,
+        "fp": 3542,
         "fn": 0,
         "tn": 480,
         "alarm_rate": 0.9224430441105187,
-        "precision": 0.3801,
+        "precision": 0.3796,
         "recall": 1.0,
-        "f1": 0.5508
+        "f1": 0.5503
       }
     }
   ],

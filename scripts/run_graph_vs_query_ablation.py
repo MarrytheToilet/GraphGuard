@@ -12,7 +12,7 @@ both regressions and improvements and is distinct from the directional label
 in the Kuzu release-gate experiment.
 
 Inputs are the frozen, schema-eligible full downstream populations. Outputs:
-  reports/cross_run/graph_vs_query_formal_v1_<run>.json
+  reports/cross_run/graph_vs_query_<run>.json
 """
 
 from __future__ import annotations
@@ -26,10 +26,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from graphguard.formal_artifacts import (  # noqa: E402
+from graphguard.deployment_evidence import (  # noqa: E402
     DEFAULT_INDEX,
     load_artifact_index,
-    load_formal_downstream,
+    load_downstream_evidence,
 )
 from graphguard.sqlite_snapshot import sha256_file  # noqa: E402
 
@@ -82,7 +82,7 @@ def main():
     ap.add_argument("--harm-th", type=float, default=0.05)
     args = ap.parse_args()
 
-    artifact = load_formal_downstream(ROOT, args.run)
+    artifact = load_downstream_evidence(ROOT, args.run)
     rows = [
         {
             "run_id": pair["run_id"],
@@ -107,7 +107,7 @@ def main():
         "artifact_version": 1,
         "run": args.run,
         "source": {
-            "formal_index": {
+            "evidence_index": {
                 "path": str(DEFAULT_INDEX),
                 "sha256": sha256_file(ROOT / DEFAULT_INDEX),
             },
@@ -170,7 +170,7 @@ def main():
 
     output = Path(args.out) if args.out else (
         ROOT / "reports" / "cross_run"
-        / f"graph_vs_query_formal_v1_{args.run}.json"
+        / f"graph_vs_query_{args.run}.json"
     )
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(out, indent=2) + "\n")

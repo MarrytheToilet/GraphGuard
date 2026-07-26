@@ -3,7 +3,7 @@
   "alpha": 0.2,
   "shared_docs": 98,
   "pairs": {
-    "DeepSeek-V4-Flash (v5 primary, 300 docs) vs Qwen3-32B (legacy, 100 docs)": {
+    "DeepSeek-V4-Flash (300 docs) vs Qwen3-32B (100 docs)": {
       "n": 98,
       "mean_recall_A": 0.2078148228377786,
       "mean_recall_B": 0.14106529313257843,
@@ -13,7 +13,7 @@
       "ci_high": 0.21428571428571427,
       "verdict": "INCONCLUSIVE"
     },
-    "DeepSeek-V4-Flash (v5 primary, 300 docs) vs Kimi-K2 (legacy, 100 docs)": {
+    "DeepSeek-V4-Flash (300 docs) vs Kimi-K2 (100 docs)": {
       "n": 98,
       "mean_recall_A": 0.2078148228377786,
       "mean_recall_B": 0.20409990672380854,
@@ -23,7 +23,7 @@
       "ci_high": 0.16326530612244897,
       "verdict": "SATISFIED"
     },
-    "DeepSeek-V4-Flash (v5 primary, 300 docs) vs GLM-5 (v5 partial, 100 docs)": {
+    "DeepSeek-V4-Flash (300 docs) vs GLM-5 (100 docs)": {
       "n": 98,
       "mean_recall_A": 0.2078148228377786,
       "mean_recall_B": 0.2588721537191699,
@@ -33,7 +33,7 @@
       "ci_high": 0.22448979591836735,
       "verdict": "INCONCLUSIVE"
     },
-    "Qwen3-32B (legacy, 100 docs) vs Kimi-K2 (legacy, 100 docs)": {
+    "Qwen3-32B (100 docs) vs Kimi-K2 (100 docs)": {
       "n": 98,
       "mean_recall_A": 0.14106529313257843,
       "mean_recall_B": 0.20409990672380854,

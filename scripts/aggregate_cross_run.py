@@ -89,7 +89,7 @@ def load_run(run_dir: Path) -> dict | None:
     cj = run_dir / "eval" / "contracts.json"
     diagnostic = (
         ROOT / "reports" / "cross_run"
-        / f"diagnostic_v2_{run_dir.name}.json"
+        / f"diagnostic_{run_dir.name}.json"
     )
     if not cj.exists():
         return None

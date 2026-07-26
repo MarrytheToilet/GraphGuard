@@ -9,7 +9,7 @@ from graphguard.deployment_downstream import (
     FormalInputs,
     build_downstream_artifact,
     evaluate_utility_pair,
-    load_formal_inputs,
+    load_registered_inputs,
     load_kuzu_parity_evidence,
 )
 from graphguard.deployment_runner import (
@@ -132,7 +132,7 @@ def test_utility_pair_rejects_cf_answer_hash_mismatch():
 @pytest.mark.parametrize(
     ("mutation", "message"),
     [
-        ("duplicate", "duplicate formal query"),
+        ("duplicate", "duplicate registered query"),
         ("extra", "query inventory mismatch"),
         ("count", "query count mismatch"),
         ("eligibility", "eligibility mismatch"),
@@ -301,7 +301,7 @@ def test_full_gold_precision_and_recall_use_full_document_denominators():
     assert record["delta_precision_abs"] == 1.0
 
 
-def test_optional_executors_remain_subject_to_formal_validation():
+def test_optional_executors_remain_subject_to_registered_validation():
     inputs, pair = _inputs()
 
     record = evaluate_utility_pair(
@@ -314,7 +314,7 @@ def test_optional_executors_remain_subject_to_formal_validation():
     assert record["mean_delta_f1_signed"] == 1.0
 
 
-def _write_minimal_formal_fixture(tmp_path):
+def _write_minimal_registered_fixture(tmp_path):
     db_path = tmp_path / "source.db"
     with sqlite3.connect(db_path) as connection:
         connection.executescript(
@@ -378,10 +378,10 @@ def _write_minimal_formal_fixture(tmp_path):
     return db_path, artifact_path, artifact
 
 
-def test_load_formal_inputs_rebuilds_catalog_and_source(tmp_path):
-    db_path, artifact_path, _ = _write_minimal_formal_fixture(tmp_path)
+def test_load_registered_inputs_rebuilds_catalog_and_source(tmp_path):
+    db_path, artifact_path, _ = _write_minimal_registered_fixture(tmp_path)
 
-    inputs = load_formal_inputs(db_path, artifact_path)
+    inputs = load_registered_inputs(db_path, artifact_path)
 
     assert len(inputs.pairs_by_run_id) == 1
     assert len(inputs.queries_by_catalog) == 1
@@ -389,8 +389,8 @@ def test_load_formal_inputs_rebuilds_catalog_and_source(tmp_path):
     assert inputs.source_after["wal"]["size_bytes"] == 0
 
 
-def test_load_formal_inputs_rejects_catalog_mismatch(tmp_path):
-    db_path, artifact_path, artifact = _write_minimal_formal_fixture(
+def test_load_registered_inputs_rejects_catalog_mismatch(tmp_path):
+    db_path, artifact_path, artifact = _write_minimal_registered_fixture(
         tmp_path
     )
     catalog = next(iter(artifact["query_catalogs"].values()))
@@ -398,26 +398,26 @@ def test_load_formal_inputs_rejects_catalog_mismatch(tmp_path):
     artifact_path.write_text(json.dumps(artifact), encoding="utf-8")
 
     with pytest.raises(ValueError, match="query catalog mismatch"):
-        load_formal_inputs(db_path, artifact_path)
+        load_registered_inputs(db_path, artifact_path)
 
 
-def test_load_formal_inputs_rejects_database_hash_mismatch(tmp_path):
-    db_path, artifact_path, artifact = _write_minimal_formal_fixture(
+def test_load_registered_inputs_rejects_database_hash_mismatch(tmp_path):
+    db_path, artifact_path, artifact = _write_minimal_registered_fixture(
         tmp_path
     )
     artifact["source_database"]["sha256"] = "wrong"
     artifact_path.write_text(json.dumps(artifact), encoding="utf-8")
 
     with pytest.raises(ValueError, match="source database hash differs"):
-        load_formal_inputs(db_path, artifact_path)
+        load_registered_inputs(db_path, artifact_path)
 
 
-def test_load_formal_inputs_rejects_nonempty_wal(tmp_path):
-    db_path, artifact_path, _ = _write_minimal_formal_fixture(tmp_path)
+def test_load_registered_inputs_rejects_nonempty_wal(tmp_path):
+    db_path, artifact_path, _ = _write_minimal_registered_fixture(tmp_path)
     Path(f"{db_path}-wal").write_bytes(b"not-empty")
 
     with pytest.raises(RuntimeError, match="non-empty WAL"):
-        load_formal_inputs(db_path, artifact_path)
+        load_registered_inputs(db_path, artifact_path)
 
 
 def test_build_downstream_artifact_drops_only_empty_workloads(tmp_path):
@@ -461,8 +461,8 @@ def test_build_downstream_artifact_drops_only_empty_workloads(tmp_path):
 
 
 def test_kuzu_parity_evidence_is_hash_linked(tmp_path):
-    db_path, deployment_path, _ = _write_minimal_formal_fixture(tmp_path)
-    inputs = load_formal_inputs(db_path, deployment_path)
+    db_path, deployment_path, _ = _write_minimal_registered_fixture(tmp_path)
+    inputs = load_registered_inputs(db_path, deployment_path)
     parity_path = tmp_path / "parity.json"
     selected, selection = select_pairs(
         inputs.deployment_artifact["per_pair"],
@@ -515,8 +515,8 @@ def test_kuzu_parity_evidence_rejects_broken_links(
     mutation,
     message,
 ):
-    db_path, deployment_path, _ = _write_minimal_formal_fixture(tmp_path)
-    inputs = load_formal_inputs(db_path, deployment_path)
+    db_path, deployment_path, _ = _write_minimal_registered_fixture(tmp_path)
+    inputs = load_registered_inputs(db_path, deployment_path)
     selected, selection = select_pairs(
         inputs.deployment_artifact["per_pair"],
         seed=0,
@@ -579,8 +579,8 @@ def test_kuzu_parity_evidence_rejects_self_consistent_tampering(
     mutation,
     message,
 ):
-    db_path, deployment_path, _ = _write_minimal_formal_fixture(tmp_path)
-    inputs = load_formal_inputs(db_path, deployment_path)
+    db_path, deployment_path, _ = _write_minimal_registered_fixture(tmp_path)
+    inputs = load_registered_inputs(db_path, deployment_path)
     selected, selection = select_pairs(
         inputs.deployment_artifact["per_pair"],
         seed=0,

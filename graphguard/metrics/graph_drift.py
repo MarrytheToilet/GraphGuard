@@ -4,8 +4,8 @@ Each "graph" here is a set of (subject_entity_id, relation, object_entity_id)
 triples plus their per-doc scope. All metrics are pure functions of those
 triples + (optionally) edge-level metadata. No DB/LLM access.
 
-These are used by E1 (schema design study), E6 (query-stability), and E7
-(schema redesign before/after).
+These utilities support contract canonicalization and offline graph-drift
+analyses.
 """
 from __future__ import annotations
 
@@ -244,7 +244,7 @@ def _spearman(xs: Sequence[float], ys: Sequence[float]) -> float:
 
 
 def all_drift_metrics(edges_a: Iterable, edges_b: Iterable) -> dict[str, float]:
-    """One-stop bundle for E1/E6 reporting."""
+    """Return the standard graph-drift metric bundle."""
     ea = list(edges_a)
     eb = list(edges_b)
     out = {

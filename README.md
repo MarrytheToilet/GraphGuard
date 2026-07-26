@@ -132,7 +132,7 @@ On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query w
 
 ### 🚦 Kuzu release gate reduces harmful publications with gold-free signals
 
-Deployed as a release gate before Kuzu ingestion, GraphGuard uses decision-time gold-free signals (typed-edge drift and Cypher answer-set drift) to publish or block each counterfactual graph. In this benchmark, gold relations deterministically instantiate the fixed query workload and gold answers define offline labels; once that workload is fixed, the gate decision only compares paired graph and answer sets. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **20–30% of evaluated pairs are true regressions**; at the fixed operating point (τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70), the gate cuts published harm to **0–13% at paired-view F1 fidelity 0.97–1.00**, compared with 4–23% for graph-only gating and 18–30% for an exactly block-rate-matched random gate. Here F1 fidelity is `1 - mean(abs(F1_base - F1_cf))`, not absolute task utility. Under a strict 50/50 document-level split, the same fixed operating point gives held-out harm of **0–8%** at F1 fidelity ≥0.96, versus 21–29% for publish-all. Thresholds re-selected on the calibration half miss the 5% target on held-out BC5CDR (11%), exposing finite-sample calibration uncertainty (`reports/cross_run/gate_split_formal_v1.json`).
+Deployed as a release gate before Kuzu ingestion, GraphGuard uses decision-time gold-free signals (typed-edge drift and Cypher answer-set drift) to publish or block each counterfactual graph. In this benchmark, gold relations deterministically instantiate the fixed query workload and gold answers define offline labels; once that workload is fixed, the gate decision only compares paired graph and answer sets. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **20–30% of evaluated pairs are true regressions**; at the fixed operating point (τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70), the gate cuts published harm to **0–13% at paired-view F1 fidelity 0.97–1.00**, compared with 4–23% for graph-only gating and 18–30% for an exactly block-rate-matched random gate. Here F1 fidelity is `1 - mean(abs(F1_base - F1_cf))`, not absolute task utility. Under a strict 50/50 document-level split, the same fixed operating point gives held-out harm of **0–8%** at F1 fidelity ≥0.96, versus 21–29% for publish-all. Thresholds re-selected on the calibration half miss the 5% target on held-out BC5CDR (11%), exposing finite-sample calibration uncertainty (`reports/cross_run/gate_split.json`).
 
 <div align="center">
   <img src="assets/figures/fig_riskcoverage.png" alt="Risk-coverage of the Kuzu gate" width="80%">
@@ -159,15 +159,15 @@ The ledger below maps the paper's headline claims to their authoritative machine
 
 | Claim | Value | Source |
 | ----- | ----- | ------ |
-| Controlled decoding-sample mean edge overlap, DocRED / Re-DocRED | 0.57 / 0.57 (raw view; temperature 0.3; seeds 7/13/23/37/53) | `RR/{docred,redocred}__deepseek-v4-flash__300d/report.md` |
-| Type agreement | 0.79 / 0.78 | same reports |
-| Disappearing / new-edge rate | 0.28–0.29 | same reports |
-| Type-flip rate | 0.13 | same reports |
+| Controlled decoding-sample mean edge overlap, DocRED / Re-DocRED | 0.57 / 0.57 (raw view; temperature 0.3; seeds 7/13/23/37/53) | `RC/reproducibility_manifest.json` (`raw_stability`) |
+| Type agreement | 0.79 / 0.78 | same manifest |
+| Disappearing / new-edge rate | 0.28–0.29 | same manifest |
+| Type-flip rate | 0.13 | same manifest |
 | Label-erased vs. full-triple gap in Table 5 | 0.13–0.15 on rerun and presentation families only; alias 0.02 and semantic 0.25 are excluded | `RC/family_decomp_*.json` |
 
-### §5.2 Contract catalogue outcomes (Table 4)
+### §5.2 Contract outcomes (Table 4)
 
-K1–K4 and K6 come from `RR/docred__deepseek-v4-flash__300d/eval/contracts.json`; K5 comes from `RC/k5_cross_model.json`.
+K1, K1b, K1c, K2, K3, K4, and K6 come from `RR/docred__deepseek-v4-flash__300d/eval/contracts.json`; K5 comes from `RC/k5_cross_model.json`.
 
 | Contract | n | Mean metric | Violation rate |
 | -------- | -: | ----------: | -------------: |
@@ -177,13 +177,10 @@ K1–K4 and K6 come from `RR/docred__deepseek-v4-flash__300d/eval/contracts.json
 | K2 prompt-presentation | 534 | 0.62 | 0.92 |
 | K3 evidence/alias | 78 | 0.41 | 0.64 |
 | K4 diagnostic fan-out-join robustness | 2,301 | 0.76 | 0.91 |
-| K4b path | 872 | 0.74 | 0.82 |
-| K4c aggregation | 2,301 | 0.31 | 0.55 |
-| K4d RAG retrieval | 2,301 | 0.63 | 0.88 |
 | K5 cross-model recall | 294 | 0.10 | 0.13 |
 | K6 stochastic repeatability | 78 | 0.51 | 0.91 |
 
-K5 pools three DeepSeek-vs.-{Kimi, Qwen3-32B, GLM-5} comparisons using the identifier-first recall metric. One model-pair verdict is satisfied and two are inconclusive; the pooled violation rate is 0.13, below $\alpha=0.20$. Figure 2 excludes K5 because it is a cross-model contract. Its K1–K4 and K6 values are read from `RC/cross_run_summary.json` and match Table 4 at the catalogue tolerances.
+K5 pools three DeepSeek-vs.-{Kimi, Qwen3-32B, GLM-5} comparisons using the identifier-first recall metric. One model-pair verdict is satisfied and two are inconclusive; the pooled violation rate is 0.13, below $\alpha=0.20$. Figure 2 excludes K5 because it is a cross-model contract. Its K1, K1b, K1c, K2, K3, K4, and K6 values are read from `RC/cross_run_summary.json` and match Table 4 at the catalogue tolerances.
 
 ### §5.2 K5 model-size ladder
 
@@ -205,7 +202,7 @@ Sources: `RC/family_decomp_cdr__deepseek-v4-flash__300d.json` and the contract r
 
 | Mechanism | Value |
 | --------- | ----- |
-| Type agreement under binary CID + `OTHER` schema | 0.96–0.98; DocRED presentation edits flip labels on 24–26% of preserved pairs |
+| Type agreement under binary CID + `OTHER` schema | 0.96–0.98; DocRED presentation edits have 24–27% mean relation-set disagreement |
 | MeSH identifiers absorb alias changes | Edge overlap 1.00, vs. 0.51–0.82 elsewhere |
 | Edges per document; rerun overlap | 2.5–3.2 vs. 7.4–10.7; 0.83 vs. 0.46–0.49 |
 | Dropping CID | Drift 0.98 |
@@ -214,9 +211,9 @@ Sources: `RC/family_decomp_cdr__deepseek-v4-flash__300d.json` and the contract r
 
 | Figure | Claim | Source |
 | ------ | ----- | ------ |
-| Fig. 3, noise floor | D0 is 0.43 DocRED, 0.43 Re-DocRED, 0.42 SciERC, and 0.19 BC5CDR | Lineage stability reports, read by `noise_floor_from_db` |
+| Fig. 3, noise floor | D0 is 0.43 DocRED, 0.43 Re-DocRED, 0.42 SciERC, and 0.19 BC5CDR | `RC/reproducibility_manifest.json` (`raw_stability`), derived from lineage stability reports and read by `noise_floor_from_cache` |
 | Fig. 4, SLA calibration | At $\epsilon=0.05$, graph-only coverage is 0.03–0.60; at $\epsilon=0.15$, it is 0.08–0.92 | `compute_calibration` on deterministic N=300 pairs |
-| Fig. 5, 2D sensitivity | At (0.45, 0.70), harm is 0–0.13 and F1 fidelity is 0.97–1.00; all four corpora are shown | Formal Kuzu cohort artifacts indexed by `RC/formal_artifacts_v1.json` |
+| Fig. 5, 2D sensitivity | At (0.45, 0.70), harm is 0–0.13 and F1 fidelity is 0.97–1.00; all four corpora are shown | Registered Kuzu cohort artifacts indexed by `RC/deployment_evidence.json` |
 | Fig. 6, DocRED L1 | Answer-drift violation is 0.69; absolute query-divergence rate is 0.35 | `RC/strict_vs_soft_*.json` |
 
 ### §5.5 Perturbation magnitude (RQ5, Fig. 7)
@@ -236,11 +233,11 @@ Source: `RC/langchain_toolchain.json`.
 | Claim | Value |
 | ----- | ----- |
 | Invariance axes violated | 92–100% of documents |
-| Mean drift vs. the custom pipeline | Within 0.03 on schema, prompt, and evidence axes; the resampling axis differs by 0.16 and is not included in this comparison |
+| Mean drift vs. the custom pipeline | Within 0.04 on schema, prompt, and evidence axes; resampling is 0.59 vs. the canonicalized K6 comparator's 0.51 (difference 0.08) and is not included in the within-0.04 claim |
 
 ### §6.1 Query amplification (RQ7, Figs. 8 and 9a)
 
-Sources: `RC/diagnostic_v2_*.json` and its compact `RC/amp_ci.json` summary for canonical graph-wide diagnostics D1–D5, plus `RC/extqueries_*.json` for Q5–Q7.
+Sources: `RC/diagnostic_*.json` and its compact `RC/amp_ci.json` summary for canonical graph-wide diagnostics D1–D5, plus `RC/extqueries_*.json` for Q5–Q7.
 
 | Claim | Value | Scope |
 | ----- | ----- | ----- |
@@ -253,7 +250,7 @@ Sources: `RC/diagnostic_v2_*.json` and its compact `RC/amp_ci.json` summary for 
 
 ### §6.2 Drift and accuracy (RQ8, Fig. 10)
 
-Sources: `RC/drift_accuracy_formal_v1_docred__deepseek-v4-flash__300d.json`, `RC/baselines_matched_*.json`, `RC/monitoring_*.json`, and the formal pair records indexed by `RC/formal_artifacts_v1.json`.
+Sources: `RC/drift_accuracy_docred__deepseek-v4-flash__300d.json` and the registered pair records indexed by `RC/deployment_evidence.json`.
 
 | Claim | Value | Scope |
 | ----- | ----- | ----- |
@@ -263,11 +260,10 @@ Sources: `RC/drift_accuracy_formal_v1_docred__deepseek-v4-flash__300d.json`, `RC
 | Directional-regression AUROC, graph vs. answer-set | 0.58–0.89 vs. 0.62–0.91 | |
 | Directional-regression AUPRC, graph vs. answer-set | 0.32–0.70 vs. 0.67–0.73 | Trapezoidal PR integration |
 | SciERC AUROC | Graph 0.627; answer 0.623; gate 0.643 | Effectively tied; answer-set leads on the other three corpora |
-| Matched-baseline diagnostic | Graph-only 0.49; GraphGuard 0.47; confidence 0.34; self-consistency 0.39 | Pooled-label artifact retained but not shown in the manuscript |
 
 ### §6.2 Regime detection (Fig. 9b)
 
-Source: `RC/regimes_formal_v1_*.json`.
+Source: `RC/regimes_*.json`.
 
 | Claim | Value | Scope |
 | ----- | ----- | ----- |
@@ -275,7 +271,7 @@ Source: `RC/regimes_formal_v1_*.json`.
 
 ### §6.3 Query-aware vs. graph-only policy (RQ9)
 
-Source: `RC/graph_vs_query_formal_v1_*.json`, field `monitors_at_matched_alarm`.
+Source: `RC/graph_vs_query_*.json`, field `monitors_at_matched_alarm`.
 
 | Corpus | Graph F1 (alarm rate) | Query F1 (alarm rate) | ΔF1 |
 | ------ | ---------------------: | ---------------------: | ---: |
@@ -288,7 +284,7 @@ The pooled comparison uses exactly equal alarm counts. Score ties are broken by 
 
 ### §6.4 Kuzu release gate (RQ10, Figs. 11 and 12)
 
-Sources: the formal Kuzu cohort artifacts indexed by `RC/formal_artifacts_v1.json` for full data and `RC/gate_split_formal_v1.json` for held-out results.
+Sources: the registered Kuzu cohort artifacts indexed by `RC/deployment_evidence.json` for full data and `RC/gate_split.json` for held-out results.
 
 | Setting | Harm | F1 fidelity | Recall |
 | ------- | ---- | ----------- | ------ |
@@ -301,7 +297,7 @@ Sources: the formal Kuzu cohort artifacts indexed by `RC/formal_artifacts_v1.jso
 | Exactly block-rate-matched random, seed 0 | 18–30% | — | — |
 | Budget planner harm recall at 40% / 60% budget | 39–52% / 58–78% | — | — |
 
-The matched-random row is generated from the formal pair records in `RC/tab_e2ekuzu_v2.tex`; the budget row comes from `RC/budget_planner_formal_v1.json`.
+The matched-random row and `RC/tab_e2ekuzu.tex` are both derived from the registered Kuzu pair records; the budget row comes from `RC/budget_planner.json`.
 
 ### Known limitations of the reported results
 
@@ -316,15 +312,54 @@ The matched-random row is generated from the formal pair records in `RC/tab_e2ek
 
 ## ⚙️ Reproducing the paper
 
-The repository ships machine-readable result artifacts under `reports/runs/` and `reports/cross_run/`. The paper's headline numbers can be checked and its generated figures/tables can be rebuilt without raw corpora, lineage databases, or LLM calls.
+The repository ships machine-readable result artifacts under `reports/runs/` and `reports/cross_run/`. The paper's headline numbers and generated figures can be checked or rebuilt without raw corpora, lineage databases, or LLM calls. The private manuscript's hand-authored declarative tables and source-backed numerical tables have a separate final-mile checker.
 
 Run all commands below from the repository root.
+
+### Authoritative result-to-script map
+
+`DB` below means the named local SQLite file
+`data/processed/runs/<run>/<run>.db`; never use an unqualified `run.db`.
+`RC` means `reports/cross_run/`, and `RR` means
+`reports/runs/<run>/`.
+
+| Result family | Sole producer / rebuild command | Direct authoritative input | Paper-facing output |
+| ------------- | ------------------------------- | -------------------------- | ------------------- |
+| Run lineage and RQ1 baseline | `run_paper_experiment.py`; `run_e0_stability.py`; `build_reproducibility_manifest.py` | raw corpus + API → seven named DBs | `RC/reproducibility_manifest.json` |
+| Exact document samples | `export_sampled_document_ids.py` | seven named DBs + configured split/limit | `RC/sampled_document_ids.json`, Table 2 |
+| K1–K4/K6 contracts and cross-run replication | `run_contracts.py`; `aggregate_cross_run.py` | named DBs → `RR/*/eval/contracts.json` | `RC/cross_run_summary.json`, Fig. 2, Table 4 |
+| K5 cross-model and size ladder | `run_k5_cross_model.py`; `run_model_size_k5.py`; `run_model_size_k5_expressible.py` | primary, GLM/Kimi/Qwen-32B, and Qwen-8B/14B DBs | `RC/k5_cross_model.json`, `RC/k5_model_size*.json`, Table 4 and size sensitivity |
+| Per-family decomposition | `run_family_decomposition.py` | four primary DBs | `RC/family_decomp_*.json`, Table 5 and response table |
+| Stability buckets | `run_stability_bucket_analysis.py` | four primary DBs | `RC/strict_vs_soft_*.json`, Fig. 6 |
+| Perturbation magnitude | `run_magnitude_analysis.py` | four primary DBs; `--fig-only` reads cached JSON | `RC/magnitude_*.json`, Fig. 7 |
+| Diagnostic D1–D5 amplification | `run_diagnostic_queries.py --overwrite`; `compute_amp_ci.py` | seven named DBs | `RC/diagnostic_*.json`, `RC/amp_ci.json`, Fig. 8 |
+| Extended Q5–Q7 | `run_extended_queries.py` | seven named DBs | `RC/extqueries_*.json`, Fig. 9a |
+| Deployment Q1–Q4 evidence | `run_deployment_queries.py` → `validate_deployment_kuzu_parity.py` → `run_deployment_downstream.py` → `build_deployment_cohorts.py` → `run_deployment_kuzu_cohort.py` → `package_deployment_evidence.py` | four primary DBs; fixed label-blind cohort anchors | 17 hash-indexed artifacts in `RC/deployment_evidence.json` |
+| RQ8 drift/accuracy | `run_drift_accuracy_analysis.py` | registered downstream artifact + primary DocRED DB for K1 | `RC/drift_accuracy_*.json`, Fig. 10 statistics |
+| RQ9 query-aware contracts | `run_graph_vs_query_ablation.py --run <run>`; `run_regime_analysis.py` | registered downstream artifacts | `RC/graph_vs_query_*.json`, `RC/regimes_*.json`, Fig. 9b |
+| RQ10 gate and held-out split | `make_kuzu_gate_artifacts.py`; `make_gate_figure.py`; `run_gate_split_analysis.py` | registered Kuzu cohort artifacts | `RC/tab_e2ekuzu.tex`, `RC/gate_split.json`, Figs. 11–12 |
+| RQ10 budget planner | `run_budget_planner.py` | registered Kuzu cohort artifacts | `RC/budget_planner.json`, Fig. 12 |
+| Endpoint reuse | `run_endpoint_reuse_analysis.py` | four primary DBs + contract reports | `RC/endpoint_reuse.json` |
+| LangChain toolchain | `run_langchain_toolchain.py`; `--analyze-only` replays the published checkpoint | primary DocRED DB for extraction; `RC/langchain_toolchain_cache.jsonl` + hash-bound checkpoint metadata for offline replay | `RC/langchain_toolchain.json`, Table 6 and response table |
+| Final figures and tables | figure producers listed in step 3; `sync_paper_figures.py`; `verify_manuscript_artifacts.py` | authoritative JSON above | 13 active PNGs and six active `main.tex` tables |
+
+`fig_contract_overview.png` is the one author-created conceptual
+figure; the other 12 active PNGs have the producers named above. The three
+declarative tables (contracts, runs, and queries) are checked against the
+registries/configuration, while the three numerical tables and their
+response-letter counterparts are checked directly against JSON values.
+
+Each result family has one canonical pre-release artifact. The RQ8–RQ10 chain
+is indexed by `deployment_evidence.json`; deterministic cohort anchors are
+reconstructed from the four lineage databases and checked against fixed
+run-ID digests in `build_deployment_cohorts.py`. Superseded edge-risk,
+repair, E8, monitoring, baseline, and E2E result families are not retained.
 
 There are three reproducibility levels:
 
 | Level | What it verifies or rebuilds | Raw corpora | Lineage DBs | API |
 | ----- | ---------------------------- | :---------: | :---------: | :-: |
-| Cached-artifact check | Headline claims, generated figures, gate/baseline tables | No | No | No |
+| Cached-artifact check | Headline claims, generated figures, and gate artifacts | No | No | No |
 | Pair-level re-analysis | Magnitude, stability, drift/accuracy, family, extended-query, regime, and K5 JSON | No | Yes | No |
 | End-to-end re-extraction | Extraction events and every downstream artifact | Yes | Rebuilt | Yes |
 
@@ -333,17 +368,21 @@ End-to-end extraction is not bitwise deterministic because the hosted model prov
 ### 0. ✅ Verify the reported results
 
 ```bash
-# Works from the versioned reports alone.
+# Works from the canonical reports alone.
 python scripts/verify_paper_results.py
 
 # Additionally recount the seven tabulated runs from local lineage SQLite DBs.
 python scripts/verify_paper_results.py --lineage
 
+# If the private, git-ignored manuscript is present, also check every active
+# figure copy and every source-backed table in main.tex and response.tex.
+python scripts/verify_manuscript_artifacts.py
+
 # Rebuild endpoint-union call/token savings from the four primary lineage DBs.
 python scripts/run_endpoint_reuse_analysis.py
 ```
 
-The first command validates the authoritative JSON artifacts, including the 17-entry formal RQ8–RQ10 package, and checks the exact sampled-document lists, raw repeated-extraction baseline, run totals, contract table, endpoint-union savings, revision analyses, query-divergence statistics, directional-regression AUROC/AUPRC, release gate, and budget planner. `reports/cross_run/formal_artifacts_v1.json` records the size, SHA-256, schema version, source run, and cross-artifact provenance of every frozen formal artifact; its deterministic gzip transports are versioned. With `--lineage`, the verifier also checks the samples against the seven run databases, recomputes endpoint-union savings on the four primary runs, and recounts 33,043 events (28,482 primary + 4,561 cross-model) and 137,646,379 tokens directly from SQLite.
+The first command validates the authoritative JSON artifacts, including the 17-entry RQ8–RQ10 evidence package, and checks the exact sampled-document lists, raw repeated-extraction baseline, run totals, contract table, endpoint-union savings, additional analyses, query-divergence statistics, directional-regression AUROC/AUPRC, release gate, and budget planner. `reports/cross_run/deployment_evidence.json` records the size, SHA-256, schema version, source run, and cross-artifact provenance of every registered artifact; large logical JSON files use one deterministic gzip transport. With `--lineage`, the verifier also checks the samples against the seven run databases, recomputes endpoint-union savings on the four primary runs, and recounts 33,043 events (28,482 primary + 4,561 cross-model) and 137,646,379 tokens directly from SQLite.
 
 ### 1. 🛠️ Install
 
@@ -352,7 +391,7 @@ conda create -n graphguard python=3.10 -y
 conda activate graphguard
 python -m pip install -e '.[dev]'
 
-# Software checks (expected: 156 passed)
+# Software checks
 pytest -q
 
 # Only needed for the LangChain toolchain experiment in step 7:
@@ -392,7 +431,7 @@ Where to download each one:
 
 | Corpus       | Source                                                                                          | Notes                                                                                                  |
 | ------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **DocRED**     | Hugging Face hub: [`docred`](https://huggingface.co/datasets/docred)                            | Fetched automatically by `graphguard/data/docred.py` on first call; cached under `data/cache/hf/`.     |
+| **DocRED**     | Hugging Face hub: [`docred`](https://huggingface.co/datasets/docred)                            | Fetched automatically by `graphguard/data/load_docred.py` on first call; cached under `data/cache/hf/`. |
 | **Re-DocRED**  | GitHub: [`tonytan48/Re-DocRED`](https://github.com/tonytan48/Re-DocRED) → `data/`                | Copy `train_revised.json` and `dev_revised.json` into `data/raw/redocred/`.                            |
 | **SciERC**     | AllenAI release: [`sciie.tar.gz`](http://nlp.cs.washington.edu/sciIE/data/sciie.tar.gz)         | Untar and keep the inner `processed_data/json/{train,dev,test}.json`.                                  |
 | **BC5CDR**     | BioCreative V CDR: [BioC.zip](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-v/track-3-cdr/) | Place the `CDR.Corpus.v010516/` directory (BioC XML files) under `data/raw/cdr/CDR_Data/`.             |
@@ -418,7 +457,7 @@ ls data/raw/redocred/{train,dev}_revised.json \
 ### 3. 🖼️ Regenerate the generated figures and tables (no API calls)
 
 ```bash
-# Rebuild formal RQ9 summaries from the shipped, hash-checked evidence.
+# Rebuild RQ9 summaries from the shipped, hash-checked evidence.
 for run in \
   docred__deepseek-v4-flash__300d \
   redocred__deepseek-v4-flash__300d \
@@ -429,7 +468,7 @@ do
 done
 python scripts/run_regime_analysis.py
 
-# Rebuild formal RQ10 derived summaries.
+# Rebuild RQ10 derived summaries.
 python scripts/run_gate_split_analysis.py
 python scripts/run_budget_planner.py
 
@@ -449,11 +488,15 @@ python scripts/make_gate_figure.py
 # Risk-coverage figure (paper Fig. 12, top) + per-policy gate table
 python scripts/make_kuzu_gate_artifacts.py
 
+# Copy the 13 canonical assets into the private manuscript and compare hashes.
+python scripts/sync_paper_figures.py --write
+
 # Verify that regenerated summaries and figures still match the paper.
 python scripts/verify_paper_results.py
+python scripts/verify_manuscript_artifacts.py
 ```
 
-`make_paper_figures.py` accepts a target argument: `all` (default), `replacement` (cross-run violations / diagnostic amplification / strict-vs-soft) or `phase_w` (noise-floor / calibration / 2D-sensitivity / AUROC). The other commands above consume cached JSONs under `reports/`; `make_paper_figures.py` additionally reads the four primary lineage DBs to rebuild the noise-floor panel. No command in this section needs raw corpora or API access. Rebuilding the RQ8 K1 contrast with `scripts/run_drift_accuracy_analysis.py` additionally requires the local DocRED lineage DB; the shipped formal summary is still checked by `verify_paper_results.py` without that DB.
+`make_paper_figures.py` accepts a target argument: `all` (default), `contracts` (cross-run violations / diagnostic amplification / strict-vs-soft) or `evaluation` (noise-floor / calibration / 2D-sensitivity / AUROC). All commands in this section consume the canonical artifacts under `reports/`; the noise-floor panel reads D0 from `reproducibility_manifest.json`, whose producer derives it from the four primary lineage DBs. No command in this section needs raw corpora, a lineage DB, or API access. Rebuilding the RQ8 K1 contrast with `scripts/run_drift_accuracy_analysis.py` additionally requires the local DocRED lineage DB; the shipped summary is still checked by `verify_paper_results.py` without that DB.
 
 The Kuzu-backed workload is pinned to `kuzu==0.11.3`, the version used for the reported gate experiment.
 
@@ -462,10 +505,12 @@ The Kuzu-backed workload is pinned to `kuzu==0.11.3`, the version used for the r
 End-to-end experiments are driven by `scripts/run_paper_experiment.py` using profiles from `configs/experiments/`. Each profile fixes the document count, counterfactual budget, oracle subset size, and stability-subset size. The driver runs the full pipeline:
 
 ```text
-prepare → extract → interventions → oracle → main → score → baselines → e0 → evals → report → viz
+prepare → extract → interventions → oracle → main → e0 → contracts
 ```
 
-The lineage database and intermediate stage reports land in `data/processed/runs/<run>/`; paper-facing reports and figures are copied to `reports/runs/<run>/`.
+The lineage database and repeated-extraction report land in
+`data/processed/runs/<run>/`; the registered contract JSON and Markdown land
+in `reports/runs/<run>/eval/`.
 
 ```bash
 set -a && . ./.env && set +a   # so subprocesses inherit API credentials
@@ -507,6 +552,7 @@ The four commands write lineage databases to `data/processed/runs/<run-name>/<ru
 After any end-to-end re-run, rebuild the cross-run summaries that feed the paper figures:
 
 ```bash
+python scripts/build_reproducibility_manifest.py
 python scripts/run_diagnostic_queries.py --overwrite
 python scripts/aggregate_cross_run.py   # writes reports/cross_run/cross_run_summary.json
 python scripts/compute_amp_ci.py        # writes reports/cross_run/amp_ci.json
@@ -545,11 +591,9 @@ python scripts/aggregate_cross_run.py
 python scripts/compute_amp_ci.py
 ```
 
-The historical convenience script `scripts/run_crossmodel_medium.sh` covers only Qwen3-32B and Kimi-K2 and uses different run names; the explicit commands above reproduce the complete three-model catalogue expected by the analysis scripts.
+### 7. 🔁 Additional analyses
 
-### 7. 🔁 Revision analyses
-
-The cached outputs of every revision analysis ship under `reports/cross_run/`
+The cached outputs of every additional analysis ship under `reports/cross_run/`
 and `reports/runs/<run>/` (magnitude, extended queries, regimes, per-family
 decomposition, LangChain toolchain, K5 model-size ladder and its
 expressible-schema sensitivity, gate calibration/deployment split, and the
@@ -557,7 +601,7 @@ drift/accuracy analysis). Use
 `python scripts/verify_paper_results.py` to validate their paper-facing
 numbers. Re-deriving pair-level JSON needs the local per-run lineage databases
 under `data/processed/runs/` (rebuilt by step 4); these SQLite files are not
-versioned.
+committed.
 
 With the four primary databases from step 4, the following analyses are
 offline:
@@ -605,10 +649,17 @@ python scripts/run_model_size_k5.py
 python scripts/run_model_size_k5_expressible.py
 ```
 
-Finally, the submitted LangChain result uses the transformer's JSON-prompt
-mode. This command performs API calls and checkpoints every document-condition
-pair to `data/processed/langchain_toolchain_cache.jsonl` before writing
-`reports/cross_run/langchain_toolchain.json`:
+Finally, the reported LangChain result uses the transformer's JSON-prompt
+mode. The API command checkpoints every document-condition pair to the local
+append-only `data/processed/langchain_toolchain_cache.jsonl`. New extractions
+derive the evidence-order seed from SHA-256 of the document ID and reuse a
+success only when its cohort, configuration, input hash, model, and toolchain
+dependency versions match. The published 600-record checkpoint is stored as
+`reports/cross_run/langchain_toolchain_cache.jsonl`; its hash-bound metadata is
+`reports/cross_run/langchain_toolchain_checkpoint.json`. This makes Table 6
+replayable without API access and preserves the model identity, while recording
+that the original extraction dependency versions and exact sentence
+permutations are unavailable.
 
 ```bash
 set -a && . ./.env && set +a
@@ -619,7 +670,7 @@ OPENAI_MODEL=deepseek-v4-flash \
     --workers 8 \
     --ignore-tool-usage
 
-# Recompute only the JSON summary from an existing local checkpoint:
+# Recompute the JSON summary from the published checkpoint (no API):
 python scripts/run_langchain_toolchain.py --analyze-only
 ```
 
@@ -627,7 +678,7 @@ python scripts/run_langchain_toolchain.py --analyze-only
 
 ## 📊 Paper runs and where they live
 
-| Corpus / extractor | Run size | Profile / config | Expected local lineage DB (not versioned) |
+| Corpus / extractor | Run size | Profile / config | Expected local lineage DB (not committed) |
 | ------------------ | -------: | ---------------- | ----------------------------------------- |
 | DocRED / DeepSeek-V4-Flash | 300 docs | `main300` / `configs/experiments/docred_paper.yaml` | `data/processed/runs/docred__deepseek-v4-flash__300d/…` |
 | Re-DocRED / DeepSeek-V4-Flash | 300 docs | `main300` / `configs/experiments/redocred_paper.yaml` | `data/processed/runs/redocred__deepseek-v4-flash__300d/…` |
@@ -657,8 +708,6 @@ GraphGuard/
 │   ├── metrics/       #    Edge / type / answer-set drift metrics
 │   ├── planning/      #    Materialization scheduler / budget planner
 │   ├── qa.py          #    Kuzu workload helpers (Q1–Q4; Q5–Q7 are evaluated by scripts/run_extended_queries.py)
-│   ├── scoring/       #    Per-edge risk scoring
-│   ├── reports/       #    Report builders consumed by paper figures
 │   └── viz/           #    Plot primitives
 ├── configs/           # ⚙️ Dataset / model / prompt / schema YAMLs
 │   └── experiments/   #    Per-run profiles (main100, main300, pilot, …)
@@ -673,7 +722,7 @@ GraphGuard/
 │   └── aggregate_cross_run.py / compute_amp_ci.py   # (full inventory: scripts/README.md)
 ├── data/raw/          # 🌐 Raw corpora — populate per "Dataset setup" above
 ├── data/processed/    # 🗄️ Per-run lineage SQLite (re-buildable from scripts/)
-├── reports/runs/      # 📊 Per-run JSON reports (contracts, e0, baselines, evals, …)
+├── reports/runs/      # 📊 Per-run contract JSON/Markdown and contract plots
 ├── reports/cross_run/ # 📈 Cross-run aggregations consumed by paper figures
 └── assets/            # 🖼️ README header image + regenerated paper figures (assets/figures/)
 ```

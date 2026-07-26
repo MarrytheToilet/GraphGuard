@@ -1,7 +1,7 @@
 name: docred_paper
 description: >
-  README-aligned VLDB experiment plan for GraphGuard: reliability auditing,
-  budgeted counterfactual lineage, planner cost-quality, and secondary repair.
+  GraphGuard paper run for drift contracts, budgeted counterfactual lineage,
+  repeated-extraction stability, and materialization planning.
 
 paths:
   data_root: data/processed/runs
@@ -77,31 +77,3 @@ profiles:
     e0_docs: 80
     e0_runs: 5
     workers: 16
-
-experiments:
-  E0:
-    claim: LLM-extracted graph databases are not deterministic projections of text.
-    metrics:
-      - edge overlap
-      - type agreement
-      - disappearance rate
-      - type flip rate
-      - new edge rate
-  E1:
-    claim: Counterfactual lineage can recover known cause categories.
-    status: heuristic until synthetic injection corpus is expanded
-  E2:
-    claim: Stability and sensitivity signals predict edge correctness/audit risk.
-    label_modes:
-      - strict
-      - clean
-      - wrong_only
-  E3:
-    claim: Schema choices materially distort relation types.
-  E4:
-    claim: GraphGuard recovers oracle causes with fewer LLM calls than exhaustive reruns.
-    oracle_subset: true
-  E5:
-    claim: Reliability lineage improves human audit prioritization.
-    primary: audit_prioritization
-    secondary: repair_filtering

@@ -27,9 +27,6 @@ RUNS = (
     "redocred__deepseek-v4-flash__300d",
     "scierc__deepseek-v4-flash__100d",
     "cdr__deepseek-v4-flash__300d",
-    "docred__glm-5__100d",
-    "docred__kimi-k2__100d",
-    "docred__qwen3-32b__100d",
 )
 IMPLEMENTATION_FILES = (
     "graphguard/deployment_runner.py",
@@ -78,7 +75,7 @@ def main() -> int:
         )
         if not db_path.exists():
             raise FileNotFoundError(db_path)
-        output_path = args.out_dir / f"deployment_q1q4_v1_{run}.json"
+        output_path = args.out_dir / f"deployment_q1q4_{run}.json"
         if output_path.exists() and not args.overwrite:
             raise FileExistsError(
                 f"{output_path} exists; choose a new output directory or "

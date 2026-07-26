@@ -1,50 +1,59 @@
 {
+ "artifact_type": "graphguard.query_regime_analysis",
+ "artifact_version": 1,
  "run": "docred__deepseek-v4-flash__300d",
- "n_pairs": 6419,
+ "source": {
+  "evidence_index": {
+   "path": "reports/cross_run/deployment_evidence.json",
+   "sha256": "938c428ed3ec51917b6dacd58e624115cbbc949c758785c94c053bb23d22584b"
+  },
+  "downstream_sha256": "3dc85213f7125371878603f4512039d53bf710b33d8f8c33439fe9d258cbdc85"
+ },
+ "n_pairs": 6275,
  "label_definition": "regime mean absolute per-query F1 change > threshold",
  "harm_tau": 0.05,
  "regimes": {
   "local": {
-   "n": 5848,
-   "harm_base_rate": 0.5125,
-   "tau_graph": 0.6667,
-   "cmp_graph": ">",
+   "n": 5478,
+   "harm_base_rate": 0.5863,
+   "tau_graph": 0.625,
+   "cmp_graph": ">=",
    "tau_query": 1.0,
    "cmp_query": ">=",
    "graph_only": {
-    "alarm_rate": 0.5035909712722298,
-    "precision": 0.6132,
-    "recall": 0.6026,
-    "f1": 0.6079
+    "alarm_rate": 0.5921869295363271,
+    "precision": 0.693,
+    "recall": 0.6999,
+    "f1": 0.6964
    },
    "query_aware": {
-    "alarm_rate": 0.6590287277701778,
-    "precision": 0.7276,
-    "recall": 0.9356,
-    "f1": 0.8186
+    "alarm_rate": 0.6356334428623586,
+    "precision": 0.8219,
+    "recall": 0.891,
+    "f1": 0.8551
    },
-   "delta_f1": 0.2107
+   "delta_f1": 0.1587
   },
   "multihop": {
-   "n": 889,
-   "harm_base_rate": 0.7255,
-   "tau_graph": 0.5385,
-   "cmp_graph": ">",
+   "n": 1017,
+   "harm_base_rate": 0.6775,
+   "tau_graph": 0.5789,
+   "cmp_graph": ">=",
    "tau_query": 1.0,
    "cmp_query": ">=",
    "graph_only": {
-    "alarm_rate": 0.7210348706411699,
-    "precision": 0.819,
-    "recall": 0.814,
-    "f1": 0.8165
+    "alarm_rate": 0.6774827925270404,
+    "precision": 0.7896,
+    "recall": 0.7896,
+    "f1": 0.7896
    },
    "query_aware": {
-    "alarm_rate": 0.7930258717660292,
-    "precision": 0.9007,
-    "recall": 0.9845,
-    "f1": 0.9407
+    "alarm_rate": 0.8043264503441495,
+    "precision": 0.8313,
+    "recall": 0.9869,
+    "f1": 0.9025
    },
-   "delta_f1": 0.1242
+   "delta_f1": 0.1129
   }
  }
 }

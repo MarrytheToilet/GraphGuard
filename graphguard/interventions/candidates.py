@@ -1,11 +1,8 @@
-"""Enumerate intervention candidates for a document.
+"""Enumerate controlled intervention candidates for a document.
 
-For Milestone 2 we generate a small but well-typed set:
-  * sentence  -> remove / mask  (one per sentence, optionally only evidence sents)
-  * prompt_clause -> remove for C1, C3, C4
-  * schema    -> with_other, coarse, drop_<each_relation_used_in_doc>
-
-Each candidate gets a deterministic intervention_id so re-runs are idempotent.
+Candidates cover presentation, semantic, stochastic, and model perturbations.
+Each receives a deterministic intervention ID so repeated generation is
+idempotent.
 """
 from __future__ import annotations
 

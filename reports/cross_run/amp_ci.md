@@ -1,6 +1,6 @@
 # Canonical diagnostic amplification
 
-Document-cluster bootstrap 95% CIs from the complete v2 pair populations (B=1000, seed=0; mean of per-pair ratios).
+Document-cluster bootstrap 95% CIs from the complete canonical pair populations (B=1000, seed=0; mean of per-pair ratios).
 
 | run | query | n | docs | Amp mean | 95% CI | Amp(ratio-of-means) |
 |---|---|---:|---:|---:|---|---:|

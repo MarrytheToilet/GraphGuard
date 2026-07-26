@@ -16,8 +16,7 @@ base view of each pair and reused on the counterfactual view. For every ok
 counterfactual pair we report per-template answer-set drift, amplification
 Amp = QDrift / (GraphDrift + 0.05) (the implementation constant used by the
 existing amplification evaluation), and violation rates on presentation-class
-pairs at the registered catalogue threshold (drift > 0.30), plus the legacy
-0.50-drift sensitivity point retained for comparison.
+pairs at the registered catalogue threshold (drift > 0.30).
 
 Writes reports/cross_run/extqueries_<run>.json.
 """
@@ -49,9 +48,9 @@ MAIN_RUNS = [
 
 OUT_DIR = ROOT / "reports" / "cross_run"
 AMP_EPS = 0.05          # matches graphguard.contracts.metrics.EPS
-TAU_LEGACY = 0.50       # legacy sensitivity point (not the registered contract)
 TAU_TABLE = 0.30        # violation when answer drift > 0.30 (catalogue table)
 N_PATH_QUERIES = 6
+THRESHOLD_ATOL = 1e-12
 
 
 def jac(a: set, b: set) -> float:
@@ -59,6 +58,11 @@ def jac(a: set, b: set) -> float:
         return 1.0
     u = len(a | b)
     return len(a & b) / u if u else 1.0
+
+
+def exceeds_tolerance(value: float, threshold: float) -> bool:
+    """Return whether drift is genuinely above a closed tolerance boundary."""
+    return value > threshold + THRESHOLD_ATOL
 
 
 # ------------------------------------------------------------------ queries
@@ -232,8 +236,10 @@ def analyze_run(run: str) -> dict | None:
             "graph_drift_mean": statistics.mean(st["gd"]),
             "amp_mean": amp_mean, "amp_ci_lo": lo, "amp_ci_hi": hi,
             "n_presentation": len(pres),
-            "viol_rate_jaccard_lt_0.50": (sum(1 for d in pres if d > TAU_LEGACY) / len(pres)) if pres else None,
-            "viol_rate_drift_gt_0.30": (sum(1 for d in pres if d > TAU_TABLE) / len(pres)) if pres else None,
+            "viol_rate_drift_gt_0.30": (
+                sum(1 for d in pres if exceeds_tolerance(d, TAU_TABLE))
+                / len(pres)
+            ) if pres else None,
         }
 
     out = {
@@ -250,7 +256,6 @@ def analyze_run(run: str) -> dict | None:
     for q, s in summary.items():
         print(f"  {q:<7} n={s['n']:<6} qd={s['query_drift_mean']:.3f} "
               f"amp={s['amp_mean']:.2f} [{s['amp_ci_lo']:.2f},{s['amp_ci_hi']:.2f}] "
-              f"violJ<.5={s['viol_rate_jaccard_lt_0.50'] if s['viol_rate_jaccard_lt_0.50'] is None else round(s['viol_rate_jaccard_lt_0.50'],3)} "
               f"violD>.3={s['viol_rate_drift_gt_0.30'] if s['viol_rate_drift_gt_0.30'] is None else round(s['viol_rate_drift_gt_0.30'],3)}")
     return out
 

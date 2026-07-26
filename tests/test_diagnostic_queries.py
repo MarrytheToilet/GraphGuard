@@ -1,12 +1,8 @@
-from collections import defaultdict
-from itertools import combinations
-
 import pytest
 
 from graphguard.diagnostic_queries import (
     answer_jaccard,
     edge_identity_answers,
-    execute_diagnostic,
     fanout_join_answers,
     short_connectivity_answers,
     top_undirected_degree_answers,
@@ -28,20 +24,6 @@ COUNTERFACTUAL = [
     (HEAD, "P463", "docred-validation-000000-Skai_TV::e8"),
     (HEAD, "P577", "docred-validation-000000-Skai_TV::e4"),
 ]
-
-
-def _legacy_order_sensitive_answers(triples):
-    """Reproduce the historical E6/E8 branch serialization for comparison."""
-    by_head = defaultdict(list)
-    for head, relation, tail in triples:
-        by_head[head].append((relation, tail))
-    return {
-        (head, branch_a, branch_b)
-        for head, branches in by_head.items()
-        for branch_a, branch_b in combinations(branches, 2)
-        if branch_a[0] != branch_b[0]
-    }
-
 
 def test_edge_identity_preserves_relation_types_and_removes_duplicates():
     triples = [
@@ -170,19 +152,6 @@ def test_short_connectivity_is_undirected_unordered_and_bounded_to_two_hops():
     })
 
 
-def test_dispatcher_accepts_canonical_ids_and_legacy_aliases():
-    for canonical_id, legacy_id in (
-        ("diagnostic.edge_identity", "Q1_single_edge"),
-        ("diagnostic.two_hop_endpoints", "Q2_two_hop"),
-        ("diagnostic.fanout_join", "Q3_join"),
-        ("diagnostic.top_undirected_degree", "Q4_top_degree"),
-        ("diagnostic.short_connectivity", "Q5_short_paths"),
-    ):
-        assert execute_diagnostic(canonical_id, BASE) == execute_diagnostic(
-            legacy_id, BASE
-        )
-
-
 def test_skai_tv_corrected_fanout_overlap():
     base_answers = fanout_join_answers(BASE)
     counterfactual_answers = fanout_join_answers(COUNTERFACTUAL)
@@ -193,13 +162,3 @@ def test_skai_tv_corrected_fanout_overlap():
     assert answer_jaccard(base_answers, counterfactual_answers) == pytest.approx(
         0.6
     )
-
-
-def test_skai_tv_legacy_value_came_from_branch_order():
-    legacy_base = _legacy_order_sensitive_answers(BASE)
-    legacy_counterfactual = _legacy_order_sensitive_answers(COUNTERFACTUAL)
-
-    assert len(legacy_base & legacy_counterfactual) == 3
-    assert answer_jaccard(
-        legacy_base, legacy_counterfactual
-    ) == pytest.approx(0.23076923076923078)

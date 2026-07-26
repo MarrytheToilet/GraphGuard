@@ -1,5 +1,14 @@
 {
+ "artifact_type": "graphguard.query_regime_analysis",
+ "artifact_version": 1,
  "run": "cdr__deepseek-v4-flash__300d",
+ "source": {
+  "evidence_index": {
+   "path": "reports/cross_run/deployment_evidence.json",
+   "sha256": "938c428ed3ec51917b6dacd58e624115cbbc949c758785c94c053bb23d22584b"
+  },
+  "downstream_sha256": "6046ab543068b6511fc2f1b0bb3770e4bf7be4a61d2aef7b20e36f0d6b9acd29"
+ },
  "n_pairs": 6189,
  "label_definition": "regime mean absolute per-query F1 change > threshold",
  "harm_tau": 0.05,
@@ -26,25 +35,25 @@
    "delta_f1": 0.2002
   },
   "multihop": {
-   "n": 879,
-   "harm_base_rate": 0.3402,
+   "n": 896,
+   "harm_base_rate": 0.3393,
    "tau_graph": 0.4286,
-   "cmp_graph": ">=",
+   "cmp_graph": ">",
    "tau_query": 0.3333,
    "cmp_query": ">",
    "graph_only": {
-    "alarm_rate": 0.3447098976109215,
-    "precision": 0.7492,
-    "recall": 0.7592,
-    "f1": 0.7542
+    "alarm_rate": 0.33705357142857145,
+    "precision": 0.7318,
+    "recall": 0.727,
+    "f1": 0.7294
    },
    "query_aware": {
-    "alarm_rate": 0.32764505119453924,
-    "precision": 0.9236,
-    "recall": 0.8896,
-    "f1": 0.9063
+    "alarm_rate": 0.33705357142857145,
+    "precision": 0.8874,
+    "recall": 0.8816,
+    "f1": 0.8845
    },
-   "delta_f1": 0.1521
+   "delta_f1": 0.1551
   }
  }
 }

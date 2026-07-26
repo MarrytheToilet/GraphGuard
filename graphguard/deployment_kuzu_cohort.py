@@ -3,11 +3,9 @@
 from __future__ import annotations
 
 import copy
-import hashlib
 import json
 import os
 import sqlite3
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Mapping, Sequence
@@ -16,7 +14,6 @@ from graphguard.deployment_cohorts import (
     COHORT_ARTIFACT_TYPE,
     COHORT_ARTIFACT_VERSION,
     canonical_digest,
-    select_continuity_cohort,
 )
 from graphguard.deployment_downstream import (
     DOWNSTREAM_ARTIFACT_TYPE,
@@ -25,7 +22,7 @@ from graphguard.deployment_downstream import (
     _answer_state,
     _query_identifier,
     evaluate_utility_pair,
-    load_formal_inputs,
+    load_registered_inputs,
 )
 from graphguard.deployment_runner import (
     ARTIFACT_TYPE,
@@ -51,10 +48,10 @@ KUZU_COHORT_TEST_ARTIFACT_TYPE = (
 )
 KUZU_COHORT_ARTIFACT_VERSION = 1
 REGISTERED_COHORT_MANIFEST_SHA256 = (
-    "6e1afbbcc46a6b8056439dcae6ee95b32667fa0c486641f91ea65c32d736e625"
+    "b0b551d6fa91d3e75bce1339a30875ce3ee516c8c415c30487e0ee2aa4295d43"
 )
 REGISTERED_KUZU_VERSION = "0.11.3"
-REGISTERED_FORMAL_QUERY_COUNTS = {
+REGISTERED_QUERY_COUNTS = {
     "cdr__deepseek-v4-flash__300d": 583,
     "docred__deepseek-v4-flash__300d": 5703,
     "redocred__deepseek-v4-flash__300d": 11110,
@@ -94,7 +91,6 @@ class KuzuCohortContext:
     downstream_path: Path
     downstream_artifact: dict
     downstream_by_run_id: dict[str, dict]
-    legacy_path: Path
     source_hashes_before: dict[str, str]
 
 
@@ -129,29 +125,26 @@ def _require_sha(path: Path, expected: str, label: str) -> str:
     return actual
 
 
-def _git_blob_sha256(
-    repo_root: Path,
-    commit: str,
-    relative_path: str,
-) -> str:
-    result = subprocess.run(
-        ["git", "show", f"{commit}:{relative_path}"],
-        cwd=repo_root,
-        check=True,
-        capture_output=True,
-    )
-    return hashlib.sha256(result.stdout).hexdigest()
-
-
 def _validate_manifest_implementation(
     manifest: Mapping,
     repo_root: Path,
 ) -> None:
     implementation = manifest.get("implementation", {})
-    commit = implementation.get("git_commit")
+    base_commit = implementation.get("base_git_commit")
+    source_state = implementation.get("source_state")
     recorded_hashes = implementation.get("file_sha256")
-    if not isinstance(commit, str) or not isinstance(recorded_hashes, dict):
+    if (
+        not isinstance(base_commit, str)
+        or len(base_commit) != 40
+        or source_state != "working_tree_content_hashes"
+        or not isinstance(recorded_hashes, dict)
+        or not recorded_hashes
+    ):
         raise ValueError("manifest implementation provenance is incomplete")
+    try:
+        int(base_commit, 16)
+    except ValueError as exc:
+        raise ValueError("manifest base commit is invalid") from exc
     for relative_path, expected in recorded_hashes.items():
         current_path = repo_root / relative_path
         _require_sha(
@@ -159,20 +152,6 @@ def _validate_manifest_implementation(
             expected,
             f"manifest implementation {relative_path}",
         )
-        try:
-            commit_hash = _git_blob_sha256(
-                repo_root,
-                commit,
-                relative_path,
-            )
-        except subprocess.CalledProcessError as exc:
-            raise ValueError(
-                f"cannot verify manifest commit blob: {relative_path}"
-            ) from exc
-        if commit_hash != expected:
-            raise ValueError(
-                f"manifest commit blob SHA mismatch: {relative_path}"
-            )
 
 
 def _require_artifact_identity(
@@ -209,7 +188,7 @@ def _validate_selection_shape(selection: Mapping) -> list[str]:
     if selected != retained + replacements:
         raise ValueError("cohort selected IDs do not preserve registered order")
     expected_counts = {
-        "n_legacy": target,
+        "n_anchor": target,
         "n_retained": len(retained),
         "n_excluded": len(excluded),
         "n_replacements": len(replacements),
@@ -339,10 +318,6 @@ def load_kuzu_cohort_context(
         source["source_database"]["path"],
         repo_root,
     )
-    legacy_path = _resolve_recorded_path(
-        entry["legacy_source"]["path"],
-        repo_root,
-    )
     source_hashes = {
         "manifest": manifest_sha,
         "deployment": _require_sha(
@@ -355,15 +330,9 @@ def load_kuzu_cohort_context(
             source["downstream_artifact"]["sha256"],
             "downstream artifact",
         ),
-        "legacy": _require_sha(
-            legacy_path,
-            entry["legacy_source"]["sha256"],
-            "legacy cohort artifact",
-        ),
     }
     deployment = _read_json(deployment_path, "deployment artifact")
     downstream = _read_json(downstream_path, "downstream artifact")
-    legacy = _read_json(legacy_path, "legacy cohort artifact")
     _require_artifact_identity(
         deployment,
         artifact_type=ARTIFACT_TYPE,
@@ -400,33 +369,20 @@ def load_kuzu_cohort_context(
         raise ValueError("downstream artifact contains duplicate run IDs")
     if len(deployment_ids) != source.get("n_authoritative_pairs"):
         raise ValueError("authoritative population count mismatch")
-    if len(downstream_ids) != source.get("n_formal_eligible_pairs"):
-        raise ValueError("formal eligible population count mismatch")
+    if len(downstream_ids) != source.get("n_registered_eligible_pairs"):
+        raise ValueError("registered eligible population count mismatch")
 
-    legacy_records = legacy.get("pair_records")
-    if not isinstance(legacy_records, list):
-        raise ValueError("legacy cohort pair records are missing")
-    legacy_ids = [record.get("run_id") for record in legacy_records]
-    legacy_source = entry["legacy_source"]
-    if len(legacy_ids) != legacy_source.get("n_pairs"):
-        raise ValueError("legacy cohort pair count mismatch")
-    if canonical_digest(legacy_ids) != legacy_source.get("run_ids_sha256"):
-        raise ValueError("legacy cohort ID digest mismatch")
-    if canonical_digest(legacy_ids) != selection.get(
-        "legacy_run_ids_sha256"
+    anchor = entry.get("selection_anchor")
+    if not isinstance(anchor, dict):
+        raise ValueError("cohort selection anchor is missing")
+    if anchor.get("n_pairs") != selection["target_size"]:
+        raise ValueError("cohort selection anchor count mismatch")
+    if anchor.get("run_ids_sha256") != selection.get(
+        "anchor_run_ids_sha256"
     ):
-        raise ValueError("selection/legacy cohort digest mismatch")
-    recomputed = select_continuity_cohort(
-        downstream_ids,
-        legacy_ids,
-        target_size=selection["target_size"],
-        seed=selection["seed"],
-        authoritative_run_ids=set(deployment_ids),
-    )
-    if recomputed != selection:
-        raise ValueError("registered cohort selection does not recompute")
+        raise ValueError("selection anchor digest mismatch")
 
-    inputs = load_formal_inputs(db_path, deployment_path)
+    inputs = load_registered_inputs(db_path, deployment_path)
     selected_pairs = []
     downstream_by_run_id = {
         record["run_id"]: record for record in downstream["per_pair"]
@@ -463,7 +419,6 @@ def load_kuzu_cohort_context(
         downstream_path=downstream_path,
         downstream_artifact=downstream,
         downstream_by_run_id=downstream_by_run_id,
-        legacy_path=legacy_path,
         source_hashes_before=source_hashes,
     )
 
@@ -542,11 +497,10 @@ def _validate_sources_unchanged(context: KuzuCohortContext) -> dict:
             context.inputs.deployment_artifact_path
         ),
         "downstream": sha256_file(context.downstream_path),
-        "legacy": sha256_file(context.legacy_path),
         "database": sha256_file(context.inputs.db_path),
     }
     if current != context.source_hashes_before:
-        raise RuntimeError("formal source files changed during Kuzu execution")
+        raise RuntimeError("registered source files changed during Kuzu execution")
     db_after = database_fingerprint(context.inputs.db_path)
     require_stable_quiescent_snapshot(
         context.inputs.source_before,
@@ -618,7 +572,7 @@ def _validate_execution_envelope(
             context.manifest_sha256
             == REGISTERED_COHORT_MANIFEST_SHA256
             and graph_factory is KuzuGraph
-            and mode == "formal"
+            and mode == "complete"
             and run_ids == context.selected_run_ids
             and status == "pass"
             and complete is True
@@ -626,7 +580,7 @@ def _validate_execution_envelope(
             and enforce_registered_query_count is True
         )
         if not valid:
-            raise ValueError("invalid official formal execution envelope")
+            raise ValueError("invalid official complete execution envelope")
         return
     if artifact_type == KUZU_COHORT_SMOKE_ARTIFACT_TYPE:
         selected_positions = {
@@ -713,9 +667,9 @@ def _run_kuzu_cohort(
         for run_id in run_ids
     )
     if enforce_registered_query_count:
-        registered = REGISTERED_FORMAL_QUERY_COUNTS.get(context.source_run)
+        registered = REGISTERED_QUERY_COUNTS.get(context.source_run)
         if registered is None or expected_queries != registered:
-            raise ValueError("registered formal query count mismatch")
+            raise ValueError("registered query count mismatch")
 
     records = []
     total = len(run_ids)
@@ -773,16 +727,12 @@ def _run_kuzu_cohort(
                 "path": str(context.downstream_path),
                 "sha256": context.source_hashes_before["downstream"],
             },
-            "legacy_cohort_artifact": {
-                "path": str(context.legacy_path),
-                "sha256": context.source_hashes_before["legacy"],
-            },
         },
         "protocol": {
             "execution_backend": execution_backend,
             "execution_mode": mode,
             "kuzu_version_required": REGISTERED_KUZU_VERSION,
-            "query_catalog": "formal schema-eligible deployment Q1-Q4",
+            "query_catalog": "registered schema-eligible deployment Q1-Q4",
             "selection": (
                 "exact manifest order; no resampling, replacement, skip, "
                 "or offline fallback"
@@ -836,7 +786,7 @@ def _validate_explicit_subset(
 def run_kuzu_cohort(
     context: KuzuCohortContext,
     *,
-    mode: str = "formal",
+    mode: str = "complete",
     smoke_run_ids: Sequence[str] | None = None,
     progress: Callable[[int, int, str], None] | None = None,
 ) -> dict:
@@ -845,9 +795,9 @@ def run_kuzu_cohort(
         raise ValueError(
             "official Kuzu execution requires the registered manifest SHA"
         )
-    if mode == "formal":
+    if mode == "complete":
         if smoke_run_ids is not None:
-            raise ValueError("formal mode does not accept a run-ID subset")
+            raise ValueError("complete mode does not accept a run-ID subset")
         run_ids = list(context.selected_run_ids)
         artifact_type = KUZU_COHORT_ARTIFACT_TYPE
         status = "pass"

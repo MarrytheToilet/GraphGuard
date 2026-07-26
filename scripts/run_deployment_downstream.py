@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build versioned RQ8--RQ10 inputs from formal deployment artifacts."""
+"""Build canonical RQ8--RQ10 inputs from registered deployment artifacts."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from graphguard.deployment_downstream import (  # noqa: E402
     build_downstream_artifact,
     load_kuzu_parity_evidence,
-    load_formal_inputs,
+    load_registered_inputs,
 )
 from graphguard.sqlite_snapshot import (  # noqa: E402
     runtime_versions,
@@ -28,9 +28,6 @@ RUNS = (
     "redocred__deepseek-v4-flash__300d",
     "scierc__deepseek-v4-flash__100d",
     "cdr__deepseek-v4-flash__300d",
-    "docred__glm-5__100d",
-    "docred__kimi-k2__100d",
-    "docred__qwen3-32b__100d",
 )
 IMPLEMENTATION_FILES = (
     "graphguard/deployment_downstream.py",
@@ -80,21 +77,21 @@ def main() -> int:
             ROOT
             / "reports"
             / "cross_run"
-            / f"deployment_q1q4_v1_{run}.json"
+            / f"deployment_q1q4_{run}.json"
         )
         parity_path = (
             ROOT
             / "reports"
             / "cross_run"
-            / f"deployment_q1q4_v1_{run}__kuzu_parity.json"
+            / f"deployment_q1q4_{run}__kuzu_parity.json"
         )
-        output_path = args.out_dir / f"deployment_downstream_v1_{run}.json"
+        output_path = args.out_dir / f"deployment_downstream_{run}.json"
         if output_path.exists() and not args.overwrite:
             raise FileExistsError(
                 f"{output_path} exists; choose another directory or "
                 "pass --overwrite"
             )
-        inputs = load_formal_inputs(db_path, deployment_path)
+        inputs = load_registered_inputs(db_path, deployment_path)
         artifact = build_downstream_artifact(inputs)
         artifact["execution_evidence"] = {
             "full_population_backend": "offline_set_semantics",

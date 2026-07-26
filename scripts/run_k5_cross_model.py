@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """K5: cross-model recall stability.
 
-For documents that appear in V3, Qwen3-32B, and Kimi-K2 smoke runs, compute
+For documents shared by the four model runs, compute
 per-document recall against DocRED gold edges for each model.  K5 is violated
 if |recall_A - recall_B| > tau on more than alpha fraction of shared documents.
 
@@ -19,10 +19,10 @@ from graphguard.contracts import REGISTRY  # noqa: E402
 from graphguard.contracts import metrics as M  # noqa: E402
 
 RUNS = {
-    "DeepSeek-V4-Flash (v5 primary, 300 docs)": "docred__deepseek-v4-flash__300d",
-    "Qwen3-32B (legacy, 100 docs)":              "docred__qwen3-32b__100d",
-    "Kimi-K2 (legacy, 100 docs)":                "docred__kimi-k2__100d",
-    "GLM-5 (v5 partial, 100 docs)":              "docred__glm-5__100d",
+    "DeepSeek-V4-Flash (300 docs)": "docred__deepseek-v4-flash__300d",
+    "Qwen3-32B (100 docs)": "docred__qwen3-32b__100d",
+    "Kimi-K2 (100 docs)": "docred__kimi-k2__100d",
+    "GLM-5 (100 docs)": "docred__glm-5__100d",
 }
 TAU = REGISTRY["K5"].threshold
 ALPHA = REGISTRY["K5"].alpha
@@ -73,13 +73,15 @@ def main():
     shared = set.intersection(*(set(d) for d in recalls.values()))
     print("shared:", len(shared))
 
-    pairs = [("DeepSeek-V4-Flash (v5 primary, 300 docs)", "Qwen3-32B (legacy, 100 docs)"),
-             ("DeepSeek-V4-Flash (v5 primary, 300 docs)", "Kimi-K2 (legacy, 100 docs)"),
-             ("DeepSeek-V4-Flash (v5 primary, 300 docs)", "GLM-5 (v5 partial, 100 docs)"),
-             ("Qwen3-32B (legacy, 100 docs)",            "Kimi-K2 (legacy, 100 docs)")]
+    pairs = [
+        ("DeepSeek-V4-Flash (300 docs)", "Qwen3-32B (100 docs)"),
+        ("DeepSeek-V4-Flash (300 docs)", "Kimi-K2 (100 docs)"),
+        ("DeepSeek-V4-Flash (300 docs)", "GLM-5 (100 docs)"),
+        ("Qwen3-32B (100 docs)", "Kimi-K2 (100 docs)"),
+    ]
     out = {"tau": TAU, "alpha": ALPHA, "shared_docs": len(shared), "pairs": {}}
     md = ["# K5 cross-model recall stability\n",
-          f"Shared documents (V3 ∩ Qwen3 ∩ Kimi): **{len(shared)}**.  "
+          f"Shared documents across all four runs: **{len(shared)}**.  "
           f"τ = {TAU}, α = {ALPHA}.  Bootstrap 95% CIs use B=2000 percentile resamples.\n",
           "| pair | mean recall A | mean recall B | mean \\|Δrecall\\| | fraction \\|Δ\\|>τ | 95% CI | verdict |",
           "|---|---:|---:|---:|---:|---|:---:|"]

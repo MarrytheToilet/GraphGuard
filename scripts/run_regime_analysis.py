@@ -17,7 +17,7 @@ therefore a diagnostic F1 comparison rather than a strictly alarm-matched
 experiment. The pooled policy comparison in run_graph_vs_query_ablation.py
 is the rate-matched analysis.
 
-Writes reports/cross_run/regimes_formal_v1_<run>.json.
+Writes reports/cross_run/regimes_<run>.json.
 """
 from __future__ import annotations
 
@@ -29,10 +29,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from graphguard.formal_artifacts import (  # noqa: E402
+from graphguard.deployment_evidence import (  # noqa: E402
     DEFAULT_INDEX,
     load_artifact_index,
-    load_formal_downstream,
+    load_downstream_evidence,
 )
 from graphguard.sqlite_snapshot import sha256_file  # noqa: E402
 
@@ -46,7 +46,7 @@ MAIN_RUNS = [
 OUT_DIR = ROOT / "reports" / "cross_run"
 HARM_TAU = 0.05
 REGIMES = {"local": ("lookup", "neighbor"), "multihop": ("join", "twohop")}
-FORMAL_FAMILIES = {
+REGISTERED_FAMILIES = {
     "lookup": "deployment.lookup",
     "neighbor": "deployment.neighbor",
     "join": "deployment.shared_tail_join",
@@ -87,13 +87,13 @@ def flags_at_alarm(scores, target):
 
 
 def analyze_run(run: str) -> dict | None:
-    artifact = load_formal_downstream(ROOT, run)
+    artifact = load_downstream_evidence(ROOT, run)
     rows = []
     for pair in artifact["per_pair"]:
         row = {"graph_drift": pair["graph_drift"]}
         for regime, fams in REGIMES.items():
             summaries = [
-                pair["families"][FORMAL_FAMILIES[family]]
+                pair["families"][REGISTERED_FAMILIES[family]]
                 for family in fams
             ]
             n_queries = sum(item["n_queries"] for item in summaries)
@@ -120,7 +120,7 @@ def analyze_run(run: str) -> dict | None:
         "artifact_version": 1,
         "run": run,
         "source": {
-            "formal_index": {
+            "evidence_index": {
                 "path": str(DEFAULT_INDEX),
                 "sha256": sha256_file(ROOT / DEFAULT_INDEX),
             },
@@ -156,7 +156,7 @@ def analyze_run(run: str) -> dict | None:
         }
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = OUT_DIR / f"regimes_formal_v1_{run}.json"
+    out_path = OUT_DIR / f"regimes_{run}.json"
     out_path.write_text(json.dumps(out, indent=1) + "\n")
     print(f"[done] {run}: {len(rows)} pairs -> {out_path}")
     for regime, s in out["regimes"].items():

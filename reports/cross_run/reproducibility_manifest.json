@@ -1,6 +1,104 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "scope": "four primary DeepSeek-V4-Flash runs plus three DocRED cross-model runs",
+  "producer": {
+    "script": "scripts/build_reproducibility_manifest.py",
+    "command": "python scripts/build_reproducibility_manifest.py",
+    "script_sha256": "6cbc332173105af66d1b08915e18d1498d401a721eba7fc867fdc5f0c7e0a504"
+  },
+  "source_databases": {
+    "docred__deepseek-v4-flash__300d": {
+      "label": "DocRED",
+      "role": "primary",
+      "path": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
+      "bytes": 212393984,
+      "sha256": "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4e0e03f9418",
+      "counts": {
+        "extraction_events": 7113,
+        "extracted_edges": 71926,
+        "counterfactual_views": 6419,
+        "tokens": 36608230
+      }
+    },
+    "redocred__deepseek-v4-flash__300d": {
+      "label": "Re-DocRED",
+      "role": "primary",
+      "path": "data/processed/runs/redocred__deepseek-v4-flash__300d/redocred__deepseek-v4-flash__300d.db",
+      "bytes": 242851840,
+      "sha256": "dc582d90d11a4b40ab6ea90f80312d8528a0ad587a5b337fb304f6cbf04cd531",
+      "counts": {
+        "extraction_events": 7314,
+        "extracted_edges": 80463,
+        "counterfactual_views": 6614,
+        "tokens": 39482498
+      }
+    },
+    "scierc__deepseek-v4-flash__100d": {
+      "label": "SciERC",
+      "role": "primary",
+      "path": "data/processed/runs/scierc__deepseek-v4-flash__100d/scierc__deepseek-v4-flash__100d.db",
+      "bytes": 130424832,
+      "sha256": "cb29f6c5a7948883270422feb6b0673373c8e58bb6c63016a020bdb4812eeac8",
+      "counts": {
+        "extraction_events": 7004,
+        "extracted_edges": 55697,
+        "counterfactual_views": 6336,
+        "tokens": 34511282
+      }
+    },
+    "cdr__deepseek-v4-flash__300d": {
+      "label": "BC5CDR",
+      "role": "primary",
+      "path": "data/processed/runs/cdr__deepseek-v4-flash__300d/cdr__deepseek-v4-flash__300d.db",
+      "bytes": 68694016,
+      "sha256": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+      "counts": {
+        "extraction_events": 7051,
+        "extracted_edges": 22167,
+        "counterfactual_views": 6351,
+        "tokens": 14148369
+      }
+    },
+    "docred__glm-5__100d": {
+      "label": "DocRED / GLM-5",
+      "role": "cross-model",
+      "path": "data/processed/runs/docred__glm-5__100d/docred__glm-5__100d.db",
+      "bytes": 15663104,
+      "sha256": "800c8846eb89709458687970099393603ded692f6ec053ca5cfca22db9802af7",
+      "counts": {
+        "extraction_events": 530,
+        "extracted_edges": 4148,
+        "counterfactual_views": 431,
+        "tokens": 4619807
+      }
+    },
+    "docred__kimi-k2__100d": {
+      "label": "DocRED / Kimi-K2",
+      "role": "cross-model",
+      "path": "data/processed/runs/docred__kimi-k2__100d/docred__kimi-k2__100d.db",
+      "bytes": 42352640,
+      "sha256": "4e4a0000455b67fb7bc52083bf2ada2d05e44935468b04bfaa390a073df0f0f4",
+      "counts": {
+        "extraction_events": 2040,
+        "extracted_edges": 13478,
+        "counterfactual_views": 1820,
+        "tokens": 3768445
+      }
+    },
+    "docred__qwen3-32b__100d": {
+      "label": "DocRED / Qwen3-32B",
+      "role": "cross-model",
+      "path": "data/processed/runs/docred__qwen3-32b__100d/docred__qwen3-32b__100d.db",
+      "bytes": 50614272,
+      "sha256": "f57d8b1f00f4b23e4adc9b3dbba1df84b100cd1bb7612e861ed509245fc02f2d",
+      "counts": {
+        "extraction_events": 1991,
+        "extracted_edges": 16131,
+        "counterfactual_views": 1776,
+        "tokens": 4507748
+      }
+    }
+  },
   "lineage_totals": {
     "extraction_events": 33043,
     "primary_events": 28482,
@@ -12,35 +110,35 @@
   "raw_stability": {
     "DocRED": {
       "n_documents": 79,
-      "avg_edge_overlap": 0.571222440476356,
-      "type_agreement": 0.786796279817599,
-      "disappearance_rate": 0.282101604210423,
-      "type_flip_rate": 0.127695249223524,
-      "new_edge_rate": 0.292377607819093
+      "avg_edge_overlap": 0.5712224404763558,
+      "type_agreement": 0.7867962798175989,
+      "disappearance_rate": 0.28210160421042335,
+      "type_flip_rate": 0.1276952492235245,
+      "new_edge_rate": 0.29237760781909256
     },
     "Re-DocRED": {
       "n_documents": 80,
-      "avg_edge_overlap": 0.568228565423759,
-      "type_agreement": 0.783516240703741,
-      "disappearance_rate": 0.286441622541685,
-      "type_flip_rate": 0.133435328379241,
-      "new_edge_rate": 0.289362597521481
+      "avg_edge_overlap": 0.5682285654237592,
+      "type_agreement": 0.7835162407037407,
+      "disappearance_rate": 0.2864416225416852,
+      "type_flip_rate": 0.13343532837924116,
+      "new_edge_rate": 0.28936259752148136
     },
     "SciERC": {
       "n_documents": 50,
-      "avg_edge_overlap": 0.582571676982567,
-      "type_agreement": 0.861179487179487,
-      "disappearance_rate": 0.309940989663358,
-      "type_flip_rate": 0.07535796980797,
-      "new_edge_rate": 0.293849890070943
+      "avg_edge_overlap": 0.5825716769825666,
+      "type_agreement": 0.8611794871794872,
+      "disappearance_rate": 0.3099409896633581,
+      "type_flip_rate": 0.07535796980796981,
+      "new_edge_rate": 0.2938498900709427
     },
     "BC5CDR": {
       "n_documents": 80,
       "avg_edge_overlap": 0.806364983974359,
-      "type_agreement": 0.910833333333333,
-      "disappearance_rate": 0.124572687728938,
-      "type_flip_rate": 0.036572916666667,
-      "new_edge_rate": 0.118204899267399
+      "type_agreement": 0.9108333333333333,
+      "disappearance_rate": 0.12457268772893773,
+      "type_flip_rate": 0.03657291666666666,
+      "new_edge_rate": 0.11820489926739927
     }
   }
 }

@@ -5,15 +5,9 @@ The project contains three query workloads created for different analyses:
 ``deployment``
     Gold-instantiated Q1--Q4 queries executed by the Kuzu release gate.
 ``extended``
-    Q5--Q7 queries added for the revision's topology analysis.
+    Q5--Q7 queries used for topology analysis.
 ``diagnostic``
-    Graph-wide queries used by the legacy E6/E8 amplification artifacts.
-
-Legacy artifact identifiers are retained only as provenance aliases.  They are
-not paper query identifiers because their semantics differ from Q1--Q7.  The
-``answer`` field records the deterministic semantics;
-``legacy_behavior`` records a known difference in a historical artifact rather
-than preserving that behavior as the specification.
+    Graph-wide D1--D5 queries used for amplification diagnostics.
 
 This module is the canonical registry consumed by the diagnostic runner and
 deployment artifact pipeline; executable query operators remain in
@@ -39,8 +33,6 @@ class QuerySpec:
     parameters: str
     answer: str
     paper_id: str | None = None
-    legacy_artifact_id: str | None = None
-    legacy_behavior: str | None = None
 
 
 DEPLOYMENT_QUERIES = (
@@ -111,7 +103,6 @@ DIAGNOSTIC_QUERIES = (
     QuerySpec(
         canonical_id="diagnostic.edge_identity",
         workload="diagnostic",
-        legacy_artifact_id="Q1_single_edge",
         name="typed-edge identity",
         parameters="none",
         answer="the complete typed edge set",
@@ -119,7 +110,6 @@ DIAGNOSTIC_QUERIES = (
     QuerySpec(
         canonical_id="diagnostic.two_hop_endpoints",
         workload="diagnostic",
-        legacy_artifact_id="Q2_two_hop",
         name="graph-wide two-hop endpoints",
         parameters="none",
         answer="ordered endpoint pairs connected by an exact two-hop path",
@@ -127,39 +117,26 @@ DIAGNOSTIC_QUERIES = (
     QuerySpec(
         canonical_id="diagnostic.fanout_join",
         workload="diagnostic",
-        legacy_artifact_id="Q3_join",
         name="same-head fan-out join",
         parameters="none",
         answer=(
             "canonical unordered pairs of differently typed outgoing branches "
             "that share a head entity"
         ),
-        legacy_behavior=(
-            "E6/E8 serialized each branch pair in extracted-edge traversal "
-            "order; reversing the two branches therefore produced a different "
-            "tuple even though the logical answer was unchanged"
-        ),
     ),
     QuerySpec(
         canonical_id="diagnostic.top_undirected_degree",
         workload="diagnostic",
-        legacy_artifact_id="Q4_top_degree",
         name="top undirected degree",
         parameters="k=5",
         answer=(
             "the top-k entities ranked by simple-undirected distinct-neighbor "
             "degree, with canonical entity keys breaking ties"
         ),
-        legacy_behavior=(
-            "E6 did not retain answer identities and its producer is missing, "
-            "so its cutoff-tie rule cannot be recovered; observed results are "
-            "more consistent with traversal-order than canonical-key ties"
-        ),
     ),
     QuerySpec(
         canonical_id="diagnostic.short_connectivity",
         workload="diagnostic",
-        legacy_artifact_id="Q5_short_paths",
         name="short-range connectivity",
         parameters="none",
         answer="unordered entity pairs connected within two undirected hops",
@@ -173,17 +150,6 @@ ALL_QUERIES = DEPLOYMENT_QUERIES + EXTENDED_QUERIES + DIAGNOSTIC_QUERIES
 def by_paper_id(query_id: str) -> QuerySpec:
     """Return the unique Q1--Q7 specification."""
     matches = [spec for spec in ALL_QUERIES if spec.paper_id == query_id]
-    if len(matches) != 1:
-        raise KeyError(query_id)
-    return matches[0]
-
-
-def by_legacy_artifact_id(query_id: str) -> QuerySpec:
-    """Resolve an E6/E8 artifact identifier without treating it as Q1--Q7."""
-    matches = [
-        spec for spec in DIAGNOSTIC_QUERIES
-        if spec.legacy_artifact_id == query_id
-    ]
     if len(matches) != 1:
         raise KeyError(query_id)
     return matches[0]

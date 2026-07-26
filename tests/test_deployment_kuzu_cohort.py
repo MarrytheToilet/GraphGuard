@@ -12,11 +12,11 @@ from graphguard.deployment_cohorts import (
     COHORT_ARTIFACT_TYPE,
     COHORT_ARTIFACT_VERSION,
     canonical_digest,
-    select_continuity_cohort,
+    select_anchored_cohort,
 )
 from graphguard.deployment_downstream import (
     build_downstream_artifact,
-    load_formal_inputs,
+    load_registered_inputs,
 )
 from graphguard.deployment_kuzu_cohort import (
     KUZU_COHORT_ARTIFACT_TYPE,
@@ -161,17 +161,14 @@ def _write_fixture(
         json.dumps(deployment),
         encoding="utf-8",
     )
-    inputs = load_formal_inputs(db_path, deployment_path)
+    inputs = load_registered_inputs(db_path, deployment_path)
     downstream = build_downstream_artifact(inputs)
     downstream_path = tmp_path / "downstream.json"
     downstream_path.write_text(
         json.dumps(downstream),
         encoding="utf-8",
     )
-    legacy = {"pair_records": [{"run_id": "run-1"}]}
-    legacy_path = tmp_path / "legacy.json"
-    legacy_path.write_text(json.dumps(legacy), encoding="utf-8")
-    selection = select_continuity_cohort(
+    selection = select_anchored_cohort(
         ["run-1"],
         ["run-1"],
         target_size=1,
@@ -202,11 +199,10 @@ def _write_fixture(
                             "sha256": sha256_file(db_path),
                         },
                         "n_authoritative_pairs": 1,
-                        "n_formal_eligible_pairs": 1,
+                        "n_registered_eligible_pairs": 1,
                     },
-                    "legacy_source": {
-                        "path": str(legacy_path),
-                        "sha256": sha256_file(legacy_path),
+                    "selection_anchor": {
+                        "method": "fixture",
                         "n_pairs": 1,
                         "run_ids_sha256": canonical_digest(["run-1"]),
                     },
@@ -215,7 +211,8 @@ def _write_fixture(
             }
         },
         "implementation": {
-            "git_commit": _git_commit(),
+            "base_git_commit": _git_commit(),
+            "source_state": "working_tree_content_hashes",
             "file_sha256": {
                 implementation_path: sha256_file(
                     ROOT / implementation_path
@@ -229,7 +226,6 @@ def _write_fixture(
         "db": db_path,
         "deployment": deployment_path,
         "downstream": downstream_path,
-        "legacy": legacy_path,
         "manifest": manifest_path,
         "manifest_value": manifest,
         "manifest_sha": sha256_file(manifest_path),
@@ -306,11 +302,11 @@ def test_internal_core_cannot_forge_official_kuzu_envelope(tmp_path):
 
     with pytest.raises(
         ValueError,
-        match="invalid official formal execution envelope",
+        match="invalid official complete execution envelope",
     ):
         _run_kuzu_cohort(
             context,
-            mode="formal",
+            mode="complete",
             run_ids=context.selected_run_ids,
             artifact_type=KUZU_COHORT_ARTIFACT_TYPE,
             status="pass",
@@ -342,7 +338,7 @@ def test_cli_rejects_explicit_empty_runs():
     [
         ("digest", "selected ID digest mismatch"),
         ("duplicate", "not unique and complete"),
-        ("missing", "does not recompute"),
+        ("anchor", "selection anchor digest mismatch"),
     ],
 )
 def test_context_rejects_tampered_selection(
@@ -358,9 +354,9 @@ def test_context_rejects_tampered_selection(
     elif mutation == "duplicate":
         selection["selected_run_ids"] = ["run-1", "run-1"]
         selection["target_size"] = 2
-        selection["n_legacy"] = 2
+        selection["n_anchor"] = 2
     else:
-        selection["replacement_rank"] = "tampered"
+        selection["anchor_run_ids_sha256"] = "tampered"
     files["manifest"].write_text(json.dumps(manifest), encoding="utf-8")
 
     with pytest.raises(ValueError, match=message):

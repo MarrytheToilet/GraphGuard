@@ -68,7 +68,3 @@ profiles:
     e0_docs: 80
     e0_runs: 5
     workers: 16
-
-experiments:
-  E0: { claim: drift exists }
-  E2: { label_modes: [strict, clean, wrong_only] }

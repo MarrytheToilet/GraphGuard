@@ -57,8 +57,3 @@ profiles:
     e0_docs: 40
     e0_runs: 4
     workers: 8
-
-experiments:
-  E0: { claim: drift exists }
-  E5: { claim: held-out faithfulness }
-  E6: { claim: query stability }

@@ -7,7 +7,7 @@ family-prior greedy planner against a full endpoint-union plan.
 Metric: harm-recall = (harmful pairs evaluated / total harmful), as a function
 of fraction-of-full extraction budget.
 
-Pair records come from the frozen formal actual-Kuzu N=300 artifacts.
+Pair records come from the registered actual-Kuzu N=300 artifacts.
 """
 from __future__ import annotations
 
@@ -20,10 +20,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from graphguard.viz import style as gg_style  # noqa: F401
-from graphguard.formal_artifacts import (
+from graphguard.deployment_evidence import (
     DEFAULT_INDEX,
     load_artifact_index,
-    load_formal_kuzu,
+    load_kuzu_evidence,
 )
 from graphguard.sqlite_snapshot import sha256_file
 
@@ -36,7 +36,7 @@ DATASETS = [
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
 OUT_FIG = Path("assets/figures/fig_budget_planner.png")
-OUT_JSON = Path("reports/cross_run/budget_planner_formal_v1.json")
+OUT_JSON = Path("reports/cross_run/budget_planner.json")
 
 BUDGETS = [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]
 N_SEEDS = 50
@@ -44,7 +44,7 @@ N_SEEDS = 50
 
 @lru_cache(maxsize=None)
 def load_pairs(run):
-    artifact = load_formal_kuzu(ROOT, run)
+    artifact = load_kuzu_evidence(ROOT, run)
     out = []
     for record in artifact["per_pair"]:
         out.append({
@@ -155,7 +155,7 @@ def main():
         "artifact_type": "graphguard.budget_planner_analysis",
         "artifact_version": 1,
         "sources": {
-            "formal_index": {
+            "evidence_index": {
                 "path": str(DEFAULT_INDEX),
                 "sha256": sha256_file(ROOT / DEFAULT_INDEX),
             },

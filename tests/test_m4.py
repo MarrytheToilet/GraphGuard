@@ -1,19 +1,14 @@
-"""Unit tests for M4 (E0/E2) and M5/M6 (planners + repair).
+"""Unit tests for the repeated-extraction baseline and planners.
 
 These are deterministic and do not call any LLM.
 """
 from __future__ import annotations
-
-import sqlite3
-from pathlib import Path
 
 import pytest
 
 from graphguard.db.database import open_db
 from graphguard.db import repositories as repo
 from graphguard.experiments import e0_stability as e0
-from graphguard.experiments import e2_error_detection as e2
-from graphguard.experiments.e6_repair import evaluate_repair
 from graphguard.planning.planners import (
     get_planner, ExhaustivePlanner, RandomPlanner,
     SpanOnlyPlanner, PromptOnlyPlanner, SchemaOnlyPlanner, GraphGuardPlanner,
@@ -99,45 +94,6 @@ def test_e0_stochastic_variance(tmp_path):
     assert rows[base[1].edge_id] == 0.5
 
 
-# ---------- E2 ----------
-
-def _add_gold(conn, doc, edges):
-    rows = []
-    for i, (h, t, r) in enumerate(edges):
-        rows.append(repo.GoldEdge(
-            gold_edge_id=f"{doc}::g{i}", document_id=doc,
-            head_entity_id=None, tail_entity_id=None,
-            head_name=h, tail_name=t, relation_base=r,
-            evidence_sentence_ids=[], source="docred",
-        ))
-    repo.upsert_gold_edges(conn, rows)
-    conn.commit()
-
-
-def test_e2_label_and_metrics(tmp_path):
-    conn = _fresh_db(tmp_path)
-    doc = _seed_basic(conn)
-    _ev(conn, doc, "ev", [
-        ("Obama", "P19", "Honolulu"),  # correct
-        ("Obama", "P20", "Honolulu"),  # wrong relation (same pair)
-        ("Mars",  "P31", "Planet"),    # unmatched (no gold pair)
-    ])
-    _add_gold(conn, doc, [("Obama", "Honolulu", "P19")])
-    labels = e2.label_extracted_edges(conn)
-    by_label = {l.edge_id.split("::")[-1]: l.label for l in labels}
-    assert by_label["e0"] == "correct"
-    assert by_label["e1"] == "wrong"
-    assert by_label["e2"] == "unmatched"
-
-    # also test ranking helpers
-    scores = [0.9, 0.5, 0.1]
-    pos = [0, 1, 1]
-    assert e2.precision_at_k(scores, pos, 1) == 0.0  # top-1 score is the correct edge
-    assert e2.precision_at_k(scores, pos, 3) == pytest.approx(2 / 3)
-    assert e2.average_precision(scores, pos) > 0
-    assert 0.0 <= e2.roc_auc(scores, pos) <= 1.0
-
-
 # ---------- planners ----------
 
 def _candidates():
@@ -178,36 +134,3 @@ def test_planner_registry():
     assert isinstance(get_planner("graphguard"), GraphGuardPlanner)
     with pytest.raises(ValueError):
         get_planner("doesnotexist")
-
-
-# ---------- E6 repair ----------
-
-def test_repair_filtering_by_risk(tmp_path):
-    conn = _fresh_db(tmp_path)
-    doc = _seed_basic(conn)
-    _ev(conn, doc, "ev", [
-        ("A", "R1", "B"),  # correct
-        ("A", "R2", "B"),  # wrong
-        ("C", "R3", "D"),  # unmatched
-        ("E", "R4", "F"),  # correct
-    ])
-    _add_gold(conn, doc, [("A", "B", "R1"), ("E", "F", "R4")])
-    e2.label_extracted_edges(conn)
-    # populate risk_scores: high risk for the wrong/unmatched ones
-    edges = list(conn.execute("SELECT edge_id FROM extracted_edges"))
-    for i, r in enumerate(edges):
-        risk = 0.9 if i in (1, 2) else 0.1
-        conn.execute(
-            "INSERT INTO edge_reliability_scores(edge_id, risk_score, schema_sensitivity, "
-            "stability_score, computed_at) VALUES (?,?,?,?,datetime('now'))",
-            (r["edge_id"], risk, risk, 1 - risk),
-        )
-    conn.commit()
-    pts = evaluate_repair(conn, fractions=(0.5,), seed=0)
-    by = {(p.method, p.fraction_removed): p for p in pts}
-    raw = by[("raw", 0.0)]
-    by_risk = by[("by_risk", 0.5)]
-    # by_risk drops 2 edges (50% of 4) and should drop the 2 high-risk wrong ones,
-    # leaving precision = 1.0 (both kept are correct)
-    assert by_risk.precision >= raw.precision
-    assert by_risk.precision == 1.0

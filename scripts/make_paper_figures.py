@@ -1,4 +1,4 @@
-"""Regenerate all paper figures with publication-ready styling.
+"""Regenerate the seven paper figures owned by this script.
 
 Reads from existing report artefacts (no extraction re-run) and writes
 PNGs into assets/figures/ with friendly labels, larger fonts, and
@@ -8,11 +8,10 @@ names (run IDs, family slugs, P-codes) into the camera-ready figures.
 Inputs (relative to repo root):
   reports/cross_run/cross_run_summary.json      (per-run violation rates)
   reports/cross_run/amp_ci.json                 (canonical D1--D5 Amp CIs)
-  reports/cross_run/k5_cross_model.json         (cross-model recall stability)
-  reports/runs/<run>/eval/contracts.json        (per-contract sweep)
-  data/processed/runs/<run>/reports/e3_report.json  (schema flip rates)
-  data/processed/runs/<run>/reports/e5_faithfulness.json
-  data/processed/runs/<run>/reports/e6_query_stability.json
+  reports/cross_run/strict_vs_soft_<run>.json    (stability buckets)
+  reports/cross_run/reproducibility_manifest.json (cached D0 noise floors)
+  reports/cross_run/deployment_evidence.json and its registered
+      deterministic gzip transports                   (RQ8--RQ10 pairs)
 
 Outputs (assets/figures/):
   fig_crossrun_violations.png   contract violation rates run x contract
@@ -35,7 +34,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from graphguard.formal_artifacts import load_formal_kuzu
+from graphguard.deployment_evidence import load_kuzu_evidence
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "figures"
@@ -178,15 +177,15 @@ def main() -> None:
         description="Regenerate the paper figures used in main.tex.")
     parser.add_argument(
         "target", nargs="?", default="all",
-        choices=["all", "replacement", "phase_w"],
+        choices=["all", "contracts", "evaluation"],
         help="Which figure pack to (re)build (default: all).")
     args = parser.parse_args()
 
-    if args.target in ("all", "replacement"):
-        replacement_crossrun_violations()
-        replacement_amp_crossrun()
-        replacement_strict_vs_soft()
-    if args.target in ("all", "phase_w"):
+    if args.target in ("all", "contracts"):
+        make_crossrun_violations()
+        make_amp_crossrun()
+        make_strict_vs_soft()
+    if args.target in ("all", "evaluation"):
         make_noise_floor_figure()
         make_calibration_figure()
         make_2d_sensitivity_figure()
@@ -195,13 +194,13 @@ def main() -> None:
 
 # ===========================================================================
 # Replacement figures for paper tables
-# (merged from former scripts/make_replacement_figures.py; uses graphguard.viz.style)
+# Contract-result figures
 # ===========================================================================
 
 from graphguard.viz import style as _S  # noqa: E402
 
 
-def replacement_crossrun_violations() -> None:
+def make_crossrun_violations() -> None:
     _S.apply_rc(font_size=9)
     j = json.loads((ROOT / "reports/cross_run/cross_run_summary.json").read_text())
     order = [
@@ -260,7 +259,7 @@ def replacement_crossrun_violations() -> None:
     _S.save_fig(fig, OUT / "fig_crossrun_violations.png")
 
 
-def replacement_amp_crossrun() -> None:
+def make_amp_crossrun() -> None:
     _S.apply_rc(font_size=8)
     specs = [
         ("docred__deepseek-v4-flash__300d", "DocRED", "DSV4"),
@@ -334,7 +333,7 @@ def replacement_amp_crossrun() -> None:
     _S.save_fig(fig, OUT / "fig_amp_crossrun.png")
 
 
-def replacement_strict_vs_soft() -> None:
+def make_strict_vs_soft() -> None:
     _S.apply_rc(font_size=8)
     plt.rcParams.update({
         "axes.linewidth": 0.7,
@@ -421,14 +420,13 @@ def replacement_strict_vs_soft() -> None:
 
 
 # ===========================================================================
-# Phase-W artifacts  (merged from former scripts/make_phase_w_artifacts.py)
+# Evaluation artifacts
 # Threshold calibration, noise-floor, 2-D sensitivity, AUROC/AUPRC, equiv-table.
 # ===========================================================================
-import sqlite3 as _sqlite3
 import matplotlib.colors as mcolors
 from sklearn.metrics import roc_curve, precision_recall_curve, auc, roc_auc_score
 
-# Phase-W palette aliases
+# Shared evaluation palette
 _BLUE        = _S.BLUE_DARK
 _BLUE_LIGHT  = _S.BLUE
 _PINK        = _S.PINK_DARK
@@ -442,7 +440,6 @@ _GRAY_LIGHT  = _S.GRAY_LIGHT
 _BLACK       = _S.BLACK
 
 REPORTS  = ROOT / "reports" / "cross_run"
-RUNS_DIR = ROOT / "data" / "processed" / "runs"
 FIG_DIR  = ROOT / "assets" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 TAU_GRAPH_DEFAULT = 0.45
@@ -458,7 +455,7 @@ CORPORA = [
 # ──────────────────────────────────────────────────────────────────────────────
 
 def load_pairs(tag: str) -> list[dict]:
-    artifact = load_formal_kuzu(ROOT, tag)
+    artifact = load_kuzu_evidence(ROOT, tag)
     return [
         {
             **record,
@@ -469,11 +466,6 @@ def load_pairs(tag: str) -> list[dict]:
         }
         for record in artifact["per_pair"]
     ]
-
-
-def load_baselines(tag: str) -> dict:
-    path = REPORTS / f"baselines_matched_{tag}.json"
-    return json.loads(path.read_text())
 
 
 def compute_calibration(pairs: list[dict], score_key: str = "graph_drift",
@@ -492,15 +484,16 @@ def compute_calibration(pairs: list[dict], score_key: str = "graph_drift",
     return taus, np.array(coverage), np.array(harm_rate)
 
 
-def noise_floor_from_db(tag: str) -> float:
-    """Mean stochastic edge-overlap = 1 - D₀ from stability_reports."""
-    db = RUNS_DIR / tag / f"{tag}.db"
-    con = _sqlite3.connect(str(db))
-    rows = con.execute(
-        "SELECT avg_edge_overlap FROM stability_reports WHERE n_runs >= 2"
-    ).fetchall()
-    vals = [r[0] for r in rows if r[0] is not None]
-    return 1.0 - float(np.mean(vals)) if vals else 0.0   # D0 drift
+def noise_floor_from_cache(corpus: str) -> float:
+    """Return D0 drift from the canonical lineage summary.
+
+    ``build_reproducibility_manifest.py`` derives the cached overlap from the
+    four primary SQLite ``stability_reports`` tables.  Reading that frozen
+    value here keeps the submitted figure reproducible without local DBs.
+    """
+    manifest = load("reports/cross_run/reproducibility_manifest.json")
+    overlap = manifest["raw_stability"][corpus]["avg_edge_overlap"]
+    return 1.0 - float(overlap)
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -566,7 +559,7 @@ def make_calibration_figure():
     out = FIG_DIR / "fig_calibration.png"
     fig.savefig(str(out), dpi=400, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
-    print(f"[W2] saved {out}")
+    print(f"[saved] {out}")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -593,7 +586,7 @@ def make_noise_floor_figure():
 
     for ax, (tag, name) in zip(axes, CORPORA):
         pairs = load_pairs(tag)
-        D0 = noise_floor_from_db(tag)
+        D0 = noise_floor_from_cache(name)
 
         by_fam: dict[str, list] = {}
         for p in pairs:
@@ -641,7 +634,7 @@ def make_noise_floor_figure():
     out = FIG_DIR / "fig_noise_floor.png"
     fig.savefig(str(out), dpi=400, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
-    print(f"[W1] saved {out}")
+    print(f"[saved] {out}")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -722,7 +715,7 @@ def make_2d_sensitivity_figure():
     out = FIG_DIR / "fig_2d_sensitivity.png"
     fig.savefig(str(out), dpi=200, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
-    print(f"[W3] saved {out}")
+    print(f"[saved] {out}")
 
 # ──────────────────────────────────────────────────────────────────────────────
 # W4: AUROC + AUPRC figure
@@ -746,50 +739,6 @@ MONITOR_COLORS = {
     "min_confidence_inv": _GRAY,
     "graphguard":         _GREEN,
 }
-MONITOR_LS = {
-    "graph_only_drift": "-",
-    "contract_severity": "--",
-    "answer_drift": "-.",
-    "self_consistency": ":",
-    "confidence_inv": (0, (3, 1)),
-    "min_confidence_inv": (0, (5, 2)),
-    "graphguard": "-",
-}
-
-
-def _pairs_to_monitor_scores(pairs: list[dict]) -> dict[str, np.ndarray]:
-    """Extract per-pair scores for each monitor from Kuzu pair records."""
-    gd = np.array([p["graph_drift"] for p in pairs])
-    aq = np.array([p["max_answer_drift"] for p in pairs])
-    # Continuous margin for the registered OR gate:
-    # graph>=.45 OR answer>=.70.
-    gg = np.maximum(
-        gd / TAU_GRAPH_DEFAULT,
-        aq / TAU_QUERY_DEFAULT,
-    )
-    # Confidence-inv not available in Kuzu pairs → load from baselines_matched
-    return {
-        "graph_only_drift": gd,
-        "contract_severity": gd,   # proxy; contract_severity ~ graph_drift rank
-        "graphguard": gg,
-    }
-
-
-def _scores_from_baselines(tag: str) -> dict[str, np.ndarray]:
-    """
-    Reconstruct continuous per-pair scores for baselines from fair_budget data.
-    fair_budget_*.json contains per-pair graph_drift. baselines_matched gives
-    only sweep points; we reconstruct AUROC directly from pair records + graph_drift.
-    """
-    try:
-        bm = load_baselines(tag)
-    except FileNotFoundError:
-        return {}
-    # baselines_matched only has 5-point sweeps; not enough for full ROC.
-    # We'll return empty and rely on pair-level reconstruction.
-    return {}
-
-
 def make_auroc_figure():
     # Native single-column 1x4 row, ROC only (PR curves ship in the artifact).
     _S.apply_rc(font_size=8)
@@ -883,7 +832,7 @@ def make_auroc_figure():
                 facecolor=_S.WHITE)
     plt.close(fig)
 
-    print(f"[W4] saved {out}")
+    print(f"[saved] {out}")
     print("\nAUROC/AUPRC summary:")
     for corpus, ms in roc_summary.items():
         print(f"  {corpus}:")

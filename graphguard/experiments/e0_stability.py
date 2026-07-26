@@ -10,9 +10,8 @@ seeds (and a small temperature so the model can vary). We then compute:
 * new_edge_rate        mean fraction of run-B edges absent in run-A
 * stochastic_variance  per base edge: fraction of *other* runs where it is not EXACT_SAME
 
-Results land in `stability_reports` (document level) and update
-`edge_reliability_scores.stochastic_variance` for each base edge so that
-`scoring/risk` recomputation can incorporate variance.
+Results land in `stability_reports` at document level and retain optional
+per-edge variance in `edge_reliability_scores.stochastic_variance`.
 """
 from __future__ import annotations
 

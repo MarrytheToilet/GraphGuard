@@ -4,7 +4,7 @@
 Two stacked panels over the four corpora: (a) published-harm rate and
 (b) F1 fidelity, for publish-all / graph-only / GraphGuard at the
 paper's operating point (tau_g=0.45, tau_q=0.70), with bootstrap 95% CIs.
-Values are recomputed from the frozen formal actual-Kuzu N=300 evidence (see
+Values are recomputed from the registered actual-Kuzu N=300 evidence (see
 make_kuzu_gate_artifacts.py); per-policy operating details remain in the
 generated table artifact.
 

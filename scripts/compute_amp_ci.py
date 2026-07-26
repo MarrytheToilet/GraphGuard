@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the compact paper-facing summary of canonical D1--D5 results.
 
-The full-run ``diagnostic_v2_*.json`` artifacts already contain deterministic
+The full-run ``diagnostic_*.json`` artifacts already contain deterministic
 per-pair diagnostics and document-cluster bootstrap confidence intervals.  This
 script copies their summaries into ``amp_ci.json`` for figures and writes a
 human-readable Markdown table.  It never reads the historical E6/E8 results.
@@ -58,7 +58,7 @@ def main() -> int:
         "runs": {},
     }
     for run in RUNS:
-        path = REPORTS / f"diagnostic_v2_{run}.json"
+        path = REPORTS / f"diagnostic_{run}.json"
         data = json.loads(path.read_text(encoding="utf-8"))
         if data.get("artifact_version") != 2:
             raise ValueError(f"{path}: expected diagnostic artifact version 2")
@@ -87,7 +87,7 @@ def main() -> int:
     lines = [
         "# Canonical diagnostic amplification",
         "",
-        "Document-cluster bootstrap 95% CIs from the complete v2 pair "
+        "Document-cluster bootstrap 95% CIs from the complete canonical pair "
         "populations (B=1000, seed=0; mean of per-pair ratios).",
         "",
         "| run | query | n | docs | Amp mean | 95% CI | Amp(ratio-of-means) |",

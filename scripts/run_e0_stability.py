@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """E0 stability driver: repeat extraction n times per document and persist
-per-document stability metrics + per-edge stochastic_variance.
+per-document stability metrics plus per-edge stochastic variance.
 
-Writes a JSON report mirroring the legacy layout consumed by
-`make_paper_figures.py` and the per-run report builder.
+Metrics are stored in `stability_reports`; `--report` also writes a per-run
+JSON snapshot for inspection.
 
 Example:
   python scripts/run_e0_stability.py \

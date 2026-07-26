@@ -7,7 +7,7 @@ Replaces the wide two-part table with a single-column, two-panel figure:
   (b) gold-free detector F1 against workload-visible query change, graph-only vs
       query-aware, per corpus and regime (dumbbells).
 
-Reads reports/cross_run/extqueries_<run>.json and the formal-v1 regime
+Reads reports/cross_run/extqueries_<run>.json and the registered regime
 artifacts; writes assets/figures/fig_extqueries.png.
 """
 from __future__ import annotations
@@ -41,7 +41,7 @@ def main() -> int:
     for run, label in RUNS:
         ext[label] = json.loads((REP / f"extqueries_{run}.json").read_text())["summary"]
         reg[label] = json.loads(
-            (REP / f"regimes_formal_v1_{run}.json").read_text()
+            (REP / f"regimes_{run}.json").read_text()
         )["regimes"]
 
     # Per-corpus no-amplification reference: diagnostic D1, whose answer set

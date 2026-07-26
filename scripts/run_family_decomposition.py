@@ -44,16 +44,33 @@ def family_key(fam: str, sem_class: str) -> str:
 
 
 def pair_stats(bt: set, ct: set) -> dict:
-    """E0-style decomposition on canonical triples."""
+    """Decompose one canonical triple pair deterministically.
+
+    A graph may assign more than one relation to the same entity pair.  Type
+    agreement is therefore the mean relation-set Jaccard on entity pairs that
+    occur in both views; it must not depend on an arbitrary single relation.
+    """
     inter = bt & ct
     union = bt | ct
     overlap = len(inter) / len(union) if union else 1.0
-    b_pairs = {(s, o): r for s, r, o in bt}
-    c_pairs = {(s, o): r for s, r, o in ct}
+    b_pairs = defaultdict(set)
+    c_pairs = defaultdict(set)
+    for subject, relation, obj in bt:
+        b_pairs[(subject, obj)].add(relation)
+    for subject, relation, obj in ct:
+        c_pairs[(subject, obj)].add(relation)
     common = set(b_pairs) & set(c_pairs)
     pair_union = set(b_pairs) | set(c_pairs)
     pair_overlap = len(common) / len(pair_union) if pair_union else 1.0
-    type_agree = (sum(1 for so in common if b_pairs[so] == c_pairs[so]) / len(common)) if common else 1.0
+    type_agree = (
+        statistics.mean(
+            len(b_pairs[pair] & c_pairs[pair])
+            / len(b_pairs[pair] | c_pairs[pair])
+            for pair in common
+        )
+        if common
+        else 1.0
+    )
     disappear = len(bt - ct) / len(bt) if bt else 0.0
     new = len(ct - bt) / len(bt) if bt else 0.0
     return {

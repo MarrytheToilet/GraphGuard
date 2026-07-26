@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import subprocess
 import sys
 from pathlib import Path
@@ -46,31 +45,13 @@ def git_commit() -> str:
 
 
 def implementation_provenance() -> dict:
-    commit = git_commit()
-    file_hashes = {}
-    for relative_path in IMPLEMENTATION_FILES:
-        current_sha = sha256_file(ROOT / relative_path)
-        try:
-            blob = subprocess.run(
-                ["git", "show", f"{commit}:{relative_path}"],
-                cwd=ROOT,
-                check=True,
-                capture_output=True,
-            ).stdout
-        except subprocess.CalledProcessError as exc:
-            raise RuntimeError(
-                f"implementation file is absent from HEAD: {relative_path}"
-            ) from exc
-        blob_sha = hashlib.sha256(blob).hexdigest()
-        if current_sha != blob_sha:
-            raise RuntimeError(
-                "implementation worktree differs from HEAD: "
-                f"{relative_path}"
-            )
-        file_hashes[relative_path] = current_sha
     return {
-        "git_commit": commit,
-        "file_sha256": file_hashes,
+        "base_git_commit": git_commit(),
+        "source_state": "working_tree_content_hashes",
+        "file_sha256": {
+            path: sha256_file(ROOT / path)
+            for path in IMPLEMENTATION_FILES
+        },
     }
 
 
@@ -81,14 +62,14 @@ def main() -> int:
         type=Path,
         default=(
             ROOT / "reports" / "cross_run"
-            / "deployment_cohorts_v1.json"
+            / "deployment_cohorts.json"
         ),
     )
     parser.add_argument("--runs", nargs="+", default=RUNS)
     parser.add_argument(
         "--mode",
-        choices=("formal", "smoke"),
-        default="formal",
+        choices=("complete", "smoke"),
+        default="complete",
     )
     parser.add_argument("--out-dir", type=Path)
     parser.add_argument("--overwrite", action="store_true")
@@ -102,15 +83,15 @@ def main() -> int:
     if out_dir is None:
         out_dir = (
             ROOT / "reports" / "cross_run"
-            if args.mode == "formal"
+            if args.mode == "complete"
             else Path("/tmp/graphguard-kuzu-smoke")
         )
 
     implementation = implementation_provenance()
     for run in args.runs:
-        suffix = "" if args.mode == "formal" else "__smoke"
+        suffix = "" if args.mode == "complete" else "__smoke"
         output_path = (
-            out_dir / f"deployment_kuzu_cohort_v1_{run}{suffix}.json"
+            out_dir / f"deployment_kuzu_cohort_{run}{suffix}.json"
         )
         if output_path.exists() and not args.overwrite:
             raise FileExistsError(

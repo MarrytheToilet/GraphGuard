@@ -13,7 +13,6 @@
    "amp_ci_lo": 0.38345510960661283,
    "amp_ci_hi": 0.4559746094507036,
    "n_presentation": 2301,
-   "viol_rate_jaccard_lt_0.50": 0.2481529769665363,
    "viol_rate_drift_gt_0.30": 0.5510647544545849
   },
   "Q_path": {
@@ -25,7 +24,6 @@
    "amp_ci_lo": 0.9486570568523104,
    "amp_ci_hi": 1.0660240233716445,
    "n_presentation": 872,
-   "viol_rate_jaccard_lt_0.50": 0.7190366972477065,
    "viol_rate_drift_gt_0.30": 0.8153669724770642
   },
   "Q_rag": {
@@ -37,8 +35,7 @@
    "amp_ci_lo": 0.9062647974322513,
    "amp_ci_hi": 0.9333949154369742,
    "n_presentation": 2301,
-   "viol_rate_jaccard_lt_0.50": 0.7014341590612777,
-   "viol_rate_drift_gt_0.30": 0.888309430682312
+   "viol_rate_drift_gt_0.30": 0.8826597131681877
   }
  }
 }

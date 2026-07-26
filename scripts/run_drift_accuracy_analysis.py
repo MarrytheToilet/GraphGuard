@@ -2,7 +2,7 @@
 """Reproduce the registered DocRED RQ8 drift/accuracy statistics.
 
 The 4,000-pair query population is the label-blind continuity cohort in
-``deployment_cohorts_v1.json``. K1 remains a separate extraction-level
+``deployment_cohorts.json``. K1 remains a separate extraction-level
 contrast over every successful schema rename/reorder pair in the source DB.
 """
 from __future__ import annotations
@@ -22,7 +22,7 @@ from graphguard.contracts.metrics import (
     _to_triples,
     edge_jaccard,
 )
-from graphguard.formal_artifacts import (
+from graphguard.deployment_evidence import (
     DEFAULT_INDEX,
     load_artifact_index,
     load_rq8_pairs,
@@ -36,7 +36,7 @@ DEFAULT_DB = (
     f"data/processed/runs/{DEFAULT_RUN}/{DEFAULT_RUN}.db"
 )
 DEFAULT_OUT = (
-    f"reports/cross_run/drift_accuracy_formal_v1_{DEFAULT_RUN}.json"
+    f"reports/cross_run/drift_accuracy_{DEFAULT_RUN}.json"
 )
 
 
@@ -198,7 +198,7 @@ def main() -> int:
     parser.add_argument("--out", default=DEFAULT_OUT)
     args = parser.parse_args()
 
-    formal_rows = load_rq8_pairs(ROOT, DEFAULT_RUN)
+    registered_rows = load_rq8_pairs(ROOT, DEFAULT_RUN)
     index = load_artifact_index(ROOT)
     conn = sqlite3.connect(args.db)
     conn.row_factory = sqlite3.Row
@@ -208,7 +208,7 @@ def main() -> int:
             "artifact_version": 1,
             "run": DEFAULT_RUN,
             "sources": {
-                "formal_index": {
+                "evidence_index": {
                     "path": str(DEFAULT_INDEX),
                     "sha256": sha256_file(ROOT / DEFAULT_INDEX),
                 },
@@ -222,7 +222,7 @@ def main() -> int:
                     "sha256": sha256_file(args.db),
                 },
             },
-            "query_population": query_population(formal_rows),
+            "query_population": query_population(registered_rows),
             "k1_contrast": k1_contrast(conn),
         }
     finally:

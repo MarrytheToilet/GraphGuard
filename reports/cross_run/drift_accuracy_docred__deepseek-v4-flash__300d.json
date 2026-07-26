@@ -1,22 +1,37 @@
 {
+  "artifact_type": "graphguard.rq8_drift_accuracy",
+  "artifact_version": 1,
   "run": "docred__deepseek-v4-flash__300d",
+  "sources": {
+    "evidence_index": {
+      "path": "reports/cross_run/deployment_evidence.json",
+      "sha256": "938c428ed3ec51917b6dacd58e624115cbbc949c758785c94c053bb23d22584b"
+    },
+    "downstream_artifact": {
+      "sha256": "3dc85213f7125371878603f4512039d53bf710b33d8f8c33439fe9d258cbdc85"
+    },
+    "source_database": {
+      "path": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
+      "sha256": "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4e0e03f9418"
+    }
+  },
   "query_population": {
     "selection": {
-      "seed": 0,
-      "max_runs_before_filtering": 4000,
-      "requires_nonempty_gold_query_workload": true
+      "cohort": "rq8_docred_n4000",
+      "source": "reports/cross_run/deployment_evidence.json",
+      "selection_is_label_blind": true
     },
     "n_pairs": 4000,
     "query_divergence_threshold_abs_mean_delta_f1": 0.05,
-    "query_divergence_base_rate": 0.394,
+    "query_divergence_base_rate": 0.436,
     "spearman": {
       "graph_drift_vs_abs_delta_recall": {
-        "rho": 0.20469287206103726,
-        "p_value": 4.250699781324028e-39
+        "rho": 0.21924069758631376,
+        "p_value": 9.830501453514896e-45
       },
       "graph_drift_vs_abs_delta_precision": {
-        "rho": 0.11504932446840672,
-        "p_value": 2.9136306869092943e-13
+        "rho": 0.1346644532674188,
+        "p_value": 1.1966916127130755e-17
       }
     }
   },
@@ -26,14 +41,5424 @@
     "relation_projection": "to docred_full base relation IDs",
     "n_pairs": 676,
     "violating": {
-      "n": 657,
-      "mean_abs_delta_recall": 0.06988147297452732,
-      "mean_abs_delta_precision": 0.11664884964995469
+      "n": 656,
+      "mean_abs_delta_recall": 0.06998799961015922,
+      "mean_abs_delta_precision": 0.11679037301251631
     },
     "satisfied": {
-      "n": 19,
-      "mean_abs_delta_recall": 0.03289473684210526,
-      "mean_abs_delta_precision": 0.032157754526175586
-    }
+      "n": 20,
+      "mean_abs_delta_recall": 0.03125,
+      "mean_abs_delta_precision": 0.03174034299034299
+    },
+    "per_pair": [
+      {
+        "run_id": "run-91e98cc356",
+        "document_id": "docred-validation-000000-Skai_TV",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.15000000000000002
+      },
+      {
+        "run_id": "run-87945ed3cc",
+        "document_id": "docred-validation-000000-Skai_TV",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-b0d90742d9",
+        "document_id": "docred-validation-000013-Palestinian_National_Theatre",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.3
+      },
+      {
+        "run_id": "run-6ea847122d",
+        "document_id": "docred-validation-000008-Urgut",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-40265ada0b",
+        "document_id": "docred-validation-000006-Ned_McEvoy",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0357142857142857
+      },
+      {
+        "run_id": "run-fd95a468f9",
+        "document_id": "docred-validation-000013-Palestinian_National_Theatre",
+        "edge_overlap": 0.125,
+        "violated": true,
+        "abs_delta_recall": 0.6666666666666667,
+        "abs_delta_precision": 0.07142857142857145
+      },
+      {
+        "run_id": "run-d58c3de21f",
+        "document_id": "docred-validation-000011-Delaware_General_Assembly",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-14e1805c2e",
+        "document_id": "docred-validation-000006-Ned_McEvoy",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-fdc4f7da7e",
+        "document_id": "docred-validation-000008-Urgut",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.1875,
+        "abs_delta_precision": 0.5
+      },
+      {
+        "run_id": "run-80af4ad206",
+        "document_id": "docred-validation-000003-Lookin_Ass",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.11428571428571432
+      },
+      {
+        "run_id": "run-44d0f96ece",
+        "document_id": "docred-validation-000011-Delaware_General_Assembly",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-17796d09d0",
+        "document_id": "docred-validation-000012-Allen_County__Ohio",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06060606060606061
+      },
+      {
+        "run_id": "run-156e37b1ed",
+        "document_id": "docred-validation-000003-Lookin_Ass",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-2031c0fb57",
+        "document_id": "docred-validation-000012-Allen_County__Ohio",
+        "edge_overlap": 0.21428571428571427,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.041666666666666685
+      },
+      {
+        "run_id": "run-166320f630",
+        "document_id": "docred-validation-000002-IBM_Research___Brazil",
+        "edge_overlap": 0.21428571428571427,
+        "violated": true,
+        "abs_delta_recall": 0.09090909090909091,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-d21e0f21fb",
+        "document_id": "docred-validation-000002-IBM_Research___Brazil",
+        "edge_overlap": 0.45454545454545453,
+        "violated": true,
+        "abs_delta_recall": 0.09090909090909091,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-14e72fee85",
+        "document_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_",
+        "edge_overlap": 0.35,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.1
+      },
+      {
+        "run_id": "run-a042be95b8",
+        "document_id": "docred-validation-000009-Robert_K__Huntington",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.10000000000000003
+      },
+      {
+        "run_id": "run-9fa386fe61",
+        "document_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_",
+        "edge_overlap": 0.35,
+        "violated": true,
+        "abs_delta_recall": 0.3333333333333333,
+        "abs_delta_precision": 0.18333333333333335
+      },
+      {
+        "run_id": "run-9cc80e39e1",
+        "document_id": "docred-validation-000016-Johan_Gottlieb_Gahn",
+        "edge_overlap": 0.46153846153846156,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06818181818181818
+      },
+      {
+        "run_id": "run-42c37cd117",
+        "document_id": "docred-validation-000009-Robert_K__Huntington",
+        "edge_overlap": 0.46153846153846156,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333326
+      },
+      {
+        "run_id": "run-ce3e5b3bac",
+        "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.047619047619047616
+      },
+      {
+        "run_id": "run-7e986ae62c",
+        "document_id": "docred-validation-000016-Johan_Gottlieb_Gahn",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2181818181818182
+      },
+      {
+        "run_id": "run-90de2dec45",
+        "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.1515151515151515
+      },
+      {
+        "run_id": "run-de6a7453af",
+        "document_id": "docred-validation-000004-Conrad_O__Johnson",
+        "edge_overlap": 0.38095238095238093,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.34803921568627455
+      },
+      {
+        "run_id": "run-ae7bc5bfa2",
+        "document_id": "docred-validation-000005-Samsung_Galaxy_S_series",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-9046cf91c6",
+        "document_id": "docred-validation-000007-Portland_Golf_Club",
+        "edge_overlap": 0.2777777777777778,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.015151515151515166
+      },
+      {
+        "run_id": "run-c8ab24c2e9",
+        "document_id": "docred-validation-000004-Conrad_O__Johnson",
+        "edge_overlap": 0.5294117647058824,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.29761904761904767
+      },
+      {
+        "run_id": "run-574026755b",
+        "document_id": "docred-validation-000005-Samsung_Galaxy_S_series",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-576877cb4e",
+        "document_id": "docred-validation-000007-Portland_Golf_Club",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.33333333333333337
+      },
+      {
+        "run_id": "run-102ddeaf27",
+        "document_id": "docred-validation-000015-Allen_F__Moore",
+        "edge_overlap": 0.23529411764705882,
+        "violated": true,
+        "abs_delta_recall": 0.033333333333333326,
+        "abs_delta_precision": 0.020594965675057197
+      },
+      {
+        "run_id": "run-8c88a37048",
+        "document_id": "docred-validation-000015-Allen_F__Moore",
+        "edge_overlap": 0.32142857142857145,
+        "violated": true,
+        "abs_delta_recall": 0.033333333333333326,
+        "abs_delta_precision": 0.15217391304347827
+      },
+      {
+        "run_id": "run-d9600f9b66",
+        "document_id": "docred-validation-000017-Siberia_Governorate",
+        "edge_overlap": 0.8,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ace9cf359b",
+        "document_id": "docred-validation-000017-Siberia_Governorate",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04040404040404039
+      },
+      {
+        "run_id": "run-15def6768c",
+        "document_id": "docred-validation-000018-Quokka",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-2220e7a875",
+        "document_id": "docred-validation-000018-Quokka",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.8,
+        "abs_delta_precision": 0.8
+      },
+      {
+        "run_id": "run-f8cb64ba78",
+        "document_id": "docred-validation-000019-Dollar_General",
+        "edge_overlap": 0.19047619047619047,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06666666666666668
+      },
+      {
+        "run_id": "run-5575aff219",
+        "document_id": "docred-validation-000019-Dollar_General",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.020512820512820523
+      },
+      {
+        "run_id": "run-a03a6c2d8c",
+        "document_id": "docred-validation-000022-Norvelt__Pennsylvania",
+        "edge_overlap": 0.8333333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333354
+      },
+      {
+        "run_id": "run-a62c7fc4fe",
+        "document_id": "docred-validation-000023-Julian_Reinard",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.11111111111111116
+      },
+      {
+        "run_id": "run-cb0c301c03",
+        "document_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-e81022e97d",
+        "document_id": "docred-validation-000022-Norvelt__Pennsylvania",
+        "edge_overlap": 0.7142857142857143,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05714285714285716
+      },
+      {
+        "run_id": "run-4c4b728a04",
+        "document_id": "docred-validation-000023-Julian_Reinard",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.2698412698412699
+      },
+      {
+        "run_id": "run-d6647b1d88",
+        "document_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+        "edge_overlap": 0.08333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-ec05f8f6c8",
+        "document_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a7c094f46f",
+        "document_id": "docred-validation-000027-Kurt_Tucholsky",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.3174603174603175
+      },
+      {
+        "run_id": "run-df6fd8d9d4",
+        "document_id": "docred-validation-000027-Kurt_Tucholsky",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-55246f4d71",
+        "document_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_",
+        "edge_overlap": 0.2631578947368421,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.17647058823529413
+      },
+      {
+        "run_id": "run-d4a98debc4",
+        "document_id": "docred-validation-000026-Albemarle_County__Virginia",
+        "edge_overlap": 0.5833333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.06666666666666668,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-64f209765d",
+        "document_id": "docred-validation-000026-Albemarle_County__Virginia",
+        "edge_overlap": 0.7272727272727273,
+        "violated": true,
+        "abs_delta_recall": 0.06666666666666668,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-f89af5a4b5",
+        "document_id": "docred-validation-000029-Addy_Lee",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-de1b8a71c9",
+        "document_id": "docred-validation-000029-Addy_Lee",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-2d142f3722",
+        "document_id": "docred-validation-000028-The_Yorkshire_Post",
+        "edge_overlap": 0.038461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-d9aaddf026",
+        "document_id": "docred-validation-000030-Wilhelm_Lanzky-Otto",
+        "edge_overlap": 0.3684210526315789,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.07692307692307693
+      },
+      {
+        "run_id": "run-886dca7ac5",
+        "document_id": "docred-validation-000028-The_Yorkshire_Post",
+        "edge_overlap": 0.08333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-128aee7904",
+        "document_id": "docred-validation-000020-Memogate__Pakistan_",
+        "edge_overlap": 0.045454545454545456,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-30cd38c577",
+        "document_id": "docred-validation-000030-Wilhelm_Lanzky-Otto",
+        "edge_overlap": 0.8666666666666667,
+        "violated": false,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.046153846153846156
+      },
+      {
+        "run_id": "run-ad68bdeefa",
+        "document_id": "docred-validation-000020-Memogate__Pakistan_",
+        "edge_overlap": 0.17142857142857143,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.08333333333333333
+      },
+      {
+        "run_id": "run-2014d9271d",
+        "document_id": "docred-validation-000025-Hooshang_Seyhoun",
+        "edge_overlap": 0.4375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.23809523809523808
+      },
+      {
+        "run_id": "run-ec90923fd6",
+        "document_id": "docred-validation-000025-Hooshang_Seyhoun",
+        "edge_overlap": 0.4666666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.19642857142857145
+      },
+      {
+        "run_id": "run-4ab0e78791",
+        "document_id": "docred-validation-000032-_I_Am__The_Seeker",
+        "edge_overlap": 0.29411764705882354,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.08333333333333333
+      },
+      {
+        "run_id": "run-2033316268",
+        "document_id": "docred-validation-000033-Queen_of_Housewives",
+        "edge_overlap": 0.6153846153846154,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07272727272727275
+      },
+      {
+        "run_id": "run-117015066c",
+        "document_id": "docred-validation-000032-_I_Am__The_Seeker",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-163877a246",
+        "document_id": "docred-validation-000033-Queen_of_Housewives",
+        "edge_overlap": 0.8333333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a4d95c7ebe",
+        "document_id": "docred-validation-000031-Jeanne_Th\u00e9r\u00e8se_du_Han",
+        "edge_overlap": 0.8181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-2a7606c164",
+        "document_id": "docred-validation-000031-Jeanne_Th\u00e9r\u00e8se_du_Han",
+        "edge_overlap": 0.5833333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.14444444444444438
+      },
+      {
+        "run_id": "run-02749f7f0e",
+        "document_id": "docred-validation-000034-Old_Loggers_Path",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.07936507936507936
+      },
+      {
+        "run_id": "run-e3cf027577",
+        "document_id": "docred-validation-000036-Paul_Morphy",
+        "edge_overlap": 0.35294117647058826,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333337,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-cc563a7b2e",
+        "document_id": "docred-validation-000037-Low_Pass__Oregon",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333334,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-1b1acafe89",
+        "document_id": "docred-validation-000034-Old_Loggers_Path",
+        "edge_overlap": 0.625,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.19047619047619047
+      },
+      {
+        "run_id": "run-f928f8f171",
+        "document_id": "docred-validation-000036-Paul_Morphy",
+        "edge_overlap": 0.18518518518518517,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333337,
+        "abs_delta_precision": 0.0980392156862745
+      },
+      {
+        "run_id": "run-7d9669e7dc",
+        "document_id": "docred-validation-000037-Low_Pass__Oregon",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2142857142857143
+      },
+      {
+        "run_id": "run-7058bff545",
+        "document_id": "docred-validation-000035-Grand_Wing_Servo-Tech",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-93ebfc9c29",
+        "document_id": "docred-validation-000035-Grand_Wing_Servo-Tech",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b5fed12384",
+        "document_id": "docred-validation-000039-Pointr",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 1.0,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-d6e1c54f39",
+        "document_id": "docred-validation-000039-Pointr",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 1.0,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-867812520f",
+        "document_id": "docred-validation-000038-Outline_of_South_Sudan",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08888888888888888
+      },
+      {
+        "run_id": "run-e03d50ea38",
+        "document_id": "docred-validation-000038-Outline_of_South_Sudan",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1705c67337",
+        "document_id": "docred-validation-000002-IBM_Research___Brazil",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-2208037e4a",
+        "document_id": "docred-validation-000002-IBM_Research___Brazil",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-600aa3a00c",
+        "document_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_",
+        "edge_overlap": 0.4117647058823529,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a291b7ac84",
+        "document_id": "docred-validation-000010-More__The_Sisters_of_Mercy_song_",
+        "edge_overlap": 0.4117647058823529,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.08333333333333333
+      },
+      {
+        "run_id": "run-875e071dc9",
+        "document_id": "docred-validation-000003-Lookin_Ass",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-827544cfe7",
+        "document_id": "docred-validation-000003-Lookin_Ass",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.2571428571428572
+      },
+      {
+        "run_id": "run-549d650d44",
+        "document_id": "docred-validation-000005-Samsung_Galaxy_S_series",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.05263157894736842,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-782e3f713f",
+        "document_id": "docred-validation-000008-Urgut",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-c3035f93a3",
+        "document_id": "docred-validation-000008-Urgut",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.1875,
+        "abs_delta_precision": 0.5
+      },
+      {
+        "run_id": "run-9d44fa1f8d",
+        "document_id": "docred-validation-000005-Samsung_Galaxy_S_series",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.05263157894736842,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-d356cec519",
+        "document_id": "docred-validation-000006-Ned_McEvoy",
+        "edge_overlap": 0.625,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-869049195a",
+        "document_id": "docred-validation-000006-Ned_McEvoy",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.08571428571428569
+      },
+      {
+        "run_id": "run-3699001291",
+        "document_id": "docred-validation-000015-Allen_F__Moore",
+        "edge_overlap": 0.2692307692307692,
+        "violated": true,
+        "abs_delta_recall": 0.033333333333333326,
+        "abs_delta_precision": 0.06015037593984962
+      },
+      {
+        "run_id": "run-82056ea555",
+        "document_id": "docred-validation-000015-Allen_F__Moore",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.033333333333333326,
+        "abs_delta_precision": 0.07142857142857145
+      },
+      {
+        "run_id": "run-208d995627",
+        "document_id": "docred-validation-000012-Allen_County__Ohio",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.15584415584415584
+      },
+      {
+        "run_id": "run-aa76cae9af",
+        "document_id": "docred-validation-000011-Delaware_General_Assembly",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-538389eec8",
+        "document_id": "docred-validation-000011-Delaware_General_Assembly",
+        "edge_overlap": 0.1,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333354
+      },
+      {
+        "run_id": "run-7814d51856",
+        "document_id": "docred-validation-000012-Allen_County__Ohio",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05357142857142855
+      },
+      {
+        "run_id": "run-ae70b09a00",
+        "document_id": "docred-validation-000007-Portland_Golf_Club",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04040404040404039
+      },
+      {
+        "run_id": "run-6bab4527bf",
+        "document_id": "docred-validation-000007-Portland_Golf_Club",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2777777777777778
+      },
+      {
+        "run_id": "run-c4257d6d0a",
+        "document_id": "docred-validation-000000-Skai_TV",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.15000000000000002
+      },
+      {
+        "run_id": "run-b0ab35915b",
+        "document_id": "docred-validation-000000-Skai_TV",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-4984a4aae0",
+        "document_id": "docred-validation-000016-Johan_Gottlieb_Gahn",
+        "edge_overlap": 0.75,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-3e34f0de28",
+        "document_id": "docred-validation-000016-Johan_Gottlieb_Gahn",
+        "edge_overlap": 0.6923076923076923,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06666666666666671
+      },
+      {
+        "run_id": "run-28bb016466",
+        "document_id": "docred-validation-000013-Palestinian_National_Theatre",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.3333333333333333,
+        "abs_delta_precision": 0.8
+      },
+      {
+        "run_id": "run-44a3917aaf",
+        "document_id": "docred-validation-000013-Palestinian_National_Theatre",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.33333333333333337,
+        "abs_delta_precision": 0.5714285714285714
+      },
+      {
+        "run_id": "run-01df2c6cba",
+        "document_id": "docred-validation-000018-Quokka",
+        "edge_overlap": 0.8,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.19999999999999996
+      },
+      {
+        "run_id": "run-a79c9f174a",
+        "document_id": "docred-validation-000018-Quokka",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.8,
+        "abs_delta_precision": 1.0
+      },
+      {
+        "run_id": "run-3e678c368c",
+        "document_id": "docred-validation-000017-Siberia_Governorate",
+        "edge_overlap": 0.46153846153846156,
+        "violated": true,
+        "abs_delta_recall": 0.18181818181818182,
+        "abs_delta_precision": 0.1777777777777778
+      },
+      {
+        "run_id": "run-21696046a0",
+        "document_id": "docred-validation-000017-Siberia_Governorate",
+        "edge_overlap": 0.6153846153846154,
+        "violated": true,
+        "abs_delta_recall": 0.18181818181818182,
+        "abs_delta_precision": 0.2181818181818182
+      },
+      {
+        "run_id": "run-1e570fc64e",
+        "document_id": "docred-validation-000027-Kurt_Tucholsky",
+        "edge_overlap": 0.3181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.2619047619047619
+      },
+      {
+        "run_id": "run-a495604269",
+        "document_id": "docred-validation-000023-Julian_Reinard",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.11111111111111105
+      },
+      {
+        "run_id": "run-9883b0e15e",
+        "document_id": "docred-validation-000023-Julian_Reinard",
+        "edge_overlap": 0.8571428571428571,
+        "violated": false,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.04761904761904767
+      },
+      {
+        "run_id": "run-7fd3a257d2",
+        "document_id": "docred-validation-000027-Kurt_Tucholsky",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-7b1c8ca8a4",
+        "document_id": "docred-validation-000026-Albemarle_County__Virginia",
+        "edge_overlap": 0.45454545454545453,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-d7981be16b",
+        "document_id": "docred-validation-000026-Albemarle_County__Virginia",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-7ad4acacfd",
+        "document_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-baf3119486",
+        "document_id": "docred-validation-000021-Live_in_New_York__Laurie_Anderson_album_",
+        "edge_overlap": 0.1,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.17647058823529413
+      },
+      {
+        "run_id": "run-8efe8f74d1",
+        "document_id": "docred-validation-000033-Queen_of_Housewives",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.4444444444444444,
+        "abs_delta_precision": 0.8
+      },
+      {
+        "run_id": "run-5184c33873",
+        "document_id": "docred-validation-000033-Queen_of_Housewives",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.4444444444444444,
+        "abs_delta_precision": 0.7272727272727273
+      },
+      {
+        "run_id": "run-48db318883",
+        "document_id": "docred-validation-000019-Dollar_General",
+        "edge_overlap": 0.1875,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0222222222222222
+      },
+      {
+        "run_id": "run-bcf3f0507a",
+        "document_id": "docred-validation-000019-Dollar_General",
+        "edge_overlap": 0.15789473684210525,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06837606837606836
+      },
+      {
+        "run_id": "run-b9804710a3",
+        "document_id": "docred-validation-000009-Robert_K__Huntington",
+        "edge_overlap": 0.4117647058823529,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.11428571428571432
+      },
+      {
+        "run_id": "run-4040c60168",
+        "document_id": "docred-validation-000009-Robert_K__Huntington",
+        "edge_overlap": 0.4375,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.047619047619047616
+      },
+      {
+        "run_id": "run-03b792f10b",
+        "document_id": "docred-validation-000028-The_Yorkshire_Post",
+        "edge_overlap": 0.38095238095238093,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e4fc7e4172",
+        "document_id": "docred-validation-000028-The_Yorkshire_Post",
+        "edge_overlap": 0.07692307692307693,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e6fa33baa7",
+        "document_id": "docred-validation-000025-Hooshang_Seyhoun",
+        "edge_overlap": 0.35294117647058826,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.23809523809523808
+      },
+      {
+        "run_id": "run-ce829ebbf0",
+        "document_id": "docred-validation-000025-Hooshang_Seyhoun",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.19642857142857145
+      },
+      {
+        "run_id": "run-9ac2210659",
+        "document_id": "docred-validation-000004-Conrad_O__Johnson",
+        "edge_overlap": 0.3870967741935484,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08144796380090497
+      },
+      {
+        "run_id": "run-90723701f2",
+        "document_id": "docred-validation-000039-Pointr",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 1.0,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-bab6fe3994",
+        "document_id": "docred-validation-000039-Pointr",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 1.0,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-c8fe7a1188",
+        "document_id": "docred-validation-000004-Conrad_O__Johnson",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.13186813186813184
+      },
+      {
+        "run_id": "run-17fdb7252c",
+        "document_id": "docred-validation-000038-Outline_of_South_Sudan",
+        "edge_overlap": 0.2631578947368421,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.022222222222222227
+      },
+      {
+        "run_id": "run-5926ef9ac1",
+        "document_id": "docred-validation-000038-Outline_of_South_Sudan",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-a49a21e429",
+        "document_id": "docred-validation-000030-Wilhelm_Lanzky-Otto",
+        "edge_overlap": 0.3888888888888889,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.019230769230769218
+      },
+      {
+        "run_id": "run-33ab941a0e",
+        "document_id": "docred-validation-000030-Wilhelm_Lanzky-Otto",
+        "edge_overlap": 0.8,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-335cd170ae",
+        "document_id": "docred-validation-000035-Grand_Wing_Servo-Tech",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.031746031746031744
+      },
+      {
+        "run_id": "run-6aa97b202b",
+        "document_id": "docred-validation-000035-Grand_Wing_Servo-Tech",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.031746031746031744
+      },
+      {
+        "run_id": "run-fdf037f81d",
+        "document_id": "docred-validation-000032-_I_Am__The_Seeker",
+        "edge_overlap": 0.17647058823529413,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.08333333333333333
+      },
+      {
+        "run_id": "run-563c771671",
+        "document_id": "docred-validation-000037-Low_Pass__Oregon",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333334,
+        "abs_delta_precision": 0.041666666666666685
+      },
+      {
+        "run_id": "run-2d6bd08fb1",
+        "document_id": "docred-validation-000032-_I_Am__The_Seeker",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-f5d2140d4b",
+        "document_id": "docred-validation-000037-Low_Pass__Oregon",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.047619047619047616
+      },
+      {
+        "run_id": "run-b8fe99e562",
+        "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1680672268907563
+      },
+      {
+        "run_id": "run-743597cab0",
+        "document_id": "docred-validation-000022-Norvelt__Pennsylvania",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04166666666666666
+      },
+      {
+        "run_id": "run-9cd69a305f",
+        "document_id": "docred-validation-000022-Norvelt__Pennsylvania",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-9c48b46b6f",
+        "document_id": "docred-validation-000001-Washington_Place__West_Virginia_",
+        "edge_overlap": 0.21739130434782608,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06417112299465241
+      },
+      {
+        "run_id": "run-976041018b",
+        "document_id": "docred-validation-000029-Addy_Lee",
+        "edge_overlap": 0.08695652173913043,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.15000000000000002
+      },
+      {
+        "run_id": "run-83a5dca708",
+        "document_id": "docred-validation-000029-Addy_Lee",
+        "edge_overlap": 0.08,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09285714285714285
+      },
+      {
+        "run_id": "run-8b14f9569d",
+        "document_id": "docred-validation-000020-Memogate__Pakistan_",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.10526315789473684
+      },
+      {
+        "run_id": "run-8ac374a479",
+        "document_id": "docred-validation-000020-Memogate__Pakistan_",
+        "edge_overlap": 0.10256410256410256,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.021929824561403508
+      },
+      {
+        "run_id": "run-d1a3ba91a2",
+        "document_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b650dc2ae4",
+        "document_id": "docred-validation-000024-Beibu_Gulf_Economic_Rim",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05714285714285716
+      },
+      {
+        "run_id": "run-7948eb8311",
+        "document_id": "docred-validation-000036-Paul_Morphy",
+        "edge_overlap": 0.2692307692307692,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.33999999999999997
+      },
+      {
+        "run_id": "run-b5561df50d",
+        "document_id": "docred-validation-000036-Paul_Morphy",
+        "edge_overlap": 0.13513513513513514,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07529411764705882
+      },
+      {
+        "run_id": "run-b534d28614",
+        "document_id": "docred-validation-000031-Jeanne_Th\u00e9r\u00e8se_du_Han",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.29999999999999993
+      },
+      {
+        "run_id": "run-9c830ed772",
+        "document_id": "docred-validation-000031-Jeanne_Th\u00e9r\u00e8se_du_Han",
+        "edge_overlap": 0.5833333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.05555555555555558,
+        "abs_delta_precision": 0.15555555555555556
+      },
+      {
+        "run_id": "run-6018cdf6da",
+        "document_id": "docred-validation-000034-Old_Loggers_Path",
+        "edge_overlap": 0.21428571428571427,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.02777777777777779
+      },
+      {
+        "run_id": "run-67d244f5c6",
+        "document_id": "docred-validation-000034-Old_Loggers_Path",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-3115f3aeaf",
+        "document_id": "docred-validation-000054-Penedo_da_Saudade",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.3333333333333333
+      },
+      {
+        "run_id": "run-72975b721e",
+        "document_id": "docred-validation-000054-Penedo_da_Saudade",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ba505db788",
+        "document_id": "docred-validation-000046-UNESCO_Confucius_Prize_for_Literacy",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-98354dac69",
+        "document_id": "docred-validation-000046-UNESCO_Confucius_Prize_for_Literacy",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-331bf015b5",
+        "document_id": "docred-validation-000053-Think_Bike",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-6bc70f3cff",
+        "document_id": "docred-validation-000042-Brooks_Pharmacy",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-f40a000cea",
+        "document_id": "docred-validation-000047-Chachalaca",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-42fdb0ab6e",
+        "document_id": "docred-validation-000053-Think_Bike",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-558284df78",
+        "document_id": "docred-validation-000048-CBBC",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.33333333333333337
+      },
+      {
+        "run_id": "run-de9e3d4b4d",
+        "document_id": "docred-validation-000048-CBBC",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.047619047619047616,
+        "abs_delta_precision": 0.5
+      },
+      {
+        "run_id": "run-213093dd8d",
+        "document_id": "docred-validation-000042-Brooks_Pharmacy",
+        "edge_overlap": 0.16,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.047619047619047616
+      },
+      {
+        "run_id": "run-cf2ed6a686",
+        "document_id": "docred-validation-000050-Gershonites",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-c849ae6fbd",
+        "document_id": "docred-validation-000052-Rose_Porteous",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1777777777777778
+      },
+      {
+        "run_id": "run-3475abdfcf",
+        "document_id": "docred-validation-000047-Chachalaca",
+        "edge_overlap": 0.07692307692307693,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e27b1a6cde",
+        "document_id": "docred-validation-000040-Villanova_Preparatory_School",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0357142857142857
+      },
+      {
+        "run_id": "run-2b240f0877",
+        "document_id": "docred-validation-000052-Rose_Porteous",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06349206349206349
+      },
+      {
+        "run_id": "run-35a9baedfb",
+        "document_id": "docred-validation-000050-Gershonites",
+        "edge_overlap": 0.043478260869565216,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-9ed925e615",
+        "document_id": "docred-validation-000045-Each_Time_You_Break_My_Heart",
+        "edge_overlap": 0.38461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.07500000000000001
+      },
+      {
+        "run_id": "run-5237d00df3",
+        "document_id": "docred-validation-000049-James_De_Alwis",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5640332aa4",
+        "document_id": "docred-validation-000040-Villanova_Preparatory_School",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b2f3afa8c7",
+        "document_id": "docred-validation-000049-James_De_Alwis",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07500000000000001
+      },
+      {
+        "run_id": "run-685e972229",
+        "document_id": "docred-validation-000045-Each_Time_You_Break_My_Heart",
+        "edge_overlap": 0.4375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.046153846153846156
+      },
+      {
+        "run_id": "run-2e9cf3ba70",
+        "document_id": "docred-validation-000051-Antony_Nogh\u00e8s",
+        "edge_overlap": 0.30434782608695654,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333334
+      },
+      {
+        "run_id": "run-80579e81ca",
+        "document_id": "docred-validation-000044-Bicycles__amp__Tricycles",
+        "edge_overlap": 0.09090909090909091,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a49b63fef6",
+        "document_id": "docred-validation-000055-Will_Weng",
+        "edge_overlap": 0.7333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-61771a866e",
+        "document_id": "docred-validation-000051-Antony_Nogh\u00e8s",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-b2381eb65c",
+        "document_id": "docred-validation-000044-Bicycles__amp__Tricycles",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.05555555555555555
+      },
+      {
+        "run_id": "run-e12a85634e",
+        "document_id": "docred-validation-000055-Will_Weng",
+        "edge_overlap": 0.6470588235294118,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07179487179487176
+      },
+      {
+        "run_id": "run-d8a81dbb43",
+        "document_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of",
+        "edge_overlap": 0.7083333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333326
+      },
+      {
+        "run_id": "run-12e8fb951d",
+        "document_id": "docred-validation-000056-Lavaca_Bay",
+        "edge_overlap": 0.1875,
+        "violated": true,
+        "abs_delta_recall": 0.1,
+        "abs_delta_precision": 0.5128205128205128
+      },
+      {
+        "run_id": "run-10b4daa8f1",
+        "document_id": "docred-validation-000043-Crouching_Tiger__Hidden_Dragon__Sword_of",
+        "edge_overlap": 0.7916666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.030303030303030276
+      },
+      {
+        "run_id": "run-e0b0599708",
+        "document_id": "docred-validation-000056-Lavaca_Bay",
+        "edge_overlap": 0.15789473684210525,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06837606837606836
+      },
+      {
+        "run_id": "run-75321ef567",
+        "document_id": "docred-validation-000058-Wellywood",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-190788d140",
+        "document_id": "docred-validation-000061-Metropolitan_statistical_area",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.1
+      },
+      {
+        "run_id": "run-0ad123d09f",
+        "document_id": "docred-validation-000058-Wellywood",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-070deaeea9",
+        "document_id": "docred-validation-000061-Metropolitan_statistical_area",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-289a3ad1c3",
+        "document_id": "docred-validation-000062-La_prima_notte_di_quiete",
+        "edge_overlap": 0.5555555555555556,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-1e17d4b89a",
+        "document_id": "docred-validation-000041-America_s_Sweetheart__album_",
+        "edge_overlap": 0.26666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0111111111111111
+      },
+      {
+        "run_id": "run-267d6917f5",
+        "document_id": "docred-validation-000062-La_prima_notte_di_quiete",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-c7b42395b5",
+        "document_id": "docred-validation-000041-America_s_Sweetheart__album_",
+        "edge_overlap": 0.06666666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.031746031746031744
+      },
+      {
+        "run_id": "run-8181884506",
+        "document_id": "docred-validation-000059-Entreat",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-fcb160ca54",
+        "document_id": "docred-validation-000057-Angleton_High_School",
+        "edge_overlap": 0.4117647058823529,
+        "violated": true,
+        "abs_delta_recall": 0.03225806451612903,
+        "abs_delta_precision": 0.022222222222222227
+      },
+      {
+        "run_id": "run-94e0773e90",
+        "document_id": "docred-validation-000059-Entreat",
+        "edge_overlap": 0.17647058823529413,
+        "violated": true,
+        "abs_delta_recall": 0.11764705882352941,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-aad67070c0",
+        "document_id": "docred-validation-000057-Angleton_High_School",
+        "edge_overlap": 0.7058823529411765,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.009523809523809518
+      },
+      {
+        "run_id": "run-1e5b9bec66",
+        "document_id": "docred-validation-000063-Loopline_Bridge",
+        "edge_overlap": 0.12121212121212122,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.025925925925925936
+      },
+      {
+        "run_id": "run-fea9a2b3f2",
+        "document_id": "docred-validation-000066-Rogaland_County_Municipality",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-1ce8adcdd9",
+        "document_id": "docred-validation-000063-Loopline_Bridge",
+        "edge_overlap": 0.15384615384615385,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05
+      },
+      {
+        "run_id": "run-a119f099c7",
+        "document_id": "docred-validation-000065-The_Swingle_Singers",
+        "edge_overlap": 0.5882352941176471,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-69f6791bfb",
+        "document_id": "docred-validation-000066-Rogaland_County_Municipality",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2181818181818182
+      },
+      {
+        "run_id": "run-1ff7fc4970",
+        "document_id": "docred-validation-000069-Achilles_Last_Stand",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.40909090909090906
+      },
+      {
+        "run_id": "run-771496f920",
+        "document_id": "docred-validation-000065-The_Swingle_Singers",
+        "edge_overlap": 0.6111111111111112,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-9f04ffbbca",
+        "document_id": "docred-validation-000069-Achilles_Last_Stand",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07575757575757575
+      },
+      {
+        "run_id": "run-d1fb0c4082",
+        "document_id": "docred-validation-000067-Pedro_Le\u00f3n_Gallo",
+        "edge_overlap": 0.8888888888888888,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333337
+      },
+      {
+        "run_id": "run-d003e6e74a",
+        "document_id": "docred-validation-000064-Pok\u00e9mon__anime_",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a9e2bcdb32",
+        "document_id": "docred-validation-000067-Pedro_Le\u00f3n_Gallo",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ef8d2b84e8",
+        "document_id": "docred-validation-000068-Manon_Balletti",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05357142857142855
+      },
+      {
+        "run_id": "run-e61b38e06b",
+        "document_id": "docred-validation-000064-Pok\u00e9mon__anime_",
+        "edge_overlap": 0.09090909090909091,
+        "violated": true,
+        "abs_delta_recall": 0.038461538461538464,
+        "abs_delta_precision": 0.05555555555555555
+      },
+      {
+        "run_id": "run-82a09a5ab4",
+        "document_id": "docred-validation-000060-Jimmy_Frise",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-deb77fe6fe",
+        "document_id": "docred-validation-000074-Tonie_Marshall",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2333333333333333
+      },
+      {
+        "run_id": "run-5b9efa986d",
+        "document_id": "docred-validation-000060-Jimmy_Frise",
+        "edge_overlap": 0.5789473684210527,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-3252a9b5bc",
+        "document_id": "docred-validation-000074-Tonie_Marshall",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.6666666666666667
+      },
+      {
+        "run_id": "run-7b42d555e4",
+        "document_id": "docred-validation-000068-Manon_Balletti",
+        "edge_overlap": 0.2608695652173913,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.23214285714285715
+      },
+      {
+        "run_id": "run-ca36d9b596",
+        "document_id": "docred-validation-000072-ROKETSAN",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.3375
+      },
+      {
+        "run_id": "run-187344a220",
+        "document_id": "docred-validation-000072-ROKETSAN",
+        "edge_overlap": 0.21052631578947367,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333334,
+        "abs_delta_precision": 0.23333333333333336
+      },
+      {
+        "run_id": "run-e1afb2a95a",
+        "document_id": "docred-validation-000077-Morogoro_Region",
+        "edge_overlap": 0.8181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.07070707070707072
+      },
+      {
+        "run_id": "run-7a641fea07",
+        "document_id": "docred-validation-000077-Morogoro_Region",
+        "edge_overlap": 0.6153846153846154,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.08181818181818182
+      },
+      {
+        "run_id": "run-9f1e56c810",
+        "document_id": "docred-validation-000075-Washington_v__Texas",
+        "edge_overlap": 0.125,
+        "violated": true,
+        "abs_delta_recall": 0.5555555555555556,
+        "abs_delta_precision": 0.38461538461538464
+      },
+      {
+        "run_id": "run-a7841bd96d",
+        "document_id": "docred-validation-000078-Book_of_Royal_Degrees",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1b4c83c624",
+        "document_id": "docred-validation-000078-Book_of_Royal_Degrees",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1a757739ad",
+        "document_id": "docred-validation-000075-Washington_v__Texas",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.5555555555555556,
+        "abs_delta_precision": 0.38461538461538464
+      },
+      {
+        "run_id": "run-20c6ad7823",
+        "document_id": "docred-validation-000070-Olof_M\u00f6rck",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.1333333333333333,
+        "abs_delta_precision": 0.0625
+      },
+      {
+        "run_id": "run-899a8a6abf",
+        "document_id": "docred-validation-000070-Olof_M\u00f6rck",
+        "edge_overlap": 0.5294117647058824,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.035714285714285726
+      },
+      {
+        "run_id": "run-8986193921",
+        "document_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment",
+        "edge_overlap": 0.10526315789473684,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.5555555555555556
+      },
+      {
+        "run_id": "run-6a0a5560d5",
+        "document_id": "docred-validation-000079-El_Tren_de_los_Momentos",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-6778941d3a",
+        "document_id": "docred-validation-000071-Taft_Katsura_agreement",
+        "edge_overlap": 0.05555555555555555,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-37c23591f8",
+        "document_id": "docred-validation-000081-Won-yong",
+        "edge_overlap": 0.9166666666666666,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07575757575757569
+      },
+      {
+        "run_id": "run-996194abdf",
+        "document_id": "docred-validation-000073-Samuel_C__Brightman",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08571428571428569
+      },
+      {
+        "run_id": "run-9129ddf0b8",
+        "document_id": "docred-validation-000080-Crisis__Behind_a_Presidential_Commitment",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 0.04545454545454544,
+        "abs_delta_precision": 0.31746031746031744
+      },
+      {
+        "run_id": "run-e9194b5fa2",
+        "document_id": "docred-validation-000079-El_Tren_de_los_Momentos",
+        "edge_overlap": 0.30434782608695654,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05555555555555555
+      },
+      {
+        "run_id": "run-2b30a33781",
+        "document_id": "docred-validation-000071-Taft_Katsura_agreement",
+        "edge_overlap": 0.15,
+        "violated": true,
+        "abs_delta_recall": 0.15384615384615385,
+        "abs_delta_precision": 0.15384615384615385
+      },
+      {
+        "run_id": "run-439b049cbf",
+        "document_id": "docred-validation-000081-Won-yong",
+        "edge_overlap": 0.8333333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-17605d09ea",
+        "document_id": "docred-validation-000073-Samuel_C__Brightman",
+        "edge_overlap": 0.17857142857142858,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.20879120879120877
+      },
+      {
+        "run_id": "run-02273741fe",
+        "document_id": "docred-validation-000086-Ali_Kuli_Khan_Khattak",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05194805194805194
+      },
+      {
+        "run_id": "run-3a0eea2f8d",
+        "document_id": "docred-validation-000082-Loud_Tour",
+        "edge_overlap": 0.09523809523809523,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-eba9e05798",
+        "document_id": "docred-validation-000082-Loud_Tour",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-e65ecd7814",
+        "document_id": "docred-validation-000086-Ali_Kuli_Khan_Khattak",
+        "edge_overlap": 0.47058823529411764,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.019480519480519487
+      },
+      {
+        "run_id": "run-4e664b4dfe",
+        "document_id": "docred-validation-000076-Elias_Brown",
+        "edge_overlap": 0.5384615384615384,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.32967032967032966
+      },
+      {
+        "run_id": "run-361bc22e7f",
+        "document_id": "docred-validation-000084-Solingen",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-29a7144631",
+        "document_id": "docred-validation-000084-Solingen",
+        "edge_overlap": 0.10526315789473684,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.19117647058823528
+      },
+      {
+        "run_id": "run-6844d99585",
+        "document_id": "docred-validation-000076-Elias_Brown",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.04000000000000001,
+        "abs_delta_precision": 0.44761904761904764
+      },
+      {
+        "run_id": "run-3fdb6215a4",
+        "document_id": "docred-validation-000088-Dan_Sterling",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.2571428571428572
+      },
+      {
+        "run_id": "run-74d0fdef80",
+        "document_id": "docred-validation-000088-Dan_Sterling",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09999999999999998
+      },
+      {
+        "run_id": "run-484958f8e3",
+        "document_id": "docred-validation-000087-Riksakten",
+        "edge_overlap": 0.045454545454545456,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-8bd6685654",
+        "document_id": "docred-validation-000087-Riksakten",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-c8ed496249",
+        "document_id": "docred-validation-000098-Foulsyke",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-a15d82d12a",
+        "document_id": "docred-validation-000098-Foulsyke",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-529cefac4a",
+        "document_id": "docred-validation-000085-Darren_Davies__Welsh_footballer_",
+        "edge_overlap": 0.5238095238095238,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.03137254901960784
+      },
+      {
+        "run_id": "run-0372c8ae4f",
+        "document_id": "docred-validation-000085-Darren_Davies__Welsh_footballer_",
+        "edge_overlap": 0.7058823529411765,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.019047619047619035
+      },
+      {
+        "run_id": "run-394faa06c3",
+        "document_id": "docred-validation-000096-Joe_Gates",
+        "edge_overlap": 0.38461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.20000000000000007,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-a93c057e86",
+        "document_id": "docred-validation-000083-Parvathy_Jayaram",
+        "edge_overlap": 0.27906976744186046,
+        "violated": true,
+        "abs_delta_recall": 0.034482758620689655,
+        "abs_delta_precision": 0.031746031746031744
+      },
+      {
+        "run_id": "run-ab8979d838",
+        "document_id": "docred-validation-000095-Isle_of_Palms__South_Carolina",
+        "edge_overlap": 0.8333333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09999999999999998
+      },
+      {
+        "run_id": "run-bbabf6670b",
+        "document_id": "docred-validation-000093-Frederick_Chiluba",
+        "edge_overlap": 0.45454545454545453,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09523809523809523
+      },
+      {
+        "run_id": "run-e52fa23fa8",
+        "document_id": "docred-validation-000096-Joe_Gates",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.20000000000000007,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-c9a4e00079",
+        "document_id": "docred-validation-000090-Wolfgang_Th\u00fcne",
+        "edge_overlap": 0.5555555555555556,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.26666666666666666
+      },
+      {
+        "run_id": "run-e2263d6ed5",
+        "document_id": "docred-validation-000093-Frederick_Chiluba",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.041666666666666685
+      },
+      {
+        "run_id": "run-036498534a",
+        "document_id": "docred-validation-000095-Isle_of_Palms__South_Carolina",
+        "edge_overlap": 0.7142857142857143,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-052e9da29f",
+        "document_id": "docred-validation-000090-Wolfgang_Th\u00fcne",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.20000000000000007,
+        "abs_delta_precision": 0.23809523809523808
+      },
+      {
+        "run_id": "run-f5151532c9",
+        "document_id": "docred-validation-000100-Malpai_Borderlands",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.18181818181818182,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-f272f22510",
+        "document_id": "docred-validation-000100-Malpai_Borderlands",
+        "edge_overlap": 0.35714285714285715,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-bba009c71c",
+        "document_id": "docred-validation-000083-Parvathy_Jayaram",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.13793103448275862,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-233837a961",
+        "document_id": "docred-validation-000094-Kerstin_Thorborg",
+        "edge_overlap": 0.3181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09473684210526317
+      },
+      {
+        "run_id": "run-a92d527e4c",
+        "document_id": "docred-validation-000099-Mark_Harmsworth",
+        "edge_overlap": 0.3157894736842105,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.03333333333333334
+      },
+      {
+        "run_id": "run-42b6680a70",
+        "document_id": "docred-validation-000099-Mark_Harmsworth",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.03333333333333334
+      },
+      {
+        "run_id": "run-a875865283",
+        "document_id": "docred-validation-000094-Kerstin_Thorborg",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05120910384068278
+      },
+      {
+        "run_id": "run-f22cd653d9",
+        "document_id": "docred-validation-000091-Joseph_Octave_Mousseau",
+        "edge_overlap": 0.43478260869565216,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.1
+      },
+      {
+        "run_id": "run-f1241c6bf4",
+        "document_id": "docred-validation-000107-Susan_Pharr",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.5,
+        "abs_delta_precision": 0.19047619047619047
+      },
+      {
+        "run_id": "run-183543e4b7",
+        "document_id": "docred-validation-000102-Surreal__song_",
+        "edge_overlap": 0.45454545454545453,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-4859ac5035",
+        "document_id": "docred-validation-000107-Susan_Pharr",
+        "edge_overlap": 0.5714285714285714,
+        "violated": true,
+        "abs_delta_recall": 0.5,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-a95a0ae0cc",
+        "document_id": "docred-validation-000102-Surreal__song_",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-01dc2fd307",
+        "document_id": "docred-validation-000091-Joseph_Octave_Mousseau",
+        "edge_overlap": 0.4090909090909091,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.07916666666666666
+      },
+      {
+        "run_id": "run-b6e3e5de2e",
+        "document_id": "docred-validation-000104-Cassels_Lake",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2777777777777778
+      },
+      {
+        "run_id": "run-bcbc91b455",
+        "document_id": "docred-validation-000103-Oecophora_bractella",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-92ae87d0df",
+        "document_id": "docred-validation-000101-US_Airways_Group",
+        "edge_overlap": 0.2631578947368421,
+        "violated": true,
+        "abs_delta_recall": 0.05555555555555555,
+        "abs_delta_precision": 0.15714285714285714
+      },
+      {
+        "run_id": "run-45203d27d5",
+        "document_id": "docred-validation-000104-Cassels_Lake",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.05555555555555555,
+        "abs_delta_precision": 0.35714285714285715
+      },
+      {
+        "run_id": "run-a6a3d418b1",
+        "document_id": "docred-validation-000092-Bantustan",
+        "edge_overlap": 0.034482758620689655,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-921f349cdc",
+        "document_id": "docred-validation-000103-Oecophora_bractella",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1cf030bd2f",
+        "document_id": "docred-validation-000101-US_Airways_Group",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.05555555555555555,
+        "abs_delta_precision": 0.15714285714285714
+      },
+      {
+        "run_id": "run-035992f3ba",
+        "document_id": "docred-validation-000112-Energy_and_Environmental_Security_Initia",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-415bd17c73",
+        "document_id": "docred-validation-000106-Australia_Chile_Free_Trade_Agreement",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-7109a047e5",
+        "document_id": "docred-validation-000097-WUIS",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.05263157894736842,
+        "abs_delta_precision": 0.07777777777777778
+      },
+      {
+        "run_id": "run-07f140f054",
+        "document_id": "docred-validation-000112-Energy_and_Environmental_Security_Initia",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-88417e8c58",
+        "document_id": "docred-validation-000092-Bantustan",
+        "edge_overlap": 0.07142857142857142,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-62104a227c",
+        "document_id": "docred-validation-000089-Guillermo_Endara",
+        "edge_overlap": 0.6363636363636364,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e50dfe8b36",
+        "document_id": "docred-validation-000106-Australia_Chile_Free_Trade_Agreement",
+        "edge_overlap": 0.1,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ddc7482002",
+        "document_id": "docred-validation-000089-Guillermo_Endara",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.10256410256410253
+      },
+      {
+        "run_id": "run-43fcf84dfa",
+        "document_id": "docred-validation-000105-East_Asia_Economic_Caucus",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.07692307692307693
+      },
+      {
+        "run_id": "run-f0a22fe605",
+        "document_id": "docred-validation-000097-WUIS",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.027777777777777776
+      },
+      {
+        "run_id": "run-c0ef2d9f10",
+        "document_id": "docred-validation-000111-Overseas_Press_Club",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0357142857142857
+      },
+      {
+        "run_id": "run-1b5eab0e90",
+        "document_id": "docred-validation-000109-John_Schofield__VC_",
+        "edge_overlap": 0.34782608695652173,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-a19356f0be",
+        "document_id": "docred-validation-000111-Overseas_Press_Club",
+        "edge_overlap": 0.4444444444444444,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.15000000000000002
+      },
+      {
+        "run_id": "run-31be470ba4",
+        "document_id": "docred-validation-000105-East_Asia_Economic_Caucus",
+        "edge_overlap": 0.09523809523809523,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.05
+      },
+      {
+        "run_id": "run-0f4a2b7533",
+        "document_id": "docred-validation-000109-John_Schofield__VC_",
+        "edge_overlap": 0.24,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-eb17a40e37",
+        "document_id": "docred-validation-000110-Sara_Black",
+        "edge_overlap": 0.9,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-79dad98e5b",
+        "document_id": "docred-validation-000110-Sara_Black",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b4c27b9e29",
+        "document_id": "docred-validation-000108-Chauncey_B__Brewster",
+        "edge_overlap": 0.5217391304347826,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1166666666666667
+      },
+      {
+        "run_id": "run-1bb5593687",
+        "document_id": "docred-validation-000118-LEC_billing",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-8d744ffbc0",
+        "document_id": "docred-validation-000118-LEC_billing",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 1.0,
+        "abs_delta_precision": 0.4
+      },
+      {
+        "run_id": "run-bb4fa0eeda",
+        "document_id": "docred-validation-000113-Stanis\u0142aw_Tymi\u0144ski",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06349206349206349
+      },
+      {
+        "run_id": "run-54c5b8bf29",
+        "document_id": "docred-validation-000113-Stanis\u0142aw_Tymi\u0144ski",
+        "edge_overlap": 0.75,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-7e20fbf0e4",
+        "document_id": "docred-validation-000117-Philipp_Brammer",
+        "edge_overlap": 0.35714285714285715,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.13636363636363635
+      },
+      {
+        "run_id": "run-562c6ce7d3",
+        "document_id": "docred-validation-000114-University_of_Uyo",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.19444444444444442
+      },
+      {
+        "run_id": "run-46c4a0d0ad",
+        "document_id": "docred-validation-000117-Philipp_Brammer",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09999999999999998
+      },
+      {
+        "run_id": "run-cefa411787",
+        "document_id": "docred-validation-000108-Chauncey_B__Brewster",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.7,
+        "abs_delta_precision": 0.4666666666666667
+      },
+      {
+        "run_id": "run-17dbc0c607",
+        "document_id": "docred-validation-000114-University_of_Uyo",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-b27d205246",
+        "document_id": "docred-validation-000121-Kazimierz_Szosland",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-d55015f5db",
+        "document_id": "docred-validation-000123-Resident_Evil__Degeneration",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-eb576c6210",
+        "document_id": "docred-validation-000116-Ten_Commandments_for_Drivers",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-edd85e293c",
+        "document_id": "docred-validation-000115-Zabiele__Warmian-Masurian_Voivodeship",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333334,
+        "abs_delta_precision": 0.32352941176470584
+      },
+      {
+        "run_id": "run-0de4be9fbc",
+        "document_id": "docred-validation-000123-Resident_Evil__Degeneration",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-6ccd26f9c2",
+        "document_id": "docred-validation-000121-Kazimierz_Szosland",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0714285714285714
+      },
+      {
+        "run_id": "run-2e09b74716",
+        "document_id": "docred-validation-000116-Ten_Commandments_for_Drivers",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-01d69873ed",
+        "document_id": "docred-validation-000115-Zabiele__Warmian-Masurian_Voivodeship",
+        "edge_overlap": 0.14814814814814814,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.4523809523809524
+      },
+      {
+        "run_id": "run-ae6c17a91b",
+        "document_id": "docred-validation-000122-National_Executive_Committee_of_the_Afri",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-97dda3ad5d",
+        "document_id": "docred-validation-000127-Culture_of_Los_Angeles",
+        "edge_overlap": 0.4166666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.02777777777777779
+      },
+      {
+        "run_id": "run-308f6dfe34",
+        "document_id": "docred-validation-000122-National_Executive_Committee_of_the_Afri",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-dc0c092504",
+        "document_id": "docred-validation-000127-Culture_of_Los_Angeles",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.02777777777777779
+      },
+      {
+        "run_id": "run-216b9a5bc1",
+        "document_id": "docred-validation-000124-Zakhary_Lyapunov",
+        "edge_overlap": 0.30434782608695654,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-002e6379c5",
+        "document_id": "docred-validation-000125-Barry_University_School_of_Podiatric_Med",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-f4d1dddb65",
+        "document_id": "docred-validation-000126-Nikita_Bogoslovsky",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.13043478260869568,
+        "abs_delta_precision": 0.33333333333333337
+      },
+      {
+        "run_id": "run-5f3cd154f7",
+        "document_id": "docred-validation-000125-Barry_University_School_of_Podiatric_Med",
+        "edge_overlap": 0.35714285714285715,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.11904761904761904
+      },
+      {
+        "run_id": "run-e4456948a0",
+        "document_id": "docred-validation-000124-Zakhary_Lyapunov",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-6900ec89cf",
+        "document_id": "docred-validation-000126-Nikita_Bogoslovsky",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.08695652173913043,
+        "abs_delta_precision": 0.2222222222222222
+      },
+      {
+        "run_id": "run-9ad8b54a92",
+        "document_id": "docred-validation-000129-United_States_Health_Care_Reform__Progre",
+        "edge_overlap": 0.5714285714285714,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-68befd0c78",
+        "document_id": "docred-validation-000129-United_States_Health_Care_Reform__Progre",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-6a39b571bb",
+        "document_id": "docred-validation-000128-Est\u00eav\u00e3o_Gomes",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-cb0756d171",
+        "document_id": "docred-validation-000128-Est\u00eav\u00e3o_Gomes",
+        "edge_overlap": 0.1875,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.3
+      },
+      {
+        "run_id": "run-a39e195975",
+        "document_id": "docred-validation-000136-Exe_Estuary",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-2cd69347b4",
+        "document_id": "docred-validation-000136-Exe_Estuary",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5f21188357",
+        "document_id": "docred-validation-000133-Avery_Fisher_Career_Grant",
+        "edge_overlap": 0.03571428571428571,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a59ef161ac",
+        "document_id": "docred-validation-000133-Avery_Fisher_Career_Grant",
+        "edge_overlap": 0.5714285714285714,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-82ac09f0ef",
+        "document_id": "docred-validation-000134-Vadasserikara",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.09090909090909091,
+        "abs_delta_precision": 0.380952380952381
+      },
+      {
+        "run_id": "run-762f3860c5",
+        "document_id": "docred-validation-000138-The_Killers__Bukowski_short_story_",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.3
+      },
+      {
+        "run_id": "run-48143ed7ce",
+        "document_id": "docred-validation-000134-Vadasserikara",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06060606060606061
+      },
+      {
+        "run_id": "run-0c4b73d497",
+        "document_id": "docred-validation-000131-Abdul_Jabar_Sabet",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06763285024154589
+      },
+      {
+        "run_id": "run-cccb7b766e",
+        "document_id": "docred-validation-000138-The_Killers__Bukowski_short_story_",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-13372f64ea",
+        "document_id": "docred-validation-000132-\u00c9cole_des_officiers_de_la_gendarmerie_na",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-0aa8b1bc24",
+        "document_id": "docred-validation-000131-Abdul_Jabar_Sabet",
+        "edge_overlap": 0.17857142857142858,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05652173913043479
+      },
+      {
+        "run_id": "run-33ff75edba",
+        "document_id": "docred-validation-000130-Oberliga_Rheinland-Pfalz_Saar",
+        "edge_overlap": 0.38461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.175
+      },
+      {
+        "run_id": "run-b4046a79be",
+        "document_id": "docred-validation-000130-Oberliga_Rheinland-Pfalz_Saar",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.038461538461538464,
+        "abs_delta_precision": 0.04999999999999999
+      },
+      {
+        "run_id": "run-8c2da52d27",
+        "document_id": "docred-validation-000135-Pantabangan_Carranglan_Watershed_Forest_",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.06666666666666667,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-175f6bf7ad",
+        "document_id": "docred-validation-000137-Edmund_Hlawka",
+        "edge_overlap": 0.8333333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.02941176470588236
+      },
+      {
+        "run_id": "run-476be9c26c",
+        "document_id": "docred-validation-000137-Edmund_Hlawka",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-4a7566c837",
+        "document_id": "docred-validation-000135-Pantabangan_Carranglan_Watershed_Forest_",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.06666666666666667,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-d718d21025",
+        "document_id": "docred-validation-000139-The_G-String_Murders",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-99e09ff690",
+        "document_id": "docred-validation-000140-Appenzell__village_",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06666666666666671
+      },
+      {
+        "run_id": "run-c21ae02ad5",
+        "document_id": "docred-validation-000141-American_Airlines_Group",
+        "edge_overlap": 0.625,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.19047619047619047
+      },
+      {
+        "run_id": "run-d523a5bfc4",
+        "document_id": "docred-validation-000139-The_G-String_Murders",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-aea823610c",
+        "document_id": "docred-validation-000140-Appenzell__village_",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06666666666666671
+      },
+      {
+        "run_id": "run-03700a317f",
+        "document_id": "docred-validation-000141-American_Airlines_Group",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-8ded6f92d3",
+        "document_id": "docred-validation-000120-Dahod",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.041666666666666685,
+        "abs_delta_precision": 0.13636363636363635
+      },
+      {
+        "run_id": "run-593fa06115",
+        "document_id": "docred-validation-000142-Burns_Verkaufen_der_Kraftwerk",
+        "edge_overlap": 0.4117647058823529,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05714285714285716
+      },
+      {
+        "run_id": "run-55a5be5125",
+        "document_id": "docred-validation-000120-Dahod",
+        "edge_overlap": 0.38461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-a884e966c0",
+        "document_id": "docred-validation-000142-Burns_Verkaufen_der_Kraftwerk",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1d94ac9a63",
+        "document_id": "docred-validation-000119-Toyota_Avalon",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1b8509c724",
+        "document_id": "docred-validation-000148-Samarinda",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.036363636363636376
+      },
+      {
+        "run_id": "run-b4bfeeb2f2",
+        "document_id": "docred-validation-000148-Samarinda",
+        "edge_overlap": 0.5714285714285714,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06666666666666671
+      },
+      {
+        "run_id": "run-7f40d5ad6c",
+        "document_id": "docred-validation-000149-Brother_Man",
+        "edge_overlap": 0.7142857142857143,
+        "violated": true,
+        "abs_delta_recall": 0.19999999999999996,
+        "abs_delta_precision": 0.16666666666666674
+      },
+      {
+        "run_id": "run-1a7bbbdea5",
+        "document_id": "docred-validation-000146-Newsnight",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e52c03cf35",
+        "document_id": "docred-validation-000149-Brother_Man",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.20000000000000007,
+        "abs_delta_precision": 0.16666666666666663
+      },
+      {
+        "run_id": "run-1bf387dd33",
+        "document_id": "docred-validation-000144-Blank_Page",
+        "edge_overlap": 0.2916666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.05555555555555558,
+        "abs_delta_precision": 0.16239316239316243
+      },
+      {
+        "run_id": "run-7c8e66d872",
+        "document_id": "docred-validation-000145-Luan_Bo",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.009803921568627472
+      },
+      {
+        "run_id": "run-9f7b418daa",
+        "document_id": "docred-validation-000144-Blank_Page",
+        "edge_overlap": 0.11764705882352941,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.05128205128205132
+      },
+      {
+        "run_id": "run-aaa1e9b934",
+        "document_id": "docred-validation-000119-Toyota_Avalon",
+        "edge_overlap": 0.17647058823529413,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-8c30910940",
+        "document_id": "docred-validation-000145-Luan_Bo",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.009803921568627472
+      },
+      {
+        "run_id": "run-f3a8225c02",
+        "document_id": "docred-validation-000143-Western_Ukraine",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.02857142857142857,
+        "abs_delta_precision": 0.037037037037037035
+      },
+      {
+        "run_id": "run-ab590ee85e",
+        "document_id": "docred-validation-000153-Nicky_Ladanowski",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-3dfc50a4f2",
+        "document_id": "docred-validation-000151-Nikos_Aliagas",
+        "edge_overlap": 0.23809523809523808,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2091503267973856
+      },
+      {
+        "run_id": "run-21b3dfbf14",
+        "document_id": "docred-validation-000147-Leone_Marucci",
+        "edge_overlap": 0.22580645161290322,
+        "violated": true,
+        "abs_delta_recall": 0.4736842105263158,
+        "abs_delta_precision": 0.4736842105263158
+      },
+      {
+        "run_id": "run-2cf3abc749",
+        "document_id": "docred-validation-000153-Nicky_Ladanowski",
+        "edge_overlap": 0.058823529411764705,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-0c6bf33847",
+        "document_id": "docred-validation-000143-Western_Ukraine",
+        "edge_overlap": 0.06666666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-418345049f",
+        "document_id": "docred-validation-000151-Nikos_Aliagas",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2091503267973856
+      },
+      {
+        "run_id": "run-4e10c2eeff",
+        "document_id": "docred-validation-000147-Leone_Marucci",
+        "edge_overlap": 0.48484848484848486,
+        "violated": true,
+        "abs_delta_recall": 0.4736842105263158,
+        "abs_delta_precision": 0.22280701754385968
+      },
+      {
+        "run_id": "run-6577d4bae5",
+        "document_id": "docred-validation-000152-Beyond_Good__amp__Evil__video_game_",
+        "edge_overlap": 0.09523809523809523,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.007575757575757583
+      },
+      {
+        "run_id": "run-f9ecc6b497",
+        "document_id": "docred-validation-000152-Beyond_Good__amp__Evil__video_game_",
+        "edge_overlap": 0.29411764705882354,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5b088385f8",
+        "document_id": "docred-validation-000132-\u00c9cole_des_officiers_de_la_gendarmerie_na",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1d7195634f",
+        "document_id": "docred-validation-000154-Ljiljana_Rai\u010devi\u0107",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.035714285714285726
+      },
+      {
+        "run_id": "run-68c4b2384b",
+        "document_id": "docred-validation-000156-Young_Wild_Things_Tour",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.07500000000000001
+      },
+      {
+        "run_id": "run-9041973e18",
+        "document_id": "docred-validation-000154-Ljiljana_Rai\u010devi\u0107",
+        "edge_overlap": 0.35294117647058826,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.022727272727272707
+      },
+      {
+        "run_id": "run-6d907bac5a",
+        "document_id": "docred-validation-000156-Young_Wild_Things_Tour",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.33333333333333337,
+        "abs_delta_precision": 0.3
+      },
+      {
+        "run_id": "run-33cd351163",
+        "document_id": "docred-validation-000155-Link_River",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-076488469d",
+        "document_id": "docred-validation-000150-Downy",
+        "edge_overlap": 0.5405405405405406,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-852d20ba10",
+        "document_id": "docred-validation-000155-Link_River",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-7e203047ab",
+        "document_id": "docred-validation-000146-Newsnight",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5870fed35a",
+        "document_id": "docred-validation-000150-Downy",
+        "edge_overlap": 0.12121212121212122,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-67b48c65dc",
+        "document_id": "docred-validation-000158-Catholic_Church_in_the_Maldives",
+        "edge_overlap": 0.125,
+        "violated": true,
+        "abs_delta_recall": 0.5,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-13e1b45c58",
+        "document_id": "docred-validation-000166-Mikheil_Javakhishvili",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-62abd62d7b",
+        "document_id": "docred-validation-000162-Boljoon",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-d38f3f7e25",
+        "document_id": "docred-validation-000166-Mikheil_Javakhishvili",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2777777777777778
+      },
+      {
+        "run_id": "run-bd87559f7d",
+        "document_id": "docred-validation-000160-History_of_Medicine_Society",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-080f3b71e8",
+        "document_id": "docred-validation-000162-Boljoon",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.5,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-54cca65b74",
+        "document_id": "docred-validation-000158-Catholic_Church_in_the_Maldives",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-74a3b7dbbb",
+        "document_id": "docred-validation-000157-Guido_Bonatti",
+        "edge_overlap": 0.65,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.00735294117647059
+      },
+      {
+        "run_id": "run-cdd7655ae2",
+        "document_id": "docred-validation-000164-Northern_Territory_Force",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-3ff894b969",
+        "document_id": "docred-validation-000160-History_of_Medicine_Society",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-fde963aa39",
+        "document_id": "docred-validation-000164-Northern_Territory_Force",
+        "edge_overlap": 0.6363636363636364,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05194805194805194
+      },
+      {
+        "run_id": "run-912cf1cf1e",
+        "document_id": "docred-validation-000157-Guido_Bonatti",
+        "edge_overlap": 0.6470588235294118,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.04166666666666667
+      },
+      {
+        "run_id": "run-6dbe758331",
+        "document_id": "docred-validation-000163-Robert_Burns_Fellowship",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-c6e5e08645",
+        "document_id": "docred-validation-000163-Robert_Burns_Fellowship",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.03333333333333334
+      },
+      {
+        "run_id": "run-7e20e2dc40",
+        "document_id": "docred-validation-000161-Drum_Boogie",
+        "edge_overlap": 0.47058823529411764,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.038961038961038974
+      },
+      {
+        "run_id": "run-ed70d8f3cf",
+        "document_id": "docred-validation-000167-Antisemitic_canard",
+        "edge_overlap": 0.08333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.09090909090909091
+      },
+      {
+        "run_id": "run-a9d98b905f",
+        "document_id": "docred-validation-000161-Drum_Boogie",
+        "edge_overlap": 0.2631578947368421,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.042857142857142844
+      },
+      {
+        "run_id": "run-5c076bc237",
+        "document_id": "docred-validation-000167-Antisemitic_canard",
+        "edge_overlap": 0.041666666666666664,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.019480519480519487
+      },
+      {
+        "run_id": "run-840d465011",
+        "document_id": "docred-validation-000175-National_Integrated_Ballistic_Informatio",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.5
+      },
+      {
+        "run_id": "run-276ea1f578",
+        "document_id": "docred-validation-000175-National_Integrated_Ballistic_Informatio",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ad69c94dbd",
+        "document_id": "docred-validation-000169-Gordon_Persons",
+        "edge_overlap": 0.7272727272727273,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-09af35840f",
+        "document_id": "docred-validation-000169-Gordon_Persons",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04545454545454547
+      },
+      {
+        "run_id": "run-e2bef41d13",
+        "document_id": "docred-validation-000165-New_Haven_Harbor",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.5333333333333333
+      },
+      {
+        "run_id": "run-0e47cbc8b9",
+        "document_id": "docred-validation-000171-Dan_Chupong",
+        "edge_overlap": 0.625,
+        "violated": true,
+        "abs_delta_recall": 0.07407407407407407,
+        "abs_delta_precision": 0.15384615384615385
+      },
+      {
+        "run_id": "run-95f75a7b80",
+        "document_id": "docred-validation-000165-New_Haven_Harbor",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.5490196078431372
+      },
+      {
+        "run_id": "run-bb87d8bad6",
+        "document_id": "docred-validation-000174-Dur\u00e1n__Ecuador",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.16666666666666663
+      },
+      {
+        "run_id": "run-7f703008e4",
+        "document_id": "docred-validation-000159-Edward_Rowan_Finnegan",
+        "edge_overlap": 0.3157894736842105,
+        "violated": true,
+        "abs_delta_recall": 0.041666666666666685,
+        "abs_delta_precision": 0.23333333333333334
+      },
+      {
+        "run_id": "run-c6da473807",
+        "document_id": "docred-validation-000171-Dan_Chupong",
+        "edge_overlap": 0.5714285714285714,
+        "violated": true,
+        "abs_delta_recall": 0.037037037037037035,
+        "abs_delta_precision": 0.21367521367521364
+      },
+      {
+        "run_id": "run-eec025d1c4",
+        "document_id": "docred-validation-000174-Dur\u00e1n__Ecuador",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.6666666666666666
+      },
+      {
+        "run_id": "run-69a7e2b979",
+        "document_id": "docred-validation-000159-Edward_Rowan_Finnegan",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2222222222222222
+      },
+      {
+        "run_id": "run-c75156a7de",
+        "document_id": "docred-validation-000172-Vaanathaippola",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07058823529411762
+      },
+      {
+        "run_id": "run-85aa73d43e",
+        "document_id": "docred-validation-000172-Vaanathaippola",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04285714285714293
+      },
+      {
+        "run_id": "run-28cd044042",
+        "document_id": "docred-validation-000170-Between_Five_and_Seven",
+        "edge_overlap": 0.10714285714285714,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.1727272727272727
+      },
+      {
+        "run_id": "run-75508501cb",
+        "document_id": "docred-validation-000176-Joyce_Godenzi",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.19999999999999996,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-a17abfe4af",
+        "document_id": "docred-validation-000178-Franz_Wilhelm_Seiwert",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b557161d85",
+        "document_id": "docred-validation-000176-Joyce_Godenzi",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-3668dbc753",
+        "document_id": "docred-validation-000177-Santa_Elena_de_Uair\u00e9n",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.4666666666666666
+      },
+      {
+        "run_id": "run-0586c99599",
+        "document_id": "docred-validation-000170-Between_Five_and_Seven",
+        "edge_overlap": 0.19047619047619047,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.12987012987012986
+      },
+      {
+        "run_id": "run-31f2c3ee37",
+        "document_id": "docred-validation-000178-Franz_Wilhelm_Seiwert",
+        "edge_overlap": 0.38461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.3333333333333333
+      },
+      {
+        "run_id": "run-049b08f35d",
+        "document_id": "docred-validation-000177-Santa_Elena_de_Uair\u00e9n",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.5714285714285714
+      },
+      {
+        "run_id": "run-9d21fb60cb",
+        "document_id": "docred-validation-000179-Gregorio_Pacheco",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.10000000000000003,
+        "abs_delta_precision": 0.15555555555555556
+      },
+      {
+        "run_id": "run-64d64399cf",
+        "document_id": "docred-validation-000168-Klassics_with_a__quot_K_quot_",
+        "edge_overlap": 0.16129032258064516,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.11111111111111113
+      },
+      {
+        "run_id": "run-f4b5e56e8e",
+        "document_id": "docred-validation-000180-M__C__Veerabahu_Pillai",
+        "edge_overlap": 0.5833333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333334,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-c877ff93c8",
+        "document_id": "docred-validation-000179-Gregorio_Pacheco",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.17142857142857143
+      },
+      {
+        "run_id": "run-23a931f035",
+        "document_id": "docred-validation-000182-Battle_of_Chiari",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.15
+      },
+      {
+        "run_id": "run-e514f176f8",
+        "document_id": "docred-validation-000168-Klassics_with_a__quot_K_quot_",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.33333333333333337,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-e83e8c0510",
+        "document_id": "docred-validation-000181-Liverpool_Neurological_Infectious_Diseas",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-549edfe900",
+        "document_id": "docred-validation-000183-Woodlawn__Baltimore_County__Maryland",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05357142857142855
+      },
+      {
+        "run_id": "run-e52493d0cc",
+        "document_id": "docred-validation-000180-M__C__Veerabahu_Pillai",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-4202e00557",
+        "document_id": "docred-validation-000182-Battle_of_Chiari",
+        "edge_overlap": 0.07692307692307693,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04444444444444445
+      },
+      {
+        "run_id": "run-21c5691dea",
+        "document_id": "docred-validation-000181-Liverpool_Neurological_Infectious_Diseas",
+        "edge_overlap": 0.058823529411764705,
+        "violated": true,
+        "abs_delta_recall": 0.3333333333333333,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-7a0820a4a5",
+        "document_id": "docred-validation-000183-Woodlawn__Baltimore_County__Maryland",
+        "edge_overlap": 0.29411764705882354,
+        "violated": true,
+        "abs_delta_recall": 0.09523809523809523,
+        "abs_delta_precision": 0.3619047619047619
+      },
+      {
+        "run_id": "run-ed0db4d565",
+        "document_id": "docred-validation-000184-Little_Mahantango_Creek",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.35714285714285715
+      },
+      {
+        "run_id": "run-7dfb2d073d",
+        "document_id": "docred-validation-000184-Little_Mahantango_Creek",
+        "edge_overlap": 0.26666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.04,
+        "abs_delta_precision": 0.05714285714285716
+      },
+      {
+        "run_id": "run-af32843ca5",
+        "document_id": "docred-validation-000187-Motijheel_Thana",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06666666666666671
+      },
+      {
+        "run_id": "run-1aa9ef4658",
+        "document_id": "docred-validation-000187-Motijheel_Thana",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.19999999999999996
+      },
+      {
+        "run_id": "run-a0e5cda913",
+        "document_id": "docred-validation-000185-Tomcats_Screaming_Outside",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-7161f99db1",
+        "document_id": "docred-validation-000173-Queen_of_Mauritius",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.20833333333333331
+      },
+      {
+        "run_id": "run-5984a947ee",
+        "document_id": "docred-validation-000185-Tomcats_Screaming_Outside",
+        "edge_overlap": 0.4166666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.1527777777777778
+      },
+      {
+        "run_id": "run-de3914da64",
+        "document_id": "docred-validation-000189-The_Two_Mrs__Nahasapeemapetilons",
+        "edge_overlap": 0.5833333333333334,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06818181818181818
+      },
+      {
+        "run_id": "run-89e604602d",
+        "document_id": "docred-validation-000173-Queen_of_Mauritius",
+        "edge_overlap": 0.08333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.03333333333333333,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-2b11a5df52",
+        "document_id": "docred-validation-000189-The_Two_Mrs__Nahasapeemapetilons",
+        "edge_overlap": 0.4375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.015151515151515166
+      },
+      {
+        "run_id": "run-7b0dc0af4d",
+        "document_id": "docred-validation-000186-Wagner_Rogers_Bill",
+        "edge_overlap": 0.10526315789473684,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-60744b2f83",
+        "document_id": "docred-validation-000186-Wagner_Rogers_Bill",
+        "edge_overlap": 0.23529411764705882,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-f88932b407",
+        "document_id": "docred-validation-000188-Burseraceae",
+        "edge_overlap": 0.08695652173913043,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-94ba1c55df",
+        "document_id": "docred-validation-000191-Kirnitzschtal_tramway",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05194805194805194
+      },
+      {
+        "run_id": "run-8dce5ffc1e",
+        "document_id": "docred-validation-000188-Burseraceae",
+        "edge_overlap": 0.21739130434782608,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-17406bb11c",
+        "document_id": "docred-validation-000191-Kirnitzschtal_tramway",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.10714285714285715
+      },
+      {
+        "run_id": "run-3ff87b92dc",
+        "document_id": "docred-validation-000196-Sangiran",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.05263157894736842,
+        "abs_delta_precision": 1.0
+      },
+      {
+        "run_id": "run-d23617416a",
+        "document_id": "docred-validation-000196-Sangiran",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.05263157894736842,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-550034a84a",
+        "document_id": "docred-validation-000190-Pleistocene_coyote",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-8d5b8eed2b",
+        "document_id": "docred-validation-000190-Pleistocene_coyote",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-99dc9dba84",
+        "document_id": "docred-validation-000193-Auguste_Dreyfus",
+        "edge_overlap": 0.15151515151515152,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09166666666666667
+      },
+      {
+        "run_id": "run-b927d591ad",
+        "document_id": "docred-validation-000193-Auguste_Dreyfus",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01785714285714285
+      },
+      {
+        "run_id": "run-ec3efdfb0c",
+        "document_id": "docred-validation-000199-Bookbinder_soup",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.08333333333333334
+      },
+      {
+        "run_id": "run-5c33ae561c",
+        "document_id": "docred-validation-000199-Bookbinder_soup",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.2,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-f2e3e5466d",
+        "document_id": "docred-validation-000194-Georg_Jochmann",
+        "edge_overlap": 0.9090909090909091,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.027272727272727282
+      },
+      {
+        "run_id": "run-04b4ccdabc",
+        "document_id": "docred-validation-000197-George_Washington_s_resignation_as_comma",
+        "edge_overlap": 0.13043478260869565,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-375378f8f4",
+        "document_id": "docred-validation-000192-Gwarn_Music",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-30c0f168cd",
+        "document_id": "docred-validation-000197-George_Washington_s_resignation_as_comma",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1dc306b900",
+        "document_id": "docred-validation-000194-Georg_Jochmann",
+        "edge_overlap": 0.8181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-c0854294cd",
+        "document_id": "docred-validation-000192-Gwarn_Music",
+        "edge_overlap": 0.21428571428571427,
+        "violated": true,
+        "abs_delta_recall": 0.1,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-9727969880",
+        "document_id": "docred-validation-000195-Paul_Desmarais_Jr_",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-a1baa8bcec",
+        "document_id": "docred-validation-000195-Paul_Desmarais_Jr_",
+        "edge_overlap": 0.8666666666666667,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.023809523809523836
+      },
+      {
+        "run_id": "run-cbe20e6f29",
+        "document_id": "docred-validation-000201-Perdono",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-82c50e61e5",
+        "document_id": "docred-validation-000201-Perdono",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-8d10186946",
+        "document_id": "docred-validation-000200-Lampedusa",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.08333333333333334
+      },
+      {
+        "run_id": "run-42811a6742",
+        "document_id": "docred-validation-000203-Juan_Balboa_Boneke",
+        "edge_overlap": 0.7272727272727273,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-ed84e2448e",
+        "document_id": "docred-validation-000203-Juan_Balboa_Boneke",
+        "edge_overlap": 0.5454545454545454,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2142857142857143
+      },
+      {
+        "run_id": "run-86ec1dddfa",
+        "document_id": "docred-validation-000200-Lampedusa",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.045454545454545456,
+        "abs_delta_precision": 0.05555555555555555
+      },
+      {
+        "run_id": "run-dee704de0e",
+        "document_id": "docred-validation-000204-Isa__Nigeria",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-08c3ae7c21",
+        "document_id": "docred-validation-000207-The_Scribe__film_",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-c695f35fb6",
+        "document_id": "docred-validation-000204-Isa__Nigeria",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.20833333333333331
+      },
+      {
+        "run_id": "run-3bc46b0b0d",
+        "document_id": "docred-validation-000207-The_Scribe__film_",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.325
+      },
+      {
+        "run_id": "run-a488134856",
+        "document_id": "docred-validation-000198-Eivind_Bolle",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-fa79776077",
+        "document_id": "docred-validation-000202-Word_to_the_Mutha_",
+        "edge_overlap": 0.1111111111111111,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.02392344497607657
+      },
+      {
+        "run_id": "run-e87de47c7f",
+        "document_id": "docred-validation-000205-The_Christian_Manifesto",
+        "edge_overlap": 0.1,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.15384615384615385
+      },
+      {
+        "run_id": "run-c32cbbe6ac",
+        "document_id": "docred-validation-000206-Lake_Hiawatha",
+        "edge_overlap": 0.06666666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5e1201a437",
+        "document_id": "docred-validation-000202-Word_to_the_Mutha_",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.33333333333333337,
+        "abs_delta_precision": 0.015037593984962405
+      },
+      {
+        "run_id": "run-2c5b99f82d",
+        "document_id": "docred-validation-000198-Eivind_Bolle",
+        "edge_overlap": 0.6363636363636364,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.011695906432748537
+      },
+      {
+        "run_id": "run-a53efbb222",
+        "document_id": "docred-validation-000205-The_Christian_Manifesto",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.15384615384615385
+      },
+      {
+        "run_id": "run-52970f709a",
+        "document_id": "docred-validation-000208-National_Flag_Square",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b836898080",
+        "document_id": "docred-validation-000206-Lake_Hiawatha",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-19c4431848",
+        "document_id": "docred-validation-000208-National_Flag_Square",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.2857142857142857,
+        "abs_delta_precision": 0.3333333333333333
+      },
+      {
+        "run_id": "run-56eec0d7b5",
+        "document_id": "docred-validation-000209-Ninety-Two_Resolutions",
+        "edge_overlap": 0.19047619047619047,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b4c24c31cc",
+        "document_id": "docred-validation-000209-Ninety-Two_Resolutions",
+        "edge_overlap": 0.3684210526315789,
+        "violated": true,
+        "abs_delta_recall": 0.1,
+        "abs_delta_precision": 0.0625
+      },
+      {
+        "run_id": "run-4b883d0975",
+        "document_id": "docred-validation-000211-Symphony_Hall__Boston",
+        "edge_overlap": 0.11764705882352941,
+        "violated": true,
+        "abs_delta_recall": 0.1,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-658f769e7e",
+        "document_id": "docred-validation-000211-Symphony_Hall__Boston",
+        "edge_overlap": 0.35294117647058826,
+        "violated": true,
+        "abs_delta_recall": 0.05,
+        "abs_delta_precision": 0.0625
+      },
+      {
+        "run_id": "run-7a8846b7a5",
+        "document_id": "docred-validation-000214-Westmere__New_York",
+        "edge_overlap": 0.19230769230769232,
+        "violated": true,
+        "abs_delta_recall": 0.06666666666666667,
+        "abs_delta_precision": 0.058333333333333334
+      },
+      {
+        "run_id": "run-030646526d",
+        "document_id": "docred-validation-000215-Drossinis_Museum",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1090909090909091
+      },
+      {
+        "run_id": "run-24336f3e98",
+        "document_id": "docred-validation-000214-Westmere__New_York",
+        "edge_overlap": 0.2631578947368421,
+        "violated": true,
+        "abs_delta_recall": 0.13333333333333333,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-0d823f3dcf",
+        "document_id": "docred-validation-000215-Drossinis_Museum",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.07500000000000001
+      },
+      {
+        "run_id": "run-0d0397bcc5",
+        "document_id": "docred-validation-000212-The_Hub__band_",
+        "edge_overlap": 0.30303030303030304,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-4b739571cf",
+        "document_id": "docred-validation-000216-Nazim_Khaled",
+        "edge_overlap": 0.1875,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.05555555555555558
+      },
+      {
+        "run_id": "run-f651700907",
+        "document_id": "docred-validation-000212-The_Hub__band_",
+        "edge_overlap": 0.23809523809523808,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5595f34409",
+        "document_id": "docred-validation-000221-Russification_of_Finland",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-675898c614",
+        "document_id": "docred-validation-000216-Nazim_Khaled",
+        "edge_overlap": 0.13043478260869565,
+        "violated": true,
+        "abs_delta_recall": 0.1875,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-15b565e2ca",
+        "document_id": "docred-validation-000213-Holmenkollen_Ski_Museum",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.15384615384615385,
+        "abs_delta_precision": 0.2222222222222222
+      },
+      {
+        "run_id": "run-4a60d8c62a",
+        "document_id": "docred-validation-000221-Russification_of_Finland",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-56398a7b8e",
+        "document_id": "docred-validation-000222-Joseph_Alexander_Cooper",
+        "edge_overlap": 0.46153846153846156,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333326
+      },
+      {
+        "run_id": "run-17eb2e87c5",
+        "document_id": "docred-validation-000218-Grant_Green_Jr_",
+        "edge_overlap": 0.5384615384615384,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-3d261912f4",
+        "document_id": "docred-validation-000213-Holmenkollen_Ski_Museum",
+        "edge_overlap": 0.13333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.013888888888888895
+      },
+      {
+        "run_id": "run-2cd5633452",
+        "document_id": "docred-validation-000222-Joseph_Alexander_Cooper",
+        "edge_overlap": 0.6666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.16666666666666669
+      },
+      {
+        "run_id": "run-b91c081723",
+        "document_id": "docred-validation-000218-Grant_Green_Jr_",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-5797ac3884",
+        "document_id": "docred-validation-000223-Thirteens__album_",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.023809523809523808
+      },
+      {
+        "run_id": "run-4db190a825",
+        "document_id": "docred-validation-000223-Thirteens__album_",
+        "edge_overlap": 0.3,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.023809523809523808
+      },
+      {
+        "run_id": "run-6a542c02d9",
+        "document_id": "docred-validation-000210-Cimatti",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-285d562310",
+        "document_id": "docred-validation-000217-Philippine_Commission",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-4890031eaf",
+        "document_id": "docred-validation-000210-Cimatti",
+        "edge_overlap": 0.1,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.06666666666666667
+      },
+      {
+        "run_id": "run-88eddc2dbd",
+        "document_id": "docred-validation-000219-Crazy_Town",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.3571428571428571,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-e654bbc29e",
+        "document_id": "docred-validation-000217-Philippine_Commission",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-c3b27167f8",
+        "document_id": "docred-validation-000219-Crazy_Town",
+        "edge_overlap": 0.38095238095238093,
+        "violated": true,
+        "abs_delta_recall": 0.21428571428571427,
+        "abs_delta_precision": 0.06060606060606061
+      },
+      {
+        "run_id": "run-87d19aacdd",
+        "document_id": "docred-validation-000225-Northern_bald_ibis",
+        "edge_overlap": 0.23529411764705882,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-0b5c61287b",
+        "document_id": "docred-validation-000220-The_Guianas",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2
+      },
+      {
+        "run_id": "run-9a73056f16",
+        "document_id": "docred-validation-000224-Robert_Moevs",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.047619047619047616
+      },
+      {
+        "run_id": "run-0e557ef778",
+        "document_id": "docred-validation-000225-Northern_bald_ibis",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-8ffc8b6411",
+        "document_id": "docred-validation-000233-United_States_Ambassadors_appointed_by_D",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-9a8e8c1a42",
+        "document_id": "docred-validation-000228-Emiliano_Esono_Mich\u00e1",
+        "edge_overlap": 0.11764705882352941,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.2333333333333333
+      },
+      {
+        "run_id": "run-15480a61a2",
+        "document_id": "docred-validation-000220-The_Guianas",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.4375
+      },
+      {
+        "run_id": "run-9475c72783",
+        "document_id": "docred-validation-000233-United_States_Ambassadors_appointed_by_D",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-82ce8749c7",
+        "document_id": "docred-validation-000224-Robert_Moevs",
+        "edge_overlap": 0.4782608695652174,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2344322344322345
+      },
+      {
+        "run_id": "run-7f9738282b",
+        "document_id": "docred-validation-000228-Emiliano_Esono_Mich\u00e1",
+        "edge_overlap": 0.2727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-d0ec013e07",
+        "document_id": "docred-validation-000229-Ko_Chang-seok",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.4444444444444445,
+        "abs_delta_precision": 0.08333333333333337
+      },
+      {
+        "run_id": "run-b653d67668",
+        "document_id": "docred-validation-000229-Ko_Chang-seok",
+        "edge_overlap": 0.45454545454545453,
+        "violated": true,
+        "abs_delta_recall": 0.22222222222222227,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-27ea287f1b",
+        "document_id": "docred-validation-000226-O__W__Coburn_School_of_Law",
+        "edge_overlap": 0.391304347826087,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e5e9839e93",
+        "document_id": "docred-validation-000234-Mariana_Cook",
+        "edge_overlap": 0.26666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0222222222222222
+      },
+      {
+        "run_id": "run-6a93dd9c24",
+        "document_id": "docred-validation-000234-Mariana_Cook",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.2777777777777778
+      },
+      {
+        "run_id": "run-414eaaff77",
+        "document_id": "docred-validation-000226-O__W__Coburn_School_of_Law",
+        "edge_overlap": 0.10344827586206896,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-2ea0a80712",
+        "document_id": "docred-validation-000236-Tyche",
+        "edge_overlap": 0.5454545454545454,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ccab98ea62",
+        "document_id": "docred-validation-000236-Tyche",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-39005af2ed",
+        "document_id": "docred-validation-000238-Usain_Bolt_Sports_Complex",
+        "edge_overlap": 0.625,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-844a5b7294",
+        "document_id": "docred-validation-000238-Usain_Bolt_Sports_Complex",
+        "edge_overlap": 0.5555555555555556,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-9fad546551",
+        "document_id": "docred-validation-000227-James_McLamore",
+        "edge_overlap": 0.2,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-fb523cd58f",
+        "document_id": "docred-validation-000227-James_McLamore",
+        "edge_overlap": 0.4166666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.08333333333333331
+      },
+      {
+        "run_id": "run-fa8d4b6cab",
+        "document_id": "docred-validation-000232-Consort_Mei",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-ff26953af7",
+        "document_id": "docred-validation-000232-Consort_Mei",
+        "edge_overlap": 0.35714285714285715,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.025641025641025605
+      },
+      {
+        "run_id": "run-b167844a88",
+        "document_id": "docred-validation-000235-Gei_Zantzinger",
+        "edge_overlap": 0.7692307692307693,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.11538461538461536
+      },
+      {
+        "run_id": "run-c5c77a0b04",
+        "document_id": "docred-validation-000231-Frederick_August_Wenderoth",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1846153846153846
+      },
+      {
+        "run_id": "run-6d8618e15e",
+        "document_id": "docred-validation-000240-TMF__UK__amp__Ireland_",
+        "edge_overlap": 0.07692307692307693,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-8b19abe543",
+        "document_id": "docred-validation-000235-Gei_Zantzinger",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-4c0cf19cf6",
+        "document_id": "docred-validation-000231-Frederick_August_Wenderoth",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.3846153846153846
+      },
+      {
+        "run_id": "run-4c13946656",
+        "document_id": "docred-validation-000240-TMF__UK__amp__Ireland_",
+        "edge_overlap": 0.06666666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666666,
+        "abs_delta_precision": 0.08333333333333333
+      },
+      {
+        "run_id": "run-5035dbef9b",
+        "document_id": "docred-validation-000243-I__Frankenstein",
+        "edge_overlap": 0.6111111111111112,
+        "violated": true,
+        "abs_delta_recall": 0.11111111111111105,
+        "abs_delta_precision": 0.17788461538461542
+      },
+      {
+        "run_id": "run-bba072acbd",
+        "document_id": "docred-validation-000242-Aleksandr_Alekseevich_Borovkov",
+        "edge_overlap": 0.7777777777777778,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-5e39bb6371",
+        "document_id": "docred-validation-000243-I__Frankenstein",
+        "edge_overlap": 0.8461538461538461,
+        "violated": true,
+        "abs_delta_recall": 0.11111111111111105,
+        "abs_delta_precision": 0.020979020979020935
+      },
+      {
+        "run_id": "run-88f6e84fcb",
+        "document_id": "docred-validation-000237-Powerglide__album_",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333331,
+        "abs_delta_precision": 0.06363636363636366
+      },
+      {
+        "run_id": "run-2534bf7a8f",
+        "document_id": "docred-validation-000242-Aleksandr_Alekseevich_Borovkov",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-81a46d2106",
+        "document_id": "docred-validation-000239-Edmund_Burke",
+        "edge_overlap": 0.35294117647058826,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333333,
+        "abs_delta_precision": 0.031746031746031744
+      },
+      {
+        "run_id": "run-0aad83e08a",
+        "document_id": "docred-validation-000237-Powerglide__album_",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.175
+      },
+      {
+        "run_id": "run-4406dab4e2",
+        "document_id": "docred-validation-000230-Elwood_Buchanan",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.20000000000000007,
+        "abs_delta_precision": 0.03246753246753245
+      },
+      {
+        "run_id": "run-3ffb6b3bc3",
+        "document_id": "docred-validation-000239-Edmund_Burke",
+        "edge_overlap": 0.42857142857142855,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.19047619047619047
+      },
+      {
+        "run_id": "run-5314f83f02",
+        "document_id": "docred-validation-000230-Elwood_Buchanan",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.20000000000000007,
+        "abs_delta_precision": 0.015151515151515166
+      },
+      {
+        "run_id": "run-f6efc1c15c",
+        "document_id": "docred-validation-000247-Borderlands__series_",
+        "edge_overlap": 0.1875,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0222222222222222
+      },
+      {
+        "run_id": "run-015b23bb9e",
+        "document_id": "docred-validation-000241-Jefferson_Madeira",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.19047619047619047
+      },
+      {
+        "run_id": "run-09f2d63261",
+        "document_id": "docred-validation-000244-Charles_Quef",
+        "edge_overlap": 0.8666666666666667,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.041025641025641046
+      },
+      {
+        "run_id": "run-90faa19ddb",
+        "document_id": "docred-validation-000249-Overbrook_High_School__New_Jersey_",
+        "edge_overlap": 0.7142857142857143,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ab89c734a7",
+        "document_id": "docred-validation-000244-Charles_Quef",
+        "edge_overlap": 0.9285714285714286,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.02197802197802201
+      },
+      {
+        "run_id": "run-56e257da9a",
+        "document_id": "docred-validation-000241-Jefferson_Madeira",
+        "edge_overlap": 0.38461538461538464,
+        "violated": true,
+        "abs_delta_recall": 0.06060606060606061,
+        "abs_delta_precision": 0.1298701298701298
+      },
+      {
+        "run_id": "run-0a6d780739",
+        "document_id": "docred-validation-000249-Overbrook_High_School__New_Jersey_",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.058823529411764705,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-aa5aea73a8",
+        "document_id": "docred-validation-000245-Life_in_Color",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.10714285714285715
+      },
+      {
+        "run_id": "run-69f6f44c87",
+        "document_id": "docred-validation-000246-Alecu_Russo",
+        "edge_overlap": 0.75,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.041025641025641046
+      },
+      {
+        "run_id": "run-a1293d4c0e",
+        "document_id": "docred-validation-000248-Cry_for_Help",
+        "edge_overlap": 0.3888888888888889,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.14583333333333331
+      },
+      {
+        "run_id": "run-4c3945e1a4",
+        "document_id": "docred-validation-000246-Alecu_Russo",
+        "edge_overlap": 0.7333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-27114097e1",
+        "document_id": "docred-validation-000245-Life_in_Color",
+        "edge_overlap": 0.21428571428571427,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.17307692307692307
+      },
+      {
+        "run_id": "run-c2f8680f90",
+        "document_id": "docred-validation-000247-Borderlands__series_",
+        "edge_overlap": 0.5384615384615384,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a9f4e6162b",
+        "document_id": "docred-validation-000248-Cry_for_Help",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.1515151515151515
+      },
+      {
+        "run_id": "run-59402e99b7",
+        "document_id": "docred-validation-000254-Fatih_Terim",
+        "edge_overlap": 0.46153846153846156,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0222222222222222
+      },
+      {
+        "run_id": "run-7a0745474d",
+        "document_id": "docred-validation-000254-Fatih_Terim",
+        "edge_overlap": 0.21428571428571427,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.05714285714285716
+      },
+      {
+        "run_id": "run-33d712a389",
+        "document_id": "docred-validation-000251-Alfred_and_Plantagenet",
+        "edge_overlap": 0.1875,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0111111111111111
+      },
+      {
+        "run_id": "run-0e3df4ed7c",
+        "document_id": "docred-validation-000251-Alfred_and_Plantagenet",
+        "edge_overlap": 0.29411764705882354,
+        "violated": true,
+        "abs_delta_recall": 0.07142857142857142,
+        "abs_delta_precision": 0.11965811965811968
+      },
+      {
+        "run_id": "run-e0bf1da70f",
+        "document_id": "docred-validation-000257-Microserfs",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.09999999999999998
+      },
+      {
+        "run_id": "run-1f70ab3021",
+        "document_id": "docred-validation-000256-Abdullah_I_Al-Sabah",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.018181818181818188
+      },
+      {
+        "run_id": "run-6c9e823379",
+        "document_id": "docred-validation-000257-Microserfs",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09999999999999998
+      },
+      {
+        "run_id": "run-ddf9c34c90",
+        "document_id": "docred-validation-000256-Abdullah_I_Al-Sabah",
+        "edge_overlap": 0.29411764705882354,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.09090909090909088
+      },
+      {
+        "run_id": "run-7dbd4609a0",
+        "document_id": "docred-validation-000250-Marcial_Maciel",
+        "edge_overlap": 0.09523809523809523,
+        "violated": true,
+        "abs_delta_recall": 0.3333333333333333,
+        "abs_delta_precision": 0.4166666666666667
+      },
+      {
+        "run_id": "run-009a7c76ac",
+        "document_id": "docred-validation-000253-Lombardia__wine_",
+        "edge_overlap": 0.4444444444444444,
+        "violated": true,
+        "abs_delta_recall": 0.1,
+        "abs_delta_precision": 0.275
+      },
+      {
+        "run_id": "run-ce28d3c227",
+        "document_id": "docred-validation-000250-Marcial_Maciel",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.26666666666666666,
+        "abs_delta_precision": 0.3333333333333333
+      },
+      {
+        "run_id": "run-50becd7b99",
+        "document_id": "docred-validation-000252-Jan_Betley",
+        "edge_overlap": 0.8888888888888888,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06944444444444442
+      },
+      {
+        "run_id": "run-3534371717",
+        "document_id": "docred-validation-000253-Lombardia__wine_",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.1,
+        "abs_delta_precision": 0.3090909090909091
+      },
+      {
+        "run_id": "run-17e241e9fd",
+        "document_id": "docred-validation-000252-Jan_Betley",
+        "edge_overlap": 0.8,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-8a750fc387",
+        "document_id": "docred-validation-000262-Great_South_Australian_Coastal_Upwelling",
+        "edge_overlap": 0.07692307692307693,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04166666666666666
+      },
+      {
+        "run_id": "run-66a80e0823",
+        "document_id": "docred-validation-000255-Heinrich_LXXII__Prince_Reuss_of_Lobenste",
+        "edge_overlap": 0.35294117647058826,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.03968253968253968
+      },
+      {
+        "run_id": "run-5b3d475fa1",
+        "document_id": "docred-validation-000262-Great_South_Australian_Coastal_Upwelling",
+        "edge_overlap": 0.09090909090909091,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a731b1f323",
+        "document_id": "docred-validation-000258-FLAMA",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-a714a14621",
+        "document_id": "docred-validation-000255-Heinrich_LXXII__Prince_Reuss_of_Lobenste",
+        "edge_overlap": 0.6363636363636364,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-91703b99d6",
+        "document_id": "docred-validation-000258-FLAMA",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-1ca8ae54d8",
+        "document_id": "docred-validation-000261-Metacomet_Ridge",
+        "edge_overlap": 0.45454545454545453,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.031746031746031744
+      },
+      {
+        "run_id": "run-dfc3aba4f8",
+        "document_id": "docred-validation-000261-Metacomet_Ridge",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-94c1ed26df",
+        "document_id": "docred-validation-000264-I_Think_We_re_Alone_Now",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.33333333333333337,
+        "abs_delta_precision": 0.16410256410256413
+      },
+      {
+        "run_id": "run-0c160d3893",
+        "document_id": "docred-validation-000264-I_Think_We_re_Alone_Now",
+        "edge_overlap": 0.5384615384615384,
+        "violated": true,
+        "abs_delta_recall": 0.33333333333333337,
+        "abs_delta_precision": 0.08791208791208793
+      },
+      {
+        "run_id": "run-31bed7b5e4",
+        "document_id": "docred-validation-000260-Bigpoint_Games",
+        "edge_overlap": 0.47058823529411764,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.09722222222222221
+      },
+      {
+        "run_id": "run-a99d54f1c2",
+        "document_id": "docred-validation-000265-Cassin_s_finch",
+        "edge_overlap": 0.47058823529411764,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-2ce8adf97b",
+        "document_id": "docred-validation-000260-Bigpoint_Games",
+        "edge_overlap": 0.6363636363636364,
+        "violated": true,
+        "abs_delta_recall": 0.0625,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-5c571f51dd",
+        "document_id": "docred-validation-000265-Cassin_s_finch",
+        "edge_overlap": 0.5333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-061d54718a",
+        "document_id": "docred-validation-000267-List_of_Chinese_administrative_divisions",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.4
+      },
+      {
+        "run_id": "run-478d180de3",
+        "document_id": "docred-validation-000263-Brigden__Ontario",
+        "edge_overlap": 0.2857142857142857,
+        "violated": true,
+        "abs_delta_recall": 0.17391304347826086,
+        "abs_delta_precision": 0.15294117647058825
+      },
+      {
+        "run_id": "run-ee5248b1ae",
+        "document_id": "docred-validation-000268-Muir_Beach__California",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.15000000000000002
+      },
+      {
+        "run_id": "run-949cbf62aa",
+        "document_id": "docred-validation-000267-List_of_Chinese_administrative_divisions",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-99bb12b652",
+        "document_id": "docred-validation-000268-Muir_Beach__California",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.17142857142857143
+      },
+      {
+        "run_id": "run-c6d7c5625f",
+        "document_id": "docred-validation-000259-University_College_London_Hospitals_NHS_",
+        "edge_overlap": 0.46153846153846156,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.022408963585434177
+      },
+      {
+        "run_id": "run-b999110a29",
+        "document_id": "docred-validation-000263-Brigden__Ontario",
+        "edge_overlap": 0.35714285714285715,
+        "violated": true,
+        "abs_delta_recall": 0.08695652173913043,
+        "abs_delta_precision": 0.2444444444444444
+      },
+      {
+        "run_id": "run-9b6622ebb7",
+        "document_id": "docred-validation-000271-L_Oblat",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-430fc24f9e",
+        "document_id": "docred-validation-000259-University_College_London_Hospitals_NHS_",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.043478260869565216,
+        "abs_delta_precision": 0.05514705882352941
+      },
+      {
+        "run_id": "run-676456dcd5",
+        "document_id": "docred-validation-000271-L_Oblat",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1333333333333333
+      },
+      {
+        "run_id": "run-65de691290",
+        "document_id": "docred-validation-000266-Shneur_Zalman_of_Liadi",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.2222222222222222
+      },
+      {
+        "run_id": "run-ed4457aecc",
+        "document_id": "docred-validation-000270-Soccer_Academy",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-db84a7573a",
+        "document_id": "docred-validation-000266-Shneur_Zalman_of_Liadi",
+        "edge_overlap": 0.8181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.04040404040404039
+      },
+      {
+        "run_id": "run-742213ad32",
+        "document_id": "docred-validation-000270-Soccer_Academy",
+        "edge_overlap": 0.4,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-6459e24e6d",
+        "document_id": "docred-validation-000273-Patriot_Hills_Base_Camp",
+        "edge_overlap": 0.16666666666666666,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-be97e7a99c",
+        "document_id": "docred-validation-000274-John_H__Furse",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.1527777777777778
+      },
+      {
+        "run_id": "run-8ebb077d1f",
+        "document_id": "docred-validation-000276-Holden_New_Zealand",
+        "edge_overlap": 0.05,
+        "violated": true,
+        "abs_delta_recall": 0.05555555555555555,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-3493dff4ea",
+        "document_id": "docred-validation-000273-Patriot_Hills_Base_Camp",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.125
+      },
+      {
+        "run_id": "run-bc8fa2d298",
+        "document_id": "docred-validation-000272-Larry_King_Live",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.2727272727272727,
+        "abs_delta_precision": 0.21428571428571427
+      },
+      {
+        "run_id": "run-4a9e7d7be5",
+        "document_id": "docred-validation-000275-Yuriy_Lutsenko",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.12,
+        "abs_delta_precision": 0.3333333333333333
+      },
+      {
+        "run_id": "run-79e5c38917",
+        "document_id": "docred-validation-000274-John_H__Furse",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.041666666666666685
+      },
+      {
+        "run_id": "run-ab5f91d8c1",
+        "document_id": "docred-validation-000276-Holden_New_Zealand",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333354
+      },
+      {
+        "run_id": "run-2bebf46d93",
+        "document_id": "docred-validation-000269-Kokumin_D\u014dmei",
+        "edge_overlap": 0.04,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-569dac17df",
+        "document_id": "docred-validation-000272-Larry_King_Live",
+        "edge_overlap": 0.2222222222222222,
+        "violated": true,
+        "abs_delta_recall": 0.09090909090909088,
+        "abs_delta_precision": 0.035714285714285726
+      },
+      {
+        "run_id": "run-4519382104",
+        "document_id": "docred-validation-000275-Yuriy_Lutsenko",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.12,
+        "abs_delta_precision": 0.2727272727272727
+      },
+      {
+        "run_id": "run-b9ddb43cbc",
+        "document_id": "docred-validation-000277-Christie_Elliott",
+        "edge_overlap": 0.7,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.06944444444444442
+      },
+      {
+        "run_id": "run-a6b0ce33a1",
+        "document_id": "docred-validation-000279-Nonconformist",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-b0dd7a9b5d",
+        "document_id": "docred-validation-000279-Nonconformist",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-07f500e0ac",
+        "document_id": "docred-validation-000269-Kokumin_D\u014dmei",
+        "edge_overlap": 0.12,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-25fcde0df9",
+        "document_id": "docred-validation-000277-Christie_Elliott",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.16666666666666669,
+        "abs_delta_precision": 0.2916666666666667
+      },
+      {
+        "run_id": "run-46f846e418",
+        "document_id": "docred-validation-000282-Electoral_district_of_Frankston_East",
+        "edge_overlap": 0.36363636363636365,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.18181818181818182
+      },
+      {
+        "run_id": "run-cdcfdfb5a5",
+        "document_id": "docred-validation-000282-Electoral_district_of_Frankston_East",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.14285714285714285,
+        "abs_delta_precision": 0.25
+      },
+      {
+        "run_id": "run-1138feaae7",
+        "document_id": "docred-validation-000284-Admission_to_the_Union",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.1857142857142857
+      },
+      {
+        "run_id": "run-0ca6a6db3c",
+        "document_id": "docred-validation-000280-Kiss_Each_Other_Clean",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-ccad7d4c6c",
+        "document_id": "docred-validation-000284-Admission_to_the_Union",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.2222222222222222,
+        "abs_delta_precision": 0.3285714285714285
+      },
+      {
+        "run_id": "run-c226b35e77",
+        "document_id": "docred-validation-000280-Kiss_Each_Other_Clean",
+        "edge_overlap": 0.18518518518518517,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.01568627450980392
+      },
+      {
+        "run_id": "run-e5149bf9af",
+        "document_id": "docred-validation-000287-List_of_United_States_Armed_Forces_unit_",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-73d319938b",
+        "document_id": "docred-validation-000287-List_of_United_States_Armed_Forces_unit_",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-e4a9e97e11",
+        "document_id": "docred-validation-000278-Kungliga_Hovkapellet",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.05714285714285716
+      },
+      {
+        "run_id": "run-50aa6063d9",
+        "document_id": "docred-validation-000278-Kungliga_Hovkapellet",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.14285714285714285
+      },
+      {
+        "run_id": "run-bf0171dd01",
+        "document_id": "docred-validation-000286-Matagorda_Bay",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-cc6658f240",
+        "document_id": "docred-validation-000286-Matagorda_Bay",
+        "edge_overlap": 0.6428571428571429,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-eccac6bfd8",
+        "document_id": "docred-validation-000285-Railroad_Revival_Tour",
+        "edge_overlap": 0.6,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.02857142857142858
+      },
+      {
+        "run_id": "run-32180a87e4",
+        "document_id": "docred-validation-000283-Sonic_the_Hedgehog",
+        "edge_overlap": 0.38095238095238093,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-f6fd7133db",
+        "document_id": "docred-validation-000285-Railroad_Revival_Tour",
+        "edge_overlap": 0.2962962962962963,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.023809523809523808
+      },
+      {
+        "run_id": "run-f29d97a91f",
+        "document_id": "docred-validation-000288-Memories__Elvis_Presley_song_",
+        "edge_overlap": 0.3076923076923077,
+        "violated": true,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.1857142857142857
+      },
+      {
+        "run_id": "run-f11ae863ed",
+        "document_id": "docred-validation-000283-Sonic_the_Hedgehog",
+        "edge_overlap": 0.047619047619047616,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-08883716e8",
+        "document_id": "docred-validation-000288-Memories__Elvis_Presley_song_",
+        "edge_overlap": 0.8571428571428571,
+        "violated": false,
+        "abs_delta_recall": 0.25,
+        "abs_delta_precision": 0.11904761904761904
+      },
+      {
+        "run_id": "run-369ac112eb",
+        "document_id": "docred-validation-000281-First_Battle_of_Homs",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.5
+      },
+      {
+        "run_id": "run-de45fc3b89",
+        "document_id": "docred-validation-000291-Fyns_Hoved",
+        "edge_overlap": 0.18181818181818182,
+        "violated": true,
+        "abs_delta_recall": 0.09090909090909091,
+        "abs_delta_precision": 0.275
+      },
+      {
+        "run_id": "run-e5384db1c2",
+        "document_id": "docred-validation-000295-Ko_Joo-yeon",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.125,
+        "abs_delta_precision": 0.1111111111111111
+      },
+      {
+        "run_id": "run-dac2bd9ba1",
+        "document_id": "docred-validation-000295-Ko_Joo-yeon",
+        "edge_overlap": 1.0,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-3790d7a6a9",
+        "document_id": "docred-validation-000281-First_Battle_of_Homs",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.07692307692307693,
+        "abs_delta_precision": 0.5
+      },
+      {
+        "run_id": "run-36f89a395e",
+        "document_id": "docred-validation-000291-Fyns_Hoved",
+        "edge_overlap": 0.23076923076923078,
+        "violated": true,
+        "abs_delta_recall": 0.09090909090909091,
+        "abs_delta_precision": 0.3090909090909091
+      },
+      {
+        "run_id": "run-ce5d9bf953",
+        "document_id": "docred-validation-000292-Orongorongo_River",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.39999999999999997,
+        "abs_delta_precision": 0.08791208791208793
+      },
+      {
+        "run_id": "run-5ace5f4610",
+        "document_id": "docred-validation-000293-Skylake__microarchitecture_",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-043e2defd8",
+        "document_id": "docred-validation-000290-Chuck_Domanico",
+        "edge_overlap": 0.8,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.009881422924901184
+      },
+      {
+        "run_id": "run-1017e29509",
+        "document_id": "docred-validation-000292-Orongorongo_River",
+        "edge_overlap": 0.8571428571428571,
+        "violated": false,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.023809523809523808
+      },
+      {
+        "run_id": "run-938a411910",
+        "document_id": "docred-validation-000290-Chuck_Domanico",
+        "edge_overlap": 0.22727272727272727,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.7727272727272727
+      },
+      {
+        "run_id": "run-446d8ee4ca",
+        "document_id": "docred-validation-000293-Skylake__microarchitecture_",
+        "edge_overlap": 0.0,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-524cd26874",
+        "document_id": "docred-validation-000289-Franck_Piccard",
+        "edge_overlap": 0.4166666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.12857142857142856
+      },
+      {
+        "run_id": "run-0bb4fcb576",
+        "document_id": "docred-validation-000297-American_Theocracy",
+        "edge_overlap": 0.25,
+        "violated": true,
+        "abs_delta_recall": 0.1111111111111111,
+        "abs_delta_precision": 0.16666666666666666
+      },
+      {
+        "run_id": "run-f9a06c44b3",
+        "document_id": "docred-validation-000289-Franck_Piccard",
+        "edge_overlap": 0.3125,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.21428571428571427
+      },
+      {
+        "run_id": "run-17bd54f69b",
+        "document_id": "docred-validation-000297-American_Theocracy",
+        "edge_overlap": 0.375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.033333333333333354
+      },
+      {
+        "run_id": "run-595d6d2fa4",
+        "document_id": "docred-validation-000294-Independent_Democratic_Action",
+        "edge_overlap": 0.15384615384615385,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-c4179751dd",
+        "document_id": "docred-validation-000298-John_of_Islay__Earl_of_Ross",
+        "edge_overlap": 0.15,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.3116883116883117
+      },
+      {
+        "run_id": "run-39a27516ba",
+        "document_id": "docred-validation-000298-John_of_Islay__Earl_of_Ross",
+        "edge_overlap": 0.2916666666666667,
+        "violated": true,
+        "abs_delta_recall": 0.08333333333333331,
+        "abs_delta_precision": 0.15454545454545454
+      },
+      {
+        "run_id": "run-2f2568aad8",
+        "document_id": "docred-validation-000294-Independent_Democratic_Action",
+        "edge_overlap": 0.14285714285714285,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-be7427050c",
+        "document_id": "docred-validation-000299-Dieter_Eppler",
+        "edge_overlap": 0.4375,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.35
+      },
+      {
+        "run_id": "run-20f749960a",
+        "document_id": "docred-validation-000299-Dieter_Eppler",
+        "edge_overlap": 0.7333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.1454545454545454
+      },
+      {
+        "run_id": "run-70745418f2",
+        "document_id": "docred-validation-000296-Joseph_in_Islam",
+        "edge_overlap": 0.5,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      },
+      {
+        "run_id": "run-42f11be60f",
+        "document_id": "docred-validation-000296-Joseph_in_Islam",
+        "edge_overlap": 0.3333333333333333,
+        "violated": true,
+        "abs_delta_recall": 0.0,
+        "abs_delta_precision": 0.0
+      }
+    ]
   }
 }

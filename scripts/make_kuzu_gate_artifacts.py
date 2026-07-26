@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from graphguard.viz import style as gg_style  # noqa: F401
-from graphguard.formal_artifacts import load_formal_kuzu
+from graphguard.deployment_evidence import load_kuzu_evidence
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -17,7 +17,7 @@ DATASETS = [
     ("SciERC",    "scierc__deepseek-v4-flash__100d"),
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
-OUT_TABLE = Path("reports/cross_run/tab_e2ekuzu_v2.tex")
+OUT_TABLE = Path("reports/cross_run/tab_e2ekuzu.tex")
 OUT_FIG = Path("assets/figures/fig_riskcoverage.png")
 
 TAU_GRAPH_DEFAULT = 0.45
@@ -25,7 +25,7 @@ TAU_QUERY_DEFAULT = 0.70
 
 
 def load_pairs(run: str):
-    artifact = load_formal_kuzu(ROOT, run)
+    artifact = load_kuzu_evidence(ROOT, run)
     pairs = []
     for record in artifact["per_pair"]:
         pairs.append({

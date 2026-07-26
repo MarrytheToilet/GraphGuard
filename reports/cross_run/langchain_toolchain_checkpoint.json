@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "artifact_type": "graphguard.langchain_checkpoint_metadata",
+  "checkpoint": {
+    "path": "reports/cross_run/langchain_toolchain_cache.jsonl",
+    "bytes": 495823,
+    "sha256": "f856ac111baa0510f23cdd3f8e7315a82554a3d7f807c522a81e7c434c484e7b",
+    "records": 600
+  },
+  "extraction_environment": {
+    "toolchain": "langchain.LLMGraphTransformer",
+    "model": "deepseek-v4-flash",
+    "ignore_tool_usage": true,
+    "extraction_dependency_versions": null,
+    "extraction_dependency_versions_recorded": false,
+    "evidence_reorder_seed_recorded": false
+  }
+}

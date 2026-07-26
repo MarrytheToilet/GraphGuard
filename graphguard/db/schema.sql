@@ -1,5 +1,6 @@
--- GraphGuard v1 schema (SQLite/DuckDB compatible).
--- Milestone 1 only writes the first 8 tables; the rest are reserved for later milestones.
+-- GraphGuard SQLite lineage schema.
+-- Tables cover source data, extraction lineage, counterfactuals, cached calls,
+-- and evaluation metadata used by current or existing run databases.
 
 CREATE TABLE IF NOT EXISTS documents (
   document_id TEXT PRIMARY KEY,
@@ -82,7 +83,7 @@ CREATE INDEX IF NOT EXISTS idx_edges_event ON extracted_edges(event_id);
 CREATE INDEX IF NOT EXISTS idx_edges_doc   ON extracted_edges(document_id);
 
 -- ---------------------------------------------------------------
--- Reserved tables (created now to keep schema stable; unused in M1)
+-- Counterfactual lineage and reliability metadata
 -- ---------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS intervention_candidates (
@@ -138,14 +139,14 @@ CREATE TABLE IF NOT EXISTS edge_reliability_scores (
   computed_at          TEXT
 );
 
--- Cache table for counterfactual runs (later milestones)
+-- Cache table for extraction and counterfactual calls
 CREATE TABLE IF NOT EXISTS llm_call_cache (
   cache_key   TEXT PRIMARY KEY,
   response    TEXT,
   created_at  TEXT
 );
 
--- ===== M4 additions =====
+-- ===== Reference annotations and stability metadata =====
 
 -- DocRED gold relation triples
 CREATE TABLE IF NOT EXISTS gold_edges (
@@ -170,7 +171,7 @@ CREATE TABLE IF NOT EXISTS edge_correctness (
   matched_at   TEXT
 );
 
--- E0 stability metrics (per-document aggregate across N noop runs)
+-- Repeated-extraction stability metrics (per-document aggregate)
 CREATE TABLE IF NOT EXISTS stability_reports (
   document_id        TEXT PRIMARY KEY,
   n_runs             INTEGER,
@@ -182,14 +183,8 @@ CREATE TABLE IF NOT EXISTS stability_reports (
   computed_at        TEXT
 );
 
--- ===== Baseline detector signals (E2/E5 baselines) =====
+-- ===== Optional edge-level evaluation metadata =====
 -- One row per (edge, signal_name). `score` is "higher = more risky / more likely error".
--- Standard signals populated by graphguard.scoring.baselines:
---   * confidence_inv     (1 - LLM self-confidence)
---   * majority_vote_inv  (1 - fraction of prompt cf runs that keep the edge)
---   * source_prov_inv    (1 if no evidence sentence cited, else 0)
---   * subj_obj_cooccur_inv (1 if subj or obj names absent from cited sentences)
---   * nli_inv            (1 - NLI(entail - contradict)) when run via run_nli_baseline
 CREATE TABLE IF NOT EXISTS edge_baseline_scores (
   edge_id     TEXT NOT NULL REFERENCES extracted_edges(edge_id),
   signal      TEXT NOT NULL,
@@ -200,7 +195,7 @@ CREATE TABLE IF NOT EXISTS edge_baseline_scores (
 CREATE INDEX IF NOT EXISTS idx_baseline_edge ON edge_baseline_scores(edge_id);
 CREATE INDEX IF NOT EXISTS idx_baseline_sig  ON edge_baseline_scores(signal);
 
--- Per-document natural variance estimate (from E0 no-op repeats), used by AdjustedEffect.
+-- Per-document natural variance estimate from repeated extractions.
 CREATE TABLE IF NOT EXISTS document_natural_change (
   document_id     TEXT PRIMARY KEY REFERENCES documents(document_id),
   n_runs          INTEGER,
@@ -208,7 +203,7 @@ CREATE TABLE IF NOT EXISTS document_natural_change (
   computed_at     TEXT
 );
 
--- E1 synthetic injection corpus: documents created by injecting a known cause.
+-- Optional synthetic-injection metadata retained for existing lineage databases.
 CREATE TABLE IF NOT EXISTS injection_cases (
   case_id        TEXT PRIMARY KEY,
   base_document_id TEXT,

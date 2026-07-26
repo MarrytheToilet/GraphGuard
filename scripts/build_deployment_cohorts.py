@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Build versioned continuity cohorts for formal RQ8 and RQ10 reruns."""
+"""Build the canonical label-blind cohorts for RQ8 and RQ10."""
 
 from __future__ import annotations
 
 import argparse
 import json
+import random
 import sqlite3
 import subprocess
 import sys
@@ -17,13 +18,14 @@ from graphguard.deployment_cohorts import (  # noqa: E402
     COHORT_ARTIFACT_TYPE,
     COHORT_ARTIFACT_VERSION,
     canonical_digest,
-    legacy_random_sample,
-    select_continuity_cohort,
+    seeded_anchor_sample,
+    select_anchored_cohort,
 )
 from graphguard.deployment_downstream import (  # noqa: E402
     DOWNSTREAM_ARTIFACT_TYPE,
 )
 from graphguard.deployment_runner import ARTIFACT_TYPE  # noqa: E402
+from graphguard import qa  # noqa: E402
 from graphguard.sqlite_snapshot import (  # noqa: E402
     database_fingerprint,
     require_quiescent_snapshot,
@@ -43,6 +45,20 @@ RQ10_RUNS = (
 SEED = 0
 RQ8_TARGET = 4000
 RQ10_TARGET = 300
+RQ10_ANCHOR_DIGESTS = {
+    "docred__deepseek-v4-flash__300d": (
+        "70d7d33dc380edc1a43b1ff7d7e498c146b3892eb3a7a47ea9ad03d16a4e2d7e"
+    ),
+    "redocred__deepseek-v4-flash__300d": (
+        "d2dbe3558d06ea6d0d018e2aead6dac755d0f7738811c9e2a34e95b09315ba0d"
+    ),
+    "scierc__deepseek-v4-flash__100d": (
+        "ab04dd4937829df0f204ea82a60acb5a619a915a6ec95f165ac13bdda33e5c59"
+    ),
+    "cdr__deepseek-v4-flash__300d": (
+        "42baf4e85ece5d5be6c9d7de16c53bcdbd68d15c47e0eb0394edaca8681a5ebf"
+    ),
+}
 IMPLEMENTATION_FILES = (
     "graphguard/deployment_cohorts.py",
     "graphguard/deployment_downstream.py",
@@ -69,17 +85,17 @@ def _read_json(path: Path) -> dict:
 def _source_paths(run: str) -> tuple[Path, Path, Path]:
     downstream = (
         ROOT / "reports" / "cross_run"
-        / f"deployment_downstream_v1_{run}.json"
+        / f"deployment_downstream_{run}.json"
     )
     deployment = (
         ROOT / "reports" / "cross_run"
-        / f"deployment_q1q4_v1_{run}.json"
+        / f"deployment_q1q4_{run}.json"
     )
     db = ROOT / "data" / "processed" / "runs" / run / f"{run}.db"
     return downstream, deployment, db
 
 
-def _load_formal_population(run: str) -> dict:
+def _load_registered_population(run: str) -> dict:
     downstream_path, deployment_path, db_path = _source_paths(run)
     downstream = _read_json(downstream_path)
     deployment = _read_json(deployment_path)
@@ -140,39 +156,67 @@ def _source_record(source: dict) -> dict:
     return {
         "source_run": source["run"],
         "downstream_artifact": {
-            "path": str(source["downstream_path"]),
+            "path": source["downstream_path"].relative_to(ROOT).as_posix(),
             "sha256": source["downstream_sha256"],
         },
         "deployment_artifact": {
-            "path": str(source["deployment_path"]),
+            "path": source["deployment_path"].relative_to(ROOT).as_posix(),
             "sha256": source["deployment_sha256"],
         },
         "source_database": {
-            "path": str(source["db_path"]),
+            "path": source["db_path"].relative_to(ROOT).as_posix(),
             "sha256": source["db_fingerprint_before"]["main"]["sha256"],
             "fingerprint_before": source["db_fingerprint_before"],
             "fingerprint_after": source["db_fingerprint_after"],
         },
         "n_authoritative_pairs": len(source["authoritative_ids"]),
-        "n_formal_eligible_pairs": len(source["eligible_ids"]),
+        "n_registered_eligible_pairs": len(source["eligible_ids"]),
     }
+
+
+def _rq10_anchor_run_ids(db_path: Path) -> list[str]:
+    """Rebuild the pre-specified N=300 sample without running Kuzu."""
+    connection = sqlite3.connect(
+        f"file:{db_path.resolve()}?mode=ro",
+        uri=True,
+    )
+    try:
+        edges, gold, runs = qa.load_data(connection)
+    finally:
+        connection.close()
+    random.Random(SEED).shuffle(runs)
+    selected = []
+    for run_id, base_event, cf_event, doc_id, _family, _intervention in runs:
+        if (
+            not cf_event
+            or base_event not in edges
+            or cf_event not in edges
+            or not qa.build_queries(gold.get(doc_id, set()))
+        ):
+            continue
+        selected.append(run_id)
+        if len(selected) == RQ10_TARGET:
+            break
+    if len(selected) != RQ10_TARGET:
+        raise ValueError(f"{db_path}: cannot reconstruct N=300 anchor")
+    return selected
 
 
 def build_manifest() -> dict:
     sources = {
-        run: _load_formal_population(run)
+        run: _load_registered_population(run)
         for run in RQ10_RUNS
     }
     rq8_source = sources[RQ8_RUN]
     ordered_status_ok = _status_ok_run_ids(rq8_source["db_path"])
-    rq8_legacy = legacy_random_sample(
+    rq8_anchor = seeded_anchor_sample(
         ordered_status_ok,
         target_size=RQ8_TARGET,
         seed=SEED,
     )
-    rq8_selection = select_continuity_cohort(
+    rq8_selection = select_anchored_cohort(
         rq8_source["eligible_ids"],
-        rq8_legacy,
+        rq8_anchor,
         target_size=RQ8_TARGET,
         seed=SEED,
         authoritative_run_ids=rq8_source["authoritative_ids"],
@@ -181,18 +225,16 @@ def build_manifest() -> dict:
     rq10 = {}
     for run in RQ10_RUNS:
         source = sources[run]
-        legacy_path = (
-            ROOT / "reports" / "cross_run"
-            / f"e2e_kuzu_case_{run}__N300.json"
-        )
-        legacy_artifact = _read_json(legacy_path)
-        legacy_ids = [
-            record["run_id"]
-            for record in legacy_artifact["pair_records"]
-        ]
-        selection = select_continuity_cohort(
+        anchor_ids = _rq10_anchor_run_ids(source["db_path"])
+        anchor_digest = canonical_digest(anchor_ids)
+        if anchor_digest != RQ10_ANCHOR_DIGESTS[run]:
+            raise ValueError(
+                f"{run}: pre-specified anchor digest mismatch: "
+                f"{anchor_digest}"
+            )
+        selection = select_anchored_cohort(
             source["eligible_ids"],
-            legacy_ids,
+            anchor_ids,
             target_size=RQ10_TARGET,
             seed=SEED,
             authoritative_run_ids=source["authoritative_ids"],
@@ -200,11 +242,13 @@ def build_manifest() -> dict:
         rq10[run] = {
             "purpose": "RQ10 actual Kuzu N=300 release-gate cohort",
             "source": _source_record(source),
-            "legacy_source": {
-                "path": str(legacy_path),
-                "sha256": sha256_file(legacy_path),
-                "n_pairs": len(legacy_ids),
-                "run_ids_sha256": canonical_digest(legacy_ids),
+            "selection_anchor": {
+                "method": (
+                    "random.Random(0).shuffle over query-eligible "
+                    "counterfactual runs; take first 300"
+                ),
+                "n_pairs": len(anchor_ids),
+                "run_ids_sha256": anchor_digest,
             },
             "selection": selection,
         }
@@ -214,8 +258,8 @@ def build_manifest() -> dict:
         "artifact_version": COHORT_ARTIFACT_VERSION,
         "protocol": {
             "selection_is_label_blind": True,
-            "continuity_rule": (
-                "retain prior cohort IDs that remain in the formal "
+            "anchor_rule": (
+                "retain pre-specified cohort IDs that remain in the registered "
                 "schema-eligible workload; replace only excluded IDs"
             ),
             "replacement_rule": (
@@ -226,10 +270,10 @@ def build_manifest() -> dict:
         "cohorts": {
             "rq8_docred_n4000": {
                 "purpose": (
-                    "RQ8 formal schema-eligible N=4000 continuity cohort"
+                    "RQ8 registered schema-eligible N=4000 anchored cohort"
                 ),
                 "source": _source_record(rq8_source),
-                "legacy_source": {
+                "selection_anchor": {
                     "method": (
                         "random.Random(0).sample over status='ok' "
                         "counterfactual_runs in SQLite rowid order"
@@ -238,7 +282,7 @@ def build_manifest() -> dict:
                     "population_run_ids_sha256": canonical_digest(
                         ordered_status_ok
                     ),
-                    "run_ids_sha256": canonical_digest(rq8_legacy),
+                    "run_ids_sha256": canonical_digest(rq8_anchor),
                 },
                 "selection": rq8_selection,
             },
@@ -254,7 +298,7 @@ def main() -> int:
         type=Path,
         default=(
             ROOT / "reports" / "cross_run"
-            / "deployment_cohorts_v1.json"
+            / "deployment_cohorts.json"
         ),
     )
     parser.add_argument("--overwrite", action="store_true")
@@ -266,7 +310,8 @@ def main() -> int:
 
     artifact = build_manifest()
     artifact["implementation"] = {
-        "git_commit": git_commit(),
+        "base_git_commit": git_commit(),
+        "source_state": "working_tree_content_hashes",
         "file_sha256": {
             path: sha256_file(ROOT / path)
             for path in IMPLEMENTATION_FILES

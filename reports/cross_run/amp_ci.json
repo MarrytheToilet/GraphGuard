@@ -1281,7 +1281,7 @@
     "cdr__deepseek-v4-flash__300d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_cdr__deepseek-v4-flash__300d.json",
+      "path": "reports/cross_run/diagnostic_cdr__deepseek-v4-flash__300d.json",
       "source_database": {
         "path": "data/processed/runs/cdr__deepseek-v4-flash__300d/cdr__deepseek-v4-flash__300d.db",
         "sha256": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
@@ -1291,7 +1291,7 @@
     "docred__deepseek-v4-flash__300d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_docred__deepseek-v4-flash__300d.json",
+      "path": "reports/cross_run/diagnostic_docred__deepseek-v4-flash__300d.json",
       "source_database": {
         "path": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
         "sha256": "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4e0e03f9418",
@@ -1301,7 +1301,7 @@
     "docred__glm-5__100d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_docred__glm-5__100d.json",
+      "path": "reports/cross_run/diagnostic_docred__glm-5__100d.json",
       "source_database": {
         "path": "data/processed/runs/docred__glm-5__100d/docred__glm-5__100d.db",
         "sha256": "800c8846eb89709458687970099393603ded692f6ec053ca5cfca22db9802af7",
@@ -1311,7 +1311,7 @@
     "docred__kimi-k2__100d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_docred__kimi-k2__100d.json",
+      "path": "reports/cross_run/diagnostic_docred__kimi-k2__100d.json",
       "source_database": {
         "path": "data/processed/runs/docred__kimi-k2__100d/docred__kimi-k2__100d.db",
         "sha256": "4e4a0000455b67fb7bc52083bf2ada2d05e44935468b04bfaa390a073df0f0f4",
@@ -1321,7 +1321,7 @@
     "docred__qwen3-32b__100d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_docred__qwen3-32b__100d.json",
+      "path": "reports/cross_run/diagnostic_docred__qwen3-32b__100d.json",
       "source_database": {
         "path": "data/processed/runs/docred__qwen3-32b__100d/docred__qwen3-32b__100d.db",
         "sha256": "f57d8b1f00f4b23e4adc9b3dbba1df84b100cd1bb7612e861ed509245fc02f2d",
@@ -1331,7 +1331,7 @@
     "redocred__deepseek-v4-flash__300d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_redocred__deepseek-v4-flash__300d.json",
+      "path": "reports/cross_run/diagnostic_redocred__deepseek-v4-flash__300d.json",
       "source_database": {
         "path": "data/processed/runs/redocred__deepseek-v4-flash__300d/redocred__deepseek-v4-flash__300d.db",
         "sha256": "dc582d90d11a4b40ab6ea90f80312d8528a0ad587a5b337fb304f6cbf04cd531",
@@ -1341,7 +1341,7 @@
     "scierc__deepseek-v4-flash__100d": {
       "artifact_type": "graphguard.diagnostic_amplification",
       "artifact_version": 2,
-      "path": "reports/cross_run/diagnostic_v2_scierc__deepseek-v4-flash__100d.json",
+      "path": "reports/cross_run/diagnostic_scierc__deepseek-v4-flash__100d.json",
       "source_database": {
         "path": "data/processed/runs/scierc__deepseek-v4-flash__100d/scierc__deepseek-v4-flash__100d.db",
         "sha256": "cb29f6c5a7948883270422feb6b0673373c8e58bb6c63016a020bdb4812eeac8",

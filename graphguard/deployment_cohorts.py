@@ -1,4 +1,4 @@
-"""Versioned, label-blind cohorts for formal downstream evaluation."""
+"""Label-blind cohorts for registered downstream evaluation."""
 
 from __future__ import annotations
 
@@ -27,61 +27,61 @@ def replacement_rank(seed: int, run_id: str) -> str:
     return hashlib.sha256(f"{seed}:{run_id}".encode("utf-8")).hexdigest()
 
 
-def legacy_random_sample(
+def seeded_anchor_sample(
     ordered_run_ids: Sequence[str],
     *,
     target_size: int,
     seed: int,
 ) -> list[str]:
-    """Reconstruct the historical ``random.sample`` cohort selection."""
+    """Reconstruct the pre-specified ``random.sample`` cohort selection."""
     if target_size <= 0:
         raise ValueError("target_size must be positive")
     if len(ordered_run_ids) < target_size:
-        raise ValueError("legacy population is smaller than target_size")
+        raise ValueError("anchor population is smaller than target_size")
     if len(ordered_run_ids) != len(set(ordered_run_ids)):
-        raise ValueError("legacy population contains duplicate run IDs")
+        raise ValueError("anchor population contains duplicate run IDs")
     return random.Random(seed).sample(list(ordered_run_ids), target_size)
 
 
-def select_continuity_cohort(
+def select_anchored_cohort(
     eligible_run_ids: Sequence[str],
-    legacy_run_ids: Sequence[str],
+    anchor_run_ids: Sequence[str],
     *,
     target_size: int,
     seed: int,
     authoritative_run_ids: set[str] | None = None,
 ) -> dict:
-    """Retain a historical cohort and replace only newly ineligible pairs.
+    """Retain a pre-specified cohort and replace newly ineligible pairs.
 
     Replacements are chosen without labels by SHA-256 rank over the remaining
-    formal eligible population. Retained IDs preserve legacy order; replacement
-    IDs are appended in their deterministic rank order.
+    registered eligible population. Retained IDs preserve anchor order;
+    replacement IDs are appended in their deterministic rank order.
     """
     eligible = list(eligible_run_ids)
-    legacy = list(legacy_run_ids)
+    anchor = list(anchor_run_ids)
     if target_size <= 0:
         raise ValueError("target_size must be positive")
     if len(eligible) != len(set(eligible)):
         raise ValueError("eligible population contains duplicate run IDs")
-    if len(legacy) != len(set(legacy)):
-        raise ValueError("legacy cohort contains duplicate run IDs")
-    if len(legacy) != target_size:
-        raise ValueError("legacy cohort size differs from target_size")
+    if len(anchor) != len(set(anchor)):
+        raise ValueError("anchor cohort contains duplicate run IDs")
+    if len(anchor) != target_size:
+        raise ValueError("anchor cohort size differs from target_size")
 
     eligible_set = set(eligible)
-    retained = [run_id for run_id in legacy if run_id in eligible_set]
+    retained = [run_id for run_id in anchor if run_id in eligible_set]
     excluded_ids = [
-        run_id for run_id in legacy if run_id not in eligible_set
+        run_id for run_id in anchor if run_id not in eligible_set
     ]
     replacement_pool = [
-        run_id for run_id in eligible if run_id not in set(legacy)
+        run_id for run_id in eligible if run_id not in set(anchor)
     ]
     replacement_pool.sort(
         key=lambda run_id: (replacement_rank(seed, run_id), run_id)
     )
     needed = target_size - len(retained)
     if len(replacement_pool) < needed:
-        raise ValueError("formal eligible population cannot fill cohort")
+        raise ValueError("registered eligible population cannot fill cohort")
     replacements = replacement_pool[:needed]
     selected = retained + replacements
     if len(selected) != target_size or len(selected) != len(set(selected)):
@@ -92,7 +92,7 @@ def select_continuity_cohort(
         {
             "run_id": run_id,
             "reason": (
-                "empty_formal_query_catalog"
+                "empty_registered_query_catalog"
                 if run_id in authoritative
                 else "not_in_authoritative_population"
             ),
@@ -103,17 +103,17 @@ def select_continuity_cohort(
         "target_size": target_size,
         "seed": seed,
         "selection_method": (
-            "retain legacy IDs that remain formally eligible; append "
+            "retain anchor IDs that remain registered eligible; append "
             "label-blind SHA256(seed:run_id)-ranked replacements"
         ),
         "replacement_rank": "SHA256(f'{seed}:{run_id}') ascending",
-        "retained_order": "legacy cohort order",
+        "retained_order": "anchor cohort order",
         "replacement_order": "replacement rank, then run_id",
-        "n_legacy": len(legacy),
+        "n_anchor": len(anchor),
         "n_retained": len(retained),
         "n_excluded": len(excluded),
         "n_replacements": len(replacements),
-        "legacy_run_ids_sha256": canonical_digest(legacy),
+        "anchor_run_ids_sha256": canonical_digest(anchor),
         "retained_run_ids": retained,
         "excluded": excluded,
         "replacement_run_ids": replacements,

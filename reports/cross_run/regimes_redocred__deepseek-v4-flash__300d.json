@@ -1,50 +1,59 @@
 {
+ "artifact_type": "graphguard.query_regime_analysis",
+ "artifact_version": 1,
  "run": "redocred__deepseek-v4-flash__300d",
+ "source": {
+  "evidence_index": {
+   "path": "reports/cross_run/deployment_evidence.json",
+   "sha256": "938c428ed3ec51917b6dacd58e624115cbbc949c758785c94c053bb23d22584b"
+  },
+  "downstream_sha256": "6726fdecf952c765d977172f5abef61610782b149ff49a937bc926a148690e86"
+ },
  "n_pairs": 6614,
  "label_definition": "regime mean absolute per-query F1 change > threshold",
  "harm_tau": 0.05,
  "regimes": {
   "local": {
-   "n": 6523,
-   "harm_base_rate": 0.4374,
-   "tau_graph": 0.7333,
+   "n": 6339,
+   "harm_base_rate": 0.5719,
+   "tau_graph": 0.6538,
    "cmp_graph": ">=",
    "tau_query": 1.0,
    "cmp_query": ">=",
    "graph_only": {
-    "alarm_rate": 0.4395216924727886,
-    "precision": 0.5309,
-    "recall": 0.5335,
-    "f1": 0.5322
+    "alarm_rate": 0.5721722669190724,
+    "precision": 0.6774,
+    "recall": 0.6778,
+    "f1": 0.6776
    },
    "query_aware": {
-    "alarm_rate": 0.8011651080791047,
-    "precision": 0.5448,
-    "recall": 0.9979,
-    "f1": 0.7048
+    "alarm_rate": 0.7925540306041963,
+    "precision": 0.7078,
+    "recall": 0.981,
+    "f1": 0.8223
    },
-   "delta_f1": 0.1726
+   "delta_f1": 0.1447
   },
   "multihop": {
-   "n": 1723,
-   "harm_base_rate": 0.675,
-   "tau_graph": 0.6129,
+   "n": 2037,
+   "harm_base_rate": 0.6573,
+   "tau_graph": 0.625,
    "cmp_graph": ">=",
    "tau_query": 1.0,
    "cmp_query": ">=",
    "graph_only": {
-    "alarm_rate": 0.6749854904236796,
-    "precision": 0.6982,
-    "recall": 0.6982,
-    "f1": 0.6982
+    "alarm_rate": 0.6632302405498282,
+    "precision": 0.678,
+    "recall": 0.6841,
+    "f1": 0.681
    },
    "query_aware": {
-    "alarm_rate": 0.796285548461985,
-    "precision": 0.8433,
-    "recall": 0.9948,
-    "f1": 0.9128
+    "alarm_rate": 0.8561610211094747,
+    "precision": 0.7672,
+    "recall": 0.9993,
+    "f1": 0.868
    },
-   "delta_f1": 0.2146
+   "delta_f1": 0.187
   }
  }
 }

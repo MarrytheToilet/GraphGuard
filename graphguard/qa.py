@@ -1,9 +1,8 @@
-"""Gold-grounded KG-QA workload shared by the e2e scripts.
+"""Gold-grounded KG-QA workload shared by deployment analyses.
 
 Builds four query families (lookup, neighbor, join, twohop) from gold_edges,
 executes them over an extracted edge set, and scores answer sets. Used by
-scripts/run_e2e_qa.py, scripts/run_e2e_kuzu_case_study.py and
-scripts/run_graph_vs_query_ablation.py.
+the deployment downstream, cohort, and graph-vs-query analyses.
 """
 
 from __future__ import annotations

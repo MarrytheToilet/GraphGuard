@@ -300,7 +300,7 @@ def main():
         viz_contracts(cj, figdir)
     diagnostic = (
         ROOT / "reports" / "cross_run"
-        / f"diagnostic_v2_{rd.name}.json"
+        / f"diagnostic_{rd.name}.json"
     )
     if diagnostic.exists():
         viz_amplification(diagnostic, figdir)

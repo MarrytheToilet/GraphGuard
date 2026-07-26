@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the versioned full diagnostic-query evaluation on materialized DBs."""
+"""Run the canonical full diagnostic-query evaluation on materialized DBs."""
 
 from __future__ import annotations
 
@@ -54,10 +54,10 @@ def main() -> int:
         )
         if not db_path.exists():
             raise FileNotFoundError(db_path)
-        output_path = args.out_dir / f"diagnostic_v2_{run}.json"
+        output_path = args.out_dir / f"diagnostic_{run}.json"
         if output_path.exists() and not args.overwrite:
             raise FileExistsError(
-                f"{output_path} exists; pass --overwrite to replace v2 output"
+                f"{output_path} exists; pass --overwrite to replace it"
             )
 
         artifact = analyze_database(
