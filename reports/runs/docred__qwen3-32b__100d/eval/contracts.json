@@ -443,7 +443,7 @@
     },
     {
       "contract_id": "K4",
-      "name": "Multi-hop join robustness (Q3)",
+      "name": "Diagnostic fan-out join robustness (D3)",
       "kind": "bounded_drift",
       "scope": {
         "semantic_class_in": [
@@ -458,22 +458,22 @@
       "n_pass": 93,
       "n_fail": 584,
       "violation_rate": 0.8626292466765141,
-      "severity_mean": 0.5582239330933593,
+      "severity_mean": 0.5524025482331858,
       "severity_p95": 0.7,
-      "metric_mean": 0.2540953469002245,
+      "metric_mean": 0.25977020353494673,
       "metric_median": 0.125,
       "by_family": {
         "prompt": {
           "n": 84,
           "n_fail": 59,
           "violation_rate": 0.7023809523809523,
-          "mean_metric": 0.45556957569641665
+          "mean_metric": 0.45812059610457995
         },
         "schema": {
           "n": 565,
           "n_fail": 507,
           "violation_rate": 0.8973451327433628,
-          "mean_metric": 0.21275576426604142
+          "mean_metric": 0.21917628148271617
         },
         "entity_alias": {
           "n": 14,
@@ -490,10 +490,10 @@
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.8183161004431314,
+        "0.5": 0.810930576070901,
         "0.7": 0.8626292466765141,
-        "0.8": 0.8818316100443131,
-        "0.9": 0.8847858197932054
+        "0.8": 0.8788774002954209,
+        "0.9": 0.8833087149187593
       },
       "examples": [
         {

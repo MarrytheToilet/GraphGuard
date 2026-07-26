@@ -17,10 +17,10 @@ from evaluation:
      deployment split, for graph-only and GraphGuard policies, next to
      publish-all as reference.
 
-No new LLM calls: everything replays from the cached gate artifacts
-(reports/cross_run/e2e_kuzu_case_<run>__N300.json).
+No new LLM calls: everything replays from the registered actual-Kuzu
+N=300 artifacts.
 
-Writes reports/cross_run/gate_split.json and prints a summary.
+Writes reports/cross_run/gate_split_formal_v1.json and prints a summary.
 """
 from __future__ import annotations
 
@@ -29,6 +29,12 @@ import json
 from pathlib import Path
 
 import numpy as np
+from graphguard.formal_artifacts import (
+    DEFAULT_INDEX,
+    load_artifact_index,
+    load_formal_kuzu,
+)
+from graphguard.sqlite_snapshot import sha256_file
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -44,15 +50,16 @@ FULL_DATA_POINT = (0.45, 0.70)
 
 
 def load_pairs(run: str):
-    j = json.loads((ROOT / f"reports/cross_run/e2e_kuzu_case_{run}__N300.json").read_text())
+    artifact = load_formal_kuzu(ROOT, run)
     pairs = []
-    for r in j["pair_records"]:
+    for record in artifact["per_pair"]:
         pairs.append({
-            "doc": r["doc"],
-            "graph_drift": float(r.get("graph_drift", 0.0)),
-            "max_dq": float(r.get("max_answer_drift", 0.0)),
-            "mean_abs_delta_f1": float(r.get("mean_df1", 0.0)),
-            "harmful": bool(r.get("harmful", False)),
+            "run_id": record["run_id"],
+            "doc": record["document_id"],
+            "graph_drift": float(record["graph_drift"]),
+            "max_dq": float(record["max_answer_drift"]),
+            "mean_abs_delta_f1": float(record["mean_delta_f1_abs"]),
+            "harmful": float(record["mean_delta_f1_signed"]) > 0.05,
         })
     return pairs
 
@@ -124,10 +131,26 @@ def select_thresholds(calib, target=HARM_TARGET):
 
 
 def main() -> int:
-    report = {"harm_target": HARM_TARGET, "split": "50/50 by document (md5 order)",
-              "selection": "max coverage s.t. calibration pub-harm <= target",
-              "confidence_intervals": "cluster bootstrap by document",
-              "corpora": {}}
+    index = load_artifact_index(ROOT)
+    report = {
+        "artifact_type": "graphguard.gate_split_analysis",
+        "artifact_version": 1,
+        "sources": {
+            "formal_index": {
+                "path": str(DEFAULT_INDEX),
+                "sha256": sha256_file(ROOT / DEFAULT_INDEX),
+            },
+            "kuzu_sha256": {
+                run: index["entries"][f"kuzu:{run}"]["raw_sha256"]
+                for _, run in DATASETS
+            },
+        },
+        "harm_target": HARM_TARGET,
+        "split": "50/50 by document (md5 order)",
+        "selection": "max coverage s.t. calibration pub-harm <= target",
+        "confidence_intervals": "cluster bootstrap by document",
+        "corpora": {},
+    }
     for name, run in DATASETS:
         pairs = load_pairs(run)
         calib, deploy = split_by_doc(pairs)
@@ -151,8 +174,8 @@ def main() -> int:
               f"cov={d['coverage']:.2f} rec={d['harm_recall']:.2f} | "
               f"paper-point deploy harm={pp['pub_harm_rate']:.3f} fid={pp['f1_fidelity']:.3f} | "
               f"publish-all harm={entry['deploy_publish_all']['pub_harm_rate']:.3f}")
-    out = ROOT / "reports/cross_run/gate_split.json"
-    out.write_text(json.dumps(report, indent=2))
+    out = ROOT / "reports/cross_run/gate_split_formal_v1.json"
+    out.write_text(json.dumps(report, indent=2) + "\n")
     print("wrote", out)
     return 0
 

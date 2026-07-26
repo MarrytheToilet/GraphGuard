@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 226 | 0.73 | 0.354 | 0.288 / 0.500 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 84 | 0.67 | 0.581 | 0.394 / 0.800 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **VIOLATED** | 28 | 0.64 | 0.572 | 0.456 / 0.800 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **VIOLATED** | 677 | 0.86 | 0.254 | 0.558 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **VIOLATED** | 677 | 0.86 | 0.260 | 0.552 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 243 | 0.65 | 0.414 | 0.596 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 677 | 0.39 | 0.793 | 0.232 / 0.500 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 677 | 0.83 | 0.394 | 0.410 / 0.700 |
@@ -109,19 +109,19 @@
     - doc=`docred-validation-000013-Palestinian_National_Theatre` op=`para_swap` family=`evidence` metric=0.000
     - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`entity_alias` family=`entity_alias` metric=0.062
 
-### K4 — Multi-hop join robustness (Q3)  · *VIOLATED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *VIOLATED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`
 - pairs: n=677, fail=584, violation_rate=0.863
-- metric: mean=0.254, median=0.125
+- metric: mean=0.260, median=0.125
 - by family:
     - `entity_alias` n=14, viol=0.36, mean_metric=0.698
     - `evidence` n=14, viol=0.93, mean_metric=0.269
-    - `prompt` n=84, viol=0.70, mean_metric=0.456
-    - `schema` n=565, viol=0.90, mean_metric=0.213
+    - `prompt` n=84, viol=0.70, mean_metric=0.458
+    - `schema` n=565, viol=0.90, mean_metric=0.219
 - threshold sensitivity (violation_rate at alt thresholds):
-    - τ=0.5: 0.82
+    - τ=0.5: 0.81
     - τ=0.7: 0.86
     - τ=0.8: 0.88
     - τ=0.9: 0.88

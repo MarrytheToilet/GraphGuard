@@ -17,29 +17,24 @@ therefore a diagnostic F1 comparison rather than a strictly alarm-matched
 experiment. The pooled policy comparison in run_graph_vs_query_ablation.py
 is the rate-matched analysis.
 
-Writes reports/cross_run/regimes_<run>.json.
+Writes reports/cross_run/regimes_formal_v1_<run>.json.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import sqlite3
-import statistics
 import sys
-from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from graphguard.qa import (  # noqa: E402
-    build_queries,
-    execute,
-    f1,
-    graph_jaccard,
-    jaccard,
-    load_data,
+from graphguard.formal_artifacts import (  # noqa: E402
+    DEFAULT_INDEX,
+    load_artifact_index,
+    load_formal_downstream,
 )
+from graphguard.sqlite_snapshot import sha256_file  # noqa: E402
 
 MAIN_RUNS = [
     "docred__deepseek-v4-flash__300d",
@@ -51,6 +46,12 @@ MAIN_RUNS = [
 OUT_DIR = ROOT / "reports" / "cross_run"
 HARM_TAU = 0.05
 REGIMES = {"local": ("lookup", "neighbor"), "multihop": ("join", "twohop")}
+FORMAL_FAMILIES = {
+    "lookup": "deployment.lookup",
+    "neighbor": "deployment.neighbor",
+    "join": "deployment.shared_tail_join",
+    "twohop": "deployment.typed_two_hop",
+}
 
 
 def confusion(flags, harm):
@@ -86,49 +87,47 @@ def flags_at_alarm(scores, target):
 
 
 def analyze_run(run: str) -> dict | None:
-    db = ROOT / "data" / "processed" / "runs" / run / f"{run}.db"
-    if not db.exists():
-        print(f"[skip] {run}: no db")
-        return None
-    con = sqlite3.connect(db)
-    edges, gold, runs = load_data(con)
-
-    qcache: dict = {}
-    def queries_for(doc):
-        if doc not in qcache:
-            qcache[doc] = build_queries(gold.get(doc, set()))
-        return qcache[doc]
-
+    artifact = load_formal_downstream(ROOT, run)
     rows = []
-    for run_id, base_ev, cf_ev, doc, fam, iv_id in runs:
-        if not cf_ev or base_ev not in edges or cf_ev not in edges:
-            continue
-        bg, cg = edges[base_ev], edges[cf_ev]
-        qs = queries_for(doc)
-        if not qs:
-            continue
-        gdrift = 1.0 - graph_jaccard(bg, cg)
-        delta = defaultdict(list)   # gold DeltaF1 per template family
-        adrift = defaultdict(list)  # gold-free answer drift per template family
-        nonempty = defaultdict(bool)
-        for q in qs:
-            fam_q = q[0]
-            pb, pc = execute(bg, q), execute(cg, q)
-            delta[fam_q].append(abs(f1(pb, q[1]["gold"]) - f1(pc, q[1]["gold"])))
-            adrift[fam_q].append(1.0 - jaccard(pb, pc))
-            nonempty[fam_q] = nonempty[fam_q] or bool(pb) or bool(pc)
-        row = {"graph_drift": gdrift}
+    for pair in artifact["per_pair"]:
+        row = {"graph_drift": pair["graph_drift"]}
         for regime, fams in REGIMES.items():
-            ds = [d for f_ in fams for d in delta.get(f_, [])]
-            qd = [d for f_ in fams for d in adrift.get(f_, [])]
-            has_answer = any(nonempty.get(f_) for f_ in fams)
-            if ds and has_answer:
-                row[f"{regime}_harm"] = statistics.mean(ds) > HARM_TAU
-                row[f"{regime}_qdrift"] = max(qd) if qd else 0.0
+            summaries = [
+                pair["families"][FORMAL_FAMILIES[family]]
+                for family in fams
+            ]
+            n_queries = sum(item["n_queries"] for item in summaries)
+            has_answer = any(
+                item.get("has_nonempty_answer", False)
+                for item in summaries
+            )
+            if n_queries and has_answer:
+                mean_delta = sum(
+                    item.get("mean_delta_f1_abs", 0.0)
+                    * item["n_queries"]
+                    for item in summaries
+                ) / n_queries
+                row[f"{regime}_harm"] = mean_delta > HARM_TAU
+                row[f"{regime}_qdrift"] = max(
+                    item.get("max_answer_drift", 0.0)
+                    for item in summaries
+                )
         rows.append(row)
 
+    index = load_artifact_index(ROOT)
     out = {
+        "artifact_type": "graphguard.query_regime_analysis",
+        "artifact_version": 1,
         "run": run,
+        "source": {
+            "formal_index": {
+                "path": str(DEFAULT_INDEX),
+                "sha256": sha256_file(ROOT / DEFAULT_INDEX),
+            },
+            "downstream_sha256": index["entries"][
+                f"downstream:{run}"
+            ]["raw_sha256"],
+        },
         "n_pairs": len(rows),
         "label_definition": (
             "regime mean absolute per-query F1 change > threshold"
@@ -157,8 +156,8 @@ def analyze_run(run: str) -> dict | None:
         }
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = OUT_DIR / f"regimes_{run}.json"
-    out_path.write_text(json.dumps(out, indent=1))
+    out_path = OUT_DIR / f"regimes_formal_v1_{run}.json"
+    out_path.write_text(json.dumps(out, indent=1) + "\n")
     print(f"[done] {run}: {len(rows)} pairs -> {out_path}")
     for regime, s in out["regimes"].items():
         print(f"  {regime:<9} n={s['n']:<6} base={s['harm_base_rate']:.2f} "

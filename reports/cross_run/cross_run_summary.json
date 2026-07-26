@@ -59,9 +59,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.47291341719673347,
-      "Amp_Q3_mean": 0.12230515002725864,
-      "Amp_Q3_over_Q1": 0.25862059645556496
+      "Amp_D1_mean": 0.47137792729232675,
+      "Amp_D3_mean": 0.12417776644729715,
+      "Amp_D3_over_D1": 0.2634356834665444
     },
     {
       "name": "docred__deepseek-v4-flash__300d",
@@ -93,7 +93,7 @@
         },
         "K4": {
           "n_pairs": 2301,
-          "violation_rate": 0.9191655801825294,
+          "violation_rate": 0.9139504563233377,
           "verdict": "VIOLATED"
         },
         "K4b": {
@@ -122,9 +122,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.9048086162044877,
-      "Amp_Q3_mean": 1.2221332654833785,
-      "Amp_Q3_over_Q1": 1.3507091373753841
+      "Amp_D1_mean": 0.9005251129026903,
+      "Amp_D3_mean": 1.1462719340151604,
+      "Amp_D3_over_D1": 1.2728928017569068
     },
     {
       "name": "docred__glm-5__100d",
@@ -156,7 +156,7 @@
         },
         "K4": {
           "n_pairs": 155,
-          "violation_rate": 0.6645161290322581,
+          "violation_rate": 0.5612903225806452,
           "verdict": "VIOLATED"
         },
         "K4b": {
@@ -185,9 +185,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.7572298795637776,
-      "Amp_Q3_mean": 1.3721721590909604,
-      "Amp_Q3_over_Q1": 1.812094578044697
+      "Amp_D1_mean": 0.7463757617292945,
+      "Amp_D3_mean": 0.9825999812036005,
+      "Amp_D3_over_D1": 1.3164950305017848
     },
     {
       "name": "docred__kimi-k2__100d",
@@ -219,7 +219,7 @@
         },
         "K4": {
           "n_pairs": 694,
-          "violation_rate": 0.6440922190201729,
+          "violation_rate": 0.6397694524495677,
           "verdict": "VIOLATED"
         },
         "K4b": {
@@ -248,9 +248,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.798865159326139,
-      "Amp_Q3_mean": 1.143847959366871,
-      "Amp_Q3_over_Q1": 1.4318410885908865
+      "Amp_D1_mean": 0.7848101467122189,
+      "Amp_D3_mean": 1.0385577301385667,
+      "Amp_D3_over_D1": 1.3233235254276015
     },
     {
       "name": "docred__qwen3-32b__100d",
@@ -311,9 +311,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.8583351449231498,
-      "Amp_Q3_mean": 1.1257102019443006,
-      "Amp_Q3_over_Q1": 1.3115042633435334
+      "Amp_D1_mean": 0.850276433056762,
+      "Amp_D3_mean": 1.103318372040412,
+      "Amp_D3_over_D1": 1.297599614838152
     },
     {
       "name": "redocred__deepseek-v4-flash__300d",
@@ -345,7 +345,7 @@
         },
         "K4": {
           "n_pairs": 2320,
-          "violation_rate": 0.9301724137931034,
+          "violation_rate": 0.9297413793103448,
           "verdict": "VIOLATED"
         },
         "K4b": {
@@ -374,9 +374,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.9134631393178695,
-      "Amp_Q3_mean": 1.2020875390335657,
-      "Amp_Q3_over_Q1": 1.3159672101615694
+      "Amp_D1_mean": 0.9095114690702121,
+      "Amp_D3_mean": 1.1502829938067163,
+      "Amp_D3_over_D1": 1.2647262106355222
     },
     {
       "name": "scierc__deepseek-v4-flash__100d",
@@ -408,7 +408,7 @@
         },
         "K4": {
           "n_pairs": 2643,
-          "violation_rate": 0.6409383276579644,
+          "violation_rate": 0.6398032538781687,
           "verdict": "VIOLATED"
         },
         "K4b": {
@@ -437,9 +437,9 @@
           "verdict": "VIOLATED"
         }
       },
-      "Amp_Q1_mean": 0.9007194139370704,
-      "Amp_Q3_mean": 0.817241125135108,
-      "Amp_Q3_over_Q1": 0.9073204290811537
+      "Amp_D1_mean": 0.898435382684856,
+      "Amp_D3_mean": 0.8158560091861788,
+      "Amp_D3_over_D1": 0.9080853502765001
     }
   ]
 }

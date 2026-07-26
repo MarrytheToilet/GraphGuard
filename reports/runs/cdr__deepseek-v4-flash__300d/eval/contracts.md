@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 680 | 0.21 | 0.733 | 0.260 / 0.500 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 1737 | 0.46 | 0.728 | 0.369 / 0.800 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **SATISFIED** | 80 | 0.20 | 0.883 | 0.364 / 0.600 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **SATISFIED** | 3515 | 0.07 | 0.927 | 0.696 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **SATISFIED** | 3515 | 0.07 | 0.927 | 0.694 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 139 | 0.69 | 0.336 | 0.657 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 3485 | 0.23 | 0.875 | 0.233 / 0.700 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 3485 | 0.40 | 0.733 | 0.323 / 0.700 |
@@ -109,7 +109,7 @@
     - doc=`cdr-validation-000034-7651879` op=`para_swap` family=`evidence` metric=0.200
     - doc=`cdr-validation-000015-20705401` op=`para_swap` family=`evidence` metric=0.222
 
-### K4 — Multi-hop join robustness (Q3)  · *SATISFIED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *SATISFIED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`

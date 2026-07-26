@@ -1,4 +1,4 @@
-"""Visualize drift contracts + amplification (E8) headline figures.
+"""Visualize drift contracts and canonical diagnostic amplification.
 
 Output naming (under reports/runs/<run>/figures/):
     fig01_contracts_violations.png
@@ -211,39 +211,44 @@ def viz_contracts(contracts_json: Path, fig_dir: Path) -> None:
     save_fig(fig2, fig_dir / "fig02_contracts_threshold_sensitivity.png")
 
 
-# -------------------------------------------------------- E8 amplification
+# ----------------------------------------------- canonical D1--D5 diagnostics
 
 
-def viz_amplification(e8_json: Path, fig_dir: Path) -> None:
-    data = json.loads(e8_json.read_text())
-    by_q = data["summary"]["by_query"]
-    queries = ["Q1_single_edge", "Q2_two_hop", "Q3_join",
-               "Q4_top_degree", "Q5_short_paths"]
-    queries = [q for q in queries if q in by_q]
-    amps = [by_q[q]["amp_mean"]         for q in queries]
+def viz_amplification(diagnostic_json: Path, fig_dir: Path) -> None:
+    data = json.loads(diagnostic_json.read_text())
+    by_q = data["summary"]
+    queries = [
+        "diagnostic.edge_identity",
+        "diagnostic.two_hop_endpoints",
+        "diagnostic.fanout_join",
+        "diagnostic.top_undirected_degree",
+        "diagnostic.short_connectivity",
+    ]
+    queries = [query_id for query_id in queries if query_id in by_q]
+    amps = [by_q[q]["amplification_mean_per_pair"] for q in queries]
     qds  = [by_q[q]["query_drift_mean"] for q in queries]
     gds  = [by_q[q]["graph_drift_mean"] for q in queries]
     ns   = [by_q[q]["n"]                for q in queries]
 
     short = {
-        "Q1_single_edge": "Q1\nsingle-edge",
-        "Q2_two_hop":     "Q2\ntwo-hop",
-        "Q3_join":        "Q3\nmulti-hop join",
-        "Q4_top_degree":  "Q4\ntop-degree",
-        "Q5_short_paths": "Q5\nshort-paths",
+        "diagnostic.edge_identity": "D1\nedge identity",
+        "diagnostic.two_hop_endpoints": "D2\ntwo-hop endpoints",
+        "diagnostic.fanout_join": "D3\nfan-out join",
+        "diagnostic.top_undirected_degree": "D4\ntop degree",
+        "diagnostic.short_connectivity": "D5\nshort connectivity",
     }
     labels = [short.get(q, q) for q in queries]
-    is_q3  = [q == "Q3_join" for q in queries]
+    is_d3 = [q == "diagnostic.fanout_join" for q in queries]
 
     fig, ax = plt.subplots(figsize=(10, 5.0))
     x = np.arange(len(queries))
     w = 0.36
 
-    # Amp bars: highlight Q3 in dark pink, others in soft pink
-    amp_colors = [PINK_DARK if q3 else PINK for q3 in is_q3]
+    # Amp bars: highlight D3 in dark pink, others in soft pink.
+    amp_colors = [PINK_DARK if d3 else PINK for d3 in is_d3]
     bars1 = ax.bar(x - w / 2, amps, w, color=amp_colors,
                    edgecolor=BLACK, linewidth=0.6,
-                   label="Amp(Q) = QueryDrift / (GraphDrift + ε)")
+                   label="Amp(D) = QueryDrift / (GraphDrift + ε)")
     bars2 = ax.bar(x + w / 2, qds, w, color=BLUE,
                    edgecolor=BLACK, linewidth=0.6,
                    label="QueryDrift (mean)")
@@ -263,10 +268,14 @@ def viz_amplification(e8_json: Path, fig_dir: Path) -> None:
     ax.set_ylabel("Mean drift / amplification")
 
     title = "Drift amplification by query type"
-    h = data["summary"].get("headline", {})
-    ratio = h.get("ratio_Q3_over_Q1")
-    if ratio:
-        title += f"   ·   Amp(Q3) / Amp(Q1) = {ratio:.2f}×"
+    d1 = by_q.get("diagnostic.edge_identity")
+    d3 = by_q.get("diagnostic.fanout_join")
+    if d1 and d3 and d1["amplification_mean_per_pair"]:
+        ratio = (
+            d3["amplification_mean_per_pair"]
+            / d1["amplification_mean_per_pair"]
+        )
+        title += f"   ·   Amp(D3) / Amp(D1) = {ratio:.2f}×"
     ax.set_title(title)
     ax.set_ylim(0, max(max(amps), max(qds), 1.0) * 1.22)
     ax.legend(loc="upper right", framealpha=0.95)
@@ -289,9 +298,12 @@ def main():
     cj = rd / "eval" / "contracts.json"
     if cj.exists():
         viz_contracts(cj, figdir)
-    ej = rd / "eval" / "e8_amplification.json"
-    if ej.exists():
-        viz_amplification(ej, figdir)
+    diagnostic = (
+        ROOT / "reports" / "cross_run"
+        / f"diagnostic_v2_{rd.name}.json"
+    )
+    if diagnostic.exists():
+        viz_amplification(diagnostic, figdir)
 
 
 if __name__ == "__main__":

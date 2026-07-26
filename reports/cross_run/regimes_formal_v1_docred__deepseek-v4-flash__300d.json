@@ -1,0 +1,59 @@
+{
+ "artifact_type": "graphguard.query_regime_analysis",
+ "artifact_version": 1,
+ "run": "docred__deepseek-v4-flash__300d",
+ "source": {
+  "formal_index": {
+   "path": "reports/cross_run/formal_artifacts_v1.json",
+   "sha256": "46f195b3618e952d989689f4e878df4ab8c12a056ea6f389c57dfa4110f82654"
+  },
+  "downstream_sha256": "2abd4982bc93482552297c04963cb8fd1d0243d36d8c36a69240cac12335dc83"
+ },
+ "n_pairs": 6275,
+ "label_definition": "regime mean absolute per-query F1 change > threshold",
+ "harm_tau": 0.05,
+ "regimes": {
+  "local": {
+   "n": 5478,
+   "harm_base_rate": 0.5863,
+   "tau_graph": 0.625,
+   "cmp_graph": ">=",
+   "tau_query": 1.0,
+   "cmp_query": ">=",
+   "graph_only": {
+    "alarm_rate": 0.5921869295363271,
+    "precision": 0.693,
+    "recall": 0.6999,
+    "f1": 0.6964
+   },
+   "query_aware": {
+    "alarm_rate": 0.6356334428623586,
+    "precision": 0.8219,
+    "recall": 0.891,
+    "f1": 0.8551
+   },
+   "delta_f1": 0.1587
+  },
+  "multihop": {
+   "n": 1017,
+   "harm_base_rate": 0.6775,
+   "tau_graph": 0.5789,
+   "cmp_graph": ">=",
+   "tau_query": 1.0,
+   "cmp_query": ">=",
+   "graph_only": {
+    "alarm_rate": 0.6774827925270404,
+    "precision": 0.7896,
+    "recall": 0.7896,
+    "f1": 0.7896
+   },
+   "query_aware": {
+    "alarm_rate": 0.8043264503441495,
+    "precision": 0.8313,
+    "recall": 0.9869,
+    "f1": 0.9025
+   },
+   "delta_f1": 0.1129
+  }
+ }
+}

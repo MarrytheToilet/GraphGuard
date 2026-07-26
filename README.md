@@ -51,7 +51,7 @@ Each extraction is modelled as a sample from a configuration-conditioned distrib
 | K1c   | Schema edits should have bounded graph drift        | `schema_coarse`, `schema_drop` (bounded drift)        |
 | K2    | Prompt presentation should preserve the view        | `prompt_tone`, `persona`, `schema_first` (invariance) |
 | K3    | Evidence order and aliases should preserve the view | `entity_alias`, `evidence_reorder` (invariance)       |
-| K4    | Join-query drift should remain bounded              | answer-set drift on Q3 (bounded, query-level)         |
+| K4    | Diagnostic fan-out-join drift should remain bounded | answer-set drift on canonical D3 (bounded, query-level) |
 | K4b–d | Path / aggregation / RAG-retrieval drift bounded    | answer-set drift on Q5–Q7 (bounded, query-level)      |
 | K5    | Model replacement should not cause large recall drift | `model_swap`, per-document \|Δrecall\| (bounded)    |
 | K6    | Controlled decoding samples should produce a stable view | `decoding_resample` (invariance)                 |
@@ -74,7 +74,7 @@ With document, schema, prompt, evidence, and model fixed, we draw five controlle
 
 ### ⚠️ Most stability contracts fail under default tolerances
 
-On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), join-query robustness (K4, 0.92), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) stays much lower (0.13); the revision artifacts use the registered identifier-first metric throughout.
+On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), diagnostic fan-out-join robustness (K4, 0.91), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) stays much lower (0.13); the revision artifacts use the registered identifier-first metric throughout.
 
 <div align="center">
   <img src="assets/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
@@ -95,7 +95,7 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 <div align="center">
   <img src="assets/figures/fig_calibration.png" alt="SLA-driven threshold calibration" width="80%">
   <br/>
-  <sub><b>SLA calibration.</b> Coverage and harmful-publication rate as the typed graph-drift threshold τ varies, with τ* = the largest τ satisfying a 5% harm-rate target. On the deterministic N=300 samples, graph-only coverage at that target spans 4–60%; at a 15% target it spans 7–92%, showing that usable thresholds are corpus-specific.</sub>
+  <sub><b>SLA calibration.</b> Coverage and harmful-publication rate as the typed graph-drift threshold τ varies, with τ* = the largest τ satisfying a 5% harm-rate target. On the deterministic N=300 samples, graph-only coverage at that target spans 3–60%; at a 15% target it spans 8–92%, showing that usable thresholds are corpus-specific.</sub>
 </div>
 
 <div align="center">
@@ -112,17 +112,17 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 
 ### 🔁 Queries can amplify or absorb graph drift
 
-Graph-level drift does not translate uniformly into query-answer drift. On the DocRED primary run, **join-query amplification reaches 1.32 (95% document-cluster bootstrap CI [1.14, 1.59])**, while neighbor and two-hop queries absorb part of the edge drift (the single-edge lookup Q1 reproduces the edge set and serves as the no-amplification reference). Schema-density matters: on the sparser SciERC and BC5CDR schemas, join amplification falls to 0.68 and 0.02, because paired join answers are often empty on both sides. Query-visible drift depends on **both schema density and query topology**.
+Graph-level drift does not translate uniformly into query-answer drift. In the canonical graph-wide diagnostic workload, DocRED **fan-out-join amplification D3 reaches 1.15 (95% document-cluster bootstrap CI [1.12, 1.17])**, while other diagnostics absorb part of the edge drift; edge-identity diagnostic D1 reproduces the typed edge set and serves as the no-amplification reference. On the sparser SciERC and BC5CDR schemas, D3 amplification falls to 0.82 and 0.12 because paired fan-out answers are often empty on both sides. D1–D5 are distinct from the gold-instantiated deployment Q1–Q4 used in RQ8–RQ10.
 
 <div align="center">
   <img src="assets/figures/fig_amp_crossrun.png" alt="Cross-run query amplification" width="92%">
   <br/>
-  <sub><b>Query amplification.</b> Lookup (Q1) and join (Q3) amplification across the paper runs; the dashed line marks Amp=1, while the lookup Q1 is the empirical no-amplification reference (ε-damping places it below 1). Join amplification stays above 1 on the DocRED family.</sub>
+  <sub><b>Diagnostic query amplification.</b> Edge identity (D1) and fan-out join (D3) across the paper runs; the dashed line marks Amp=1, while D1 is the empirical no-amplification reference (ε-damping places it below 1). D3 is above 1 on the primary DocRED, Re-DocRED, and Qwen3-32B runs, and near 1 on Kimi-K2 and GLM-5.</sub>
 </div>
 
 ### 🎯 Drift signals track query divergence and directional regressions
 
-On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query workload, **39.4%** change mean query F1 by more than 0.05 in either direction. Graph drift has moderate correlations with absolute answer-side error: ρ(Drift, |ΔR|) = 0.205 and ρ(Drift, |ΔP|) = 0.115 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean |ΔR| = 0.070 and |ΔP| = 0.117, vs. 0.033 and 0.032 for satisfied pairs. In the separate directional-regression evaluation across four corpora, **AUROC is 0.56–0.89 for graph drift and 0.62–0.91 for answer-set drift**; answer drift leads on three corpora and is effectively tied with graph drift on SciERC.
+On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query workload, **43.6%** have a mean absolute per-query F1 change above 0.05. Graph drift has moderate correlations with absolute answer-side error: ρ(Drift, |ΔR|) = 0.219 and ρ(Drift, |ΔP|) = 0.135 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean |ΔR| = 0.070 and |ΔP| = 0.117, vs. 0.031 and 0.032 for satisfied pairs. In the separate directional-regression evaluation across four corpora, **AUROC is 0.58–0.89 for graph drift and 0.62–0.91 for answer-set drift**; answer drift leads on three corpora and is effectively tied with graph drift on SciERC.
 
 <div align="center">
   <img src="assets/figures/fig_auroc.png" alt="ROC and PR curves" width="92%">
@@ -132,7 +132,7 @@ On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query w
 
 ### 🚦 Kuzu release gate reduces harmful publications with gold-free signals
 
-Deployed as a release gate before Kuzu ingestion, GraphGuard uses decision-time gold-free signals (typed-edge drift and Cypher answer-set drift) to publish or block each counterfactual graph. In this benchmark, gold relations deterministically instantiate the fixed query workload and gold answers define offline labels; once that workload is fixed, the gate decision only compares paired graph and answer sets. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **20–31% of evaluated pairs are true regressions**; at the fixed operating point (τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70), the gate cuts published harm to **0–13% at paired-view F1 fidelity 0.97–1.00**, compared with 4–23% for graph-only gating and 10–33% for an exactly block-rate-matched random gate. Here F1 fidelity is `1 - mean(abs(F1_base - F1_cf))`, not absolute task utility. Under a strict 50/50 document-level split, the same fixed operating point gives held-out harm of **0–6%** at F1 fidelity ≥0.96, versus 21–31% for publish-all. Thresholds re-selected on the calibration half miss the 5% target on held-out BC5CDR (11%), exposing finite-sample calibration uncertainty (`reports/cross_run/gate_split.json`).
+Deployed as a release gate before Kuzu ingestion, GraphGuard uses decision-time gold-free signals (typed-edge drift and Cypher answer-set drift) to publish or block each counterfactual graph. In this benchmark, gold relations deterministically instantiate the fixed query workload and gold answers define offline labels; once that workload is fixed, the gate decision only compares paired graph and answer sets. On the offline harm label (counterfactual mean per-query F1 drops by > 0.05), **20–30% of evaluated pairs are true regressions**; at the fixed operating point (τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70), the gate cuts published harm to **0–13% at paired-view F1 fidelity 0.97–1.00**, compared with 4–23% for graph-only gating and 18–30% for an exactly block-rate-matched random gate. Here F1 fidelity is `1 - mean(abs(F1_base - F1_cf))`, not absolute task utility. Under a strict 50/50 document-level split, the same fixed operating point gives held-out harm of **0–8%** at F1 fidelity ≥0.96, versus 21–29% for publish-all. Thresholds re-selected on the calibration half miss the 5% target on held-out BC5CDR (11%), exposing finite-sample calibration uncertainty (`reports/cross_run/gate_split_formal_v1.json`).
 
 <div align="center">
   <img src="assets/figures/fig_riskcoverage.png" alt="Risk-coverage of the Kuzu gate" width="80%">
@@ -143,14 +143,14 @@ Deployed as a release gate before Kuzu ingestion, GraphGuard uses decision-time 
 <div align="center">
   <img src="assets/figures/fig_budget_planner.png" alt="Budget planner" width="80%">
   <br/>
-  <sub><b>Materialization planner.</b> Harm recall on the held-out deployment split vs. fraction of the full endpoint-union budget: the family-prior greedy planner beats uniform random and family-balanced sampling (39–55% recall at a 40% budget).</sub>
+  <sub><b>Materialization planner.</b> Harm recall on the held-out deployment split vs. fraction of the full endpoint-union budget: the family-prior greedy planner reaches 39–52% at a 40% budget, with corpus- and budget-dependent advantages over the alternatives.</sub>
 </div>
 
 ---
 
 ## 📒 Audited results ledger
 
-The ledger below maps the paper's headline claims to their authoritative machine-readable artifacts. It was re-audited on 2026-07-23. Paths abbreviated as `RC` refer to `reports/cross_run/`; `RR` refers to `reports/runs/<run>/`. The complete ledger can be checked automatically with `python scripts/verify_paper_results.py`.
+The ledger below maps the paper's headline claims to their authoritative machine-readable artifacts. It was re-audited on 2026-07-26. Paths abbreviated as `RC` refer to `reports/cross_run/`; `RR` refers to `reports/runs/<run>/`. The complete ledger can be checked automatically with `python scripts/verify_paper_results.py`.
 
 <details>
 <summary><strong>Expand the claim-to-artifact ledger</strong></summary>
@@ -176,7 +176,7 @@ K1–K4 and K6 come from `RR/docred__deepseek-v4-flash__300d/eval/contracts.json
 | K1c schema-definition (bounded) | 676 | 0.64 | 0.72 |
 | K2 prompt-presentation | 534 | 0.62 | 0.92 |
 | K3 evidence/alias | 78 | 0.41 | 0.64 |
-| K4 join-query robustness | 2,301 | 0.78 | 0.92 |
+| K4 diagnostic fan-out-join robustness | 2,301 | 0.76 | 0.91 |
 | K4b path | 872 | 0.74 | 0.82 |
 | K4c aggregation | 2,301 | 0.31 | 0.55 |
 | K4d RAG retrieval | 2,301 | 0.63 | 0.88 |
@@ -215,8 +215,8 @@ Sources: `RC/family_decomp_cdr__deepseek-v4-flash__300d.json` and the contract r
 | Figure | Claim | Source |
 | ------ | ----- | ------ |
 | Fig. 3, noise floor | D0 is 0.43 DocRED, 0.43 Re-DocRED, 0.42 SciERC, and 0.19 BC5CDR | Lineage stability reports, read by `noise_floor_from_db` |
-| Fig. 4, SLA calibration | At $\epsilon=0.05$, graph-only coverage is 0.04–0.60; at $\epsilon=0.15$, it is 0.07–0.92 | `compute_calibration` on deterministic N=300 pairs |
-| Fig. 5, 2D sensitivity | At (0.45, 0.70), harm is 0–0.13 and F1 fidelity is 0.97–1.00; all four corpora are shown | `RC/e2e_kuzu_case_*__N300.json` |
+| Fig. 4, SLA calibration | At $\epsilon=0.05$, graph-only coverage is 0.03–0.60; at $\epsilon=0.15$, it is 0.08–0.92 | `compute_calibration` on deterministic N=300 pairs |
+| Fig. 5, 2D sensitivity | At (0.45, 0.70), harm is 0–0.13 and F1 fidelity is 0.97–1.00; all four corpora are shown | Formal Kuzu cohort artifacts indexed by `RC/formal_artifacts_v1.json` |
 | Fig. 6, DocRED L1 | Answer-drift violation is 0.69; absolute query-divergence rate is 0.35 | `RC/strict_vs_soft_*.json` |
 
 ### §5.5 Perturbation magnitude (RQ5, Fig. 7)
@@ -240,74 +240,74 @@ Source: `RC/langchain_toolchain.json`.
 
 ### §6.1 Query amplification (RQ7, Figs. 8 and 9a)
 
-Sources: `RC/amp_ci.json` for Q1–Q5 and `RC/extqueries_*.json` for Q5–Q7.
+Sources: `RC/diagnostic_v2_*.json` and its compact `RC/amp_ci.json` summary for canonical graph-wide diagnostics D1–D5, plus `RC/extqueries_*.json` for Q5–Q7.
 
 | Claim | Value | Scope |
 | ----- | ----- | ----- |
-| DocRED join Amp(Q3) | 1.32, document-cluster CI [1.14, 1.59] | 1,000 pairs from 18 documents |
-| Lookup Amp(Q1) | 0.891 DocRED, 0.904 Re-DocRED, 0.899 SciERC, 0.404 BC5CDR; ratio of means is 1.000 for all | Q1 answer-set drift equals graph drift by construction; it is the empirical no-amplification reference |
-| Cross-domain join Amp(Q3) | 0.68 SciERC; 0.02 BC5CDR | Empty-vs.-empty joins are common |
+| DocRED fan-out join Amp(D3) | 1.15, document-cluster CI [1.12, 1.17] | All 6,419 authoritative pairs from 299 documents |
+| Edge-identity Amp(D1) | 0.901 DocRED, 0.910 Re-DocRED, 0.898 SciERC, 0.471 BC5CDR; ratio of means is 1.000 for all | D1 answer-set drift equals graph drift by construction; it is the empirical no-amplification reference |
+| Cross-domain fan-out join Amp(D3) | 0.82 SciERC; 0.12 BC5CDR | Empty-vs.-empty answers are common |
 | Q6 aggregation / Q7 RAG / Q5 path | 0.22–0.57 / 0.48–0.92 / 1.00–1.01 on the DocRED family | Q5 is conditioned on a base 2–3-hop path: 2,431 of 6,419 pairs |
 | K4b/c/d presentation-class violation | 82% / 55% / 88% | Registered query-level contracts |
 | BC5CDR shortest-path amplification | 1.27 | Conditioned on path existence |
 
 ### §6.2 Drift and accuracy (RQ8, Fig. 10)
 
-Sources: `RC/drift_accuracy_docred__deepseek-v4-flash__300d.json`, `RC/baselines_matched_*.json`, `RC/monitoring_*.json`, and the released N=300 pair records.
+Sources: `RC/drift_accuracy_formal_v1_docred__deepseek-v4-flash__300d.json`, `RC/baselines_matched_*.json`, `RC/monitoring_*.json`, and the formal pair records indexed by `RC/formal_artifacts_v1.json`.
 
 | Claim | Value | Scope |
 | ----- | ----- | ----- |
-| Absolute query-divergence population / base rate | 4,000 / 39.4% | Mean absolute query-F1 change >0.05; not directional |
-| $\rho(\mathrm{Drift},\lvert\Delta R\rvert)$; $\rho(\mathrm{Drift},\lvert\Delta P\rvert)$ | 0.205; 0.115, both p<10⁻³ | |
-| K1 violated vs. satisfied mean $\lvert\Delta R\rvert/\lvert\Delta P\rvert$ | 0.070/0.117 vs. 0.033/0.032 | 657 vs. 19 pairs |
-| Directional-regression AUROC, graph vs. answer-set | 0.56–0.89 vs. 0.62–0.91 | |
-| Directional-regression AUPRC, graph vs. answer-set | 0.28–0.70 vs. 0.63–0.70 | |
-| SciERC AUROC | Graph 0.619; answer 0.617; gate 0.611 | Effectively tied; answer-set leads on the other three corpora |
+| Absolute query-divergence population / base rate | 4,000 / 43.6% | Mean absolute per-query F1 change >0.05; not directional |
+| $\rho(\mathrm{Drift},\lvert\Delta R\rvert)$; $\rho(\mathrm{Drift},\lvert\Delta P\rvert)$ | 0.219; 0.135, both p<10⁻³ | |
+| K1 violated vs. satisfied mean $\lvert\Delta R\rvert/\lvert\Delta P\rvert$ | 0.070/0.117 vs. 0.031/0.032 | 656 vs. 20 pairs |
+| Directional-regression AUROC, graph vs. answer-set | 0.58–0.89 vs. 0.62–0.91 | |
+| Directional-regression AUPRC, graph vs. answer-set | 0.32–0.70 vs. 0.67–0.73 | Trapezoidal PR integration |
+| SciERC AUROC | Graph 0.627; answer 0.623; gate 0.643 | Effectively tied; answer-set leads on the other three corpora |
 | Matched-baseline diagnostic | Graph-only 0.49; GraphGuard 0.47; confidence 0.34; self-consistency 0.39 | Pooled-label artifact retained but not shown in the manuscript |
 
 ### §6.2 Regime detection (Fig. 9b)
 
-Source: `RC/regimes_*.json`.
+Source: `RC/regimes_formal_v1_*.json`.
 
 | Claim | Value | Scope |
 | ----- | ----- | ----- |
-| Query-aware F1 improvement in both regimes | +0.10 to +0.21 | The local regime is lookup + neighbor; the multi-hop regime is join + two-hop. Alarm rates are not matched in this analysis. |
+| Query-aware F1 improvement in both regimes | +0.10 to +0.20 | The local regime is lookup + neighbor; the multi-hop regime is join + two-hop. Alarm rates are not matched in this analysis. |
 
 ### §6.3 Query-aware vs. graph-only policy (RQ9)
 
-Source: `RC/graph_vs_query_*.json`, field `monitors_at_matched_alarm`.
+Source: `RC/graph_vs_query_formal_v1_*.json`, field `monitors_at_matched_alarm`.
 
 | Corpus | Graph F1 (alarm rate) | Query F1 (alarm rate) | ΔF1 |
 | ------ | ---------------------: | ---------------------: | ---: |
 | BC5CDR | 0.780 (0.434) | 0.893 (0.434) | +0.11 |
-| DocRED | 0.583 (0.912) | 0.603 (0.912) | +0.02 |
-| Re-DocRED | 0.557 (0.925) | 0.571 (0.925) | +0.01 |
-| SciERC | 0.843 (0.937) | 0.851 (0.937) | +0.01 |
+| DocRED | 0.628 (0.910) | 0.651 (0.910) | +0.02 |
+| Re-DocRED | 0.653 (0.925) | 0.673 (0.925) | +0.02 |
+| SciERC | 0.836 (0.937) | 0.845 (0.937) | +0.01 |
 
 The pooled comparison uses exactly equal alarm counts. Score ties are broken by SHA-256 of the run ID without using labels. The target is absolute query change, not directional harm.
 
 ### §6.4 Kuzu release gate (RQ10, Figs. 11 and 12)
 
-Sources: `RC/e2e_kuzu_case_*__N300.json` for full data and `RC/gate_split.json` for held-out results.
+Sources: the formal Kuzu cohort artifacts indexed by `RC/formal_artifacts_v1.json` for full data and `RC/gate_split_formal_v1.json` for held-out results.
 
 | Setting | Harm | F1 fidelity | Recall |
 | ------- | ---- | ----------- | ------ |
-| Publish-all, full data | 20–31% | — | — |
+| Publish-all, full data | 20–30% | — | — |
 | GraphGuard at (0.45, 0.70), full data | 0–13% | 0.97–1.00 | 0.90–1.00 |
-| GraphGuard at (0.45, 0.70), held out with frozen thresholds | 0–6% (DocRED 5.9%, Re-DocRED 0%, SciERC 0%, BC5CDR 5.3%) | ≥0.96, minimum 0.963 | 0.85–1.00 |
+| GraphGuard at (0.45, 0.70), held out with frozen thresholds | 0–8% (DocRED 8.0%, Re-DocRED 0%, SciERC 0%, BC5CDR 5.3%) | ≥0.96, minimum 0.963 | 0.85–1.00 |
 | GraphGuard held out, thresholds re-selected on calibration split | 0–11% | 0.93–1.00 | 0.61–1.00 |
-| Publish-all, held out | 21–31% | — | — |
+| Publish-all, held out | 21–29% | — | — |
 | Graph-only, full data | 4–23% | — | — |
-| Exactly block-rate-matched random, seed 0 | 10–33% | — | — |
-| Budget planner harm recall at 40% / 60% budget | 39–55% / 59–79% | — | — |
+| Exactly block-rate-matched random, seed 0 | 18–30% | — | — |
+| Budget planner harm recall at 40% / 60% budget | 39–52% / 58–78% | — | — |
 
-The matched-random row is generated from pair records in `RC/tab_e2ekuzu_v2.tex`; the budget row comes from `RC/budget_planner.json`.
+The matched-random row is generated from the formal pair records in `RC/tab_e2ekuzu_v2.tex`; the budget row comes from `RC/budget_planner_formal_v1.json`.
 
 ### Known limitations of the reported results
 
 - The full-data operating point was selected on the same 300-pair samples; the frozen 50/50 document split is the stricter estimate.
 - Re-selecting thresholds on the calibration half misses the 5% target on held-out BC5CDR (11%), so the paper does not present threshold re-selection as an improvement.
-- Q1 query drift equals graph drift by definition because exhaustive lookup reproduces the edge set; it is a reference, not an independent stability signal.
+- Diagnostic D1 drift equals graph drift by definition because it returns the complete typed edge set; it is a reference, not an independent stability signal.
 - The pooled K5 Table 4 violation rate of 0.13 masks two inconclusive model-pair comparisons; the manuscript therefore reports that model-pair verdicts are mixed.
 
 </details>
@@ -343,7 +343,7 @@ python scripts/verify_paper_results.py --lineage
 python scripts/run_endpoint_reuse_analysis.py
 ```
 
-The first command parses 44 authoritative JSON artifacts and checks the exact sampled-document lists, raw repeated-extraction baseline, run totals, contract table, endpoint-union savings, revision analyses, query-divergence statistics, directional-regression AUROC/AUPRC, release gate, and budget planner. With `--lineage`, it also checks the samples against the seven run databases, recomputes endpoint-union savings on the four primary runs, and recounts 33,043 events (28,482 primary + 4,561 cross-model) and 137,646,379 tokens directly from SQLite.
+The first command validates the authoritative JSON artifacts, including the 17-entry formal RQ8–RQ10 package, and checks the exact sampled-document lists, raw repeated-extraction baseline, run totals, contract table, endpoint-union savings, revision analyses, query-divergence statistics, directional-regression AUROC/AUPRC, release gate, and budget planner. `reports/cross_run/formal_artifacts_v1.json` records the size, SHA-256, schema version, source run, and cross-artifact provenance of every frozen formal artifact; its deterministic gzip transports are versioned. With `--lineage`, the verifier also checks the samples against the seven run databases, recomputes endpoint-union savings on the four primary runs, and recounts 33,043 events (28,482 primary + 4,561 cross-model) and 137,646,379 tokens directly from SQLite.
 
 ### 1. 🛠️ Install
 
@@ -352,7 +352,7 @@ conda create -n graphguard python=3.10 -y
 conda activate graphguard
 python -m pip install -e '.[dev]'
 
-# Software checks (expected: 38 passed)
+# Software checks (expected: 156 passed)
 pytest -q
 
 # Only needed for the LangChain toolchain experiment in step 7:
@@ -418,6 +418,21 @@ ls data/raw/redocred/{train,dev}_revised.json \
 ### 3. 🖼️ Regenerate the generated figures and tables (no API calls)
 
 ```bash
+# Rebuild formal RQ9 summaries from the shipped, hash-checked evidence.
+for run in \
+  docred__deepseek-v4-flash__300d \
+  redocred__deepseek-v4-flash__300d \
+  scierc__deepseek-v4-flash__100d \
+  cdr__deepseek-v4-flash__300d
+do
+  python scripts/run_graph_vs_query_ablation.py --run "$run"
+done
+python scripts/run_regime_analysis.py
+
+# Rebuild formal RQ10 derived summaries.
+python scripts/run_gate_split_analysis.py
+python scripts/run_budget_planner.py
+
 # Core figure set (cross-run violations, noise floor, calibration,
 # 2-D sensitivity, strict-vs-soft, Amp(Q) consistency, AUROC)
 python scripts/make_paper_figures.py            # writes assets/figures/*.png
@@ -434,14 +449,11 @@ python scripts/make_gate_figure.py
 # Risk-coverage figure (paper Fig. 12, top) + per-policy gate table
 python scripts/make_kuzu_gate_artifacts.py
 
-# Budget-planner curves (paper Fig. 12, bottom)
-python scripts/run_budget_planner.py
-
-# Release-gate calibration/deployment split analysis (Sec. 6.4)
-python scripts/run_gate_split_analysis.py       # writes reports/cross_run/gate_split.json
+# Verify that regenerated summaries and figures still match the paper.
+python scripts/verify_paper_results.py
 ```
 
-`make_paper_figures.py` accepts a target argument: `all` (default), `replacement` (cross-run violations / amp / strict-vs-soft) or `phase_w` (noise-floor / calibration / 2D-sensitivity / AUROC). Every command above consumes only the cached JSONs under `reports/`, so none of them needs raw data, run databases, or API access.
+`make_paper_figures.py` accepts a target argument: `all` (default), `replacement` (cross-run violations / diagnostic amplification / strict-vs-soft) or `phase_w` (noise-floor / calibration / 2D-sensitivity / AUROC). The other commands above consume cached JSONs under `reports/`; `make_paper_figures.py` additionally reads the four primary lineage DBs to rebuild the noise-floor panel. No command in this section needs raw corpora or API access. Rebuilding the RQ8 K1 contrast with `scripts/run_drift_accuracy_analysis.py` additionally requires the local DocRED lineage DB; the shipped formal summary is still checked by `verify_paper_results.py` without that DB.
 
 The Kuzu-backed workload is pinned to `kuzu==0.11.3`, the version used for the reported gate experiment.
 
@@ -495,6 +507,7 @@ The four commands write lineage databases to `data/processed/runs/<run-name>/<ru
 After any end-to-end re-run, rebuild the cross-run summaries that feed the paper figures:
 
 ```bash
+python scripts/run_diagnostic_queries.py --overwrite
 python scripts/aggregate_cross_run.py   # writes reports/cross_run/cross_run_summary.json
 python scripts/compute_amp_ci.py        # writes reports/cross_run/amp_ci.json
 python scripts/make_paper_figures.py    # regenerate every figure that consumes them

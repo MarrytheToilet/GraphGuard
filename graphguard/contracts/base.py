@@ -93,7 +93,7 @@ class Contract:
     min_pairs: int = 1                         # fewer observations -> inconclusive
     description: str = ""
     query_scoped: bool = False                 # if True, metric_fn signature is (base_edges, cf_edges, query_name)
-    query_id: Optional[str] = None              # Q3 / Q5 / Q6 / Q7 for query-scoped contracts
+    query_id: Optional[str] = None              # D3 / Q5 / Q6 / Q7 for query-scoped contracts
     needs_gold: bool = False                    # metric consumes the per-document gold edge set
     sensitivity_thresholds: tuple = (0.5, 0.7, 0.8, 0.9)
 

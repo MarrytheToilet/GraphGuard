@@ -47,7 +47,7 @@ class KuzuGraph:
                         "object": str(obj),
                     },
                 )
-        except Exception:
+        except BaseException:
             self.close()
             raise
 

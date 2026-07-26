@@ -58,6 +58,20 @@ CROSSMODEL_LABEL = {
     "docred__kimi-k2__100d":           "Kimi-K2 · 100d",
     "docred__qwen3-32b__100d":         "Qwen3-32B · 100d",
 }
+DIAGNOSTIC_IDS = [
+    "diagnostic.edge_identity",
+    "diagnostic.two_hop_endpoints",
+    "diagnostic.fanout_join",
+    "diagnostic.top_undirected_degree",
+    "diagnostic.short_connectivity",
+]
+DIAGNOSTIC_SHORT = {
+    "diagnostic.edge_identity": "D1 edge identity",
+    "diagnostic.two_hop_endpoints": "D2 two-hop endpoints",
+    "diagnostic.fanout_join": "D3 fan-out join",
+    "diagnostic.top_undirected_degree": "D4 top degree",
+    "diagnostic.short_connectivity": "D5 short connectivity",
+}
 GROUP_COLORS = {
     # Primary (datasets)
     "docred__deepseek-v4-flash__300d":   BLUE,
@@ -73,11 +87,14 @@ GROUP_COLORS = {
 
 def load_run(run_dir: Path) -> dict | None:
     cj = run_dir / "eval" / "contracts.json"
-    ej = run_dir / "eval" / "e8_amplification.json"
+    diagnostic = (
+        ROOT / "reports" / "cross_run"
+        / f"diagnostic_v2_{run_dir.name}.json"
+    )
     if not cj.exists():
         return None
     contracts = json.loads(cj.read_text())
-    amp = json.loads(ej.read_text()) if ej.exists() else None
+    amp = json.loads(diagnostic.read_text()) if diagnostic.exists() else None
     return {"name": run_dir.name, "contracts": contracts, "amp": amp}
 
 
@@ -130,7 +147,7 @@ def _grouped_bar_panel(ax, rows, qnames, qshort, metric_key, title, ylabel,
     width = 0.8 / max(1, len(rows))
     x = np.arange(len(qnames))
     for i, r in enumerate(rows):
-        bq = r["amp"]["summary"]["by_query"]
+        bq = r["amp"]["summary"]
         vals = [bq.get(q, {}).get(metric_key, np.nan) for q in qnames]
         color = GROUP_COLORS.get(r["name"], PALETTE[i % len(PALETTE)])
         ax.bar(x + (i - len(rows) / 2 + 0.5) * width, vals, width,
@@ -139,7 +156,10 @@ def _grouped_bar_panel(ax, rows, qnames, qshort, metric_key, title, ylabel,
     if show_amp_line:
         ax.axhline(1.0, color=GRAY, linestyle="--", linewidth=1.0, alpha=0.7)
     # highlight join column
-    join_idx = next((j for j, q in enumerate(qnames) if "join" in q.lower() or q.startswith("Q3")), None)
+    join_idx = next(
+        (j for j, q in enumerate(qnames) if q == "diagnostic.fanout_join"),
+        None,
+    )
     if join_idx is not None:
         ax.axvspan(join_idx - 0.48, join_idx + 0.48, color=PINK, alpha=0.08, zorder=0)
     ax.set_xticks(x)
@@ -165,18 +185,25 @@ def fig_amp_consistency(runs: list[dict], out: Path) -> None:
         return
     # use the first available run to enumerate query names
     src = (primary or crossm)[0]
-    qnames = list(src["amp"]["summary"]["by_query"].keys())
-    qshort = {q: q.split("_", 1)[-1].replace("_", " ") for q in qnames}
+    qnames = [query_id for query_id in DIAGNOSTIC_IDS
+              if query_id in src["amp"]["summary"]]
+    qshort = DIAGNOSTIC_SHORT
 
     fig, axes = plt.subplots(1, 2, figsize=(16, 5.2), sharey=True)
-    _grouped_bar_panel(axes[0], primary, qnames, qshort, "amp_mean",
+    _grouped_bar_panel(
+        axes[0], primary, qnames, qshort, "amplification_mean_per_pair",
                        "(a) Cross-domain · DeepSeek-V4-Flash",
-                       "Amp(Q) = QueryDrift / (GraphDrift + ε)",
-                       RUN_LABEL, show_amp_line=True)
-    _grouped_bar_panel(axes[1], crossm, qnames, qshort, "amp_mean",
+                       "Amp(D) = QueryDrift / (GraphDrift + ε)",
+                       RUN_LABEL, show_amp_line=True,
+    )
+    _grouped_bar_panel(
+        axes[1], crossm, qnames, qshort, "amplification_mean_per_pair",
                        "(b) Cross-model · DocRED",
-                       "", CROSSMODEL_LABEL, show_amp_line=True)
-    fig.suptitle("Drift amplification by query type", fontsize=14, y=1.00)
+                       "", CROSSMODEL_LABEL, show_amp_line=True,
+    )
+    fig.suptitle(
+        "Drift amplification by diagnostic type", fontsize=14, y=1.00
+    )
     fig.tight_layout()
     save_fig(fig, out)
 
@@ -186,8 +213,9 @@ def fig_query_drift_by_run(runs: list[dict], out: Path) -> None:
     if not primary and not crossm:
         return
     src = (primary or crossm)[0]
-    qnames = list(src["amp"]["summary"]["by_query"].keys())
-    qshort = {q: q.split("_", 1)[-1].replace("_", " ") for q in qnames}
+    qnames = [query_id for query_id in DIAGNOSTIC_IDS
+              if query_id in src["amp"]["summary"]]
+    qshort = DIAGNOSTIC_SHORT
 
     fig, axes = plt.subplots(1, 2, figsize=(16, 5.2), sharey=True)
     _grouped_bar_panel(axes[0], primary, qnames, qshort, "query_drift_mean",
@@ -206,10 +234,14 @@ def write_summary(runs: list[dict], out_json: Path, out_md: Path) -> None:
     summary = {"runs": []}
     for r in runs:
         cs = r["contracts"]["contracts"]
-        amp = (r.get("amp") or {}).get("summary", {}).get("by_query", {})
-        amp_q1 = amp.get("Q1_single_edge", {}).get("amp_mean")
-        amp_q3 = amp.get("Q3_join", {}).get("amp_mean")
-        ratio = (amp_q3 / amp_q1) if (amp_q1 and amp_q3) else None
+        amp = (r.get("amp") or {}).get("summary", {})
+        amp_d1 = amp.get("diagnostic.edge_identity", {}).get(
+            "amplification_mean_per_pair"
+        )
+        amp_d3 = amp.get("diagnostic.fanout_join", {}).get(
+            "amplification_mean_per_pair"
+        )
+        ratio = (amp_d3 / amp_d1) if (amp_d1 and amp_d3) else None
         summary["runs"].append({
             "name": r["name"],
             "contracts": {
@@ -219,14 +251,14 @@ def write_summary(runs: list[dict], out_json: Path, out_md: Path) -> None:
                     "verdict": c["verdict"],
                 } for c in cs
             },
-            "Amp_Q1_mean": amp_q1,
-            "Amp_Q3_mean": amp_q3,
-            "Amp_Q3_over_Q1": ratio,
+            "Amp_D1_mean": amp_d1,
+            "Amp_D3_mean": amp_d3,
+            "Amp_D3_over_D1": ratio,
         })
     out_json.write_text(json.dumps(summary, indent=2))
 
     lines = ["# Cross-run summary", "",
-             "| Run | K1 | K1b | K1c | K2 | K3 | K4 | K5 | K6 | Amp(Q3) | Amp(Q3)/Amp(Q1) |",
+             "| Run | K1 | K1b | K1c | K2 | K3 | K4 | K5 | K6 | Amp(D3) | Amp(D3)/Amp(D1) |",
              "|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in summary["runs"]:
         c = s["contracts"]
@@ -239,8 +271,8 @@ def write_summary(runs: list[dict], out_json: Path, out_md: Path) -> None:
             RUN_LABEL.get(s["name"], s["name"]).replace("\n", " "),
             cell("K1"), cell("K1b"), cell("K1c"), cell("K2"),
             cell("K3"), cell("K4"), cell("K5"), cell("K6"),
-            f"{s['Amp_Q3_mean']:.2f}" if s.get("Amp_Q3_mean") is not None else "—",
-            f"{s['Amp_Q3_over_Q1']:.2f}×" if s.get("Amp_Q3_over_Q1") is not None else "—",
+            f"{s['Amp_D3_mean']:.2f}" if s.get("Amp_D3_mean") is not None else "—",
+            f"{s['Amp_D3_over_D1']:.2f}×" if s.get("Amp_D3_over_D1") is not None else "—",
         ]) + " |")
     out_md.write_text("\n".join(lines) + "\n")
 

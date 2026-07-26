@@ -8,6 +8,7 @@ and tokens from the local per-run SQLite lineage databases.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import random
@@ -15,6 +16,11 @@ import sqlite3
 from pathlib import Path
 from typing import Any
 
+from graphguard.formal_artifacts import (
+    PRIMARY_RUNS,
+    load_formal_kuzu,
+    validate_formal_package,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 RC = ROOT / "reports" / "cross_run"
@@ -72,6 +78,14 @@ def close(actual: float, expected: float, tol: float = 0.005) -> None:
         )
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def rank_auc(labels: list[int], scores: list[float]) -> float:
     """Mann–Whitney AUROC with average ranks for tied scores."""
     require(len(labels) == len(scores) and labels, "invalid AUROC inputs")
@@ -120,11 +134,12 @@ def pr_auc(labels: list[int], scores: list[float]) -> float:
 def verify_artifact_inventory() -> None:
     required = [
         RC / "amp_ci.json",
-        RC / "budget_planner.json",
+        RC / "budget_planner_formal_v1.json",
         RC / "cross_run_summary.json",
-        RC / f"drift_accuracy_{RUNS['DocRED']}.json",
+        RC / f"drift_accuracy_formal_v1_{RUNS['DocRED']}.json",
         RC / "endpoint_reuse.json",
-        RC / "gate_split.json",
+        RC / "formal_artifacts_v1.json",
+        RC / "gate_split_formal_v1.json",
         RC / "k5_cross_model.json",
         RC / "k5_model_size.json",
         RC / "k5_model_size_expressible.json",
@@ -132,19 +147,28 @@ def verify_artifact_inventory() -> None:
         RC / "reproducibility_manifest.json",
         RC / "sampled_document_ids.json",
     ]
+    required.extend(
+        RC / f"diagnostic_v2_{run}.json"
+        for run in LINEAGE_RUNS.values()
+    )
     for run in RUNS.values():
         required.extend([
             RC / f"e2e_kuzu_case_{run}__N300.json",
             RC / f"extqueries_{run}.json",
             RC / f"family_decomp_{run}.json",
-            RC / f"graph_vs_query_{run}.json",
+            RC / f"graph_vs_query_formal_v1_{run}.json",
             RC / f"magnitude_{run}.json",
-            RC / f"regimes_{run}.json",
+            RC / f"regimes_formal_v1_{run}.json",
             RC / f"strict_vs_soft_{run}.json",
             RR / run / "eval" / "contracts.json",
         ])
     for path in required:
         load(path)
+    package = validate_formal_package(ROOT)
+    require(
+        set(package) == set(PRIMARY_RUNS),
+        "formal package run inventory mismatch",
+    )
     print(f"[PASS] artifact inventory ({len(required)} JSON files)")
 
 
@@ -248,7 +272,7 @@ def verify_contract_catalogue() -> None:
         "K1c": (676, 0.64, 0.72, 0.26),
         "K2": (534, 0.62, 0.92, 0.46),
         "K3": (78, 0.41, 0.64, 0.44),
-        "K4": (2301, 0.78, 0.92, 0.54),
+        "K4": (2301, 0.76, 0.91, 0.53),
         "K4b": (872, 0.74, 0.82, 0.60),
         "K4c": (2301, 0.31, 0.55, 0.27),
         "K4d": (2301, 0.63, 0.88, 0.39),
@@ -345,13 +369,95 @@ def verify_revision_analyses() -> None:
 
 def verify_query_results() -> None:
     amp = load(RC / "amp_ci.json")
-    docred_join = amp[RUNS["DocRED"]]["Q3_join"]
-    close(docred_join["amp_mean"], 1.32)
-    close(docred_join["amp_ci_lo"], 1.14)
-    close(docred_join["amp_ci_hi"], 1.59)
     require(
-        docred_join["n_documents"] == 18,
-        "DocRED join CI is not document-clustered as expected",
+        amp["artifact_version"] == 2,
+        "canonical diagnostic summary version mismatch",
+    )
+    diagnostic_runs = amp["runs"]
+    for run in LINEAGE_RUNS.values():
+        source = load(RC / f"diagnostic_v2_{run}.json")
+        require(
+            source["artifact_version"] == 2,
+            f"{run}: diagnostic artifact version mismatch",
+        )
+        require(
+            amp["source_artifacts"][run]["source_database"]
+            == source["source_database"],
+            f"{run}: compact diagnostic provenance mismatch",
+        )
+        for query_id, full in source["summary"].items():
+            compact = diagnostic_runs[run][query_id]
+            interval = full["amplification_document_cluster_ci"]
+            require(
+                compact["n"] == full["n"]
+                and compact["n_documents"] == full["n_documents"]
+                and compact["amp_mean"]
+                == full["amplification_mean_per_pair"]
+                and compact["amp_ci_lo"] == interval["ci_low"]
+                and compact["amp_ci_hi"] == interval["ci_high"]
+                and compact["query_drift_mean"]
+                == full["query_drift_mean"]
+                and compact["graph_drift_mean"]
+                == full["graph_drift_mean"],
+                f"{run}/{query_id}: compact diagnostic summary mismatch",
+            )
+    docred = diagnostic_runs[RUNS["DocRED"]]
+    docred_d3 = docred["diagnostic.fanout_join"]
+    close(docred_d3["amp_mean"], 1.15)
+    close(docred_d3["amp_ci_lo"], 1.12)
+    close(docred_d3["amp_ci_hi"], 1.17)
+    require(
+        docred_d3["n"] == 6419
+        and docred_d3["n_documents"] == 299,
+        "DocRED diagnostic D3 CI is not document-clustered as expected",
+    )
+    require(
+        docred_d3["amp_mean"]
+        == max(row["amp_mean"] for row in docred.values()),
+        "canonical D3 is not the strongest primary-run diagnostic",
+    )
+    close(
+        diagnostic_runs[RUNS["Re-DocRED"]][
+            "diagnostic.fanout_join"
+        ]["amp_mean"],
+        1.15,
+    )
+    close(
+        diagnostic_runs[RUNS["SciERC"]][
+            "diagnostic.fanout_join"
+        ]["amp_mean"],
+        0.82,
+    )
+    close(
+        diagnostic_runs[RUNS["BC5CDR"]][
+            "diagnostic.fanout_join"
+        ]["amp_mean"],
+        0.12,
+    )
+    for semantic_class, expected in {
+        "stochastic": 1.11,
+        "presentation": 1.13,
+        "semantic": 1.15,
+    }.items():
+        close(
+            docred_d3["by_semantic_class"][semantic_class][
+                "amplification_mean_per_pair"
+            ],
+            expected,
+        )
+    primary_contracts = load(
+        RR / RUNS["DocRED"] / "eval" / "contracts.json"
+    )
+    k4 = next(
+        row for row in primary_contracts["contracts"]
+        if row["contract_id"] == "K4"
+    )
+    close(
+        docred_d3["by_semantic_class"]["presentation"][
+            "query_drift_mean"
+        ],
+        1.0 - k4["metric_mean"],
+        tol=1e-12,
     )
 
     ext = {
@@ -374,7 +480,7 @@ def verify_query_results() -> None:
     pooled_deltas = []
     for run in RUNS.values():
         monitors = load(
-            RC / f"graph_vs_query_{run}.json"
+            RC / f"graph_vs_query_formal_v1_{run}.json"
         )["monitors_at_matched_alarm"]
         close(
             monitors["query_aware"]["alarm_rate"],
@@ -392,7 +498,9 @@ def verify_query_results() -> None:
     regime_deltas = []
     unequal_alarm_regimes = 0
     for run in RUNS.values():
-        regimes = load(RC / f"regimes_{run}.json")["regimes"]
+        regimes = load(
+            RC / f"regimes_formal_v1_{run}.json"
+        )["regimes"]
         for row in regimes.values():
             regime_deltas.append(row["delta_f1"])
             if abs(
@@ -401,7 +509,7 @@ def verify_query_results() -> None:
             ) > 0.05:
                 unequal_alarm_regimes += 1
     require(
-        0.095 <= min(regime_deltas) and max(regime_deltas) <= 0.215,
+        0.095 <= min(regime_deltas) and max(regime_deltas) <= 0.205,
         f"regime F1 deltas mismatch: {regime_deltas}",
     )
     require(
@@ -412,18 +520,20 @@ def verify_query_results() -> None:
 
 
 def verify_drift_accuracy() -> None:
-    data = load(RC / f"drift_accuracy_{RUNS['DocRED']}.json")
+    data = load(
+        RC / f"drift_accuracy_formal_v1_{RUNS['DocRED']}.json"
+    )
     population = data["query_population"]
     require(population["n_pairs"] == 4000, "query-divergence n mismatch")
-    close(population["query_divergence_base_rate"], 0.394)
+    close(population["query_divergence_base_rate"], 0.436)
     recall = population["spearman"][
         "graph_drift_vs_abs_delta_recall"
     ]
     precision = population["spearman"][
         "graph_drift_vs_abs_delta_precision"
     ]
-    close(recall["rho"], 0.205)
-    close(precision["rho"], 0.115)
+    close(recall["rho"], 0.219)
+    close(precision["rho"], 0.135)
     require(
         recall["p_value"] < 1e-3 and precision["p_value"] < 1e-3,
         "drift/accuracy correlations are not significant",
@@ -432,13 +542,13 @@ def verify_drift_accuracy() -> None:
     k1 = data["k1_contrast"]
     require(k1["n_pairs"] == 676, "K1 accuracy contrast n mismatch")
     require(
-        k1["violating"]["n"] == 657
-        and k1["satisfied"]["n"] == 19,
+        k1["violating"]["n"] == 656
+        and k1["satisfied"]["n"] == 20,
         "K1 accuracy contrast split mismatch",
     )
     close(k1["violating"]["mean_abs_delta_recall"], 0.070)
     close(k1["violating"]["mean_abs_delta_precision"], 0.117)
-    close(k1["satisfied"]["mean_abs_delta_recall"], 0.033)
+    close(k1["satisfied"]["mean_abs_delta_recall"], 0.031)
     close(k1["satisfied"]["mean_abs_delta_precision"], 0.032)
     print("[PASS] query divergence and K1 accuracy contrast")
 
@@ -446,32 +556,74 @@ def verify_drift_accuracy() -> None:
 def verify_harm_detection_and_gate() -> None:
     graph_aurocs = []
     answer_aurocs = []
+    gate_aurocs = []
     graph_auprcs = []
     answer_auprcs = []
     full_harm = []
+    full_improvement = []
     graph_only_harm = []
     gated_harm = []
     gated_f1_fidelity = []
+    gated_coverage = []
     random_harm = []
     graph_only_coverage_at_05 = []
     graph_only_coverage_at_15 = []
+    joint_coverage_at_15 = []
+
+    def strict_threshold_coverage(scores, labels, target):
+        ordered = sorted(zip(scores, labels), key=lambda item: item[0])
+        best = 0.0
+        n_published = 0
+        n_harmful = 0
+        index = 0
+        while index < len(ordered):
+            score = ordered[index][0]
+            while (
+                index < len(ordered)
+                and abs(ordered[index][0] - score) <= 1e-12
+            ):
+                n_published += 1
+                n_harmful += ordered[index][1]
+                index += 1
+            if n_harmful / n_published <= target:
+                best = n_published / len(ordered)
+        return best
+
     for run in RUNS.values():
-        pairs = load(RC / f"e2e_kuzu_case_{run}__N300.json")["pair_records"]
-        labels = [int(row["harmful"]) for row in pairs]
+        pairs = load_formal_kuzu(ROOT, run)["per_pair"]
+        labels = [
+            int(float(row["mean_delta_f1_signed"]) > 0.05)
+            for row in pairs
+        ]
         graph = [float(row["graph_drift"]) for row in pairs]
         answer = [float(row["max_answer_drift"]) for row in pairs]
+        gate_margin = [
+            max(graph_score / 0.45, answer_score / 0.70)
+            for graph_score, answer_score in zip(graph, answer)
+        ]
         graph_aurocs.append(rank_auc(labels, graph))
         answer_aurocs.append(rank_auc(labels, answer))
+        gate_aurocs.append(rank_auc(labels, gate_margin))
         graph_auprcs.append(pr_auc(labels, graph))
         answer_auprcs.append(pr_auc(labels, answer))
         full_harm.append(sum(labels) / len(labels))
+        full_improvement.append(
+            sum(
+                float(row["mean_delta_f1_signed"]) < -0.05
+                for row in pairs
+            )
+            / len(pairs)
+        )
 
         graph_published = [
             row for row in pairs
             if float(row["graph_drift"]) < 0.45
         ]
         graph_only_harm.append(
-            sum(bool(row["harmful"]) for row in graph_published)
+            sum(
+                float(row["mean_delta_f1_signed"]) > 0.05
+                for row in graph_published
+            )
             / len(graph_published)
         )
         published = [
@@ -482,12 +634,20 @@ def verify_harm_detection_and_gate() -> None:
             )
         ]
         gated_harm.append(
-            sum(bool(row["harmful"]) for row in published) / len(published)
-        )
-        gated_f1_fidelity.append(
-            sum(1.0 - abs(float(row["mean_df1"])) for row in published)
+            sum(
+                float(row["mean_delta_f1_signed"]) > 0.05
+                for row in published
+            )
             / len(published)
         )
+        gated_f1_fidelity.append(
+            sum(
+                1.0 - float(row["mean_delta_f1_abs"])
+                for row in published
+            )
+            / len(published)
+        )
+        gated_coverage.append(len(published) / len(pairs))
         rng = random.Random(0)
         blocked = set(rng.sample(
             range(len(pairs)), len(pairs) - len(published)
@@ -497,35 +657,25 @@ def verify_harm_detection_and_gate() -> None:
             if index not in blocked
         ]
         random_harm.append(
-            sum(bool(row["harmful"]) for row in random_published)
+            sum(
+                float(row["mean_delta_f1_signed"]) > 0.05
+                for row in random_published
+            )
             / len(random_published)
         )
 
-        for target, accumulator in (
-            (0.05, graph_only_coverage_at_05),
-            (0.15, graph_only_coverage_at_15),
-        ):
-            feasible_coverage = []
-            for step in range(201):
-                threshold = step / 200
-                selected = [
-                    row for row in pairs
-                    if float(row["graph_drift"]) <= threshold
-                ]
-                if not selected:
-                    continue
-                harm_rate = (
-                    sum(bool(row["harmful"]) for row in selected)
-                    / len(selected)
-                )
-                if harm_rate <= target:
-                    feasible_coverage.append(len(selected) / len(pairs))
-            accumulator.append(
-                max(feasible_coverage) if feasible_coverage else 0.0
-            )
+        graph_only_coverage_at_05.append(
+            strict_threshold_coverage(graph, labels, 0.05)
+        )
+        graph_only_coverage_at_15.append(
+            strict_threshold_coverage(graph, labels, 0.15)
+        )
+        joint_coverage_at_15.append(
+            strict_threshold_coverage(gate_margin, labels, 0.15)
+        )
 
     require(
-        0.55 <= min(graph_aurocs) and max(graph_aurocs) <= 0.90,
+        0.57 <= min(graph_aurocs) and max(graph_aurocs) <= 0.90,
         f"graph AUROC mismatch: {graph_aurocs}",
     )
     require(
@@ -533,16 +683,20 @@ def verify_harm_detection_and_gate() -> None:
         f"answer AUROC mismatch: {answer_aurocs}",
     )
     require(
-        0.27 <= min(graph_auprcs) and max(graph_auprcs) <= 0.70,
+        0.32 <= min(graph_auprcs) and max(graph_auprcs) <= 0.70,
         f"graph AUPRC mismatch: {graph_auprcs}",
     )
     require(
-        0.62 <= min(answer_auprcs) and max(answer_auprcs) <= 0.70,
+        0.67 <= min(answer_auprcs) and max(answer_auprcs) <= 0.73,
         f"answer AUPRC mismatch: {answer_auprcs}",
     )
     require(
-        0.19 <= min(full_harm) and max(full_harm) <= 0.31,
+        0.19 <= min(full_harm) and max(full_harm) <= 0.305,
         f"publish-all harm mismatch: {full_harm}",
+    )
+    require(
+        0.10 <= min(full_improvement) and max(full_improvement) <= 0.25,
+        f"publish-all improvement mismatch: {full_improvement}",
     )
     require(
         0.035 <= min(graph_only_harm) and max(graph_only_harm) <= 0.24,
@@ -554,29 +708,42 @@ def verify_harm_detection_and_gate() -> None:
         f"harm={gated_harm}, F1 fidelity={gated_f1_fidelity}",
     )
     require(
-        0.09 <= min(random_harm) and max(random_harm) <= 0.34,
+        0.18 <= min(random_harm) and max(random_harm) <= 0.305,
         f"matched-random gate mismatch: {random_harm}",
     )
     require(
-        0.035 <= min(graph_only_coverage_at_05)
+        0.075 <= min(gated_coverage) and max(gated_coverage) <= 0.59,
+        f"GraphGuard coverage mismatch: {gated_coverage}",
+    )
+    require(
+        0.60 <= min(gate_aurocs) and max(gate_aurocs) <= 0.89,
+        f"normalized gate AUROC mismatch: {gate_aurocs}",
+    )
+    require(
+        0.03 <= min(graph_only_coverage_at_05)
         and max(graph_only_coverage_at_05) <= 0.61,
         "5% graph-only calibration mismatch: "
         f"{graph_only_coverage_at_05}",
     )
     require(
-        0.065 <= min(graph_only_coverage_at_15)
+        0.075 <= min(graph_only_coverage_at_15)
         and max(graph_only_coverage_at_15) <= 0.93,
         "15% graph-only calibration mismatch: "
         f"{graph_only_coverage_at_15}",
     )
+    require(
+        0.15 <= min(joint_coverage_at_15)
+        and max(joint_coverage_at_15) <= 0.93,
+        f"15% joint threshold coverage mismatch: {joint_coverage_at_15}",
+    )
 
-    split = load(RC / "gate_split.json")["corpora"]
+    split = load(RC / "gate_split_formal_v1.json")["corpora"]
     paper_point = [
         row["deploy_graphguard_paper_point"] for row in split.values()
     ]
     require(
-        max(row["pub_harm_rate"] for row in paper_point) <= 0.06,
-        "held-out paper-point harm exceeds reported 0–6%",
+        max(row["pub_harm_rate"] for row in paper_point) <= 0.08,
+        "held-out paper-point harm exceeds reported 0–8%",
     )
     require(
         min(row["f1_fidelity"] for row in paper_point) >= 0.96,
@@ -595,11 +762,11 @@ def verify_harm_detection_and_gate() -> None:
     ]
     require(
         min(held_out_publish_all) >= 0.21
-        and max(held_out_publish_all) <= 0.31,
-        "held-out publish-all harm is outside reported 21–31%",
+        and max(held_out_publish_all) <= 0.30,
+        "held-out publish-all harm is outside reported 21–29%",
     )
 
-    planner = load(RC / "budget_planner.json")
+    planner = load(RC / "budget_planner_formal_v1.json")
     budget_index = planner["budgets"].index(0.4)
     budget_index_60 = planner["budgets"].index(0.6)
     recall_at_40 = [
@@ -610,11 +777,11 @@ def verify_harm_detection_and_gate() -> None:
         for row in planner["datasets"].values()
     ]
     require(
-        0.39 <= min(recall_at_40) and max(recall_at_40) <= 0.56,
+        0.38 <= min(recall_at_40) and max(recall_at_40) <= 0.53,
         f"40% budget recall mismatch: {recall_at_40}",
     )
     require(
-        0.59 <= min(recall_at_60) and max(recall_at_60) <= 0.80,
+        0.58 <= min(recall_at_60) and max(recall_at_60) <= 0.78,
         f"60% budget recall mismatch: {recall_at_60}",
     )
     print("[PASS] harmful-regression AUROC, release gate, and budget planner")
@@ -646,6 +813,12 @@ def verify_lineage() -> None:
         require(
             actual == EXPECTED_LINEAGE[label],
             f"{label}: expected {EXPECTED_LINEAGE[label]}, got {actual}",
+        )
+        diagnostic = load(RC / f"diagnostic_v2_{run}.json")
+        require(
+            diagnostic["source_database"]["sha256"]
+            == sha256_file(db_path),
+            f"{label}: diagnostic source database SHA-256 mismatch",
         )
         totals = [left + right for left, right in zip(totals, actual)]
         if label in RUNS:

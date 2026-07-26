@@ -1,0 +1,183 @@
+{
+  "artifact_type": "graphguard.deployment_q1q4_kuzu_parity",
+  "artifact_version": 1,
+  "deployment_artifact": {
+    "path": "reports/cross_run/deployment_q1q4_v1_cdr__deepseek-v4-flash__300d.json",
+    "sha256": "3a57ee92a80639a6419ae79045bdca5b8147cc9f32241efe6995bfa2b9904744"
+  },
+  "implementation": {
+    "file_sha256": {
+      "graphguard/deployment_parity.py": "5279ed91abbc4e8b67d2c3e1f788ca9084ff31023c6176c10de4e50f5c4a1670",
+      "graphguard/deployment_runner.py": "5989bd8a49b7bee04bca4151d7718b9624c4ae878877bc8b40e9d25b6f0dc8f5",
+      "graphguard/kuzu_executor.py": "ec31ededdfce26dc0394d4ca4c5483e901eaed5120edb10f0bd61899658acd8e",
+      "graphguard/qa.py": "22b7a95debbbf0e9ff90772f632061e4bfa33393216761c7cbf70e78e509d37d",
+      "graphguard/sqlite_snapshot.py": "365146ef70b72d67f094379d0f37bc96427220920bf36871f636a838459d2435",
+      "scripts/validate_deployment_kuzu_parity.py": "b42db284e85ad2b91acd6251520c50e98f427ec8993c8e18f086f2f77b0b52f9"
+    },
+    "git_commit": "41e74cb74ef982358a6785420ebf3b2faf2b1208",
+    "runtime": {
+      "python": "3.10.15",
+      "sqlite": "3.46.1"
+    }
+  },
+  "kuzu_version": "0.11.3",
+  "mismatches": [],
+  "n_answer_sets_checked": 118,
+  "n_graph_pairs_materialized": 20,
+  "n_mismatches": 0,
+  "n_query_instances_checked": 59,
+  "runtime": {
+    "python": "3.10.15",
+    "sqlite": "3.46.1"
+  },
+  "selection": {
+    "covered_tokens": [
+      "answer_state:deployment.lookup:base_only",
+      "answer_state:deployment.lookup:both_empty",
+      "answer_state:deployment.lookup:both_nonempty",
+      "answer_state:deployment.lookup:cf_only",
+      "answer_state:deployment.neighbor:base_only",
+      "answer_state:deployment.neighbor:both_empty",
+      "answer_state:deployment.neighbor:both_nonempty",
+      "answer_state:deployment.neighbor:cf_only",
+      "answer_state:deployment.shared_tail_join:base_only",
+      "answer_state:deployment.shared_tail_join:both_empty",
+      "answer_state:deployment.shared_tail_join:both_nonempty",
+      "answer_state:deployment.shared_tail_join:cf_only",
+      "cause_family:entity_alias",
+      "cause_family:evidence",
+      "cause_family:prompt",
+      "cause_family:schema",
+      "cause_family:stochastic",
+      "graph_state:empty_base",
+      "graph_state:empty_cf",
+      "operator:entity_alias",
+      "operator:mask",
+      "operator:para_swap",
+      "operator:remove",
+      "operator:repeat",
+      "operator:role_swap",
+      "operator:switch_schema",
+      "operator:tone",
+      "query_family:deployment.lookup",
+      "query_family:deployment.neighbor",
+      "query_family:deployment.shared_tail_join",
+      "schema_variant:coarse",
+      "schema_variant:desc_added",
+      "schema_variant:desc_removed",
+      "schema_variant:drop",
+      "schema_variant:hierarchical",
+      "schema_variant:rename",
+      "schema_variant:reorder",
+      "schema_variant:with_other",
+      "semantic_class:presentation",
+      "semantic_class:semantic",
+      "semantic_class:stochastic"
+    ],
+    "max_pairs": null,
+    "method": "deterministic greedy coverage of observed query family, cause family, semantic class, operator, answer-state, and empty-graph strata; deterministic fill to min_pairs",
+    "min_pairs": 20,
+    "n_candidate_pairs": 6189,
+    "n_selected_pairs": 20,
+    "required_coverage_tokens": [
+      "answer_state:deployment.lookup:base_only",
+      "answer_state:deployment.lookup:both_empty",
+      "answer_state:deployment.lookup:both_nonempty",
+      "answer_state:deployment.lookup:cf_only",
+      "answer_state:deployment.neighbor:base_only",
+      "answer_state:deployment.neighbor:both_empty",
+      "answer_state:deployment.neighbor:both_nonempty",
+      "answer_state:deployment.neighbor:cf_only",
+      "answer_state:deployment.shared_tail_join:base_only",
+      "answer_state:deployment.shared_tail_join:both_empty",
+      "answer_state:deployment.shared_tail_join:both_nonempty",
+      "answer_state:deployment.shared_tail_join:cf_only",
+      "cause_family:entity_alias",
+      "cause_family:evidence",
+      "cause_family:prompt",
+      "cause_family:schema",
+      "cause_family:stochastic",
+      "graph_state:empty_base",
+      "graph_state:empty_cf",
+      "operator:entity_alias",
+      "operator:mask",
+      "operator:para_swap",
+      "operator:remove",
+      "operator:repeat",
+      "operator:role_swap",
+      "operator:switch_schema",
+      "operator:tone",
+      "query_family:deployment.lookup",
+      "query_family:deployment.neighbor",
+      "query_family:deployment.shared_tail_join",
+      "schema_variant:coarse",
+      "schema_variant:desc_added",
+      "schema_variant:desc_removed",
+      "schema_variant:drop",
+      "schema_variant:hierarchical",
+      "schema_variant:rename",
+      "schema_variant:reorder",
+      "schema_variant:with_other",
+      "semantic_class:presentation",
+      "semantic_class:semantic",
+      "semantic_class:stochastic"
+    ],
+    "seed": 0,
+    "selected_run_ids": [
+      "run-044519f54b",
+      "run-1c6084bdc3",
+      "run-2d720fd9f8",
+      "run-31d6df5f29",
+      "run-362b63a4ae",
+      "run-3b698e6626",
+      "run-3db28674cd",
+      "run-4590c456b9",
+      "run-57b7099b72",
+      "run-74e15f97b2",
+      "run-7f413f0d2d",
+      "run-8d4906dff2",
+      "run-9cbc82d1bc",
+      "run-c1a54cb264",
+      "run-c3f0b0e651",
+      "run-c5db0cf619",
+      "run-c79f50368a",
+      "run-cbeb23466b",
+      "run-d586351524",
+      "run-fc0c93bcc2"
+    ],
+    "selection_sha256": "2b027d9244a0798591149efcb8c9f44d7e281c724585af89096021f1c77ac6e5"
+  },
+  "source_database": {
+    "fingerprint_after": {
+      "main": {
+        "mtime_ns": 1784808344572313511,
+        "sha256": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+        "size_bytes": 68694016
+      },
+      "wal": {
+        "exists": true,
+        "mtime_ns": 1785034724974268859,
+        "sha256": null,
+        "size_bytes": 0
+      }
+    },
+    "fingerprint_before": {
+      "main": {
+        "mtime_ns": 1784808344572313511,
+        "sha256": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+        "size_bytes": 68694016
+      },
+      "wal": {
+        "exists": true,
+        "mtime_ns": 1785034724974268859,
+        "sha256": null,
+        "size_bytes": 0
+      }
+    },
+    "path": "data/processed/runs/cdr__deepseek-v4-flash__300d/cdr__deepseek-v4-flash__300d.db",
+    "sha256": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+    "size_bytes": 68694016
+  },
+  "source_run": "cdr__deepseek-v4-flash__300d",
+  "status": "pass"
+}

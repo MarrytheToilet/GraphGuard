@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 606 | 0.79 | 0.308 | 0.284 / 0.500 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 887 | 0.98 | 0.282 | 0.532 / 0.772 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **VIOLATED** | 236 | 0.82 | 0.398 | 0.535 / 0.800 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **VIOLATED** | 2643 | 0.64 | 0.394 | 0.644 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **VIOLATED** | 2643 | 0.64 | 0.395 | 0.643 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 2072 | 0.75 | 0.337 | 0.568 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 2620 | 0.73 | 0.572 | 0.289 / 0.500 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 2620 | 0.88 | 0.332 | 0.450 / 0.700 |
@@ -109,19 +109,19 @@
     - doc=`scierc-dev-000003-C88-1066` op=`para_swap` family=`evidence` metric=0.000
     - doc=`scierc-dev-000003-C88-1066` op=`entity_alias` family=`entity_alias` metric=0.000
 
-### K4 — Multi-hop join robustness (Q3)  · *VIOLATED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *VIOLATED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`
-- pairs: n=2643, fail=1694, violation_rate=0.641
-- metric: mean=0.394, median=0.000
+- pairs: n=2643, fail=1691, violation_rate=0.640
+- metric: mean=0.395, median=0.000
 - by family:
     - `entity_alias` n=118, viol=0.39, mean_metric=0.640
     - `evidence` n=118, viol=0.58, mean_metric=0.454
-    - `prompt` n=887, viol=0.67, mean_metric=0.361
-    - `schema` n=1520, viol=0.65, mean_metric=0.389
+    - `prompt` n=887, viol=0.67, mean_metric=0.363
+    - `schema` n=1520, viol=0.64, mean_metric=0.391
 - threshold sensitivity (violation_rate at alt thresholds):
-    - τ=0.5: 0.62
+    - τ=0.5: 0.61
     - τ=0.7: 0.64
     - τ=0.8: 0.64
     - τ=0.9: 0.65

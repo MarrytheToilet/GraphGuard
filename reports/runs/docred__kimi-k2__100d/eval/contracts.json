@@ -443,7 +443,7 @@
     },
     {
       "contract_id": "K4",
-      "name": "Multi-hop join robustness (Q3)",
+      "name": "Diagnostic fan-out join robustness (D3)",
       "kind": "bounded_drift",
       "scope": {
         "semantic_class_in": [
@@ -455,61 +455,61 @@
       "alpha": 0.2,
       "min_pairs": 1,
       "n_pairs": 694,
-      "n_pass": 247,
-      "n_fail": 447,
-      "violation_rate": 0.6440922190201729,
-      "severity_mean": 0.4618308531584265,
+      "n_pass": 250,
+      "n_fail": 444,
+      "violation_rate": 0.6397694524495677,
+      "severity_mean": 0.4328252651588587,
       "severity_p95": 0.7,
-      "metric_mean": 0.48949918076518756,
-      "metric_median": 0.42857142857142855,
+      "metric_mean": 0.5120797803519971,
+      "metric_median": 0.5,
       "by_family": {
         "prompt": {
           "n": 90,
-          "n_fail": 59,
-          "violation_rate": 0.6555555555555556,
-          "mean_metric": 0.49397859937114535
+          "n_fail": 58,
+          "violation_rate": 0.6444444444444445,
+          "mean_metric": 0.5203542607468068
         },
         "schema": {
           "n": 574,
-          "n_fail": 370,
-          "violation_rate": 0.6445993031358885,
-          "mean_metric": 0.4852246835187833
+          "n_fail": 368,
+          "violation_rate": 0.6411149825783972,
+          "mean_metric": 0.5055469610858103
         },
         "entity_alias": {
           "n": 15,
           "n_fail": 4,
           "violation_rate": 0.26666666666666666,
-          "mean_metric": 0.7971875618934442
+          "mean_metric": 0.8519696969696969
         },
         "evidence": {
           "n": 15,
           "n_fail": 14,
           "violation_rate": 0.9333333333333333,
-          "mean_metric": 0.31850504929692125
+          "mean_metric": 0.37253219861818826
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.537463976945245,
-        "0.7": 0.6440922190201729,
-        "0.8": 0.7031700288184438,
-        "0.9": 0.7262247838616714
+        "0.5": 0.49711815561959655,
+        "0.7": 0.6397694524495677,
+        "0.8": 0.6988472622478387,
+        "0.9": 0.7175792507204611
       },
       "examples": [
         {
           "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
-          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::novice",
-          "family": "prompt",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_removed",
+          "family": "schema",
           "semantic_class": "presentation",
-          "operator": "role_swap",
+          "operator": "switch_schema",
           "metric": 0.0
         },
         {
           "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
-          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::permissive",
-          "family": "prompt",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::rename",
+          "family": "schema",
           "semantic_class": "presentation",
-          "operator": "tone",
+          "operator": "switch_schema",
           "metric": 0.0
         },
         {
@@ -522,7 +522,7 @@
         },
         {
           "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
-          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::desc_removed",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::hierarchical",
           "family": "schema",
           "semantic_class": "presentation",
           "operator": "switch_schema",
@@ -530,7 +530,7 @@
         },
         {
           "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
-          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::rename",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::schema::docred_full::reorder",
           "family": "schema",
           "semantic_class": "presentation",
           "operator": "switch_schema",

@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 32 | 0.28 | 0.594 | 0.240 / 0.423 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 58 | 0.71 | 0.672 | 0.233 / 0.500 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **VIOLATED** | 19 | 0.42 | 0.746 | 0.404 / 0.729 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **VIOLATED** | 155 | 0.66 | 0.519 | 0.403 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **VIOLATED** | 155 | 0.56 | 0.585 | 0.413 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 126 | 0.37 | 0.663 | 0.586 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 155 | 0.51 | 0.721 | 0.247 / 0.500 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 155 | 0.52 | 0.671 | 0.233 / 0.700 |
@@ -109,22 +109,22 @@
     - doc=`docred-validation-000006-Ned_McEvoy` op=`para_swap` family=`evidence` metric=0.071
     - doc=`docred-validation-000003-Lookin_Ass` op=`para_swap` family=`evidence` metric=0.200
 
-### K4 — Multi-hop join robustness (Q3)  · *VIOLATED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *VIOLATED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`
-- pairs: n=155, fail=103, violation_rate=0.665
-- metric: mean=0.519, median=0.500
+- pairs: n=155, fail=87, violation_rate=0.561
+- metric: mean=0.585, median=0.600
 - by family:
     - `entity_alias` n=12, viol=0.25, mean_metric=0.812
-    - `evidence` n=7, viol=0.71, mean_metric=0.487
-    - `prompt` n=58, viol=0.67, mean_metric=0.544
-    - `schema` n=78, viol=0.72, mean_metric=0.457
+    - `evidence` n=7, viol=0.57, mean_metric=0.582
+    - `prompt` n=58, viol=0.55, mean_metric=0.611
+    - `schema` n=78, viol=0.62, mean_metric=0.530
 - threshold sensitivity (violation_rate at alt thresholds):
-    - τ=0.5: 0.50
-    - τ=0.7: 0.66
-    - τ=0.8: 0.68
-    - τ=0.9: 0.74
+    - τ=0.5: 0.41
+    - τ=0.7: 0.56
+    - τ=0.8: 0.60
+    - τ=0.9: 0.63
 - top violation examples:
     - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`switch_schema` family=`schema` metric=0.000
     - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`switch_schema` family=`schema` metric=0.000

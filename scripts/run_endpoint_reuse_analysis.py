@@ -122,7 +122,7 @@ def analyze_run(
                         edges(base_event),
                         edges(cf_event),
                         base_relation_ids=_base_relation_ids_for(conn, base_event),
-                        query_id=contract.query_id or "Q3",
+                        query_id=contract.query_id or "D3",
                     )
                     if similarity is None:
                         continue

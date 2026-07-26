@@ -443,7 +443,7 @@
     },
     {
       "contract_id": "K4",
-      "name": "Multi-hop join robustness (Q3)",
+      "name": "Diagnostic fan-out join robustness (D3)",
       "kind": "bounded_drift",
       "scope": {
         "semantic_class_in": [
@@ -455,43 +455,43 @@
       "alpha": 0.2,
       "min_pairs": 1,
       "n_pairs": 2320,
-      "n_pass": 162,
-      "n_fail": 2158,
-      "violation_rate": 0.9301724137931034,
-      "severity_mean": 0.5552348838015133,
+      "n_pass": 163,
+      "n_fail": 2157,
+      "violation_rate": 0.9297413793103448,
+      "severity_mean": 0.5399731570574644,
       "severity_p95": 0.7,
-      "metric_mean": 0.2011956600142446,
-      "metric_median": 0.1111111111111111,
+      "metric_mean": 0.21574189777056985,
+      "metric_median": 0.125,
       "by_family": {
         "prompt": {
           "n": 540,
           "n_fail": 502,
           "violation_rate": 0.9296296296296296,
-          "mean_metric": 0.21122976777818406
+          "mean_metric": 0.2303179227818821
         },
         "schema": {
           "n": 1700,
           "n_fail": 1606,
           "violation_rate": 0.9447058823529412,
-          "mean_metric": 0.18528682622465367
+          "mean_metric": 0.19849236566868694
         },
         "entity_alias": {
           "n": 40,
           "n_fail": 11,
           "violation_rate": 0.275,
-          "mean_metric": 0.7825333022492758
+          "mean_metric": 0.7854660308962901
         },
         "evidence": {
           "n": 40,
-          "n_fail": 39,
-          "violation_rate": 0.975,
-          "mean_metric": 0.16052299902364517
+          "n_fail": 38,
+          "violation_rate": 0.95,
+          "mean_metric": 0.1823465413221572
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.8892241379310345,
-        "0.7": 0.9301724137931034,
+        "0.5": 0.8831896551724138,
+        "0.7": 0.9297413793103448,
         "0.8": 0.9383620689655172,
         "0.9": 0.9439655172413793
       },

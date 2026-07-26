@@ -457,6 +457,33 @@ def test_kuzu_constructor_failure_removes_temporary_directory(
     assert not directory.exists()
 
 
+def test_kuzu_constructor_interrupt_removes_temporary_directory(
+    tmp_path,
+    monkeypatch,
+):
+    directory = tmp_path / "kuzu-constructor-interrupt"
+
+    def make_directory(prefix):
+        directory.mkdir()
+        return str(directory)
+
+    class InterruptedKuzu:
+        @staticmethod
+        def Database(path):
+            raise KeyboardInterrupt
+
+    monkeypatch.setattr(
+        "graphguard.kuzu_executor.tempfile.mkdtemp",
+        make_directory,
+    )
+    monkeypatch.setitem(sys.modules, "kuzu", InterruptedKuzu)
+
+    with pytest.raises(KeyboardInterrupt):
+        KuzuGraph(set())
+
+    assert not directory.exists()
+
+
 def test_atomic_writer_refuses_overwrite_and_leaves_no_temp(tmp_path):
     output = tmp_path / "artifact.json"
     write_json_atomic(output, {"status": "pass"}, overwrite=False)

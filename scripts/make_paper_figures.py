@@ -7,17 +7,16 @@ names (run IDs, family slugs, P-codes) into the camera-ready figures.
 
 Inputs (relative to repo root):
   reports/cross_run/cross_run_summary.json      (per-run violation rates)
-  reports/cross_run/amp_ci.json                 (Amp CIs per run, per query)
+  reports/cross_run/amp_ci.json                 (canonical D1--D5 Amp CIs)
   reports/cross_run/k5_cross_model.json         (cross-model recall stability)
   reports/runs/<run>/eval/contracts.json        (per-contract sweep)
-  reports/runs/<run>/eval/e8_amplification.json (within-run Amp)
   data/processed/runs/<run>/reports/e3_report.json  (schema flip rates)
   data/processed/runs/<run>/reports/e5_faithfulness.json
   data/processed/runs/<run>/reports/e6_query_stability.json
 
 Outputs (assets/figures/):
   fig_crossrun_violations.png   contract violation rates run x contract
-  fig_amp_crossrun.png          Amp(Q) cross-run consistency
+  fig_amp_crossrun.png          diagnostic amplification consistency
   fig_strict_vs_soft.png        strict vs soft perturbation comparison
   fig_calibration.png           harmful-edge calibration
   fig_noise_floor.png           noise-floor across corpora
@@ -36,6 +35,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from graphguard.formal_artifacts import load_formal_kuzu
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "figures"
@@ -85,11 +85,11 @@ RUN_ORDER = [
 ]
 
 QUERY_LABEL = {
-    "Q1_single_edge": "Q1 single-edge",
-    "Q2_two_hop":     "Q2 2-hop",
-    "Q3_join":        "Q3 join",
-    "Q4_top_degree":  "Q4 top-degree",
-    "Q5_short_paths": "Q5 shortest path",
+    "diagnostic.edge_identity": "D1 edge identity",
+    "diagnostic.two_hop_endpoints": "D2 2-hop endpoints",
+    "diagnostic.fanout_join": "D3 fan-out join",
+    "diagnostic.top_undirected_degree": "D4 top degree",
+    "diagnostic.short_connectivity": "D5 short connectivity",
 }
 
 FAMILY_LABEL = {
@@ -271,36 +271,36 @@ def replacement_amp_crossrun() -> None:
         ("scierc__deepseek-v4-flash__100d", "SciERC", "DSV4"),
         ("cdr__deepseek-v4-flash__300d", "BC5CDR", "DSV4"),
     ]
-    amp = load("reports/cross_run/amp_ci.json")
+    amp = load("reports/cross_run/amp_ci.json")["runs"]
     rows = []
     for run, corpus, model in specs:
-        q1_row = amp[run]["Q1_single_edge"]
-        q3_row = amp[run]["Q3_join"]
+        d1_row = amp[run]["diagnostic.edge_identity"]
+        d3_row = amp[run]["diagnostic.fanout_join"]
         rows.append((
             corpus,
             model,
-            q1_row["amp_mean"],
-            q3_row["amp_mean"],
-            q3_row["amp_ci_lo"],
-            q3_row["amp_ci_hi"],
+            d1_row["amp_mean"],
+            d3_row["amp_mean"],
+            d3_row["amp_ci_lo"],
+            d3_row["amp_ci_hi"],
         ))
     corpora = [r[0] for r in rows]
     models = [r[1] for r in rows]
-    q1 = [r[2] for r in rows]
-    q3 = [r[3] for r in rows]
+    d1 = [r[2] for r in rows]
+    d3 = [r[3] for r in rows]
     err_lo = [r[3] - r[4] for r in rows]
     err_hi = [r[5] - r[3] for r in rows]
     x = np.arange(len(rows))
     w = 0.38
 
     fig, ax = plt.subplots(figsize=(3.5, 1.27))
-    b1 = ax.bar(x - w/2, q1, w, color=_S.BLUE, edgecolor=_S.BLUE_DARK,
-                linewidth=0.8, label=r"$Q_1$ (single-hop)")
-    b2 = ax.bar(x + w/2, q3, w, color=_S.PINK, edgecolor=_S.PINK_DARK,
+    b1 = ax.bar(x - w/2, d1, w, color=_S.BLUE, edgecolor=_S.BLUE_DARK,
+                linewidth=0.8, label=r"$D_1$ (edge identity)")
+    b2 = ax.bar(x + w/2, d3, w, color=_S.PINK, edgecolor=_S.PINK_DARK,
                 linewidth=0.8,
                 yerr=[err_lo, err_hi], capsize=2,
                 error_kw=dict(ecolor=_S.PINK_DARK, lw=0.8),
-                label=r"$Q_3$ (join, 95% CI)")
+                label=r"$D_3$ (fan-out join, 95% CI)")
     ax.axhline(1.0, ls="--", lw=0.6, color=_S.GRAY, zorder=0)
     ax.set_xticks(x)
     short_corpora = {"DocRED": "DR", "Re-DocRED": "RDR", "SciERC": "SE", "BC5CDR": "CDR"}
@@ -317,16 +317,17 @@ def replacement_amp_crossrun() -> None:
     ax.set_ylabel(r"$\overline{\mathrm{Amp}}$", fontsize=9)
     ax.tick_params(axis="y", labelsize=7)
     fig.legend([b1, b2],
-               [r"$Q_1$ (single-hop)", r"$Q_3$ (join, 95% CI)"],
+               [r"$D_1$ (edge identity)",
+                r"$D_3$ (fan-out join, 95% CI)"],
                loc="lower center", ncol=2, fontsize=7, frameon=False,
                bbox_to_anchor=(0.5, -0.14))
     _S.despine(ax)
-    for rect, v in zip(b1, q1):
+    for rect, v in zip(b1, d1):
         label_y = 1.04 if 0.87 <= v <= 1.0 else rect.get_height() + 0.04
         ax.text(rect.get_x() + rect.get_width() / 2,
                 label_y, f"{v:.2f}",
                 ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
-    for rect, v, hi in zip(b2, q3, [r[5] for r in rows]):
+    for rect, v, hi in zip(b2, d3, [r[5] for r in rows]):
         ax.text(rect.get_x() + rect.get_width() / 2,
                 hi + 0.05, f"{v:.2f}",
                 ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
@@ -444,6 +445,8 @@ REPORTS  = ROOT / "reports" / "cross_run"
 RUNS_DIR = ROOT / "data" / "processed" / "runs"
 FIG_DIR  = ROOT / "assets" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
+TAU_GRAPH_DEFAULT = 0.45
+TAU_QUERY_DEFAULT = 0.70
 
 CORPORA = [
     ("docred__deepseek-v4-flash__300d", "DocRED"),
@@ -455,9 +458,17 @@ CORPORA = [
 # ──────────────────────────────────────────────────────────────────────────────
 
 def load_pairs(tag: str) -> list[dict]:
-    path = REPORTS / f"e2e_kuzu_case_{tag}__N300.json"
-    d = json.loads(path.read_text())
-    return d["pair_records"]
+    artifact = load_formal_kuzu(ROOT, tag)
+    return [
+        {
+            **record,
+            "doc": record["document_id"],
+            "family": record["cause_family"],
+            "mean_df1": record["mean_delta_f1_abs"],
+            "harmful": record["mean_delta_f1_signed"] > 0.05,
+        }
+        for record in artifact["per_pair"]
+    ]
 
 
 def load_baselines(tag: str) -> dict:
@@ -473,7 +484,7 @@ def compute_calibration(pairs: list[dict], score_key: str = "graph_drift",
     taus = np.linspace(0.0, 1.0, 201)
     coverage, harm_rate = [], []
     for tau in taus:
-        published = scores <= tau          # publish if drift <= tau
+        published = scores < tau  # fixed gate blocks score >= threshold
         n_pub = published.sum()
         n_harmful_pub = (published & (labels == 1)).sum()
         coverage.append(n_pub / max(len(pairs), 1))
@@ -750,8 +761,12 @@ def _pairs_to_monitor_scores(pairs: list[dict]) -> dict[str, np.ndarray]:
     """Extract per-pair scores for each monitor from Kuzu pair records."""
     gd = np.array([p["graph_drift"] for p in pairs])
     aq = np.array([p["max_answer_drift"] for p in pairs])
-    # GraphGuard combined score = max(graph_drift, max_answer_drift)
-    gg = np.maximum(gd, aq)
+    # Continuous margin for the registered OR gate:
+    # graph>=.45 OR answer>=.70.
+    gg = np.maximum(
+        gd / TAU_GRAPH_DEFAULT,
+        aq / TAU_QUERY_DEFAULT,
+    )
     # Confidence-inv not available in Kuzu pairs → load from baselines_matched
     return {
         "graph_only_drift": gd,
@@ -809,8 +824,10 @@ def make_auroc_figure():
             "graph_only_drift": np.array([p["graph_drift"] for p in pairs]),
             "answer_drift": np.array([p["max_answer_drift"] for p in pairs]),
             "graphguard": np.maximum(
-                [p["graph_drift"] for p in pairs],
-                [p["max_answer_drift"] for p in pairs]
+                np.array([p["graph_drift"] for p in pairs])
+                / TAU_GRAPH_DEFAULT,
+                np.array([p["max_answer_drift"] for p in pairs])
+                / TAU_QUERY_DEFAULT,
             ),
         }
         roc_summary[name] = {}

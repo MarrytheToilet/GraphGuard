@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 676 | 0.72 | 0.359 | 0.259 / 0.500 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 534 | 0.92 | 0.384 | 0.464 / 0.800 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **VIOLATED** | 78 | 0.64 | 0.590 | 0.439 / 0.720 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **VIOLATED** | 2301 | 0.92 | 0.219 | 0.543 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **VIOLATED** | 2301 | 0.91 | 0.237 | 0.528 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 872 | 0.82 | 0.259 | 0.600 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 2301 | 0.55 | 0.685 | 0.271 / 0.500 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 2301 | 0.88 | 0.374 | 0.390 / 0.700 |
@@ -109,26 +109,26 @@
     - doc=`docred-validation-000029-Addy_Lee` op=`para_swap` family=`evidence` metric=0.000
     - doc=`docred-validation-000035-Grand_Wing_Servo-Tech` op=`para_swap` family=`evidence` metric=0.062
 
-### K4 — Multi-hop join robustness (Q3)  · *VIOLATED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *VIOLATED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`
-- pairs: n=2301, fail=2115, violation_rate=0.919
-- metric: mean=0.219, median=0.121
+- pairs: n=2301, fail=2103, violation_rate=0.914
+- metric: mean=0.237, median=0.143
 - by family:
-    - `entity_alias` n=39, viol=0.33, mean_metric=0.724
-    - `evidence` n=39, viol=0.92, mean_metric=0.240
-    - `prompt` n=534, viol=0.89, mean_metric=0.242
-    - `schema` n=1689, viol=0.94, mean_metric=0.200
+    - `entity_alias` n=39, viol=0.33, mean_metric=0.727
+    - `evidence` n=39, viol=0.92, mean_metric=0.249
+    - `prompt` n=534, viol=0.89, mean_metric=0.259
+    - `schema` n=1689, viol=0.93, mean_metric=0.218
 - threshold sensitivity (violation_rate at alt thresholds):
-    - τ=0.5: 0.86
-    - τ=0.7: 0.92
-    - τ=0.8: 0.94
+    - τ=0.5: 0.84
+    - τ=0.7: 0.91
+    - τ=0.8: 0.93
     - τ=0.9: 0.94
 - top violation examples:
-    - doc=`docred-validation-000000-Skai_TV` op=`role_swap` family=`prompt` metric=0.000
-    - doc=`docred-validation-000000-Skai_TV` op=`switch_schema` family=`schema` metric=0.000
-    - doc=`docred-validation-000000-Skai_TV` op=`switch_schema` family=`schema` metric=0.000
+    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`role_swap` family=`prompt` metric=0.000
+    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`role_swap` family=`prompt` metric=0.000
+    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`role_swap` family=`prompt` metric=0.000
 
 ### K4b — Shortest-path robustness (Q5)  · *VIOLATED*
 

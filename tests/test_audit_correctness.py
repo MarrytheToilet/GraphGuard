@@ -3,7 +3,7 @@
 Constructs synthetic in-memory data so we can verify every step:
 - relation back-projection (rename, identity, unknown, coarse)
 - edge_jaccard / relation_distribution_l1 / type_flip_rate on hand-crafted pairs
-- _query_q3 with back-projection
+- canonical _query_d3 with back-projection
 - cf_event_id backfill on a synthetic DB with intentional cross-pair traps
 - _iter_pairs prefers cf_event_id over the (correct) fallback over the (legacy) heuristic
 - contract Registry metric_fn signatures all accept base_relation_ids
@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + "/.."))
 
 from graphguard.contracts import metrics as M
 from graphguard.contracts.runner import (
-    _iter_pairs, _query_q3, _project_triples, _base_relation_ids_for,
+    _iter_pairs, _query_d3, _project_triples, _base_relation_ids_for,
     _BASE_REL_CACHE,
 )
 from graphguard.contracts.registry import REGISTRY
@@ -221,13 +221,13 @@ def t9_metric_signature():
     return ok
 
 
-def t10_query_q3_rename():
-    print("\n[T10] _query_q3 with back-projection -> rename equivalent yields same answer set")
-    # Subject 'X' has two distinct relations -> Q3 multi-hop seed.
+def t10_query_d3_rename():
+    print("\n[T10] canonical _query_d3 with back-projection -> rename equivalent yields same answer set")
+    # Subject 'X' has two distinct relations -> D3 fan-out pair.
     base = [E("X","P19","Y"), E("X","P17","Greece")]
     cf   = [E("X","place_of_birth","Y"), E("X","located_in_country","Greece")]
-    a = _query_q3(base, base_relation_ids=DOCRED_IDS)
-    b = _query_q3(cf,   base_relation_ids=DOCRED_IDS)
+    a = _query_d3(base, base_relation_ids=DOCRED_IDS)
+    b = _query_d3(cf,   base_relation_ids=DOCRED_IDS)
     print(f"   base answers: {a}")
     print(f"   cf   answers: {b}")
     ok = must(a == b, "answer sets equal after projection")
@@ -264,7 +264,7 @@ def main():
     fns = [t1_identical, t2_rename_equivalent, t3_rename_with_real_change,
            t4_reorder_storage, t5_coarse_bucket, t6_entity_alias,
            t7_cf_event_backfill, t8_iter_pairs, t9_metric_signature,
-           t10_query_q3_rename, t11_bucket_aware_match_K1c, t12_alias_canon]
+           t10_query_d3_rename, t11_bucket_aware_match_K1c, t12_alias_canon]
     results = []
     for fn in fns:
         try:

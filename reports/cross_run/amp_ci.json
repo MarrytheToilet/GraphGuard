@@ -1,366 +1,1352 @@
 {
-  "docred__deepseek-v4-flash__300d": {
-    "Q1_single_edge": {
-      "n": 1000,
-      "n_documents": 18,
-      "amp_mean": 0.8914305006388651,
-      "amp_ci_lo": 0.8532853198493726,
-      "amp_ci_hi": 0.9146777914147775,
-      "query_drift_mean": 0.6432527248279002,
-      "graph_drift_mean": 0.6432527248279002,
-      "amp_ratio_of_means": 0.9999999984454011
+  "artifact_type": "graphguard.diagnostic_amplification_summary",
+  "artifact_version": 2,
+  "runs": {
+    "cdr__deepseek-v4-flash__300d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.5101191959629,
+        "amp_ci_lo": 0.43055379328746324,
+        "amp_mean": 0.47137792729232675,
+        "amp_ratio_of_means": 0.8583670189924978,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.44722445753440626,
+            "amplification_ratio_of_means_damped": 0.8421510491502072,
+            "graph_drift_mean": 0.2667585196532565,
+            "n": 3515,
+            "n_documents": 300,
+            "query_drift_mean": 0.2667585196532565
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5080420968715947,
+            "amplification_ratio_of_means_damped": 0.8759645826206605,
+            "graph_drift_mean": 0.353110668359217,
+            "n": 2756,
+            "n_documents": 300,
+            "query_drift_mean": 0.353110668359217
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.2695403627751736,
+            "amplification_ratio_of_means_damped": 0.7737983034872761,
+            "graph_drift_mean": 0.17104166666666668,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.17104166666666668
+          }
+        },
+        "graph_drift_mean": 0.3030251191800554,
+        "n": 6351,
+        "n_documents": 300,
+        "query_drift_mean": 0.3030251191800554
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 0.1714196987359574,
+        "amp_ci_lo": 0.08358831849990127,
+        "amp_mean": 0.12417776644729715,
+        "amp_ratio_of_means": 0.18602487924764854,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.13942614475914958,
+            "amplification_ratio_of_means_damped": 0.22939763213309272,
+            "graph_drift_mean": 0.2667585196532565,
+            "n": 3515,
+            "n_documents": 300,
+            "query_drift_mean": 0.07266365436644075
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.10737472679287523,
+            "amplification_ratio_of_means_damped": 0.14371786387204558,
+            "graph_drift_mean": 0.353110668359217,
+            "n": 2756,
+            "n_documents": 300,
+            "query_drift_mean": 0.05793420416061926
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.033066860465116275,
+            "amplification_ratio_of_means_damped": 0.11310084825636192,
+            "graph_drift_mean": 0.17104166666666668,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.025
+          }
+        },
+        "graph_drift_mean": 0.3030251191800554,
+        "n": 6351,
+        "n_documents": 300,
+        "query_drift_mean": 0.06567145516685655
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.5182459164237168,
+        "amp_ci_lo": 0.43164805691829716,
+        "amp_mean": 0.4765289419656097,
+        "amp_ratio_of_means": 0.7793595650078119,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.48957030234986976,
+            "amplification_ratio_of_means_damped": 0.8655933091154313,
+            "graph_drift_mean": 0.2667585196532565,
+            "n": 3515,
+            "n_documents": 300,
+            "query_drift_mean": 0.27418405521716765
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.4658294651892506,
+            "amplification_ratio_of_means_damped": 0.6933887342115118,
+            "graph_drift_mean": 0.353110668359217,
+            "n": 2756,
+            "n_documents": 300,
+            "query_drift_mean": 0.279512396080754
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.27212114502775203,
+            "amplification_ratio_of_means_damped": 0.7509761680355459,
+            "graph_drift_mean": 0.17104166666666668,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.1659970238095238
+          }
+        },
+        "graph_drift_mean": 0.3030251191800554,
+        "n": 6351,
+        "n_documents": 300,
+        "query_drift_mean": 0.27513350332099895
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.3319257785257043,
+        "amp_ci_lo": 0.2661394733559386,
+        "amp_mean": 0.2997004734366783,
+        "amp_ratio_of_means": 0.48651985436706435,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.3056738432834761,
+            "amplification_ratio_of_means_damped": 0.5391688053580096,
+            "graph_drift_mean": 0.2667585196532565,
+            "n": 3515,
+            "n_documents": 300,
+            "query_drift_mean": 0.1707863126284179
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.29536746085380666,
+            "amplification_ratio_of_means_damped": 0.4333685097836249,
+            "graph_drift_mean": 0.353110668359217,
+            "n": 2756,
+            "n_documents": 300,
+            "query_drift_mean": 0.1746954696247149
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.1865178192729325,
+            "amplification_ratio_of_means_damped": 0.5108388312912346,
+            "graph_drift_mean": 0.17104166666666668,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.11291666666666667
+          }
+        },
+        "graph_drift_mean": 0.3030251191800554,
+        "n": 6351,
+        "n_documents": 300,
+        "query_drift_mean": 0.1717537295713961
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 0.152284148502348,
+        "amp_ci_lo": 0.07206219535591882,
+        "amp_mean": 0.10889774343980446,
+        "amp_ratio_of_means": 0.17708025282476328,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.09722414780285102,
+            "amplification_ratio_of_means_damped": 0.1713286075819159,
+            "graph_drift_mean": 0.2667585196532565,
+            "n": 3515,
+            "n_documents": 300,
+            "query_drift_mean": 0.05426979611190137
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.12219458697824682,
+            "amplification_ratio_of_means_damped": 0.17936229441066565,
+            "graph_drift_mean": 0.353110668359217,
+            "n": 2756,
+            "n_documents": 300,
+            "query_drift_mean": 0.07230285437832608
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.1637300918391072,
+            "amplification_ratio_of_means_damped": 0.3958529688972667,
+            "graph_drift_mean": 0.17104166666666668,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.0875
+          }
+        },
+        "graph_drift_mean": 0.3030251191800554,
+        "n": 6351,
+        "n_documents": 300,
+        "query_drift_mean": 0.0625137773578964
+      }
     },
-    "Q2_two_hop": {
-      "n": 1000,
-      "n_documents": 18,
-      "amp_mean": 0.7194006728228858,
-      "amp_ci_lo": 0.4977809018006915,
-      "amp_ci_hi": 0.9145296889902272,
-      "query_drift_mean": 0.5275045701564454,
-      "graph_drift_mean": 0.6432527248279002,
-      "amp_ratio_of_means": 0.8200580409162187
+    "docred__deepseek-v4-flash__300d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.9083358637847638,
+        "amp_ci_lo": 0.8920134041011073,
+        "amp_mean": 0.9005251129026903,
+        "amp_ratio_of_means": 0.9292847501556778,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.8893508238750174,
+            "amplification_ratio_of_means_damped": 0.9266782490103925,
+            "graph_drift_mean": 0.6319258859091752,
+            "n": 2301,
+            "n_documents": 299,
+            "query_drift_mean": 0.6319258859091752
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.908201147261087,
+            "amplification_ratio_of_means_damped": 0.9309567043138914,
+            "graph_drift_mean": 0.6741832751917717,
+            "n": 4040,
+            "n_documents": 299,
+            "query_drift_mean": 0.6741832751917717
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.8325874237328512,
+            "amplification_ratio_of_means_damped": 0.9109855131129116,
+            "graph_drift_mean": 0.5117063216173253,
+            "n": 78,
+            "n_documents": 39,
+            "query_drift_mean": 0.5117063216173253
+          }
+        },
+        "graph_drift_mean": 0.6570610668854839,
+        "n": 6419,
+        "n_documents": 299,
+        "query_drift_mean": 0.6570610668854839
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 1.1728261269777511,
+        "amp_ci_lo": 1.1191924394417774,
+        "amp_mean": 1.1462719340151604,
+        "amp_ratio_of_means": 1.1179107581977545,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 1.1344069590153216,
+            "amplification_ratio_of_means_damped": 1.1195822279740089,
+            "graph_drift_mean": 0.6319258859091752,
+            "n": 2301,
+            "n_documents": 299,
+            "query_drift_mean": 0.7634721026593442
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 1.1536708932929356,
+            "amplification_ratio_of_means_damped": 1.1162628577660443,
+            "graph_drift_mean": 0.6741832751917717,
+            "n": 4040,
+            "n_documents": 299,
+            "query_drift_mean": 0.8083788923119407
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 1.113060549302564,
+            "amplification_ratio_of_means_damped": 1.1680907492218608,
+            "graph_drift_mean": 0.5117063216173253,
+            "n": 78,
+            "n_documents": 39,
+            "query_drift_mean": 0.6561239580606372
+          }
+        },
+        "graph_drift_mean": 0.6570610668854839,
+        "n": 6419,
+        "n_documents": 299,
+        "query_drift_mean": 0.7904311733740647
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.8072411011418265,
+        "amp_ci_lo": 0.7672503827189193,
+        "amp_mean": 0.7868825195909878,
+        "amp_ratio_of_means": 0.7910900227017117,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.7870576697901495,
+            "amplification_ratio_of_means_damped": 0.8048345164123669,
+            "graph_drift_mean": 0.6319258859091752,
+            "n": 2301,
+            "n_documents": 299,
+            "query_drift_mean": 0.5488374906147859
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7875204558351946,
+            "amplification_ratio_of_means_damped": 0.783624834669807,
+            "graph_drift_mean": 0.6741832751917717,
+            "n": 4040,
+            "n_documents": 299,
+            "query_drift_mean": 0.5674879992927915
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.7486737627337244,
+            "amplification_ratio_of_means_damped": 0.7973498228625296,
+            "graph_drift_mean": 0.5117063216173253,
+            "n": 78,
+            "n_documents": 39,
+            "query_drift_mean": 0.44787643604233746
+          }
+        },
+        "graph_drift_mean": 0.6570610668854839,
+        "n": 6419,
+        "n_documents": 299,
+        "query_drift_mean": 0.559348955453934
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.6289067649971098,
+        "amp_ci_lo": 0.5740518420128612,
+        "amp_mean": 0.602046197370791,
+        "amp_ratio_of_means": 0.6020811681824677,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.6107524364621153,
+            "amplification_ratio_of_means_damped": 0.6158520275220928,
+            "graph_drift_mean": 0.6319258859091752,
+            "n": 2301,
+            "n_documents": 299,
+            "query_drift_mean": 0.4199654394569649
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5956269463176712,
+            "amplification_ratio_of_means_damped": 0.5932822960922002,
+            "graph_drift_mean": 0.6741832751917717,
+            "n": 4040,
+            "n_documents": 299,
+            "query_drift_mean": 0.42964511629734403
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.6776964294921579,
+            "amplification_ratio_of_means_damped": 0.696455939070274,
+            "graph_drift_mean": 0.5117063216173253,
+            "n": 78,
+            "n_documents": 39,
+            "query_drift_mean": 0.3912037037037037
+          }
+        },
+        "graph_drift_mean": 0.6570610668854839,
+        "n": 6419,
+        "n_documents": 299,
+        "query_drift_mean": 0.42570815312675414
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 0.8019593970770823,
+        "amp_ci_lo": 0.6728596307078338,
+        "amp_mean": 0.739966361447823,
+        "amp_ratio_of_means": 0.7471236175099437,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.7628803693062751,
+            "amplification_ratio_of_means_damped": 0.7823652104340365,
+            "graph_drift_mean": 0.6319258859091752,
+            "n": 2301,
+            "n_documents": 299,
+            "query_drift_mean": 0.5335150892297487
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7302519849916943,
+            "amplification_ratio_of_means_damped": 0.7296499980857999,
+            "graph_drift_mean": 0.6741832751917717,
+            "n": 4040,
+            "n_documents": 299,
+            "query_drift_mean": 0.5284003253574445
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.5671580127357987,
+            "amplification_ratio_of_means_damped": 0.6518230746724676,
+            "graph_drift_mean": 0.5117063216173253,
+            "n": 78,
+            "n_documents": 39,
+            "query_drift_mean": 0.36613314161956695
+          }
+        },
+        "graph_drift_mean": 0.6570610668854839,
+        "n": 6419,
+        "n_documents": 299,
+        "query_drift_mean": 0.5282620220919231
+      }
     },
-    "Q3_join": {
-      "n": 1000,
-      "n_documents": 18,
-      "amp_mean": 1.3184479572219128,
-      "amp_ci_lo": 1.1427190971348617,
-      "amp_ci_hi": 1.5882597096719862,
-      "query_drift_mean": 0.8149990459895528,
-      "graph_drift_mean": 0.6432527248279002,
-      "amp_ratio_of_means": 1.266996645743873
+    "docred__glm-5__100d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.8519894800684107,
+        "amp_ci_lo": 0.6521597132781157,
+        "amp_mean": 0.7463757617292945,
+        "amp_ratio_of_means": 0.8904879939811698,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.6738120264643089,
+            "amplification_ratio_of_means_damped": 0.8723120134799662,
+            "graph_drift_mean": 0.3415795163091178,
+            "n": 155,
+            "n_documents": 13,
+            "query_drift_mean": 0.3415795163091178
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7904922945064056,
+            "amplification_ratio_of_means_damped": 0.8991219669390194,
+            "graph_drift_mean": 0.44564804628749116,
+            "n": 258,
+            "n_documents": 13,
+            "query_drift_mean": 0.44564804628749116
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.7388931789280803,
+            "amplification_ratio_of_means_damped": 0.8903783363300455,
+            "graph_drift_mean": 0.40611422346716464,
+            "n": 18,
+            "n_documents": 13,
+            "query_drift_mean": 0.40611422346716464
+          }
+        },
+        "graph_drift_mean": 0.4065709442981321,
+        "n": 431,
+        "n_documents": 13,
+        "query_drift_mean": 0.4065709442981321
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 1.1947182428104246,
+        "amp_ci_lo": 0.7825714829922489,
+        "amp_mean": 0.9825999812036005,
+        "amp_ratio_of_means": 1.1277418576856795,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.8386954591361205,
+            "amplification_ratio_of_means_damped": 1.0603998102688466,
+            "graph_drift_mean": 0.3415795163091178,
+            "n": 155,
+            "n_documents": 13,
+            "query_drift_mean": 0.41523084479935524
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 1.074609066779367,
+            "amplification_ratio_of_means_damped": 1.160919289202019,
+            "graph_drift_mean": 0.44564804628749116,
+            "n": 258,
+            "n_documents": 13,
+            "query_drift_mean": 0.5754073775904437
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.9029809168653556,
+            "amplification_ratio_of_means_damped": 1.1088232138344152,
+            "graph_drift_mean": 0.40611422346716464,
+            "n": 18,
+            "n_documents": 13,
+            "query_drift_mean": 0.5057500391404501
+          }
+        },
+        "graph_drift_mean": 0.4065709442981321,
+        "n": 431,
+        "n_documents": 13,
+        "query_drift_mean": 0.5148941648880804
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.7716676662057047,
+        "amp_ci_lo": 0.4737392744463746,
+        "amp_mean": 0.6334759057358451,
+        "amp_ratio_of_means": 0.7040656739841706,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.5787045467019742,
+            "amplification_ratio_of_means_damped": 0.7011321425453202,
+            "graph_drift_mean": 0.3415795163091178,
+            "n": 155,
+            "n_documents": 13,
+            "query_drift_mean": 0.27454898524667193
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.6777828638368997,
+            "amplification_ratio_of_means_damped": 0.7175154093235163,
+            "graph_drift_mean": 0.44564804628749116,
+            "n": 258,
+            "n_documents": 13,
+            "query_drift_mean": 0.35563511081237037
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.47005176463461756,
+            "amplification_ratio_of_means_damped": 0.5162637564629611,
+            "graph_drift_mean": 0.40611422346716464,
+            "n": 18,
+            "n_documents": 13,
+            "query_drift_mean": 0.23547524238334488
+          }
+        },
+        "graph_drift_mean": 0.4065709442981321,
+        "n": 431,
+        "n_documents": 13,
+        "query_drift_mean": 0.3214559296188536
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.7192944745986558,
+        "amp_ci_lo": 0.3638688951584337,
+        "amp_mean": 0.5337349000800093,
+        "amp_ratio_of_means": 0.557332342199024,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.5061131622806883,
+            "amplification_ratio_of_means_damped": 0.5856909988959381,
+            "graph_drift_mean": 0.3415795163091178,
+            "n": 155,
+            "n_documents": 13,
+            "query_drift_mean": 0.22934459805427548
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5539816579219852,
+            "amplification_ratio_of_means_damped": 0.5453210517351462,
+            "graph_drift_mean": 0.44564804628749116,
+            "n": 258,
+            "n_documents": 13,
+            "query_drift_mean": 0.2702873138919651
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.4813852242836192,
+            "amplification_ratio_of_means_damped": 0.5347681158925824,
+            "graph_drift_mean": 0.40611422346716464,
+            "n": 18,
+            "n_documents": 13,
+            "query_drift_mean": 0.24391534391534392
+          }
+        },
+        "graph_drift_mean": 0.4065709442981321,
+        "n": 431,
+        "n_documents": 13,
+        "query_drift_mean": 0.2544617537656981
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 1.2762877080057184,
+        "amp_ci_lo": 0.6186888076556122,
+        "amp_mean": 0.9487984320201951,
+        "amp_ratio_of_means": 1.0484051003884207,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.9445660773315732,
+            "amplification_ratio_of_means_damped": 1.143366452759459,
+            "graph_drift_mean": 0.3415795163091178,
+            "n": 155,
+            "n_documents": 13,
+            "query_drift_mean": 0.44771888253562075
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.9465788571713715,
+            "amplification_ratio_of_means_damped": 0.9961070750080158,
+            "graph_drift_mean": 0.44564804628749116,
+            "n": 258,
+            "n_documents": 13,
+            "query_drift_mean": 0.49371852562087043
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 1.017057614672022,
+            "amplification_ratio_of_means_damped": 1.1609575811342736,
+            "graph_drift_mean": 0.40611422346716464,
+            "n": 18,
+            "n_documents": 13,
+            "query_drift_mean": 0.529529265597377
+          }
+        },
+        "graph_drift_mean": 0.4065709442981321,
+        "n": 431,
+        "n_documents": 13,
+        "query_drift_mean": 0.4786713066913192
+      }
     },
-    "Q4_top_degree": {
-      "n": 1000,
-      "n_documents": 18,
-      "amp_mean": 0.621914810435971,
-      "amp_ci_lo": 0.5132310433246915,
-      "amp_ci_hi": 0.7352152754886023,
-      "query_drift_mean": 0.4152845238095212,
-      "graph_drift_mean": 0.6432527248279002,
-      "amp_ratio_of_means": 0.6456008768171609
+    "docred__kimi-k2__100d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.8194702989720632,
+        "amp_ci_lo": 0.742512393792757,
+        "amp_mean": 0.7848101467122189,
+        "amp_ratio_of_means": 0.9047153271045243,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.731729769730745,
+            "amplification_ratio_of_means_damped": 0.8926952814622325,
+            "graph_drift_mean": 0.4159627338046815,
+            "n": 694,
+            "n_documents": 100,
+            "query_drift_mean": 0.4159627338046815
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.8184452452477565,
+            "amplification_ratio_of_means_damped": 0.9113772215241609,
+            "graph_drift_mean": 0.5141890364973306,
+            "n": 1097,
+            "n_documents": 100,
+            "query_drift_mean": 0.5141890364973306
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.7827438891831873,
+            "amplification_ratio_of_means_damped": 0.886180027080389,
+            "graph_drift_mean": 0.3892902117040048,
+            "n": 29,
+            "n_documents": 15,
+            "query_drift_mean": 0.3892902117040048
+          }
+        },
+        "graph_drift_mean": 0.4747433661744158,
+        "n": 1820,
+        "n_documents": 100,
+        "query_drift_mean": 0.4747433661744158
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 1.1196372016148923,
+        "amp_ci_lo": 0.9615539906304968,
+        "amp_mean": 1.0385577301385667,
+        "amp_ratio_of_means": 1.0890254935936603,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.9382970734964682,
+            "amplification_ratio_of_means_damped": 1.0471228367642922,
+            "graph_drift_mean": 0.4159627338046815,
+            "n": 694,
+            "n_documents": 100,
+            "query_drift_mean": 0.48792021964800286
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 1.1024239228479276,
+            "amplification_ratio_of_means_damped": 1.111129216535137,
+            "graph_drift_mean": 0.5141890364973306,
+            "n": 1097,
+            "n_documents": 100,
+            "query_drift_mean": 0.6268869221009928
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 1.021995051085031,
+            "amplification_ratio_of_means_damped": 1.0788263748368399,
+            "graph_drift_mean": 0.3892902117040048,
+            "n": 29,
+            "n_documents": 15,
+            "query_drift_mean": 0.4739178665939394
+          }
+        },
+        "graph_drift_mean": 0.4747433661744158,
+        "n": 1820,
+        "n_documents": 100,
+        "query_drift_mean": 0.571458903358092
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.7766800579627371,
+        "amp_ci_lo": 0.6652164736118095,
+        "amp_mean": 0.719959387698956,
+        "amp_ratio_of_means": 0.769829472689532,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.6972341379940882,
+            "amplification_ratio_of_means_damped": 0.7901067494298525,
+            "graph_drift_mean": 0.4159627338046815,
+            "n": 694,
+            "n_documents": 100,
+            "query_drift_mean": 0.36816030096186453
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7340239631547009,
+            "amplification_ratio_of_means_damped": 0.7585232610646269,
+            "graph_drift_mean": 0.5141890364973306,
+            "n": 1097,
+            "n_documents": 100,
+            "query_drift_mean": 0.427950507820865
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.7317691814998559,
+            "amplification_ratio_of_means_damped": 0.8043962220327712,
+            "graph_drift_mean": 0.3892902117040048,
+            "n": 29,
+            "n_documents": 15,
+            "query_drift_mean": 0.3533633866706777
+          }
+        },
+        "graph_drift_mean": 0.4747433661744158,
+        "n": 1820,
+        "n_documents": 100,
+        "query_drift_mean": 0.4039629088793805
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.6478936145395319,
+        "amp_ci_lo": 0.49831566429513197,
+        "amp_mean": 0.5720487815087434,
+        "amp_ratio_of_means": 0.5914484853258938,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.5603993636030777,
+            "amplification_ratio_of_means_damped": 0.6085042909641718,
+            "graph_drift_mean": 0.4159627338046815,
+            "n": 694,
+            "n_documents": 100,
+            "query_drift_mean": 0.28354032294954484
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5787739679052649,
+            "amplification_ratio_of_means_damped": 0.5812312186436814,
+            "graph_drift_mean": 0.5141890364973306,
+            "n": 1097,
+            "n_documents": 100,
+            "query_drift_mean": 0.32792428122874795
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.5964338349414303,
+            "amplification_ratio_of_means_damped": 0.6548853614290918,
+            "graph_drift_mean": 0.3892902117040048,
+            "n": 29,
+            "n_documents": 15,
+            "query_drift_mean": 0.2876847290640394
+          }
+        },
+        "graph_drift_mean": 0.4747433661744158,
+        "n": 1820,
+        "n_documents": 100,
+        "query_drift_mean": 0.3103586691086691
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 0.8474574421430934,
+        "amp_ci_lo": 0.5291195048644172,
+        "amp_mean": 0.6877618058224486,
+        "amp_ratio_of_means": 0.7377844692028207,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.6843883165582066,
+            "amplification_ratio_of_means_damped": 0.7995096076705787,
+            "graph_drift_mean": 0.4159627338046815,
+            "n": 694,
+            "n_documents": 100,
+            "query_drift_mean": 0.37254168249329117
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.6847991092291523,
+            "amplification_ratio_of_means_damped": 0.7016908599212971,
+            "graph_drift_mean": 0.5141890364973306,
+            "n": 1097,
+            "n_documents": 100,
+            "query_drift_mean": 0.39588629017798
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.8805645545200337,
+            "amplification_ratio_of_means_damped": 0.924475077851762,
+            "graph_drift_mean": 0.3892902117040048,
+            "n": 29,
+            "n_documents": 15,
+            "query_drift_mean": 0.4061128526645768
+          }
+        },
+        "graph_drift_mean": 0.4747433661744158,
+        "n": 1820,
+        "n_documents": 100,
+        "query_drift_mean": 0.3871475058806928
+      }
     },
-    "Q5_short_paths": {
-      "n": 1000,
-      "n_documents": 18,
-      "amp_mean": 0.7885067097171912,
-      "amp_ci_lo": 0.7316643802281987,
-      "amp_ci_hi": 0.83639494087308,
-      "query_drift_mean": 0.5450664661562691,
-      "graph_drift_mean": 0.6432527248279002,
-      "amp_ratio_of_means": 0.8473597456656554
+    "docred__qwen3-32b__100d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.871104210940641,
+        "amp_ci_lo": 0.8287488890381949,
+        "amp_mean": 0.850276433056762,
+        "amp_ratio_of_means": 0.923863917027564,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.8496160374006677,
+            "amplification_ratio_of_means_damped": 0.9248967299999225,
+            "graph_drift_mean": 0.6157499733360271,
+            "n": 677,
+            "n_documents": 99,
+            "query_drift_mean": 0.6157499733360271
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.854813400773084,
+            "amplification_ratio_of_means_damped": 0.9239035592375919,
+            "graph_drift_mean": 0.6070609544815958,
+            "n": 1071,
+            "n_documents": 99,
+            "query_drift_mean": 0.6070609544815958
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.692704841449437,
+            "amplification_ratio_of_means_damped": 0.882428458664736,
+            "graph_drift_mean": 0.37527298215323424,
+            "n": 28,
+            "n_documents": 14,
+            "query_drift_mean": 0.37527298215323424
+          }
+        },
+        "graph_drift_mean": 0.6067188387942398,
+        "n": 1776,
+        "n_documents": 99,
+        "query_drift_mean": 0.6067188387942398
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 1.161346768662072,
+        "amp_ci_lo": 1.0342531788941585,
+        "amp_mean": 1.103318372040412,
+        "amp_ratio_of_means": 1.1221013497951355,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 1.0771552962664601,
+            "amplification_ratio_of_means_damped": 1.1118735653203453,
+            "graph_drift_mean": 0.6157499733360271,
+            "n": 677,
+            "n_documents": 99,
+            "query_drift_mean": 0.7402297964650533
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 1.1245151347049989,
+            "amplification_ratio_of_means_damped": 1.128392216308181,
+            "graph_drift_mean": 0.6070609544815958,
+            "n": 1071,
+            "n_documents": 99,
+            "query_drift_mean": 0.7414224666770568
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.9251279965115926,
+            "amplification_ratio_of_means_damped": 1.137455575942778,
+            "graph_drift_mean": 0.37527298215323424,
+            "n": 28,
+            "n_documents": 14,
+            "query_drift_mean": 0.48372912484800984
+          }
+        },
+        "graph_drift_mean": 0.6067188387942398,
+        "n": 1776,
+        "n_documents": 99,
+        "query_drift_mean": 0.7369050954469105
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.7499104934226231,
+        "amp_ci_lo": 0.6654337525055184,
+        "amp_mean": 0.7070784616367447,
+        "amp_ratio_of_means": 0.7319134793451024,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.6951396556670891,
+            "amplification_ratio_of_means_damped": 0.7274430086689951,
+            "graph_drift_mean": 0.6157499733360271,
+            "n": 677,
+            "n_documents": 99,
+            "query_drift_mean": 0.48429516362486286
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7174734476378939,
+            "amplification_ratio_of_means_damped": 0.7347274904504888,
+            "graph_drift_mean": 0.6070609544815958,
+            "n": 1071,
+            "n_documents": 99,
+            "query_drift_mean": 0.4827607461592658
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.59813352000196,
+            "amplification_ratio_of_means_damped": 0.734822860556865,
+            "graph_drift_mean": 0.37527298215323424,
+            "n": 28,
+            "n_documents": 14,
+            "query_drift_mean": 0.3125003092633882
+          }
+        },
+        "graph_drift_mean": 0.6067188387942398,
+        "n": 1776,
+        "n_documents": 99,
+        "query_drift_mean": 0.4806613702533675
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.5817801525367405,
+        "amp_ci_lo": 0.4684216374174337,
+        "amp_mean": 0.5230894940981738,
+        "amp_ratio_of_means": 0.5183919496093877,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.5266191126370073,
+            "amplification_ratio_of_means_damped": 0.5249815597463855,
+            "graph_drift_mean": 0.6157499733360271,
+            "n": 677,
+            "n_documents": 99,
+            "query_drift_mean": 0.3495064594030621
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5228584037063814,
+            "amplification_ratio_of_means_damped": 0.5141125296700191,
+            "graph_drift_mean": 0.6070609544815958,
+            "n": 1071,
+            "n_documents": 99,
+            "query_drift_mean": 0.33780326945593053
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.44658756762744223,
+            "amplification_ratio_of_means_damped": 0.521873678375917,
+            "graph_drift_mean": 0.37527298215323424,
+            "n": 28,
+            "n_documents": 14,
+            "query_drift_mean": 0.22193877551020408
+          }
+        },
+        "graph_drift_mean": 0.6067188387942398,
+        "n": 1776,
+        "n_documents": 99,
+        "query_drift_mean": 0.3404377591877592
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 0.6156777905163794,
+        "amp_ci_lo": 0.41114389156450315,
+        "amp_mean": 0.5163505253756119,
+        "amp_ratio_of_means": 0.5555178711682327,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.5161411292106389,
+            "amplification_ratio_of_means_damped": 0.5453063625420237,
+            "graph_drift_mean": 0.6157499733360271,
+            "n": 677,
+            "n_documents": 99,
+            "query_drift_mean": 0.36303769632231825
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5138733744535271,
+            "amplification_ratio_of_means_damped": 0.5597109187047141,
+            "graph_drift_mean": 0.6070609544815958,
+            "n": 1071,
+            "n_documents": 99,
+            "query_drift_mean": 0.36776419047789033
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.616164448277024,
+            "amplification_ratio_of_means_damped": 0.6942319583606069,
+            "graph_drift_mean": 0.37527298215323424,
+            "n": 28,
+            "n_documents": 14,
+            "query_drift_mean": 0.29523809523809524
+          }
+        },
+        "graph_drift_mean": 0.6067188387942398,
+        "n": 1776,
+        "n_documents": 99,
+        "query_drift_mean": 0.3648190512830499
+      }
+    },
+    "redocred__deepseek-v4-flash__300d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.9145224452089845,
+        "amp_ci_lo": 0.9034395740274134,
+        "amp_mean": 0.9095114690702121,
+        "amp_ratio_of_means": 0.9306907638820244,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.9012633165175885,
+            "amplification_ratio_of_means_damped": 0.9294881699922061,
+            "graph_drift_mean": 0.6591008699458429,
+            "n": 2320,
+            "n_documents": 300,
+            "query_drift_mean": 0.6591008699458429
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.9145237114421129,
+            "amplification_ratio_of_means_damped": 0.9315758533219464,
+            "graph_drift_mean": 0.6807361863825342,
+            "n": 4214,
+            "n_documents": 300,
+            "query_drift_mean": 0.6807361863825342
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.8846880261564233,
+            "amplification_ratio_of_means_damped": 0.9147731188119484,
+            "graph_drift_mean": 0.5366693618610305,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.5366693618610305
+          }
+        },
+        "graph_drift_mean": 0.6714045746355061,
+        "n": 6614,
+        "n_documents": 300,
+        "query_drift_mean": 0.6714045746355061
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 1.1759141597658618,
+        "amp_ci_lo": 1.1262463874035562,
+        "amp_mean": 1.1502829938067163,
+        "amp_ratio_of_means": 1.115760159941251,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 1.1313893370184402,
+            "amplification_ratio_of_means_damped": 1.1059894797327314,
+            "graph_drift_mean": 0.6591008699458429,
+            "n": 2320,
+            "n_documents": 300,
+            "query_drift_mean": 0.7842581022294302
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 1.1587442490059565,
+            "amplification_ratio_of_means_damped": 1.1195112710072734,
+            "graph_drift_mean": 0.6807361863825342,
+            "n": 4214,
+            "n_documents": 300,
+            "query_drift_mean": 0.8180673967881188
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 1.2525024230467379,
+            "amplification_ratio_of_means_damped": 1.2121305211163598,
+            "graph_drift_mean": 0.5366693618610305,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.7111198393156132
+          }
+        },
+        "graph_drift_mean": 0.6714045746355061,
+        "n": 6614,
+        "n_documents": 300,
+        "query_drift_mean": 0.8049144835776625
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.8102558502522444,
+        "amp_ci_lo": 0.7699695020376653,
+        "amp_mean": 0.7900486007757717,
+        "amp_ratio_of_means": 0.791479174234698,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.7850516171746021,
+            "amplification_ratio_of_means_damped": 0.7963014028977433,
+            "graph_drift_mean": 0.6591008699458429,
+            "n": 2320,
+            "n_documents": 300,
+            "query_drift_mean": 0.564658017533885
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7923833537345181,
+            "amplification_ratio_of_means_damped": 0.7882982567951583,
+            "graph_drift_mean": 0.6807361863825342,
+            "n": 4214,
+            "n_documents": 300,
+            "query_drift_mean": 0.5760380619024936
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.8119780131077152,
+            "amplification_ratio_of_means_damped": 0.8311513073072525,
+            "graph_drift_mean": 0.5366693618610305,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.48761100706790717
+          }
+        },
+        "graph_drift_mean": 0.6714045746355061,
+        "n": 6614,
+        "n_documents": 300,
+        "query_drift_mean": 0.570976697021644
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.6363504875311987,
+        "amp_ci_lo": 0.5760535022992826,
+        "amp_mean": 0.6061531943468261,
+        "amp_ratio_of_means": 0.6037954373202924,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.6114671952466496,
+            "amplification_ratio_of_means_damped": 0.6174006379873039,
+            "graph_drift_mean": 0.6591008699458429,
+            "n": 2320,
+            "n_documents": 300,
+            "query_drift_mean": 0.4377993295019157
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.6013663100548372,
+            "amplification_ratio_of_means_damped": 0.5949973142989755,
+            "graph_drift_mean": 0.6807361863825342,
+            "n": 4214,
+            "n_documents": 300,
+            "query_drift_mean": 0.43478606835868344
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.7041962983324563,
+            "amplification_ratio_of_means_damped": 0.7041532856253273,
+            "graph_drift_mean": 0.5366693618610305,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.41310515873015874
+          }
+        },
+        "graph_drift_mean": 0.6714045746355061,
+        "n": 6614,
+        "n_documents": 300,
+        "query_drift_mean": 0.4355807906269049
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 0.8516957677869915,
+        "amp_ci_lo": 0.7450379119874917,
+        "amp_mean": 0.7998980299170764,
+        "amp_ratio_of_means": 0.7901143952507649,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.8026388393822214,
+            "amplification_ratio_of_means_damped": 0.8043431299357074,
+            "graph_drift_mean": 0.6591008699458429,
+            "n": 2320,
+            "n_documents": 300,
+            "query_drift_mean": 0.5703604131723724
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.798001065253972,
+            "amplification_ratio_of_means_damped": 0.7815497245728574,
+            "graph_drift_mean": 0.6807361863825342,
+            "n": 4214,
+            "n_documents": 300,
+            "query_drift_mean": 0.5711066652026898
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.8203371690569017,
+            "amplification_ratio_of_means_damped": 0.8532992703326016,
+            "graph_drift_mean": 0.5366693618610305,
+            "n": 80,
+            "n_documents": 40,
+            "query_drift_mean": 0.5006045384025104
+          }
+        },
+        "graph_drift_mean": 0.6714045746355061,
+        "n": 6614,
+        "n_documents": 300,
+        "query_drift_mean": 0.5699921392192682
+      }
+    },
+    "scierc__deepseek-v4-flash__100d": {
+      "diagnostic.edge_identity": {
+        "amp_ci_hi": 0.9082640019669047,
+        "amp_ci_lo": 0.8854450244740899,
+        "amp_mean": 0.898435382684856,
+        "amp_ratio_of_means": 0.9331386924645723,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.8973611879737154,
+            "amplification_ratio_of_means_damped": 0.9324020249213861,
+            "graph_drift_mean": 0.6896671267423604,
+            "n": 2643,
+            "n_documents": 100,
+            "query_drift_mean": 0.6896671267423604
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.9040374140006296,
+            "amplification_ratio_of_means_damped": 0.9343981003367642,
+            "graph_drift_mean": 0.7121730507298206,
+            "n": 3455,
+            "n_documents": 100,
+            "query_drift_mean": 0.7121730507298206
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.8290407542207651,
+            "amplification_ratio_of_means_damped": 0.9206234230578998,
+            "graph_drift_mean": 0.5799087454536066,
+            "n": 238,
+            "n_documents": 40,
+            "query_drift_mean": 0.5799087454536066
+          }
+        },
+        "graph_drift_mean": 0.6978166647205725,
+        "n": 6336,
+        "n_documents": 100,
+        "query_drift_mean": 0.6978166647205725
+      },
+      "diagnostic.fanout_join": {
+        "amp_ci_hi": 0.9302915286897309,
+        "amp_ci_lo": 0.7056339692827193,
+        "amp_mean": 0.8158560091861788,
+        "amp_ratio_of_means": 0.8086081117539766,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.8189097963251707,
+            "amplification_ratio_of_means_damped": 0.8175468284532867,
+            "graph_drift_mean": 0.6896671267423604,
+            "n": 2643,
+            "n_documents": 100,
+            "query_drift_mean": 0.6047125135793721
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.8181723015690164,
+            "amplification_ratio_of_means_damped": 0.8027550986501291,
+            "graph_drift_mean": 0.7121730507298206,
+            "n": 3455,
+            "n_documents": 100,
+            "query_drift_mean": 0.611838302527087
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.7483184058623996,
+            "amplification_ratio_of_means_damped": 0.7948548113091762,
+            "graph_drift_mean": 0.5799087454536066,
+            "n": 238,
+            "n_documents": 40,
+            "query_drift_mean": 0.5006859970095264
+          }
+        },
+        "graph_drift_mean": 0.6978166647205725,
+        "n": 6336,
+        "n_documents": 100,
+        "query_drift_mean": 0.6046906211978588
+      },
+      "diagnostic.short_connectivity": {
+        "amp_ci_hi": 0.7467696608100695,
+        "amp_ci_lo": 0.6371460302385424,
+        "amp_mean": 0.6973986471922053,
+        "amp_ratio_of_means": 0.7088541994417485,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.692458622735386,
+            "amplification_ratio_of_means_damped": 0.7062157721305687,
+            "graph_drift_mean": 0.6896671267423604,
+            "n": 2643,
+            "n_documents": 100,
+            "query_drift_mean": 0.5223645910319553
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.7057182140394846,
+            "amplification_ratio_of_means_damped": 0.7123793428394742,
+            "graph_drift_mean": 0.7121730507298206,
+            "n": 3455,
+            "n_documents": 100,
+            "query_drift_mean": 0.5429563370088669
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.6314842824107918,
+            "amplification_ratio_of_means_damped": 0.6813404084151223,
+            "graph_drift_mean": 0.5799087454536066,
+            "n": 238,
+            "n_documents": 40,
+            "query_drift_mean": 0.42918228189161767
+          }
+        },
+        "graph_drift_mean": 0.6978166647205725,
+        "n": 6336,
+        "n_documents": 100,
+        "query_drift_mean": 0.5300929831996999
+      },
+      "diagnostic.top_undirected_degree": {
+        "amp_ci_hi": 0.5520440594922437,
+        "amp_ci_lo": 0.45359908901287294,
+        "amp_mean": 0.50490950868217,
+        "amp_ratio_of_means": 0.5026681635798023,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 0.49456443694211005,
+            "amplification_ratio_of_means_damped": 0.49403004677819673,
+            "graph_drift_mean": 0.6896671267423604,
+            "n": 2643,
+            "n_documents": 100,
+            "query_drift_mean": 0.3654177852248227
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 0.5139794611091851,
+            "amplification_ratio_of_means_damped": 0.5088472913675961,
+            "graph_drift_mean": 0.7121730507298206,
+            "n": 3455,
+            "n_documents": 100,
+            "query_drift_mean": 0.3878296924172467
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.4881252186554508,
+            "amplification_ratio_of_means_damped": 0.5067734398768418,
+            "graph_drift_mean": 0.5799087454536066,
+            "n": 238,
+            "n_documents": 40,
+            "query_drift_mean": 0.31922102174203015
+          }
+        },
+        "graph_drift_mean": 0.6978166647205725,
+        "n": 6336,
+        "n_documents": 100,
+        "query_drift_mean": 0.3759036295494629
+      },
+      "diagnostic.two_hop_endpoints": {
+        "amp_ci_hi": 1.0597668337014057,
+        "amp_ci_lo": 0.9559048613334125,
+        "amp_mean": 1.008264593505776,
+        "amp_ratio_of_means": 1.0127863965769157,
+        "by_semantic_class": {
+          "presentation": {
+            "amplification_mean_per_pair": 1.022376738775243,
+            "amplification_ratio_of_means_damped": 1.0271882186785575,
+            "graph_drift_mean": 0.6896671267423604,
+            "n": 2643,
+            "n_documents": 100,
+            "query_drift_mean": 0.7597773583335721
+          },
+          "semantic": {
+            "amplification_mean_per_pair": 1.001565858685699,
+            "amplification_ratio_of_means_damped": 1.0008913141919629,
+            "graph_drift_mean": 0.7121730507298206,
+            "n": 3455,
+            "n_documents": 100,
+            "query_drift_mean": 0.7628523863866677
+          },
+          "stochastic": {
+            "amplification_mean_per_pair": 0.9487928660106657,
+            "amplification_ratio_of_means_damped": 1.0339226653485805,
+            "graph_drift_mean": 0.5799087454536066,
+            "n": 238,
+            "n_documents": 40,
+            "query_drift_mean": 0.6512769290257735
+          }
+        },
+        "graph_drift_mean": 0.6978166647205725,
+        "n": 6336,
+        "n_documents": 100,
+        "query_drift_mean": 0.7573785451625161
+      }
     }
   },
-  "redocred__deepseek-v4-flash__300d": {
-    "Q1_single_edge": {
-      "n": 1000,
-      "n_documents": 17,
-      "amp_mean": 0.9039298785908307,
-      "amp_ci_lo": 0.8831709823051641,
-      "amp_ci_hi": 0.9183352405712856,
-      "query_drift_mean": 0.6469489049024999,
-      "graph_drift_mean": 0.6469489049024999,
-      "amp_ratio_of_means": 0.9999999984542829
+  "source_artifacts": {
+    "cdr__deepseek-v4-flash__300d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_cdr__deepseek-v4-flash__300d.json",
+      "source_database": {
+        "path": "data/processed/runs/cdr__deepseek-v4-flash__300d/cdr__deepseek-v4-flash__300d.db",
+        "sha256": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+        "size_bytes": 68694016
+      }
     },
-    "Q2_two_hop": {
-      "n": 1000,
-      "n_documents": 17,
-      "amp_mean": 0.7302765260517114,
-      "amp_ci_lo": 0.5195786987335057,
-      "amp_ci_hi": 0.9269653336959853,
-      "query_drift_mean": 0.5076880562491453,
-      "graph_drift_mean": 0.6469489049024999,
-      "amp_ratio_of_means": 0.7847421204629995
+    "docred__deepseek-v4-flash__300d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_docred__deepseek-v4-flash__300d.json",
+      "source_database": {
+        "path": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
+        "sha256": "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4e0e03f9418",
+        "size_bytes": 212393984
+      }
     },
-    "Q3_join": {
-      "n": 1000,
-      "n_documents": 17,
-      "amp_mean": 1.3400810653128583,
-      "amp_ci_lo": 1.2139720911274363,
-      "amp_ci_hi": 1.5089569710093493,
-      "query_drift_mean": 0.8488970246763049,
-      "graph_drift_mean": 0.6469489049024999,
-      "amp_ratio_of_means": 1.3121546646594686
+    "docred__glm-5__100d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_docred__glm-5__100d.json",
+      "source_database": {
+        "path": "data/processed/runs/docred__glm-5__100d/docred__glm-5__100d.db",
+        "sha256": "800c8846eb89709458687970099393603ded692f6ec053ca5cfca22db9802af7",
+        "size_bytes": 15663104
+      }
     },
-    "Q4_top_degree": {
-      "n": 1000,
-      "n_documents": 17,
-      "amp_mean": 0.7065222972056611,
-      "amp_ci_lo": 0.548036504660621,
-      "amp_ci_hi": 0.9120243743132167,
-      "query_drift_mean": 0.42848015873015516,
-      "graph_drift_mean": 0.6469489049024999,
-      "amp_ratio_of_means": 0.662309117182015
+    "docred__kimi-k2__100d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_docred__kimi-k2__100d.json",
+      "source_database": {
+        "path": "data/processed/runs/docred__kimi-k2__100d/docred__kimi-k2__100d.db",
+        "sha256": "4e4a0000455b67fb7bc52083bf2ada2d05e44935468b04bfaa390a073df0f0f4",
+        "size_bytes": 42352640
+      }
     },
-    "Q5_short_paths": {
-      "n": 1000,
-      "n_documents": 17,
-      "amp_mean": 0.8545014905124435,
-      "amp_ci_lo": 0.7860936593097763,
-      "amp_ci_hi": 0.9085774838319369,
-      "query_drift_mean": 0.5986575015045683,
-      "graph_drift_mean": 0.6469489049024999,
-      "amp_ratio_of_means": 0.9253551494448166
-    }
-  },
-  "scierc__deepseek-v4-flash__100d": {
-    "Q1_single_edge": {
-      "n": 1000,
-      "n_documents": 7,
-      "amp_mean": 0.8990947652349704,
-      "amp_ci_lo": 0.8727001113450673,
-      "amp_ci_hi": 0.9155860808352074,
-      "query_drift_mean": 0.7520313179328662,
-      "graph_drift_mean": 0.7520313179328662,
-      "amp_ratio_of_means": 0.9999999986702682
+    "docred__qwen3-32b__100d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_docred__qwen3-32b__100d.json",
+      "source_database": {
+        "path": "data/processed/runs/docred__qwen3-32b__100d/docred__qwen3-32b__100d.db",
+        "sha256": "f57d8b1f00f4b23e4adc9b3dbba1df84b100cd1bb7612e861ed509245fc02f2d",
+        "size_bytes": 50614272
+      }
     },
-    "Q2_two_hop": {
-      "n": 1000,
-      "n_documents": 7,
-      "amp_mean": 0.9761009896369334,
-      "amp_ci_lo": 0.8794708433637801,
-      "amp_ci_hi": 1.0712232121402325,
-      "query_drift_mean": 0.802993022515871,
-      "graph_drift_mean": 0.7520313179328662,
-      "amp_ratio_of_means": 1.06776540058906
+    "redocred__deepseek-v4-flash__300d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_redocred__deepseek-v4-flash__300d.json",
+      "source_database": {
+        "path": "data/processed/runs/redocred__deepseek-v4-flash__300d/redocred__deepseek-v4-flash__300d.db",
+        "sha256": "dc582d90d11a4b40ab6ea90f80312d8528a0ad587a5b337fb304f6cbf04cd531",
+        "size_bytes": 242851840
+      }
     },
-    "Q3_join": {
-      "n": 1000,
-      "n_documents": 7,
-      "amp_mean": 0.6797101603616083,
-      "amp_ci_lo": 0.40088066579053827,
-      "amp_ci_hi": 0.9556013129023474,
-      "query_drift_mean": 0.5463167665667671,
-      "graph_drift_mean": 0.7520313179328662,
-      "amp_ratio_of_means": 0.7264548068848936
-    },
-    "Q4_top_degree": {
-      "n": 1000,
-      "n_documents": 7,
-      "amp_mean": 0.4165026832623354,
-      "amp_ci_lo": 0.2641497967532816,
-      "amp_ci_hi": 0.5921269484215557,
-      "query_drift_mean": 0.3337960317460293,
-      "graph_drift_mean": 0.7520313179328662,
-      "amp_ratio_of_means": 0.4438592161556336
-    },
-    "Q5_short_paths": {
-      "n": 1000,
-      "n_documents": 7,
-      "amp_mean": 0.6512672783300336,
-      "amp_ci_lo": 0.46207052025057765,
-      "amp_ci_hi": 0.794036927430695,
-      "query_drift_mean": 0.5368195925167514,
-      "graph_drift_mean": 0.7520313179328662,
-      "amp_ratio_of_means": 0.7138261120274877
-    }
-  },
-  "cdr__deepseek-v4-flash__300d": {
-    "Q1_single_edge": {
-      "n": 1000,
-      "n_documents": 19,
-      "amp_mean": 0.403520891771323,
-      "amp_ci_lo": 0.272237210771385,
-      "amp_ci_hi": 0.5481110310523418,
-      "query_drift_mean": 0.26654530469530463,
-      "graph_drift_mean": 0.26654530469530463,
-      "amp_ratio_of_means": 0.9999999962482925
-    },
-    "Q2_two_hop": {
-      "n": 1000,
-      "n_documents": 19,
-      "amp_mean": 0.09559508399038977,
-      "amp_ci_lo": 0.01983566635724218,
-      "amp_ci_hi": 0.20248548357310805,
-      "query_drift_mean": 0.067,
-      "graph_drift_mean": 0.26654530469530463,
-      "amp_ratio_of_means": 0.2513643968526295
-    },
-    "Q3_join": {
-      "n": 1000,
-      "n_documents": 19,
-      "amp_mean": 0.022119224265323756,
-      "amp_ci_lo": 0.008469251772613037,
-      "amp_ci_hi": 0.04005411264887184,
-      "query_drift_mean": 0.014,
-      "graph_drift_mean": 0.26654530469530463,
-      "amp_ratio_of_means": 0.05252390381995243
-    },
-    "Q4_top_degree": {
-      "n": 1000,
-      "n_documents": 19,
-      "amp_mean": 0.33843377159350996,
-      "amp_ci_lo": 0.1759898703287954,
-      "amp_ci_hi": 0.5356442322404754,
-      "query_drift_mean": 0.16257182539682574,
-      "graph_drift_mean": 0.26654530469530463,
-      "amp_ratio_of_means": 0.6099219229269268
-    },
-    "Q5_short_paths": {
-      "n": 1000,
-      "n_documents": 19,
-      "amp_mean": 0.40124752386674506,
-      "amp_ci_lo": 0.24469601716214315,
-      "amp_ci_hi": 0.564222515935139,
-      "query_drift_mean": 0.2453650567458821,
-      "graph_drift_mean": 0.26654530469530463,
-      "amp_ratio_of_means": 0.9205379029498487
-    }
-  },
-  "docred__glm-5__100d": {
-    "Q1_single_edge": {
-      "n": 418,
-      "n_documents": 13,
-      "amp_mean": 0.7572298795637786,
-      "amp_ci_lo": 0.6485697605862014,
-      "amp_ci_hi": 0.8567914318563153,
-      "query_drift_mean": 0.44774848186702276,
-      "graph_drift_mean": 0.44774848186702276,
-      "amp_ratio_of_means": 0.9999999977666032
-    },
-    "Q2_two_hop": {
-      "n": 418,
-      "n_documents": 13,
-      "amp_mean": 0.9322862633089878,
-      "amp_ci_lo": 0.6112250982488425,
-      "amp_ci_hi": 1.2499872382167487,
-      "query_drift_mean": 0.4861088305488515,
-      "graph_drift_mean": 0.44774848186702276,
-      "amp_ratio_of_means": 1.0856738752886437
-    },
-    "Q3_join": {
-      "n": 418,
-      "n_documents": 13,
-      "amp_mean": 1.372172159090961,
-      "amp_ci_lo": 1.1667713576253271,
-      "amp_ci_hi": 1.5989660350471915,
-      "query_drift_mean": 0.596173303571677,
-      "graph_drift_mean": 0.44774848186702276,
-      "amp_ratio_of_means": 1.331491510042112
-    },
-    "Q4_top_degree": {
-      "n": 418,
-      "n_documents": 13,
-      "amp_mean": 0.8074878057587321,
-      "amp_ci_lo": 0.3897885214356179,
-      "amp_ci_hi": 1.3321605116857547,
-      "query_drift_mean": 0.2728696741854629,
-      "graph_drift_mean": 0.44774848186702276,
-      "amp_ratio_of_means": 0.609426239566964
-    },
-    "Q5_short_paths": {
-      "n": 418,
-      "n_documents": 13,
-      "amp_mean": 0.6029998701059128,
-      "amp_ci_lo": 0.44441931720171973,
-      "amp_ci_hi": 0.7490999811290353,
-      "query_drift_mean": 0.32216870109228946,
-      "graph_drift_mean": 0.44774848186702276,
-      "amp_ratio_of_means": 0.7195305253283697
-    }
-  },
-  "docred__kimi-k2__100d": {
-    "Q1_single_edge": {
-      "n": 1000,
-      "n_documents": 32,
-      "amp_mean": 0.7779959827215248,
-      "amp_ci_lo": 0.707346035432008,
-      "amp_ci_hi": 0.837295891820247,
-      "query_drift_mean": 0.49316919552755467,
-      "graph_drift_mean": 0.49316919552755467,
-      "amp_ratio_of_means": 0.9999999979722983
-    },
-    "Q2_two_hop": {
-      "n": 1000,
-      "n_documents": 32,
-      "amp_mean": 0.7221452733248036,
-      "amp_ci_lo": 0.4503591842793481,
-      "amp_ci_hi": 0.9589951352842605,
-      "query_drift_mean": 0.40396157973003954,
-      "graph_drift_mean": 0.49316919552755467,
-      "amp_ratio_of_means": 0.8191135670564313
-    },
-    "Q3_join": {
-      "n": 1000,
-      "n_documents": 32,
-      "amp_mean": 1.155549523481799,
-      "amp_ci_lo": 0.9976500939635988,
-      "amp_ci_hi": 1.3283001788681374,
-      "query_drift_mean": 0.6197761676864252,
-      "graph_drift_mean": 0.49316919552755467,
-      "amp_ratio_of_means": 1.2567211659818185
-    },
-    "Q4_top_degree": {
-      "n": 1000,
-      "n_documents": 32,
-      "amp_mean": 0.5382737980879263,
-      "amp_ci_lo": 0.39200116777921135,
-      "amp_ci_hi": 0.7031009592980434,
-      "query_drift_mean": 0.2524714285714295,
-      "graph_drift_mean": 0.49316919552755467,
-      "amp_ratio_of_means": 0.5119367356053497
-    },
-    "Q5_short_paths": {
-      "n": 1000,
-      "n_documents": 32,
-      "amp_mean": 0.6733018857311581,
-      "amp_ci_lo": 0.5828197196897926,
-      "amp_ci_hi": 0.7565028205739615,
-      "query_drift_mean": 0.387304682038843,
-      "graph_drift_mean": 0.49316919552755467,
-      "amp_ratio_of_means": 0.7853383479055209
-    }
-  },
-  "docred__qwen3-32b__100d": {
-    "Q1_single_edge": {
-      "n": 1000,
-      "n_documents": 35,
-      "amp_mean": 0.8392997577921348,
-      "amp_ci_lo": 0.8037477414669087,
-      "amp_ci_hi": 0.8719819392169738,
-      "query_drift_mean": 0.6191275201832737,
-      "graph_drift_mean": 0.6191275201832737,
-      "amp_ratio_of_means": 0.9999999983848239
-    },
-    "Q2_two_hop": {
-      "n": 1000,
-      "n_documents": 35,
-      "amp_mean": 0.4994572026864843,
-      "amp_ci_lo": 0.3327135441705754,
-      "amp_ci_hi": 0.662400331908671,
-      "query_drift_mean": 0.36269224531507144,
-      "graph_drift_mean": 0.6191275201832737,
-      "amp_ratio_of_means": 0.5858118608940137
-    },
-    "Q3_join": {
-      "n": 1000,
-      "n_documents": 35,
-      "amp_mean": 1.128504282878679,
-      "amp_ci_lo": 0.9920066883746251,
-      "amp_ci_hi": 1.2519456303171848,
-      "query_drift_mean": 0.7409091722541303,
-      "graph_drift_mean": 0.6191275201832737,
-      "amp_ratio_of_means": 1.196698817132387
-    },
-    "Q4_top_degree": {
-      "n": 1000,
-      "n_documents": 35,
-      "amp_mean": 0.43673198223753434,
-      "amp_ci_lo": 0.3524808108104377,
-      "amp_ci_hi": 0.5199825880080802,
-      "query_drift_mean": 0.3030337301587306,
-      "graph_drift_mean": 0.6191275201832737,
-      "amp_ratio_of_means": 0.48945285064953004
-    },
-    "Q5_short_paths": {
-      "n": 1000,
-      "n_documents": 35,
-      "amp_mean": 0.702139353905562,
-      "amp_ci_lo": 0.6350278815944724,
-      "amp_ci_hi": 0.7664718093222144,
-      "query_drift_mean": 0.4879464912762898,
-      "graph_drift_mean": 0.6191275201832737,
-      "amp_ratio_of_means": 0.7881195304381378
+    "scierc__deepseek-v4-flash__100d": {
+      "artifact_type": "graphguard.diagnostic_amplification",
+      "artifact_version": 2,
+      "path": "reports/cross_run/diagnostic_v2_scierc__deepseek-v4-flash__100d.json",
+      "source_database": {
+        "path": "data/processed/runs/scierc__deepseek-v4-flash__100d/scierc__deepseek-v4-flash__100d.db",
+        "sha256": "cb29f6c5a7948883270422feb6b0673373c8e58bb6c63016a020bdb4812eeac8",
+        "size_bytes": 130424832
+      }
     }
   }
 }

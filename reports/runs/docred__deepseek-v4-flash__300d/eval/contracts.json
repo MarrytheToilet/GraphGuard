@@ -443,7 +443,7 @@
     },
     {
       "contract_id": "K4",
-      "name": "Multi-hop join robustness (Q3)",
+      "name": "Diagnostic fan-out join robustness (D3)",
       "kind": "bounded_drift",
       "scope": {
         "semantic_class_in": [
@@ -455,71 +455,47 @@
       "alpha": 0.2,
       "min_pairs": 1,
       "n_pairs": 2301,
-      "n_pass": 186,
-      "n_fail": 2115,
-      "violation_rate": 0.9191655801825294,
-      "severity_mean": 0.5429547789109299,
+      "n_pass": 198,
+      "n_fail": 2103,
+      "violation_rate": 0.9139504563233377,
+      "severity_mean": 0.5283644533198283,
       "severity_p95": 0.7,
-      "metric_mean": 0.21936325792687705,
-      "metric_median": 0.12121212121212122,
+      "metric_mean": 0.23652789734065582,
+      "metric_median": 0.14285714285714285,
       "by_family": {
         "prompt": {
           "n": 534,
-          "n_fail": 477,
-          "violation_rate": 0.8932584269662921,
-          "mean_metric": 0.2419325911411845
+          "n_fail": 476,
+          "violation_rate": 0.8913857677902621,
+          "mean_metric": 0.2587336367027492
         },
         "schema": {
           "n": 1689,
-          "n_fail": 1589,
-          "violation_rate": 0.940793368857312,
-          "mean_metric": 0.20010531979054114
+          "n_fail": 1578,
+          "violation_rate": 0.9342806394316163,
+          "mean_metric": 0.21789975848326684
         },
         "entity_alias": {
           "n": 39,
           "n_fail": 13,
           "violation_rate": 0.3333333333333333,
-          "mean_metric": 0.7239013872617112
+          "mean_metric": 0.7270352903956143
         },
         "evidence": {
           "n": 39,
           "n_fail": 36,
           "violation_rate": 0.9230769230769231,
-          "mean_metric": 0.23981573310053414
+          "mean_metric": 0.2487143943054961
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.8600608431116906,
-        "0.7": 0.9191655801825294,
-        "0.8": 0.9356801390699696,
-        "0.9": 0.9430682312038244
+        "0.5": 0.8444154715341156,
+        "0.7": 0.9139504563233377,
+        "0.8": 0.9317687961755758,
+        "0.9": 0.9413298565840938
       },
       "examples": [
-        {
-          "doc": "docred-validation-000000-Skai_TV",
-          "intervention": "docred-validation-000000-Skai_TV::iv::prompt::base_v1::role::novice",
-          "family": "prompt",
-          "semantic_class": "presentation",
-          "operator": "role_swap",
-          "metric": 0.0
-        },
-        {
-          "doc": "docred-validation-000000-Skai_TV",
-          "intervention": "docred-validation-000000-Skai_TV::iv::schema::docred_full::reorder",
-          "family": "schema",
-          "semantic_class": "presentation",
-          "operator": "switch_schema",
-          "metric": 0.0
-        },
-        {
-          "doc": "docred-validation-000000-Skai_TV",
-          "intervention": "docred-validation-000000-Skai_TV::iv::schema::docred_full::reorder",
-          "family": "schema",
-          "semantic_class": "presentation",
-          "operator": "switch_schema",
-          "metric": 0.0
-        },
         {
           "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
           "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::auditor",
@@ -534,6 +510,30 @@
           "family": "prompt",
           "semantic_class": "presentation",
           "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::permissive",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
           "metric": 0.0
         }
       ],

@@ -443,7 +443,7 @@
     },
     {
       "contract_id": "K4",
-      "name": "Multi-hop join robustness (Q3)",
+      "name": "Diagnostic fan-out join robustness (D3)",
       "kind": "bounded_drift",
       "scope": {
         "semantic_class_in": [
@@ -455,25 +455,25 @@
       "alpha": 0.2,
       "min_pairs": 1,
       "n_pairs": 155,
-      "n_pass": 52,
-      "n_fail": 103,
-      "violation_rate": 0.6645161290322581,
-      "severity_mean": 0.4033009044119987,
+      "n_pass": 68,
+      "n_fail": 87,
+      "violation_rate": 0.5612903225806452,
+      "severity_mean": 0.41347282771929567,
       "severity_p95": 0.7,
-      "metric_mean": 0.5185658781909162,
-      "metric_median": 0.5,
+      "metric_mean": 0.5847691552006448,
+      "metric_median": 0.6,
       "by_family": {
         "prompt": {
           "n": 58,
-          "n_fail": 39,
-          "violation_rate": 0.6724137931034483,
-          "mean_metric": 0.5440476627679183
+          "n_fail": 32,
+          "violation_rate": 0.5517241379310345,
+          "mean_metric": 0.6112828222444571
         },
         "schema": {
           "n": 78,
-          "n_fail": 56,
-          "violation_rate": 0.717948717948718,
-          "mean_metric": 0.45725619498375775
+          "n_fail": 48,
+          "violation_rate": 0.6153846153846154,
+          "mean_metric": 0.5302716054991683
         },
         "entity_alias": {
           "n": 12,
@@ -483,17 +483,17 @@
         },
         "evidence": {
           "n": 7,
-          "n_fail": 5,
-          "violation_rate": 0.7142857142857143,
-          "mean_metric": 0.48670906718851925
+          "n_fail": 4,
+          "violation_rate": 0.5714285714285714,
+          "mean_metric": 0.5819471624266145
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.4967741935483871,
-        "0.7": 0.6645161290322581,
-        "0.8": 0.6838709677419355,
-        "0.9": 0.7354838709677419
+        "0.5": 0.4129032258064516,
+        "0.7": 0.5612903225806452,
+        "0.8": 0.6,
+        "0.9": 0.632258064516129
       },
       "examples": [
         {

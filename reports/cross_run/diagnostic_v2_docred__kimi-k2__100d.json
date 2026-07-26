@@ -7,7 +7,7 @@
     "amplification_epsilon": 0.05,
     "confidence_interval": "document-cluster bootstrap over complete per-pair ratios",
     "graph_drift": "1 - canonicalized typed-edge Jaccard",
-    "query_drift": "Q1: 1 - canonicalized bucket-aware typed-edge Jaccard; Q2-Q5: 1 - exact answer-set Jaccard"
+    "query_drift": "D1: 1 - canonicalized bucket-aware typed-edge Jaccard; D2-D5: 1 - exact answer-set Jaccard"
   },
   "pairing": {
     "duplicate_run_ids": 0,

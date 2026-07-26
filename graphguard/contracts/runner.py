@@ -13,6 +13,7 @@ from typing import Iterable, List
 from .base import Contract, ContractResult, PairObservation
 from .registry import REGISTRY
 from . import metrics as M
+from ..diagnostic_queries import fanout_join_answers
 from ..matching.relation_normalizer import project_to_base
 
 
@@ -34,40 +35,15 @@ def _project_triples(edges, base_relation_ids):
     return out
 
 
-def _query_q3(edges, base_relation_ids=None):
-    """Multi-hop join answer set with optional relation back-projection."""
-    triples = _project_triples(edges, base_relation_ids)
-    by_subj = defaultdict(list)
-    for s, r, o in triples:
-        by_subj[s].append((r, o))
-    out = set()
-    for s, lst in by_subj.items():
-        for i, (rA, oA) in enumerate(lst):
-            for rB, oB in lst[i + 1:]:
-                if rA != rB:
-                    out.add((s, rA, oA, rB, oB))
-    return out
+def _query_d3(edges, base_relation_ids=None):
+    """Canonical diagnostic D3 answers with relation back-projection."""
+    return fanout_join_answers(_project_triples(edges, base_relation_ids))
 
 
 def _jaccard(a: set, b: set) -> float:
     if not a and not b:
         return 1.0
     return len(a & b) / max(1, len(a | b))
-
-
-def _query_q3_from_triples(triples):
-    by_subj = defaultdict(list)
-    for subject, relation, obj in triples:
-        by_subj[subject].append((relation, obj))
-    out = set()
-    for subject, values in by_subj.items():
-        for index, (relation_a, object_a) in enumerate(values):
-            for relation_b, object_b in values[index + 1:]:
-                if relation_a != relation_b:
-                    out.add((
-                        subject, relation_a, object_a, relation_b, object_b
-                    ))
-    return out
 
 
 def _graph_index(triples):
@@ -160,10 +136,10 @@ def _query_similarity(base_edges, cf_edges, *, base_relation_ids, query_id):
     )
     base_triples, cf_triples = set(base_triples), set(cf_triples)
 
-    if query_id == "Q3":
+    if query_id == "D3":
         return _jaccard(
-            _query_q3_from_triples(base_triples),
-            _query_q3_from_triples(cf_triples),
+            fanout_join_answers(base_triples),
+            fanout_join_answers(cf_triples),
         )
     if not base_triples:
         return None
@@ -291,7 +267,7 @@ def evaluate_contract(conn: sqlite3.Connection, contract: Contract,
             m = _query_similarity(
                 be, ce,
                 base_relation_ids=base_relation_ids,
-                query_id=contract.query_id or "Q3",
+                query_id=contract.query_id or "D3",
             )
             if m is None:
                 continue

@@ -413,8 +413,8 @@ def analyze_database(
         "metrics": {
             "graph_drift": "1 - canonicalized typed-edge Jaccard",
             "query_drift": (
-                "Q1: 1 - canonicalized bucket-aware typed-edge Jaccard; "
-                "Q2-Q5: 1 - exact answer-set Jaccard"
+                "D1: 1 - canonicalized bucket-aware typed-edge Jaccard; "
+                "D2-D5: 1 - exact answer-set Jaccard"
             ),
             "amplification": "query_drift / (graph_drift + 0.05)",
             "amplification_epsilon": AMP_EPS,

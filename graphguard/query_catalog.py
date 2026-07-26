@@ -11,12 +11,13 @@ The project contains three query workloads created for different analyses:
 
 Legacy artifact identifiers are retained only as provenance aliases.  They are
 not paper query identifiers because their semantics differ from Q1--Q7.  The
-``answer`` field records the deterministic semantics to use in future runs;
+``answer`` field records the deterministic semantics;
 ``legacy_behavior`` records a known difference in a historical artifact rather
 than preserving that behavior as the specification.
 
-This module is metadata-only for now; introducing it does not change any query
-execution path or reported result.
+This module is the canonical registry consumed by the diagnostic runner and
+deployment artifact pipeline; executable query operators remain in
+``diagnostic_queries.py`` and the deployment/Kuzu executors.
 """
 
 from __future__ import annotations

@@ -99,25 +99,28 @@ register(Contract(
     description="Reordering paragraphs / aliasing entities (with audit-time alias canonicalization) should preserve edges (threshold 0.80).",
 ))
 
-# K4 — multi-hop join robustness
-# Q3 query Jaccard should remain reasonably high under any non-noop perturbation.
-# This is QUERY-SCOPED: metric is per-query, applies to Q3 only.
+# K4 — canonical diagnostic fan-out-join robustness
+# D3 answer Jaccard should remain reasonably high under presentation changes.
+# This is QUERY-SCOPED and distinct from the gold-instantiated deployment Q3.
 register(Contract(
     id="K4",
-    name="Multi-hop join robustness (Q3)",
+    name="Diagnostic fan-out join robustness (D3)",
     kind=ContractKind.BOUNDED_DRIFT,
     scope={
         "semantic_class_in": {"presentation"},  # only presentation perturbations
     },
     direction="min",
     # Catalogue tolerance tau=0.30 on answer drift, i.e. violate when the
-    # Q3 answer Jaccard falls below 0.70 (paper Table 1; primary-run
-    # violation rate 0.92 at this threshold).
+    # D3 answer Jaccard falls below 0.70 (paper Table 1; primary-run
+    # violation rate 0.91 at this threshold).
     threshold=0.70,
-    metric_fn=M.edge_jaccard,                 # per-pair: Q3 jaccard, computed in runner
-    description="Multi-hop join answers should not collapse under presentation drift.",
+    metric_fn=M.edge_jaccard,  # per-pair D3 Jaccard, computed in runner
+    description=(
+        "Canonical diagnostic fan-out-join answers should not collapse "
+        "under presentation drift."
+    ),
     query_scoped=True,
-    query_id="Q3",
+    query_id="D3",
 ))
 
 # K4b–d — revision query contracts (same presentation-family paired views)

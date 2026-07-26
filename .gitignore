@@ -64,6 +64,16 @@ review.md
 *.toc
 *.synctex.gz
 
+# Uncompressed local copies of the frozen formal evidence.  The public,
+# hash-indexed transport uses deterministic .json.gz files instead.
+reports/cross_run/deployment_q1q4_v1_*.json
+!reports/cross_run/deployment_q1q4_v1_docred__deepseek-v4-flash__300d__kuzu_parity.json
+!reports/cross_run/deployment_q1q4_v1_redocred__deepseek-v4-flash__300d__kuzu_parity.json
+!reports/cross_run/deployment_q1q4_v1_scierc__deepseek-v4-flash__100d__kuzu_parity.json
+!reports/cross_run/deployment_q1q4_v1_cdr__deepseek-v4-flash__300d__kuzu_parity.json
+reports/cross_run/deployment_downstream_v1_*.json
+reports/cross_run/deployment_kuzu_cohort_v1_*.json
+
 # ---------- Misc ----------
 *.tmp
 *.bak

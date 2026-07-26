@@ -1,6 +1,5 @@
-"""Build expanded release-gate table + risk-coverage curve from Kuzu N=300 runs."""
+"""Build the release-gate table and threshold risk--coverage curve."""
 from __future__ import annotations
-import json
 import random
 from pathlib import Path
 
@@ -8,6 +7,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from graphguard.viz import style as gg_style  # noqa: F401
+from graphguard.formal_artifacts import load_formal_kuzu
+
+ROOT = Path(__file__).resolve().parents[1]
 
 DATASETS = [
     ("DocRED",    "docred__deepseek-v4-flash__300d"),
@@ -16,25 +18,25 @@ DATASETS = [
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
 OUT_TABLE = Path("reports/cross_run/tab_e2ekuzu_v2.tex")
-OUT_FIG   = Path("assets/figures/fig_riskcoverage.png")
+OUT_FIG = Path("assets/figures/fig_riskcoverage.png")
 
 TAU_GRAPH_DEFAULT = 0.45
 TAU_QUERY_DEFAULT = 0.70
 
 
 def load_pairs(run: str):
-    j = json.loads(Path(f"reports/cross_run/e2e_kuzu_case_{run}__N300.json").read_text())
+    artifact = load_formal_kuzu(ROOT, run)
     pairs = []
-    for r in j["pair_records"]:
-        # Deployable query-side signal: max answer-set Jaccard drift across the workload (no gold needed).
-        max_dq = float(r.get("max_answer_drift", 0.0))
+    for record in artifact["per_pair"]:
         pairs.append({
-            "doc": r["doc"],
-            "graph_drift": float(r.get("graph_drift", 0.0)),
-            "max_dq": max_dq,
-            "mean_abs_delta_f1": float(r.get("mean_df1", 0.0)),
-            "mean_df1_signed": float(r.get("mean_df1_signed", 0.0)),    # signed: positive = regression
-            "harmful": bool(r.get("harmful", False)),                    # directional: mean signed ΔF1 > 0.05
+            "run_id": record["run_id"],
+            "doc": record["document_id"],
+            "family": record["cause_family"],
+            "graph_drift": float(record["graph_drift"]),
+            "max_dq": float(record["max_answer_drift"]),
+            "mean_abs_delta_f1": float(record["mean_delta_f1_abs"]),
+            "mean_df1_signed": float(record["mean_delta_f1_signed"]),
+            "harmful": float(record["mean_delta_f1_signed"]) > 0.05,
         })
     return pairs
 
@@ -172,18 +174,21 @@ def build_table():
 
 
 def risk_coverage_curve(pairs, score_fn):
-    # score per pair (higher = more likely to block); sweep threshold producing (coverage, pub_harm_rate)
+    """Sweep deployable thresholds without splitting equal-score groups."""
     scored = [(score_fn(p), p) for p in pairs]
-    scored.sort(key=lambda x: x[0])  # ascending; small score = published first
+    scored.sort(key=lambda item: item[0])
     n = len(scored)
     pts = []
-    # Iterate cumulative published prefix (lowest-score = safest = published)
-    cum_harm = 0
-    for k in range(n + 1):
-        published = scored[:k] if k > 0 else []
+    k = 0
+    while k < n:
+        score = scored[k][0]
+        while (
+            k < n
+            and abs(scored[k][0] - score) <= 1e-12
+        ):
+            k += 1
+        published = scored[:k]
         n_pub = len(published)
-        if n_pub == 0:
-            continue
         harm_pub = sum(p["harmful"] for _, p in published)
         coverage = n_pub / n
         pub_harm = harm_pub / n_pub

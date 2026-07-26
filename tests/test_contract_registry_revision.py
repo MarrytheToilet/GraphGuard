@@ -27,6 +27,33 @@ def test_revision_query_contracts_are_registered():
         assert contract.alpha == 0.20
 
 
+def test_k4_uses_canonical_d3_and_is_order_invariant():
+    contract = REGISTRY["K4"]
+    assert contract.query_scoped
+    assert contract.query_id == "D3"
+    assert contract.threshold == 0.70
+
+    base = [
+        _edge("A", "r2", "C", "a", "c"),
+        _edge("A", "r1", "B", "a", "b"),
+        _edge("A", "r3", "D", "a", "d"),
+    ]
+    counterfactual = [
+        _edge("A", "r1", "B", "a", "b"),
+        _edge("A", "r2", "C", "a", "c"),
+    ]
+    expected = _query_similarity(
+        base, counterfactual, base_relation_ids=None, query_id="D3"
+    )
+    assert expected == 1 / 3
+    assert expected == _query_similarity(
+        list(reversed(base)),
+        list(reversed(counterfactual)),
+        base_relation_ids=None,
+        query_id="D3",
+    )
+
+
 def test_k5_registry_matches_paper_definition():
     contract = REGISTRY["K5"]
     assert contract.metric_fn is M.recall_difference

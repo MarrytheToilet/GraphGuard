@@ -1,106 +1,113 @@
 #!/usr/bin/env python3
-"""Compute bootstrap 95% CIs for Amp(Q) per query and per run.
+"""Build the compact paper-facing summary of canonical D1--D5 results.
 
-Writes:
-  reports/cross_run/amp_ci.json
-  reports/cross_run/amp_ci.md   (paper-ready table)
+The full-run ``diagnostic_v2_*.json`` artifacts already contain deterministic
+per-pair diagnostics and document-cluster bootstrap confidence intervals.  This
+script copies their summaries into ``amp_ci.json`` for figures and writes a
+human-readable Markdown table.  It never reads the historical E6/E8 results.
 """
 from __future__ import annotations
-import json, random
+
+import json
 from pathlib import Path
-from collections import defaultdict
 
-RUNS = [
-    "docred__deepseek-v4-flash__300d", "redocred__deepseek-v4-flash__300d",
-    "scierc__deepseek-v4-flash__100d", "cdr__deepseek-v4-flash__300d",
+
+RUNS = (
+    "docred__deepseek-v4-flash__300d",
+    "redocred__deepseek-v4-flash__300d",
+    "scierc__deepseek-v4-flash__100d",
+    "cdr__deepseek-v4-flash__300d",
     "docred__glm-5__100d",
-    "docred__kimi-k2__100d", "docred__qwen3-32b__100d",
-]
-ROOT = Path(__file__).resolve().parent.parent
-B = 1000
-random.seed(0)
+    "docred__kimi-k2__100d",
+    "docred__qwen3-32b__100d",
+)
+ROOT = Path(__file__).resolve().parents[1]
+REPORTS = ROOT / "reports" / "cross_run"
+
+DIAGNOSTIC_LABELS = {
+    "diagnostic.edge_identity": "D1 edge identity",
+    "diagnostic.two_hop_endpoints": "D2 two-hop endpoints",
+    "diagnostic.fanout_join": "D3 fan-out join",
+    "diagnostic.top_undirected_degree": "D4 top degree",
+    "diagnostic.short_connectivity": "D5 short connectivity",
+}
 
 
-def boot_ci(observations, B=1000, alpha=0.05):
-    """Cluster-bootstrap a pair-level mean by source document."""
-    if not observations:
-        return (float("nan"), float("nan"), float("nan"))
-    by_doc = defaultdict(list)
-    for doc, value in observations:
-        by_doc[doc].append(value)
-    docs = sorted(by_doc)
-    means = []
-    for _ in range(B):
-        sampled = [
-            value
-            for _ in docs
-            for value in by_doc[docs[random.randrange(len(docs))]]
-        ]
-        means.append(sum(sampled) / len(sampled))
-    means.sort()
-    lo = means[int(B * alpha / 2)]
-    hi = means[int(B * (1 - alpha / 2))]
-    values = [value for _, value in observations]
-    mean = sum(values) / len(values)
-    return mean, lo, hi
+def compact_query_summary(summary: dict) -> dict:
+    interval = summary["amplification_document_cluster_ci"]
+    return {
+        "n": summary["n"],
+        "n_documents": summary["n_documents"],
+        "amp_mean": summary["amplification_mean_per_pair"],
+        "amp_ci_lo": interval["ci_low"],
+        "amp_ci_hi": interval["ci_high"],
+        "query_drift_mean": summary["query_drift_mean"],
+        "graph_drift_mean": summary["graph_drift_mean"],
+        "amp_ratio_of_means": summary[
+            "amplification_ratio_of_means_damped"
+        ],
+        "by_semantic_class": summary["by_semantic_class"],
+    }
 
 
-def main():
-    out = {}
+def main() -> int:
+    output = {
+        "artifact_type": "graphguard.diagnostic_amplification_summary",
+        "artifact_version": 2,
+        "source_artifacts": {},
+        "runs": {},
+    }
     for run in RUNS:
-        f = ROOT / "reports/runs" / run / "eval" / "e8_amplification.json"
-        if not f.exists():
-            print("skip", run)
-            continue
-        data = json.load(open(f))
-        per_q = defaultdict(list)
-        per_q_qd = defaultdict(list)
-        per_q_gd = defaultdict(list)
-        for o in data["per_obs"]:
-            per_q[o["query"]].append((o["doc"], o["amp"]))
-            per_q_qd[o["query"]].append(o["query_drift"])
-            per_q_gd[o["query"]].append(o["graph_drift"])
-        run_out = {}
-        for q in sorted(per_q):
-            mean, lo, hi = boot_ci(per_q[q], B=B)
-            qd = sum(per_q_qd[q]) / len(per_q_qd[q])
-            gd = sum(per_q_gd[q]) / len(per_q_gd[q])
-            run_out[q] = {
-                "n": len(per_q[q]),
-                "n_documents": len({doc for doc, _ in per_q[q]}),
-                "amp_mean": mean,
-                "amp_ci_lo": lo,
-                "amp_ci_hi": hi,
-                "query_drift_mean": qd,
-                "graph_drift_mean": gd,
-                "amp_ratio_of_means": (qd / (gd + 1e-9)) if gd > 0 else float("nan"),
-            }
-        out[run] = run_out
-    out_path = ROOT / "reports/cross_run/amp_ci.json"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    json.dump(out, open(out_path, "w"), indent=2)
+        path = REPORTS / f"diagnostic_v2_{run}.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if data.get("artifact_version") != 2:
+            raise ValueError(f"{path}: expected diagnostic artifact version 2")
+        summaries = data["summary"]
+        missing = set(DIAGNOSTIC_LABELS) - set(summaries)
+        if missing:
+            raise ValueError(f"{path}: missing diagnostics {sorted(missing)}")
+        output["source_artifacts"][run] = {
+            "path": str(path.relative_to(ROOT)),
+            "artifact_type": data["artifact_type"],
+            "artifact_version": data["artifact_version"],
+            "source_database": data["source_database"],
+        }
+        output["runs"][run] = {
+            query_id: compact_query_summary(summaries[query_id])
+            for query_id in DIAGNOSTIC_LABELS
+        }
+
+    out_path = REPORTS / "amp_ci.json"
+    out_path.write_text(
+        json.dumps(output, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     print("wrote", out_path)
 
-    # Markdown table for paper insertion
-    md = [
-        "# Amp(Q) document-cluster bootstrap 95% CIs "
-        "(B=1000, mean of per-pair ratios)",
+    lines = [
+        "# Canonical diagnostic amplification",
         "",
+        "Document-cluster bootstrap 95% CIs from the complete v2 pair "
+        "populations (B=1000, seed=0; mean of per-pair ratios).",
+        "",
+        "| run | query | n | docs | Amp mean | 95% CI | Amp(ratio-of-means) |",
+        "|---|---|---:|---:|---:|---|---:|",
     ]
-    md.append("| run | query | n | docs | Amp mean | 95% CI | Amp(ratio-of-means) |")
-    md.append("|---|---|---:|---:|---:|---|---:|")
-    for run, qs in out.items():
-        for q, st in qs.items():
-            md.append(
-                f"| {run} | {q} | {st['n']} | {st['n_documents']} | "
-                f"{st['amp_mean']:.3f} | "
-                f"[{st['amp_ci_lo']:.3f}, {st['amp_ci_hi']:.3f}] | "
-                f"{st['amp_ratio_of_means']:.3f} |"
+    for run, queries in output["runs"].items():
+        for query_id, summary in queries.items():
+            lines.append(
+                f"| {run} | {DIAGNOSTIC_LABELS[query_id]} | "
+                f"{summary['n']} | {summary['n_documents']} | "
+                f"{summary['amp_mean']:.3f} | "
+                f"[{summary['amp_ci_lo']:.3f}, "
+                f"{summary['amp_ci_hi']:.3f}] | "
+                f"{summary['amp_ratio_of_means']:.3f} |"
             )
-    md_path = ROOT / "reports/cross_run/amp_ci.md"
-    md_path.write_text("\n".join(md) + "\n")
+    md_path = REPORTS / "amp_ci.md"
+    md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("wrote", md_path)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

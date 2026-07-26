@@ -11,19 +11,27 @@ Detection target: mean absolute ΔF1 over 4 templates > 0.05. This includes
 both regressions and improvements and is distinct from the directional label
 in the Kuzu release-gate experiment.
 
-Outputs:
-  reports/cross_run/graph_vs_query_<dataset>__<model>__<n>d.json
+Inputs are the frozen, schema-eligible full downstream populations. Outputs:
+  reports/cross_run/graph_vs_query_formal_v1_<run>.json
 """
 
 from __future__ import annotations
-import argparse, hashlib, json, sqlite3, random, sys
-from collections import defaultdict
+
+import argparse
+import hashlib
+import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from graphguard import qa as rq  # noqa: E402
+from graphguard.formal_artifacts import (  # noqa: E402
+    DEFAULT_INDEX,
+    load_artifact_index,
+    load_formal_downstream,
+)
+from graphguard.sqlite_snapshot import sha256_file  # noqa: E402
 
 
 def confusion(flags, harm):
@@ -69,55 +77,22 @@ def flags_at_count(scores, row_ids, n_alarm):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", required=True)
-    ap.add_argument("--out", required=True)
+    ap.add_argument("--run", required=True)
+    ap.add_argument("--out")
     ap.add_argument("--harm-th", type=float, default=0.05)
-    ap.add_argument("--max-runs", type=int, default=8000)
-    ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
 
-    con = sqlite3.connect(args.db)
-    edges, gold, runs = rq.load_data(con)
-    random.seed(args.seed)
-    if args.max_runs and len(runs) > args.max_runs:
-        runs = random.sample(runs, args.max_runs)
-
-    qcache = {}
-    def qfor(d):
-        if d not in qcache: qcache[d] = rq.build_queries(gold.get(d, set()))
-        return qcache[d]
-
-    rows = []  # one per pair
-    for run_id, base_ev, cf_ev, doc, fam, iv in runs:
-        if not cf_ev or base_ev not in edges or cf_ev not in edges:
-            continue
-        base_g, cf_g = edges[base_ev], edges[cf_ev]
-        qs = qfor(doc)
-        if not qs: continue
-        # Typed-triple GraphDrift, consistent with Eq. (3).
-        graph_drift = 1.0 - rq.graph_jaccard(base_g, cf_g)
-        # per-family delta F1
-        deltas = []
-        max_qd = 0.0
-        for q in qs:
-            gq = q[1]["gold"]
-            ab = rq.execute(base_g, q); ac = rq.execute(cf_g, q)
-            db_ = rq.f1(ab, gq); dc = rq.f1(ac, gq)
-            d = abs(db_ - dc)
-            deltas.append(d)
-            # Gold-free monitor score: compare the two returned answer sets.
-            # Gold F1 is used only to define the offline target below.
-            qd = 1.0 - rq.jaccard(ab, ac)
-            if qd > max_qd: max_qd = qd
-        if not deltas: continue
-        mean_df1 = sum(deltas) / len(deltas)
-        rows.append({
-            "run_id": run_id,
-            "graph_drift": graph_drift,
-            "query_drift": max_qd,
-            "mean_df1":   mean_df1,
-            "harmful":    mean_df1 > args.harm_th,
-        })
+    artifact = load_formal_downstream(ROOT, args.run)
+    rows = [
+        {
+            "run_id": pair["run_id"],
+            "graph_drift": pair["graph_drift"],
+            "query_drift": pair["max_answer_drift"],
+            "mean_df1": pair["mean_delta_f1_abs"],
+            "harmful": pair["mean_delta_f1_abs"] > args.harm_th,
+        }
+        for pair in artifact["per_pair"]
+    ]
 
     harm = [r["harmful"] for r in rows]
     base_rate = sum(harm) / len(harm) if harm else 0.0
@@ -128,6 +103,18 @@ def main():
     row_ids = [r["run_id"] for r in rows]
 
     out = {
+        "artifact_type": "graphguard.graph_vs_query_ablation",
+        "artifact_version": 1,
+        "run": args.run,
+        "source": {
+            "formal_index": {
+                "path": str(DEFAULT_INDEX),
+                "sha256": sha256_file(ROOT / DEFAULT_INDEX),
+            },
+            "downstream_sha256": load_artifact_index(ROOT)["entries"][
+                f"downstream:{args.run}"
+            ]["raw_sha256"],
+        },
         "n_pairs": len(rows),
         "label_definition": "mean absolute per-query F1 change > threshold",
         "query_monitor": "max answer-set Jaccard drift (gold-free at decision time)",
@@ -181,9 +168,13 @@ def main():
         "graph_only_false_alarms_on_benign": sum(1 for g, q, h in zip(gflags, qflags, harm) if g and (not q) and (not h)),
     }
 
-    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
-    Path(args.out).write_text(json.dumps(out, indent=2))
-    print(f"wrote {args.out}: n_pairs={len(rows)} base_rate={base_rate:.3f}")
+    output = Path(args.out) if args.out else (
+        ROOT / "reports" / "cross_run"
+        / f"graph_vs_query_formal_v1_{args.run}.json"
+    )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(out, indent=2) + "\n")
+    print(f"wrote {output}: n_pairs={len(rows)} base_rate={base_rate:.3f}")
     m = out["monitors_at_matched_alarm"]
     print(f"  @alarm={m['alarm_rate_target']:.3f}: "
           f"graph-only F1={m['graph_only']['f1']:.3f}, "

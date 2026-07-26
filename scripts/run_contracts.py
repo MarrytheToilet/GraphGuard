@@ -3,7 +3,7 @@
 Usage:
     python scripts/run_contracts.py --db data/processed/runs/X/X.db \
                                     --out reports/runs/X/eval/contracts.json \
-                                    --md  reports/runs/X/report.contracts.md
+                                    --md  reports/runs/X/eval/contracts.md
 """
 from __future__ import annotations
 

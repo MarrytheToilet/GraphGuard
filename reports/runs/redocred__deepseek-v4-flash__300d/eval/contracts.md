@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 680 | 0.78 | 0.319 | 0.273 / 0.500 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 540 | 0.95 | 0.361 | 0.465 / 0.800 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **VIOLATED** | 80 | 0.61 | 0.572 | 0.490 / 0.800 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **VIOLATED** | 2320 | 0.93 | 0.201 | 0.555 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **VIOLATED** | 2320 | 0.93 | 0.216 | 0.540 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 1025 | 0.82 | 0.256 | 0.604 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 2320 | 0.60 | 0.646 | 0.289 / 0.700 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 2320 | 0.91 | 0.347 | 0.401 / 0.700 |
@@ -109,19 +109,19 @@
     - doc=`redocred-validation-000016-Henrik_Angell` op=`para_swap` family=`evidence` metric=0.000
     - doc=`redocred-validation-000021-South_Gondar_Zone` op=`para_swap` family=`evidence` metric=0.000
 
-### K4 — Multi-hop join robustness (Q3)  · *VIOLATED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *VIOLATED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`
-- pairs: n=2320, fail=2158, violation_rate=0.930
-- metric: mean=0.201, median=0.111
+- pairs: n=2320, fail=2157, violation_rate=0.930
+- metric: mean=0.216, median=0.125
 - by family:
-    - `entity_alias` n=40, viol=0.28, mean_metric=0.783
-    - `evidence` n=40, viol=0.97, mean_metric=0.161
-    - `prompt` n=540, viol=0.93, mean_metric=0.211
-    - `schema` n=1700, viol=0.94, mean_metric=0.185
+    - `entity_alias` n=40, viol=0.28, mean_metric=0.785
+    - `evidence` n=40, viol=0.95, mean_metric=0.182
+    - `prompt` n=540, viol=0.93, mean_metric=0.230
+    - `schema` n=1700, viol=0.94, mean_metric=0.198
 - threshold sensitivity (violation_rate at alt thresholds):
-    - τ=0.5: 0.89
+    - τ=0.5: 0.88
     - τ=0.7: 0.93
     - τ=0.8: 0.94
     - τ=0.9: 0.94

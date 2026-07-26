@@ -9,7 +9,7 @@
 | K1c | Schema semantic-shading bounded drift | bounded_drift | **VIOLATED** | 230 | 0.40 | 0.579 | 0.225 / 0.500 |
 | K2 | Prompt presentation invariance | invariance | **VIOLATED** | 90 | 0.64 | 0.639 | 0.320 / 0.675 |
 | K3 | Evidence/entity-alias reorder invariance | invariance | **VIOLATED** | 30 | 0.60 | 0.674 | 0.333 / 0.569 |
-| K4 | Multi-hop join robustness (Q3) | bounded_drift | **VIOLATED** | 694 | 0.64 | 0.489 | 0.462 / 0.700 |
+| K4 | Diagnostic fan-out join robustness (D3) | bounded_drift | **VIOLATED** | 694 | 0.64 | 0.512 | 0.433 / 0.700 |
 | K4b | Shortest-path robustness (Q5) | bounded_drift | **VIOLATED** | 278 | 0.58 | 0.478 | 0.584 / 0.700 |
 | K4c | Degree-aggregation robustness (Q6) | bounded_drift | **VIOLATED** | 694 | 0.47 | 0.737 | 0.254 / 0.500 |
 | K4d | GraphRAG-retrieval robustness (Q7) | bounded_drift | **VIOLATED** | 694 | 0.58 | 0.602 | 0.314 / 0.700 |
@@ -109,25 +109,25 @@
     - doc=`docred-validation-000005-Samsung_Galaxy_S_series` op=`para_swap` family=`evidence` metric=0.231
     - doc=`docred-validation-000008-Urgut` op=`para_swap` family=`evidence` metric=0.250
 
-### K4 — Multi-hop join robustness (Q3)  · *VIOLATED*
+### K4 — Diagnostic fan-out join robustness (D3)  · *VIOLATED*
 
 - kind: `bounded_drift` · direction: `min` · threshold: `0.7` · alpha: `0.2` · min_pairs: `1`
 - scope: `{'semantic_class_in': ['presentation']}`
-- pairs: n=694, fail=447, violation_rate=0.644
-- metric: mean=0.489, median=0.429
+- pairs: n=694, fail=444, violation_rate=0.640
+- metric: mean=0.512, median=0.500
 - by family:
-    - `entity_alias` n=15, viol=0.27, mean_metric=0.797
-    - `evidence` n=15, viol=0.93, mean_metric=0.319
-    - `prompt` n=90, viol=0.66, mean_metric=0.494
-    - `schema` n=574, viol=0.64, mean_metric=0.485
+    - `entity_alias` n=15, viol=0.27, mean_metric=0.852
+    - `evidence` n=15, viol=0.93, mean_metric=0.373
+    - `prompt` n=90, viol=0.64, mean_metric=0.520
+    - `schema` n=574, viol=0.64, mean_metric=0.506
 - threshold sensitivity (violation_rate at alt thresholds):
-    - τ=0.5: 0.54
+    - τ=0.5: 0.50
     - τ=0.7: 0.64
     - τ=0.8: 0.70
-    - τ=0.9: 0.73
+    - τ=0.9: 0.72
 - top violation examples:
-    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`role_swap` family=`prompt` metric=0.000
-    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`tone` family=`prompt` metric=0.000
+    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`switch_schema` family=`schema` metric=0.000
+    - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`switch_schema` family=`schema` metric=0.000
     - doc=`docred-validation-000001-Washington_Place__West_Virginia_` op=`switch_schema` family=`schema` metric=0.000
 
 ### K4b — Shortest-path robustness (Q5)  · *VIOLATED*

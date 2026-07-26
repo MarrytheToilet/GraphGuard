@@ -7,18 +7,27 @@ family-prior greedy planner against a full endpoint-union plan.
 Metric: harm-recall = (harmful pairs evaluated / total harmful), as a function
 of fraction-of-full extraction budget.
 
-Pair records come from the existing Kuzu N=300 runs (no new LLM calls).
+Pair records come from the frozen formal actual-Kuzu N=300 artifacts.
 """
 from __future__ import annotations
 
 import json
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 from graphguard.viz import style as gg_style  # noqa: F401
+from graphguard.formal_artifacts import (
+    DEFAULT_INDEX,
+    load_artifact_index,
+    load_formal_kuzu,
+)
+from graphguard.sqlite_snapshot import sha256_file
+
+ROOT = Path(__file__).resolve().parents[1]
 
 DATASETS = [
     ("DocRED",    "docred__deepseek-v4-flash__300d"),
@@ -27,19 +36,20 @@ DATASETS = [
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
 OUT_FIG = Path("assets/figures/fig_budget_planner.png")
-OUT_JSON = Path("reports/cross_run/budget_planner.json")
+OUT_JSON = Path("reports/cross_run/budget_planner_formal_v1.json")
 
 BUDGETS = [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]
 N_SEEDS = 50
 
 
+@lru_cache(maxsize=None)
 def load_pairs(run):
-    j = json.loads(Path(f"reports/cross_run/e2e_kuzu_case_{run}__N300.json").read_text())
+    artifact = load_formal_kuzu(ROOT, run)
     out = []
-    for r in j["pair_records"]:
+    for record in artifact["per_pair"]:
         out.append({
-            "family": r.get("family", "unknown"),
-            "harmful": bool(r.get("harmful", False)),
+            "family": record["cause_family"],
+            "harmful": float(record["mean_delta_f1_signed"]) > 0.05,
         })
     return out
 
@@ -138,12 +148,30 @@ def aggregate():
 
 def main():
     agg = aggregate()
+    index = load_artifact_index(ROOT)
     # Persist numeric results.
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps({
+        "artifact_type": "graphguard.budget_planner_analysis",
+        "artifact_version": 1,
+        "sources": {
+            "formal_index": {
+                "path": str(DEFAULT_INDEX),
+                "sha256": sha256_file(ROOT / DEFAULT_INDEX),
+            },
+            "kuzu_sha256": {
+                run: index["entries"][f"kuzu:{run}"]["raw_sha256"]
+                for _, run in DATASETS
+            },
+        },
+        "protocol": {
+            "n_seeds": N_SEEDS,
+            "seeds": "1000+s",
+            "split": "pair-level random 50/50 calibration/deployment",
+        },
         "budgets": BUDGETS,
         "datasets": {ds: {m: agg[ds][m].tolist() for m in agg[ds]} for ds in agg},
-    }, indent=2))
+    }, indent=2) + "\n")
     # Native single-column canvas so fonts render ~1:1 in the PDF.
     gg_style.apply_rc(font_size=7)
     fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.62), sharey=True,

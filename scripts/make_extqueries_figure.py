@@ -7,8 +7,8 @@ Replaces the wide two-part table with a single-column, two-panel figure:
   (b) gold-free detector F1 against workload-visible query change, graph-only vs
       query-aware, per corpus and regime (dumbbells).
 
-Reads reports/cross_run/extqueries_<run>.json and regimes_<run>.json;
-writes assets/figures/fig_extqueries.png.
+Reads reports/cross_run/extqueries_<run>.json and the formal-v1 regime
+artifacts; writes assets/figures/fig_extqueries.png.
 """
 from __future__ import annotations
 
@@ -40,17 +40,22 @@ def main() -> int:
     ext, reg = {}, {}
     for run, label in RUNS:
         ext[label] = json.loads((REP / f"extqueries_{run}.json").read_text())["summary"]
-        reg[label] = json.loads((REP / f"regimes_{run}.json").read_text())["regimes"]
+        reg[label] = json.loads(
+            (REP / f"regimes_formal_v1_{run}.json").read_text()
+        )["regimes"]
 
-    # Per-corpus no-amplification reference: the lookup query Q1, whose answer set
-    # equals the edge set by construction. epsilon-damping places it below 1
+    # Per-corpus no-amplification reference: diagnostic D1, whose answer set
+    # equals the edge set by construction. Epsilon-damping places it below 1
     # (mean-of-ratios); its ratio-of-means value is exactly 1.
-    amp = json.loads((REP / "amp_ci.json").read_text())
-    q1_run = {"DocRED": "docred__deepseek-v4-flash__300d",
+    amp = json.loads((REP / "amp_ci.json").read_text())["runs"]
+    d1_run = {"DocRED": "docred__deepseek-v4-flash__300d",
               "Re-DocRED": "redocred__deepseek-v4-flash__300d",
               "SciERC": "scierc__deepseek-v4-flash__100d",
               "BC5CDR": "cdr__deepseek-v4-flash__300d"}
-    q1_ref = {l: amp[r]["Q1_single_edge"]["amp_mean"] for l, r in q1_run.items()}
+    d1_ref = {
+        label: amp[run]["diagnostic.edge_identity"]["amp_mean"]
+        for label, run in d1_run.items()
+    }
 
     labels = [l for _, l in RUNS]
     x = np.arange(len(labels))
@@ -82,14 +87,14 @@ def main() -> int:
         else:
             _S.annotate_bars(ax1, bars, vals, fmt="{:.2f}", fontsize=5.5)
     for i, l in enumerate(labels):
-        ax1.hlines(q1_ref[l], x[i] - 1.6 * w, x[i] + 1.6 * w,
+        ax1.hlines(d1_ref[l], x[i] - 1.6 * w, x[i] + 1.6 * w,
                    color=_S.GRAY, linestyle="--", linewidth=0.8, zorder=0)
     ax1.set_xticks(x); ax1.set_xticklabels(labels)
     ax1.set_ylabel(r"$\overline{\mathrm{Amp}}(Q)$")
     ax1.set_ylim(0, 1.92)
     handles, labs = ax1.get_legend_handles_labels()
     handles.append(Line2D([0], [0], color=_S.GRAY, linestyle="--", linewidth=0.8))
-    labs.append(r"$Q_1$ ref.")
+    labs.append(r"$D_1$ ref.")
     ax1.legend(handles, labs, fontsize=6.5, ncol=4, frameon=False, loc="upper center",
                bbox_to_anchor=(0.5, 1.06), handlelength=1.0, columnspacing=0.8)
     ax1.set_title("(a) Extended-template amplification", fontsize=9)

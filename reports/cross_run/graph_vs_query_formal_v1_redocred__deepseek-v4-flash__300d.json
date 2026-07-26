@@ -1,0 +1,202 @@
+{
+  "artifact_type": "graphguard.graph_vs_query_ablation",
+  "artifact_version": 1,
+  "run": "redocred__deepseek-v4-flash__300d",
+  "source": {
+    "formal_index": {
+      "path": "reports/cross_run/formal_artifacts_v1.json",
+      "sha256": "46f195b3618e952d989689f4e878df4ab8c12a056ea6f389c57dfa4110f82654"
+    },
+    "downstream_sha256": "c1c5545f0ba3eee8b0982a220d68da1f0de635113b1b51516e265bb430e766b5"
+  },
+  "n_pairs": 6614,
+  "label_definition": "mean absolute per-query F1 change > threshold",
+  "query_monitor": "max answer-set Jaccard drift (gold-free at decision time)",
+  "graph_monitor": "canonicalized typed-edge Jaccard drift",
+  "matched_alarm_ties": "exact top-k selection; score ties broken by SHA-256(run_id), without target labels",
+  "harm_threshold_delta_f1": 0.05,
+  "harmful_base_rate": 0.4692,
+  "monitors_at_matched_alarm": {
+    "alarm_rate_target": 0.9253,
+    "tau_graph_fixed": 0.3,
+    "tau_query": 0.0769,
+    "graph_only": {
+      "tp": 3013,
+      "fp": 3107,
+      "fn": 90,
+      "tn": 404,
+      "alarm_rate": 0.9253099485938917,
+      "precision": 0.4923,
+      "recall": 0.971,
+      "f1": 0.6534
+    },
+    "query_aware": {
+      "tp": 3103,
+      "fp": 3017,
+      "fn": 0,
+      "tn": 494,
+      "alarm_rate": 0.9253099485938917,
+      "precision": 0.507,
+      "recall": 1.0,
+      "f1": 0.6729
+    },
+    "hybrid_or": {
+      "tp": 3103,
+      "fp": 3364,
+      "fn": 0,
+      "tn": 147,
+      "alarm_rate": 0.9777744179014213,
+      "precision": 0.4798,
+      "recall": 1.0,
+      "f1": 0.6485
+    }
+  },
+  "sweep": [
+    {
+      "target_alarm": 0.3,
+      "tau_graph": 0.8,
+      "tau_query": 1.0,
+      "graph_only": {
+        "tp": 1128,
+        "fp": 856,
+        "fn": 1975,
+        "tn": 2655,
+        "alarm_rate": 0.29996976111279106,
+        "precision": 0.5685,
+        "recall": 0.3635,
+        "f1": 0.4435
+      },
+      "query_aware": {
+        "tp": 1201,
+        "fp": 783,
+        "fn": 1902,
+        "tn": 2728,
+        "alarm_rate": 0.29996976111279106,
+        "precision": 0.6053,
+        "recall": 0.387,
+        "f1": 0.4722
+      },
+      "hybrid_or": {
+        "tp": 1891,
+        "fp": 1403,
+        "fn": 1212,
+        "tn": 2108,
+        "alarm_rate": 0.4980344723314182,
+        "precision": 0.5741,
+        "recall": 0.6094,
+        "f1": 0.5912
+      }
+    },
+    {
+      "target_alarm": 0.5,
+      "tau_graph": 0.7,
+      "tau_query": 1.0,
+      "graph_only": {
+        "tp": 1839,
+        "fp": 1468,
+        "fn": 1264,
+        "tn": 2043,
+        "alarm_rate": 0.5,
+        "precision": 0.5561,
+        "recall": 0.5927,
+        "f1": 0.5738
+      },
+      "query_aware": {
+        "tp": 2018,
+        "fp": 1289,
+        "fn": 1085,
+        "tn": 2222,
+        "alarm_rate": 0.5,
+        "precision": 0.6102,
+        "recall": 0.6503,
+        "f1": 0.6296
+      },
+      "hybrid_or": {
+        "tp": 2662,
+        "fp": 2103,
+        "fn": 441,
+        "tn": 1408,
+        "alarm_rate": 0.7204414877532507,
+        "precision": 0.5587,
+        "recall": 0.8579,
+        "f1": 0.6767
+      }
+    },
+    {
+      "target_alarm": 0.7,
+      "tau_graph": 0.5714,
+      "tau_query": 1.0,
+      "graph_only": {
+        "tp": 2501,
+        "fp": 2129,
+        "fn": 602,
+        "tn": 1382,
+        "alarm_rate": 0.7000302388872089,
+        "precision": 0.5402,
+        "recall": 0.806,
+        "f1": 0.6468
+      },
+      "query_aware": {
+        "tp": 2822,
+        "fp": 1808,
+        "fn": 281,
+        "tn": 1703,
+        "alarm_rate": 0.7000302388872089,
+        "precision": 0.6095,
+        "recall": 0.9094,
+        "f1": 0.7299
+      },
+      "hybrid_or": {
+        "tp": 3047,
+        "fp": 2666,
+        "fn": 56,
+        "tn": 845,
+        "alarm_rate": 0.8637738131236771,
+        "precision": 0.5333,
+        "recall": 0.982,
+        "f1": 0.6912
+      }
+    },
+    {
+      "target_alarm": 0.9,
+      "tau_graph": 0.3571,
+      "tau_query": 0.3333,
+      "graph_only": {
+        "tp": 2972,
+        "fp": 2981,
+        "fn": 131,
+        "tn": 530,
+        "alarm_rate": 0.9000604777744179,
+        "precision": 0.4992,
+        "recall": 0.9578,
+        "f1": 0.6564
+      },
+      "query_aware": {
+        "tp": 3103,
+        "fp": 2850,
+        "fn": 0,
+        "tn": 661,
+        "alarm_rate": 0.9000604777744179,
+        "precision": 0.5212,
+        "recall": 1.0,
+        "f1": 0.6853
+      },
+      "hybrid_or": {
+        "tp": 3103,
+        "fp": 3220,
+        "fn": 0,
+        "tn": 291,
+        "alarm_rate": 0.9560024191109767,
+        "precision": 0.4907,
+        "recall": 1.0,
+        "f1": 0.6584
+      }
+    }
+  ],
+  "disagreement_at_matched_alarm": {
+    "pairs_disagree": 694,
+    "rate": 0.1049,
+    "graph_only_misses_harmful": 90,
+    "graph_only_false_alarms_on_benign": 347
+  }
+}

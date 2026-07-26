@@ -27,7 +27,11 @@ Anything not listed here has been retired.
 
 ## Cross-run analyses (write `reports/cross_run/*.json`)
 - `aggregate_cross_run.py` — pool per-corpus runs into the cross-run summary.
-- `compute_amp_ci.py` — document-cluster bootstrap CIs for query amplification.
+- `run_diagnostic_queries.py` — evaluate canonical graph-wide diagnostics
+  D1–D5 on every authoritative materialized pair and compute document-cluster
+  bootstrap CIs.
+- `compute_amp_ci.py` — compact the versioned D1–D5 artifacts for paper
+  figures and the human-readable amplification table.
 - `run_k5_cross_model.py` — cross-model recall-stability contract.
 - `run_e2e_qa.py` — downstream QA regression pipeline
   (query workload lives in `graphguard/qa.py`).
@@ -42,6 +46,21 @@ Anything not listed here has been retired.
   materialization with the unique endpoint-union plan, using both calls and
   observed token volume on the four primary runs.
 
+## Formal deployment workload (RQ8--RQ10)
+- `run_deployment_queries.py` — execute the deterministic deployment Q1--Q4
+  workload over the four primary lineage DBs.
+- `validate_deployment_kuzu_parity.py` — compare the deterministic executor
+  with Kuzu 0.11.3 on the registered parity cohort.
+- `run_deployment_downstream.py` — derive the schema-eligible downstream
+  pair population from Q1--Q4 results and checked parity records.
+- `build_deployment_cohorts.py` — freeze the label-blind RQ8 continuity
+  cohort and the four N=300 RQ10 cohorts.
+- `run_deployment_kuzu_cohort.py` — execute every frozen RQ10 pair and query
+  in Kuzu and record complete per-pair aggregates.
+- `package_formal_artifacts.py` — maintainer tool that deterministically
+  compresses and hash-indexes the 17 frozen artifacts after their logical
+  JSON sources have been rebuilt.
+
 ## Revision analyses (PVLDB revision; consume run DBs and/or cached reports)
 - `run_magnitude_analysis.py` — per-pair perturbation magnitudes recovered from
   the lineage log, related to drift (Sec. 5.5 / Fig. 7). `--fig-only` rebuilds
@@ -52,7 +71,8 @@ Anything not listed here has been retired.
   workload-visible query change, split by local / multi-hop regime
   (Sec. 6.2 / Fig. 9b).
 - `run_drift_accuracy_analysis.py` — deterministic DocRED query-divergence
-  correlations and K1 accuracy contrast (Sec. 6.2).
+  correlations from the formal RQ8 cohort and the K1 accuracy contrast from
+  the DocRED lineage DB (Sec. 6.2).
 - `run_stability_bucket_analysis.py` — deterministic L1/L2/L3 stability
   buckets and query-divergence rates (Sec. 5.4 / Fig. 6); also refreshes the
   corresponding LaTeX table.
@@ -67,12 +87,12 @@ Anything not listed here has been retired.
   declared schema relations (metric-ceiling sensitivity, Sec. 5.2).
 - `run_gate_split_analysis.py` — release-gate calibration/deployment split:
   thresholds selected on a 50/50 document-level calibration half, frozen, and
-  evaluated held-out (Sec. 6.4; consumes cached `e2e_kuzu_case_*__N300.json`).
+  evaluated held-out (Sec. 6.4; consumes the formal Kuzu cohort package).
 
 ## Paper artifacts (consume cached `reports/`; no LLM calls)
-- `verify_paper_results.py` — checks the paper's headline claims against 43
-  shipped JSON artifacts; `--lineage` additionally recounts events, edges,
-  counterfactual views, and tokens from the seven local run databases.
+- `verify_paper_results.py` — validates the formal artifact package and checks
+  the paper's headline claims; `--lineage` additionally recounts events,
+  edges, counterfactual views, and tokens from the seven local run databases.
 - `make_paper_figures.py` — **unified entry point for paper figures** (cross-run
   violation heatmap, Amp(Q) consistency, strict-vs-soft bars, calibration,
   noise floor, 2-D sensitivity, AUROC/AUPRC). CLI targets:
