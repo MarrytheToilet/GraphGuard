@@ -7,11 +7,12 @@ from __future__ import annotations
 
 import sqlite3
 import statistics as stats
-from collections import defaultdict
+from collections import defaultdict, deque
 from typing import Iterable, List
 
 from .base import Contract, ContractResult, PairObservation
 from .registry import REGISTRY
+from . import metrics as M
 from ..matching.relation_normalizer import project_to_base
 
 
@@ -46,6 +47,153 @@ def _query_q3(edges, base_relation_ids=None):
                 if rA != rB:
                     out.add((s, rA, oA, rB, oB))
     return out
+
+
+def _jaccard(a: set, b: set) -> float:
+    if not a and not b:
+        return 1.0
+    return len(a & b) / max(1, len(a | b))
+
+
+def _query_q3_from_triples(triples):
+    by_subj = defaultdict(list)
+    for subject, relation, obj in triples:
+        by_subj[subject].append((relation, obj))
+    out = set()
+    for subject, values in by_subj.items():
+        for index, (relation_a, object_a) in enumerate(values):
+            for relation_b, object_b in values[index + 1:]:
+                if relation_a != relation_b:
+                    out.add((
+                        subject, relation_a, object_a, relation_b, object_b
+                    ))
+    return out
+
+
+def _graph_index(triples):
+    adjacency = defaultdict(set)
+    for subject, _relation, obj in triples:
+        adjacency[subject].add(obj)
+    return adjacency
+
+
+def _bfs_dist(adjacency, source):
+    distance = {source: 0}
+    queue = deque([source])
+    while queue:
+        node = queue.popleft()
+        for neighbor in adjacency.get(node, ()):
+            if neighbor not in distance:
+                distance[neighbor] = distance[node] + 1
+                queue.append(neighbor)
+    return distance
+
+
+def _path_queries(base_triples, limit=6):
+    adjacency = _graph_index(base_triples)
+    candidates = []
+    for head in sorted(adjacency):
+        for tail, distance in _bfs_dist(adjacency, head).items():
+            if 2 <= distance <= 3:
+                candidates.append((head, tail, distance))
+    return sorted(candidates)[:limit]
+
+
+def _path_answer(triples, head, tail):
+    adjacency = _graph_index(triples)
+    reverse = defaultdict(set)
+    for subject, _relation, obj in triples:
+        reverse[obj].add(subject)
+    from_head = _bfs_dist(adjacency, head)
+    if tail not in from_head:
+        return set()
+    to_tail = _bfs_dist(reverse, tail)
+    distance = from_head[tail]
+    return {
+        node for node in from_head
+        if node not in (head, tail)
+        and node in to_tail
+        and from_head[node] + to_tail[node] == distance
+    }
+
+
+def _top_degree_answer(triples, k=3):
+    degree = defaultdict(int)
+    for subject, _relation, _obj in triples:
+        degree[subject] += 1
+    return {
+        node for node, _ in
+        sorted(degree.items(), key=lambda item: (-item[1], item[0]))[:k]
+    }
+
+
+def _rag_answer(triples, seed):
+    neighbors = defaultdict(set)
+    for subject, _relation, obj in triples:
+        neighbors[subject].add(obj)
+        neighbors[obj].add(subject)
+    frontier = {seed}
+    nodes = {seed}
+    for _ in range(2):
+        frontier = {
+            neighbor
+            for node in frontier
+            for neighbor in neighbors.get(node, ())
+        } - nodes
+        nodes |= frontier
+    return {
+        (subject, relation, obj)
+        for subject, relation, obj in triples
+        if subject in nodes and obj in nodes
+    }
+
+
+def _query_similarity(base_edges, cf_edges, *, base_relation_ids, query_id):
+    """Evaluate one registered query contract on a paired materialization.
+
+    Q5 follows the revision experiment and is eligible only when the base view
+    contains a directed path of length 2--3. ``None`` means the pair is outside
+    that contract's scope.
+    """
+    base_triples, cf_triples = M.paired_triples(
+        base_edges, cf_edges, base_relation_ids=base_relation_ids
+    )
+    base_triples, cf_triples = set(base_triples), set(cf_triples)
+
+    if query_id == "Q3":
+        return _jaccard(
+            _query_q3_from_triples(base_triples),
+            _query_q3_from_triples(cf_triples),
+        )
+    if not base_triples:
+        return None
+    if query_id == "Q5":
+        queries = _path_queries(base_triples)
+        if not queries:
+            return None
+        drifts = [
+            1.0 - _jaccard(
+                _path_answer(base_triples, head, tail),
+                _path_answer(cf_triples, head, tail),
+            )
+            for head, tail, _distance in queries
+        ]
+        return 1.0 - stats.mean(drifts)
+    if query_id == "Q6":
+        return _jaccard(
+            _top_degree_answer(base_triples),
+            _top_degree_answer(cf_triples),
+        )
+    if query_id == "Q7":
+        seeds = _top_degree_answer(base_triples, k=1)
+        if not seeds:
+            return None
+        seed = sorted(seeds)[0]
+        return _jaccard(
+            _rag_answer(base_triples, seed),
+            _rag_answer(cf_triples, seed),
+        )
+    raise ValueError(f"unsupported query contract: {query_id}")
 
 
 def _iter_pairs(conn: sqlite3.Connection):
@@ -93,6 +241,12 @@ def _edges(conn, event_id):
     ))
 
 
+def _gold_edges(conn, document_id):
+    return list(conn.execute(
+        "SELECT * FROM gold_edges WHERE document_id=?", (document_id,)
+    ))
+
+
 _BASE_REL_CACHE: dict = {}
 
 
@@ -134,12 +288,19 @@ def evaluate_contract(conn: sqlite3.Connection, contract: Contract,
         ce = _edges(conn, cf_ev)
         base_relation_ids = _base_relation_ids_for(conn, base_ev)
         if contract.query_scoped:
-            base_ans = _query_q3(be, base_relation_ids=base_relation_ids)
-            cf_ans = _query_q3(ce, base_relation_ids=base_relation_ids)
-            if not base_ans and not cf_ans:
-                m = 1.0
-            else:
-                m = len(base_ans & cf_ans) / max(1, len(base_ans | cf_ans))
+            m = _query_similarity(
+                be, ce,
+                base_relation_ids=base_relation_ids,
+                query_id=contract.query_id or "Q3",
+            )
+            if m is None:
+                continue
+        elif contract.needs_gold:
+            m = contract.metric_fn(
+                be, ce,
+                gold_edges=_gold_edges(conn, doc),
+                base_relation_ids=base_relation_ids,
+            )
         else:
             m = contract.metric_fn(be, ce, base_relation_ids=base_relation_ids)
         obs.append(PairObservation(
@@ -187,6 +348,8 @@ def evaluate_contract(conn: sqlite3.Connection, contract: Contract,
         scope=contract.scope,
         threshold=contract.threshold,
         direction=contract.direction,
+        alpha=contract.alpha,
+        min_pairs=contract.min_pairs,
         n_pairs=n,
         n_pass=n - n_fail,
         n_fail=n_fail,

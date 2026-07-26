@@ -51,6 +51,8 @@ def match_edges(base_edges: Iterable[sqlite3.Row],
     for be in base_edges:
         candidates: list[tuple[str, sqlite3.Row, float]] = []
         for ce in cf_edges:
+            if ce["edge_id"] in used_cf:
+                continue
             subj_eq = same_entity(be["subject_entity_id"], be["subject_name"],
                                   ce["subject_entity_id"], ce["subject_name"])
             obj_eq = same_entity(be["object_entity_id"], be["object_name"],

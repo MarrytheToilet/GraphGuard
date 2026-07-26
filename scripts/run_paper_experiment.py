@@ -6,7 +6,7 @@ the roles that were previously mixed in ad-hoc full/claim runs:
 
 * main audit set: base extraction + budgeted GraphGuard counterfactuals
 * oracle subset: exhaustive counterfactuals for E4 planner evaluation
-* stability subset: repeated no-op extraction for E0/stochastic variance
+* stability subset: controlled decoding resampling for E0/stochastic variance
 * reports/viz: E0-E5 artifacts organized under reports/runs/<run_name>/
 
 Example:
@@ -64,10 +64,10 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=None)
     ap.add_argument("--start-at", default="prepare",
                     choices=["prepare", "extract", "interventions", "oracle", "main",
-                             "score", "e0", "evals", "report", "viz"])
+                             "score", "baselines", "e0", "evals", "report", "viz"])
     ap.add_argument("--stop-after", default="viz",
                     choices=["prepare", "extract", "interventions", "oracle", "main",
-                             "score", "e0", "evals", "report", "viz"])
+                             "score", "baselines", "e0", "evals", "report", "viz"])
     args = ap.parse_args()
 
     cfg_path = ROOT / args.config
@@ -88,9 +88,10 @@ def main() -> int:
     viz_dir = run_report / "figures"
     db_path = run_data / f"{run_name}.db"
     log_path = run_data / "run.log"
-    run_data.mkdir(parents=True, exist_ok=True)
-    json_reports.mkdir(parents=True, exist_ok=True)
-    run_report.mkdir(parents=True, exist_ok=True)
+    if not args.dry_run:
+        run_data.mkdir(parents=True, exist_ok=True)
+        json_reports.mkdir(parents=True, exist_ok=True)
+        run_report.mkdir(parents=True, exist_ok=True)
 
     if args.fresh and not args.dry_run:
         for p in (db_path, Path(str(db_path) + "-wal"), Path(str(db_path) + "-shm")):
@@ -173,16 +174,22 @@ def main() -> int:
                    "--db", str(db_path),
                    "--out", str(run_report / "eval" / "contracts.json"),
                    "--md",  str(run_report / "eval" / "contracts.md")]),
+        ("evals", [PY, "scripts/run_e4_cost_quality.py",
+                   "--db", str(db_path),
+                   "--report", str(json_reports / "e4_report.json")]),
         ("evals", [PY, "scripts/run_repair.py", *common_cfg,
                    "--report", str(json_reports / "repair_report.json"), *db_args]),
-        ("evals", [PY, "scripts/run_matching_validation.py", "--db", str(db_path),
-                   "--out", str(json_reports / "matching_validation.json"), "--n", "200"]),
         ("report", [PY, "scripts/make_report.py",
                     *common_cfg,
                     "--out", str(run_report),
                     "--cases", "8",
                     "--e0", str(json_reports / "e0_report.json"),
+                    "--e1", str(json_reports / "e1_report.json"),
+                    "--e2", str(json_reports / "e2_report.json"),
+                    "--e3", str(json_reports / "e3_report.json"),
+                    "--e4", str(json_reports / "e4_report.json"),
                     "--repair", str(json_reports / "repair_report.json"),
+                    "--e5-audit", str(json_reports / "e5_audit_report.json"),
                     *db_args]),
         ("viz", [PY, "scripts/visualize.py",
                  "--db", str(db_path),
@@ -196,8 +203,11 @@ def main() -> int:
     started = order.index(args.start_at)
     stopped = order.index(args.stop_after)
     rc = 0
-    with log_path.open("a", encoding="utf-8") as log:
-        log.write(f"\n=== run {run_name} profile={args.profile} db={db_path} ===\n")
+    if not args.dry_run:
+        with log_path.open("a", encoding="utf-8") as log:
+            log.write(
+                f"\n=== run {run_name} profile={args.profile} db={db_path} ===\n"
+            )
     for stage, cmd in stages:
         idx = order.index(stage)
         skip = idx < started or idx > stopped

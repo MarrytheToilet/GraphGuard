@@ -13,7 +13,7 @@ from evaluation:
      pair that maximizes published coverage subject to a published-harm
      target of <= 0.05 (the paper's conservative target).
   3. Freeze the selected thresholds and report published-harm rate,
-     retained utility, coverage, and harm recall on the held-out
+     paired-view F1 fidelity, coverage, and harm recall on the held-out
      deployment split, for graph-only and GraphGuard policies, next to
      publish-all as reference.
 
@@ -51,7 +51,7 @@ def load_pairs(run: str):
             "doc": r["doc"],
             "graph_drift": float(r.get("graph_drift", 0.0)),
             "max_dq": float(r.get("max_answer_drift", 0.0)),
-            "mean_df1": float(r.get("mean_df1", 0.0)),
+            "mean_abs_delta_f1": float(r.get("mean_df1", 0.0)),
             "harmful": bool(r.get("harmful", False)),
         })
     return pairs
@@ -85,14 +85,27 @@ def metrics(pairs, blocked):
         "coverage": n_pub / n if n else 0.0,
         "pub_harm_rate": harm_pub / n_pub if n_pub else 0.0,
         "harm_recall": harm_blocked / harm_total if harm_total else 1.0,
-        "retained_utility": (float(np.mean([1.0 - abs(p["mean_df1"]) for p in pub]))
-                             if pub else 0.0),
+        "f1_fidelity": (
+            float(np.mean([1.0 - p["mean_abs_delta_f1"] for p in pub]))
+            if pub else 0.0
+        ),
         "n": n, "n_published": n_pub, "harm_total": harm_total,
     }
     if pub:
         rng = np.random.default_rng(0)
-        harm_arr = np.array([p["harmful"] for p in pub], dtype=float)
-        boot = [harm_arr[rng.integers(0, n_pub, n_pub)].mean() for _ in range(1000)]
+        by_doc = {}
+        for pair in pub:
+            by_doc.setdefault(pair["doc"], []).append(pair)
+        docs = sorted(by_doc)
+        boot = []
+        for _ in range(1000):
+            sampled_docs = rng.choice(docs, size=len(docs), replace=True)
+            sample = [
+                pair
+                for doc in sampled_docs
+                for pair in by_doc[doc]
+            ]
+            boot.append(np.mean([p["harmful"] for p in sample]))
         out["pub_harm_ci"] = [float(np.quantile(boot, 0.025)), float(np.quantile(boot, 0.975))]
     return out
 
@@ -113,6 +126,7 @@ def select_thresholds(calib, target=HARM_TARGET):
 def main() -> int:
     report = {"harm_target": HARM_TARGET, "split": "50/50 by document (md5 order)",
               "selection": "max coverage s.t. calibration pub-harm <= target",
+              "confidence_intervals": "cluster bootstrap by document",
               "corpora": {}}
     for name, run in DATASETS:
         pairs = load_pairs(run)
@@ -133,9 +147,9 @@ def main() -> int:
         pp = entry["deploy_graphguard_paper_point"]
         print(f"{name:10s} sel=({tg:.2f},{tq:.2f}) "
               f"calib_harm={m_cal['pub_harm_rate']:.3f} cov={m_cal['coverage']:.2f} | "
-              f"deploy: harm={d['pub_harm_rate']:.3f} util={d['retained_utility']:.3f} "
+              f"deploy: harm={d['pub_harm_rate']:.3f} fid={d['f1_fidelity']:.3f} "
               f"cov={d['coverage']:.2f} rec={d['harm_recall']:.2f} | "
-              f"paper-point deploy harm={pp['pub_harm_rate']:.3f} util={pp['retained_utility']:.3f} | "
+              f"paper-point deploy harm={pp['pub_harm_rate']:.3f} fid={pp['f1_fidelity']:.3f} | "
               f"publish-all harm={entry['deploy_publish_all']['pub_harm_rate']:.3f}")
     out = ROOT / "reports/cross_run/gate_split.json"
     out.write_text(json.dumps(report, indent=2))

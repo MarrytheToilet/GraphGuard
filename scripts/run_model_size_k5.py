@@ -3,8 +3,8 @@
 
 Evaluates the cross-model recall-stability contract K5 over the dense Qwen3
 size ladder (8B / 14B / 32B) plus the primary extractor, using the same
-protocol as scripts/run_k5_cross_model.py: per-document recall against gold
-edges (lower-cased exact triple match), pairwise |Delta recall| with
+protocol as scripts/run_k5_cross_model.py: identifier-first per-document
+recall against gold edges, pairwise |Delta recall| with
 tolerance TAU on at most ALPHA of shared documents, bootstrap 95% CI
 verdicts. Also reports pairwise graph drift between the size variants'
 base views for context.
@@ -17,12 +17,13 @@ import json
 import random
 import sqlite3
 import sys
-from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from graphguard.contracts import REGISTRY  # noqa: E402
+from graphguard.contracts import metrics as M  # noqa: E402
 
 RUNS = {
     "Qwen3-8B":  "docred__qwen3-8b__100d",
@@ -31,40 +32,38 @@ RUNS = {
     "DeepSeek-V4-Flash": "docred__deepseek-v4-flash__300d",
 }
 SIZE_ORDER = ["Qwen3-8B", "Qwen3-14B", "Qwen3-32B", "DeepSeek-V4-Flash"]
-TAU = 0.20
-ALPHA = 0.20
+TAU = REGISTRY["K5"].threshold
+ALPHA = REGISTRY["K5"].alpha
 B = 2000
 
 
 def per_doc_recall_and_edges(db_path: Path):
     """Protocol identical to run_k5_cross_model.per_doc_recall, plus the
     predicted edge set of the same base event for drift computation."""
-    c = sqlite3.connect(str(db_path)).cursor()
+    con = sqlite3.connect(str(db_path))
+    con.row_factory = sqlite3.Row
+    c = con.cursor()
     recall: dict[str, float] = {}
-    edges: dict[str, set] = {}
+    edges: dict[str, list] = {}
     for (doc,) in c.execute("SELECT DISTINCT document_id FROM extraction_events").fetchall():
-        gold = {(h.lower(), r, t.lower()) for h, r, t in c.execute(
-            "SELECT head_name, relation_base, tail_name FROM gold_edges WHERE document_id=?",
-            (doc,))}
+        gold = list(c.execute(
+            "SELECT head_entity_id, head_name, relation_base, "
+            "tail_entity_id, tail_name FROM gold_edges WHERE document_id=?",
+            (doc,)))
         if not gold:
             continue
         ev = c.execute("SELECT event_id FROM extraction_events "
                        "WHERE document_id=? ORDER BY created_at LIMIT 1", (doc,)).fetchone()
         if ev is None:
             continue
-        pred = {(h.lower(), r, t.lower()) for h, r, t in c.execute(
-            "SELECT subject_name, relation, object_name FROM extracted_edges WHERE event_id=?",
-            (ev[0],))}
-        recall[doc] = len(gold & pred) / len(gold)
+        pred = list(c.execute(
+            "SELECT subject_entity_id, subject_name, relation, "
+            "object_entity_id, object_name "
+            "FROM extracted_edges WHERE event_id=?", (ev[0],)))
+        recall[doc] = M.gold_recall(pred, gold)
         edges[doc] = pred
+    con.close()
     return recall, edges
-
-
-def jac(a: set, b: set) -> float:
-    if not a and not b:
-        return 1.0
-    u = len(a | b)
-    return len(a & b) / u if u else 1.0
 
 
 def main() -> int:
@@ -101,7 +100,10 @@ def main() -> int:
             for _ in range(B))
         lo, hi = boots[int(0.025 * B)], boots[int(0.975 * B)]
         verdict = "VIOLATED" if lo > ALPHA else ("SATISFIED" if hi < ALPHA else "INCONCLUSIVE")
-        drift = sum(1.0 - jac(edge_sets[a][d], edge_sets[b][d]) for d in shared) / n
+        drift = sum(
+            1.0 - M.edge_jaccard(edge_sets[a][d], edge_sets[b][d])
+            for d in shared
+        ) / n
         out["pairs"][f"{a} vs {b}"] = dict(
             n=n, mean_recall_A=sum(ra) / n, mean_recall_B=sum(rb) / n,
             mean_abs_diff=sum(diffs) / n, frac_above_tau=frac,

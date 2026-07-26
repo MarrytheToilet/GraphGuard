@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "scope": "four primary DeepSeek-V4-Flash runs plus three DocRED cross-model runs",
+  "lineage_totals": {
+    "extraction_events": 33043,
+    "primary_events": 28482,
+    "cross_model_events": 4561,
+    "extracted_edges": 264010,
+    "counterfactual_views": 29747,
+    "tokens": 137646379
+  },
+  "raw_stability": {
+    "DocRED": {
+      "n_documents": 79,
+      "avg_edge_overlap": 0.571222440476356,
+      "type_agreement": 0.786796279817599,
+      "disappearance_rate": 0.282101604210423,
+      "type_flip_rate": 0.127695249223524,
+      "new_edge_rate": 0.292377607819093
+    },
+    "Re-DocRED": {
+      "n_documents": 80,
+      "avg_edge_overlap": 0.568228565423759,
+      "type_agreement": 0.783516240703741,
+      "disappearance_rate": 0.286441622541685,
+      "type_flip_rate": 0.133435328379241,
+      "new_edge_rate": 0.289362597521481
+    },
+    "SciERC": {
+      "n_documents": 50,
+      "avg_edge_overlap": 0.582571676982567,
+      "type_agreement": 0.861179487179487,
+      "disappearance_rate": 0.309940989663358,
+      "type_flip_rate": 0.07535796980797,
+      "new_edge_rate": 0.293849890070943
+    },
+    "BC5CDR": {
+      "n_documents": 80,
+      "avg_edge_overlap": 0.806364983974359,
+      "type_agreement": 0.910833333333333,
+      "disappearance_rate": 0.124572687728938,
+      "type_flip_rate": 0.036572916666667,
+      "new_edge_rate": 0.118204899267399
+    }
+  }
+}

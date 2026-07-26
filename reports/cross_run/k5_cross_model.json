@@ -5,19 +5,19 @@
   "pairs": {
     "DeepSeek-V4-Flash (v5 primary, 300 docs) vs Qwen3-32B (legacy, 100 docs)": {
       "n": 98,
-      "mean_recall_A": 0.20780335052816964,
-      "mean_recall_B": 0.13948566109154442,
-      "mean_abs_diff": 0.10572413842454888,
-      "frac_above_tau": 0.15306122448979592,
-      "ci_low": 0.09183673469387756,
-      "ci_high": 0.22448979591836735,
+      "mean_recall_A": 0.2078148228377786,
+      "mean_recall_B": 0.14106529313257843,
+      "mean_abs_diff": 0.10415597869312383,
+      "frac_above_tau": 0.14285714285714285,
+      "ci_low": 0.08163265306122448,
+      "ci_high": 0.21428571428571427,
       "verdict": "INCONCLUSIVE"
     },
     "DeepSeek-V4-Flash (v5 primary, 300 docs) vs Kimi-K2 (legacy, 100 docs)": {
       "n": 98,
-      "mean_recall_A": 0.20780335052816964,
-      "mean_recall_B": 0.20327674610251129,
-      "mean_abs_diff": 0.08285490749343721,
+      "mean_recall_A": 0.2078148228377786,
+      "mean_recall_B": 0.20409990672380854,
+      "mean_abs_diff": 0.08366659580512553,
       "frac_above_tau": 0.10204081632653061,
       "ci_low": 0.05102040816326531,
       "ci_high": 0.16326530612244897,
@@ -25,9 +25,9 @@
     },
     "DeepSeek-V4-Flash (v5 primary, 300 docs) vs GLM-5 (v5 partial, 100 docs)": {
       "n": 98,
-      "mean_recall_A": 0.20780335052816964,
-      "mean_recall_B": 0.26133755753550536,
-      "mean_abs_diff": 0.11046478663419017,
+      "mean_recall_A": 0.2078148228377786,
+      "mean_recall_B": 0.2588721537191699,
+      "mean_abs_diff": 0.1079169255925403,
       "frac_above_tau": 0.15306122448979592,
       "ci_low": 0.08163265306122448,
       "ci_high": 0.22448979591836735,
@@ -35,13 +35,19 @@
     },
     "Qwen3-32B (legacy, 100 docs) vs Kimi-K2 (legacy, 100 docs)": {
       "n": 98,
-      "mean_recall_A": 0.13948566109154442,
-      "mean_recall_B": 0.20327674610251129,
-      "mean_abs_diff": 0.07920461884555344,
-      "frac_above_tau": 0.1326530612244898,
-      "ci_low": 0.07142857142857142,
-      "ci_high": 0.20408163265306123,
-      "verdict": "INCONCLUSIVE"
+      "mean_recall_A": 0.14106529313257843,
+      "mean_recall_B": 0.20409990672380854,
+      "mean_abs_diff": 0.07844814742581672,
+      "frac_above_tau": 0.11224489795918367,
+      "ci_low": 0.05102040816326531,
+      "ci_high": 0.1836734693877551,
+      "verdict": "SATISFIED"
     }
+  },
+  "pooled_primary": {
+    "n": 294,
+    "mean_abs_diff": 0.09857983336359656,
+    "frac_above_tau": 0.1326530612244898,
+    "severity_mean": 0.22028307949360582
   }
 }

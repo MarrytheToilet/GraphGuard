@@ -6,7 +6,7 @@ Writes:
   reports/cross_run/amp_ci.md   (paper-ready table)
 """
 from __future__ import annotations
-import json, os, math, random
+import json, random
 from pathlib import Path
 from collections import defaultdict
 
@@ -21,20 +21,27 @@ B = 1000
 random.seed(0)
 
 
-def boot_ci(values, B=1000, alpha=0.05):
-    n = len(values)
-    if n == 0:
+def boot_ci(observations, B=1000, alpha=0.05):
+    """Cluster-bootstrap a pair-level mean by source document."""
+    if not observations:
         return (float("nan"), float("nan"), float("nan"))
+    by_doc = defaultdict(list)
+    for doc, value in observations:
+        by_doc[doc].append(value)
+    docs = sorted(by_doc)
     means = []
     for _ in range(B):
-        s = 0.0
-        for _ in range(n):
-            s += values[random.randrange(n)]
-        means.append(s / n)
+        sampled = [
+            value
+            for _ in docs
+            for value in by_doc[docs[random.randrange(len(docs))]]
+        ]
+        means.append(sum(sampled) / len(sampled))
     means.sort()
     lo = means[int(B * alpha / 2)]
     hi = means[int(B * (1 - alpha / 2))]
-    mean = sum(values) / n
+    values = [value for _, value in observations]
+    mean = sum(values) / len(values)
     return mean, lo, hi
 
 
@@ -50,7 +57,7 @@ def main():
         per_q_qd = defaultdict(list)
         per_q_gd = defaultdict(list)
         for o in data["per_obs"]:
-            per_q[o["query"]].append(o["amp"])
+            per_q[o["query"]].append((o["doc"], o["amp"]))
             per_q_qd[o["query"]].append(o["query_drift"])
             per_q_gd[o["query"]].append(o["graph_drift"])
         run_out = {}
@@ -60,6 +67,7 @@ def main():
             gd = sum(per_q_gd[q]) / len(per_q_gd[q])
             run_out[q] = {
                 "n": len(per_q[q]),
+                "n_documents": len({doc for doc, _ in per_q[q]}),
                 "amp_mean": mean,
                 "amp_ci_lo": lo,
                 "amp_ci_hi": hi,
@@ -74,13 +82,18 @@ def main():
     print("wrote", out_path)
 
     # Markdown table for paper insertion
-    md = ["# Amp(Q) bootstrap 95% CIs (B=1000, mean of per-pair ratios)", ""]
-    md.append("| run | query | n | Amp mean | 95% CI | Amp(ratio-of-means) |")
-    md.append("|---|---|---:|---:|---|---:|")
+    md = [
+        "# Amp(Q) document-cluster bootstrap 95% CIs "
+        "(B=1000, mean of per-pair ratios)",
+        "",
+    ]
+    md.append("| run | query | n | docs | Amp mean | 95% CI | Amp(ratio-of-means) |")
+    md.append("|---|---|---:|---:|---:|---|---:|")
     for run, qs in out.items():
         for q, st in qs.items():
             md.append(
-                f"| {run} | {q} | {st['n']} | {st['amp_mean']:.3f} | "
+                f"| {run} | {q} | {st['n']} | {st['n_documents']} | "
+                f"{st['amp_mean']:.3f} | "
                 f"[{st['amp_ci_lo']:.3f}, {st['amp_ci_hi']:.3f}] | "
                 f"{st['amp_ratio_of_means']:.3f} |"
             )

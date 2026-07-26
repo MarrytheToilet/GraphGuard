@@ -17,6 +17,8 @@ Reported metrics per (planner, budget):
                                  changing interventions also chosen by planner
     rank_kendall_tau_avg      : optional rank correlation (skipped if scipy missing)
     cache_hit_rate            : n_chosen_with_data / n_chosen
+    shared_run_reuse          : mean base-edge outcomes informed per selected
+                                 intervention (not cross-contract endpoint savings)
 """
 from __future__ import annotations
 

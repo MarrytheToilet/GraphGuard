@@ -18,14 +18,16 @@ Anything not listed here has been retired.
 - `run_baselines.py` — no-LLM baseline detectors (confidence, co-occurrence, ...).
 - `run_e0_stability.py` — repeated no-op extraction for the stochastic baseline.
 - `run_contracts.py` — evaluate the drift-contract catalogue on a run.
+- `run_e4_cost_quality.py` — rebuild the offline E4 planner cost-quality
+  artifact; its `shared_run_reuse` field is edge-outcome fan-out, not
+  cross-contract endpoint savings.
 - `run_repair.py` — repair / filtering-strategy evaluation.
-- `run_matching_validation.py` — entity-alias matching validation.
 - `make_report.py` — human-readable per-run report.
 - `visualize.py` — per-run diagnostic figures.
 
 ## Cross-run analyses (write `reports/cross_run/*.json`)
 - `aggregate_cross_run.py` — pool per-corpus runs into the cross-run summary.
-- `compute_amp_ci.py` — bootstrap CIs for query amplification.
+- `compute_amp_ci.py` — document-cluster bootstrap CIs for query amplification.
 - `run_k5_cross_model.py` — cross-model recall-stability contract.
 - `run_e2e_qa.py` — downstream QA regression pipeline
   (query workload lives in `graphguard/qa.py`).
@@ -36,6 +38,9 @@ Anything not listed here has been retired.
 - `run_nli_baseline.py` — NLI triple-verification baseline.
 - `run_threshold_sla.py` — SLA threshold sweep.
 - `run_budget_stopping.py` — CI-based early stopping.
+- `run_endpoint_reuse_analysis.py` — compare independent per-contract
+  materialization with the unique endpoint-union plan, using both calls and
+  observed token volume on the four primary runs.
 
 ## Revision analyses (PVLDB revision; consume run DBs and/or cached reports)
 - `run_magnitude_analysis.py` — per-pair perturbation magnitudes recovered from
@@ -44,7 +49,15 @@ Anything not listed here has been retired.
 - `run_extended_queries.py` — extended query templates Q5–Q7 (shortest path,
   aggregation, GraphRAG retrieval) on all materialized pairs (Sec. 6.1 / Fig. 9a).
 - `run_regime_analysis.py` — graph-only vs. query-aware detection of
-  workload-visible harm, split by local / multi-hop regime (Sec. 6.2 / Fig. 9b).
+  workload-visible query change, split by local / multi-hop regime
+  (Sec. 6.2 / Fig. 9b).
+- `run_drift_accuracy_analysis.py` — deterministic DocRED query-divergence
+  correlations and K1 accuracy contrast (Sec. 6.2).
+- `run_stability_bucket_analysis.py` — deterministic L1/L2/L3 stability
+  buckets and query-divergence rates (Sec. 5.4 / Fig. 6); also refreshes the
+  corresponding LaTeX table.
+- `export_sampled_document_ids.py` — export the exact ordered document samples
+  for the four primary and three cross-model runs.
 - `run_family_decomposition.py` — repeated-extraction decomposition extended to
   every perturbation family (Sec. 5.1 / Table 5).
 - `run_langchain_toolchain.py` — end-to-end LangChain `LLMGraphTransformer`
@@ -55,11 +68,11 @@ Anything not listed here has been retired.
 - `run_gate_split_analysis.py` — release-gate calibration/deployment split:
   thresholds selected on a 50/50 document-level calibration half, frozen, and
   evaluated held-out (Sec. 6.4; consumes cached `e2e_kuzu_case_*__N300.json`).
-- `run_matching_validation_hard.py` — audits the non-identifier portion of the
-  200-sample matcher validation against the full counterfactual edge set
-  (Sec. 3.3; outputs ship as `reports/runs/<run>/matching_validation_hard.json`).
 
 ## Paper artifacts (consume cached `reports/`; no LLM calls)
+- `verify_paper_results.py` — checks the paper's headline claims against 43
+  shipped JSON artifacts; `--lineage` additionally recounts events, edges,
+  counterfactual views, and tokens from the seven local run databases.
 - `make_paper_figures.py` — **unified entry point for paper figures** (cross-run
   violation heatmap, Amp(Q) consistency, strict-vs-soft bars, calibration,
   noise floor, 2-D sensitivity, AUROC/AUPRC). CLI targets:
@@ -84,4 +97,6 @@ Anything not listed here has been retired.
 ## Conventions
 All Python scripts assume the repo root is on `PYTHONPATH` and read inputs from
 `reports/cross_run/` and `data/processed/runs/`; paper figures land in
-`assets/figures/`.
+`assets/figures/`. Mirror generated figures to `paper/figures/` before running
+`paper/build.sh`. The reported Kuzu workload uses the exact dependency pin
+`kuzu==0.11.3` from `pyproject.toml`.

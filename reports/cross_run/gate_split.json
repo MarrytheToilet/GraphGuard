@@ -2,95 +2,96 @@
   "harm_target": 0.05,
   "split": "50/50 by document (md5 order)",
   "selection": "max coverage s.t. calibration pub-harm <= target",
+  "confidence_intervals": "cluster bootstrap by document",
   "corpora": {
     "DocRED": {
-      "n_calib": 156,
-      "n_deploy": 144,
+      "n_calib": 146,
+      "n_deploy": 154,
       "selected": {
         "tau_g": 0.95,
         "tau_q": 0.95
       },
       "calibration": {
-        "coverage": 0.36538461538461536,
-        "pub_harm_rate": 0.03508771929824561,
-        "harm_recall": 0.9473684210526315,
-        "retained_utility": 0.9873228070175438,
-        "n": 156,
-        "n_published": 57,
-        "harm_total": 38,
+        "coverage": 0.3835616438356164,
+        "pub_harm_rate": 0.017857142857142856,
+        "harm_recall": 0.9629629629629629,
+        "f1_fidelity": 0.9900196428571428,
+        "n": 146,
+        "n_published": 56,
+        "harm_total": 27,
         "pub_harm_ci": [
           0.0,
-          0.08771929824561403
+          0.058823529411764705
         ]
       },
       "deploy_publish_all": {
         "coverage": 1.0,
-        "pub_harm_rate": 0.2361111111111111,
+        "pub_harm_rate": 0.3051948051948052,
         "harm_recall": 0.0,
-        "retained_utility": 0.9326951388888891,
-        "n": 144,
-        "n_published": 144,
-        "harm_total": 34,
+        "f1_fidelity": 0.903655844155844,
+        "n": 154,
+        "n_published": 154,
+        "harm_total": 47,
         "pub_harm_ci": [
-          0.1734375,
-          0.30572916666666655
+          0.22377392344497607,
+          0.3889069264069264
         ]
       },
       "deploy_graph_only": {
-        "coverage": 0.9930555555555556,
-        "pub_harm_rate": 0.23776223776223776,
-        "harm_recall": 0.0,
-        "retained_utility": 0.9322244755244755,
-        "n": 144,
-        "n_published": 143,
-        "harm_total": 34,
+        "coverage": 0.9090909090909091,
+        "pub_harm_rate": 0.2857142857142857,
+        "harm_recall": 0.14893617021276595,
+        "f1_fidelity": 0.9121400000000001,
+        "n": 154,
+        "n_published": 140,
+        "harm_total": 47,
         "pub_harm_ci": [
-          0.17482517482517482,
-          0.3076923076923077
+          0.19992957746478876,
+          0.3750234962406015
         ]
       },
       "deploy_graphguard": {
-        "coverage": 0.4236111111111111,
-        "pub_harm_rate": 0.01639344262295082,
-        "harm_recall": 0.9705882352941176,
-        "retained_utility": 0.9910590163934426,
-        "n": 144,
-        "n_published": 61,
-        "harm_total": 34,
+        "coverage": 0.37012987012987014,
+        "pub_harm_rate": 0.03508771929824561,
+        "harm_recall": 0.9574468085106383,
+        "f1_fidelity": 0.9872701754385965,
+        "n": 154,
+        "n_published": 57,
+        "harm_total": 47,
         "pub_harm_ci": [
           0.0,
-          0.04918032786885246
+          0.08928571428571429
         ]
       },
       "deploy_graphguard_paper_point": {
-        "coverage": 0.2916666666666667,
-        "pub_harm_rate": 0.023809523809523808,
-        "harm_recall": 0.9705882352941176,
-        "retained_utility": 0.9956190476190475,
-        "n": 144,
-        "n_published": 42,
-        "harm_total": 34,
+        "coverage": 0.11038961038961038,
+        "pub_harm_rate": 0.058823529411764705,
+        "harm_recall": 0.9787234042553191,
+        "f1_fidelity": 0.9876882352941178,
+        "n": 154,
+        "n_published": 17,
+        "harm_total": 47,
         "pub_harm_ci": [
           0.0,
-          0.07142857142857142
+          0.1875
         ]
       }
     },
     "Re-DocRED": {
-      "n_calib": 141,
-      "n_deploy": 159,
+      "n_calib": 153,
+      "n_deploy": 147,
       "selected": {
         "tau_g": 0.95,
         "tau_q": 0.95
       },
       "calibration": {
-        "coverage": 0.28368794326241137,
+        "coverage": 0.22875816993464052,
         "pub_harm_rate": 0.0,
         "harm_recall": 1.0,
-        "retained_utility": 0.995895,
-        "n": 141,
-        "n_published": 40,
-        "harm_total": 24,
+        "f1_fidelity": 0.9973514285714286,
+        "n": 153,
+        "n_published": 35,
+        "harm_total": 27,
         "pub_harm_ci": [
           0.0,
           0.0
@@ -98,51 +99,51 @@
       },
       "deploy_publish_all": {
         "coverage": 1.0,
-        "pub_harm_rate": 0.1949685534591195,
+        "pub_harm_rate": 0.23129251700680273,
         "harm_recall": 0.0,
-        "retained_utility": 0.9520591194968552,
-        "n": 159,
-        "n_published": 159,
-        "harm_total": 31,
+        "f1_fidelity": 0.9497074829931971,
+        "n": 147,
+        "n_published": 147,
+        "harm_total": 34,
         "pub_harm_ci": [
-          0.1320754716981132,
-          0.25157232704402516
+          0.15384615384615385,
+          0.32147556390977444
         ]
       },
       "deploy_graph_only": {
-        "coverage": 0.9811320754716981,
-        "pub_harm_rate": 0.1987179487179487,
-        "harm_recall": 0.0,
-        "retained_utility": 0.9533205128205126,
-        "n": 159,
-        "n_published": 156,
-        "harm_total": 31,
+        "coverage": 0.9387755102040817,
+        "pub_harm_rate": 0.21014492753623187,
+        "harm_recall": 0.14705882352941177,
+        "f1_fidelity": 0.9499050724637682,
+        "n": 147,
+        "n_published": 138,
+        "harm_total": 34,
         "pub_harm_ci": [
-          0.1346153846153846,
-          0.26282051282051283
+          0.1376742449385994,
+          0.29323558897243107
         ]
       },
       "deploy_graphguard": {
-        "coverage": 0.16981132075471697,
+        "coverage": 0.2108843537414966,
         "pub_harm_rate": 0.0,
         "harm_recall": 1.0,
-        "retained_utility": 0.996474074074074,
-        "n": 159,
-        "n_published": 27,
-        "harm_total": 31,
+        "f1_fidelity": 0.9946225806451614,
+        "n": 147,
+        "n_published": 31,
+        "harm_total": 34,
         "pub_harm_ci": [
           0.0,
           0.0
         ]
       },
       "deploy_graphguard_paper_point": {
-        "coverage": 0.10062893081761007,
+        "coverage": 0.08163265306122448,
         "pub_harm_rate": 0.0,
         "harm_recall": 1.0,
-        "retained_utility": 0.997475,
-        "n": 159,
-        "n_published": 16,
-        "harm_total": 31,
+        "f1_fidelity": 0.9959083333333334,
+        "n": 147,
+        "n_published": 12,
+        "harm_total": 34,
         "pub_harm_ci": [
           0.0,
           0.0
@@ -150,20 +151,20 @@
       }
     },
     "SciERC": {
-      "n_calib": 150,
-      "n_deploy": 150,
+      "n_calib": 129,
+      "n_deploy": 171,
       "selected": {
         "tau_g": 0.95,
-        "tau_q": 0.95
+        "tau_q": 0.5
       },
       "calibration": {
-        "coverage": 0.24,
+        "coverage": 0.14728682170542637,
         "pub_harm_rate": 0.0,
         "harm_recall": 1.0,
-        "retained_utility": 0.988175,
-        "n": 150,
-        "n_published": 36,
-        "harm_total": 48,
+        "f1_fidelity": 0.997857894736842,
+        "n": 129,
+        "n_published": 19,
+        "harm_total": 49,
         "pub_harm_ci": [
           0.0,
           0.0
@@ -171,51 +172,51 @@
       },
       "deploy_publish_all": {
         "coverage": 1.0,
-        "pub_harm_rate": 0.29333333333333333,
+        "pub_harm_rate": 0.25146198830409355,
         "harm_recall": 0.0,
-        "retained_utility": 0.8774253333333333,
-        "n": 150,
-        "n_published": 150,
-        "harm_total": 44,
+        "f1_fidelity": 0.8624368421052632,
+        "n": 171,
+        "n_published": 171,
+        "harm_total": 43,
         "pub_harm_ci": [
-          0.22,
-          0.36666666666666664
+          0.15553763440860216,
+          0.3589887640449438
         ]
       },
       "deploy_graph_only": {
-        "coverage": 0.9733333333333334,
-        "pub_harm_rate": 0.2808219178082192,
-        "harm_recall": 0.06818181818181818,
-        "retained_utility": 0.8797452054794521,
-        "n": 150,
-        "n_published": 146,
-        "harm_total": 44,
+        "coverage": 0.9473684210526315,
+        "pub_harm_rate": 0.22839506172839505,
+        "harm_recall": 0.13953488372093023,
+        "f1_fidelity": 0.8695944444444444,
+        "n": 171,
+        "n_published": 162,
+        "harm_total": 43,
         "pub_harm_ci": [
-          0.21232876712328766,
-          0.3561643835616438
+          0.13087122570465468,
+          0.3472815040650406
         ]
       },
       "deploy_graphguard": {
-        "coverage": 0.20666666666666667,
+        "coverage": 0.14619883040935672,
         "pub_harm_rate": 0.0,
         "harm_recall": 1.0,
-        "retained_utility": 0.9906516129032258,
-        "n": 150,
-        "n_published": 31,
-        "harm_total": 44,
+        "f1_fidelity": 0.9985,
+        "n": 171,
+        "n_published": 25,
+        "harm_total": 43,
         "pub_harm_ci": [
           0.0,
           0.0
         ]
       },
       "deploy_graphguard_paper_point": {
-        "coverage": 0.10666666666666667,
+        "coverage": 0.029239766081871343,
         "pub_harm_rate": 0.0,
         "harm_recall": 1.0,
-        "retained_utility": 0.9885062499999999,
-        "n": 150,
-        "n_published": 16,
-        "harm_total": 44,
+        "f1_fidelity": 1.0,
+        "n": 171,
+        "n_published": 5,
+        "harm_total": 43,
         "pub_harm_ci": [
           0.0,
           0.0
@@ -223,75 +224,75 @@
       }
     },
     "BC5CDR": {
-      "n_calib": 151,
-      "n_deploy": 149,
+      "n_calib": 146,
+      "n_deploy": 154,
       "selected": {
-        "tau_g": 0.95,
-        "tau_q": 0.5
+        "tau_g": 0.6,
+        "tau_q": 0.95
       },
       "calibration": {
-        "coverage": 0.6688741721854304,
-        "pub_harm_rate": 0.019801980198019802,
-        "harm_recall": 0.9285714285714286,
-        "retained_utility": 0.9820613861386138,
-        "n": 151,
-        "n_published": 101,
-        "harm_total": 28,
+        "coverage": 0.7123287671232876,
+        "pub_harm_rate": 0.04807692307692308,
+        "harm_recall": 0.8076923076923077,
+        "f1_fidelity": 0.9353586538461539,
+        "n": 146,
+        "n_published": 104,
+        "harm_total": 26,
         "pub_harm_ci": [
-          0.0,
-          0.04950495049504951
+          0.010413981958762886,
+          0.08695652173913043
         ]
       },
       "deploy_publish_all": {
         "coverage": 1.0,
-        "pub_harm_rate": 0.20134228187919462,
+        "pub_harm_rate": 0.21428571428571427,
         "harm_recall": 0.0,
-        "retained_utility": 0.8393791946308724,
-        "n": 149,
-        "n_published": 149,
-        "harm_total": 30,
+        "f1_fidelity": 0.8365870129870131,
+        "n": 154,
+        "n_published": 154,
+        "harm_total": 33,
         "pub_harm_ci": [
-          0.1342281879194631,
-          0.2684563758389262
+          0.1485990990990991,
+          0.2846749976901044
         ]
       },
       "deploy_graph_only": {
-        "coverage": 0.9932885906040269,
-        "pub_harm_rate": 0.19594594594594594,
-        "harm_recall": 0.03333333333333333,
-        "retained_utility": 0.8450506756756756,
-        "n": 149,
-        "n_published": 148,
-        "harm_total": 30,
+        "coverage": 0.8181818181818182,
+        "pub_harm_rate": 0.11904761904761904,
+        "harm_recall": 0.5454545454545454,
+        "f1_fidelity": 0.9009904761904762,
+        "n": 154,
+        "n_published": 126,
+        "harm_total": 33,
         "pub_harm_ci": [
-          0.13513513513513514,
-          0.25675675675675674
+          0.06349206349206349,
+          0.18187272727272724
         ]
       },
       "deploy_graphguard": {
-        "coverage": 0.6845637583892618,
-        "pub_harm_rate": 0.058823529411764705,
-        "harm_recall": 0.8,
-        "retained_utility": 0.9817843137254901,
-        "n": 149,
-        "n_published": 102,
-        "harm_total": 30,
+        "coverage": 0.7662337662337663,
+        "pub_harm_rate": 0.11016949152542373,
+        "harm_recall": 0.6060606060606061,
+        "f1_fidelity": 0.932884745762712,
+        "n": 154,
+        "n_published": 118,
+        "harm_total": 33,
         "pub_harm_ci": [
-          0.0196078431372549,
-          0.10784313725490197
+          0.055103793843951324,
+          0.16939447201543972
         ]
       },
       "deploy_graphguard_paper_point": {
-        "coverage": 0.6174496644295302,
-        "pub_harm_rate": 0.07608695652173914,
-        "harm_recall": 0.7666666666666667,
-        "retained_utility": 0.963308695652174,
-        "n": 149,
-        "n_published": 92,
-        "harm_total": 30,
+        "coverage": 0.6168831168831169,
+        "pub_harm_rate": 0.05263157894736842,
+        "harm_recall": 0.8484848484848485,
+        "f1_fidelity": 0.962742105263158,
+        "n": 154,
+        "n_published": 95,
+        "harm_total": 33,
         "pub_harm_ci": [
-          0.03260869565217391,
-          0.13043478260869565
+          0.010752688172043012,
+          0.1
         ]
       }
     }

@@ -19,10 +19,14 @@ from __future__ import annotations
 import json
 import random
 import sqlite3
+import sys
 from itertools import combinations
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from graphguard.contracts import REGISTRY  # noqa: E402
+from graphguard.contracts import metrics as M  # noqa: E402
 
 RUNS = {
     "Qwen3-8B":  "docred__qwen3-8b__100d",
@@ -30,20 +34,23 @@ RUNS = {
     "Qwen3-32B": "docred__qwen3-32b__100d",
     "DeepSeek-V4-Flash": "docred__deepseek-v4-flash__300d",
 }
-TAU, ALPHA, B = 0.20, 0.20, 2000
+TAU, ALPHA, B = REGISTRY["K5"].threshold, REGISTRY["K5"].alpha, 2000
 
 
 def per_doc_recall(db_path: Path, allowed: set | None = None) -> dict[str, float]:
-    c = sqlite3.connect(str(db_path)).cursor()
+    con = sqlite3.connect(str(db_path))
+    con.row_factory = sqlite3.Row
+    c = con.cursor()
     rec: dict[str, float] = {}
     docs = [d for (d,) in c.execute(
         "SELECT DISTINCT document_id FROM extraction_events").fetchall()]
     for doc in docs:
-        gold = {(h.lower(), r, t.lower()) for h, r, t in c.execute(
-            "SELECT head_name, relation_base, tail_name FROM gold_edges "
-            "WHERE document_id=?", (doc,)).fetchall()}
+        gold = list(c.execute(
+            "SELECT head_entity_id, head_name, relation_base, "
+            "tail_entity_id, tail_name FROM gold_edges "
+            "WHERE document_id=?", (doc,)).fetchall())
         if allowed is not None:
-            gold = {g for g in gold if g[1] in allowed}
+            gold = [g for g in gold if g["relation_base"] in allowed]
         if not gold:
             continue
         ev = c.execute("SELECT event_id FROM extraction_events "
@@ -51,10 +58,12 @@ def per_doc_recall(db_path: Path, allowed: set | None = None) -> dict[str, float
                        (doc,)).fetchone()
         if ev is None:
             continue
-        pred = {(h.lower(), r, t.lower()) for h, r, t in c.execute(
-            "SELECT subject_name, relation, object_name FROM extracted_edges "
-            "WHERE event_id=?", (ev[0],)).fetchall()}
-        rec[doc] = len(gold & pred) / len(gold)
+        pred = list(c.execute(
+            "SELECT subject_entity_id, subject_name, relation, "
+            "object_entity_id, object_name FROM extracted_edges "
+            "WHERE event_id=?", (ev[0],)).fetchall())
+        rec[doc] = M.gold_recall(pred, gold)
+    con.close()
     return rec
 
 

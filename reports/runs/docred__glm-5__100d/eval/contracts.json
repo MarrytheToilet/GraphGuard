@@ -1,7 +1,7 @@
 {
   "summary": {
-    "n_contracts": 8,
-    "n_violated": 7,
+    "n_contracts": 11,
+    "n_violated": 10,
     "n_satisfied": 0,
     "n_inconclusive": 1
   },
@@ -24,6 +24,8 @@
       },
       "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 28,
       "n_pass": 7,
       "n_fail": 21,
@@ -109,6 +111,8 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 18,
       "n_pass": 7,
       "n_fail": 11,
@@ -192,6 +196,8 @@
       },
       "threshold": 0.5,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 32,
       "n_pass": 23,
       "n_fail": 9,
@@ -274,6 +280,8 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 58,
       "n_pass": 17,
       "n_fail": 41,
@@ -357,6 +365,8 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 19,
       "n_pass": 11,
       "n_fail": 8,
@@ -440,48 +450,50 @@
           "presentation"
         ]
       },
-      "threshold": 0.5,
+      "threshold": 0.7,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 155,
-      "n_pass": 73,
-      "n_fail": 82,
-      "violation_rate": 0.5290322580645161,
-      "severity_mean": 0.30308516835682126,
-      "severity_p95": 0.5,
-      "metric_mean": 0.5034293253577603,
-      "metric_median": 0.42105263157894735,
+      "n_pass": 52,
+      "n_fail": 103,
+      "violation_rate": 0.6645161290322581,
+      "severity_mean": 0.4033009044119987,
+      "severity_p95": 0.7,
+      "metric_mean": 0.5185658781909162,
+      "metric_median": 0.5,
       "by_family": {
         "prompt": {
           "n": 58,
-          "n_fail": 27,
-          "violation_rate": 0.46551724137931033,
-          "mean_metric": 0.5213222153429335
+          "n_fail": 39,
+          "violation_rate": 0.6724137931034483,
+          "mean_metric": 0.5440476627679183
         },
         "schema": {
           "n": 78,
-          "n_fail": 47,
-          "violation_rate": 0.6025641025641025,
-          "mean_metric": 0.4517075676140517
+          "n_fail": 56,
+          "violation_rate": 0.717948717948718,
+          "mean_metric": 0.45725619498375775
         },
         "entity_alias": {
           "n": 12,
           "n_fail": 3,
           "violation_rate": 0.25,
-          "mean_metric": 0.8079166666666666
+          "mean_metric": 0.8125
         },
         "evidence": {
           "n": 7,
           "n_fail": 5,
           "violation_rate": 0.7142857142857143,
-          "mean_metric": 0.4095238095238095
+          "mean_metric": 0.48670906718851925
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.5290322580645161,
-        "0.7": 0.632258064516129,
-        "0.8": 0.6774193548387096,
-        "0.9": 0.7612903225806451
+        "0.5": 0.4967741935483871,
+        "0.7": 0.6645161290322581,
+        "0.8": 0.6838709677419355,
+        "0.9": 0.7354838709677419
       },
       "examples": [
         {
@@ -529,14 +541,315 @@
       "verdict": "VIOLATED"
     },
     {
+      "contract_id": "K4b",
+      "name": "Shortest-path robustness (Q5)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 126,
+      "n_pass": 80,
+      "n_fail": 46,
+      "violation_rate": 0.36507936507936506,
+      "severity_mean": 0.586231884057971,
+      "severity_p95": 0.7,
+      "metric_mean": 0.6632275132275133,
+      "metric_median": 1.0,
+      "by_family": {
+        "prompt": {
+          "n": 47,
+          "n_fail": 15,
+          "violation_rate": 0.3191489361702128,
+          "mean_metric": 0.7035460992907802
+        },
+        "schema": {
+          "n": 63,
+          "n_fail": 26,
+          "violation_rate": 0.4126984126984127,
+          "mean_metric": 0.626984126984127
+        },
+        "entity_alias": {
+          "n": 10,
+          "n_fail": 2,
+          "violation_rate": 0.2,
+          "mean_metric": 0.8
+        },
+        "evidence": {
+          "n": 6,
+          "n_fail": 3,
+          "violation_rate": 0.5,
+          "mean_metric": 0.5
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.3333333333333333,
+        "0.7": 0.36507936507936506,
+        "0.8": 0.36507936507936506,
+        "0.9": 0.4365079365079365
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000003-Lookin_Ass",
+          "intervention": "docred-validation-000003-Lookin_Ass::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000003-Lookin_Ass",
+          "intervention": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000003-Lookin_Ass",
+          "intervention": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000003-Lookin_Ass",
+          "intervention": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000003-Lookin_Ass",
+          "intervention": "docred-validation-000003-Lookin_Ass::iv::schema::docred_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4c",
+      "name": "Degree-aggregation robustness (Q6)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 155,
+      "n_pass": 76,
+      "n_fail": 79,
+      "violation_rate": 0.5096774193548387,
+      "severity_mean": 0.2472573839662447,
+      "severity_p95": 0.49999999999999994,
+      "metric_mean": 0.7210752688172043,
+      "metric_median": 0.6666666666666666,
+      "by_family": {
+        "prompt": {
+          "n": 58,
+          "n_fail": 32,
+          "violation_rate": 0.5517241379310345,
+          "mean_metric": 0.6778735632183908
+        },
+        "schema": {
+          "n": 78,
+          "n_fail": 40,
+          "violation_rate": 0.5128205128205128,
+          "mean_metric": 0.7431623931623932
+        },
+        "entity_alias": {
+          "n": 12,
+          "n_fail": 2,
+          "violation_rate": 0.16666666666666666,
+          "mean_metric": 0.8708333333333333
+        },
+        "evidence": {
+          "n": 7,
+          "n_fail": 5,
+          "violation_rate": 0.7142857142857143,
+          "mean_metric": 0.5761904761904761
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.21935483870967742,
+        "0.7": 0.5096774193548387,
+        "0.8": 0.5096774193548387,
+        "0.9": 0.5096774193548387
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000005-Samsung_Galaxy_S_series",
+          "intervention": "docred-validation-000005-Samsung_Galaxy_S_series::iv::prompt::base_v1::tone::terse",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.2
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.2
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.2
+        },
+        {
+          "doc": "docred-validation-000001-Washington_Place__West_Virginia_",
+          "intervention": "docred-validation-000001-Washington_Place__West_Virginia_::iv::prompt::base_v1::tone::terse",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.2
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4d",
+      "name": "GraphRAG-retrieval robustness (Q7)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 155,
+      "n_pass": 74,
+      "n_fail": 81,
+      "violation_rate": 0.5225806451612903,
+      "severity_mean": 0.23327312262497443,
+      "severity_p95": 0.7,
+      "metric_mean": 0.6714343188963682,
+      "metric_median": 0.6666666666666666,
+      "by_family": {
+        "prompt": {
+          "n": 58,
+          "n_fail": 30,
+          "violation_rate": 0.5172413793103449,
+          "mean_metric": 0.7015016268946289
+        },
+        "schema": {
+          "n": 78,
+          "n_fail": 44,
+          "violation_rate": 0.5641025641025641,
+          "mean_metric": 0.6307783363778839
+        },
+        "entity_alias": {
+          "n": 12,
+          "n_fail": 3,
+          "violation_rate": 0.25,
+          "mean_metric": 0.844017094017094
+        },
+        "evidence": {
+          "n": 7,
+          "n_fail": 4,
+          "violation_rate": 0.5714285714285714,
+          "mean_metric": 0.5794728147669325
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.2064516129032258,
+        "0.7": 0.5225806451612903,
+        "0.8": 0.6129032258064516,
+        "0.9": 0.7677419354838709
+      },
+      "examples": [
+        {
+          "doc": "docred-validation-000003-Lookin_Ass",
+          "intervention": "docred-validation-000003-Lookin_Ass::iv::sent::doc::entity_alias",
+          "family": "entity_alias",
+          "semantic_class": "presentation",
+          "operator": "entity_alias",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000006-Ned_McEvoy",
+          "intervention": "docred-validation-000006-Ned_McEvoy::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000006-Ned_McEvoy",
+          "intervention": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000006-Ned_McEvoy",
+          "intervention": "docred-validation-000006-Ned_McEvoy::iv::schema::docred_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "docred-validation-000006-Ned_McEvoy",
+          "intervention": "docred-validation-000006-Ned_McEvoy::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
       "contract_id": "K5",
       "name": "Model swap recall stability",
       "kind": "bounded_drift",
       "scope": {
-        "operator_prefix": "model:"
+        "cause_family_in": [
+          "model"
+        ]
       },
-      "threshold": 0.4,
-      "direction": "min",
+      "threshold": 0.2,
+      "direction": "max",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 0,
       "n_pass": 0,
       "n_fail": 0,
@@ -559,21 +872,23 @@
     },
     {
       "contract_id": "K6",
-      "name": "Stochastic repeatability",
+      "name": "Decoding-resample stability",
       "kind": "invariance",
       "scope": {
         "cause_family_in": [
           "stochastic"
         ]
       },
-      "threshold": 0.9,
+      "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 18,
       "n_pass": 3,
       "n_fail": 15,
       "violation_rate": 0.8333333333333334,
-      "severity_mean": 0.3873370681605976,
-      "severity_p95": 0.8200000000000001,
+      "severity_mean": 0.33733706816059755,
+      "severity_p95": 0.77,
       "metric_mean": 0.5938857765328354,
       "metric_median": 0.6363636363636364,
       "by_family": {

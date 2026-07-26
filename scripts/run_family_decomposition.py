@@ -72,9 +72,13 @@ def analyze_run(run: str) -> dict | None:
     cur = con.cursor()
 
     raw_edges = defaultdict(list)
-    for eid, sn, r, on in cur.execute(
-        "SELECT event_id, subject_name, relation, object_name FROM extracted_edges"):
-        raw_edges[eid].append({"subject_name": sn, "relation": r, "object_name": on})
+    for eid, sid, sn, r, oid, on in cur.execute(
+        "SELECT event_id, subject_entity_id, subject_name, relation, "
+        "object_entity_id, object_name FROM extracted_edges"):
+        raw_edges[eid].append({
+            "subject_entity_id": sid, "subject_name": sn, "relation": r,
+            "object_entity_id": oid, "object_name": on,
+        })
     ev_schema = dict(cur.execute("SELECT event_id, schema_id FROM extraction_events"))
     schemas = {sid: {r["id"] for r in json.loads(rj)} for sid, rj in cur.execute(
         "SELECT schema_id, relation_types_json FROM schemas")}
@@ -87,8 +91,11 @@ def analyze_run(run: str) -> dict | None:
         "FROM counterfactual_runs WHERE status='ok' AND cf_event_id IS NOT NULL AND cf_event_id<>''"):
         fam, sem_class = iv.get(ivid, ("unknown", "unknown"))
         base_rel_ids = schemas.get(ev_schema.get(base_ev)) or None
-        bt = set(M._project(M._to_triples(raw_edges.get(base_ev, [])), base_rel_ids))
-        ct = set(M._project(M._to_triples(raw_edges.get(cf_ev, [])), base_rel_ids))
+        bt, ct = M.paired_triples(
+            raw_edges.get(base_ev, []), raw_edges.get(cf_ev, []),
+            base_relation_ids=base_rel_ids,
+        )
+        bt, ct = set(bt), set(ct)
         if not bt and not ct:
             continue
         by_family[family_key(fam, sem_class)].append(pair_stats(bt, ct))

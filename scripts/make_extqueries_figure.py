@@ -4,7 +4,7 @@
 Replaces the wide two-part table with a single-column, two-panel figure:
   (a) mean amplification per corpus for Q5 (shortest path, with 95% CI),
       Q6 (aggregation), Q7 (RAG retrieval), dashed line at Amp = 1;
-  (b) gold-free detector F1 against workload-visible harm, graph-only vs
+  (b) gold-free detector F1 against workload-visible query change, graph-only vs
       query-aware, per corpus and regime (dumbbells).
 
 Reads reports/cross_run/extqueries_<run>.json and regimes_<run>.json;
@@ -73,8 +73,14 @@ def main() -> int:
                              ext[l][key]["amp_ci_hi"] - ext[l][key]["amp_mean"]]
                             for l in labels]).T
             ax1.errorbar(x + (i - 1) * w, vals, yerr=err, fmt="none",
-                         ecolor=_S.BLACK, elinewidth=0.7, capsize=1.5)
-        _S.annotate_bars(ax1, bars, vals, fmt="{:.2f}", fontsize=6)
+                         ecolor=_S.BLACK, elinewidth=0.8, capsize=1.5)
+            for bar, val, err_hi in zip(bars, vals, err[1]):
+                ax1.text(bar.get_x() + bar.get_width() / 2,
+                         val + err_hi + 0.035, f"{val:.2f}",
+                         ha="center", va="bottom", fontsize=5.5,
+                         color=_S.BLACK)
+        else:
+            _S.annotate_bars(ax1, bars, vals, fmt="{:.2f}", fontsize=5.5)
     for i, l in enumerate(labels):
         ax1.hlines(q1_ref[l], x[i] - 1.6 * w, x[i] + 1.6 * w,
                    color=_S.GRAY, linestyle="--", linewidth=0.8, zorder=0)
@@ -86,7 +92,7 @@ def main() -> int:
     labs.append(r"$Q_1$ ref.")
     ax1.legend(handles, labs, fontsize=6.5, ncol=4, frameon=False, loc="upper center",
                bbox_to_anchor=(0.5, 1.06), handlelength=1.0, columnspacing=0.8)
-    ax1.set_title("(a) Extended-template amplification", fontsize=9, fontweight="bold")
+    ax1.set_title("(a) Extended-template amplification", fontsize=9)
     _S.despine(ax1)
 
     # ---- (b) regime dumbbells --------------------------------------------
@@ -113,11 +119,14 @@ def main() -> int:
     ax2.set_ylim(0.46, 1.02)
     ax2.legend(fontsize=6.5, ncol=2, frameon=False, loc="lower right",
                bbox_to_anchor=(1.0, 0.0), handletextpad=0.3, columnspacing=0.8)
-    ax2.set_title("(b) Workload-visible harm: graph-only vs. query-aware", fontsize=9, fontweight="bold")
+    ax2.set_title(
+        "(b) Workload-visible change: graph-only vs. query-aware",
+        fontsize=9,
+    )
     _S.despine(ax2)
 
     out = ROOT / "assets" / "figures" / "fig_extqueries.png"
-    _S.save_fig(fig, out)
+    _S.save_fig(fig, out, pad=0.8)
     print("wrote", out)
     return 0
 

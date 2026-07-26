@@ -1,0 +1,39 @@
+{
+  "run": "docred__deepseek-v4-flash__300d",
+  "query_population": {
+    "selection": {
+      "seed": 0,
+      "max_runs_before_filtering": 4000,
+      "requires_nonempty_gold_query_workload": true
+    },
+    "n_pairs": 4000,
+    "query_divergence_threshold_abs_mean_delta_f1": 0.05,
+    "query_divergence_base_rate": 0.394,
+    "spearman": {
+      "graph_drift_vs_abs_delta_recall": {
+        "rho": 0.20469287206103726,
+        "p_value": 4.250699781324028e-39
+      },
+      "graph_drift_vs_abs_delta_precision": {
+        "rho": 0.11504932446840672,
+        "p_value": 2.9136306869092943e-13
+      }
+    }
+  },
+  "k1_contrast": {
+    "scope": "K1 schema rename/reorder",
+    "overlap_threshold": 0.85,
+    "relation_projection": "to docred_full base relation IDs",
+    "n_pairs": 676,
+    "violating": {
+      "n": 657,
+      "mean_abs_delta_recall": 0.06988147297452732,
+      "mean_abs_delta_precision": 0.11664884964995469
+    },
+    "satisfied": {
+      "n": 19,
+      "mean_abs_delta_recall": 0.03289473684210526,
+      "mean_abs_delta_precision": 0.032157754526175586
+    }
+  }
+}

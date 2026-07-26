@@ -1,20 +1,22 @@
 """Graph-only vs query-aware contract ablation.
 
-For each base/cf pair, emits per-pair (graph_drift, query_drift, harmful)
-tuples and compares three monitors at the same alarm rate:
+For each base/cf pair, emits per-pair graph drift, query drift, and a
+query-divergence label, then compares three monitors at the same alarm rate:
 
   - graph-only:   alarm if graph_drift > tau_g
-  - query-aware:  alarm if max-family ΔF1 > tau_q
+  - query-aware:  alarm if max answer-set Jaccard drift > tau_q
   - hybrid (OR):  alarm if either fires
 
-Detection target: harmful query regression, mean ΔF1 over 4 templates > 0.05.
+Detection target: mean absolute ΔF1 over 4 templates > 0.05. This includes
+both regressions and improvements and is distinct from the directional label
+in the Kuzu release-gate experiment.
 
 Outputs:
   reports/cross_run/graph_vs_query_<dataset>__<model>__<n>d.json
 """
 
 from __future__ import annotations
-import argparse, json, sqlite3, random, sys
+import argparse, hashlib, json, sqlite3, random, sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -42,13 +44,27 @@ def confusion(flags, harm):
             "f1":        round(f1, 4)}
 
 
-def pick_tau_at_target_alarm(scores, target):
-    """Return tau s.t. fraction of (score > tau) is closest to target."""
-    if not scores: return float("inf")
-    s = sorted(scores)
-    k = int(round((1 - target) * len(s)))
-    k = max(0, min(len(s) - 1, k))
-    return s[k]
+def flags_at_count(scores, row_ids, n_alarm):
+    """Flag exactly ``n_alarm`` rows, breaking score ties without labels.
+
+    Answer-set drift is discrete and frequently tied at 0 or 1. A scalar
+    threshold alone therefore cannot match another detector's alarm count.
+    Stable SHA-256 ordering of run IDs supplies a reproducible, label-blind
+    tie break.
+    """
+    n_alarm = max(0, min(len(scores), n_alarm))
+    ranked = sorted(
+        range(len(scores)),
+        key=lambda index: (
+            -scores[index],
+            hashlib.sha256(row_ids[index].encode()).hexdigest(),
+        ),
+    )
+    selected = set(ranked[:n_alarm])
+    flags = [index in selected for index in range(len(scores))]
+    assert sum(flags) == n_alarm
+    boundary = scores[ranked[n_alarm - 1]] if n_alarm else float("inf")
+    return flags, boundary
 
 
 def main():
@@ -78,10 +94,8 @@ def main():
         base_g, cf_g = edges[base_ev], edges[cf_ev]
         qs = qfor(doc)
         if not qs: continue
-        # label-erased graph_drift (endpoint-set Jaccard distance) to match K1 spirit
-        be = {(s, o) for s, _, o in base_g}
-        ce = {(s, o) for s, _, o in cf_g}
-        graph_drift = 1.0 - rq.jaccard(be, ce)
+        # Typed-triple GraphDrift, consistent with Eq. (3).
+        graph_drift = 1.0 - rq.graph_jaccard(base_g, cf_g)
         # per-family delta F1
         deltas = []
         max_qd = 0.0
@@ -91,10 +105,14 @@ def main():
             db_ = rq.f1(ab, gq); dc = rq.f1(ac, gq)
             d = abs(db_ - dc)
             deltas.append(d)
-            if d > max_qd: max_qd = d
+            # Gold-free monitor score: compare the two returned answer sets.
+            # Gold F1 is used only to define the offline target below.
+            qd = 1.0 - rq.jaccard(ab, ac)
+            if qd > max_qd: max_qd = qd
         if not deltas: continue
         mean_df1 = sum(deltas) / len(deltas)
         rows.append({
+            "run_id": run_id,
             "graph_drift": graph_drift,
             "query_drift": max_qd,
             "mean_df1":   mean_df1,
@@ -107,9 +125,17 @@ def main():
     # Matched alarm rate = the natural rate that graph-only achieves at tau_g=0.30
     g_scores = [r["graph_drift"] for r in rows]
     q_scores = [r["query_drift"] for r in rows]
+    row_ids = [r["run_id"] for r in rows]
 
     out = {
         "n_pairs": len(rows),
+        "label_definition": "mean absolute per-query F1 change > threshold",
+        "query_monitor": "max answer-set Jaccard drift (gold-free at decision time)",
+        "graph_monitor": "canonicalized typed-edge Jaccard drift",
+        "matched_alarm_ties": (
+            "exact top-k selection; score ties broken by SHA-256(run_id), "
+            "without target labels"
+        ),
         "harm_threshold_delta_f1": args.harm_th,
         "harmful_base_rate": round(base_rate, 4),
         "monitors_at_matched_alarm": {},
@@ -118,10 +144,9 @@ def main():
 
     # Sweep alarm rates 0.2..0.9 and report each monitor
     for target in [0.30, 0.50, 0.70, 0.90]:
-        tau_g = pick_tau_at_target_alarm(g_scores, target)
-        tau_q = pick_tau_at_target_alarm(q_scores, target)
-        gflags = [s > tau_g for s in g_scores]
-        qflags = [s > tau_q for s in q_scores]
+        n_alarm = round(target * len(rows))
+        gflags, tau_g = flags_at_count(g_scores, row_ids, n_alarm)
+        qflags, tau_q = flags_at_count(q_scores, row_ids, n_alarm)
         hflags = [a or b for a, b in zip(gflags, qflags)]
         out["sweep"].append({
             "target_alarm": target,
@@ -136,8 +161,7 @@ def main():
     tau_g_fixed = 0.30
     gflags = [s > tau_g_fixed for s in g_scores]
     nat_alarm = sum(gflags) / len(gflags) if gflags else 0.0
-    tau_q = pick_tau_at_target_alarm(q_scores, nat_alarm)
-    qflags = [s > tau_q for s in q_scores]
+    qflags, tau_q = flags_at_count(q_scores, row_ids, sum(gflags))
     hflags = [a or b for a, b in zip(gflags, qflags)]
     out["monitors_at_matched_alarm"] = {
         "alarm_rate_target": round(nat_alarm, 4),

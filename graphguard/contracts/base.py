@@ -7,7 +7,8 @@ Each contract carries:
     semantic_class, operator filter)
   - metric: maps (base_edges, cf_edges) -> float in [0,1]
   - direction: "min" (metric must be >= threshold) or "max" (metric must be <= threshold)
-  - threshold (default; sensitivity sweep also reported)
+  - threshold and population budget alpha (sensitivity sweep also reported)
+  - optional query id or gold requirement for specialized evaluators
 
 A check produces a ContractResult with per-pair observations, pass/fail,
 violation_rate, severity, and family-level attribution.
@@ -45,6 +46,8 @@ class ContractResult:
     scope: dict
     threshold: float
     direction: str
+    alpha: float
+    min_pairs: int
     n_pairs: int
     n_pass: int
     n_fail: int
@@ -60,13 +63,9 @@ class ContractResult:
     notes: str = ""
 
     def verdict(self) -> str:
-        if self.n_pairs == 0:
+        if self.n_pairs < self.min_pairs:
             return "INCONCLUSIVE"
-        # Invariance contracts: even mild violation is a problem (>5%).
-        # Monotonicity / bounded_drift: more permissive (>20% counts as violation).
-        if self.kind == ContractKind.INVARIANCE:
-            return "VIOLATED" if self.violation_rate > 0.05 else "SATISFIED"
-        return "VIOLATED" if self.violation_rate > 0.20 else "SATISFIED"
+        return "VIOLATED" if self.violation_rate > self.alpha else "SATISFIED"
 
     def to_dict(self) -> dict:
         d = {k: v for k, v in self.__dict__.items()}
@@ -90,8 +89,12 @@ class Contract:
     direction: str                             # "min" or "max"
     threshold: float
     metric_fn: Callable                        # (base_edges, cf_edges, ctx?) -> float
+    alpha: float = 0.20                        # maximum permitted pair-level violation rate
+    min_pairs: int = 1                         # fewer observations -> inconclusive
     description: str = ""
     query_scoped: bool = False                 # if True, metric_fn signature is (base_edges, cf_edges, query_name)
+    query_id: Optional[str] = None              # Q3 / Q5 / Q6 / Q7 for query-scoped contracts
+    needs_gold: bool = False                    # metric consumes the per-document gold edge set
     sensitivity_thresholds: tuple = (0.5, 0.7, 0.8, 0.9)
 
     def applies(self, cause_family: str, semantic_class: str, operator: str,

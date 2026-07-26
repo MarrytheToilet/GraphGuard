@@ -46,18 +46,43 @@ def conn(tmp_path):
     c.execute("INSERT INTO gold_edges VALUES('g1','d1','d1::e0','d1::e1','Alice','Beijing',"
               "'P19','[0]','docred')")
     # candidates + cf runs + outcomes
-    c.execute("INSERT INTO intervention_candidates VALUES('iv-s0','d1','sentence','d1::s0',"
-              "'remove','remove s0',1.0,NULL)")
-    c.execute("INSERT INTO intervention_candidates VALUES('iv-pc','d1','prompt_clause',"
-              "'C2_infer_implicit','remove','drop C2',1.0,NULL)")
-    c.execute("INSERT INTO intervention_candidates VALUES('iv-sw','d1','schema','with_other',"
-              "'switch_schema','sch+other',1.0,NULL)")
-    c.execute("INSERT INTO counterfactual_runs VALUES('r1','ev','iv-s0','d1','p','sch','m',0.0,7,"
-              "0,0,0,'OK','t')")
-    c.execute("INSERT INTO counterfactual_runs VALUES('r2','ev','iv-pc','d1','p','sch','m',0.0,7,"
-              "0,0,0,'OK','t')")
-    c.execute("INSERT INTO counterfactual_runs VALUES('r3','ev','iv-sw','d1','p','sch','m',0.0,7,"
-              "0,0,0,'OK','t')")
+    c.execute(
+        "INSERT INTO intervention_candidates"
+        "(intervention_id,document_id,target_type,target_id,operator,description,"
+        "estimated_cost,group_id,semantic_class,cause_family) VALUES"
+        "('iv-s0','d1','sentence','d1::s0','remove','remove s0',1.0,NULL,"
+        "'semantic','evidence')"
+    )
+    c.execute(
+        "INSERT INTO intervention_candidates"
+        "(intervention_id,document_id,target_type,target_id,operator,description,"
+        "estimated_cost,group_id,semantic_class,cause_family) VALUES"
+        "('iv-pc','d1','prompt_clause','C2_infer_implicit','remove','drop C2',1.0,NULL,"
+        "'semantic','prompt')"
+    )
+    c.execute(
+        "INSERT INTO intervention_candidates"
+        "(intervention_id,document_id,target_type,target_id,operator,description,"
+        "estimated_cost,group_id,semantic_class,cause_family) VALUES"
+        "('iv-sw','d1','schema','with_other','switch_schema','sch+other',1.0,NULL,"
+        "'semantic','schema')"
+    )
+    run_columns = (
+        "run_id,base_event_id,intervention_id,document_id,prompt_id,schema_id,"
+        "model_id,temperature,seed,token_input,token_output,latency_ms,status,created_at"
+    )
+    c.execute(
+        f"INSERT INTO counterfactual_runs({run_columns}) VALUES"
+        "('r1','ev','iv-s0','d1','p','sch','m',0.0,7,0,0,0,'OK','t')"
+    )
+    c.execute(
+        f"INSERT INTO counterfactual_runs({run_columns}) VALUES"
+        "('r2','ev','iv-pc','d1','p','sch','m',0.0,7,0,0,0,'OK','t')"
+    )
+    c.execute(
+        f"INSERT INTO counterfactual_runs({run_columns}) VALUES"
+        "('r3','ev','iv-sw','d1','p','sch','m',0.0,7,0,0,0,'OK','t')"
+    )
     # Outcomes:
     # eA disappears when s0 removed (text-caused), exact same elsewhere.
     c.execute("INSERT INTO edge_outcomes VALUES('o1','r1','eA','DISAPPEARED',NULL,NULL,NULL,1.0)")

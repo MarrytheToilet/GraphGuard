@@ -83,7 +83,7 @@ def test_generate_candidates(tmp_path):
         schema_variants=["with_other"],
     )
     types = {i.target_type for i in items}
-    assert types == {"sentence", "prompt_clause", "schema"}
+    assert types == {"sentence", "prompt_clause", "schema", "noop"}
 
 
 def _mk_edge(eid, evt, doc, subj_eid, subj, rel, obj_eid, obj):
@@ -114,7 +114,9 @@ def test_edge_matcher_outcome_categories(tmp_path):
                            base_relation_ids={"P17", "P19", "P20"})
     by_orig = {o.original_edge_id: o.outcome_type for o in outcomes}
     assert by_orig["e1"] == "EXACT_SAME"
-    assert by_orig["e2"] == "AMBIGUOUS"  # both cf edges are TYPE_FLIP candidates for e2
+    # One-to-one alignment reserves c1 for e1, leaving c2 as the unique
+    # type-flip match for e2.
+    assert by_orig["e2"] == "TYPE_FLIP"
 
 
 def test_risk_score_aggregation(tmp_path):
@@ -134,7 +136,11 @@ def test_risk_score_aggregation(tmp_path):
         ("iv-sc", doc, "schema", "with_other", "switch_schema", "with other", 1.0, None),
     ]
     conn.executemany(
-        "INSERT INTO intervention_candidates VALUES (?,?,?,?,?,?,?,?)", iv_rows)
+        "INSERT INTO intervention_candidates"
+        "(intervention_id,document_id,target_type,target_id,operator,description,"
+        "estimated_cost,group_id) VALUES (?,?,?,?,?,?,?,?)",
+        iv_rows,
+    )
     # corresponding runs
     runs = [("run-rm", "evt-base", "iv-rm"),
             ("run-mk", "evt-base", "iv-mk"),

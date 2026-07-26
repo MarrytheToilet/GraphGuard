@@ -15,9 +15,9 @@ Following the paper's convention, query parameters are instantiated from the
 base view of each pair and reused on the counterfactual view. For every ok
 counterfactual pair we report per-template answer-set drift, amplification
 Amp = QDrift / (GraphDrift + 0.05) (the implementation constant used by the
-existing amplification evaluation), and K4-style violation rates on
-presentation-class pairs at both the code threshold (answer Jaccard < 0.50)
-and the catalogue threshold (drift > 0.30).
+existing amplification evaluation), and violation rates on presentation-class
+pairs at the registered catalogue threshold (drift > 0.30), plus the legacy
+0.50-drift sensitivity point retained for comparison.
 
 Writes reports/cross_run/extqueries_<run>.json.
 """
@@ -49,7 +49,7 @@ MAIN_RUNS = [
 
 OUT_DIR = ROOT / "reports" / "cross_run"
 AMP_EPS = 0.05          # matches graphguard.contracts.metrics.EPS
-TAU_CODE = 0.50         # violation when answer Jaccard < 0.50 (contract impl)
+TAU_LEGACY = 0.50       # legacy sensitivity point (not the registered contract)
 TAU_TABLE = 0.30        # violation when answer drift > 0.30 (catalogue table)
 N_PATH_QUERIES = 6
 
@@ -143,29 +143,35 @@ def analyze_run(run: str) -> dict | None:
     cur = con.cursor()
 
     raw_edges = defaultdict(list)
-    for eid, sn, r, on in cur.execute(
-        "SELECT event_id, subject_name, relation, object_name FROM extracted_edges"):
-        raw_edges[eid].append({"subject_name": sn, "relation": r, "object_name": on})
+    for eid, sid, sn, r, oid, on in cur.execute(
+        "SELECT event_id, subject_entity_id, subject_name, relation, "
+        "object_entity_id, object_name FROM extracted_edges"):
+        raw_edges[eid].append({
+            "subject_entity_id": sid, "subject_name": sn, "relation": r,
+            "object_entity_id": oid, "object_name": on,
+        })
     ev_schema = dict(cur.execute("SELECT event_id, schema_id FROM extraction_events"))
     schemas = {sid: {r["id"] for r in json.loads(rj)} for sid, rj in cur.execute(
         "SELECT schema_id, relation_types_json FROM schemas")}
     iv = {ivid: (fam, sc) for ivid, fam, sc in cur.execute(
         "SELECT intervention_id, cause_family, semantic_class FROM intervention_candidates")}
 
-    def canon_triples(eid, base_rel_ids):
-        return set(M._project(M._to_triples(raw_edges.get(eid, [])), base_rel_ids))
-
-    per_q = defaultdict(lambda: {"qd": [], "gd": [], "amp": [], "pres_qd": []})
+    per_q = defaultdict(
+        lambda: {"doc": [], "qd": [], "gd": [], "amp": [], "pres_qd": []}
+    )
     n_pairs = 0
-    for run_id, base_ev, cf_ev, ivid in cur.execute(
-        "SELECT run_id, base_event_id, cf_event_id, intervention_id "
+    for run_id, base_ev, cf_ev, ivid, doc in cur.execute(
+        "SELECT run_id, base_event_id, cf_event_id, intervention_id, document_id "
         "FROM counterfactual_runs WHERE status='ok' AND cf_event_id IS NOT NULL AND cf_event_id<>''"):
         if base_ev not in raw_edges and cf_ev not in raw_edges:
             continue
         fam, sem_class = iv.get(ivid, ("unknown", "unknown"))
         base_rel_ids = schemas.get(ev_schema.get(base_ev)) or None
-        bt = canon_triples(base_ev, base_rel_ids)
-        ct = canon_triples(cf_ev, base_rel_ids)
+        bt, ct = M.paired_triples(
+            raw_edges.get(base_ev, []), raw_edges.get(cf_ev, []),
+            base_relation_ids=base_rel_ids,
+        )
+        bt, ct = set(bt), set(ct)
         if not bt:
             continue
         gd = 1.0 - M.edge_jaccard(raw_edges.get(base_ev, []), raw_edges.get(cf_ev, []),
@@ -182,12 +188,14 @@ def analyze_run(run: str) -> dict | None:
         # Q_deg
         answers["Q_deg"] = 1.0 - jac(top_degree_answer(bt), top_degree_answer(ct))
         # Q_rag
-        seed = next(iter(top_degree_answer(bt, k=1)), None)
+        seeds = sorted(top_degree_answer(bt, k=1))
+        seed = seeds[0] if seeds else None
         if seed is not None:
             answers["Q_rag"] = 1.0 - jac(rag_answer(bt, seed), rag_answer(ct, seed))
 
         for q, qd in answers.items():
             st = per_q[q]
+            st["doc"].append(doc)
             st["qd"].append(qd)
             st["gd"].append(gd)
             st["amp"].append(qd / (gd + AMP_EPS))
@@ -196,28 +204,45 @@ def analyze_run(run: str) -> dict | None:
 
     rng = random.Random(0)
 
-    def boot_ci(vals, B=1000):
+    def boot_ci(vals, docs_for_values, B=1000):
         if not vals:
             return None, None, None
+        by_doc = defaultdict(list)
+        for doc, value in zip(docs_for_values, vals):
+            by_doc[doc].append(value)
+        docs = sorted(by_doc)
         means = sorted(
-            statistics.mean(rng.choices(vals, k=len(vals))) for _ in range(B))
+            statistics.mean([
+                value
+                for sampled_doc in rng.choices(docs, k=len(docs))
+                for value in by_doc[sampled_doc]
+            ])
+            for _ in range(B)
+        )
         return statistics.mean(vals), means[int(B * 0.025)], means[int(B * 0.975)]
 
     summary = {}
     for q, st in sorted(per_q.items()):
-        amp_mean, lo, hi = boot_ci(st["amp"])
+        amp_mean, lo, hi = boot_ci(st["amp"], st["doc"])
         pres = st["pres_qd"]
         summary[q] = {
             "n": len(st["qd"]),
+            "n_documents": len(set(st["doc"])),
             "query_drift_mean": statistics.mean(st["qd"]),
             "graph_drift_mean": statistics.mean(st["gd"]),
             "amp_mean": amp_mean, "amp_ci_lo": lo, "amp_ci_hi": hi,
             "n_presentation": len(pres),
-            "viol_rate_jaccard_lt_0.50": (sum(1 for d in pres if d > TAU_CODE) / len(pres)) if pres else None,
+            "viol_rate_jaccard_lt_0.50": (sum(1 for d in pres if d > TAU_LEGACY) / len(pres)) if pres else None,
             "viol_rate_drift_gt_0.30": (sum(1 for d in pres if d > TAU_TABLE) / len(pres)) if pres else None,
         }
 
-    out = {"run": run, "n_pairs": n_pairs, "amp_eps": AMP_EPS, "summary": summary}
+    out = {
+        "run": run,
+        "n_pairs": n_pairs,
+        "amp_eps": AMP_EPS,
+        "confidence_intervals": "document-cluster bootstrap (B=1000)",
+        "summary": summary,
+    }
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUT_DIR / f"extqueries_{run}.json"
     out_path.write_text(json.dumps(out, indent=1))

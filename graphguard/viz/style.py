@@ -61,7 +61,7 @@ def apply_rc(font_size: int = 11) -> None:
         "font.family":      ["DejaVu Sans"],
         "font.size":        font_size,
         "axes.titlesize":   font_size + 2,
-        "axes.titleweight": "bold",
+        "axes.titleweight": "normal",
         "axes.labelsize":   font_size,
         "xtick.labelsize":  font_size - 1,
         "ytick.labelsize":  font_size - 1,
@@ -80,7 +80,7 @@ def save_fig(fig, path: Path, *, dpi: int = 180, pad: float = 0.4) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout(pad=pad)
-    fig.savefig(path, dpi=dpi, bbox_inches="tight",
+    fig.savefig(path, dpi=dpi, bbox_inches="tight", pad_inches=0.025,
                 facecolor=fig.get_facecolor())
     plt.close(fig)
     print(f"  wrote {path}")

@@ -10,37 +10,43 @@ Outputs:
   reports/cross_run/k5_cross_model.md
 """
 from __future__ import annotations
-import json, sqlite3, sys, math
+import json, sqlite3, sys
 from pathlib import Path
-from collections import defaultdict
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from graphguard.contracts import REGISTRY  # noqa: E402
+from graphguard.contracts import metrics as M  # noqa: E402
+
 RUNS = {
     "DeepSeek-V4-Flash (v5 primary, 300 docs)": "docred__deepseek-v4-flash__300d",
     "Qwen3-32B (legacy, 100 docs)":              "docred__qwen3-32b__100d",
     "Kimi-K2 (legacy, 100 docs)":                "docred__kimi-k2__100d",
     "GLM-5 (v5 partial, 100 docs)":              "docred__glm-5__100d",
 }
-TAU   = 0.20
-ALPHA = 0.20
+TAU = REGISTRY["K5"].threshold
+ALPHA = REGISTRY["K5"].alpha
 
 
 def per_doc_recall(db_path: Path) -> dict[str, float]:
     """Return {document_id: recall@gold over base extraction events}.
 
-    Edges are matched by (head_name, relation, tail_name) tuple.  Both gold
-    and predicted edges are normalized by lower-casing entity strings.
+    This calls the same identifier-first gold-recall implementation registered
+    by K5; unlinked mentions use only the documented unambiguous fallback.
     """
-    c = sqlite3.connect(str(db_path)).cursor()
+    con = sqlite3.connect(str(db_path))
+    con.row_factory = sqlite3.Row
+    c = con.cursor()
     docs = [r[0] for r in c.execute(
         "SELECT DISTINCT document_id FROM extraction_events").fetchall()]
     out: dict[str, float] = {}
     for doc in docs:
-        gold_rows = c.execute(
-            "SELECT head_name, relation_base, tail_name "
+        gold_rows = list(c.execute(
+            "SELECT head_entity_id, head_name, relation_base, "
+            "tail_entity_id, tail_name "
             "FROM gold_edges WHERE document_id=?", (doc,)).fetchall()
-        gold = {(h.lower(), r, t.lower()) for h, r, t in gold_rows}
-        if not gold:
+        )
+        if not gold_rows:
             continue
         ev = c.execute(
             "SELECT event_id FROM extraction_events "
@@ -48,12 +54,12 @@ def per_doc_recall(db_path: Path) -> dict[str, float]:
         if ev is None:
             continue
         ev_id = ev[0]
-        pred_rows = c.execute(
-            "SELECT subject_name, relation, object_name "
-            "FROM extracted_edges WHERE event_id=?", (ev_id,)).fetchall()
-        pred = {(h.lower(), r, t.lower()) for h, r, t in pred_rows}
-        rec = len(gold & pred) / len(gold)
-        out[doc] = rec
+        pred_rows = list(c.execute(
+            "SELECT subject_entity_id, subject_name, relation, "
+            "object_entity_id, object_name "
+            "FROM extracted_edges WHERE event_id=?", (ev_id,)).fetchall())
+        out[doc] = M.gold_recall(pred_rows, gold_rows)
+    con.close()
     return out
 
 
@@ -81,6 +87,7 @@ def main():
     random.seed(0)
     B = 2000
     shared_list = sorted(shared)
+    pooled_primary_diffs = []
     for a, b in pairs:
         ra = [recalls[a][d] for d in shared_list]
         rb = [recalls[b][d] for d in shared_list]
@@ -99,8 +106,23 @@ def main():
             n=n, mean_recall_A=ma, mean_recall_B=mb,
             mean_abs_diff=md_diff, frac_above_tau=frac_violate,
             ci_low=lo, ci_high=hi, verdict=verdict)
+        if a.startswith("DeepSeek-V4-Flash"):
+            pooled_primary_diffs.extend(diffs)
         md.append(f"| {a} vs {b} | {ma:.3f} | {mb:.3f} | {md_diff:.3f} "
                   f"| {frac_violate:.2f} | [{lo:.2f}, {hi:.2f}] | **{verdict}** |")
+
+    failures = [value for value in pooled_primary_diffs if value > TAU]
+    out["pooled_primary"] = {
+        "n": len(pooled_primary_diffs),
+        "mean_abs_diff": (
+            sum(pooled_primary_diffs) / len(pooled_primary_diffs)
+        ),
+        "frac_above_tau": len(failures) / len(pooled_primary_diffs),
+        "severity_mean": (
+            sum(value - TAU for value in failures) / len(failures)
+            if failures else 0.0
+        ),
+    }
 
     out_path = ROOT / "reports/cross_run/k5_cross_model.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)

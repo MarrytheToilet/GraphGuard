@@ -1,7 +1,7 @@
 {
   "summary": {
-    "n_contracts": 8,
-    "n_violated": 7,
+    "n_contracts": 11,
+    "n_violated": 10,
     "n_satisfied": 0,
     "n_inconclusive": 1
   },
@@ -24,25 +24,27 @@
       },
       "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 680,
       "n_pass": 9,
       "n_fail": 671,
       "violation_rate": 0.986764705882353,
-      "severity_mean": 0.5412549993084678,
+      "severity_mean": 0.5364898493146476,
       "severity_p95": 0.85,
-      "metric_mean": 0.3168387691124789,
-      "metric_median": 0.29411764705882354,
+      "metric_mean": 0.32154085094461615,
+      "metric_median": 0.3,
       "by_family": {
         "schema": {
           "n": 680,
           "n_fail": 671,
           "violation_rate": 0.986764705882353,
-          "mean_metric": 0.3168387691124789
+          "mean_metric": 0.32154085094461615
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.7926470588235294,
+        "0.5": 0.7823529411764706,
         "0.7": 0.9470588235294117,
         "0.8": 0.9779411764705882,
         "0.9": 0.9926470588235294
@@ -109,28 +111,30 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 340,
-      "n_pass": 5,
-      "n_fail": 335,
-      "violation_rate": 0.9852941176470589,
-      "severity_mean": 0.47758408632414123,
+      "n_pass": 6,
+      "n_fail": 334,
+      "violation_rate": 0.9823529411764705,
+      "severity_mean": 0.4731773527743628,
       "severity_p95": 0.8,
-      "metric_mean": 0.33103234631788053,
-      "metric_median": 0.3021739130434783,
+      "metric_mean": 0.337354208353028,
+      "metric_median": 0.3129370629370629,
       "by_family": {
         "schema": {
           "n": 340,
-          "n_fail": 335,
-          "violation_rate": 0.9852941176470589,
-          "mean_metric": 0.33103234631788053
+          "n_fail": 334,
+          "violation_rate": 0.9823529411764705,
+          "mean_metric": 0.337354208353028
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.7529411764705882,
-        "0.7": 0.9529411764705882,
-        "0.8": 0.9852941176470589,
-        "0.9": 0.9941176470588236
+        "0.5": 0.7441176470588236,
+        "0.7": 0.9470588235294117,
+        "0.8": 0.9823529411764705,
+        "0.9": 0.9911764705882353
       },
       "examples": [
         {
@@ -192,26 +196,28 @@
       },
       "threshold": 0.5,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 680,
-      "n_pass": 143,
-      "n_fail": 537,
-      "violation_rate": 0.7897058823529411,
-      "severity_mean": 0.2728935818908082,
+      "n_pass": 149,
+      "n_fail": 531,
+      "violation_rate": 0.7808823529411765,
+      "severity_mean": 0.27262369828746574,
       "severity_p95": 0.5,
-      "metric_mean": 0.31527008619651903,
-      "metric_median": 0.27525252525252525,
+      "metric_mean": 0.31907808427517886,
+      "metric_median": 0.2777777777777778,
       "by_family": {
         "schema": {
           "n": 680,
-          "n_fail": 537,
-          "violation_rate": 0.7897058823529411,
-          "mean_metric": 0.31527008619651903
+          "n_fail": 531,
+          "violation_rate": 0.7808823529411765,
+          "mean_metric": 0.31907808427517886
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.7897058823529411,
-        "0.7": 0.9382352941176471,
+        "0.5": 0.7808823529411765,
+        "0.7": 0.9367647058823529,
         "0.8": 0.9647058823529412,
         "0.9": 0.9823529411764705
       },
@@ -274,27 +280,29 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 540,
-      "n_pass": 24,
-      "n_fail": 516,
-      "violation_rate": 0.9555555555555556,
-      "severity_mean": 0.4672356993070644,
+      "n_pass": 25,
+      "n_fail": 515,
+      "violation_rate": 0.9537037037037037,
+      "severity_mean": 0.4649244550179936,
       "severity_p95": 0.8,
-      "metric_mean": 0.35764107464320943,
+      "metric_mean": 0.36071056817687325,
       "metric_median": 0.3333333333333333,
       "by_family": {
         "prompt": {
           "n": 540,
-          "n_fail": 516,
-          "violation_rate": 0.9555555555555556,
-          "mean_metric": 0.35764107464320943
+          "n_fail": 515,
+          "violation_rate": 0.9537037037037037,
+          "mean_metric": 0.36071056817687325
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.7185185185185186,
-        "0.7": 0.9055555555555556,
-        "0.8": 0.9555555555555556,
+        "0.5": 0.7148148148148148,
+        "0.7": 0.9037037037037037,
+        "0.8": 0.9537037037037037,
         "0.9": 0.9814814814814815
       },
       "examples": [
@@ -357,26 +365,28 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 80,
       "n_pass": 31,
       "n_fail": 49,
       "violation_rate": 0.6125,
-      "severity_mean": 0.49352355980105966,
+      "severity_mean": 0.490184324068516,
       "severity_p95": 0.8,
-      "metric_mean": 0.570216819621851,
+      "metric_mean": 0.572262101508034,
       "metric_median": 0.5,
       "by_family": {
         "entity_alias": {
           "n": 40,
           "n_fail": 11,
           "violation_rate": 0.275,
-          "mean_metric": 0.8205969547466406
+          "mean_metric": 0.8215378149616943
         },
         "evidence": {
           "n": 40,
           "n_fail": 38,
           "violation_rate": 0.95,
-          "mean_metric": 0.3198366844970614
+          "mean_metric": 0.32298638805437363
         }
       },
       "by_query": {},
@@ -440,69 +450,55 @@
           "presentation"
         ]
       },
-      "threshold": 0.5,
+      "threshold": 0.7,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 2320,
-      "n_pass": 192,
-      "n_fail": 2128,
-      "violation_rate": 0.9172413793103448,
-      "severity_mean": 0.3863523095644123,
-      "severity_p95": 0.5,
-      "metric_mean": 0.17412700023578145,
-      "metric_median": 0.09090909090909091,
+      "n_pass": 162,
+      "n_fail": 2158,
+      "violation_rate": 0.9301724137931034,
+      "severity_mean": 0.5552348838015133,
+      "severity_p95": 0.7,
+      "metric_mean": 0.2011956600142446,
+      "metric_median": 0.1111111111111111,
       "by_family": {
         "prompt": {
           "n": 540,
-          "n_fail": 497,
-          "violation_rate": 0.9203703703703704,
-          "mean_metric": 0.18549570806273277
+          "n_fail": 502,
+          "violation_rate": 0.9296296296296296,
+          "mean_metric": 0.21122976777818406
         },
         "schema": {
           "n": 1700,
-          "n_fail": 1581,
-          "violation_rate": 0.93,
-          "mean_metric": 0.15784581281529064
+          "n_fail": 1606,
+          "violation_rate": 0.9447058823529412,
+          "mean_metric": 0.18528682622465367
         },
         "entity_alias": {
           "n": 40,
           "n_fail": 11,
           "violation_rate": 0.275,
-          "mean_metric": 0.7738725312591439
+          "mean_metric": 0.7825333022492758
         },
         "evidence": {
           "n": 40,
           "n_fail": 39,
           "violation_rate": 0.975,
-          "mean_metric": 0.11285437891943555
+          "mean_metric": 0.16052299902364517
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.9172413793103448,
-        "0.7": 0.9435344827586207,
-        "0.8": 0.9474137931034483,
-        "0.9": 0.9508620689655173
+        "0.5": 0.8892241379310345,
+        "0.7": 0.9301724137931034,
+        "0.8": 0.9383620689655172,
+        "0.9": 0.9439655172413793
       },
       "examples": [
         {
           "doc": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_",
-          "intervention": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_::iv::schema::docred_full::desc_removed",
-          "family": "schema",
-          "semantic_class": "presentation",
-          "operator": "switch_schema",
-          "metric": 0.0
-        },
-        {
-          "doc": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_",
           "intervention": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_::iv::schema::docred_full::hierarchical",
-          "family": "schema",
-          "semantic_class": "presentation",
-          "operator": "switch_schema",
-          "metric": 0.0
-        },
-        {
-          "doc": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_",
-          "intervention": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_::iv::schema::docred_full::desc_removed",
           "family": "schema",
           "semantic_class": "presentation",
           "operator": "switch_schema",
@@ -523,6 +519,319 @@
           "semantic_class": "presentation",
           "operator": "switch_schema",
           "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_",
+          "intervention": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_",
+          "intervention": "redocred-validation-000004-ELAM__Latin_American_School_of_Medicine_::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4b",
+      "name": "Shortest-path robustness (Q5)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 1025,
+      "n_pass": 186,
+      "n_fail": 839,
+      "violation_rate": 0.8185365853658536,
+      "severity_mean": 0.6038604158389617,
+      "severity_p95": 0.7,
+      "metric_mean": 0.2558970189701897,
+      "metric_median": 0.0,
+      "by_family": {
+        "prompt": {
+          "n": 232,
+          "n_fail": 196,
+          "violation_rate": 0.8448275862068966,
+          "mean_metric": 0.23735632183908045
+        },
+        "schema": {
+          "n": 761,
+          "n_fail": 623,
+          "violation_rate": 0.8186596583442839,
+          "mean_metric": 0.25411008906409693
+        },
+        "entity_alias": {
+          "n": 16,
+          "n_fail": 5,
+          "violation_rate": 0.3125,
+          "mean_metric": 0.6979166666666666
+        },
+        "evidence": {
+          "n": 16,
+          "n_fail": 15,
+          "violation_rate": 0.9375,
+          "mean_metric": 0.16770833333333335
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7219512195121951,
+        "0.7": 0.8185365853658536,
+        "0.8": 0.8204878048780487,
+        "0.9": 0.84
+      },
+      "examples": [
+        {
+          "doc": "redocred-validation-000001-Ross_Alger",
+          "intervention": "redocred-validation-000001-Ross_Alger::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000001-Ross_Alger",
+          "intervention": "redocred-validation-000001-Ross_Alger::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000001-Ross_Alger",
+          "intervention": "redocred-validation-000001-Ross_Alger::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000001-Ross_Alger",
+          "intervention": "redocred-validation-000001-Ross_Alger::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000001-Ross_Alger",
+          "intervention": "redocred-validation-000001-Ross_Alger::iv::prompt::base_v1::tone::terse",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4c",
+      "name": "Degree-aggregation robustness (Q6)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 2320,
+      "n_pass": 925,
+      "n_fail": 1395,
+      "violation_rate": 0.6012931034482759,
+      "severity_mean": 0.28943847072879325,
+      "severity_p95": 0.7,
+      "metric_mean": 0.6455747126436782,
+      "metric_median": 0.5,
+      "by_family": {
+        "prompt": {
+          "n": 540,
+          "n_fail": 321,
+          "violation_rate": 0.5944444444444444,
+          "mean_metric": 0.6537962962962963
+        },
+        "schema": {
+          "n": 1700,
+          "n_fail": 1040,
+          "violation_rate": 0.611764705882353,
+          "mean_metric": 0.6385
+        },
+        "entity_alias": {
+          "n": 40,
+          "n_fail": 8,
+          "violation_rate": 0.2,
+          "mean_metric": 0.8895833333333333
+        },
+        "evidence": {
+          "n": 40,
+          "n_fail": 26,
+          "violation_rate": 0.65,
+          "mean_metric": 0.5912499999999999
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.28836206896551725,
+        "0.7": 0.6012931034482759,
+        "0.8": 0.6012931034482759,
+        "0.9": 0.6012931034482759
+      },
+      "examples": [
+        {
+          "doc": "redocred-validation-000019-Railroad_Revival_Tour",
+          "intervention": "redocred-validation-000019-Railroad_Revival_Tour::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000019-Railroad_Revival_Tour",
+          "intervention": "redocred-validation-000019-Railroad_Revival_Tour::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000019-Railroad_Revival_Tour",
+          "intervention": "redocred-validation-000019-Railroad_Revival_Tour::iv::schema::docred_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000019-Railroad_Revival_Tour",
+          "intervention": "redocred-validation-000019-Railroad_Revival_Tour::iv::schema::docred_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000021-South_Gondar_Zone",
+          "intervention": "redocred-validation-000021-South_Gondar_Zone::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4d",
+      "name": "GraphRAG-retrieval robustness (Q7)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 2320,
+      "n_pass": 202,
+      "n_fail": 2118,
+      "violation_rate": 0.9129310344827586,
+      "severity_mean": 0.40129250591837173,
+      "severity_p95": 0.7,
+      "metric_mean": 0.34722205602246636,
+      "metric_median": 0.3076923076923077,
+      "by_family": {
+        "prompt": {
+          "n": 540,
+          "n_fail": 484,
+          "violation_rate": 0.8962962962962963,
+          "mean_metric": 0.3704330186836802
+        },
+        "schema": {
+          "n": 1700,
+          "n_fail": 1588,
+          "violation_rate": 0.9341176470588235,
+          "mean_metric": 0.32867312530493203
+        },
+        "entity_alias": {
+          "n": 40,
+          "n_fail": 11,
+          "violation_rate": 0.275,
+          "mean_metric": 0.8139511769620129
+        },
+        "evidence": {
+          "n": 40,
+          "n_fail": 35,
+          "violation_rate": 0.875,
+          "mean_metric": 0.35547449465174163
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7375,
+        "0.7": 0.9129310344827586,
+        "0.8": 0.9482758620689655,
+        "0.9": 0.9672413793103448
+      },
+      "examples": [
+        {
+          "doc": "redocred-validation-000006-Soccer_Academy",
+          "intervention": "redocred-validation-000006-Soccer_Academy::iv::sent::doc::para_swap",
+          "family": "evidence",
+          "semantic_class": "presentation",
+          "operator": "para_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000006-Soccer_Academy",
+          "intervention": "redocred-validation-000006-Soccer_Academy::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000006-Soccer_Academy",
+          "intervention": "redocred-validation-000006-Soccer_Academy::iv::schema::docred_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000006-Soccer_Academy",
+          "intervention": "redocred-validation-000006-Soccer_Academy::iv::schema::docred_full::desc_removed",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "redocred-validation-000006-Soccer_Academy",
+          "intervention": "redocred-validation-000006-Soccer_Academy::iv::schema::docred_full::hierarchical",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
         }
       ],
       "notes": "",
@@ -533,10 +842,14 @@
       "name": "Model swap recall stability",
       "kind": "bounded_drift",
       "scope": {
-        "operator_prefix": "model:"
+        "cause_family_in": [
+          "model"
+        ]
       },
-      "threshold": 0.4,
-      "direction": "min",
+      "threshold": 0.2,
+      "direction": "max",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 0,
       "n_pass": 0,
       "n_fail": 0,
@@ -559,29 +872,31 @@
     },
     {
       "contract_id": "K6",
-      "name": "Stochastic repeatability",
+      "name": "Decoding-resample stability",
       "kind": "invariance",
       "scope": {
         "cause_family_in": [
           "stochastic"
         ]
       },
-      "threshold": 0.9,
+      "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 80,
-      "n_pass": 3,
-      "n_fail": 77,
-      "violation_rate": 0.9625,
-      "severity_mean": 0.45768526712810087,
-      "severity_p95": 0.788888888888889,
-      "metric_mean": 0.46150173991301247,
+      "n_pass": 4,
+      "n_fail": 76,
+      "violation_rate": 0.95,
+      "severity_mean": 0.41121837589381655,
+      "severity_p95": 0.7388888888888889,
+      "metric_mean": 0.4633306381389695,
       "metric_median": 0.458041958041958,
       "by_family": {
         "stochastic": {
           "n": 80,
-          "n_fail": 77,
-          "violation_rate": 0.9625,
-          "mean_metric": 0.46150173991301247
+          "n_fail": 76,
+          "violation_rate": 0.95,
+          "mean_metric": 0.4633306381389695
         }
       },
       "by_query": {},
@@ -625,8 +940,8 @@
           "metric": 0.1
         },
         {
-          "doc": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_",
-          "intervention": "redocred-validation-000002-Mess_of_Blues__Jeff_Healey_album_::iv::noop::repeat::0",
+          "doc": "redocred-validation-000027-Nexus_Q",
+          "intervention": "redocred-validation-000027-Nexus_Q::iv::noop::repeat::1",
           "family": "stochastic",
           "semantic_class": "stochastic",
           "operator": "repeat",

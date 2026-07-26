@@ -1,49 +1,50 @@
 {
  "run": "cdr__deepseek-v4-flash__300d",
- "n_pairs": 6071,
+ "n_pairs": 6189,
+ "label_definition": "regime mean absolute per-query F1 change > threshold",
  "harm_tau": 0.05,
  "regimes": {
   "local": {
-   "n": 5927,
-   "harm_base_rate": 0.3491,
-   "tau_graph": 0.4444,
+   "n": 6029,
+   "harm_base_rate": 0.3593,
+   "tau_graph": 0.4545,
    "cmp_graph": ">",
-   "tau_query": 0.2222,
+   "tau_query": 0.25,
    "cmp_query": ">=",
    "graph_only": {
-    "alarm_rate": 0.34874304032394127,
-    "precision": 0.7378,
-    "recall": 0.7371,
-    "f1": 0.7374
+    "alarm_rate": 0.359097694476696,
+    "precision": 0.7483,
+    "recall": 0.7479,
+    "f1": 0.7481
    },
    "query_aware": {
-    "alarm_rate": 0.34908047916315166,
-    "precision": 0.9468,
-    "recall": 0.9468,
-    "f1": 0.9468
+    "alarm_rate": 0.35992701940620336,
+    "precision": 0.9475,
+    "recall": 0.9492,
+    "f1": 0.9483
    },
-   "delta_f1": 0.2094
+   "delta_f1": 0.2002
   },
   "multihop": {
-   "n": 872,
-   "harm_base_rate": 0.3291,
-   "tau_graph": 0.4444,
+   "n": 879,
+   "harm_base_rate": 0.3402,
+   "tau_graph": 0.4286,
    "cmp_graph": ">=",
    "tau_query": 0.3333,
    "cmp_query": ">",
    "graph_only": {
-    "alarm_rate": 0.3302752293577982,
-    "precision": 0.7396,
-    "recall": 0.7422,
-    "f1": 0.7409
+    "alarm_rate": 0.3447098976109215,
+    "precision": 0.7492,
+    "recall": 0.7592,
+    "f1": 0.7542
    },
    "query_aware": {
-    "alarm_rate": 0.31536697247706424,
-    "precision": 0.92,
-    "recall": 0.8815,
-    "f1": 0.9004
+    "alarm_rate": 0.32764505119453924,
+    "precision": 0.9236,
+    "recall": 0.8896,
+    "f1": 0.9063
    },
-   "delta_f1": 0.1595
+   "delta_f1": 0.1521
   }
  }
 }

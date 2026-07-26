@@ -2,17 +2,20 @@
 """Workload-regime analysis: where do query-aware contracts beat graph drift?
 (PVLDB revision, Rev6-W3/D3.)
 
-Splits the gold-grounded harmful-regression detection task by workload
+Splits the gold-grounded query-divergence detection task by workload
 regime instead of pooling all queries:
 
-  local regime     — harm = mean gold DeltaF1 over lookup + neighbor > 0.05
-  multi-hop regime — harm = mean gold DeltaF1 over join + two-hop  > 0.05
+  local regime     — mean absolute gold DeltaF1 over lookup + neighbor > 0.05
+  multi-hop regime — mean absolute gold DeltaF1 over join + two-hop > 0.05
 
-For each regime and corpus, two gold-free detectors are compared at the
-SAME alarm rate (set to the regime's harm base rate): graph-only (edge
-Jaccard drift) and query-aware (max answer-set drift over the regime's own
-templates). This isolates the regimes in which query-aware contracts add
-value over plain graph-drift scoring.
+For each regime and corpus, two gold-free detectors target the regime's
+label base rate: graph-only (edge Jaccard drift) and query-aware (max
+answer-set drift over the regime's own templates). Thresholds are selected
+as close as possible to that target. Because these scores are discrete and
+often tied, the achieved alarm rates can differ; the regime split is
+therefore a diagnostic F1 comparison rather than a strictly alarm-matched
+experiment. The pooled policy comparison in run_graph_vs_query_ablation.py
+is the rate-matched analysis.
 
 Writes reports/cross_run/regimes_<run>.json.
 """
@@ -29,7 +32,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from graphguard.qa import build_queries, execute, f1, jaccard, load_data  # noqa: E402
+from graphguard.qa import (  # noqa: E402
+    build_queries,
+    execute,
+    f1,
+    graph_jaccard,
+    jaccard,
+    load_data,
+)
 
 MAIN_RUNS = [
     "docred__deepseek-v4-flash__300d",
@@ -97,7 +107,7 @@ def analyze_run(run: str) -> dict | None:
         qs = queries_for(doc)
         if not qs:
             continue
-        gdrift = 1.0 - jaccard(bg, cg)
+        gdrift = 1.0 - graph_jaccard(bg, cg)
         delta = defaultdict(list)   # gold DeltaF1 per template family
         adrift = defaultdict(list)  # gold-free answer drift per template family
         nonempty = defaultdict(bool)
@@ -117,7 +127,15 @@ def analyze_run(run: str) -> dict | None:
                 row[f"{regime}_qdrift"] = max(qd) if qd else 0.0
         rows.append(row)
 
-    out = {"run": run, "n_pairs": len(rows), "harm_tau": HARM_TAU, "regimes": {}}
+    out = {
+        "run": run,
+        "n_pairs": len(rows),
+        "label_definition": (
+            "regime mean absolute per-query F1 change > threshold"
+        ),
+        "harm_tau": HARM_TAU,
+        "regimes": {},
+    }
     for regime in REGIMES:
         rr = [r for r in rows if f"{regime}_harm" in r]
         if len(rr) < 50:

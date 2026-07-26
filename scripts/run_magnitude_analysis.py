@@ -235,9 +235,13 @@ def analyze_run(run: str) -> dict | None:
     cur = con.cursor()
 
     edges = defaultdict(list)
-    for eid, sn, r, on in cur.execute(
-        "SELECT event_id, subject_name, relation, object_name FROM extracted_edges"):
-        edges[eid].append({"subject_name": sn, "relation": r, "object_name": on})
+    for eid, sid, sn, r, oid, on in cur.execute(
+        "SELECT event_id, subject_entity_id, subject_name, relation, "
+        "object_entity_id, object_name FROM extracted_edges"):
+        edges[eid].append({
+            "subject_entity_id": sid, "subject_name": sn, "relation": r,
+            "object_entity_id": oid, "object_name": on,
+        })
 
     events = {eid: (pid, sid, json.loads(sj) if sj else [])
               for eid, pid, sid, sj in cur.execute(
@@ -344,17 +348,12 @@ def analyze_run(run: str) -> dict | None:
 
 
 def make_figure(runs: list[str]) -> None:
-    """Two-panel figure: presentation saturation vs semantic dose-response."""
+    """Presentation-family drift plateaus across the four main corpora."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
     from graphguard.viz import style as _S
-
-    label = {"docred": "DocRED", "redocred": "Re-DocRED",
-             "scierc": "SciERC", "cdr": "BC5CDR"}
-    fills = [_S.BLUE, _S.PINK, _S.GREEN, _S.GRAY_LIGHT]
-    colors = [_S.BLUE_DARK, _S.PINK_DARK, _S.GREEN_DARK, _S.GRAY]
 
     data = {}
     for run in runs:
@@ -365,62 +364,104 @@ def make_figure(runs: list[str]) -> None:
         return
 
     # Mean graph drift per presentation family, corpora on the x-axis (matching
-    # the house layout). Bars are pooled per-pair means with 95% normal CIs; the
-    # semantics-touching dose-response is reported quantitatively in the text.
-    import math
+    # the house layout). Confidence intervals cluster-bootstrap source
+    # documents because one document contributes multiple perturbation pairs.
 
     def fam_stat(d, key):
         pairs = d.get("pairs", [])
         if key == "noop":
-            vals = [p["drift"] for p in pairs if p.get("level") == "noop"]
+            selected = [p for p in pairs if p.get("level") == "noop"]
         elif key == "presentation":
-            vals = [p["drift"] for p in pairs if str(p.get("level", "")).startswith("pres-")]
+            selected = [
+                p for p in pairs
+                if str(p.get("level", "")).startswith("pres-")
+            ]
         elif key == "prompt":
-            vals = [p["drift"] for p in pairs if p.get("family") == "prompt"]
+            selected = [p for p in pairs if p.get("family") == "prompt"]
         else:  # evidence
-            vals = [p["drift"] for p in pairs if p.get("family") == "evidence"]
-        if not vals:
+            selected = [p for p in pairs if p.get("family") == "evidence"]
+        if not selected:
             return 0.0, 0.0
+        vals = [p["drift"] for p in selected]
         m = sum(vals) / len(vals)
-        ci = 1.96 * statistics.pstdev(vals) / math.sqrt(len(vals)) if len(vals) > 1 else 0.0
-        return m, ci
+        by_doc = defaultdict(list)
+        for pair in selected:
+            by_doc[pair["doc"]].append(pair["drift"])
+        docs = sorted(by_doc)
+        rng = np.random.default_rng(0)
+        boot = []
+        for _ in range(1000):
+            sampled_docs = rng.choice(docs, size=len(docs), replace=True)
+            sample = [
+                value
+                for doc in sampled_docs
+                for value in by_doc[doc]
+            ]
+            boot.append(float(np.mean(sample)))
+        lo, hi = np.quantile(boot, [0.025, 0.975])
+        return m, (m - float(lo), float(hi) - m)
 
     _S.apply_rc(font_size=8)
-    fig, ax = plt.subplots(figsize=(3.5, 1.42))
+    plt.rcParams.update({
+        "axes.linewidth": 0.7,
+        "axes.labelsize": 7.5,
+        "axes.titlesize": 8,
+        "xtick.labelsize": 6.5,
+        "ytick.labelsize": 6.5,
+        "legend.fontsize": 6.5,
+        "xtick.major.width": 0.7,
+        "ytick.major.width": 0.7,
+        "xtick.major.size": 2.5,
+        "ytick.major.size": 2.5,
+    })
+    fig, ax = plt.subplots(figsize=(3.5, 1.22))
 
-    fams = [("noop", "rerun"), ("presentation", "schema"),
-            ("prompt", "prompt"), ("evidence", "evidence")]
+    fams = [("noop", "Resample"), ("presentation", "Schema"),
+            ("prompt", "Prompt"), ("evidence", "Evidence")]
     fam_fill = [_S.BLUE, _S.PINK, _S.GREEN, _S.GRAY_LIGHT]
     fam_edge = [_S.BLUE_DARK, _S.PINK_DARK, _S.GREEN_DARK, _S.GRAY]
     short = {"docred": "DR", "redocred": "RDR", "scierc": "SE", "cdr": "CDR"}
     corpora = list(data.keys())
     x = np.arange(len(corpora))
     nb = len(fams)
-    w = 0.82 / nb
+    w = 0.76 / nb
     for j, (key, lab) in enumerate(fams):
         stats = [fam_stat(data[c], key) for c in corpora]
         vals = [s[0] for s in stats]
-        errs = [s[1] for s in stats]
+        errs = np.array([
+            [s[1][0] for s in stats],
+            [s[1][1] for s in stats],
+        ])
         xs = x + (j - (nb - 1) / 2) * w
-        ax.bar(xs, vals, width=w * 0.9, color=fam_fill[j],
-               edgecolor=fam_edge[j], linewidth=0.5, label=lab,
-               yerr=errs, error_kw=dict(ecolor=fam_edge[j], elinewidth=0.6, capsize=1.0))
-        for xi, v, e in zip(xs, vals, errs):
-            ax.text(xi, v + e + 0.015, f"{v:.2f}",
+        bars = ax.bar(xs, vals, width=w * 0.9, color=fam_fill[j],
+                      edgecolor=fam_edge[j], linewidth=0.8, label=lab,
+                      yerr=errs,
+                      error_kw=dict(ecolor=fam_edge[j], elinewidth=0.8,
+                                    capsize=1.2))
+        # Alternate the label height within each group so near-equal values do
+        # not run together after the figure is scaled to one-column width.
+        label_lift = 0.012 * (j % 2)
+        for bar, v, e in zip(bars, vals, errs[1]):
+            ax.text(bar.get_x() + bar.get_width() / 2,
+                    v + e + 0.012 + label_lift, f"{v:.2f}",
                     ha="center", va="bottom", fontsize=4.5, color=_S.BLACK)
     ax.set_xticks(x)
-    ax.set_xticklabels([short.get(c, c) for c in corpora], fontsize=7)
-    ax.set_ylabel("mean graph drift", fontsize=8)
-    ax.set_ylim(0, 0.85)
+    ax.set_xticklabels([short.get(c, c) for c in corpora])
+    ax.set_ylabel("Mean graph drift")
+    ax.set_ylim(0, 0.84)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
-    ax.set_title("Presentation drift", fontsize=8, fontweight="bold", pad=16)
-    ax.legend(fontsize=6, ncol=4, frameon=False, loc="lower center",
+    ax.legend(ncol=4, frameon=False, loc="lower center",
               bbox_to_anchor=(0.5, 1.0), handlelength=1.0,
-              columnspacing=1.0, handletextpad=0.4)
+              columnspacing=0.9, handletextpad=0.35)
     _S.despine(ax)
+    ax.spines["left"].set_linewidth(0.7)
+    ax.spines["bottom"].set_linewidth(0.7)
 
     out = ROOT / "assets" / "figures" / "fig_magnitude.png"
-    _S.save_fig(fig, out)
+    fig.subplots_adjust(left=0.14, right=0.995, bottom=0.22, top=0.83)
+    fig.savefig(out, dpi=300, bbox_inches="tight", pad_inches=0.025,
+                facecolor=_S.WHITE)
+    plt.close(fig)
     print(f"[fig] {out}")
 
 

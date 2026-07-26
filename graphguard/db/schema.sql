@@ -93,7 +93,9 @@ CREATE TABLE IF NOT EXISTS intervention_candidates (
   operator        TEXT,
   description     TEXT,
   estimated_cost  REAL,
-  group_id        TEXT
+  group_id        TEXT,
+  semantic_class  TEXT,
+  cause_family    TEXT
 );
 
 CREATE TABLE IF NOT EXISTS counterfactual_runs (
@@ -217,12 +219,4 @@ CREATE TABLE IF NOT EXISTS injection_cases (
   gold_object    TEXT,
   injected_doc_id TEXT REFERENCES documents(document_id),
   notes          TEXT
-);
-
--- Edge-matching validation sample (manual / semi-auto inspected outcomes).
-CREATE TABLE IF NOT EXISTS matching_validation (
-  outcome_id          TEXT PRIMARY KEY REFERENCES edge_outcomes(outcome_id),
-  reviewer_label      TEXT,    -- 'correct_match' | 'wrong_match' | 'ambiguous_correct' | 'false_disappear'
-  reviewer_note       TEXT,
-  reviewed_at         TEXT
 );

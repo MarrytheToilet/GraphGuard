@@ -1,29 +1,37 @@
 {
-  "n_pairs": 6071,
+  "run": "cdr__deepseek-v4-flash__300d",
+  "n_pairs": 6189,
+  "label_definition": "mean absolute per-query gold F1 change > 0.05",
+  "violation_definition": "max answer-set drift > 0.5",
+  "bucket_definition": {
+    "strict": "decoding resample and order-only",
+    "soft": "presentation-equivalent",
+    "ablation": "semantics-bounded"
+  },
   "buckets": {
     "strict": {
-      "n_pairs": 399,
-      "harmful_rate": 0.1203,
-      "violation_rate_tau0p5": 0.1805,
-      "mean_graph_drift": 0.2013,
-      "mean_query_drift": 0.2338,
-      "mean_u": 0.0795
+      "n_pairs": 446,
+      "query_divergence_rate": 0.30493273542600896,
+      "violation_rate_tau0p5": 0.1210762331838565,
+      "mean_graph_drift": 0.249711779252138,
+      "mean_query_drift": 0.19611894084988254,
+      "mean_u": 0.1200009049860201
     },
     "ablation": {
-      "n_pairs": 2996,
-      "harmful_rate": 0.2076,
-      "violation_rate_tau0p5": 0.2664,
-      "mean_graph_drift": 0.2223,
-      "mean_query_drift": 0.3258,
-      "mean_u": 0.1692
+      "n_pairs": 2684,
+      "query_divergence_rate": 0.4038748137108793,
+      "violation_rate_tau0p5": 0.22801788375558868,
+      "mean_graph_drift": 0.3488559056077904,
+      "mean_query_drift": 0.2977569902774821,
+      "mean_u": 0.19942270718335542
     },
     "soft": {
-      "n_pairs": 2676,
-      "harmful_rate": 0.1181,
-      "violation_rate_tau0p5": 0.173,
-      "mean_graph_drift": 0.2139,
-      "mean_query_drift": 0.2438,
-      "mean_u": 0.0768
+      "n_pairs": 3059,
+      "query_divergence_rate": 0.3105590062111801,
+      "violation_rate_tau0p5": 0.13468453743053285,
+      "mean_graph_drift": 0.2589126702192295,
+      "mean_query_drift": 0.20034000633052612,
+      "mean_u": 0.11992791581656177
     }
   }
 }

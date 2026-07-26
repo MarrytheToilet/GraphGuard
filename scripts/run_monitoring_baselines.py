@@ -13,9 +13,15 @@ Metrics: precision, recall, F1, plus a cost proxy (LLM calls per flagged pair).
 Output: reports/cross_run/monitoring_baselines.json
 """
 from __future__ import annotations
-import json, sqlite3, statistics, re
+import json, statistics, re, sys
 from pathlib import Path
 from collections import defaultdict
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from graphguard.contracts import metrics as M  # noqa: E402
+from graphguard.db.database import open_db  # noqa: E402
 
 DB = "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db"
 OUT = Path("reports/cross_run/monitoring_baselines.json")
@@ -35,44 +41,61 @@ def main():
     ap.add_argument("--out", default=os.environ.get("CL_OUT_MONITORING", str(OUT)))
     args = ap.parse_args()
     out_path = Path(args.out)
-    con = sqlite3.connect(args.db)
+    con = open_db(args.db)
     cur = con.cursor()
     gold_by_doc = defaultdict(set)
     for d, h, r, t in cur.execute("SELECT document_id, head_name, relation_base, tail_name FROM gold_edges"):
         if h and r and t:
-            gold_by_doc[d].add((h.lower(), r, t.lower()))
+            gold_by_doc[d].add((
+                M._canon_entity(h), r, M._canon_entity(t)
+            ))
 
     edges_by_event: dict[str, set] = defaultdict(set)
+    raw_edges_by_event: dict[str, list] = defaultdict(list)
     conf_by_event: dict[str, list] = defaultdict(list)
     for eid, s, r, o, c in cur.execute(
         "SELECT event_id, subject_name, relation, object_name, confidence FROM extracted_edges"
     ):
         if s and r and o:
-            edges_by_event[eid].add((s.lower(), r, o.lower()))
+            raw_edges_by_event[eid].append({
+                "subject_name": s, "relation": r, "object_name": o,
+            })
         if c is not None:
             conf_by_event[eid].append(c)
     mean_conf = {e: (statistics.mean(cs) if cs else 0.0) for e, cs in conf_by_event.items()}
 
-    doc_of_event = dict(cur.execute("SELECT event_id, document_id FROM extraction_events"))
+    event_meta = {
+        event_id: (document_id, schema_id)
+        for event_id, document_id, schema_id in cur.execute(
+            "SELECT event_id, document_id, schema_id FROM extraction_events"
+        )
+    }
+    doc_of_event = {
+        event_id: document_id
+        for event_id, (document_id, _) in event_meta.items()
+    }
+    schemas = {
+        schema_id: {row["id"] for row in json.loads(relations_json)}
+        for schema_id, relations_json in cur.execute(
+            "SELECT schema_id, relation_types_json FROM schemas"
+        )
+    }
+
+    def projected(event_id, base_relation_ids):
+        return set(M._project(
+            M._to_triples(raw_edges_by_event.get(event_id, [])),
+            base_relation_ids,
+        ))
 
     rows = cur.execute("""
-        SELECT cr.run_id, cr.base_event_id, ic.cause_family
+        SELECT cr.run_id, cr.base_event_id, cr.cf_event_id, ic.cause_family
         FROM counterfactual_runs cr
         JOIN intervention_candidates ic ON cr.intervention_id = ic.intervention_id
         WHERE cr.status='ok' AND ic.cause_family IS NOT NULL
     """).fetchall()
-    cf_event = {}
-    for run_id, _, _ in rows:
-        r = cur.execute(
-            "SELECT matched_edge_id FROM edge_outcomes WHERE run_id=? AND matched_edge_id IS NOT NULL LIMIT 1",
-            (run_id,)
-        ).fetchone()
-        if r and r[0] and "::" in r[0]:
-            cf_event[run_id] = r[0].rsplit("::", 1)[0]
-
     # Per-doc: collect base repeats for self-consistency baseline
     base_repeats = defaultdict(list)
-    for be in {b for _, b, _ in rows if b}:
+    for be in {b for _, b, _, _ in rows if b}:
         d = doc_of_event.get(be)
         if d:
             base_repeats[d].append(be)
@@ -82,14 +105,15 @@ def main():
             continue
         cnt = defaultdict(int)
         for e in evs:
-            for ed in edges_by_event.get(e, set()):
+            base_relation_ids = schemas.get(event_meta.get(e, (None, None))[1])
+            for ed in projected(e, base_relation_ids):
                 cnt[ed] += 1
         thr = max(2, len(evs) // 2 + 1)
         majority_set[d] = {ed for ed, c in cnt.items() if c >= thr}
 
     base_conf_q30 = {}
     base_means_by_doc = defaultdict(list)
-    for be in {b for _, b, _ in rows if b}:
+    for be in {b for _, b, _, _ in rows if b}:
         d = doc_of_event.get(be)
         if d and be in mean_conf:
             base_means_by_doc[d].append(mean_conf[be])
@@ -98,20 +122,26 @@ def main():
         base_conf_q30[d] = vs[max(0, len(vs) * 30 // 100)] if vs else 0.5
 
     pairs = []
-    for run_id, be, fam in rows:
-        ce = cf_event.get(run_id)
+    for run_id, be, ce, fam in rows:
         if not ce or not be:
             continue
         d = doc_of_event.get(be)
         gold = gold_by_doc.get(d, set())
         if not gold:
             continue
-        ge = edges_by_event.get(be, set())
-        gc = edges_by_event.get(ce, set())
+        base_relation_ids = schemas.get(
+            event_meta.get(be, (None, None))[1]
+        )
+        ge = projected(be, base_relation_ids)
+        gc = projected(ce, base_relation_ids)
         rb = len(ge & gold) / len(gold)
         rc = len(gc & gold) / len(gold)
         u = abs(rb - rc)
-        m = jaccard_drift(ge, gc)
+        m = 1.0 - M.edge_jaccard(
+            raw_edges_by_event.get(be, []),
+            raw_edges_by_event.get(ce, []),
+            base_relation_ids=base_relation_ids,
+        )
         # baselines
         flag_conf = mean_conf.get(ce, 1.0) < base_conf_q30.get(d, 0.5)
         maj = majority_set.get(d)

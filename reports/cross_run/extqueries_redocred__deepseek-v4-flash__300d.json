@@ -2,39 +2,43 @@
  "run": "redocred__deepseek-v4-flash__300d",
  "n_pairs": 6614,
  "amp_eps": 0.05,
+ "confidence_intervals": "document-cluster bootstrap (B=1000)",
  "summary": {
   "Q_deg": {
    "n": 6614,
-   "query_drift_mean": 0.36483217417599034,
-   "graph_drift_mean": 0.6756119406804737,
-   "amp_mean": 0.4943677109921896,
-   "amp_ci_lo": 0.48336355149910837,
-   "amp_ci_hi": 0.5055863336496683,
+   "n_documents": 300,
+   "query_drift_mean": 0.3500629976816853,
+   "graph_drift_mean": 0.6714045746355061,
+   "amp_mean": 0.47771108228803083,
+   "amp_ci_lo": 0.44533141956449845,
+   "amp_ci_hi": 0.5127746321976331,
    "n_presentation": 2320,
-   "viol_rate_jaccard_lt_0.50": 0.3017241379310345,
-   "viol_rate_drift_gt_0.30": 0.6193965517241379
+   "viol_rate_jaccard_lt_0.50": 0.28836206896551725,
+   "viol_rate_drift_gt_0.30": 0.6012931034482759
   },
   "Q_path": {
-   "n": 2892,
-   "query_drift_mean": 0.7503582680190564,
-   "graph_drift_mean": 0.7028712650661306,
-   "amp_mean": 1.011442601685915,
-   "amp_ci_lo": 0.9896045059088272,
-   "amp_ci_hi": 1.033384521496248,
-   "n_presentation": 1018,
-   "viol_rate_jaccard_lt_0.50": 0.7269155206286837,
-   "viol_rate_drift_gt_0.30": 0.825147347740668
+   "n": 2912,
+   "n_documents": 149,
+   "query_drift_mean": 0.7396825396825397,
+   "graph_drift_mean": 0.699709284996187,
+   "amp_mean": 1.0019028046145821,
+   "amp_ci_lo": 0.9424760079929548,
+   "amp_ci_hi": 1.0663377841473214,
+   "n_presentation": 1025,
+   "viol_rate_jaccard_lt_0.50": 0.7219512195121951,
+   "viol_rate_drift_gt_0.30": 0.8185365853658536
   },
   "Q_rag": {
    "n": 6614,
-   "query_drift_mean": 0.67950396794021,
-   "graph_drift_mean": 0.6756119406804737,
-   "amp_mean": 0.9197075698135542,
-   "amp_ci_lo": 0.9145571662098375,
-   "amp_ci_hi": 0.9248570906232724,
+   "n_documents": 300,
+   "query_drift_mean": 0.6777744359318402,
+   "graph_drift_mean": 0.6714045746355061,
+   "amp_mean": 0.922168451167627,
+   "amp_ci_lo": 0.9105882596550143,
+   "amp_ci_hi": 0.933689678518562,
    "n_presentation": 2320,
-   "viol_rate_jaccard_lt_0.50": 0.7439655172413793,
-   "viol_rate_drift_gt_0.30": 0.915948275862069
+   "viol_rate_jaccard_lt_0.50": 0.7375,
+   "viol_rate_drift_gt_0.30": 0.9137931034482759
   }
  }
 }

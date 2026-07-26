@@ -1,0 +1,165 @@
+{
+  "definition": {
+    "baseline": "materialize both endpoints independently for every contract-pair evaluation",
+    "llm_calls": 0,
+    "optimized": "materialize the union of unique extraction-event endpoints once",
+    "token_volume": "token_input + token_output"
+  },
+  "runs": [
+    {
+      "contract_counts_match_report": true,
+      "counterfactual_only": {
+        "call_savings_factor": 4.2681799075241695,
+        "naive_counterfactual_materializations": 10154,
+        "naive_token_volume": 53194657,
+        "token_savings_factor": 4.292090005130854,
+        "union_token_volume": 12393649,
+        "unique_counterfactual_materializations": 2379
+      },
+      "db": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
+      "full_endpoint_union": {
+        "call_savings_factor": 7.474420316525579,
+        "naive_endpoint_materializations": 20308,
+        "naive_token_volume": 105342440,
+        "token_savings_factor": 7.464435805815507,
+        "union_token_volume": 14112579,
+        "unique_endpoint_materializations": 2717
+      },
+      "pair_evaluations": 10154,
+      "per_contract_pair_evaluations": {
+        "K1": 676,
+        "K1b": 337,
+        "K1c": 676,
+        "K2": 534,
+        "K3": 78,
+        "K4": 2301,
+        "K4b": 872,
+        "K4c": 2301,
+        "K4d": 2301,
+        "K6": 78
+      },
+      "run": "docred__deepseek-v4-flash__300d"
+    },
+    {
+      "contract_counts_match_report": true,
+      "counterfactual_only": {
+        "call_savings_factor": 4.327083333333333,
+        "naive_counterfactual_materializations": 10385,
+        "naive_token_volume": 56640290,
+        "token_savings_factor": 4.324756884471476,
+        "union_token_volume": 13096757,
+        "unique_counterfactual_materializations": 2400
+      },
+      "db": "data/processed/runs/redocred__deepseek-v4-flash__300d/redocred__deepseek-v4-flash__300d.db",
+      "full_endpoint_union": {
+        "call_savings_factor": 7.58029197080292,
+        "naive_endpoint_materializations": 20770,
+        "naive_token_volume": 112024812,
+        "token_savings_factor": 7.524751924583219,
+        "union_token_volume": 14887509,
+        "unique_endpoint_materializations": 2740
+      },
+      "pair_evaluations": 10385,
+      "per_contract_pair_evaluations": {
+        "K1": 680,
+        "K1b": 340,
+        "K1c": 680,
+        "K2": 540,
+        "K3": 80,
+        "K4": 2320,
+        "K4b": 1025,
+        "K4c": 2320,
+        "K4d": 2320,
+        "K6": 80
+      },
+      "run": "redocred__deepseek-v4-flash__300d"
+    },
+    {
+      "contract_counts_match_report": true,
+      "counterfactual_only": {
+        "call_savings_factor": 4.455397431447414,
+        "naive_counterfactual_materializations": 12836,
+        "naive_token_volume": 65188425,
+        "token_savings_factor": 4.503791006888639,
+        "union_token_volume": 14474123,
+        "unique_counterfactual_materializations": 2881
+      },
+      "db": "data/processed/runs/scierc__deepseek-v4-flash__100d/scierc__deepseek-v4-flash__100d.db",
+      "full_endpoint_union": {
+        "call_savings_factor": 8.052697616060225,
+        "naive_endpoint_materializations": 25672,
+        "naive_token_volume": 125978369,
+        "token_savings_factor": 7.909132384945056,
+        "union_token_volume": 15928216,
+        "unique_endpoint_materializations": 3188
+      },
+      "pair_evaluations": 12836,
+      "per_contract_pair_evaluations": {
+        "K1": 612,
+        "K1b": 302,
+        "K1c": 606,
+        "K2": 887,
+        "K3": 236,
+        "K4": 2643,
+        "K4b": 2072,
+        "K4c": 2620,
+        "K4d": 2620,
+        "K6": 238
+      },
+      "run": "scierc__deepseek-v4-flash__100d"
+    },
+    {
+      "contract_counts_match_report": true,
+      "counterfactual_only": {
+        "call_savings_factor": 3.9552155771905424,
+        "naive_counterfactual_materializations": 14219,
+        "naive_token_volume": 29015696,
+        "token_savings_factor": 3.970643532617955,
+        "union_token_volume": 7307555,
+        "unique_counterfactual_materializations": 3595
+      },
+      "db": "data/processed/runs/cdr__deepseek-v4-flash__300d/cdr__deepseek-v4-flash__300d.db",
+      "full_endpoint_union": {
+        "call_savings_factor": 7.301155327342747,
+        "naive_endpoint_materializations": 28438,
+        "naive_token_volume": 58039392,
+        "token_savings_factor": 7.320346854885468,
+        "union_token_volume": 7928503,
+        "unique_endpoint_materializations": 3895
+      },
+      "pair_evaluations": 14219,
+      "per_contract_pair_evaluations": {
+        "K1": 680,
+        "K1b": 338,
+        "K1c": 680,
+        "K2": 1737,
+        "K3": 80,
+        "K4": 3515,
+        "K4b": 139,
+        "K4c": 3485,
+        "K4d": 3485,
+        "K6": 80
+      },
+      "run": "cdr__deepseek-v4-flash__300d"
+    }
+  ],
+  "summary": {
+    "counterfactual_call_savings_factor": {
+      "max": 4.455397431447414,
+      "min": 3.9552155771905424
+    },
+    "counterfactual_token_savings_factor": {
+      "max": 4.503791006888639,
+      "min": 3.970643532617955
+    },
+    "full_call_savings_factor": {
+      "max": 8.052697616060225,
+      "min": 7.301155327342747
+    },
+    "full_token_savings_factor": {
+      "max": 7.909132384945056,
+      "min": 7.320346854885468
+    },
+    "n_runs": 4
+  }
+}

@@ -1,8 +1,8 @@
 {
   "summary": {
-    "n_contracts": 8,
-    "n_violated": 6,
-    "n_satisfied": 1,
+    "n_contracts": 11,
+    "n_violated": 8,
+    "n_satisfied": 2,
     "n_inconclusive": 1
   },
   "contracts": [
@@ -24,20 +24,22 @@
       },
       "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 680,
       "n_pass": 349,
       "n_fail": 331,
       "violation_rate": 0.48676470588235293,
-      "severity_mean": 0.3904191631088734,
+      "severity_mean": 0.38849812046453236,
       "severity_p95": 0.85,
-      "metric_mean": 0.7349507280973544,
+      "metric_mean": 0.7358858238551145,
       "metric_median": 0.9,
       "by_family": {
         "schema": {
           "n": 680,
           "n_fail": 331,
           "violation_rate": 0.48676470588235293,
-          "mean_metric": 0.7349507280973544
+          "mean_metric": 0.7358858238551145
         }
       },
       "by_query": {},
@@ -109,20 +111,22 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 338,
       "n_pass": 184,
       "n_fail": 154,
       "violation_rate": 0.4556213017751479,
-      "severity_mean": 0.39869660462192935,
+      "severity_mean": 0.3974597462422138,
       "severity_p95": 0.8,
-      "metric_mean": 0.7202566705155462,
+      "metric_mean": 0.7208202095406238,
       "metric_median": 1.0,
       "by_family": {
         "schema": {
           "n": 338,
           "n_fail": 154,
           "violation_rate": 0.4556213017751479,
-          "mean_metric": 0.7202566705155462
+          "mean_metric": 0.7208202095406238
         }
       },
       "by_query": {},
@@ -192,28 +196,30 @@
       },
       "threshold": 0.5,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 680,
-      "n_pass": 536,
-      "n_fail": 144,
-      "violation_rate": 0.21176470588235294,
-      "severity_mean": 0.2596567784067784,
+      "n_pass": 537,
+      "n_fail": 143,
+      "violation_rate": 0.21029411764705883,
+      "severity_mean": 0.25962825053734145,
       "severity_p95": 0.5,
-      "metric_mean": 0.7309746155420895,
+      "metric_mean": 0.7334228312537137,
       "metric_median": 1.0,
       "by_family": {
         "schema": {
           "n": 680,
-          "n_fail": 144,
-          "violation_rate": 0.21176470588235294,
-          "mean_metric": 0.7309746155420895
+          "n_fail": 143,
+          "violation_rate": 0.21029411764705883,
+          "mean_metric": 0.7334228312537137
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.21176470588235294,
-        "0.7": 0.4161764705882353,
-        "0.8": 0.45294117647058824,
-        "0.9": 0.48970588235294116
+        "0.5": 0.21029411764705883,
+        "0.7": 0.4102941176470588,
+        "0.8": 0.4485294117647059,
+        "0.9": 0.4852941176470588
       },
       "examples": [
         {
@@ -274,28 +280,30 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 1737,
-      "n_pass": 926,
-      "n_fail": 811,
-      "violation_rate": 0.46689694876223375,
-      "severity_mean": 0.3706792068573095,
+      "n_pass": 933,
+      "n_fail": 804,
+      "violation_rate": 0.46286701208981,
+      "severity_mean": 0.3687681377129358,
       "severity_p95": 0.8,
-      "metric_mean": 0.7246023730390794,
+      "metric_mean": 0.727671603919953,
       "metric_median": 0.8333333333333334,
       "by_family": {
         "prompt": {
           "n": 1737,
-          "n_fail": 811,
-          "violation_rate": 0.46689694876223375,
-          "mean_metric": 0.7246023730390794
+          "n_fail": 804,
+          "violation_rate": 0.46286701208981,
+          "mean_metric": 0.727671603919953
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.20149683362118595,
-        "0.7": 0.4214162348877375,
-        "0.8": 0.46689694876223375,
-        "0.9": 0.5164075993091537
+        "0.5": 0.1963154864709269,
+        "0.7": 0.41738629821531376,
+        "0.8": 0.46286701208981,
+        "0.9": 0.5129533678756477
       },
       "examples": [
         {
@@ -357,13 +365,15 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 80,
       "n_pass": 64,
       "n_fail": 16,
       "violation_rate": 0.2,
-      "severity_mean": 0.37361111111111117,
+      "severity_mean": 0.36388888888888893,
       "severity_p95": 0.6000000000000001,
-      "metric_mean": 0.8806944444444444,
+      "metric_mean": 0.8826388888888889,
       "metric_median": 1.0,
       "by_family": {
         "entity_alias": {
@@ -376,12 +386,12 @@
           "n": 40,
           "n_fail": 16,
           "violation_rate": 0.4,
-          "mean_metric": 0.7613888888888889
+          "mean_metric": 0.7652777777777777
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.0875,
+        "0.5": 0.075,
         "0.7": 0.175,
         "0.8": 0.2,
         "0.9": 0.225
@@ -429,7 +439,7 @@
         }
       ],
       "notes": "",
-      "verdict": "VIOLATED"
+      "verdict": "SATISFIED"
     },
     {
       "contract_id": "K4",
@@ -440,28 +450,30 @@
           "presentation"
         ]
       },
-      "threshold": 0.5,
+      "threshold": 0.7,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 3515,
-      "n_pass": 3260,
-      "n_fail": 255,
-      "violation_rate": 0.07254623044096728,
-      "severity_mean": 0.4984313725490196,
-      "severity_p95": 0.5,
-      "metric_mean": 0.9274727358937885,
+      "n_pass": 3258,
+      "n_fail": 257,
+      "violation_rate": 0.07311522048364154,
+      "severity_mean": 0.6962233920805676,
+      "severity_p95": 0.7,
+      "metric_mean": 0.927160907037068,
       "metric_median": 1.0,
       "by_family": {
         "prompt": {
           "n": 1737,
-          "n_fail": 127,
-          "violation_rate": 0.07311456534254462,
-          "mean_metric": 0.9269238150067166
+          "n_fail": 128,
+          "violation_rate": 0.0736902705814623,
+          "mean_metric": 0.926724575840699
         },
         "schema": {
           "n": 1698,
-          "n_fail": 125,
-          "violation_rate": 0.07361601884570082,
-          "mean_metric": 0.9263839811542992
+          "n_fail": 126,
+          "violation_rate": 0.07420494699646643,
+          "mean_metric": 0.925942285041225
         },
         "entity_alias": {
           "n": 40,
@@ -478,10 +490,10 @@
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.07254623044096728,
-        "0.7": 0.07283072546230442,
-        "0.8": 0.07283072546230442,
-        "0.9": 0.07283072546230442
+        "0.5": 0.07311522048364154,
+        "0.7": 0.07311522048364154,
+        "0.8": 0.07311522048364154,
+        "0.9": 0.07311522048364154
       },
       "examples": [
         {
@@ -529,14 +541,315 @@
       "verdict": "SATISFIED"
     },
     {
+      "contract_id": "K4b",
+      "name": "Shortest-path robustness (Q5)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 139,
+      "n_pass": 43,
+      "n_fail": 96,
+      "violation_rate": 0.6906474820143885,
+      "severity_mean": 0.6565972222222222,
+      "severity_p95": 0.7,
+      "metric_mean": 0.3363309352517986,
+      "metric_median": 0.0,
+      "by_family": {
+        "prompt": {
+          "n": 68,
+          "n_fail": 47,
+          "violation_rate": 0.6911764705882353,
+          "mean_metric": 0.3382352941176471
+        },
+        "schema": {
+          "n": 65,
+          "n_fail": 46,
+          "violation_rate": 0.7076923076923077,
+          "mean_metric": 0.3192307692307692
+        },
+        "entity_alias": {
+          "n": 3,
+          "n_fail": 0,
+          "violation_rate": 0.0,
+          "mean_metric": 1.0
+        },
+        "evidence": {
+          "n": 3,
+          "n_fail": 3,
+          "violation_rate": 1.0,
+          "mean_metric": 0.0
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.6474820143884892,
+        "0.7": 0.6906474820143885,
+        "0.8": 0.697841726618705,
+        "0.9": 0.7050359712230215
+      },
+      "examples": [
+        {
+          "doc": "cdr-validation-000006-3115150",
+          "intervention": "cdr-validation-000006-3115150::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000006-3115150",
+          "intervention": "cdr-validation-000006-3115150::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000006-3115150",
+          "intervention": "cdr-validation-000006-3115150::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000006-3115150",
+          "intervention": "cdr-validation-000006-3115150::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000006-3115150",
+          "intervention": "cdr-validation-000006-3115150::iv::prompt::base_v1::tone::terse",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4c",
+      "name": "Degree-aggregation robustness (Q6)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 3485,
+      "n_pass": 2667,
+      "n_fail": 818,
+      "violation_rate": 0.23472022955523672,
+      "severity_mean": 0.23347595762021187,
+      "severity_p95": 0.7,
+      "metric_mean": 0.8747824007651841,
+      "metric_median": 1.0,
+      "by_family": {
+        "prompt": {
+          "n": 1722,
+          "n_fail": 433,
+          "violation_rate": 0.251451800232288,
+          "mean_metric": 0.8666279519938056
+        },
+        "schema": {
+          "n": 1683,
+          "n_fail": 376,
+          "violation_rate": 0.22341057635175282,
+          "mean_metric": 0.8798474945533769
+        },
+        "entity_alias": {
+          "n": 40,
+          "n_fail": 0,
+          "violation_rate": 0.0,
+          "mean_metric": 1.0
+        },
+        "evidence": {
+          "n": 40,
+          "n_fail": 9,
+          "violation_rate": 0.225,
+          "mean_metric": 0.8875
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.05824964131994261,
+        "0.7": 0.23472022955523672,
+        "0.8": 0.23472022955523672,
+        "0.9": 0.23472022955523672
+      },
+      "examples": [
+        {
+          "doc": "cdr-validation-000010-1545575",
+          "intervention": "cdr-validation-000010-1545575::iv::schema::cdr_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000010-1545575",
+          "intervention": "cdr-validation-000010-1545575::iv::schema::cdr_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000019-16192988",
+          "intervention": "cdr-validation-000019-16192988::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000019-16192988",
+          "intervention": "cdr-validation-000019-16192988::iv::prompt::base_v1::role::novice",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000023-15867025",
+          "intervention": "cdr-validation-000023-15867025::iv::prompt::base_v1::tone::permissive",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4d",
+      "name": "GraphRAG-retrieval robustness (Q7)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 3485,
+      "n_pass": 2080,
+      "n_fail": 1405,
+      "violation_rate": 0.4031563845050215,
+      "severity_mean": 0.3232229941226173,
+      "severity_p95": 0.7,
+      "metric_mean": 0.7327069147832503,
+      "metric_median": 1.0,
+      "by_family": {
+        "prompt": {
+          "n": 1722,
+          "n_fail": 715,
+          "violation_rate": 0.4152148664343786,
+          "mean_metric": 0.7250223488963498
+        },
+        "schema": {
+          "n": 1683,
+          "n_fail": 677,
+          "violation_rate": 0.40225787284610814,
+          "mean_metric": 0.7329937293841037
+        },
+        "entity_alias": {
+          "n": 40,
+          "n_fail": 0,
+          "violation_rate": 0.0,
+          "mean_metric": 1.0
+        },
+        "evidence": {
+          "n": 40,
+          "n_fail": 13,
+          "violation_rate": 0.325,
+          "mean_metric": 0.7841666666666667
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.20086083213773315,
+        "0.7": 0.4031563845050215,
+        "0.8": 0.4387374461979914,
+        "0.9": 0.47776183644189385
+      },
+      "examples": [
+        {
+          "doc": "cdr-validation-000003-6293644",
+          "intervention": "cdr-validation-000003-6293644::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000003-6293644",
+          "intervention": "cdr-validation-000003-6293644::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000003-6293644",
+          "intervention": "cdr-validation-000003-6293644::iv::prompt::base_v1::tone::permissive",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000003-6293644",
+          "intervention": "cdr-validation-000003-6293644::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "cdr-validation-000003-6293644",
+          "intervention": "cdr-validation-000003-6293644::iv::prompt::base_v1::role::auditor",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
       "contract_id": "K5",
       "name": "Model swap recall stability",
       "kind": "bounded_drift",
       "scope": {
-        "operator_prefix": "model:"
+        "cause_family_in": [
+          "model"
+        ]
       },
-      "threshold": 0.4,
-      "direction": "min",
+      "threshold": 0.2,
+      "direction": "max",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 0,
       "n_pass": 0,
       "n_fail": 0,
@@ -559,21 +872,23 @@
     },
     {
       "contract_id": "K6",
-      "name": "Stochastic repeatability",
+      "name": "Decoding-resample stability",
       "kind": "invariance",
       "scope": {
         "cause_family_in": [
           "stochastic"
         ]
       },
-      "threshold": 0.9,
+      "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 80,
       "n_pass": 56,
       "n_fail": 24,
       "violation_rate": 0.3,
-      "severity_mean": 0.4701388888888889,
-      "severity_p95": 0.9,
+      "severity_mean": 0.42013888888888884,
+      "severity_p95": 0.85,
       "metric_mean": 0.8289583333333334,
       "metric_median": 1.0,
       "by_family": {

@@ -100,7 +100,7 @@ def t4_reorder_storage():
 
 
 def t5_coarse_bucket():
-    print("\n[T5] coarse bucket vs base P-id -> currently treated as different")
+    print("\n[T5] declared coarse bucket matches a base relation member")
     # P17 in base, 'loc_admin' (a coarse bucket id) in cf. project_to_base
     # returns None -> caller keeps 'loc_admin' -> mismatch.
     from graphguard.interventions.schema import COARSE_GROUPS
@@ -112,20 +112,17 @@ def t5_coarse_bucket():
     proj = project_to_base(bucket, base_relation_ids=DOCRED_IDS)
     print(f"   project_to_base({bucket!r}) -> {proj!r}")
     j = M.edge_jaccard(base, cf, base_relation_ids=DOCRED_IDS)
-    print(f"   jaccard={j} (expected=0 unless coarse maps to base)")
-    # Document current behaviour. This is the K1c (coarse) drift the contract
-    # is *supposed* to flag (semantic info loss). So a hard failure here is OK
-    # only if we explicitly document the budget.
-    return True  # informational
+    print(f"   jaccard={j} (expected=1 via declared bucket rule)")
+    return must(j == 1.0, "declared coarse relation is canonicalized")
 
 
 def t6_entity_alias():
-    print("\n[T6] entity alias rewrite -> currently treated as different entity")
+    print("\n[T6] distinct explicit identifiers override surface aliases")
     base = [E("United States", "P17", "Y")]
     cf   = [E("the U.S.",     "P17", "Y")]
     j = M.edge_jaccard(base, cf, base_relation_ids=DOCRED_IDS)
-    print(f"   jaccard={j} (string-equal entity match)")
-    return True  # informational; design choice
+    print(f"   jaccard={j} (identifier-first match)")
+    return must(j == 0.0, "different explicit identifiers remain distinct")
 
 
 def t7_cf_event_backfill():
@@ -214,7 +211,10 @@ def t9_metric_signature():
         if c.query_scoped:
             continue
         try:
-            v = c.metric_fn([], [], base_relation_ids=DOCRED_IDS)
+            kwargs = {"base_relation_ids": DOCRED_IDS}
+            if c.needs_gold:
+                kwargs["gold_edges"] = []
+            v = c.metric_fn([], [], **kwargs)
             ok &= must(True, f"{cid}: ok (returned {v})")
         except TypeError as e:
             ok &= must(False, f"{cid}: {e}")
@@ -249,8 +249,12 @@ def t11_bucket_aware_match_K1c():
 
 def t12_alias_canon():
     print("\n[T12] entity_alias canonicalization at audit time: 'United States' == 'the U.S.'")
-    base = [E("United States", "P17", "X")]
-    cf   = [E("the U.S.",      "P17", "X")]
+    base = [{"subject_name": "United States", "relation": "P17",
+             "object_name": "X", "subject_entity_id": "Q30",
+             "object_entity_id": "QX"}]
+    cf = [{"subject_name": "the U.S.", "relation": "P17",
+           "object_name": "X", "subject_entity_id": None,
+           "object_entity_id": "QX"}]
     j = M.edge_jaccard(base, cf, base_relation_ids=DOCRED_IDS)
     print(f"   jaccard={j}")
     return must(j == 1.0, "alias-equivalent entity names should produce jaccard=1.0")

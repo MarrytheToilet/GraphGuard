@@ -7,9 +7,9 @@ Numbering matches the paper directly:
   K1 / K1b / K1c : schema presentation / description / semantic-shading
   K2             : prompt presentation invariance
   K3             : evidence + entity-alias presentation invariance
-  K4             : multi-hop join robustness (query-scoped)
+  K4 / K4b–d     : join / path / aggregation / RAG robustness (query-scoped)
   K5             : cross-model recall stability
-  K6             : stochastic repeatability
+  K6             : controlled decoding-resample stability
 """
 from __future__ import annotations
 
@@ -112,38 +112,85 @@ register(Contract(
     direction="min",
     # Catalogue tolerance tau=0.30 on answer drift, i.e. violate when the
     # Q3 answer Jaccard falls below 0.70 (paper Table 1; primary-run
-    # violation rate 0.93 at this threshold).
+    # violation rate 0.92 at this threshold).
     threshold=0.70,
     metric_fn=M.edge_jaccard,                 # per-pair: Q3 jaccard, computed in runner
     description="Multi-hop join answers should not collapse under presentation drift.",
     query_scoped=True,
+    query_id="Q3",
+))
+
+# K4b–d — revision query contracts (same presentation-family paired views)
+register(Contract(
+    id="K4b",
+    name="Shortest-path robustness (Q5)",
+    kind=ContractKind.BOUNDED_DRIFT,
+    scope={"semantic_class_in": {"presentation"}},
+    direction="min",
+    threshold=0.70,
+    metric_fn=M.query_jaccard,
+    description="Shortest-path answers should have drift at most 0.30.",
+    query_scoped=True,
+    query_id="Q5",
+))
+
+register(Contract(
+    id="K4c",
+    name="Degree-aggregation robustness (Q6)",
+    kind=ContractKind.BOUNDED_DRIFT,
+    scope={"semantic_class_in": {"presentation"}},
+    direction="min",
+    threshold=0.70,
+    metric_fn=M.query_jaccard,
+    description="Top-degree aggregation answers should have drift at most 0.30.",
+    query_scoped=True,
+    query_id="Q6",
+))
+
+register(Contract(
+    id="K4d",
+    name="GraphRAG-retrieval robustness (Q7)",
+    kind=ContractKind.BOUNDED_DRIFT,
+    scope={"semantic_class_in": {"presentation"}},
+    direction="min",
+    threshold=0.70,
+    metric_fn=M.query_jaccard,
+    description="Two-hop GraphRAG retrieval context should have drift at most 0.30.",
+    query_scoped=True,
+    query_id="Q7",
 ))
 
 # K5 — model swap recall
-# Recall over the relation distribution shouldn't drop dramatically across model swap.
 register(Contract(
     id="K5",
     name="Model swap recall stability",
     kind=ContractKind.BOUNDED_DRIFT,
     scope={
-        "operator_prefix": "model:",
+        "cause_family_in": {"model"},
     },
-    direction="min",
-    threshold=0.40,
-    metric_fn=M.relation_distribution_l1,
-    description="Different LLMs should agree on the bulk relation distribution.",
+    direction="max",
+    threshold=0.20,
+    metric_fn=M.recall_difference,
+    description="Per-document absolute gold recall difference should not exceed 0.20.",
+    needs_gold=True,
 ))
 
-# K6 — stochastic repeatability (same config, fresh seed)
+# K6 — controlled decoding resampling (fixed task, varied decoding sample)
 register(Contract(
     id="K6",
-    name="Stochastic repeatability",
+    name="Decoding-resample stability",
     kind=ContractKind.INVARIANCE,
     scope={
         "cause_family_in": {"stochastic"},
     },
     direction="min",
-    threshold=0.90,
+    # The paper catalogue declares graph drift <= 0.15.  This contract
+    # operates on edge Jaccard similarity, so the equivalent threshold is
+    # 1 - 0.15 = 0.85.
+    threshold=0.85,
     metric_fn=M.edge_jaccard,
-    description="Re-running the same configuration should yield near-identical graphs.",
+    description=(
+        "With document, schema, prompt, evidence, and model fixed, controlled "
+        "decoding resamples should yield near-identical graphs."
+    ),
 ))

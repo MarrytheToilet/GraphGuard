@@ -29,9 +29,10 @@ def load_pairs(run: str):
         # Deployable query-side signal: max answer-set Jaccard drift across the workload (no gold needed).
         max_dq = float(r.get("max_answer_drift", 0.0))
         pairs.append({
+            "doc": r["doc"],
             "graph_drift": float(r.get("graph_drift", 0.0)),
             "max_dq": max_dq,
-            "mean_df1": float(r.get("mean_df1", 0.0)),                  # absolute, retained for utility metric only
+            "mean_abs_delta_f1": float(r.get("mean_df1", 0.0)),
             "mean_df1_signed": float(r.get("mean_df1_signed", 0.0)),    # signed: positive = regression
             "harmful": bool(r.get("harmful", False)),                    # directional: mean signed ΔF1 > 0.05
         })
@@ -51,27 +52,43 @@ def gate_metrics(pairs, blocked_mask):
     harm_recall = (harm_blocked / harm_total) if harm_total else 0.0
     harm_precision = (harm_blocked / n_blocked) if n_blocked else 0.0
     false_block_rate = (benign_blocked / benign_total) if benign_total else 0.0
-    retained = [1.0 - abs(p["mean_df1"]) for p, b in zip(pairs, blocked_mask) if not b]
-    retained_util = (sum(retained) / len(retained)) if retained else 0.0
-    # Bootstrap 95% CIs for the two headline metrics.
+    fidelity = [
+        1.0 - p["mean_abs_delta_f1"]
+        for p, b in zip(pairs, blocked_mask) if not b
+    ]
+    mean_fidelity = (sum(fidelity) / len(fidelity)) if fidelity else 0.0
+    # Cluster-bootstrap 95% CIs by document. Multiple perturbation pairs from
+    # one document are correlated and must travel together in a resample.
     rng = np.random.default_rng(0)
     n_boot = 1000
-    pub_idx = [i for i, b in enumerate(blocked_mask) if not b]
-    if pub_idx:
-        pub_arr = np.array(pub_idx)
+    published = [
+        p for p, blocked in zip(pairs, blocked_mask) if not blocked
+    ]
+    by_doc = {}
+    for pair in published:
+        by_doc.setdefault(pair["doc"], []).append(pair)
+    docs = sorted(by_doc)
+    if docs:
         boot_pub_harm = []
-        boot_util = []
-        harm_arr = np.array([pairs[i]["harmful"] for i in pub_idx], dtype=float)
-        util_arr = np.array([1.0 - abs(pairs[i]["mean_df1"]) for i in pub_idx])
+        boot_fidelity = []
         for _ in range(n_boot):
-            idx = rng.integers(0, len(pub_arr), size=len(pub_arr))
-            boot_pub_harm.append(harm_arr[idx].mean())
-            boot_util.append(util_arr[idx].mean())
+            sampled_docs = rng.choice(docs, size=len(docs), replace=True)
+            sample = [
+                pair
+                for doc in sampled_docs
+                for pair in by_doc[doc]
+            ]
+            boot_pub_harm.append(np.mean([p["harmful"] for p in sample]))
+            boot_fidelity.append(np.mean([
+                1.0 - p["mean_abs_delta_f1"] for p in sample
+            ]))
         pub_harm_lo, pub_harm_hi = np.quantile(boot_pub_harm, [0.025, 0.975])
-        util_lo, util_hi = np.quantile(boot_util, [0.025, 0.975])
+        fidelity_lo, fidelity_hi = np.quantile(
+            boot_fidelity, [0.025, 0.975]
+        )
     else:
         pub_harm_lo = pub_harm_hi = 0.0
-        util_lo = util_hi = 0.0
+        fidelity_lo = fidelity_hi = 0.0
     return {
         "published_pct": 100.0 * n_published / n,
         "blocked_pct":   100.0 * n_blocked / n,
@@ -80,8 +97,8 @@ def gate_metrics(pairs, blocked_mask):
         "false_block_rate": false_block_rate,
         "published_harmful_rate": pub_harm_rate,
         "pub_harm_ci": (float(pub_harm_lo), float(pub_harm_hi)),
-        "retained_utility": retained_util,
-        "retained_util_ci": (float(util_lo), float(util_hi)),
+        "f1_fidelity": mean_fidelity,
+        "f1_fidelity_ci": (float(fidelity_lo), float(fidelity_hi)),
     }
 
 
@@ -98,8 +115,11 @@ def policy_graphguard(pairs, tau_g, tau_q):
 
 
 def policy_random(pairs, block_rate, seed=0):
+    """Block exactly the requested number of pairs, selected uniformly."""
     rng = random.Random(seed)
-    return [rng.random() < block_rate for _ in pairs]
+    n_blocked = round(block_rate * len(pairs))
+    blocked = set(rng.sample(range(len(pairs)), n_blocked))
+    return [i in blocked for i in range(len(pairs))]
 
 
 def fmt(x, pct=False):
@@ -110,11 +130,11 @@ def build_table():
     L = []
     L.append(r"\begin{table*}[t]")
     L.append(r"\centering\small")
-    L.append(r"\caption{End-to-end Kuzu ingestion guard at $N{=}300$ pairs per corpus. \emph{Publish-all} ingests every extracted graph; \emph{Graph-only} blocks when edge-Jaccard drift $\geq\tau_g{=}0.45$; \emph{GraphGuard} additionally blocks when any workload query has gold-free answer-set Jaccard drift $\geq\tau_q{=}0.70$ (the blocking signal does \emph{not} use gold answers); \emph{Random} is matched to GraphGuard's block rate as a baseline. Harm is a directional regression in mean per-query $F_1$ ($f_1^{\mathrm{base}}{-}f_1^{\mathrm{cf}}>0.05$); cf graphs that \emph{improve} over base are counted as benign (not harmful). Pub.HarmRate and RetainUtil are reported with bootstrap 95\% CIs ($1{,}000$ resamples over published pairs). The full risk-coverage trade-off across all thresholds is in Figure~\ref{fig:riskcoverage}; the table reports one operating point.}")
+    L.append(r"\caption{End-to-end Kuzu ingestion guard at $N{=}300$ pairs per corpus. \emph{Publish-all} ingests every extracted graph; \emph{Graph-only} blocks when typed-edge Jaccard drift $\geq\tau_g{=}0.45$; \emph{GraphGuard} additionally blocks when any workload query has decision-time gold-free answer-set Jaccard drift $\geq\tau_q{=}0.70$; \emph{Random} is matched to GraphGuard's block rate. Harm is a directional regression in mean per-query $F_1$ ($f_1^{\mathrm{base}}{-}f_1^{\mathrm{cf}}>0.05$). F1Fid is $1-\operatorname{mean}_Q|F_1^{\mathrm{base}}-F_1^{\mathrm{cf}}|$, a fidelity measure rather than absolute task utility. CIs cluster-bootstrap documents ($1{,}000$ resamples).}")
     L.append(r"\label{tab:e2ekuzu}")
     L.append(r"\begin{tabular}{llcccccll}")
     L.append(r"\toprule")
-    L.append(r"Dataset & Policy & Pub.\% & Blk.\% & HarmRec. & HarmPrec. & FalseBlk. & Pub.HarmRate [CI] & RetainUtil. [CI] \\")
+    L.append(r"Dataset & Policy & Pub.\% & Blk.\% & HarmRec. & HarmPrec. & FalseBlk. & Pub.HarmRate [CI] & F1Fid. [CI] \\")
     L.append(r"\midrule")
     for ds_name, run in DATASETS:
         pairs = load_pairs(run)
@@ -132,14 +152,14 @@ def build_table():
         for i, (name, m) in enumerate(rows):
             ds_cell = ds_name if i == 0 else ""
             ph_lo, ph_hi = m["pub_harm_ci"]
-            ut_lo, ut_hi = m["retained_util_ci"]
+            ut_lo, ut_hi = m["f1_fidelity_ci"]
             L.append(
                 f"{ds_cell} & {name} & "
                 f"{m['published_pct']:.0f} & {m['blocked_pct']:.0f} & "
                 f"{m['harm_recall']:.2f} & {m['harm_precision']:.2f} & "
                 f"{m['false_block_rate']:.2f} & "
                 f"{m['published_harmful_rate']:.2f} [{ph_lo:.2f},{ph_hi:.2f}] & "
-                f"{m['retained_utility']:.2f} [{ut_lo:.2f},{ut_hi:.2f}] \\\\"
+                f"{m['f1_fidelity']:.2f} [{ut_lo:.2f},{ut_hi:.2f}] \\\\"
             )
         L.append(r"\midrule")
     L.pop()
@@ -200,7 +220,7 @@ def build_figure():
         ax.axhline(base_harm_rate, color=gg_style.BLACK, ls="--", lw=0.6, alpha=0.5)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, max(0.5, base_harm_rate * 1.2))
-        ax.set_title(ds_name, fontsize=7, fontweight="bold")
+        ax.set_title(ds_name, fontsize=7)
         ax.tick_params(labelsize=6)
         ax.set_xticks([0, 0.5, 1.0])
         ax.set_xticklabels(["0", ".5", "1"])
@@ -214,7 +234,8 @@ def build_figure():
                      bbox_to_anchor=(0.5, -0.46), bbox_transform=fig.transFigure,
                      fontsize=6, frameon=False, handlelength=1.5,
                      columnspacing=1.5, handletextpad=0.4)
-    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight", bbox_extra_artists=[leg])
+    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight", pad_inches=0.025,
+                bbox_extra_artists=[leg])
     print("wrote", OUT_FIG)
 
 

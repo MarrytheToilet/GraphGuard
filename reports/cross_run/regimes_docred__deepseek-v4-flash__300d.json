@@ -1,49 +1,50 @@
 {
  "run": "docred__deepseek-v4-flash__300d",
- "n_pairs": 6295,
+ "n_pairs": 6419,
+ "label_definition": "regime mean absolute per-query F1 change > threshold",
  "harm_tau": 0.05,
  "regimes": {
   "local": {
-   "n": 5753,
-   "harm_base_rate": 0.5114,
-   "tau_graph": 0.7,
-   "cmp_graph": ">=",
-   "tau_query": 1.0,
-   "cmp_query": ">=",
-   "graph_only": {
-    "alarm_rate": 0.5152094559360334,
-    "precision": 0.6417,
-    "recall": 0.6465,
-    "f1": 0.6441
-   },
-   "query_aware": {
-    "alarm_rate": 0.6533982270119938,
-    "precision": 0.7313,
-    "recall": 0.9344,
-    "f1": 0.8205
-   },
-   "delta_f1": 0.1764
-  },
-  "multihop": {
-   "n": 675,
-   "harm_base_rate": 0.7022,
-   "tau_graph": 0.5455,
+   "n": 5848,
+   "harm_base_rate": 0.5125,
+   "tau_graph": 0.6667,
    "cmp_graph": ">",
    "tau_query": 1.0,
    "cmp_query": ">=",
    "graph_only": {
-    "alarm_rate": 0.7007407407407408,
-    "precision": 0.7822,
-    "recall": 0.7806,
-    "f1": 0.7814
+    "alarm_rate": 0.5035909712722298,
+    "precision": 0.6132,
+    "recall": 0.6026,
+    "f1": 0.6079
    },
    "query_aware": {
-    "alarm_rate": 0.7985185185185185,
-    "precision": 0.8646,
-    "recall": 0.9831,
-    "f1": 0.92
+    "alarm_rate": 0.6590287277701778,
+    "precision": 0.7276,
+    "recall": 0.9356,
+    "f1": 0.8186
    },
-   "delta_f1": 0.1386
+   "delta_f1": 0.2107
+  },
+  "multihop": {
+   "n": 889,
+   "harm_base_rate": 0.7255,
+   "tau_graph": 0.5385,
+   "cmp_graph": ">",
+   "tau_query": 1.0,
+   "cmp_query": ">=",
+   "graph_only": {
+    "alarm_rate": 0.7210348706411699,
+    "precision": 0.819,
+    "recall": 0.814,
+    "f1": 0.8165
+   },
+   "query_aware": {
+    "alarm_rate": 0.7930258717660292,
+    "precision": 0.9007,
+    "recall": 0.9845,
+    "f1": 0.9407
+   },
+   "delta_f1": 0.1242
   }
  }
 }

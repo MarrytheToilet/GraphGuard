@@ -30,7 +30,7 @@ def main():
     L = []
     L.append(r"\begin{table}[t]")
     L.append(r"\centering\small")
-    L.append(r"\caption{Matched-alarm-rate baseline comparison at target alarm rate $0.30$ on the four primary runs. \emph{Harm label is gold-recall regression} $|\Delta\mathrm{recall}|>0.05$ on the same document; this is a stricter, extraction-utility harm definition than the query-level harm used in Table~\ref{tab:graphvsquery} and Table~\ref{tab:e2ekuzu}. Cost is relative LLM-extraction calls per flagged pair (confidence-only re-uses the base call; graph/contract monitors require one cf extraction; self-consistency uses $k{=}5$ base repeats). For Min-confidence and Self-consistency, the score distribution is too coarse (or base repeats too scarce) to hit $0.30$ exactly; we report the closest-achievable alarm rate. F1 of the best monitor per dataset is in bold.}")
+    L.append(r"\caption{Matched-alarm-rate baseline comparison at target alarm rate $0.30$ on the four primary runs. The label is absolute gold-recall change $|\Delta\mathrm{recall}|>0.05$ on the same document; it is distinct from the directional regression label used by the release gate. Cost is relative LLM-extraction calls per flagged pair (confidence-only re-uses the base call; graph/contract monitors require one cf extraction; self-consistency uses $k{=}5$ base repeats). For Min-confidence and Self-consistency, the score distribution is too coarse (or base repeats too scarce) to hit $0.30$ exactly; we report the closest-achievable alarm rate. F1 of the best monitor per dataset is in bold.}")
     L.append(r"\label{tab:baselines}")
     L.append(r"\begin{tabular}{llccccc}")
     L.append(r"\toprule")

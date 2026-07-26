@@ -13,9 +13,15 @@ We replay this on the recorded DocRED main pairs and report:
 Output: reports/cross_run/budget_stopping.json
 """
 from __future__ import annotations
-import json, sqlite3, math, random
+import json, math, random, sys
 from pathlib import Path
 from collections import defaultdict
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from graphguard.contracts import metrics as M  # noqa: E402
+from graphguard.db.database import open_db  # noqa: E402
 
 DB = "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db"
 OUT = Path("reports/cross_run/budget_stopping.json")
@@ -44,37 +50,41 @@ def main():
     ap.add_argument("--out", default=os.environ.get("CL_OUT_BUDGET", str(OUT)))
     args = ap.parse_args()
     out_path = Path(args.out)
-    con = sqlite3.connect(args.db)
+    con = open_db(args.db)
     cur = con.cursor()
-    edges_by_event = defaultdict(set)
+    raw_edges_by_event = defaultdict(list)
     for eid, s, r, o in cur.execute("SELECT event_id, subject_name, relation, object_name FROM extracted_edges"):
         if s and r and o:
-            edges_by_event[eid].add((s.lower(), r, o.lower()))
+            raw_edges_by_event[eid].append({
+                "subject_name": s, "relation": r, "object_name": o,
+            })
+    event_schema = dict(cur.execute(
+        "SELECT event_id, schema_id FROM extraction_events"
+    ))
+    schemas = {
+        schema_id: {row["id"] for row in json.loads(relations_json)}
+        for schema_id, relations_json in cur.execute(
+            "SELECT schema_id, relation_types_json FROM schemas"
+        )
+    }
 
     rows = cur.execute("""
-        SELECT cr.run_id, cr.base_event_id, ic.cause_family
+        SELECT cr.run_id, cr.base_event_id, cr.cf_event_id, ic.cause_family
         FROM counterfactual_runs cr
         JOIN intervention_candidates ic ON cr.intervention_id = ic.intervention_id
         WHERE cr.status='ok' AND ic.cause_family IS NOT NULL
     """).fetchall()
-    cf_event = {}
-    for run_id, _, _ in rows:
-        r = cur.execute(
-            "SELECT matched_edge_id FROM edge_outcomes WHERE run_id=? AND matched_edge_id IS NOT NULL LIMIT 1",
-            (run_id,)
-        ).fetchone()
-        if r and r[0] and "::" in r[0]:
-            cf_event[run_id] = r[0].rsplit("::", 1)[0]
-
     # Group pairs by family (treat each family as one contract for this simulation)
     by_fam = defaultdict(list)
-    for run_id, be, fam in rows:
-        ce = cf_event.get(run_id)
+    for run_id, be, ce, fam in rows:
         if not ce or not be:
             continue
-        ge = edges_by_event.get(be, set())
-        gc = edges_by_event.get(ce, set())
-        m = jaccard_drift(ge, gc)
+        base_relation_ids = schemas.get(event_schema.get(be))
+        m = 1.0 - M.edge_jaccard(
+            raw_edges_by_event.get(be, []),
+            raw_edges_by_event.get(ce, []),
+            base_relation_ids=base_relation_ids,
+        )
         violated = m > FAM_TAU.get(fam, 0.30)
         by_fam[fam].append(violated)
 

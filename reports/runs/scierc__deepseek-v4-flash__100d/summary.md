@@ -24,6 +24,7 @@
 - e3
 - e4
 - repair
+- e5_audit
 
 ## Case studies (8)
 

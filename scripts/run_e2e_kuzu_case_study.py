@@ -10,7 +10,7 @@ For a small subset of DocRED documents (no new LLM calls), for each
   4. Compare two ingestion policies:
        - publish-all:    publish the cf graph regardless of contract verdict
        - contract-guard: block publishing whenever GraphGuard's drift contract
-                         (label-erased Jaccard distance > 0.30 OR query-aware
+                         (typed-edge Jaccard distance > 0.30 OR query-aware
                           alarm fires) flags the pair as drifted
 
 We report, per dataset, the harmful-regression rate (a) without GraphGuard
@@ -162,9 +162,10 @@ def main():
         mean_df1_signed = sum(x["delta_f1_signed"] for x in per_q) / len(per_q)
         max_answer_drift = max(x["answer_drift"] for x in per_q)
         mean_answer_drift = sum(x["answer_drift"] for x in per_q) / len(per_q)
-        be = {(s, o) for s, _, o in base_g}
-        ce = {(s, o) for s, _, o in cf_g}
-        graph_drift = 1.0 - rq.jaccard(be, ce)
+        # Eq. (3): canonicalized typed-edge GraphDrift. The label-erased
+        # entity-pair distance is retained only as a separate diagnostic.
+        graph_drift = 1.0 - rq.graph_jaccard(base_g, cf_g)
+        entity_pair_drift = 1.0 - rq.entity_pair_jaccard(base_g, cf_g)
         flag_graph = graph_drift > args.tau_g
         # Deployable query-side flag uses answer-set Jaccard, NOT F1-vs-gold.
         flag_query = max_answer_drift > args.tau_q
@@ -175,6 +176,7 @@ def main():
         pair_records.append({
             "run_id": run_id, "doc": doc, "family": fam,
             "graph_drift": round(graph_drift, 4),
+            "entity_pair_drift": round(entity_pair_drift, 4),
             "mean_df1": round(mean_df1, 4),
             "max_df1":  round(max_df1, 4),
             "mean_df1_signed": round(mean_df1_signed, 4),
@@ -199,6 +201,10 @@ def main():
         "n_queries_per_pair": "varies (lookup/neighbor/join/twohop)",
         "harm_threshold_delta_f1": args.harm_th,
         "tau_graph": args.tau_g, "tau_query": args.tau_q,
+        "graph_metric": (
+            "canonicalized typed-edge Jaccard distance; declared relation "
+            "renames inverted and coarse buckets matched to member relations"
+        ),
         "publish_all": {
             "published":     n,
             "regressions":   publish_all_regressions,

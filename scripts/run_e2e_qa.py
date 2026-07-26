@@ -1,11 +1,11 @@
-"""End-to-end KG-QA regression experiment.
+"""End-to-end KG-QA divergence experiment.
 
 For every (base, counterfactual) extraction pair in the lineage DB, build a
 gold-grounded KG-QA workload from gold_edges, execute over base graph and CF
 graph, and measure ΔAnswer-F1 per query family. Then:
 
-  (A) Contract-as-regression-detector: precision/recall/F1 of contract-flagged
-      pairs at predicting harmful QA regression (mean ΔF1 > 0.05), compared
+  (A) Contract-as-divergence-detector: precision/recall/F1 of contract-flagged
+      pairs at predicting absolute QA change (mean |ΔF1| > 0.05), compared
       against confidence-only and self-consistency-only monitors.
   (B) Borderline-stratified Wilson-CI early stopping: simulate sequential
       ordering, stop when CI half-width < 0.05, report % budget vs verdict
@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from graphguard.qa import (                                  # noqa: E402
-    build_queries, execute, f1, jaccard, load_data, wilson_ci,
+    build_queries, execute, f1, graph_jaccard, load_data, wilson_ci,
 )
 
 DB = "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db"
@@ -65,7 +65,7 @@ def main():
         cf_g = edges[cf_ev]
         gold_set = gold.get(doc, set())
         # edge-level GraphDrift (Jaccard distance)
-        drift = 1.0 - jaccard(base_g, cf_g)
+        drift = 1.0 - graph_jaccard(base_g, cf_g)
         # gold recall divergence
         rec_b = (len(base_g & gold_set) / len(gold_set)) if gold_set else 0.0
         rec_c = (len(cf_g & gold_set) / len(gold_set)) if gold_set else 0.0
@@ -242,6 +242,7 @@ def main():
 
     out = {
         "n_runs_analyzed": len(rows),
+        "label_definition": "mean absolute per-query F1 change > threshold",
         "harm_threshold_delta_f1": HARM_TAU,
         "drift_threshold_tau": DRIFT_TAU,
         "alpha": ALPHA,

@@ -42,7 +42,8 @@ def write_md(report: dict, path: Path) -> None:
     for r in report["contracts"]:
         lines.append(f"### {r['contract_id']} — {r['name']}  · *{r['verdict']}*\n")
         lines.append(f"- kind: `{r['kind']}` · direction: `{r['direction']}` · "
-                     f"threshold: `{r['threshold']}`")
+                     f"threshold: `{r['threshold']}` · alpha: `{r['alpha']}` · "
+                     f"min_pairs: `{r['min_pairs']}`")
         lines.append(f"- scope: `{r['scope']}`")
         lines.append(f"- pairs: n={r['n_pairs']}, fail={r['n_fail']}, "
                      f"violation_rate={r['violation_rate']:.3f}")

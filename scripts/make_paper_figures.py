@@ -136,7 +136,7 @@ def apply_style(base: int = 16) -> None:
         "axes.edgecolor":   BLACK,
         "axes.labelcolor":  BLACK,
         "axes.titlecolor":  BLACK,
-        "axes.titleweight": "bold",
+        "axes.titleweight": "normal",
         "xtick.color":      BLACK,
         "ytick.color":      BLACK,
         "text.color":       BLACK,
@@ -158,7 +158,8 @@ def apply_style(base: int = 16) -> None:
 def save(fig, name: str) -> None:
     p = OUT / name
     fig.tight_layout()
-    fig.savefig(p, dpi=200, bbox_inches="tight", facecolor="white")
+    fig.savefig(p, dpi=200, bbox_inches="tight", pad_inches=0.025,
+                facecolor="white")
     plt.close(fig)
     print(f"  wrote {p.relative_to(ROOT)}")
 
@@ -224,12 +225,8 @@ def replacement_crossrun_violations() -> None:
     by_name = {r["name"]: r for r in j["runs"]}
 
     def paper_violation_rate(run_name: str, db_key: str) -> float:
-        # Read directly from the cross-run summary so Fig.~\ref{fig:crossrun_violations}
-        # stays numerically identical to Table~\ref{tab:contractnum} and the prose in
-        # Sec. RQ2.  Earlier versions of this function recomputed K4/K6 from
-        # per-run artifacts under slightly different thresholding conventions,
-        # which produced (0.93, 0.91) for DocRED--DSV4 while the table/text used
-        # (0.89, 0.92).  We keep a single source of truth.
+        # Read directly from the cross-run summary so the figure, result table,
+        # and prose use the same catalogue thresholds and source of truth.
         return float(by_name[run_name]["contracts"][db_key]["violation_rate"])
 
     mat = np.zeros((len(db_keys), len(order)))   # transposed: rows=contracts
@@ -255,27 +252,38 @@ def replacement_crossrun_violations() -> None:
             v = mat[i, jj]
             ax.text(jj, i, f"{v:.2f}", ha="center", va="center",
                     fontsize=6.6,
-                    color=_S.BLACK if v < 0.55 else _S.WHITE,
-                    fontweight="bold")
+                    color=_S.BLACK if v < 0.55 else _S.WHITE)
     cbar = fig.colorbar(im, ax=ax, shrink=0.85, pad=0.02)
     cbar.set_label("violation rate", fontsize=7)
     cbar.ax.tick_params(labelsize=6.5)
-    ax.set_title("Cross-run contract violation rates",
-                 fontsize=9, fontweight="bold")
+    ax.set_title("Cross-run contract violation rates", fontsize=9)
     _S.save_fig(fig, OUT / "fig_crossrun_violations.png")
 
 
 def replacement_amp_crossrun() -> None:
     _S.apply_rc(font_size=8)
-    rows = [  # (corpus, model, Amp_Q1, Amp_Q3, CI_lo, CI_hi)
-        ("DocRED",    "DSV4",  0.89, 1.32, 1.25, 1.40),
-        ("DocRED",    "GLM-5", 0.76, 1.37, 1.24, 1.53),
-        ("DocRED",    "Kimi",  0.78, 1.16, 1.10, 1.23),
-        ("DocRED",    "Qwen3", 0.84, 1.13, 1.09, 1.17),
-        ("Re-DocRED", "DSV4",  0.90, 1.34, 1.29, 1.40),
-        ("SciERC",    "DSV4",  0.90, 0.68, 0.64, 0.72),
-        ("BC5CDR",    "DSV4",  0.40, 0.02, 0.01, 0.04),
+    specs = [
+        ("docred__deepseek-v4-flash__300d", "DocRED", "DSV4"),
+        ("docred__glm-5__100d", "DocRED", "GLM-5"),
+        ("docred__kimi-k2__100d", "DocRED", "Kimi"),
+        ("docred__qwen3-32b__100d", "DocRED", "Qwen3"),
+        ("redocred__deepseek-v4-flash__300d", "Re-DocRED", "DSV4"),
+        ("scierc__deepseek-v4-flash__100d", "SciERC", "DSV4"),
+        ("cdr__deepseek-v4-flash__300d", "BC5CDR", "DSV4"),
     ]
+    amp = load("reports/cross_run/amp_ci.json")
+    rows = []
+    for run, corpus, model in specs:
+        q1_row = amp[run]["Q1_single_edge"]
+        q3_row = amp[run]["Q3_join"]
+        rows.append((
+            corpus,
+            model,
+            q1_row["amp_mean"],
+            q3_row["amp_mean"],
+            q3_row["amp_ci_lo"],
+            q3_row["amp_ci_hi"],
+        ))
     corpora = [r[0] for r in rows]
     models = [r[1] for r in rows]
     q1 = [r[2] for r in rows]
@@ -287,9 +295,9 @@ def replacement_amp_crossrun() -> None:
 
     fig, ax = plt.subplots(figsize=(3.5, 1.27))
     b1 = ax.bar(x - w/2, q1, w, color=_S.BLUE, edgecolor=_S.BLUE_DARK,
-                linewidth=0.6, label=r"$Q_1$ (single-hop)")
+                linewidth=0.8, label=r"$Q_1$ (single-hop)")
     b2 = ax.bar(x + w/2, q3, w, color=_S.PINK, edgecolor=_S.PINK_DARK,
-                linewidth=0.6,
+                linewidth=0.8,
                 yerr=[err_lo, err_hi], capsize=2,
                 error_kw=dict(ecolor=_S.PINK_DARK, lw=0.8),
                 label=r"$Q_3$ (join, 95% CI)")
@@ -304,7 +312,7 @@ def replacement_amp_crossrun() -> None:
             boundaries.append(i - 0.5)
     for bx in boundaries:
         ax.axvline(bx, color=_S.GRAY_LIGHT, lw=0.6, ls=":", zorder=0)
-    y_top = 1.7
+    y_top = 1.75
     ax.set_ylim(0, y_top)
     ax.set_ylabel(r"$\overline{\mathrm{Amp}}$", fontsize=9)
     ax.tick_params(axis="y", labelsize=7)
@@ -314,18 +322,31 @@ def replacement_amp_crossrun() -> None:
                bbox_to_anchor=(0.5, -0.14))
     _S.despine(ax)
     for rect, v in zip(b1, q1):
+        label_y = 1.04 if 0.87 <= v <= 1.0 else rect.get_height() + 0.04
         ax.text(rect.get_x() + rect.get_width() / 2,
-                rect.get_height() + 0.04, f"{v:.2f}",
-                ha="center", va="bottom", fontsize=6, color=_S.BLACK)
+                label_y, f"{v:.2f}",
+                ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
     for rect, v, hi in zip(b2, q3, [r[5] for r in rows]):
         ax.text(rect.get_x() + rect.get_width() / 2,
                 hi + 0.05, f"{v:.2f}",
-                ha="center", va="bottom", fontsize=6, color=_S.BLACK)
+                ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
     _S.save_fig(fig, OUT / "fig_amp_crossrun.png")
 
 
 def replacement_strict_vs_soft() -> None:
     _S.apply_rc(font_size=8)
+    plt.rcParams.update({
+        "axes.linewidth": 0.7,
+        "axes.labelsize": 7.5,
+        "axes.titlesize": 8,
+        "xtick.labelsize": 6.5,
+        "ytick.labelsize": 6.5,
+        "legend.fontsize": 6.5,
+        "xtick.major.width": 0.7,
+        "ytick.major.width": 0.7,
+        "xtick.major.size": 2.5,
+        "ytick.major.size": 2.5,
+    })
     REP = ROOT / "reports" / "cross_run"
     runs = {"DocRED": "docred__deepseek-v4-flash__300d",
             "Re-DocRED": "redocred__deepseek-v4-flash__300d",
@@ -336,7 +357,9 @@ def replacement_strict_vs_soft() -> None:
     for name, run in runs.items():
         b = json.loads((REP / f"strict_vs_soft_{run}.json").read_text())["buckets"]
         rows[name]   = tuple(b[o]["violation_rate_tau0p5"] for o in order)
-        rows_h[name] = tuple(b[o]["harmful_rate"] for o in order)
+        rows_h[name] = tuple(
+            b[o]["query_divergence_rate"] for o in order
+        )
         ns[name]     = tuple(b[o]["n_pairs"] for o in order)
 
     def ci(p, n):
@@ -347,39 +370,51 @@ def replacement_strict_vs_soft() -> None:
     w = 0.25
     fills = [_S.BLUE, _S.PINK, _S.GREEN]
     edges = [_S.BLUE_DARK, _S.PINK_DARK, _S.GREEN_DARK]
-    # Two panels stacked vertically (full column width each, like fig_extqueries)
-    # so horizontal value labels fit without occlusion.
     fig, axes = plt.subplots(2, 1, figsize=(3.5, 2.12), sharex=True,
-                             gridspec_kw={"hspace": 0.32})
+                             gridspec_kw={"hspace": 0.34})
 
-    def plot_one(ax, data, title, add_legend=False):
+    def plot_one(ax, data, title):
         for k in range(3):
             vals = [data[l][k] for l in labels]
             errs = [ci(data[l][k], ns[l][k]) for l in labels]
             xs = x + (k - 1) * w
-            ax.bar(xs, vals, w, color=fills[k], edgecolor=edges[k], linewidth=0.5,
-                   label=f"L{k+1}", yerr=errs,
-                   error_kw=dict(ecolor=edges[k], elinewidth=0.6, capsize=1.2))
+            ax.bar(xs, vals, w, color=fills[k], edgecolor=edges[k],
+                   linewidth=0.8, label=f"L{k+1}", yerr=errs,
+                   error_kw=dict(ecolor=edges[k], elinewidth=0.8, capsize=1.2))
+            label_lift = 0.012 * (k % 2)
             for xi, v, e in zip(xs, vals, errs):
-                ax.text(xi, v + e + 0.02, f"{v:.2f}", ha="center", va="bottom",
-                        fontsize=5, color=_S.BLACK)
-        ax.set_ylabel("rate", fontsize=8)
-        ax.set_title(title, fontsize=8, fontweight="bold")
-        ax.tick_params(axis="y", labelsize=7)
-        ax.set_ylim(0, 1.12)
+                ax.text(xi, v + e + 0.014 + label_lift, f"{v:.2f}",
+                        ha="center", va="bottom", fontsize=5.0,
+                        color=_S.BLACK)
+        ax.set_ylabel("Rate")
+        ax.set_title(title, loc="left", pad=3)
+        ax.set_ylim(0, 1.08)
         ax.set_yticks([0, 0.5, 1.0])
-        if add_legend:
-            ax.legend(loc="upper right", fontsize=6.5, ncol=3, frameon=False,
-                      handlelength=1.0, columnspacing=0.9, handletextpad=0.4,
-                      bbox_to_anchor=(1.0, 1.12))
         _S.despine(ax)
+        ax.spines["left"].set_linewidth(0.7)
+        ax.spines["bottom"].set_linewidth(0.7)
 
-    plot_one(axes[0], rows,   r"Violation @ $\tau{=}0.5$", add_legend=True)
-    plot_one(axes[1], rows_h, "Harmful regression")
+    plot_one(axes[0], rows,   r"Violation rate ($\tau=0.5$)")
+    plot_one(axes[1], rows_h, "Query divergence")
     short_lbl = {"DocRED":"DR","Re-DocRED":"RDR","SciERC":"SE","BC5CDR":"CDR"}
     axes[1].set_xticks(x)
-    axes[1].set_xticklabels([short_lbl.get(l, l) for l in labels], fontsize=7)
-    _S.save_fig(fig, OUT / "fig_strict_vs_soft.png")
+    axes[1].set_xticklabels([short_lbl.get(l, l) for l in labels])
+
+    from matplotlib.patches import Patch
+    fig.legend(
+        [Patch(facecolor=fill, edgecolor=edge, linewidth=0.8)
+         for fill, edge in zip(fills, edges)],
+        ["L1", "L2", "L3"],
+        loc="upper right", bbox_to_anchor=(0.99, 0.995), ncol=3,
+        frameon=False, handlelength=1.0, columnspacing=0.8,
+        handletextpad=0.35,
+    )
+    fig.subplots_adjust(left=0.14, right=0.995, bottom=0.13, top=0.91)
+    out = OUT / "fig_strict_vs_soft.png"
+    fig.savefig(out, dpi=300, bbox_inches="tight", pad_inches=0.025,
+                facecolor=_S.WHITE)
+    plt.close(fig)
+    print(f"  wrote {out}")
 
 
 
@@ -491,16 +526,16 @@ def make_calibration_figure():
             ax.axvline(tau_star, color=green, lw=1.1, ls="-.")
             ax.text(min(tau_star + 0.06, 0.62), 0.9,
                     rf"$\tau^*$={tau_star:.2f}",
-                    fontsize=6.5, color=green, fontweight="bold")
+                    fontsize=6.5, color=green)
         else:
             ax.text(0.55, 0.45, "infeasible",
                     ha="center", va="center", fontsize=6.5,
-                    color=red_line, fontweight="bold",
+                    color=red_line,
                     transform=ax.transAxes)
 
         ax.set_xlim(0, 1)
         ax.set_ylim(-0.02, 1.08)
-        ax.set_title(name, fontsize=7, fontweight="bold")
+        ax.set_title(name, fontsize=7)
         ax.tick_params(labelsize=6)
         ax.set_xticks([0, 0.5, 1.0])
         ax.set_xticklabels(["0", ".5", "1"])
@@ -518,7 +553,7 @@ def make_calibration_figure():
                   transform=axes[0].get_yaxis_transform())
     fig.tight_layout()
     out = FIG_DIR / "fig_calibration.png"
-    fig.savefig(str(out), dpi=400, bbox_inches="tight")
+    fig.savefig(str(out), dpi=400, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
     print(f"[W2] saved {out}")
 
@@ -563,20 +598,19 @@ def make_noise_floor_figure():
             base = min(D0, mean_d)
             excess = max(0.0, mean_d - D0)
             ax.bar(i, base, bar_w, color=base_color, edgecolor=_BLUE,
-                   linewidth=0.7, zorder=3)
+                   linewidth=0.8, zorder=3)
             ax.bar(i, excess, bar_w, bottom=base, color=excess_color,
-                   edgecolor=_PINK, linewidth=0.7, zorder=3)
+                   edgecolor=_PINK, linewidth=0.8, zorder=3)
             ax.text(i, mean_d + 0.03, f"{mean_d:.2f}", rotation=90,
                     ha="center", va="bottom", fontsize=5.5, color=_BLACK)
 
         ax.axhline(D0, color=floor_line, lw=1.0, ls="--")
         ax.text(0.96, 0.96, rf"$D_0$={D0:.2f}", transform=ax.transAxes,
-                ha="right", va="top", fontsize=5.5, color=floor_line,
-                fontweight="bold")
+                ha="right", va="top", fontsize=5.5, color=floor_line)
         ax.set_xticks(x)
         ax.set_xticklabels([FAMILY_LABELS[f] for f in ORDER],
                            fontsize=5.2, rotation=35, ha="right")
-        ax.set_title(name, fontsize=7, fontweight="bold", pad=3)
+        ax.set_title(name, fontsize=7, pad=3)
         ax.tick_params(axis="y", labelsize=6)
         ax.set_ylim(0, 1.12)
         ax.set_yticks([0, 0.5, 1.0])
@@ -594,7 +628,7 @@ def make_noise_floor_figure():
        labelspacing=0.25, handletextpad=0.4)
     fig.tight_layout()
     out = FIG_DIR / "fig_noise_floor.png"
-    fig.savefig(str(out), dpi=400, bbox_inches="tight")
+    fig.savefig(str(out), dpi=400, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
     print(f"[W1] saved {out}")
 
@@ -604,17 +638,16 @@ def make_noise_floor_figure():
 # ──────────────────────────────────────────────────────────────────────────────
 
 def make_2d_sensitivity_figure():
-    # Native single-column canvas, corpora as rows and {harm, utility} as
+    # Native single-column canvas, corpora as rows and {harm, F1 fidelity} as
     # columns, so every annotated cell stays legible in print.
     _S.apply_rc(font_size=7)
     TAU_G = [0.20, 0.30, 0.45, 0.60]
     TAU_Q = [0.50, 0.70, 0.90]
 
-    # DocRED and BC5CDR are the two corpora with nontrivial grid structure;
-    # Re-DocRED and SciERC sit at 0.00 harm / >=0.99 utility over the whole
-    # grid and ship in the artifact.
-    shown = [c for c in CORPORA if c[1] in ("DocRED", "BC5CDR")]
-    fig, axes = plt.subplots(2, 2, figsize=(3.5, 1.88))
+    shown = CORPORA
+    fig, axes = plt.subplots(
+        len(shown), 2, figsize=(3.5, 3.25), squeeze=False
+    )
 
     cmap_harm = mcolors.LinearSegmentedColormap.from_list(
         "harm", ["#FFFFFF", _S.PINK, _S.PINK_DARK, "#8B2D44"])
@@ -634,8 +667,7 @@ def make_2d_sensitivity_figure():
                 thresh = vmin + 0.55 * (vmax - vmin)
                 ax.text(j, i, f"{v:.2f}", ha="center", va="center",
                         fontsize=6.5,
-                        color="white" if v > thresh else _BLACK,
-                        fontweight="bold")
+                        color="white" if v > thresh else _BLACK)
 
     for row, (tag, name) in enumerate(shown):
         pairs = load_pairs(tag)
@@ -647,11 +679,11 @@ def make_2d_sensitivity_figure():
         util_grid = np.zeros((len(TAU_G), len(TAU_Q)))
         for i, tg in enumerate(TAU_G):
             for j, tq in enumerate(TAU_Q):
-                blocked = (gd > tg) | (aq > tq)
+                blocked = (gd >= tg) | (aq >= tq)
                 published = ~blocked
                 n_pub = published.sum()
                 harm_grid[i, j] = (published & (harm == 1)).sum() / max(n_pub, 1)
-                # retained utility: mean per-pair 1-|dF1| over published pairs
+                # F1 fidelity: mean per-pair 1-|dF1| over published pairs
                 df1 = np.array([abs(p["mean_df1"]) for p in pairs])
                 util_grid[i, j] = ((1.0 - df1)[published].mean()
                                    if n_pub else 0.0)
@@ -659,10 +691,10 @@ def make_2d_sensitivity_figure():
         ax_h, ax_u = axes[row]
         _draw_heatmap(ax_h, harm_grid, cmap_harm)
         _draw_heatmap(ax_u, util_grid, cmap_util, vmin=0.90, vmax=1.0)
-        ax_h.set_ylabel(name + "\n" + r"$\tau_g$", fontsize=7, fontweight="bold")
+        ax_h.set_ylabel(name + "\n" + r"$\tau_g$", fontsize=7)
         if row == 0:
-            ax_h.set_title("Published-harm rate", fontsize=8, fontweight="bold")
-            ax_u.set_title("Retained utility", fontsize=8, fontweight="bold")
+            ax_h.set_title("Published-harm rate", fontsize=8)
+            ax_u.set_title(r"$F_1$ fidelity", fontsize=8)
         if row == len(shown) - 1:
             ax_h.set_xlabel(r"$\tau_q$", fontsize=7)
             ax_u.set_xlabel(r"$\tau_q$", fontsize=7)
@@ -677,7 +709,7 @@ def make_2d_sensitivity_figure():
 
     fig.tight_layout(h_pad=0.6, w_pad=0.5)
     out = FIG_DIR / "fig_2d_sensitivity.png"
-    fig.savefig(str(out), dpi=200, bbox_inches="tight")
+    fig.savefig(str(out), dpi=200, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
     print(f"[W3] saved {out}")
 
@@ -744,13 +776,27 @@ def _scores_from_baselines(tag: str) -> dict[str, np.ndarray]:
 
 
 def make_auroc_figure():
-    # Native single-column 1x4 row, ROC only (PR curves ship in the
-    # artifact); style matches the other 1x4 panel figures.
-    _S.apply_rc(font_size=7)
-    fig, axes = plt.subplots(1, 4, figsize=(3.5, 0.73), sharey=True,
-                             gridspec_kw={"wspace": 0.20})
+    # Native single-column 1x4 row, ROC only (PR curves ship in the artifact).
+    _S.apply_rc(font_size=8)
+    plt.rcParams.update({
+        "axes.linewidth": 0.7,
+        "axes.labelsize": 7.5,
+        "axes.titlesize": 8,
+        "xtick.labelsize": 6.5,
+        "ytick.labelsize": 6.5,
+        "legend.fontsize": 6.5,
+        "lines.linewidth": 1.1,
+        "xtick.major.width": 0.7,
+        "ytick.major.width": 0.7,
+        "xtick.major.size": 2.5,
+        "ytick.major.size": 2.5,
+    })
+    fig, axes = plt.subplots(1, 4, figsize=(3.5, 1.22),
+                             sharex=True, sharey=True,
+                             gridspec_kw={"wspace": 0.16})
 
     roc_summary = {}
+    legend_handles = []
     for ax_r, (tag, name) in zip(axes, CORPORA):
         pairs = load_pairs(tag)
         labels = np.array([int(p["harmful"]) for p in pairs])
@@ -772,39 +818,52 @@ def make_auroc_figure():
         for mkey, scores in scores_map.items():
             label = MONITOR_LABELS.get(mkey, mkey)
             color = MONITOR_COLORS.get(mkey, "#888888")
-            ls = MONITOR_LS.get(mkey, "-")
+            ls = {
+                "graph_only_drift": "-",
+                "answer_drift": "-.",
+                "graphguard": "--",
+            }[mkey]
             fpr, tpr, _ = roc_curve(labels, scores)
             auroc = auc(fpr, tpr)
-            ax_r.plot(fpr, tpr, color=color, ls=ls, lw=0.9, label=label)
+            line, = ax_r.plot(fpr, tpr, color=color, ls=ls, lw=1.05,
+                              label=label)
+            if len(legend_handles) < 3:
+                legend_handles.append(line)
             roc_text_lines.append((auroc, color))
             roc_summary[name][label] = {"auroc": round(auroc, 3)}
 
         for j, (val, col) in enumerate(roc_text_lines):
             ax_r.text(0.97, 0.05 + (len(roc_text_lines) - 1 - j) * 0.14,
                       f"{val:.2f}", transform=ax_r.transAxes, ha="right",
-                      va="bottom", fontsize=5.5, fontweight="bold",
+                      va="bottom", fontsize=5.5,
                       family="monospace", color=col)
-        ax_r.plot([0, 1], [0, 1], color=_GRAY, ls=":", lw=0.5, alpha=0.6)
+        ax_r.plot([0, 1], [0, 1], color=_GRAY, ls=":", lw=0.55)
         ax_r.set_xlim(0, 1)
-        ax_r.set_ylim(0, 1.02)
-        ax_r.tick_params(labelsize=6)
+        ax_r.set_ylim(0, 1.01)
         ax_r.set_xticks([0, 0.5, 1.0])
         ax_r.set_xticklabels(["0", ".5", "1"])
         ax_r.set_yticks([0, 0.5, 1.0])
-        ax_r.grid(ls=":", alpha=0.4)
-        for sp in ("top", "right"):
-            ax_r.spines[sp].set_visible(False)
-        ax_r.set_title(name, fontsize=7, fontweight="bold")
+        ax_r.set_yticklabels(["0", ".5", "1"])
+        ax_r.set_aspect("equal", adjustable="box")
+        ax_r.grid(True, color=_S.GRAY_LIGHT, ls=":", lw=0.5, alpha=0.9)
+        _S.despine(ax_r)
+        ax_r.spines["left"].set_linewidth(0.7)
+        ax_r.spines["bottom"].set_linewidth(0.7)
+        ax_r.set_title(name, pad=3)
 
-    axes[0].set_ylabel("TPR", fontsize=6.5)
-    for ax in axes:
-        ax.set_xlabel("FPR", fontsize=6.5)
-    # legend omitted: the in-panel AUROC numbers are color-coded to the curves
-    #   (blue = graph drift, pink = answer-set drift, green = GraphGuard gate).
-
-    fig.tight_layout()
+    axes[0].set_ylabel("TPR")
+    fig.supxlabel("False-positive rate (FPR)", y=0.01, fontsize=7.5)
+    fig.legend(
+        legend_handles,
+        ["Graph drift", "Answer drift", "GraphGuard"],
+        loc="upper center", bbox_to_anchor=(0.5, 1.02), ncol=3,
+        frameon=False, handlelength=1.5, columnspacing=0.9,
+        handletextpad=0.4,
+    )
+    fig.subplots_adjust(left=0.095, right=0.995, bottom=0.24, top=0.77)
     out = FIG_DIR / "fig_auroc.png"
-    fig.savefig(str(out), dpi=400, bbox_inches="tight")
+    fig.savefig(str(out), dpi=300, bbox_inches="tight", pad_inches=0.025,
+                facecolor=_S.WHITE)
     plt.close(fig)
 
     print(f"[W4] saved {out}")

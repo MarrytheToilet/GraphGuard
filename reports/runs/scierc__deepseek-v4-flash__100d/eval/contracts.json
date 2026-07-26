@@ -1,7 +1,7 @@
 {
   "summary": {
-    "n_contracts": 8,
-    "n_violated": 7,
+    "n_contracts": 11,
+    "n_violated": 10,
     "n_satisfied": 0,
     "n_inconclusive": 1
   },
@@ -24,25 +24,27 @@
       },
       "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 612,
       "n_pass": 18,
       "n_fail": 594,
       "violation_rate": 0.9705882352941176,
-      "severity_mean": 0.5663303538930702,
-      "severity_p95": 0.85,
-      "metric_mean": 0.30417481955512427,
+      "severity_mean": 0.5625689637680438,
+      "severity_p95": 0.8083333333333333,
+      "metric_mean": 0.3078255805588265,
       "metric_median": 0.25,
       "by_family": {
         "schema": {
           "n": 612,
           "n_fail": 594,
           "violation_rate": 0.9705882352941176,
-          "mean_metric": 0.30417481955512427
+          "mean_metric": 0.3078255805588265
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.795751633986928,
+        "0.5": 0.7859477124183006,
         "0.7": 0.9395424836601307,
         "0.8": 0.9640522875816994,
         "0.9": 0.9738562091503268
@@ -109,27 +111,29 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 302,
-      "n_pass": 9,
-      "n_fail": 293,
-      "violation_rate": 0.9701986754966887,
-      "severity_mean": 0.4880882448260576,
-      "severity_p95": 0.7444444444444445,
-      "metric_mean": 0.3307571976083769,
+      "n_pass": 10,
+      "n_fail": 292,
+      "violation_rate": 0.9668874172185431,
+      "severity_mean": 0.48668586562141064,
+      "severity_p95": 0.7411764705882353,
+      "metric_mean": 0.33397767102752585,
       "metric_median": 0.2727272727272727,
       "by_family": {
         "schema": {
           "n": 302,
-          "n_fail": 293,
-          "violation_rate": 0.9701986754966887,
-          "mean_metric": 0.3307571976083769
+          "n_fail": 292,
+          "violation_rate": 0.9668874172185431,
+          "mean_metric": 0.33397767102752585
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.7649006622516556,
-        "0.7": 0.956953642384106,
-        "0.8": 0.9701986754966887,
+        "0.5": 0.7549668874172185,
+        "0.7": 0.9536423841059603,
+        "0.8": 0.9668874172185431,
         "0.9": 0.9801324503311258
       },
       "examples": [
@@ -192,26 +196,28 @@
       },
       "threshold": 0.5,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 606,
-      "n_pass": 122,
-      "n_fail": 484,
-      "violation_rate": 0.7986798679867987,
-      "severity_mean": 0.28396283422065516,
+      "n_pass": 128,
+      "n_fail": 478,
+      "violation_rate": 0.7887788778877888,
+      "severity_mean": 0.2842029350004444,
       "severity_p95": 0.5,
-      "metric_mean": 0.3037745366811227,
-      "metric_median": 0.25,
+      "metric_mean": 0.308347691903743,
+      "metric_median": 0.26794871794871794,
       "by_family": {
         "schema": {
           "n": 606,
-          "n_fail": 484,
-          "violation_rate": 0.7986798679867987,
-          "mean_metric": 0.3037745366811227
+          "n_fail": 478,
+          "violation_rate": 0.7887788778877888,
+          "mean_metric": 0.308347691903743
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.7986798679867987,
-        "0.7": 0.933993399339934,
+        "0.5": 0.7887788778877888,
+        "0.7": 0.9323432343234324,
         "0.8": 0.9686468646864687,
         "0.9": 0.9785478547854786
       },
@@ -274,25 +280,27 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 887,
       "n_pass": 18,
       "n_fail": 869,
       "violation_rate": 0.979706877113867,
-      "severity_mean": 0.5372903147737408,
-      "severity_p95": 0.8,
-      "metric_mean": 0.2767713997893285,
+      "severity_mean": 0.5318503896560252,
+      "severity_p95": 0.7722222222222223,
+      "metric_mean": 0.28210093183813906,
       "metric_median": 0.25,
       "by_family": {
         "prompt": {
           "n": 887,
           "n_fail": 869,
           "violation_rate": 0.979706877113867,
-          "mean_metric": 0.2767713997893285
+          "mean_metric": 0.28210093183813906
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.8579481397970687,
+        "0.5": 0.8500563697857948,
         "0.7": 0.9706877113866967,
         "0.8": 0.979706877113867,
         "0.9": 0.9853438556933484
@@ -315,27 +323,27 @@
           "metric": 0.0
         },
         {
-          "doc": "scierc-dev-000004-C04-1116",
-          "intervention": "scierc-dev-000004-C04-1116::iv::prompt::base_v1::role::auditor",
-          "family": "prompt",
-          "semantic_class": "presentation",
-          "operator": "role_swap",
-          "metric": 0.0
-        },
-        {
-          "doc": "scierc-dev-000004-C04-1116",
-          "intervention": "scierc-dev-000004-C04-1116::iv::prompt::base_v1::tone::terse",
+          "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+          "intervention": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::tone::strict",
           "family": "prompt",
           "semantic_class": "presentation",
           "operator": "tone",
           "metric": 0.0
         },
         {
-          "doc": "scierc-dev-000004-C04-1116",
-          "intervention": "scierc-dev-000004-C04-1116::iv::prompt::base_v1::role::auditor",
+          "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+          "intervention": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::tone::strict",
           "family": "prompt",
           "semantic_class": "presentation",
-          "operator": "role_swap",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000005-ICCV_2009_47_abs",
+          "intervention": "scierc-dev-000005-ICCV_2009_47_abs::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
           "metric": 0.0
         }
       ],
@@ -357,26 +365,28 @@
       },
       "threshold": 0.8,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 236,
       "n_pass": 43,
       "n_fail": 193,
       "violation_rate": 0.8177966101694916,
-      "severity_mean": 0.5401007936536311,
+      "severity_mean": 0.535474016467541,
       "severity_p95": 0.8,
-      "metric_mean": 0.3940003230364997,
-      "metric_median": 0.2857142857142857,
+      "metric_mean": 0.3977840857352936,
+      "metric_median": 0.3038461538461539,
       "by_family": {
         "entity_alias": {
           "n": 118,
           "n_fail": 78,
           "violation_rate": 0.6610169491525424,
-          "mean_metric": 0.5191636006735645
+          "mean_metric": 0.5213995931972466
         },
         "evidence": {
           "n": 118,
           "n_fail": 115,
           "violation_rate": 0.9745762711864406,
-          "mean_metric": 0.26883704539943487
+          "mean_metric": 0.2741685782733406
         }
       },
       "by_query": {},
@@ -440,48 +450,50 @@
           "presentation"
         ]
       },
-      "threshold": 0.5,
+      "threshold": 0.7,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 2643,
-      "n_pass": 995,
-      "n_fail": 1648,
-      "violation_rate": 0.6235338630344306,
-      "severity_mean": 0.46611730498936776,
-      "severity_p95": 0.5,
-      "metric_mean": 0.3869980296987506,
+      "n_pass": 949,
+      "n_fail": 1694,
+      "violation_rate": 0.6409383276579644,
+      "severity_mean": 0.6439972652943289,
+      "severity_p95": 0.7,
+      "metric_mean": 0.39368171602290947,
       "metric_median": 0.0,
       "by_family": {
         "prompt": {
           "n": 887,
-          "n_fail": 572,
-          "violation_rate": 0.644870349492672,
-          "mean_metric": 0.3566457142859638
+          "n_fail": 598,
+          "violation_rate": 0.6741826381059752,
+          "mean_metric": 0.36114434326899403
         },
         "schema": {
           "n": 1520,
-          "n_fail": 963,
-          "violation_rate": 0.6335526315789474,
-          "mean_metric": 0.3823902424107055
+          "n_fail": 982,
+          "violation_rate": 0.6460526315789473,
+          "mean_metric": 0.38883193038009417
         },
         "entity_alias": {
           "n": 118,
           "n_fail": 46,
           "violation_rate": 0.3898305084745763,
-          "mean_metric": 0.6254097597317936
+          "mean_metric": 0.6401595579561681
         },
         "evidence": {
           "n": 118,
-          "n_fail": 67,
-          "violation_rate": 0.5677966101694916,
-          "mean_metric": 0.43609765940274414
+          "n_fail": 68,
+          "violation_rate": 0.576271186440678,
+          "mean_metric": 0.4542574656981437
         }
       },
       "by_query": {},
       "threshold_sensitivity": {
-        "0.5": 0.6235338630344306,
-        "0.7": 0.6454786227771472,
-        "0.8": 0.6477487703367385,
-        "0.9": 0.6485054861899356
+        "0.5": 0.6163450624290578,
+        "0.7": 0.6409383276579644,
+        "0.8": 0.64472190692395,
+        "0.9": 0.6462353386303443
       },
       "examples": [
         {
@@ -529,14 +541,315 @@
       "verdict": "VIOLATED"
     },
     {
+      "contract_id": "K4b",
+      "name": "Shortest-path robustness (Q5)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 2072,
+      "n_pass": 510,
+      "n_fail": 1562,
+      "violation_rate": 0.7538610038610039,
+      "severity_mean": 0.5682049366908521,
+      "severity_p95": 0.7,
+      "metric_mean": 0.3366540647790648,
+      "metric_median": 0.16666666666666663,
+      "by_family": {
+        "prompt": {
+          "n": 698,
+          "n_fail": 555,
+          "violation_rate": 0.7951289398280802,
+          "mean_metric": 0.30590576249602036
+        },
+        "schema": {
+          "n": 1190,
+          "n_fail": 882,
+          "violation_rate": 0.7411764705882353,
+          "mean_metric": 0.3459873949579832
+        },
+        "entity_alias": {
+          "n": 92,
+          "n_fail": 44,
+          "violation_rate": 0.4782608695652174,
+          "mean_metric": 0.5885869565217391
+        },
+        "evidence": {
+          "n": 92,
+          "n_fail": 81,
+          "violation_rate": 0.8804347826086957,
+          "mean_metric": 0.19728260869565217
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.6592664092664092,
+        "0.7": 0.7538610038610039,
+        "0.8": 0.7688223938223938,
+        "0.9": 0.7977799227799228
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::prompt::base_v1::role::expert",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "role_swap",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::prompt::base_v1::tone::strict",
+          "family": "prompt",
+          "semantic_class": "presentation",
+          "operator": "tone",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4c",
+      "name": "Degree-aggregation robustness (Q6)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 2620,
+      "n_pass": 713,
+      "n_fail": 1907,
+      "violation_rate": 0.7278625954198473,
+      "severity_mean": 0.2885771718231078,
+      "severity_p95": 0.49999999999999994,
+      "metric_mean": 0.5715966921119593,
+      "metric_median": 0.5,
+      "by_family": {
+        "prompt": {
+          "n": 876,
+          "n_fail": 673,
+          "violation_rate": 0.7682648401826484,
+          "mean_metric": 0.5552511415525114
+        },
+        "schema": {
+          "n": 1512,
+          "n_fail": 1087,
+          "violation_rate": 0.718915343915344,
+          "mean_metric": 0.5755070546737213
+        },
+        "entity_alias": {
+          "n": 116,
+          "n_fail": 59,
+          "violation_rate": 0.5086206896551724,
+          "mean_metric": 0.6830459770114943
+        },
+        "evidence": {
+          "n": 116,
+          "n_fail": 88,
+          "violation_rate": 0.7586206896551724,
+          "mean_metric": 0.5326149425287356
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.2381679389312977,
+        "0.7": 0.7278625954198473,
+        "0.8": 0.7278625954198473,
+        "0.9": 0.7278625954198473
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000002-P84-1047",
+          "intervention": "scierc-dev-000002-P84-1047::iv::schema::scierc_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000002-P84-1047",
+          "intervention": "scierc-dev-000002-P84-1047::iv::schema::scierc_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000002-P84-1047",
+          "intervention": "scierc-dev-000002-P84-1047::iv::schema::scierc_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000002-P84-1047",
+          "intervention": "scierc-dev-000002-P84-1047::iv::schema::scierc_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000002-P84-1047",
+          "intervention": "scierc-dev-000002-P84-1047::iv::schema::scierc_full::rename",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
+      "contract_id": "K4d",
+      "name": "GraphRAG-retrieval robustness (Q7)",
+      "kind": "bounded_drift",
+      "scope": {
+        "semantic_class_in": [
+          "presentation"
+        ]
+      },
+      "threshold": 0.7,
+      "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
+      "n_pairs": 2620,
+      "n_pass": 309,
+      "n_fail": 2311,
+      "violation_rate": 0.8820610687022901,
+      "severity_mean": 0.4498033412659599,
+      "severity_p95": 0.7,
+      "metric_mean": 0.3316059254330045,
+      "metric_median": 0.2727272727272727,
+      "by_family": {
+        "prompt": {
+          "n": 876,
+          "n_fail": 795,
+          "violation_rate": 0.9075342465753424,
+          "mean_metric": 0.3062744954171371
+        },
+        "schema": {
+          "n": 1512,
+          "n_fail": 1331,
+          "violation_rate": 0.8802910052910053,
+          "mean_metric": 0.336619453365202
+        },
+        "entity_alias": {
+          "n": 116,
+          "n_fail": 76,
+          "violation_rate": 0.6551724137931034,
+          "mean_metric": 0.5102230863006725
+        },
+        "evidence": {
+          "n": 116,
+          "n_fail": 109,
+          "violation_rate": 0.9396551724137931,
+          "mean_metric": 0.27893599267238106
+        }
+      },
+      "by_query": {},
+      "threshold_sensitivity": {
+        "0.5": 0.7312977099236642,
+        "0.7": 0.8820610687022901,
+        "0.8": 0.9007633587786259,
+        "0.9": 0.9122137404580153
+      },
+      "examples": [
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::reorder",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        },
+        {
+          "doc": "scierc-dev-000000-ICCV_2003_158_abs",
+          "intervention": "scierc-dev-000000-ICCV_2003_158_abs::iv::schema::scierc_full::desc_added",
+          "family": "schema",
+          "semantic_class": "presentation",
+          "operator": "switch_schema",
+          "metric": 0.0
+        }
+      ],
+      "notes": "",
+      "verdict": "VIOLATED"
+    },
+    {
       "contract_id": "K5",
       "name": "Model swap recall stability",
       "kind": "bounded_drift",
       "scope": {
-        "operator_prefix": "model:"
+        "cause_family_in": [
+          "model"
+        ]
       },
-      "threshold": 0.4,
-      "direction": "min",
+      "threshold": 0.2,
+      "direction": "max",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 0,
       "n_pass": 0,
       "n_fail": 0,
@@ -559,29 +872,31 @@
     },
     {
       "contract_id": "K6",
-      "name": "Stochastic repeatability",
+      "name": "Decoding-resample stability",
       "kind": "invariance",
       "scope": {
         "cause_family_in": [
           "stochastic"
         ]
       },
-      "threshold": 0.9,
+      "threshold": 0.85,
       "direction": "min",
+      "alpha": 0.2,
+      "min_pairs": 1,
       "n_pairs": 238,
-      "n_pass": 23,
-      "n_fail": 215,
-      "violation_rate": 0.9033613445378151,
-      "severity_mean": 0.543754280496964,
-      "severity_p95": 0.8166666666666667,
-      "metric_mean": 0.4184572676182889,
+      "n_pass": 25,
+      "n_fail": 213,
+      "violation_rate": 0.8949579831932774,
+      "severity_mean": 0.4967994432767998,
+      "severity_p95": 0.7666666666666666,
+      "metric_mean": 0.42009125454639346,
       "metric_median": 0.3693181818181818,
       "by_family": {
         "stochastic": {
           "n": 238,
-          "n_fail": 215,
-          "violation_rate": 0.9033613445378151,
-          "mean_metric": 0.4184572676182889
+          "n_fail": 213,
+          "violation_rate": 0.8949579831932774,
+          "mean_metric": 0.42009125454639346
         }
       },
       "by_query": {},
