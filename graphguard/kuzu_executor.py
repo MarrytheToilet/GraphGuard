@@ -16,34 +16,40 @@ class KuzuGraph:
         import kuzu
 
         self._directory = Path(tempfile.mkdtemp(prefix="graphguard-kuzu-"))
-        self._database = kuzu.Database(str(self._directory / "db"))
-        self.connection = kuzu.Connection(self._database)
-        self.connection.execute(
-            "CREATE NODE TABLE Entity(id STRING, PRIMARY KEY(id))"
-        )
-        self.connection.execute(
-            "CREATE REL TABLE Rel(FROM Entity TO Entity, label STRING)"
-        )
-        typed_edges = sorted(set(edges))
-        nodes = sorted(
-            {node for s, _, o in typed_edges for node in (s, o)}
-        )
-        for node in nodes:
+        self._database = None
+        self.connection = None
+        try:
+            self._database = kuzu.Database(str(self._directory / "db"))
+            self.connection = kuzu.Connection(self._database)
             self.connection.execute(
-                "CREATE (e:Entity {id: $id})",
-                parameters={"id": str(node)},
+                "CREATE NODE TABLE Entity(id STRING, PRIMARY KEY(id))"
             )
-        for subject, relation, obj in typed_edges:
             self.connection.execute(
-                "MATCH (a:Entity {id: $subject}), "
-                "(b:Entity {id: $object}) "
-                "CREATE (a)-[:Rel {label: $relation}]->(b)",
-                parameters={
-                    "subject": str(subject),
-                    "relation": str(relation),
-                    "object": str(obj),
-                },
+                "CREATE REL TABLE Rel(FROM Entity TO Entity, label STRING)"
             )
+            typed_edges = sorted(set(edges))
+            nodes = sorted(
+                {node for s, _, o in typed_edges for node in (s, o)}
+            )
+            for node in nodes:
+                self.connection.execute(
+                    "CREATE (e:Entity {id: $id})",
+                    parameters={"id": str(node)},
+                )
+            for subject, relation, obj in typed_edges:
+                self.connection.execute(
+                    "MATCH (a:Entity {id: $subject}), "
+                    "(b:Entity {id: $object}) "
+                    "CREATE (a)-[:Rel {label: $relation}]->(b)",
+                    parameters={
+                        "subject": str(subject),
+                        "relation": str(relation),
+                        "object": str(obj),
+                    },
+                )
+        except Exception:
+            self.close()
+            raise
 
     def execute(self, query: tuple[str, dict]) -> set:
         family, parameters = query
