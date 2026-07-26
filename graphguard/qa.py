@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import math
 from collections import defaultdict
+from itertools import combinations
 
 from graphguard.interventions.schema import COARSE_GROUPS, RELATION_RENAMES
 
@@ -142,11 +143,29 @@ def load_data(con):
     return edges, gold, runs
 
 
-def build_queries(gold_edges_for_doc):
-    """Return list of (family, query_dict). Each family is one of:
-       lookup, neighbor, join, twohop. answer key 'gold' is set of expected results.
+def build_queries(
+    gold_edges_for_doc,
+    *,
+    allowed_relations: set[str] | None = None,
+):
+    """Build the deterministic deployment Q1--Q4 workload.
+
+    Query identity is defined by the parameters sent to the database, not by
+    an individual gold witness.  Q3 and Q4 therefore merge duplicate
+    parameter tuples before applying their six/eight-query caps, and their
+    ``gold`` fields contain the complete answer set on the filtered gold
+    graph.
+
+    When ``allowed_relations`` is provided, only relations declared by the
+    base extraction schema may instantiate the workload.  Execution over the
+    paired materialized views still uses the fixed raw relation labels.
     """
     queries = []
+    gold_edges_for_doc = {
+        (h, r, t)
+        for h, r, t in gold_edges_for_doc
+        if allowed_relations is None or r in allowed_relations
+    }
     by_h_r = defaultdict(set)
     by_h = defaultdict(set)
     # The source is a set. Sort every traversal that can affect query
@@ -167,31 +186,38 @@ def build_queries(gold_edges_for_doc):
         if len(neigh) >= 2:
             queries.append(("neighbor", {"h": h, "gold": neigh}))
 
-    # shared-entity join: x s.t. (h1,r1,x) and (h2,r2,x) in G; gold derived from gold pairs
-    # build tail-> [(h,r)]
+    # Shared-tail join: x s.t. (h1,r1,x) and (h2,r2,x) in G.
+    # Multiple tail witnesses may instantiate the same database query.  Merge
+    # those parameter tuples before the cap so the cap counts unique queries.
     by_t = defaultdict(list)
     for h, r, t in ordered_gold:
         by_t[t].append((h, r))
-    join_seeds = [
-        (t, sorted(by_t[t])) for t in sorted(by_t) if len(by_t[t]) >= 2
-    ][:6]
-    for t, hrs in join_seeds:
-        (h1, r1), (h2, r2) = hrs[0], hrs[1]
-        queries.append(("join", {"h1": h1, "r1": r1, "h2": h2, "r2": r2, "gold": {t}}))
+    join_parameters = set()
+    for tail in sorted(by_t):
+        branches = sorted(set(by_t[tail]))
+        if len(branches) < 2:
+            continue
+        for first, second in combinations(branches, 2):
+            join_parameters.add((*first, *second))
+    for h1, r1, h2, r2 in sorted(join_parameters)[:6]:
+        query = (
+            "join",
+            {"h1": h1, "r1": r1, "h2": h2, "r2": r2},
+        )
+        query[1]["gold"] = execute(gold_edges_for_doc, query)
+        queries.append(query)
 
-    # 2-hop path: (h, r1, x)(x, r2, t)
-    # Find gold chains
-    chains = []
+    # Typed two-hop: (h, r1, x)(x, r2, t).  A query is identified
+    # by (h,r1,r2), regardless of how many paths or tails witness it.
+    twohop_parameters = set()
     for h, r1, x in ordered_gold:
         for r2, t in sorted(by_h.get(x, set())):
             if t != h:
-                chains.append((h, r1, r2, t))
-                if len(chains) >= 8:
-                    break
-        if len(chains) >= 8:
-            break
-    for h, r1, r2, t in chains:
-        queries.append(("twohop", {"h": h, "r1": r1, "r2": r2, "gold": {t}}))
+                twohop_parameters.add((h, r1, r2))
+    for h, r1, r2 in sorted(twohop_parameters)[:8]:
+        query = ("twohop", {"h": h, "r1": r1, "r2": r2})
+        query[1]["gold"] = execute(gold_edges_for_doc, query)
+        queries.append(query)
 
     return queries
 
