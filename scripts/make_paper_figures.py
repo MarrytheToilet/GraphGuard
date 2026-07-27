@@ -642,15 +642,16 @@ def make_noise_floor_figure():
 # ──────────────────────────────────────────────────────────────────────────────
 
 def make_2d_sensitivity_figure():
-    # Native single-column canvas, corpora as rows and {harm, F1 fidelity} as
-    # columns, so every annotated cell stays legible in print.
+    # Show the two limiting corpus profiles on a compact single-column canvas:
+    # SciERC sets the harm endpoint and BC5CDR sets the fidelity endpoint.
+    # The four-corpus sweep remains registered and is summarized in the text.
     _S.apply_rc(font_size=7)
     TAU_G = [0.20, 0.30, 0.45, 0.60]
     TAU_Q = [0.50, 0.70, 0.90]
 
-    shown = CORPORA
+    shown = [CORPORA[2], CORPORA[3]]
     fig, axes = plt.subplots(
-        len(shown), 2, figsize=(3.5, 3.25), squeeze=False
+        len(shown), 2, figsize=(3.5, 2.0), squeeze=False
     )
 
     cmap_harm = mcolors.LinearSegmentedColormap.from_list(
@@ -673,7 +674,7 @@ def make_2d_sensitivity_figure():
                         fontsize=6.5,
                         color="white" if v > thresh else _BLACK)
 
-    for row, (tag, name) in enumerate(shown):
+    for idx, (tag, name) in enumerate(shown):
         pairs = load_pairs(tag)
         gd = np.array([p["graph_drift"] for p in pairs])
         aq = np.array([p["max_answer_drift"] for p in pairs])
@@ -692,14 +693,14 @@ def make_2d_sensitivity_figure():
                 util_grid[i, j] = ((1.0 - df1)[published].mean()
                                    if n_pub else 0.0)
 
-        ax_h, ax_u = axes[row]
+        ax_h, ax_u = axes[idx]
         _draw_heatmap(ax_h, harm_grid, cmap_harm)
         _draw_heatmap(ax_u, util_grid, cmap_util, vmin=0.90, vmax=1.0)
         ax_h.set_ylabel(name + "\n" + r"$\tau_g$", fontsize=7)
-        if row == 0:
+        if idx == 0:
             ax_h.set_title("Published-harm rate", fontsize=8)
             ax_u.set_title(r"$F_1$ fidelity", fontsize=8)
-        if row == len(shown) - 1:
+        if idx == len(shown) - 1:
             ax_h.set_xlabel(r"$\tau_q$", fontsize=7)
             ax_u.set_xlabel(r"$\tau_q$", fontsize=7)
 
@@ -713,7 +714,7 @@ def make_2d_sensitivity_figure():
 
     fig.tight_layout(h_pad=0.6, w_pad=0.5)
     out = FIG_DIR / "fig_2d_sensitivity.png"
-    fig.savefig(str(out), dpi=200, bbox_inches="tight", pad_inches=0.025)
+    fig.savefig(str(out), dpi=300, bbox_inches="tight", pad_inches=0.025)
     plt.close(fig)
     print(f"[saved] {out}")
 

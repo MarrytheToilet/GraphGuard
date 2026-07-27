@@ -28,7 +28,7 @@
   "model_source": "hash-bound checkpoint metadata",
   "checkpoint_metadata": {
    "path": "reports/cross_run/langchain_toolchain_checkpoint.json",
-   "sha256": "38016f5c3fbe1c0db2f3e7dda8c040ab2106e8f05c26a88cd9ba7b954a078659"
+   "sha256": "329baf63fc737ea2d5372e76e887040c41083175c47995c8d10f6aae35399f22"
   },
   "selection": {
    "mode": "published-checkpoint",

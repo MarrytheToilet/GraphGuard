@@ -257,3 +257,41 @@ def test_langchain_checkpoint_metadata_is_hash_bound(tmp_path) -> None:
         assert "does not match" in str(error)
     else:
         raise AssertionError("tampered checkpoint was accepted")
+
+
+def test_langchain_published_source_provenance_is_stable_without_db(
+    tmp_path,
+) -> None:
+    langchain = load_script("run_langchain_toolchain.py")
+    database = tmp_path / "source.db"
+    source = {
+        "path": "source.db",
+        "bytes": 7,
+        "sha256": hashlib.sha256(b"content").hexdigest(),
+    }
+    metadata = {"source_database": source}
+
+    assert langchain.source_database_provenance(
+        metadata,
+        database_path=database,
+        root=tmp_path,
+    ) == source
+
+    database.write_bytes(b"content")
+    assert langchain.source_database_provenance(
+        metadata,
+        database_path=database,
+        root=tmp_path,
+    ) == source
+
+    database.write_bytes(b"changed")
+    try:
+        langchain.source_database_provenance(
+            metadata,
+            database_path=database,
+            root=tmp_path,
+        )
+    except RuntimeError as error:
+        assert "does not match" in str(error)
+    else:
+        raise AssertionError("mismatched source database was accepted")

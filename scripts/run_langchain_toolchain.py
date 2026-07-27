@@ -590,6 +590,54 @@ def load_checkpoint_metadata(
     return metadata
 
 
+def source_database_provenance(
+    published_metadata: dict | None = None,
+    database_path: Path | None = None,
+    root: Path | None = None,
+) -> dict:
+    """Return stable source provenance and verify a local copy when present."""
+    database_path = database_path or DB
+    root = root or ROOT
+    relative_path = database_path.relative_to(root).as_posix()
+
+    if published_metadata is not None:
+        source = published_metadata.get("source_database")
+        required = {"path", "bytes", "sha256"}
+        if not isinstance(source, dict) or not required.issubset(source):
+            raise RuntimeError(
+                "published LangChain checkpoint metadata lacks complete "
+                "source-database provenance"
+            )
+        canonical = {key: source[key] for key in ("path", "bytes", "sha256")}
+        if canonical["path"] != relative_path:
+            raise RuntimeError(
+                "published LangChain source-database path does not match "
+                "the configured database"
+            )
+        if database_path.is_file():
+            actual = {
+                "path": relative_path,
+                "bytes": database_path.stat().st_size,
+                "sha256": sha256_file(database_path),
+            }
+            if actual != canonical:
+                raise RuntimeError(
+                    "local LangChain source database does not match "
+                    "published checkpoint metadata"
+                )
+        return canonical
+
+    source = {"path": relative_path}
+    if database_path.is_file():
+        source.update({
+            "bytes": database_path.stat().st_size,
+            "sha256": sha256_file(database_path),
+        })
+    else:
+        source["available_during_analysis"] = False
+    return source
+
+
 def analyze(
     requested_cohort: str | None = None,
     cache_path: Path = PUBLISHED_CACHE,
@@ -663,14 +711,7 @@ def analyze(
             ],
         }
 
-    source_database = {"path": DB.relative_to(ROOT).as_posix()}
-    if DB.is_file():
-        source_database.update({
-            "bytes": DB.stat().st_size,
-            "sha256": sha256_file(DB),
-        })
-    else:
-        source_database["available_during_analysis"] = False
+    source_database = source_database_provenance(published_metadata)
     checkpoint = checkpoint_metadata(records)
     out = {
         "schema_version": 2,

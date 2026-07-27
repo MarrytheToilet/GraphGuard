@@ -1,0 +1,22 @@
+name: Reproducibility checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  cached-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install locked environment
+        run: |
+          python -m pip install uv==0.11.19
+          uv sync --locked --extra dev
+      - name: Run tests and verify cached paper results
+        run: |
+          uv run pytest -q
+          uv run python scripts/verify_paper_results.py

@@ -10,9 +10,8 @@
 
 📄 Paper: *Drift Contracts for Stochastic Graph Views Extracted by LLMs* \[Experiment, Analysis & Benchmark\]
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
 [![Kuzu](https://img.shields.io/badge/Kuzu-0.11.3-orange.svg)](https://kuzudb.com/)
-[![License](https://img.shields.io/badge/License-Research-green.svg)](#)
 
 </div>
 
@@ -101,7 +100,7 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 <div align="center">
   <img src="assets/figures/fig_2d_sensitivity.png" alt="Two-dimensional gate sensitivity" width="80%">
   <br/>
-  <sub><b>2D sensitivity.</b> All four corpora are shown. At the chosen operating point τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70 (gold-bordered cell), published harm is 0–13% and paired-view F1 fidelity is 0.97–1.00; SciERC is the limiting case, and the neighboring cells show that safe regions are corpus-specific.</sub>
+  <sub><b>2D sensitivity.</b> The figure shows the two limiting profiles: SciERC sets the upper harm endpoint and BC5CDR the lower fidelity endpoint. The registered artifacts retain the complete four-corpus sweep. At τ<sub>g</sub>=0.45, τ<sub>q</sub>=0.70 (gold-bordered cell), four-corpus published harm is 0–13% and paired-view F1 fidelity is 0.97–1.00.</sub>
 </div>
 
 <div align="center">
@@ -213,7 +212,7 @@ Sources: `RC/family_decomp_cdr__deepseek-v4-flash__300d.json` and the contract r
 | ------ | ----- | ------ |
 | Fig. 3, noise floor | D0 is 0.43 DocRED, 0.43 Re-DocRED, 0.42 SciERC, and 0.19 BC5CDR | `RC/reproducibility_manifest.json` (`raw_stability`), derived from lineage stability reports and read by `noise_floor_from_cache` |
 | Fig. 4, SLA calibration | At $\epsilon=0.05$, graph-only coverage is 0.03–0.60; at $\epsilon=0.15$, it is 0.08–0.92 | `compute_calibration` on deterministic N=300 pairs |
-| Fig. 5, 2D sensitivity | At (0.45, 0.70), harm is 0–0.13 and F1 fidelity is 0.97–1.00; all four corpora are shown | Registered Kuzu cohort artifacts indexed by `RC/deployment_evidence.json` |
+| Fig. 5, 2D sensitivity | At (0.45, 0.70), four-corpus harm is 0–0.13 and F1 fidelity is 0.97–1.00; the figure shows the two limiting profiles | Registered Kuzu cohort artifacts indexed by `RC/deployment_evidence.json` |
 | Fig. 6, DocRED L1 | Answer-drift violation is 0.69; absolute query-divergence rate is 0.35 | `RC/strict_vs_soft_*.json` |
 
 ### §5.5 Perturbation magnitude (RQ5, Fig. 7)
@@ -365,6 +364,29 @@ There are three reproducibility levels:
 
 End-to-end extraction is not bitwise deterministic because the hosted model provider can remain nondeterministic even with `temperature=0` and a fixed seed. Cached-artifact and lineage re-analysis are the appropriate checks for the submitted numbers.
 
+### Resource envelope
+
+No local GPU is required: all LLM extraction calls use a hosted
+OpenAI-compatible API, and the remaining stages are CPU-only. The measurements
+below were taken on Linux with Python 3.10, a 16-thread Intel i7-12700KF, and
+20 GiB RAM. They are planning estimates rather than performance claims.
+
+| Level | Network / credentials | Local storage | Observed wall time | Peak RAM |
+| ----- | --------------------- | ------------: | -----------------: | -------: |
+| Cached result verification | package installation only | 86 MiB `reports/` | about 10 s | about 1.1 GiB |
+| Test suite (151 tests) | package installation only | repository checkout | about 10–15 s | about 1.2 GiB |
+| Cached analyses and all generated figures | package installation only | repository checkout | about 30 s | under 2 GiB |
+| Seven-run lineage verification | no API; local DBs required | about 728 MiB for the seven lineage DBs | about 15 s | about 1.1 GiB |
+| End-to-end catalogue extraction | dataset downloads + Model Studio key | at least 1 GiB plus caches | provider/rate-limit dependent | under 4 GiB locally |
+
+The seven catalogue runs contain 137,646,379 recorded input-plus-output tokens;
+the LangChain and Qwen-size experiments are separate. API wall time and monetary
+cost are not fixed because provider throughput and prices can change. Reviewers
+who do not have matching provider access should use the cached-artifact path;
+it covers every paper-facing headline number. Lineage-level reconstruction
+requires the per-run SQLite databases, which are rebuilt by the end-to-end
+commands but are not committed to Git.
+
 ### 0. ✅ Verify the reported results
 
 ```bash
@@ -386,23 +408,31 @@ The first command validates the authoritative JSON artifacts, including the 17-e
 
 ### 1. 🛠️ Install
 
+For the locked evaluation environment, install
+[`uv`](https://docs.astral.sh/uv/) and use the committed `uv.lock`:
+
 ```bash
-conda create -n graphguard python=3.10 -y
-conda activate graphguard
-python -m pip install -e '.[dev]'
+uv sync --locked --extra dev
+source .venv/bin/activate
 
 # Software checks
 pytest -q
 
 # Only needed for the LangChain toolchain experiment in step 7:
-python -m pip install \
-  'langchain-openai==1.3.5' \
-  'langchain-experimental==0.4.2'
+uv sync --locked --extra dev --extra toolchain
 
 # Only needed for end-to-end re-extraction:
 cp .env.example .env
 # Set OPENAI_BASE_URL, OPENAI_API_KEY, OPENAI_MODEL in .env
 ```
+
+The lock targets Python 3.10 and includes all direct and transitive
+dependencies. A conventional editable install remains available for
+development (`python -m pip install -e '.[dev]'`), but only the `uv --locked`
+path recreates the evaluated dependency resolution. The paper used Alibaba
+Cloud Model Studio's OpenAI-compatible API; endpoint and key regions must
+match. Hosted model aliases can change after the reported runs, so new API
+extractions are behavioral replications rather than bitwise reconstructions.
 
 ### 2. 📦 Dataset setup
 
@@ -422,9 +452,9 @@ data/raw/
 │   ├── dev.json
 │   └── test.json
 └── cdr/CDR_Data/CDR.Corpus.v010516/               # BioCreative V CDR corpus
-    ├── CDR_TrainingSet.BioC.xml
-    ├── CDR_DevelopmentSet.BioC.xml
-    └── CDR_TestSet.BioC.xml
+    ├── CDR_TrainingSet.PubTator.txt
+    ├── CDR_DevelopmentSet.PubTator.txt
+    └── CDR_TestSet.PubTator.txt
 ```
 
 Where to download each one:
@@ -434,7 +464,7 @@ Where to download each one:
 | **DocRED**     | Hugging Face hub: [`docred`](https://huggingface.co/datasets/docred)                            | Fetched automatically by `graphguard/data/load_docred.py` on first call; cached under `data/cache/hf/`. |
 | **Re-DocRED**  | GitHub: [`tonytan48/Re-DocRED`](https://github.com/tonytan48/Re-DocRED) → `data/`                | Copy `train_revised.json` and `dev_revised.json` into `data/raw/redocred/`.                            |
 | **SciERC**     | AllenAI release: [`sciie.tar.gz`](http://nlp.cs.washington.edu/sciIE/data/sciie.tar.gz)         | Untar and keep the inner `processed_data/json/{train,dev,test}.json`.                                  |
-| **BC5CDR**     | BioCreative V CDR: [BioC.zip](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-v/track-3-cdr/) | Place the `CDR.Corpus.v010516/` directory (BioC XML files) under `data/raw/cdr/CDR_Data/`.             |
+| **BC5CDR**     | BioCreative V CDR: [BioC.zip](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-v/track-3-cdr/) | Place the complete `CDR.Corpus.v010516/` release under `data/raw/cdr/CDR_Data/`; GraphGuard reads its three `*.PubTator.txt` files. |
 
 Each dataset path is referenced exactly once, from its YAML in `configs/`:
 
@@ -450,9 +480,21 @@ You can sanity-check the layout with:
 ```bash
 ls data/raw/redocred/{train,dev}_revised.json \
    data/raw/scierc/processed_data/json/{train,dev,test}.json \
-   data/raw/cdr/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.BioC.xml \
+   data/raw/cdr/CDR_Data/CDR.Corpus.v010516/CDR_{Training,Development,Test}Set.PubTator.txt \
   && echo "raw data layout OK"
 ```
+
+After DocRED has been downloaded once and mirrored to
+`data/cache/hf/datasets/thunlp__docred/validation.jsonl`, verify every paper
+input against the exact files used for the reported runs:
+
+```bash
+sha256sum --check data/CHECKSUMS.sha256
+```
+
+The checksum file is the immutable input identity. It detects upstream dataset
+changes without redistributing corpora whose licences are maintained by their
+original publishers.
 
 ### 3. 🖼️ Regenerate the generated figures and tables (no API calls)
 
@@ -488,15 +530,19 @@ python scripts/make_gate_figure.py
 # Risk-coverage figure (paper Fig. 12, top) + per-policy gate table
 python scripts/make_kuzu_gate_artifacts.py
 
-# Copy the 13 canonical assets into the private manuscript and compare hashes.
-python scripts/sync_paper_figures.py --write
-
-# Verify that regenerated summaries and figures still match the paper.
+# Verify the regenerated summaries and figures.
 python scripts/verify_paper_results.py
-python scripts/verify_manuscript_artifacts.py
 ```
 
 `make_paper_figures.py` accepts a target argument: `all` (default), `contracts` (cross-run violations / diagnostic amplification / strict-vs-soft) or `evaluation` (noise-floor / calibration / 2D-sensitivity / AUROC). All commands in this section consume the canonical artifacts under `reports/`; the noise-floor panel reads D0 from `reproducibility_manifest.json`, whose producer derives it from the four primary lineage DBs. No command in this section needs raw corpora, a lineage DB, or API access. Rebuilding the RQ8 K1 contrast with `scripts/run_drift_accuracy_analysis.py` additionally requires the local DocRED lineage DB; the shipped summary is still checked by `verify_paper_results.py` without that DB.
+
+The public artifact intentionally excludes the private manuscript. Maintainers
+who have `paper/` locally can perform the additional final-mile check:
+
+```bash
+python scripts/sync_paper_figures.py --write
+python scripts/verify_manuscript_artifacts.py
+```
 
 The Kuzu-backed workload is pinned to `kuzu==0.11.3`, the version used for the reported gate experiment.
 
@@ -558,6 +604,56 @@ python scripts/aggregate_cross_run.py   # writes reports/cross_run/cross_run_sum
 python scripts/compute_amp_ci.py        # writes reports/cross_run/amp_ci.json
 python scripts/make_paper_figures.py    # regenerate every figure that consumes them
 ```
+
+### 5a. Rebuild or replay the RQ8–RQ10 deployment evidence
+
+The submitted RQ8–RQ10 package is fail-closed: the registered cohort manifest
+and each transport artifact are hash-bound in
+`reports/cross_run/deployment_evidence.json`. With the four primary lineage
+databases available, replay the registered Kuzu cohort without changing the
+published package:
+
+```bash
+# Two registered pairs per corpus; writes only under /tmp.
+python scripts/run_deployment_kuzu_cohort.py --mode smoke
+
+# Complete N=300-per-corpus replay; also keep it separate from the package.
+python scripts/run_deployment_kuzu_cohort.py \
+  --mode complete \
+  --out-dir /tmp/graphguard-kuzu-complete \
+  --overwrite
+```
+
+For a new end-to-end extraction, rebuild the logical Q1–Q4 evidence and parity
+records with the following exact sequence:
+
+```bash
+python scripts/run_deployment_queries.py --overwrite
+
+runs=(
+  docred__deepseek-v4-flash__300d
+  redocred__deepseek-v4-flash__300d
+  scierc__deepseek-v4-flash__100d
+  cdr__deepseek-v4-flash__300d
+)
+for run in "${runs[@]}"; do
+  python scripts/validate_deployment_kuzu_parity.py \
+    --db "data/processed/runs/${run}/${run}.db" \
+    --artifact "reports/cross_run/deployment_q1q4_${run}.json" \
+    --out "reports/cross_run/deployment_q1q4_${run}__kuzu_parity.json" \
+    --overwrite
+done
+
+python scripts/run_deployment_downstream.py --overwrite
+python scripts/build_deployment_cohorts.py --overwrite
+```
+
+A newly built cohort is a candidate artifact, not the submitted cohort. The
+complete Kuzu runner deliberately refuses to label it “official” until its
+manifest hash is reviewed and registered in the implementation. Maintainers
+then run `run_deployment_kuzu_cohort.py --mode complete`, followed by
+`package_deployment_evidence.py`; external reviewers should replay the already
+registered manifest as shown above.
 
 ### 6. 🔬 Cross-model checks on DocRED
 
@@ -733,3 +829,6 @@ Useful documentation:
 | ---------------------------------------------- | ---------------------------------------------------------------- |
 | 🚀 [`scripts/README.md`](scripts/README.md)    | Per-script inventory and CLI flags for every stage.              |
 | ⚙️ `configs/experiments/`                      | Run profiles (document count, budgets, oracle/e0 subsets).       |
+| 🔒 [`uv.lock`](uv.lock)                        | Exact Python dependency resolution used by the locked install.   |
+| 🔎 [`data/CHECKSUMS.sha256`](data/CHECKSUMS.sha256) | SHA-256 identities of the exact paper dataset files.       |
+| 📚 [`CITATION.cff`](CITATION.cff)              | Machine-readable software citation metadata.                     |

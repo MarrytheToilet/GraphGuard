@@ -3,7 +3,8 @@ models:
   - id: openai_compat
     provider: openai
     # Reads from environment if not set here:
-    #   OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL, OPENAI_TEMPERATURE
+    #   OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL
+    # Temperature and timeout are configured below or by experiment commands.
     api_key_env: OPENAI_API_KEY
     base_url_env: OPENAI_BASE_URL
     model_env:    OPENAI_MODEL

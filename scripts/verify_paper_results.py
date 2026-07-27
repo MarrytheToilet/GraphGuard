@@ -404,8 +404,10 @@ def verify_revision_analyses() -> None:
         "LangChain checkpoint metadata provenance mismatch",
     )
     checkpoint_metadata = load(metadata_path)
+    source_database = toolchain["provenance"]["source_database"]
     require(
-        checkpoint_metadata["checkpoint"]["path"] == checkpoint["path"]
+        checkpoint_metadata["schema_version"] == 2
+        and checkpoint_metadata["checkpoint"]["path"] == checkpoint["path"]
         and checkpoint_metadata["checkpoint"]["bytes"] == checkpoint["bytes"]
         and checkpoint_metadata["checkpoint"]["sha256"]
         == checkpoint["sha256"]
@@ -414,6 +416,31 @@ def verify_revision_analyses() -> None:
         and checkpoint_metadata["extraction_environment"]["model"]
         == toolchain["model"],
         "LangChain metadata does not bind the published checkpoint",
+    )
+    require(
+        checkpoint_metadata["source_database"] == source_database
+        and source_database == {
+            "path": (
+                "data/processed/runs/docred__deepseek-v4-flash__300d/"
+                "docred__deepseek-v4-flash__300d.db"
+            ),
+            "bytes": 212393984,
+            "sha256": (
+                "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4"
+                "e0e03f9418"
+            ),
+        },
+        "LangChain source-database provenance mismatch",
+    )
+    require(
+        toolchain["provenance"][
+            "analysis_environment_dependency_versions"
+        ] == {
+            "langchain-openai": "1.3.5",
+            "langchain-experimental": "0.4.2",
+            "langchain-core": "1.4.9",
+        },
+        "LangChain analysis dependency versions mismatch",
     )
 
     rename_inv = {
