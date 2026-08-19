@@ -1,0 +1,53 @@
+{
+  "artifact_type": "graphguard.cross_document_cdr_cache_audit",
+  "artifact_version": 1,
+  "source_checkpoint": {
+    "sha256": "cbc9c1a42eb6d691a99cb9814174edb8a99cfd06db2df2513a2f0ce355e9fc6a",
+    "rows": 302
+  },
+  "published_cache": {
+    "path": "reports/cross_run/cross_document_cdr_cache.jsonl",
+    "sha256": "21e8826bc53b1ec2335884a1637d7ef9a35cfaac99110249caf6da037e32fdd7",
+    "manifest_sha256": "fbc08d3c8474640e16a20e0fec1e26a79e9af51a86cb24acc5ce0906cef846f7",
+    "removed_fields": [
+      "raw_response_text"
+    ]
+  },
+  "endpoint_attempts": {
+    "records": 302,
+    "unique_registered_keys": 300,
+    "status_counts": {
+      "ok": 300,
+      "parse_error": 2
+    },
+    "retry_keys": [
+      [
+        "packet-2142605b2ae0",
+        "joint_ab_seed13"
+      ],
+      [
+        "packet-baa3f06d27f2",
+        "joint_ba_seed7"
+      ]
+    ],
+    "keys_with_retry": 2,
+    "prompt_tokens": 441925,
+    "completion_tokens": 1033328,
+    "total_tokens": 1475253
+  },
+  "final_registered_endpoints": {
+    "records": 300,
+    "status_counts": {
+      "ok": 300
+    }
+  },
+  "scope_note": "Endpoint attempts are checkpoint records. Transparent HTTP retries inside the provider client are not individually logged.",
+  "producer": {
+    "script": "scripts/package_cross_document_checkpoint.py",
+    "sha256": "b7079c94d640507d5d2452accc1783e5866fa2f36d656322f6ceb9c66bee3ceb"
+  },
+  "result_artifact": {
+    "path": "reports/cross_run/cross_document_cdr.json",
+    "sha256": "fb2270f449ae35f76ee75dbf0e72d4e7c84c6fdac78eddf23f4a881d58914bd3"
+  }
+}

@@ -133,6 +133,6 @@ class OpenAICompatClient:
                 prompt_tokens=getattr(usage, "prompt_tokens", None) if usage else None,
                 completion_tokens=getattr(usage, "completion_tokens", None) if usage else None,
                 latency_ms=elapsed,
-                raw=None,
+                raw={"finish_reason": getattr(choice, "finish_reason", None)},
             )
         raise RuntimeError(f"All LLM attempts failed after {self.max_attempts} tries: {last_err}")

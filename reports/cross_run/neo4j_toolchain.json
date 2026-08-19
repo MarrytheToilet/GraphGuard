@@ -1,0 +1,141 @@
+{
+ "schema_version": 1,
+ "artifact_type": "graphguard.additional_toolchain_summary",
+ "toolchain": "neo4j_graphrag.LLMEntityRelationExtractor",
+ "component_level_only": true,
+ "model": "deepseek-v4-flash",
+ "attempted_documents": 100,
+ "provenance": {
+  "producer": {
+   "script": "scripts/run_additional_toolchains.py",
+   "runner_sha256": "79a880e4af7f5aeda6309ebe9510d9e9466f1dbd3ca2607eb658cc826c3701ee",
+   "analysis_command": "python scripts/run_additional_toolchains.py --toolchain neo4j --analyze-only",
+   "evidence_seed_rule": "sha256(doc_id UTF-8), first 8 bytes, unsigned big-endian"
+  },
+  "source_database": {
+   "path": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
+   "bytes": 212393984,
+   "sha256": "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4e0e03f9418"
+  },
+  "checkpoint": {
+   "path": "reports/cross_run/neo4j_toolchain_cache.jsonl",
+   "bytes": 2609375,
+   "sha256": "5ed0a9dc4be392dbdad85f9c5097c9987394a3f366b1963fb927bc5ea84502ec",
+   "records": 600
+  },
+  "checkpoint_metadata": {
+   "path": "reports/cross_run/neo4j_toolchain_checkpoint.json",
+   "sha256": "43f74cb22c683b55fcbe08f45908e0917b98a009dc07a9057248387eb0c1953b"
+  },
+  "selection": {
+   "cohort_fingerprint": "9e1aa515ffe3172913dc0189881061b900b70fd2087fa3ae908c93d7465f7a97",
+   "selected_records": 600,
+   "attempted_documents": 100,
+   "documents_with_any_success": 99,
+   "model": "deepseek-v4-flash",
+   "dependency_versions": {
+    "neo4j-graphrag": "1.18.0",
+    "numpy": "2.2.6",
+    "openai": "1.109.1",
+    "pydantic": "2.13.4"
+   },
+   "extraction_mode": "LLMEntityRelationExtractor; one TextChunk per document; V1 JSON prompt; provider JSON-object mode; thinking disabled; lexical graph disabled; no persistence",
+   "outer_workers": 4,
+   "error_classification": "native OnError.RAISE; distinguish parse failure, empty, and nonempty output; no application-level retry",
+   "thinking_control": "disabled via extra_body.enable_thinking=false",
+   "native_output_statuses": {
+    "nonempty": 594,
+    "runtime_error": 6
+   },
+   "condition_attempts": {
+    "base": 100,
+    "resample": 100,
+    "schema_reorder": 100,
+    "schema_rename": 100,
+    "prompt_para": 100,
+    "evidence_reorder": 100
+   },
+   "condition_errors": {
+    "base": 1,
+    "resample": 1,
+    "schema_reorder": 1,
+    "schema_rename": 1,
+    "prompt_para": 1,
+    "evidence_reorder": 1
+   }
+  },
+  "declared_label_filter": "applied identically to all conditions; off-schema counts remain visible in each summary row"
+ },
+ "summary": {
+  "resample": {
+   "n": 99,
+   "attempted": 100,
+   "errors": 1,
+   "empty_empty_excluded": 0,
+   "mean_drift": 0.426,
+   "median_drift": 0.4286,
+   "tau": 0.15,
+   "violation_rate": 0.7879,
+   "verdict": "VIOLATED",
+   "raw_edges": 1097,
+   "off_schema_relations": 16,
+   "off_schema_rate": 0.014585
+  },
+  "schema_reorder": {
+   "n": 99,
+   "attempted": 100,
+   "errors": 1,
+   "empty_empty_excluded": 0,
+   "mean_drift": 0.5963,
+   "median_drift": 0.6667,
+   "tau": 0.15,
+   "violation_rate": 0.9394,
+   "verdict": "VIOLATED",
+   "raw_edges": 1310,
+   "off_schema_relations": 5,
+   "off_schema_rate": 0.003817
+  },
+  "schema_rename": {
+   "n": 99,
+   "attempted": 100,
+   "errors": 1,
+   "empty_empty_excluded": 0,
+   "mean_drift": 0.6221,
+   "median_drift": 0.6667,
+   "tau": 0.15,
+   "violation_rate": 0.9394,
+   "verdict": "VIOLATED",
+   "raw_edges": 1042,
+   "off_schema_relations": 10,
+   "off_schema_rate": 0.009597
+  },
+  "prompt_para": {
+   "n": 99,
+   "attempted": 100,
+   "errors": 1,
+   "empty_empty_excluded": 0,
+   "mean_drift": 0.5264,
+   "median_drift": 0.5714,
+   "tau": 0.2,
+   "violation_rate": 0.8687,
+   "verdict": "VIOLATED",
+   "raw_edges": 977,
+   "off_schema_relations": 18,
+   "off_schema_rate": 0.018424
+  },
+  "evidence_reorder": {
+   "n": 99,
+   "attempted": 100,
+   "errors": 1,
+   "empty_empty_excluded": 0,
+   "mean_drift": 0.6202,
+   "median_drift": 0.6667,
+   "tau": 0.2,
+   "violation_rate": 0.899,
+   "verdict": "VIOLATED",
+   "raw_edges": 1056,
+   "off_schema_relations": 18,
+   "off_schema_rate": 0.017045
+  }
+ }
+}

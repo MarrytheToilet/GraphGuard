@@ -46,11 +46,25 @@ Anything not listed here has been retired.
   JSON sources have been rebuilt.
 
 ## Additional analyses
-- `run_magnitude_analysis.py` — per-pair perturbation magnitudes recovered from
-  the lineage log, related to drift (Sec. 5.5 / Fig. 7). `--fig-only` rebuilds
-  the figure from cached `reports/cross_run/magnitude_*.json`.
+- `run_magnitude_analysis.py` — controlled nested token attenuation for schema
+  descriptions, prompt instructions, and evidence text (Sec. 5.5 / Fig. 7).
+  `--run-controlled` performs the API-backed extraction, `--analyze-only`
+  rebuilds reports from its raw checkpoint, and `--fig-only` rebuilds the
+  figure from cached `reports/cross_run/magnitude_*.json`.
 - `run_extended_queries.py` — extended query templates Q5–Q7 (shortest path,
   aggregation, GraphRAG retrieval) on all materialized pairs (Sec. 6.1 / Fig. 9a).
+- `run_cross_document_experiment.py` — registered BC5CDR two-document
+  joint-context stress test with oracle MeSH linking, source-provenance-aware
+  fanout/shared-tail queries, an alternate-seed reference, and Kuzu 0.11.3
+  parity (Sec. 6.1). `--analyze-only` reads the registered BC5CDR source and
+  CDR lineage DB to reconstruct the cohort and historical per-document
+  baseline. It makes no API call, but the historical runner still requires the
+  registered model and endpoint fingerprints in the maintainer environment.
+- `package_cross_document_checkpoint.py` — strips provider response text from
+  the append-only cross-document checkpoint while retaining normalized edges,
+  endpoint fingerprints, token counts, and status history. It verifies the
+  private manifest hash, rebinds the result to the byte-identical public
+  manifest, and commits the hash audit last for fail-closed verification.
 - `run_regime_analysis.py` — graph-only vs. query-aware detection of
   workload-visible query change, split by local / multi-hop regime
   (Sec. 6.2 / Fig. 9b).
@@ -65,8 +79,16 @@ Anything not listed here has been retired.
 - `run_family_decomposition.py` — repeated-extraction decomposition extended to
   every perturbation family (Sec. 5.1 / Table 5).
 - `run_langchain_toolchain.py` — LangChain `LLMGraphTransformer`
-  generalization run (Sec. 5.6 / Table 6); `--analyze-only` replays the
+  external-toolchain run (Sec. 5.6 / Table 6); `--analyze-only` replays the
   published checkpoint without API credentials, while extraction needs them.
+- `run_additional_toolchains.py` — Neo4j GraphRAG
+  `LLMEntityRelationExtractor` external-toolchain run (Sec. 5.6 / Table 6);
+  `--analyze-only` replays its published checkpoint without API credentials.
+- `run_external_toolchain_queries.py` — maps both published external-toolchain
+  outputs into one exact-name/declared-alias identifier namespace, materializes
+  every successful endpoint in Kuzu 0.11.3, executes the shared Q1–Q4
+  catalogue, and checks every answer set against the deterministic executor
+  (Sec. 5.6 / Table 6).
 - `run_model_size_k5.py` — K5 across the Qwen3 size ladder (Sec. 5.2).
 - `run_model_size_k5_expressible.py` — K5 ladder with gold restricted to the
   declared schema relations (metric-ceiling sensitivity, Sec. 5.2).

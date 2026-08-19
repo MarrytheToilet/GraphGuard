@@ -3,7 +3,7 @@
 
 The public result verifier checks machine-readable evidence.  This companion
 check closes the last mile: it verifies that every figure consumed by
-``paper/main.tex`` is the canonical asset copy and that the three numerical
+``paper/main.tex`` is the canonical asset copy and that the numerical
 tables in the paper (plus their response-letter counterparts) still match the
 authoritative JSON artifacts.
 """
@@ -62,6 +62,7 @@ def verify_inventory() -> None:
         "tab_contractnum",
         "tab_familydecomp",
         "tab_langchain",
+        "tab_crossdoc",
     }
     require(
         tables == expected_tables,
@@ -155,6 +156,8 @@ def verify_query_table() -> None:
         "Q_5": "Shortest path",
         "Q_6": "Aggregation",
         "Q_7": "RAG retrieval",
+        "X_1": "Cross-document fanout",
+        "X_2": "Cross-document shared tail",
     }
     for query_id, label in labels.items():
         require_fragment(tex, f"${query_id}$", f"query table {query_id}")
@@ -169,6 +172,85 @@ def verify_query_table() -> None:
             f"{contract_id}: registry query mismatch",
         )
     print("[PASS] query table and registered query contracts")
+
+
+def verify_cross_document_text() -> None:
+    result = load_json("reports/cross_run/cross_document_cdr.json")
+    summary = result["summary"]
+    order = summary["comparisons"]["order"]
+    seed = summary["comparisons"]["seed"]
+    excess = summary["order_minus_seed"]["max_query_drift"]
+    main = compact((ROOT / "paper" / "main.tex").read_text(encoding="utf-8"))
+    response = compact(
+        (ROOT / "paper" / "response.tex").read_text(encoding="utf-8")
+    )
+
+    main_table = compact(
+        (ROOT / "paper" / "tables" / "tab_crossdoc.tex").read_text(
+            encoding="utf-8"
+        )
+    )
+    for tex, context in (
+        (main_table, "main cross-document table"),
+        (response, "response cross-document table"),
+    ):
+        require_fragment(
+            tex,
+            (
+                "Provenance graph & "
+                f"${order['provenance_graph_drift']['mean']:.3f}\\,["
+                f"{order['provenance_graph_drift']['ci95'][0]:.3f},"
+                f"{order['provenance_graph_drift']['ci95'][1]:.3f}]$ & "
+                f"${seed['provenance_graph_drift']['mean']:.3f}\\,["
+                f"{seed['provenance_graph_drift']['ci95'][0]:.3f},"
+                f"{seed['provenance_graph_drift']['ci95'][1]:.3f}]$"
+            ),
+            context,
+        )
+        require_fragment(
+            tex,
+            (
+                "Active query & "
+                f"${order['max_query_drift']['mean']:.3f}\\,["
+                f"{order['max_query_drift']['ci95'][0]:.3f},"
+                f"{order['max_query_drift']['ci95'][1]:.3f}]$ & "
+                f"${seed['max_query_drift']['mean']:.3f}\\,["
+                f"{seed['max_query_drift']['ci95'][0]:.3f},"
+                f"{seed['max_query_drift']['ci95'][1]:.3f}]$"
+            ),
+            context,
+        )
+        for fragment in (
+            "prediction-independent, document-disjoint, gold-witness pairs",
+            "oracle MeSH linking",
+            "95\\% packet-bootstrap CI",
+        ):
+            require_fragment(tex, fragment, context)
+    excess_value = f"${excess['mean']:.3f}$"
+    excess_ci = (
+        f"$[{excess['ci95'][0]:.3f},"
+        f"{excess['ci95'][1]:.3f}]$"
+    )
+    for tex, context in (
+        (main, "main cross-document excess"),
+        (response, "response cross-document excess"),
+    ):
+        require_fragment(tex, excess_value, context)
+        require_fragment(tex, "95\\% CI", context)
+        require_fragment(tex, excess_ci, context)
+    require_fragment(
+        main,
+        "All $1{,}000$ Kuzu answer sets match the deterministic executor",
+        "main cross-document Kuzu parity",
+    )
+    for fragment in (
+        "$100$ prediction-independent, document-disjoint, gold-witness-enriched BC5CDR pairs",
+        "oracle MeSH linking",
+        "$1{,}000$ Kuzu",
+        "$[-0.023,0.101]$",
+    ):
+        require_fragment(response, fragment, "response cross-document evidence")
+    print("[PASS] cross-document manuscript and response numbers")
 
 
 def verify_contract_outcomes() -> None:
@@ -260,40 +342,75 @@ def verify_family_table(path: Path) -> None:
         require_fragment(tex, expected, path.name)
 
 
-def langchain_expected_rows() -> dict[str, tuple[str, str]]:
-    summary = load_json("reports/cross_run/langchain_toolchain.json")["summary"]
+def external_toolchain_expected_rows() -> dict[
+    str,
+    tuple[tuple[str, str], tuple[str, str]],
+]:
+    langchain = load_json(
+        "reports/cross_run/langchain_toolchain.json"
+    )["summary"]
+    neo4j = load_json("reports/cross_run/neo4j_toolchain.json")["summary"]
+    keys = {
+        "Schema reorder": "schema_reorder",
+        "Schema rename": "schema_rename",
+        "Prompt paraphrase": "prompt_para",
+        "Evidence reorder": "evidence_reorder",
+        "Decoding resample": "resample",
+    }
     return {
-        "Schema reorder": (
-            f"{summary['schema_reorder']['mean_drift']:.2f}",
-            f"{summary['schema_reorder']['violation_rate']:.2f}",
-        ),
-        "Schema rename": (
-            f"{summary['schema_rename']['mean_drift']:.2f}",
-            f"{summary['schema_rename']['violation_rate']:.2f}",
-        ),
-        "Prompt paraphrase": (
-            f"{summary['prompt_para']['mean_drift']:.2f}",
-            f"{summary['prompt_para']['violation_rate']:.2f}",
-        ),
-        "Evidence reorder": (
-            f"{summary['evidence_reorder']['mean_drift']:.2f}",
-            f"{summary['evidence_reorder']['violation_rate']:.2f}",
-        ),
-        "Decoding resample": (
-            f"{summary['resample']['mean_drift']:.2f}",
-            f"{summary['resample']['violation_rate']:.2f}",
-        ),
+        label: (
+            (
+                f"{langchain[key]['mean_drift']:.2f}",
+                f"{langchain[key]['violation_rate']:.2f}",
+            ),
+            (
+                f"{neo4j[key]['mean_drift']:.2f}",
+                f"{neo4j[key]['violation_rate']:.2f}",
+            ),
+        )
+        for label, key in keys.items()
     }
 
 
-def verify_langchain_table(path: Path) -> None:
+def verify_external_toolchain_table(path: Path) -> None:
     tex = compact(path.read_text(encoding="utf-8"))
-    for label, (drift, violation) in langchain_expected_rows().items():
+    for label, (langchain, neo4j) in external_toolchain_expected_rows().items():
         start = tex.find(label)
         require(start >= 0, f"{path.name}: missing {label}")
         row_end = tex.find(r"\\", start)
         row = tex[start:row_end]
-        require_fragment(row, f"& {drift} & {violation} &", path.name)
+        require_fragment(
+            row,
+            (
+                f"& {langchain[0]}, {langchain[1]} "
+                f"& {neo4j[0]}, {neo4j[1]}"
+            ),
+            path.name,
+        )
+    query_artifact = load_json(
+        "reports/cross_run/external_toolchain_q1q4_kuzu.json"
+    )
+    cells = []
+    for toolchain in ("langchain", "neo4j"):
+        summary = query_artifact["toolchains"][toolchain]["summary"]
+        drifts = [
+            row["mean_pair_max_query_drift"] for row in summary.values()
+        ]
+        violations = [
+            row["violation_rate"] for row in summary.values()
+        ]
+        cells.append(
+            f"{min(drifts):.2f}--{max(drifts):.2f}, "
+            f"{min(violations):.2f}--{max(violations):.2f}"
+        )
+    require_fragment(
+        tex,
+        (
+            f"Kuzu Q1--Q4 (range) & {cells[0]} "
+            f"& {cells[1]}"
+        ),
+        path.name,
+    )
 
 
 def verify_response_k5() -> None:
@@ -321,12 +438,15 @@ def main() -> int:
         verify_contract_table()
         verify_runs_table()
         verify_query_table()
+        verify_cross_document_text()
         verify_contract_outcomes()
         verify_family_table(ROOT / "paper" / "tables" / "tab_familydecomp.tex")
-        verify_langchain_table(ROOT / "paper" / "tables" / "tab_langchain.tex")
+        verify_external_toolchain_table(
+            ROOT / "paper" / "tables" / "tab_langchain.tex"
+        )
         response = ROOT / "paper" / "response.tex"
         verify_family_table(response)
-        verify_langchain_table(response)
+        verify_external_toolchain_table(response)
         verify_response_k5()
     except (
         FileNotFoundError,

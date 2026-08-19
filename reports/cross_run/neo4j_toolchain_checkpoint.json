@@ -1,0 +1,38 @@
+{
+ "schema_version": 1,
+ "artifact_type": "graphguard.additional_toolchain_checkpoint",
+ "toolchain": "neo4j_graphrag.LLMEntityRelationExtractor",
+ "producer": {
+  "runner": "scripts/run_additional_toolchains.py",
+  "runner_sha256": "79a880e4af7f5aeda6309ebe9510d9e9466f1dbd3ca2607eb658cc826c3701ee"
+ },
+ "checkpoint": {
+  "path": "reports/cross_run/neo4j_toolchain_cache.jsonl",
+  "bytes": 2609375,
+  "sha256": "5ed0a9dc4be392dbdad85f9c5097c9987394a3f366b1963fb927bc5ea84502ec",
+  "records": 600
+ },
+ "source_database": {
+  "path": "data/processed/runs/docred__deepseek-v4-flash__300d/docred__deepseek-v4-flash__300d.db",
+  "bytes": 212393984,
+  "sha256": "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4e0e03f9418"
+ },
+ "extraction_environment": {
+  "cohort_fingerprint": "9e1aa515ffe3172913dc0189881061b900b70fd2087fa3ae908c93d7465f7a97",
+  "model": "deepseek-v4-flash",
+  "dependency_versions": {
+   "neo4j-graphrag": "1.18.0",
+   "numpy": "2.2.6",
+   "openai": "1.109.1",
+   "pydantic": "2.13.4"
+  },
+  "extraction_mode": "LLMEntityRelationExtractor; one TextChunk per document; V1 JSON prompt; provider JSON-object mode; thinking disabled; lexical graph disabled; no persistence",
+  "outer_workers": 4,
+  "max_tokens": 4096,
+  "error_classification": "native OnError.RAISE; distinguish parse failure, empty, and nonempty output; no application-level retry",
+  "thinking_control": "disabled via extra_body.enable_thinking=false",
+  "evidence_seed_rule": "sha256(doc_id UTF-8), first 8 bytes, unsigned big-endian",
+  "per_record_fingerprints": true,
+  "per_record_input_hashes": true
+ }
+}

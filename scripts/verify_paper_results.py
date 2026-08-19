@@ -14,7 +14,7 @@ import math
 import random
 import sqlite3
 import statistics
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -137,15 +137,21 @@ def verify_artifact_inventory() -> None:
     required = [
         RC / "amp_ci.json",
         RC / "budget_planner.json",
+        RC / "cross_document_cdr.json",
+        RC / "cross_document_cdr_cache.jsonl.audit.json",
+        RC / "cross_document_cdr_cache.jsonl.manifest.json",
+        RC / "cross_document_cdr_cohort.json",
         RC / "cross_run_summary.json",
         RC / f"drift_accuracy_{RUNS['DocRED']}.json",
         RC / "endpoint_reuse.json",
+        RC / "external_toolchain_q1q4_kuzu.json",
         RC / "deployment_evidence.json",
         RC / "gate_split.json",
         RC / "k5_cross_model.json",
         RC / "k5_model_size.json",
         RC / "k5_model_size_expressible.json",
         RC / "langchain_toolchain.json",
+        RC / "neo4j_toolchain.json",
         RC / "reproducibility_manifest.json",
         RC / "sampled_document_ids.json",
     ]
@@ -340,24 +346,90 @@ def verify_revision_analyses() -> None:
     close(expressible["mean_recall_expressible"]["Qwen3-32B"], 0.174)
     close(expressible["mean_recall_expressible"]["DeepSeek-V4-Flash"], 0.260)
 
-    semantic_rhos = []
-    presentation_rhos = []
-    for run in RUNS.values():
-        summary = load(RC / f"magnitude_{run}.json")["summary"]
-        semantic_rhos.append(summary["schema"]["spearman_semantic_only"])
-        presentation_rhos.extend([
-            abs(summary["prompt"]["spearman_mag_drift"]),
-            abs(summary["evidence"]["spearman_mag_drift"]),
-        ])
-    require(
-        min(semantic_rhos) >= 0.13 and max(semantic_rhos) <= 0.40,
-        f"semantic magnitude correlations out of range: {semantic_rhos}",
-    )
-    require(
-        max(presentation_rhos) < 0.13,
-        f"presentation magnitude correlation exceeds rounded 0.13: "
-        f"{presentation_rhos}",
-    )
+    magnitude_expected = {
+        "DocRED": {
+            "base_valid": 99,
+            "pairs": 1179,
+            "reference": 0.460,
+            "schema_delta": 0.012,
+            "prompt_delta": 0.028,
+            "evidence_delta": 0.278,
+            "schema_positive": False,
+        },
+        "Re-DocRED": {
+            "base_valid": 98,
+            "pairs": 1173,
+            "reference": 0.492,
+            "schema_delta": 0.111,
+            "prompt_delta": 0.015,
+            "evidence_delta": 0.282,
+            "schema_positive": True,
+        },
+        "SciERC": {
+            "base_valid": 98,
+            "pairs": 1165,
+            "reference": 0.472,
+            "schema_delta": 0.077,
+            "prompt_delta": 0.017,
+            "evidence_delta": 0.352,
+            "schema_positive": True,
+        },
+        "BC5CDR": {
+            "base_valid": 100,
+            "pairs": 1200,
+            "reference": 0.127,
+            "schema_delta": 0.046,
+            "prompt_delta": 0.005,
+            "evidence_delta": 0.374,
+            "schema_positive": False,
+        },
+    }
+    for corpus, run in RUNS.items():
+        magnitude = load(RC / f"magnitude_{run}.json")
+        expected = magnitude_expected[corpus]
+        require(
+            magnitude["experiment_id"] == "controlled-magnitude"
+            and magnitude["n_documents"] == 100,
+            f"{corpus}: controlled magnitude metadata mismatch",
+        )
+        require(
+            magnitude["base"]["valid"] == expected["base_valid"]
+            and magnitude["n_valid_pairs"] == expected["pairs"],
+            f"{corpus}: magnitude pair inventory mismatch",
+        )
+        close(
+            magnitude["resample_reference"]["mean_drift"],
+            expected["reference"],
+        )
+        for family, key in (
+            ("schema", "schema_delta"),
+            ("prompt", "prompt_delta"),
+            ("evidence", "evidence_delta"),
+        ):
+            result = magnitude["families"][family]["paired_high_minus_low"]
+            close(result["mean"], expected[key])
+            lo, hi = result["ci95"]
+            if family == "evidence":
+                require(
+                    lo > 0,
+                    f"{corpus}: evidence magnitude CI is not positive",
+                )
+            elif family == "prompt":
+                require(
+                    lo <= 0 <= hi,
+                    f"{corpus}: prompt magnitude CI does not include zero",
+                )
+            else:
+                require(
+                    (lo > 0) == expected["schema_positive"],
+                    f"{corpus}: schema magnitude CI verdict mismatch",
+                )
+            levels = magnitude["families"][family]["levels"]
+            require(
+                set(levels) == {"0.10", "0.25", "0.50", "0.75"}
+                and min(cell["valid"] for cell in levels.values()) >= 95,
+                f"{corpus}: magnitude level inventory mismatch",
+            )
 
     toolchain = load(RC / "langchain_toolchain.json")
     producer = toolchain["provenance"]["producer"]
@@ -518,6 +590,133 @@ def verify_revision_analyses() -> None:
     ]
     require(min(rates) >= 0.91, "LangChain violation range mismatch")
 
+    neo4j = load(RC / "neo4j_toolchain.json")
+    require(
+        neo4j["schema_version"] == 1
+        and neo4j["artifact_type"]
+        == "graphguard.additional_toolchain_summary"
+        and neo4j["toolchain"]
+        == "neo4j_graphrag.LLMEntityRelationExtractor"
+        and neo4j["component_level_only"] is True
+        and neo4j["model"] == "deepseek-v4-flash"
+        and neo4j["attempted_documents"] == 100,
+        "Neo4j GraphRAG summary metadata mismatch",
+    )
+    neo4j_checkpoint = neo4j["provenance"]["checkpoint"]
+    neo4j_checkpoint_path = ROOT / neo4j_checkpoint["path"]
+    require(
+        neo4j_checkpoint_path.is_file(),
+        f"published Neo4j checkpoint missing: {neo4j_checkpoint_path}",
+    )
+    neo4j_records = [
+        json.loads(line)
+        for line in neo4j_checkpoint_path.read_text(
+            encoding="utf-8"
+        ).splitlines()
+    ]
+    require(
+        neo4j_checkpoint["bytes"] == neo4j_checkpoint_path.stat().st_size
+        and neo4j_checkpoint["sha256"]
+        == sha256_file(neo4j_checkpoint_path)
+        and neo4j_checkpoint["records"] == len(neo4j_records) == 600,
+        "Neo4j checkpoint provenance mismatch",
+    )
+    neo4j_metadata_ref = neo4j["provenance"]["checkpoint_metadata"]
+    neo4j_metadata_path = ROOT / neo4j_metadata_ref["path"]
+    require(
+        neo4j_metadata_path.is_file()
+        and neo4j_metadata_ref["sha256"]
+        == sha256_file(neo4j_metadata_path),
+        "Neo4j checkpoint metadata provenance mismatch",
+    )
+    neo4j_metadata = load(neo4j_metadata_path)
+    neo4j_source = neo4j["provenance"]["source_database"]
+    require(
+        neo4j_metadata["checkpoint"] == neo4j_checkpoint
+        and neo4j_metadata["source_database"] == neo4j_source
+        and neo4j_source == source_database
+        and neo4j_metadata["extraction_environment"]["thinking_control"]
+        == "disabled via extra_body.enable_thinking=false"
+        and neo4j_metadata["extraction_environment"][
+            "dependency_versions"
+        ]
+        == {
+            "neo4j-graphrag": "1.18.0",
+            "numpy": "2.2.6",
+            "openai": "1.109.1",
+            "pydantic": "2.13.4",
+        },
+        "Neo4j checkpoint metadata does not bind the reported run",
+    )
+    expected_conditions = {
+        "base",
+        "resample",
+        "schema_reorder",
+        "schema_rename",
+        "prompt_para",
+        "evidence_reorder",
+    }
+    neo4j_endpoints = {
+        (record["doc"], record["condition"])
+        for record in neo4j_records
+    }
+    require(
+        len({record["doc"] for record in neo4j_records}) == 100
+        and {record["condition"] for record in neo4j_records}
+        == expected_conditions
+        and len(neo4j_endpoints) == 600
+        and all(
+            record["toolchain"]
+            == "neo4j_graphrag.LLMEntityRelationExtractor"
+            and record["thinking_control"]
+            == "disabled via extra_body.enable_thinking=false"
+            for record in neo4j_records
+        ),
+        "Neo4j checkpoint endpoint inventory mismatch",
+    )
+    neo4j_cached = defaultdict(dict)
+    neo4j_errors = defaultdict(int)
+    for record in neo4j_records:
+        if record.get("edges") is None:
+            neo4j_errors[record["condition"]] += 1
+        else:
+            neo4j_cached[record["doc"]][record["condition"]] = record[
+                "edges"
+            ]
+    for condition, reported in neo4j["summary"].items():
+        drifts = []
+        for by_condition in neo4j_cached.values():
+            if "base" not in by_condition or condition not in by_condition:
+                continue
+            base = canonical_edges(by_condition["base"])
+            counterfactual = canonical_edges(by_condition[condition])
+            if not base and not counterfactual:
+                continue
+            union = base | counterfactual
+            drifts.append(
+                1.0 - (len(base & counterfactual) / len(union))
+            )
+        violation_rate = (
+            sum(drift > reported["tau"] for drift in drifts) / len(drifts)
+        )
+        require(
+            reported["n"] == len(drifts) == 99
+            and reported["attempted"] == 100
+            and reported["errors"] == neo4j_errors[condition] == 1
+            and reported["empty_empty_excluded"] == 0,
+            f"Neo4j checkpoint population mismatch for {condition}",
+        )
+        close(reported["mean_drift"], round(statistics.mean(drifts), 4))
+        close(reported["median_drift"], round(statistics.median(drifts), 4))
+        close(reported["violation_rate"], round(violation_rate, 4))
+    neo4j_rates = [
+        row["violation_rate"] for row in neo4j["summary"].values()
+    ]
+    require(
+        min(neo4j_rates) >= 0.78 and max(neo4j_rates) <= 0.95,
+        "Neo4j GraphRAG violation range mismatch",
+    )
+
     for run in RUNS.values():
         family = load(RC / f"family_decomp_{run}.json")
         require(
@@ -549,7 +748,429 @@ def verify_revision_analyses() -> None:
     print(
         "[PASS] additional analyses "
         "(magnitude, family decomposition, stability buckets, "
-        "K5 ladder, LangChain)"
+        "K5 ladder, LangChain, Neo4j GraphRAG)"
+    )
+
+
+def verify_external_toolchain_queries() -> None:
+    artifact = load(RC / "external_toolchain_q1q4_kuzu.json")
+    require(
+        artifact["artifact_type"]
+        == "graphguard.external_toolchain_q1q4_kuzu"
+        and artifact["artifact_version"] == 1
+        and artifact["kuzu_version"] == "0.11.3",
+        "external Q1-Q4 artifact metadata mismatch",
+    )
+    require(
+        artifact["source_database"]["bytes"] == 212393984
+        and artifact["source_database"]["sha256"]
+        == (
+            "54950e36efe566d3b73558f1c64336cb76913948bf4da1515ea7d4"
+            "e0e03f9418"
+        ),
+        "external Q1-Q4 source database mismatch",
+    )
+    protocol = artifact["protocol"]
+    require(
+        "independently" in protocol["query_workload"]
+        and "exact match" in protocol["entity_linking"]
+        and "containment" not in protocol["entity_linking"]
+        and protocol["empty_answers"]["both_empty_query_drift"] == 0.0
+        and protocol["empty_answers"]["one_empty_query_drift"] == 1.0
+        and not protocol["empty_answers"][
+            "pairs_filtered_for_empty_answers"
+        ]
+        and protocol["contract_violation"] == {
+            "metric": "pair maximum query drift",
+            "comparator": ">",
+            "tau": 0.30,
+            "alpha": 0.20,
+        },
+        "external Q1-Q4 protocol mismatch",
+    )
+
+    catalogs = artifact["query_catalogs"]
+    require(
+        catalogs["n_documents"] == 100
+        and catalogs["n_queries"] == 1926
+        and catalogs["family_counts"] == {
+            "deployment.lookup": 906,
+            "deployment.neighbor": 249,
+            "deployment.shared_tail_join": 416,
+            "deployment.typed_two_hop": 355,
+        },
+        "external Q1-Q4 catalog inventory mismatch",
+    )
+    parity = artifact["parity"]
+    require(
+        parity["status"] == "pass"
+        and parity["n_endpoints_materialized"] == 1189
+        and parity["n_query_instances"] == 22848
+        and parity["n_answer_sets"] == 22848
+        and parity["n_mismatches"] == 0
+        and parity["mismatches"] == [],
+        "external Q1-Q4 Kuzu parity mismatch",
+    )
+
+    producer = artifact["producer"]
+    require(
+        producer["command"].startswith(
+            "python scripts/run_external_toolchain_queries.py"
+        ),
+        "external Q1-Q4 producer command mismatch",
+    )
+    for relative, expected_hash in producer[
+        "implementation_sha256"
+    ].items():
+        path = ROOT / relative
+        require(
+            path.is_file() and sha256_file(path) == expected_hash,
+            f"external Q1-Q4 implementation hash mismatch: {relative}",
+        )
+
+    expected = {
+        "langchain": {
+            "mapping": {
+                "exact": 12325,
+                "ambiguous": 151,
+                "unlinked": 3416,
+            },
+            "successful_endpoints": 595,
+            "answer_sets": 11436,
+            "mean_range": (0.627, 0.708),
+            "violation_range": (0.676, 0.759),
+            "active_range": (0.247, 0.282),
+        },
+        "neo4j": {
+            "mapping": {
+                "exact": 10567,
+                "ambiguous": 218,
+                "unlinked": 2089,
+            },
+            "successful_endpoints": 594,
+            "answer_sets": 11412,
+            "mean_range": (0.488, 0.683),
+            "violation_range": (0.524, 0.729),
+            "active_range": (0.191, 0.215),
+        },
+    }
+    for toolchain, expected_toolchain in expected.items():
+        result = artifact["toolchains"][toolchain]
+        checkpoint = result["source_checkpoint"]
+        checkpoint_path = ROOT / checkpoint["path"]
+        require(
+            checkpoint_path.is_file()
+            and checkpoint["bytes"] == checkpoint_path.stat().st_size
+            and checkpoint["sha256"] == sha256_file(checkpoint_path)
+            and checkpoint["records"] == 600,
+            f"{toolchain}: external Q1-Q4 checkpoint mismatch",
+        )
+        mapping = result["mapping"]
+        require(
+            mapping["entity_resolution"]
+            == expected_toolchain["mapping"]
+            and mapping["off_schema_relations"] == 0
+            and mapping["n_endpoints"] == 600
+            and mapping["n_successful_endpoints"]
+            == expected_toolchain["successful_endpoints"],
+            f"{toolchain}: external Q1-Q4 identifier mapping mismatch",
+        )
+        execution = result["execution"]
+        require(
+            execution["n_endpoints_materialized"]
+            == expected_toolchain["successful_endpoints"]
+            and execution["n_query_instances"]
+            == expected_toolchain["answer_sets"]
+            and execution["n_answer_sets"]
+            == expected_toolchain["answer_sets"]
+            and execution["n_mismatches"] == 0,
+            f"{toolchain}: external Q1-Q4 execution inventory mismatch",
+        )
+
+        per_pair = result["per_pair"]
+        require(
+            len(per_pair) == 495,
+            f"{toolchain}: external Q1-Q4 pair count mismatch",
+        )
+        summary = result["summary"]
+        mean_values = []
+        violation_values = []
+        active_values = []
+        for axis, reported in summary.items():
+            records = [
+                record for record in per_pair
+                if record["axis"] == axis
+            ]
+            require(
+                len(records) == reported["n_pairs"] == 99
+                and reported["n_documents"] == 99
+                and reported["n_query_evaluations"] == 1902,
+                f"{toolchain}/{axis}: Q1-Q4 population mismatch",
+            )
+            state_counts = {
+                state: sum(
+                    record["answer_state_counts"][state]
+                    for record in records
+                )
+                for state in (
+                    "both_empty",
+                    "base_only",
+                    "cf_only",
+                    "both_nonempty",
+                )
+            }
+            require(
+                state_counts == reported["answer_state_counts"]
+                and sum(state_counts.values()) == 1902,
+                f"{toolchain}/{axis}: answer-state mismatch",
+            )
+            mean_drift = statistics.mean(
+                record["max_query_drift"] for record in records
+            )
+            violation = sum(
+                record["max_query_drift"] > 0.30 for record in records
+            ) / len(records)
+            active = (
+                1.0 - state_counts["both_empty"] / 1902
+            )
+            close(
+                reported["mean_pair_max_query_drift"],
+                mean_drift,
+                tol=1e-12,
+            )
+            close(
+                reported["violation_rate"],
+                violation,
+                tol=1e-12,
+            )
+            close(
+                reported["active_query_rate"],
+                active,
+                tol=1e-12,
+            )
+            mean_values.append(mean_drift)
+            violation_values.append(violation)
+            active_values.append(active)
+
+        for values, bounds, label in (
+            (
+                mean_values,
+                expected_toolchain["mean_range"],
+                "mean max drift",
+            ),
+            (
+                violation_values,
+                expected_toolchain["violation_range"],
+                "violation",
+            ),
+            (
+                active_values,
+                expected_toolchain["active_range"],
+                "active-query",
+            ),
+        ):
+            require(
+                bounds[0] <= min(values)
+                and max(values) <= bounds[1],
+                f"{toolchain}: external Q1-Q4 {label} range mismatch",
+            )
+    print(
+        "[PASS] external-toolchain actual-Kuzu Q1-Q4 "
+        "(1,189 endpoints; 22,848 answer sets; 0 mismatches)"
+    )
+
+
+def verify_cross_document_experiment() -> None:
+    """Check the public cache, retry history, and paper-facing summary."""
+    from graphguard.cross_document import summarize_records
+
+    cohort_path = RC / "cross_document_cdr_cohort.json"
+    cache_path = RC / "cross_document_cdr_cache.jsonl"
+    manifest_path = cache_path.with_suffix(cache_path.suffix + ".manifest.json")
+    audit_path = cache_path.with_suffix(cache_path.suffix + ".audit.json")
+    result_path = RC / "cross_document_cdr.json"
+    cohort = load(cohort_path)
+    manifest = load(manifest_path)
+    audit = load(audit_path)
+    result = load(result_path)
+
+    source_hashes = {
+        (
+            "data/raw/cdr/CDR_Data/CDR.Corpus.v010516/"
+            "CDR_DevelopmentSet.PubTator.txt"
+        ): "9e18d8e700168887a7919e62f67ac2ce2357e3f409a48ee992906abdd80fe3e5",
+        (
+            "data/processed/runs/cdr__deepseek-v4-flash__300d/"
+            "cdr__deepseek-v4-flash__300d.db"
+        ): "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+        "reports/cross_run/sampled_document_ids.json": (
+            "7b07cb539a58987750688887fb3dd33914672c4446b7548cb55767f2122b015d"
+        ),
+    }
+    selection = cohort["selection"]
+    require(
+        cohort["artifact_type"] == "graphguard.cross_document_cdr_cohort"
+        and cohort["artifact_version"] == 1
+        and selection["prediction_independent"] is True
+        and selection["n_packets"] == 100
+        and selection["n_unique_documents"] == 200
+        and selection["packets_sha256"]
+        == "2bbfdcba928ebfe92a005acf3b1c8777cec0080d37132db877a7ee1fdcde3146",
+        "cross-document cohort identity mismatch",
+    )
+    documents = [
+        document
+        for packet in cohort["packets"]
+        for document in packet["documents"]
+    ]
+    active = Counter(
+        family
+        for packet in cohort["packets"]
+        for family in packet["active_queries"]
+    )
+    require(
+        len(cohort["packets"]) == 100
+        and len(documents) == len(set(documents)) == 200
+        and active == {
+            "crossdoc_fanout": 41,
+            "crossdoc_shared_tail": 59,
+        },
+        "cross-document packet inventory mismatch",
+    )
+    require(
+        cohort["source_sha256"] == source_hashes
+        and manifest["source_sha256"] == source_hashes,
+        "cross-document source fingerprints mismatch",
+    )
+    mapping = cohort["mapping_audit"]
+    require(
+        mapping["n_documents"] == 300
+        and mapping["n_local_entities"] == 2009
+        and mapping["n_unique_mesh_ids"] == 952
+        and mapping["n_repeated_mesh_ids"] == 362
+        and mapping["n_documents_with_repeated_mesh"] == 299
+        and mapping["unmapped_gold_rows"] == 0
+        and mapping["base_edge_rows"] == 983
+        and mapping["mapped_base_edge_rows"] == 967,
+        "cross-document MeSH reconstruction audit mismatch",
+    )
+
+    require(cache_path.is_file(), "missing cross-document public cache")
+    records = [
+        json.loads(line)
+        for line in cache_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    keys = [(row["packet_id"], row["condition"]) for row in records]
+    key_counts = Counter(keys)
+    status_counts = Counter(row["status"] for row in records)
+    latest = {}
+    for row in records:
+        latest[(row["packet_id"], row["condition"])] = row
+    require(
+        len(records) == 302
+        and len(key_counts) == 300
+        and status_counts == {"ok": 300, "parse_error": 2}
+        and sum(count > 1 for count in key_counts.values()) == 2
+        and len(latest) == 300
+        and all(row["status"] == "ok" for row in latest.values()),
+        "cross-document cache chronology mismatch",
+    )
+    require(
+        all("raw_response_text" not in row for row in records),
+        "cross-document public cache contains raw provider text",
+    )
+    attempts = audit["endpoint_attempts"]
+    require(
+        audit["artifact_type"]
+        == "graphguard.cross_document_cdr_cache_audit"
+        and audit["artifact_version"] == 1
+        and audit["published_cache"]["sha256"] == sha256_file(cache_path)
+        and audit["published_cache"]["manifest_sha256"]
+        == sha256_file(manifest_path)
+        and audit["result_artifact"] == {
+            "path": "reports/cross_run/cross_document_cdr.json",
+            "sha256": sha256_file(result_path),
+        }
+        and attempts["records"] == 302
+        and attempts["unique_registered_keys"] == 300
+        and attempts["status_counts"] == {"ok": 300, "parse_error": 2}
+        and attempts["keys_with_retry"] == 2
+        and attempts["prompt_tokens"] == 441925
+        and attempts["completion_tokens"] == 1033328
+        and attempts["total_tokens"] == 1475253,
+        "cross-document public-cache audit mismatch",
+    )
+
+    require(
+        result["artifact_type"] == "graphguard.cross_document_cdr_results"
+        and result["artifact_version"] == 1
+        and result["cohort"]["sha256"] == sha256_file(cohort_path)
+        and result["checkpoint_manifest"]["sha256"]
+        == sha256_file(manifest_path)
+        and result["call_audit"]["planned_endpoints"] == 300
+        and result["call_audit"]["successful_endpoints"] == 300
+        and result["call_audit"]["finish_reasons"] == {"stop": 300}
+        and result["call_audit"]["normalization"] == {
+            "accepted_edges": 2355,
+            "invalid_cid_direction": 1,
+            "invalid_evidence": 0,
+            "invalid_provenance": 0,
+            "invalid_relation": 0,
+            "invalid_shape": 0,
+            "raw_edges": 2360,
+            "undeclared_entity": 4,
+        }
+        and result["negative_control"] == {
+            "document_local_cross_document_answers": 0,
+            "status": "pass",
+        }
+        and result["kuzu_parity"] == {
+            "kuzu_version": "0.11.3",
+            "answer_sets_checked": 1000,
+            "mismatches": [],
+            "status": "pass",
+        },
+        "cross-document result audit mismatch",
+    )
+    require(
+        summarize_records(result["per_packet"]) == result["summary"],
+        "cross-document packet-level summary mismatch",
+    )
+    summary = result["summary"]
+    close(
+        summary["comparisons"]["order"]["provenance_graph_drift"]["mean"],
+        0.320,
+        0.001,
+    )
+    close(
+        summary["comparisons"]["order"]["max_query_drift"]["mean"],
+        0.187,
+        0.001,
+    )
+    close(
+        summary["comparisons"]["seed"]["provenance_graph_drift"]["mean"],
+        0.280,
+        0.001,
+    )
+    close(
+        summary["comparisons"]["seed"]["max_query_drift"]["mean"],
+        0.150,
+        0.001,
+    )
+    close(
+        summary["query_quality"]["cached_union"]["mean_macro_query_f1"],
+        0.600,
+        0.001,
+    )
+    close(
+        summary["query_quality"]["joint_ab_seed7"]["mean_macro_query_f1"],
+        0.657,
+        0.001,
+    )
+    print(
+        "[PASS] BC5CDR cross-document stress test "
+        "(100 packets; 302 recorded attempts; 1,000 Kuzu answers)"
     )
 
 
@@ -1140,6 +1761,8 @@ def main() -> int:
         verify_contract_catalogue()
         verify_endpoint_reuse(lineage=args.lineage)
         verify_revision_analyses()
+        verify_external_toolchain_queries()
+        verify_cross_document_experiment()
         verify_query_results()
         verify_drift_accuracy()
         verify_harm_detection_and_gate()

@@ -1,0 +1,38 @@
+{
+  "artifact_type": "graphguard.cross_document_cdr_checkpoint_manifest",
+  "artifact_version": 1,
+  "design_id": "graphguard-cross-document-cdr-20260811",
+  "cohort": {
+    "path": "reports/cross_run/cross_document_cdr_cohort.json",
+    "sha256": "6dfbfba0d3a5586f35b076df14eeb53207961bc068378f61a452c0c7f79a7f32",
+    "packets_sha256": "2bbfdcba928ebfe92a005acf3b1c8777cec0080d37132db877a7ee1fdcde3146"
+  },
+  "model_id": "deepseek-v4-flash",
+  "endpoint_sha256": "11af706fece06e57a2ea84d603bceebff6071528a770e5ead9309f6e9ce003e5",
+  "temperature": 0.0,
+  "max_tokens": 8192,
+  "conditions": {
+    "joint_ab_seed7": {
+      "document_order": "AB",
+      "seed": 7
+    },
+    "joint_ba_seed7": {
+      "document_order": "BA",
+      "seed": 7
+    },
+    "joint_ab_seed13": {
+      "document_order": "AB",
+      "seed": 13
+    }
+  },
+  "source_sha256": {
+    "data/raw/cdr/CDR_Data/CDR.Corpus.v010516/CDR_DevelopmentSet.PubTator.txt": "9e18d8e700168887a7919e62f67ac2ce2357e3f409a48ee992906abdd80fe3e5",
+    "data/processed/runs/cdr__deepseek-v4-flash__300d/cdr__deepseek-v4-flash__300d.db": "1793ee64aa8d40ac9deeff4dfa08207a9e31107bcd16ea692c9ba27d8e814a44",
+    "reports/cross_run/sampled_document_ids.json": "7b07cb539a58987750688887fb3dd33914672c4446b7548cb55767f2122b015d"
+  },
+  "code_sha256": {
+    "scripts/run_cross_document_experiment.py": "8e590773ecb30be47c167cd4bdee84f128b74a3f633dc696b0d35fa1b9ad856a",
+    "graphguard/cross_document.py": "34c0bd352468850c2ff5debdeb7c40cee6cb18cbe9b2fda1f4732725ccaeccc1",
+    "graphguard/llm/openai_client.py": "ed3c757e672f5b5fca75ce21d9fcc2372013413573109e7339a8565ea5b47b8f"
+  }
+}

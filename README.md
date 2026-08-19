@@ -57,7 +57,7 @@ Each extraction is modelled as a sample from a configuration-conditioned distrib
 
 ### 2. 🧩 Lineage layer and paired counterfactuals
 
-Every base and counterfactual extraction is recorded with a **configuration fingerprint** (model, schema, prompt, evidence presentation, retrieval policy, decoding parameters). A logical `paired_runs` view joins each base extraction with the matching counterfactual for the same document, so a single materialized endpoint can be reused across many contracts, metrics, and query templates. Relative to independently materializing both endpoints for every contract-pair evaluation, endpoint union achieves savings factors of **7.3×–8.1× for calls** and **7.3×–7.9× for token volume** across the four primary runs; counterfactual-only factors are **4.0×–4.5×** when base graphs already exist. The seven catalogue runs contain 33,043 extraction events (≈138 M tokens); the LangChain and Qwen-size experiments are reported separately.
+Every base and counterfactual extraction is recorded with a **configuration fingerprint** (model, schema, prompt, evidence presentation, retrieval policy, decoding parameters). A logical `paired_runs` view joins each base extraction with the matching counterfactual for the same document, so a single materialized endpoint can be reused across many contracts, metrics, and query templates. Relative to independently materializing both endpoints for every contract-pair evaluation, endpoint union achieves savings factors of **7.3×–8.1× for calls** and **7.3×–7.9× for token volume** across the four primary runs; counterfactual-only factors are **4.0×–4.5×** when base graphs already exist. The seven catalogue runs contain 33,043 extraction events (≈138 M tokens); the external-toolchain and Qwen-size experiments are reported separately.
 
 ### 3. 🚦 Materialization planning and release gate
 
@@ -73,7 +73,7 @@ With document, schema, prompt, evidence, and model fixed, we draw five controlle
 
 ### ⚠️ Most stability contracts fail under default tolerances
 
-On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), diagnostic fan-out-join robustness (K4, 0.91), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) stays much lower (0.13); the revision artifacts use the registered identifier-first metric throughout.
+On the DocRED + DeepSeek-V4-Flash primary run, schema-presentation (K1, 0.97), schema-description (K1b, 0.93), prompt-presentation (K2, 0.92), diagnostic fan-out-join robustness (K4, 0.91), and decoding-resample (K6, 0.91) contracts all have **violation rates above 0.90**; the bounded schema-edit contract (K1c) violates at 0.72 and evidence-order/alias invariance (K3) at 0.64. Cross-model recall stability (K5) stays much lower (0.13); the registered artifacts use the identifier-first metric throughout.
 
 <div align="center">
   <img src="assets/figures/fig_crossrun_violations.png" alt="Cross-run contract violation rates" width="92%">
@@ -109,6 +109,14 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
   <sub><b>Stability buckets.</b> Instability already shows up under L1 (controlled decoding resampling + order-only changes): DocRED L1 answer-drift violation rate 0.69 and absolute query-divergence rate 0.35. Failures are not only artifacts of presentation or schema-definition rewrites.</sub>
 </div>
 
+### 📏 Controlled intensity separates perturbation fields
+
+On 100 registered documents per corpus, nested token attenuation gives a reproducible four-level intensity scale. Evidence-text attenuation has a consistent response across all four corpora: high-minus-low drift is **+0.278 to +0.374**, with every 95% interval above zero. Schema-description effects are corpus-specific and reliable on Re-DocRED and SciERC, while prompt-instruction changes are small and show no consistent intensity effect. Natural paraphrases remain a separate presentation family because surface distance does not reliably encode semantic or task change.
+
+### 🔌 Instability transfers to external extraction components
+
+The same five perturbation axes were run through LangChain's `LLMGraphTransformer` and Neo4j GraphRAG's `LLMEntityRelationExtractor`. Mean graph drift is **0.59–0.65** for LangChain and **0.43–0.62** for Neo4j GraphRAG. We then materialized all 1,189 successful endpoints in Kuzu 0.11.3 and executed the shared Q1–Q4 catalogue: all **22,848 answer sets** match the deterministic executor, and query-contract violation rates remain **0.68–0.76** and **0.53–0.73**, respectively.
+
 ### 🔁 Queries can amplify or absorb graph drift
 
 Graph-level drift does not translate uniformly into query-answer drift. In the canonical graph-wide diagnostic workload, DocRED **fan-out-join amplification D3 reaches 1.15 (95% document-cluster bootstrap CI [1.12, 1.17])**, while other diagnostics absorb part of the edge drift; edge-identity diagnostic D1 reproduces the typed edge set and serves as the no-amplification reference. On the sparser SciERC and BC5CDR schemas, D3 amplification falls to 0.82 and 0.12 because paired fan-out answers are often empty on both sides. D1–D5 are distinct from the gold-instantiated deployment Q1–Q4 used in RQ8–RQ10.
@@ -119,12 +127,16 @@ Graph-level drift does not translate uniformly into query-answer drift. In the c
   <sub><b>Diagnostic query amplification.</b> Edge identity (D1) and fan-out join (D3) across the paper runs; the dashed line marks Amp=1, while D1 is the empirical no-amplification reference (ε-damping places it below 1). D3 is above 1 on the primary DocRED, Re-DocRED, and Qwen3-32B runs, and near 1 on Kimi-K2 and GLM-5.</sub>
 </div>
 
+### 🌐 Joint-context extraction exhibits cross-document query drift
+
+The BC5CDR stress test jointly extracts 100 prediction-independent, document-disjoint pairs with oracle MeSH linking and source-document provenance. Active-query drift is **0.187** under document-order changes and **0.150** under alternate-seed resampling. Their paired difference is 0.038 (95% CI [−0.023, 0.101]), so both comparisons show workload-visible instability without isolating additional drift specifically from order. All **1,000 Kuzu answer sets** match the deterministic executor; document-local identifiers produce no cross-document answers.
+
 ### 🎯 Drift signals track query divergence and directional regressions
 
-On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query workload, **43.6%** have a mean absolute per-query F1 change above 0.05. Graph drift has moderate correlations with absolute answer-side error: ρ(Drift, |ΔR|) = 0.219 and ρ(Drift, |ΔP|) = 0.135 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean |ΔR| = 0.070 and |ΔP| = 0.117, vs. 0.031 and 0.032 for satisfied pairs. In the separate directional-regression evaluation across four corpora, **AUROC is 0.58–0.89 for graph drift and 0.62–0.91 for answer-set drift**; answer drift leads on three corpora and is effectively tied with graph drift on SciERC.
+On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query workload, **43.6%** have a mean absolute per-query F1 change above 0.05. Graph drift has moderate correlations with absolute answer-side error: ρ(Drift, |ΔR|) = 0.219 and ρ(Drift, |ΔP|) = 0.135 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean |ΔR| = 0.070 and |ΔP| = 0.117, vs. 0.031 and 0.032 for satisfied pairs. At exactly matched alarm counts, query-aware detection improves F1 on every corpus (**+0.01–+0.02** on DocRED, Re-DocRED, and SciERC; **+0.11** on BC5CDR); local and multi-hop gains reach **+0.10–+0.20** at the nearest attainable alarm rates. In the separate directional-regression evaluation, AUROC is **0.58–0.89 for graph drift and 0.62–0.91 for answer-set drift**; answer drift leads on three corpora and is effectively tied with graph drift on SciERC.
 
 <div align="center">
-  <img src="assets/figures/fig_auroc.png" alt="ROC and PR curves" width="92%">
+  <img src="assets/figures/fig_auroc.png" alt="Harmful-regression ROC curves" width="92%">
   <br/>
   <sub><b>Threshold-free harmful-regression detection.</b> Answer-set drift is the stronger predictor on three of the four corpora (SciERC is effectively tied). The fixed OR gate is an operating policy, not a learned ranker, so its ROC need not dominate either input.</sub>
 </div>
@@ -149,7 +161,7 @@ Deployed as a release gate before Kuzu ingestion, GraphGuard uses decision-time 
 
 ## 📒 Audited results ledger
 
-The ledger below maps the paper's headline claims to their authoritative machine-readable artifacts. It was re-audited on 2026-07-26. Paths abbreviated as `RC` refer to `reports/cross_run/`; `RR` refers to `reports/runs/<run>/`. The complete ledger can be checked automatically with `python scripts/verify_paper_results.py`.
+The ledger below maps the paper's headline claims to their authoritative machine-readable artifacts. It was re-audited on 2026-08-19. Paths abbreviated as `RC` refer to `reports/cross_run/`; `RR` refers to `reports/runs/<run>/`. The complete ledger can be checked automatically with `python scripts/verify_paper_results.py`.
 
 <details>
 <summary><strong>Expand the claim-to-artifact ledger</strong></summary>
@@ -204,7 +216,7 @@ Sources: `RC/family_decomp_cdr__deepseek-v4-flash__300d.json` and the contract r
 | Type agreement under binary CID + `OTHER` schema | 0.96–0.98; DocRED presentation edits have 24–27% mean relation-set disagreement |
 | MeSH identifiers absorb alias changes | Edge overlap 1.00, vs. 0.51–0.82 elsewhere |
 | Edges per document; rerun overlap | 2.5–3.2 vs. 7.4–10.7; 0.83 vs. 0.46–0.49 |
-| Dropping CID | Drift 0.98 |
+| Controlled evidence attenuation | At 75% masked evidence tokens, mean drift is 0.50 vs. a 0.13 same-input alternate-seed reference |
 
 ### §5.4 Calibration checks
 
@@ -217,22 +229,64 @@ Sources: `RC/family_decomp_cdr__deepseek-v4-flash__300d.json` and the contract r
 
 ### §5.5 Perturbation magnitude (RQ5, Fig. 7)
 
-Source: `RC/magnitude_*.json`, covering 25,720 pairs.
+Source: `RC/magnitude_*.json`. The controlled run attempted 100 registered
+documents per corpus. Five base calls failed; among endpoints with a valid
+base, 22 parse failures and one API failure left 4,717 valid magnitude pairs
+across the twelve family-by-level cells.
 
 | Claim | Value |
 | ----- | ----- |
-| Presentation edits, within-family Spearman correlation | $\lvert\rho\rvert\le 0.13$ |
-| Semantic dose response: DocRED drop 1/26 and ambiguous 3/26; SciERC 1/6; BC5CDR CID | 0.71, 0.89; 0.81; 0.98 drift |
-| Positive within-family semantic correlation | Spearman 0.13–0.40, each with n≥1,019 |
+| Same-input alternate-seed mean drift, DocRED / Re-DocRED / SciERC / BC5CDR | 0.460 / 0.492 / 0.472 / 0.127 |
+| Evidence-text high-minus-low drift | +0.278 / +0.282 / +0.352 / +0.374; every 95% CI is above zero |
+| Schema-description high-minus-low drift | +0.012 / +0.111 / +0.077 / +0.046; reliable only on Re-DocRED and SciERC |
+| Prompt-instruction high-minus-low drift | +0.028 / +0.015 / +0.017 / +0.005; every 95% CI includes zero |
 
-### §5.6 LangChain toolchain (RQ6, Table 6)
+### §5.6 External toolchains (RQ6, Table 6)
 
-Source: `RC/langchain_toolchain.json`.
+Sources: `RC/langchain_toolchain.json` and `RC/neo4j_toolchain.json`.
+Each toolchain attempted the same 100 DocRED documents under a shared base and
+five perturbations (600 document-condition endpoints); every axis has 99 valid
+pairs.
+
+| Axis | LangChain drift / violation | Neo4j GraphRAG drift / violation |
+| ---- | ---------------------------: | --------------------------------: |
+| Schema reorder | 0.62 / 0.98 | 0.60 / 0.94 |
+| Schema rename | 0.65 / 1.00 | 0.62 / 0.94 |
+| Prompt paraphrase | 0.59 / 0.92 | 0.53 / 0.87 |
+| Evidence reorder | 0.63 / 0.93 | 0.62 / 0.90 |
+| Decoding resample | 0.59 / 0.95 | 0.43 / 0.79 |
+
+The shared, output-independent Q1–Q4 catalogue is also executed in actual
+Kuzu 0.11.3 after exact benchmark-name/declared-alias mapping. Across the five
+axes, mean per-pair maximum answer drift / query-contract violation is
+0.63–0.71 / 0.68–0.76 for LangChain and 0.49–0.68 / 0.53–0.73 for Neo4j
+GraphRAG. Both-empty answers are retained as zero drift. All 22,848 Kuzu
+answer sets exactly match the deterministic executor.
+
+The Neo4j run records JSON-object mode with
+`extra_body.enable_thinking=false`; the historical LangChain checkpoint does
+not record an equivalent thinking-control setting.
+
+### §6.1 Cross-document workload (Table 7)
+
+Sources: `RC/cross_document_cdr_cohort.json`,
+`RC/cross_document_cdr_cache.jsonl`, its `.manifest.json` and `.audit.json`,
+and `RC/cross_document_cdr.json`.
 
 | Claim | Value |
 | ----- | ----- |
-| Invariance axes violated | 92–100% of documents |
-| Mean drift vs. the custom pipeline | Within 0.04 on schema, prompt, and evidence axes; resampling is 0.59 vs. the canonicalized K6 comparator's 0.51 (difference 0.08) and is not included in the within-0.04 claim |
+| Registered enriched cohort | 100 prediction-independent, document-disjoint packets; 200 documents; oracle MeSH linking |
+| Endpoint history | 302 recorded attempts; 300 final successful endpoints; two retry keys |
+| Provenance-graph drift, order / seed | 0.320 [0.276, 0.365] / 0.280 [0.236, 0.323] |
+| Active-query drift, order / seed | 0.187 [0.124, 0.255] / 0.150 [0.094, 0.211] |
+| Paired active-query order-minus-seed difference | 0.038; 95% CI [−0.023, 0.101] |
+| Kuzu parity and document-local negative | 1,000 answer sets, 0 mismatches; 0 cross-document answers with local identifiers |
+
+The fanout and shared-tail queries require relation witnesses from different
+source documents. This experiment evaluates provenance-constrained querying
+within the benchmark's MeSH namespace; it does not test open-domain entity
+linking, coreference, or relations supported only by combined cross-document
+evidence.
 
 ### §6.1 Query amplification (RQ7, Figs. 8 and 9a)
 
@@ -330,39 +384,57 @@ Run all commands below from the repository root.
 | K5 cross-model and size ladder | `run_k5_cross_model.py`; `run_model_size_k5.py`; `run_model_size_k5_expressible.py` | primary, GLM/Kimi/Qwen-32B, and Qwen-8B/14B DBs | `RC/k5_cross_model.json`, `RC/k5_model_size*.json`, Table 4 and size sensitivity |
 | Per-family decomposition | `run_family_decomposition.py` | four primary DBs | `RC/family_decomp_*.json`, Table 5 and response table |
 | Stability buckets | `run_stability_bucket_analysis.py` | four primary DBs | `RC/strict_vs_soft_*.json`, Fig. 6 |
-| Perturbation magnitude | `run_magnitude_analysis.py` | four primary DBs; `--fig-only` reads cached JSON | `RC/magnitude_*.json`, Fig. 7 |
+| Perturbation magnitude | `run_magnitude_analysis.py --run-controlled` | four primary DBs + prompt/schema configs + API; `--analyze-only` reads the raw checkpoint and `--fig-only` reads cached JSON | `RC/magnitude_*.json`, Fig. 7 |
 | Diagnostic D1–D5 amplification | `run_diagnostic_queries.py --overwrite`; `compute_amp_ci.py` | seven named DBs | `RC/diagnostic_*.json`, `RC/amp_ci.json`, Fig. 8 |
 | Extended Q5–Q7 | `run_extended_queries.py` | seven named DBs | `RC/extqueries_*.json`, Fig. 9a |
+| BC5CDR cross-document stress test | `run_cross_document_experiment.py`; `package_cross_document_checkpoint.py` | registered BC5CDR source + CDR DB; API only for extraction | `RC/cross_document_cdr_cohort.json`, public cache/manifest/audit, `RC/cross_document_cdr.json`, Sec. 6.1 |
 | Deployment Q1–Q4 evidence | `run_deployment_queries.py` → `validate_deployment_kuzu_parity.py` → `run_deployment_downstream.py` → `build_deployment_cohorts.py` → `run_deployment_kuzu_cohort.py` → `package_deployment_evidence.py` | four primary DBs; fixed label-blind cohort anchors | 17 hash-indexed artifacts in `RC/deployment_evidence.json` |
 | RQ8 drift/accuracy | `run_drift_accuracy_analysis.py` | registered downstream artifact + primary DocRED DB for K1 | `RC/drift_accuracy_*.json`, Fig. 10 statistics |
 | RQ9 query-aware contracts | `run_graph_vs_query_ablation.py --run <run>`; `run_regime_analysis.py` | registered downstream artifacts | `RC/graph_vs_query_*.json`, `RC/regimes_*.json`, Fig. 9b |
 | RQ10 gate and held-out split | `make_kuzu_gate_artifacts.py`; `make_gate_figure.py`; `run_gate_split_analysis.py` | registered Kuzu cohort artifacts | `RC/tab_e2ekuzu.tex`, `RC/gate_split.json`, Figs. 11–12 |
 | RQ10 budget planner | `run_budget_planner.py` | registered Kuzu cohort artifacts | `RC/budget_planner.json`, Fig. 12 |
 | Endpoint reuse | `run_endpoint_reuse_analysis.py` | four primary DBs + contract reports | `RC/endpoint_reuse.json` |
-| LangChain toolchain | `run_langchain_toolchain.py`; `--analyze-only` replays the published checkpoint | primary DocRED DB for extraction; `RC/langchain_toolchain_cache.jsonl` + hash-bound checkpoint metadata for offline replay | `RC/langchain_toolchain.json`, Table 6 and response table |
-| Final figures and tables | figure producers listed in step 3; `sync_paper_figures.py`; `verify_manuscript_artifacts.py` | authoritative JSON above | 13 active PNGs and six active `main.tex` tables |
+| External toolchains and Kuzu Q1–Q4 | `run_langchain_toolchain.py`; `run_additional_toolchains.py --toolchain neo4j`; `run_external_toolchain_queries.py --workers 4` | primary DocRED DB; `RC/{langchain,neo4j}_toolchain_cache.jsonl` + hash-bound checkpoint metadata | `RC/{langchain,neo4j}_toolchain.json`; `RC/external_toolchain_q1q4_kuzu.json`; Table 6 and response table |
+| Final figures and tables | figure producers listed in step 3; `sync_paper_figures.py`; `verify_manuscript_artifacts.py` | authoritative JSON above | 13 active PNGs and seven active `main.tex` tables |
 
 `fig_contract_overview.png` is the one author-created conceptual
 figure; the other 12 active PNGs have the producers named above. The three
 declarative tables (contracts, runs, and queries) are checked against the
-registries/configuration, while the three numerical tables and their
+registries/configuration, while the four numerical tables and their
 response-letter counterparts are checked directly against JSON values.
 
-Each result family has one canonical pre-release artifact. The RQ8–RQ10 chain
+Each result family has one canonical artifact. The RQ8–RQ10 chain
 is indexed by `deployment_evidence.json`; deterministic cohort anchors are
 reconstructed from the four lineage databases and checked against fixed
-run-ID digests in `build_deployment_cohorts.py`. Superseded edge-risk,
-repair, E8, monitoring, baseline, and E2E result families are not retained.
+run-ID digests in `build_deployment_cohorts.py`. Only the canonical result
+families listed above are retained.
 
-There are three reproducibility levels:
+There are four reproducibility levels:
 
 | Level | What it verifies or rebuilds | Raw corpora | Lineage DBs | API |
 | ----- | ---------------------------- | :---------: | :---------: | :-: |
 | Cached-artifact check | Headline claims, generated figures, and gate artifacts | No | No | No |
-| Pair-level re-analysis | Magnitude, stability, drift/accuracy, family, extended-query, regime, and K5 JSON | No | Yes | No |
+| Pair-level re-analysis | Stability, drift/accuracy, family, external-toolchain Kuzu queries, extended-query, regime, and K5 JSON | No | Yes | No |
+| Cross-document maintainer replay | Joint two-document BC5CDR outputs, historical per-document baseline, and Kuzu query parity | Yes | Yes | No calls; registered provider fingerprint required |
 | End-to-end re-extraction | Extraction events and every downstream artifact | Yes | Rebuilt | Yes |
 
 End-to-end extraction is not bitwise deterministic because the hosted model provider can remain nondeterministic even with `temperature=0` and a fixed seed. Cached-artifact and lineage re-analysis are the appropriate checks for the submitted numbers.
+The shipped magnitude JSON supports API-free verification and figure rebuilding.
+Re-running its controlled extraction requires the API because the 27 MB raw
+response checkpoint is intentionally kept under ignored `data/processed/`.
+The public cross-document cache retains the normalized MeSH/provenance edges,
+endpoint fingerprints, token counts, and retry history but removes provider
+response text. The cached verifier needs neither the corpus nor an API call;
+full packet-level reconstruction also reads the registered BC5CDR source and
+CDR lineage DB to rebuild the cohort and historical per-document baseline. The
+historical runner also checks the registered model and endpoint fingerprints
+from the original environment, although analysis makes no API request.
+The private, ignored checkpoint is
+`data/processed/cross_document/cross_document_cdr.jsonl`, with its manifest at
+the same path plus `.manifest.json`. The public replay package is
+`reports/cross_run/cross_document_cdr_cache.jsonl`, accompanied by
+`.manifest.json` and `.audit.json`; the registered cohort and summary are the
+two JSON files named in the ledger above.
 
 ### Resource envelope
 
@@ -373,14 +445,17 @@ below were taken on Linux with Python 3.10, a 16-thread Intel i7-12700KF, and
 
 | Level | Network / credentials | Local storage | Observed wall time | Peak RAM |
 | ----- | --------------------- | ------------: | -----------------: | -------: |
-| Cached result verification | package installation only | 86 MiB `reports/` | about 10 s | about 1.1 GiB |
-| Test suite (151 tests) | package installation only | repository checkout | about 10–15 s | about 1.2 GiB |
+| Cached result verification | package installation only | 92 MiB `reports/` | about 20 s | about 1.1 GiB |
+| Test suite (184 tests) | package installation only | repository checkout | about 25 s | about 1.2 GiB |
+| External-toolchain Kuzu Q1–Q4 replay | no network; primary DocRED DB required | DB + two published checkpoints | about 2 min with four workers | about 1 GiB |
+| Cross-document maintainer replay | no network; BC5CDR source, CDR DB, and registered provider fingerprint required | DB + about 1.5 MiB public artifacts | about 30 s | under 1 GiB |
+| Cross-document joint extraction | Model Studio key | DB + about 1 MiB private checkpoint | about 25.5 min for 300 registered endpoints | under 1 GiB |
 | Cached analyses and all generated figures | package installation only | repository checkout | about 30 s | under 2 GiB |
-| Seven-run lineage verification | no API; local DBs required | about 728 MiB for the seven lineage DBs | about 15 s | about 1.1 GiB |
+| Seven-run lineage verification | no API; local DBs required | about 728 MiB for the seven lineage DBs | about 25 s | about 1.1 GiB |
 | End-to-end catalogue extraction | dataset downloads + Model Studio key | at least 1 GiB plus caches | provider/rate-limit dependent | under 4 GiB locally |
 
 The seven catalogue runs contain 137,646,379 recorded input-plus-output tokens;
-the LangChain and Qwen-size experiments are separate. API wall time and monetary
+the external-toolchain and Qwen-size experiments are separate. API wall time and monetary
 cost are not fixed because provider throughput and prices can change. Reviewers
 who do not have matching provider access should use the cached-artifact path;
 it covers every paper-facing headline number. Lineage-level reconstruction
@@ -404,7 +479,7 @@ python scripts/verify_manuscript_artifacts.py
 python scripts/run_endpoint_reuse_analysis.py
 ```
 
-The first command validates the authoritative JSON artifacts, including the 17-entry RQ8–RQ10 evidence package, and checks the exact sampled-document lists, raw repeated-extraction baseline, run totals, contract table, endpoint-union savings, additional analyses, query-divergence statistics, directional-regression AUROC/AUPRC, release gate, and budget planner. `reports/cross_run/deployment_evidence.json` records the size, SHA-256, schema version, source run, and cross-artifact provenance of every registered artifact; large logical JSON files use one deterministic gzip transport. With `--lineage`, the verifier also checks the samples against the seven run databases, recomputes endpoint-union savings on the four primary runs, and recounts 33,043 events (28,482 primary + 4,561 cross-model) and 137,646,379 tokens directly from SQLite.
+The first command validates the authoritative JSON artifacts, including the 17-entry RQ8–RQ10 evidence package and the public cross-document cache. It checks the exact sampled-document lists, raw repeated-extraction baseline, run totals, contract table, endpoint-union savings, query analyses, cross-document retry history and packet summaries, directional-regression metrics, release gate, and budget planner. `reports/cross_run/deployment_evidence.json` records the size, SHA-256, schema version, source run, and cross-artifact provenance of every registered deployment artifact; large logical JSON files use one deterministic gzip transport. With `--lineage`, the verifier also checks the samples against the seven run databases, recomputes endpoint-union savings on the four primary runs, and recounts 33,043 events (28,482 primary + 4,561 cross-model) and 137,646,379 tokens directly from SQLite.
 
 ### 1. 🛠️ Install
 
@@ -426,13 +501,18 @@ cp .env.example .env
 # Set OPENAI_BASE_URL, OPENAI_API_KEY, OPENAI_MODEL in .env
 ```
 
-The lock targets Python 3.10 and includes all direct and transitive
-dependencies. A conventional editable install remains available for
-development (`python -m pip install -e '.[dev]'`), but only the `uv --locked`
-path recreates the evaluated dependency resolution. The paper used Alibaba
-Cloud Model Studio's OpenAI-compatible API; endpoint and key regions must
-match. Hosted model aliases can change after the reported runs, so new API
-extractions are behavioral replications rather than bitwise reconstructions.
+The root lock targets Python 3.10 and covers GraphGuard and the LangChain
+toolchain extra. The Neo4j extraction used a separate environment: cached
+analysis and Kuzu replay need no Neo4j installation, while full API
+re-extraction uses the recorded direct dependency pins in step 7. Those pins
+do not constitute a full transitive lock for the external Neo4j environment.
+A conventional editable install remains available for development
+(`python -m pip install -e '.[dev]'`), but only the `uv --locked` path
+recreates the evaluated GraphGuard dependency resolution. The paper used
+Alibaba Cloud Model Studio's OpenAI-compatible API; endpoint and key regions
+must match. Hosted model aliases can change after the reported runs, so new
+API extractions are behavioral replications rather than bitwise
+reconstructions.
 
 ### 2. 📦 Dataset setup
 
@@ -690,24 +770,77 @@ python scripts/compute_amp_ci.py
 ### 7. 🔁 Additional analyses
 
 The cached outputs of every additional analysis ship under `reports/cross_run/`
-and `reports/runs/<run>/` (magnitude, extended queries, regimes, per-family
-decomposition, LangChain toolchain, K5 model-size ladder and its
+and `reports/runs/<run>/` (magnitude, extended and cross-document queries,
+regimes, per-family decomposition, external toolchains, K5 model-size ladder and its
 expressible-schema sensitivity, gate calibration/deployment split, and the
 drift/accuracy analysis). Use
 `python scripts/verify_paper_results.py` to validate their paper-facing
-numbers. Re-deriving pair-level JSON needs the local per-run lineage databases
-under `data/processed/runs/` (rebuilt by step 4); these SQLite files are not
-committed.
+numbers. Re-deriving most pair-level JSON needs the local per-run lineage
+databases under `data/processed/runs/` (rebuilt by step 4); these SQLite files
+are not committed.
 
 With the four primary databases from step 4, the following analyses are
 offline:
 
 ```bash
-python scripts/run_magnitude_analysis.py        # Sec. 5.5: magnitude vs. drift
 python scripts/run_family_decomposition.py      # Sec. 5.1: per-family decomposition
 python scripts/run_regime_analysis.py           # Sec. 6.2: regime detection
 python scripts/run_drift_accuracy_analysis.py   # Sec. 6.2: drift/accuracy statistics
 python scripts/run_stability_bucket_analysis.py # Sec. 5.4: L1/L2/L3 buckets
+```
+
+The cross-document stress test uses 100 document-disjoint BC5CDR pairs selected
+without model predictions. Each pair has a gold witness for either a fanout or
+shared-tail query, so this is an enriched stress-test cohort rather than a
+random corpus sample. The joint extractor receives both documents and an
+oracle MeSH registry; every predicted relation retains its supporting source
+document. It does not evaluate open-domain entity resolution, coreference, or
+relations whose evidence exists only across documents.
+
+```bash
+# Verify the shipped cache and paper-facing summary; no corpus, DB, or API.
+python scripts/verify_paper_results.py
+
+# Maintainer replay of all 1,000 Kuzu answer sets. This makes no API call but
+# requires the BC5CDR source, CDR DB, and original model/endpoint fingerprint.
+python scripts/run_cross_document_experiment.py --analyze-only \
+  --checkpoint reports/cross_run/cross_document_cdr_cache.jsonl \
+  --output /tmp/cross_document_cdr_reanalysis.json
+
+# Repeat the 300 registered joint endpoints, then package a public replay cache.
+# Run --build-cohort first only when rebuilding the registered cohort.
+python scripts/run_cross_document_experiment.py --build-cohort
+python scripts/run_cross_document_experiment.py --extract
+# If the first extraction leaves failed endpoints, repeat with --retry-failures.
+python scripts/run_cross_document_experiment.py --extract --retry-failures
+python scripts/run_cross_document_experiment.py --analyze-only
+python scripts/package_cross_document_checkpoint.py
+```
+
+The final packaging step validates the private manifest hash, relocates only
+its recorded path to the byte-identical public manifest, and writes the audit
+last. A failed preflight therefore leaves the existing public package
+unchanged; an interrupted multi-file update fails the verifier's hash chain.
+
+The completed extraction has 300 successful registered endpoints. Its
+append-only history contains 302 recorded endpoint attempts because two
+length-truncated responses were retried, for 1,475,253 recorded tokens in
+total. Provider-client transport retries, if any, are not logged as separate
+attempts.
+
+The published Sec. 5.5 figure is rebuilt offline from the cached reports:
+
+```bash
+python scripts/run_magnitude_analysis.py --fig-only
+```
+
+To repeat the controlled extraction itself, first validate the registered
+400-document condition grid, then run the API-backed experiment. The raw
+checkpoint is resumable and is not committed:
+
+```bash
+python scripts/run_magnitude_analysis.py --dry-run --docs 100
+python scripts/run_magnitude_analysis.py --run-controlled --docs 100
 ```
 
 After the three cross-model databases from step 6 also exist, regenerate the
@@ -745,8 +878,9 @@ python scripts/run_model_size_k5.py
 python scripts/run_model_size_k5_expressible.py
 ```
 
-Finally, the reported LangChain result uses the transformer's JSON-prompt
-mode. The API command checkpoints every document-condition pair to the local
+Finally, the reported external-toolchain results use LangChain's
+JSON-prompt mode and Neo4j GraphRAG's JSON-object mode. The LangChain API
+command checkpoints every document-condition pair to the local
 append-only `data/processed/langchain_toolchain_cache.jsonl`. New extractions
 derive the evidence-order seed from SHA-256 of the document ID and reuse a
 success only when its cohort, configuration, input hash, model, and toolchain
@@ -756,6 +890,44 @@ dependency versions match. The published 600-record checkpoint is stored as
 replayable without API access and preserves the model identity, while recording
 that the original extraction dependency versions and exact sentence
 permutations are unavailable.
+
+The Neo4j run explicitly disables thinking and records its tested dependency
+versions (`neo4j-graphrag==1.18.0`, `openai==1.109.1`, `numpy==2.2.6`, and
+`pydantic==2.13.4`) in every record and in
+`reports/cross_run/neo4j_toolchain_checkpoint.json`. Its published 600-record
+checkpoint is `reports/cross_run/neo4j_toolchain_cache.jsonl`; the derived
+summary is `reports/cross_run/neo4j_toolchain.json`. The root `uv.lock` does
+not cover this extraction environment. To repeat the Neo4j API extraction,
+create a separate Python 3.10 environment with the recorded direct pins; this
+records the tested top-level versions rather than a full transitive lock:
+
+```bash
+python3.10 -m venv .venv-neo4j
+source .venv-neo4j/bin/activate
+python -m pip install \
+  "neo4j-graphrag==1.18.0" \
+  "openai==1.109.1" \
+  "numpy==2.2.6" \
+  "pydantic==2.13.4"
+
+set -a && . ./.env && set +a
+OPENAI_MODEL=deepseek-v4-flash \
+  python scripts/run_additional_toolchains.py \
+  --toolchain neo4j \
+  --limit 100 \
+  --workers 4 \
+  --cache data/processed/neo4j_toolchain_cache.jsonl
+
+python scripts/run_additional_toolchains.py \
+  --toolchain neo4j \
+  --cache data/processed/neo4j_toolchain_cache.jsonl \
+  --cohort 9e1aa515ffe3172913dc0189881061b900b70fd2087fa3ae908c93d7465f7a97 \
+  --publish-existing
+deactivate
+```
+
+The cached Neo4j analysis and Kuzu replay below do not require that separate
+environment.
 
 ```bash
 set -a && . ./.env && set +a
@@ -768,6 +940,16 @@ OPENAI_MODEL=deepseek-v4-flash \
 
 # Recompute the JSON summary from the published checkpoint (no API):
 python scripts/run_langchain_toolchain.py --analyze-only
+
+# Recompute the Neo4j GraphRAG summary from its published checkpoint (no API):
+python scripts/run_additional_toolchains.py \
+  --toolchain neo4j \
+  --cache reports/cross_run/neo4j_toolchain_cache.jsonl \
+  --analyze-only
+
+# Materialize every successful external endpoint in actual Kuzu and execute
+# the shared Q1--Q4 catalogue (no API; requires the primary DocRED DB):
+python scripts/run_external_toolchain_queries.py --workers 4
 ```
 
 ---
