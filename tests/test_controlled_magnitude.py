@@ -312,3 +312,49 @@ def test_condition_grid_has_shared_input_resample_and_twelve_unique_levels():
     )
     assert resample["seed"] == runner.RESAMPLE_SEED
     assert all(c["seed"] == runner.BASE_SEED for c in magnitude)
+
+
+def test_dose_response_uses_document_fixed_effects_and_reported_unit():
+    panels = {
+        "a": [(q, 0.10 + 0.40 * q) for q in LEVELS],
+        "b": [(q, 0.70 + 0.40 * q) for q in LEVELS],
+    }
+    first = runner._dose_response_summary(panels, seed=17, draws=100)
+    second = runner._dose_response_summary(panels, seed=17, draws=100)
+    assert first == second
+    assert first["complete_documents"] == 2
+    assert first["observations"] == 8
+    assert first["slope_per_0_10"] == pytest.approx(0.04)
+    assert first["ci95"] == pytest.approx([0.04, 0.04])
+    assert first["bootstrap"] == {
+        "unit": "document",
+        "draws": 100,
+        "seed": 17,
+    }
+
+
+def test_dose_response_requires_valid_base_and_all_four_levels():
+    docs = ["complete", "missing", "bad-base"]
+    bases = {
+        "complete": {"status": "ok"},
+        "missing": {"status": "ok"},
+        "bad-base": {"status": "parse_error"},
+    }
+    rows_by_level = {
+        q: {
+            document_id: {
+                "status": "ok",
+                "actual_magnitude": q,
+                "drift": q,
+            }
+            for document_id in docs
+        }
+        for q in LEVELS
+    }
+    rows_by_level[0.50]["missing"] = {"status": "parse_error"}
+    panels = runner._complete_dose_panels(
+        docs=docs,
+        bases=bases,
+        rows_by_level=rows_by_level,
+    )
+    assert list(panels) == ["complete"]

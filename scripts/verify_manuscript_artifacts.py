@@ -209,8 +209,12 @@ def verify_cross_document_text() -> None:
         )
         require_fragment(
             tex,
+            "Query with nonempty benchmark answer",
+            context,
+        )
+        require_fragment(
+            tex,
             (
-                "Active query & "
                 f"${order['max_query_drift']['mean']:.3f}\\,["
                 f"{order['max_query_drift']['ci95'][0]:.3f},"
                 f"{order['max_query_drift']['ci95'][1]:.3f}]$ & "
@@ -223,7 +227,7 @@ def verify_cross_document_text() -> None:
         for fragment in (
             "prediction-independent, document-disjoint, gold-witness pairs",
             "oracle MeSH linking",
-            "95\\% packet-bootstrap CI",
+            "95\\% document-pair bootstrap CI",
         ):
             require_fragment(tex, fragment, context)
     excess_value = f"${excess['mean']:.3f}$"
@@ -246,7 +250,7 @@ def verify_cross_document_text() -> None:
     for fragment in (
         "$100$ prediction-independent, document-disjoint, gold-witness-enriched BC5CDR pairs",
         "oracle MeSH linking",
-        "$1{,}000$ Kuzu",
+        "Kuzu reproduces all $1{,}000$ answer sets, while the document-local negative control returns none.",
         "$[-0.023,0.101]$",
     ):
         require_fragment(response, fragment, "response cross-document evidence")
@@ -431,6 +435,39 @@ def verify_response_k5() -> None:
     print("[PASS] response K5 size-ladder table")
 
 
+def verify_magnitude_text() -> None:
+    main = compact((ROOT / "paper" / "main.tex").read_text(encoding="utf-8"))
+    response = compact(
+        (ROOT / "paper" / "response.tex").read_text(encoding="utf-8")
+    )
+    artifacts = {
+        corpus: load_json(f"reports/cross_run/magnitude_{run}.json")
+        for corpus, run in {
+            "DocRED": "docred__deepseek-v4-flash__300d",
+            "Re-DocRED": "redocred__deepseek-v4-flash__300d",
+            "SciERC": "scierc__deepseek-v4-flash__100d",
+            "BC5CDR": "cdr__deepseek-v4-flash__300d",
+        }.items()
+    }
+    evidence = [
+        artifact["families"]["evidence"]["dose_response_slope"][
+            "slope_per_0_10"
+        ]
+        for artifact in artifacts.values()
+    ]
+    slope_range = f"${min(evidence):.3f}$--${max(evidence):.3f}$"
+    for name, tex in (("main", main), ("response", response)):
+        require_fragment(tex, slope_range, f"{name} magnitude slope")
+        require_fragment(tex, "document-fixed-effects", f"{name} estimator")
+        require_fragment(
+            tex,
+            "Labels give document-fixed-effects slopes per",
+            f"{name} magnitude caption",
+        )
+        require_fragment(tex, "semantic", f"{name} masking rationale")
+    print("[PASS] magnitude estimator and manuscript/response text")
+
+
 def main() -> int:
     try:
         require((ROOT / "paper").is_dir(), "private paper directory is absent")
@@ -448,6 +485,7 @@ def main() -> int:
         verify_family_table(response)
         verify_external_toolchain_table(response)
         verify_response_k5()
+        verify_magnitude_text()
     except (
         FileNotFoundError,
         KeyError,

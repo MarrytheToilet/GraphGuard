@@ -196,7 +196,7 @@ def main():
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1.02)
         ax.set_title(ds_name, fontsize=7)
-        ax.tick_params(labelsize=9)
+        ax.tick_params(labelsize=6)
         ax.set_xticks([0, 0.5, 1.0])
         ax.set_xticklabels(["0", ".5", "1"])
         ax.set_yticks([0, 0.5, 1.0])
@@ -206,8 +206,8 @@ def main():
             ax.spines[s].set_visible(False)
     axes[0].set_ylabel("Harm recall", fontsize=6.5)
     fig.tight_layout(w_pad=0.4)
-    leg = fig.legend(line_handles, line_labels, loc="upper center", ncol=4,
-                     bbox_to_anchor=(0.5, -0.46), bbox_transform=fig.transFigure,
+    leg = fig.legend(line_handles, line_labels, loc="lower center", ncol=4,
+                     bbox_to_anchor=(0.5, 1.02), bbox_transform=fig.transFigure,
                      fontsize=6, frameon=False, handlelength=1.5,
                      columnspacing=1.5, handletextpad=0.4)
     fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight", pad_inches=0.025,

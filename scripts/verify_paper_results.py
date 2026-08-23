@@ -80,6 +80,59 @@ def close(actual: float, expected: float, tol: float = 0.005) -> None:
         )
 
 
+def _fixed_effect_slope(
+    panels: list[list[tuple[float, float]]],
+) -> float:
+    numerator = 0.0
+    denominator = 0.0
+    for panel in panels:
+        x_mean = statistics.mean(x for x, _ in panel)
+        y_mean = statistics.mean(y for _, y in panel)
+        numerator += sum(
+            (x - x_mean) * (y - y_mean) for x, y in panel
+        )
+        denominator += sum((x - x_mean) ** 2 for x, _ in panel)
+    require(
+        denominator > 0,
+        "dose-response slope has no within-document variation",
+    )
+    return numerator / denominator
+
+
+def _recompute_dose_response(
+    pairs: list[dict],
+    *,
+    family: str,
+    seed: int,
+    draws: int,
+) -> tuple[int, float, list[float]]:
+    by_document: dict[str, list[tuple[float, float]]] = defaultdict(list)
+    for row in pairs:
+        if row["family"] == family:
+            by_document[row["document_id"]].append(
+                (float(row["actual_magnitude"]), float(row["drift"]))
+            )
+    complete = {
+        document_id: sorted(panel)
+        for document_id, panel in by_document.items()
+        if len(panel) == 4
+    }
+    docs = sorted(complete)
+    require(docs, f"{family}: no complete four-level dose panels")
+    point = 0.10 * _fixed_effect_slope([complete[doc] for doc in docs])
+    rng = random.Random(seed)
+    boot = []
+    for _ in range(draws):
+        sample = [complete[docs[rng.randrange(len(docs))]] for _ in docs]
+        boot.append(0.10 * _fixed_effect_slope(sample))
+    boot.sort()
+    ci = [
+        boot[math.floor(0.025 * (len(boot) - 1))],
+        boot[math.ceil(0.975 * (len(boot) - 1))],
+    ]
+    return len(docs), point, ci
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -355,6 +408,11 @@ def verify_revision_analyses() -> None:
             "prompt_delta": 0.028,
             "evidence_delta": 0.278,
             "schema_positive": False,
+            "slopes": {
+                "schema": (96, 0.00293, False),
+                "prompt": (95, 0.00478, False),
+                "evidence": (97, 0.04199, True),
+            },
         },
         "Re-DocRED": {
             "base_valid": 98,
@@ -364,6 +422,11 @@ def verify_revision_analyses() -> None:
             "prompt_delta": 0.015,
             "evidence_delta": 0.282,
             "schema_positive": True,
+            "slopes": {
+                "schema": (97, 0.01695, True),
+                "prompt": (96, 0.00012, False),
+                "evidence": (98, 0.04333, True),
+            },
         },
         "SciERC": {
             "base_valid": 98,
@@ -373,6 +436,11 @@ def verify_revision_analyses() -> None:
             "prompt_delta": 0.017,
             "evidence_delta": 0.352,
             "schema_positive": True,
+            "slopes": {
+                "schema": (95, 0.01298, True),
+                "prompt": (92, 0.00188, False),
+                "evidence": (97, 0.05534, True),
+            },
         },
         "BC5CDR": {
             "base_valid": 100,
@@ -382,9 +450,14 @@ def verify_revision_analyses() -> None:
             "prompt_delta": 0.005,
             "evidence_delta": 0.374,
             "schema_positive": False,
+            "slopes": {
+                "schema": (100, 0.00642, False),
+                "prompt": (100, -0.00038, False),
+                "evidence": (100, 0.05547, True),
+            },
         },
     }
-    for corpus, run in RUNS.items():
+    for run_index, (corpus, run) in enumerate(RUNS.items()):
         magnitude = load(RC / f"magnitude_{run}.json")
         expected = magnitude_expected[corpus]
         require(
@@ -401,10 +474,12 @@ def verify_revision_analyses() -> None:
             magnitude["resample_reference"]["mean_drift"],
             expected["reference"],
         )
-        for family, key in (
-            ("schema", "schema_delta"),
-            ("prompt", "prompt_delta"),
-            ("evidence", "evidence_delta"),
+        for family_index, (family, key) in enumerate(
+            (
+                ("schema", "schema_delta"),
+                ("prompt", "prompt_delta"),
+                ("evidence", "evidence_delta"),
+            )
         ):
             result = magnitude["families"][family]["paired_high_minus_low"]
             close(result["mean"], expected[key])
@@ -429,6 +504,49 @@ def verify_revision_analyses() -> None:
                 set(levels) == {"0.10", "0.25", "0.50", "0.75"}
                 and min(cell["valid"] for cell in levels.values()) >= 95,
                 f"{corpus}: magnitude level inventory mismatch",
+            )
+            slope = magnitude["families"][family]["dose_response_slope"]
+            expected_n, expected_slope, expected_positive = expected["slopes"][
+                family
+            ]
+            expected_seed = 40000 + 1000 * run_index + family_index
+            require(
+                slope["estimator"] == "pooled document-fixed-effects OLS"
+                and slope["x"] == "actual_magnitude"
+                and slope["complete_documents"] == expected_n
+                and slope["observations"] == 4 * expected_n
+                and slope["bootstrap"]
+                == {
+                    "unit": "document",
+                    "draws": 2000,
+                    "seed": expected_seed,
+                },
+                f"{corpus}/{family}: dose-response metadata mismatch",
+            )
+            n, point, slope_ci = _recompute_dose_response(
+                magnitude["pairs"],
+                family=family,
+                seed=expected_seed,
+                draws=2000,
+            )
+            require(
+                n == expected_n
+                and math.isclose(
+                    slope["slope_per_0_10"], point, abs_tol=1e-12
+                )
+                and all(
+                    math.isclose(actual, rebuilt, abs_tol=1e-12)
+                    for actual, rebuilt in zip(slope["ci95"], slope_ci)
+                ),
+                f"{corpus}/{family}: dose-response recomputation mismatch",
+            )
+            close(slope["slope_per_0_10"], expected_slope, tol=0.0005)
+            slope_lo, slope_hi = slope["ci95"]
+            require(
+                slope_lo > 0
+                if expected_positive
+                else slope_lo <= 0 <= slope_hi,
+                f"{corpus}/{family}: dose-response CI verdict mismatch",
             )
 
     toolchain = load(RC / "langchain_toolchain.json")

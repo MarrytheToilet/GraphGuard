@@ -18,7 +18,7 @@ SOURCE = ROOT / "assets" / "figures"
 TARGET = ROOT / "paper" / "figures"
 
 ACTIVE_FIGURES = (
-    "fig_contract_overview.png",
+    "fig_contract_overview.pdf",
     "fig_crossrun_violations.png",
     "fig_noise_floor.png",
     "fig_calibration.png",

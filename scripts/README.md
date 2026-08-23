@@ -50,7 +50,9 @@ Anything not listed here has been retired.
   descriptions, prompt instructions, and evidence text (Sec. 5.5 / Fig. 7).
   `--run-controlled` performs the API-backed extraction, `--analyze-only`
   rebuilds reports from its raw checkpoint, and `--fig-only` rebuilds the
-  figure from cached `reports/cross_run/magnitude_*.json`.
+  figure from cached `reports/cross_run/magnitude_*.json`. Each report also
+  gives the pooled document-fixed-effects slope in graph drift per additional
+  0.10 of realized masking, with a document-cluster bootstrap interval.
 - `run_extended_queries.py` — extended query templates Q5–Q7 (shortest path,
   aggregation, GraphRAG retrieval) on all materialized pairs (Sec. 6.1 / Fig. 9a).
 - `run_cross_document_experiment.py` — registered BC5CDR two-document
@@ -120,9 +122,10 @@ Anything not listed here has been retired.
 - `make_extqueries_figure.py` — extended-template amplification + regime
   dumbbells (paper Fig. 9).
 
-`fig_contract_overview.png` is an author-created conceptual raster; it is the
-only active paper figure without a code producer. `verify_manuscript_artifacts.py`
-still includes it in the canonical-asset hash check.
+`fig_contract_overview.pdf` is an author-created conceptual vector figure; it
+is the only active paper figure without a code producer.
+`verify_manuscript_artifacts.py` still includes it in the canonical-asset hash
+check.
 
 ## Tools
 - `visualize_contracts.py` — ad-hoc per-run contract plots.

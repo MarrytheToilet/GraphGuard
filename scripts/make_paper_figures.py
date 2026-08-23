@@ -255,7 +255,7 @@ def make_crossrun_violations() -> None:
     cbar = fig.colorbar(im, ax=ax, shrink=0.85, pad=0.02)
     cbar.set_label("violation rate", fontsize=7)
     cbar.ax.tick_params(labelsize=6.5)
-    ax.set_title("Cross-run contract violation rates", fontsize=9)
+    ax.set_title("Cross-run contract violation rates", fontsize=8)
     _S.save_fig(fig, OUT / "fig_crossrun_violations.png")
 
 
@@ -315,11 +315,13 @@ def make_amp_crossrun() -> None:
     ax.set_ylim(0, y_top)
     ax.set_ylabel(r"$\overline{\mathrm{Amp}}$", fontsize=9)
     ax.tick_params(axis="y", labelsize=7)
-    fig.legend([b1, b2],
-               [r"$D_1$ (edge identity)",
-                r"$D_3$ (fan-out join, 95% CI)"],
-               loc="lower center", ncol=2, fontsize=7, frameon=False,
-               bbox_to_anchor=(0.5, -0.14))
+    ax.legend([b1, b2],
+              [r"$D_1$ (edge identity)",
+               r"$D_3$ (fan-out join, 95% CI)"],
+              loc="upper left", bbox_to_anchor=(0.01, 0.99),
+              ncol=2, fontsize=7, frameon=False,
+              borderaxespad=0, borderpad=0.1, handlelength=1.2,
+              columnspacing=0.8, handletextpad=0.4)
     _S.despine(ax)
     for rect, v in zip(b1, d1):
         label_y = 1.04 if 0.87 <= v <= 1.0 else rect.get_height() + 0.04
@@ -528,9 +530,27 @@ def make_calibration_figure():
         ax.axhline(eps, color=red_line, lw=0.7, ls=":", alpha=0.7)
         if tau_star is not None:
             ax.axvline(tau_star, color=green, lw=1.1, ls="-.")
-            ax.text(min(tau_star + 0.06, 0.62), 0.9,
+            if tau_star >= 0.45:
+                ax.text(
+                    0.04,
+                    0.98,
+                    rf"$\tau^*=$" + "\n" + rf"${tau_star:.2f}$",
+                    transform=ax.transAxes,
+                    fontsize=5.5,
+                    color=green,
+                    ha="left",
+                    va="top",
+                    linespacing=0.75,
+                    zorder=5,
+                )
+            else:
+                ax.text(
+                    min(tau_star + 0.06, 0.62),
+                    0.9,
                     rf"$\tau^*$={tau_star:.2f}",
-                    fontsize=6.5, color=green)
+                    fontsize=6.5,
+                    color=green,
+                )
         else:
             ax.text(0.55, 0.45, "infeasible",
                     ha="center", va="center", fontsize=6.5,
@@ -549,15 +569,31 @@ def make_calibration_figure():
         if ax is axes[0]:
             ax.set_ylabel("Rate", fontsize=6.5)
 
-    axes[0].legend(loc="upper left", fontsize=5, frameon=False,
-                   handlelength=1.2, borderaxespad=0.1, labelspacing=0.25,
-                   handletextpad=0.4)
+    handles, labels = axes[0].get_legend_handles_labels()
     axes[0].text(0.96, eps + 0.04, rf"$\epsilon$={eps}", fontsize=5,
                   color=red_line, ha="right", va="bottom",
                   transform=axes[0].get_yaxis_transform())
     fig.tight_layout()
+    leg = fig.legend(
+        handles,
+        labels,
+        loc="lower center",
+        bbox_to_anchor=(0.5, 1.06),
+        ncol=2,
+        fontsize=5,
+        frameon=False,
+        handlelength=1.2,
+        columnspacing=0.8,
+        handletextpad=0.4,
+    )
     out = FIG_DIR / "fig_calibration.png"
-    fig.savefig(str(out), dpi=400, bbox_inches="tight", pad_inches=0.025)
+    fig.savefig(
+        str(out),
+        dpi=400,
+        bbox_inches="tight",
+        pad_inches=0.025,
+        bbox_extra_artists=[leg],
+    )
     plt.close(fig)
     print(f"[saved] {out}")
 
@@ -609,8 +645,8 @@ def make_noise_floor_figure():
                     ha="center", va="bottom", fontsize=5.5, color=_BLACK)
 
         ax.axhline(D0, color=floor_line, lw=1.0, ls="--")
-        ax.text(0.96, 0.96, rf"$D_0$={D0:.2f}", transform=ax.transAxes,
-                ha="right", va="top", fontsize=5.5, color=floor_line)
+        ax.text(0.04, 0.96, rf"$D_0$={D0:.2f}", transform=ax.transAxes,
+                ha="left", va="top", fontsize=5.5, color=floor_line)
         ax.set_xticks(x)
         ax.set_xticklabels([FAMILY_LABELS[f] for f in ORDER],
                            fontsize=5.2, rotation=35, ha="right")
@@ -624,15 +660,30 @@ def make_noise_floor_figure():
     axes[0].set_ylabel("Mean drift", fontsize=6.5)
 
     from matplotlib.patches import Patch
-    axes[3].legend(handles=[
+    handles = [
         Patch(facecolor=base_color,   edgecolor=_BLUE, label=r"base $D_0$"),
         Patch(facecolor=excess_color, edgecolor=_PINK, label="excess"),
-    ], loc="upper right", bbox_to_anchor=(1.0, 0.84), fontsize=5,
-       frameon=False, handlelength=1.0, borderaxespad=0.1,
-       labelspacing=0.25, handletextpad=0.4)
+    ]
     fig.tight_layout()
+    leg = fig.legend(
+        handles=handles,
+        loc="lower center",
+        bbox_to_anchor=(0.5, 1.01),
+        ncol=2,
+        fontsize=5,
+        frameon=False,
+        handlelength=1.0,
+        columnspacing=0.8,
+        handletextpad=0.4,
+    )
     out = FIG_DIR / "fig_noise_floor.png"
-    fig.savefig(str(out), dpi=400, bbox_inches="tight", pad_inches=0.025)
+    fig.savefig(
+        str(out),
+        dpi=400,
+        bbox_inches="tight",
+        pad_inches=0.025,
+        bbox_extra_artists=[leg],
+    )
     plt.close(fig)
     print(f"[saved] {out}")
 

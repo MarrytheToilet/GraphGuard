@@ -950,6 +950,97 @@ def _bootstrap_mean(
     return mean, [lo, hi]
 
 
+def _within_document_slope(
+    panels: Sequence[Sequence[tuple[float, float]]],
+) -> float:
+    """Return the pooled document-fixed-effects slope for complete panels."""
+    numerator = 0.0
+    denominator = 0.0
+    for panel in panels:
+        if len(panel) != len(NOMINAL_LEVELS):
+            raise ValueError("dose-response panels must contain all four levels")
+        x_mean = statistics.mean(x for x, _ in panel)
+        y_mean = statistics.mean(y for _, y in panel)
+        numerator += sum(
+            (x - x_mean) * (y - y_mean) for x, y in panel
+        )
+        denominator += sum((x - x_mean) ** 2 for x, _ in panel)
+    if denominator <= 0:
+        raise ValueError("dose-response slope has no within-document variation")
+    return numerator / denominator
+
+
+def _complete_dose_panels(
+    *,
+    docs: Sequence[str],
+    bases: dict[str, dict],
+    rows_by_level: dict[float, dict[str, dict]],
+) -> dict[str, list[tuple[float, float]]]:
+    """Collect documents with a valid base and all four valid dose endpoints."""
+    panels: dict[str, list[tuple[float, float]]] = {}
+    for document_id in docs:
+        if bases.get(document_id, {}).get("status") != "ok":
+            continue
+        panel: list[tuple[float, float]] = []
+        for q in NOMINAL_LEVELS:
+            row = rows_by_level[q].get(document_id)
+            if (
+                row is None
+                or row.get("status") != "ok"
+                or row.get("actual_magnitude") is None
+            ):
+                break
+            panel.append(
+                (float(row["actual_magnitude"]), float(row["drift"]))
+            )
+        if len(panel) == len(NOMINAL_LEVELS):
+            panels[document_id] = panel
+    return panels
+
+
+def _dose_response_summary(
+    panels_by_doc: dict[str, list[tuple[float, float]]],
+    *,
+    seed: int,
+    draws: int = BOOTSTRAP_DRAWS,
+) -> dict:
+    """Summarize drift per +0.10 actual masking with a document bootstrap."""
+    docs = sorted(panels_by_doc)
+    if not docs:
+        raise ValueError("dose-response summary has no complete documents")
+    point = 0.10 * _within_document_slope(
+        [panels_by_doc[document_id] for document_id in docs]
+    )
+    rng = random.Random(seed)
+    boot = []
+    for _ in range(draws):
+        sample = [
+            panels_by_doc[docs[rng.randrange(len(docs))]]
+            for _ in docs
+        ]
+        boot.append(0.10 * _within_document_slope(sample))
+    boot.sort()
+    lo = boot[math.floor(0.025 * (len(boot) - 1))]
+    hi = boot[math.ceil(0.975 * (len(boot) - 1))]
+    return {
+        "estimator": "pooled document-fixed-effects OLS",
+        "x": "actual_magnitude",
+        "unit": "graph drift per +0.10 actual masked-token fraction",
+        "complete_documents": len(docs),
+        "observations": len(docs) * len(NOMINAL_LEVELS),
+        "slope_per_0_10": point,
+        "ci95": [lo, hi],
+        "bootstrap": {
+            "unit": "document",
+            "draws": draws,
+            "seed": seed,
+        },
+        "missing_policy": (
+            "valid base and all four valid dose endpoints; no failure imputation"
+        ),
+    }
+
+
 def _load_checkpoint_records(path: Path) -> list[dict]:
     if not path.exists():
         raise FileNotFoundError(path)
@@ -1130,6 +1221,15 @@ def analyze_checkpoint(
                 paired_delta,
                 seed=20000 + 1000 * run_index + family_index,
             )
+            slope_seed = 40000 + 1000 * run_index + family_index
+            dose_response = _dose_response_summary(
+                _complete_dose_panels(
+                    docs=docs,
+                    bases=bases,
+                    rows_by_level=rows_by_level,
+                ),
+                seed=slope_seed,
+            )
             families[family] = {
                 "levels": levels,
                 "paired_high_minus_low": {
@@ -1137,6 +1237,7 @@ def analyze_checkpoint(
                     "mean": delta_mean,
                     "ci95": delta_ci,
                 },
+                "dose_response_slope": dose_response,
                 "monotone_document_fraction": (
                     sum(monotone.values()) / len(monotone) if monotone else None
                 ),
@@ -1258,7 +1359,9 @@ def make_figure(results: dict[str, dict], output: Path) -> None:
     ordered_runs = [run for run in MAIN_RUNS if run in results]
     for ax, run in zip(axes, ordered_runs):
         result = results[run]
-        for family, label, color, marker, linestyle in series:
+        for series_index, (family, label, color, marker, linestyle) in enumerate(
+            series
+        ):
             levels = result["families"][family]["levels"]
             xs = np.array(
                 [
@@ -1294,6 +1397,25 @@ def make_figure(results: dict[str, dict], output: Path) -> None:
             )
             ax.fill_between(
                 xs, lows, highs, color=color, alpha=0.12, linewidth=0
+            )
+            slope = result["families"][family]["dose_response_slope"][
+                "slope_per_0_10"
+            ]
+            slope_label = f"{family[0].upper()} {slope:+.4f}"
+            slope_label = slope_label.replace("+0.", "+.").replace("-0.", "-.")
+            label_y = 0.95 - 0.13 * series_index
+            if result["corpus_label"] == "SciERC" and family == "evidence":
+                label_y = 0.40
+            ax.text(
+                0.04,
+                label_y,
+                slope_label,
+                transform=ax.transAxes,
+                color=color,
+                fontsize=5.6,
+                ha="left",
+                va="top",
+                zorder=5,
             )
         reference = result["resample_reference"]
         ref_mean = reference["mean_drift"]

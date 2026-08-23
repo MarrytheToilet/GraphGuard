@@ -118,6 +118,24 @@
      0.12537540960286706
     ]
    },
+   "dose_response_slope": {
+    "estimator": "pooled document-fixed-effects OLS",
+    "x": "actual_magnitude",
+    "unit": "graph drift per +0.10 actual masked-token fraction",
+    "complete_documents": 95,
+    "observations": 380,
+    "slope_per_0_10": 0.012976822887307955,
+    "ci95": [
+     0.005888025864716344,
+     0.019986753947489902
+    ],
+    "bootstrap": {
+     "unit": "document",
+     "draws": 2000,
+     "seed": 42000
+    },
+    "missing_policy": "valid base and all four valid dose endpoints; no failure imputation"
+   },
    "monotone_document_fraction": 0.08421052631578947,
    "monotone_document_n": 95
   },
@@ -212,6 +230,24 @@
      0.06290745562407181
     ]
    },
+   "dose_response_slope": {
+    "estimator": "pooled document-fixed-effects OLS",
+    "x": "actual_magnitude",
+    "unit": "graph drift per +0.10 actual masked-token fraction",
+    "complete_documents": 92,
+    "observations": 368,
+    "slope_per_0_10": 0.0018816432058507103,
+    "ci95": [
+     -0.004489241627953258,
+     0.008361972446436543
+    ],
+    "bootstrap": {
+     "unit": "document",
+     "draws": 2000,
+     "seed": 42001
+    },
+    "missing_policy": "valid base and all four valid dose endpoints; no failure imputation"
+   },
    "monotone_document_fraction": 0.08695652173913043,
    "monotone_document_n": 92
   },
@@ -305,6 +341,24 @@
      0.30749282340301126,
      0.39701506740059805
     ]
+   },
+   "dose_response_slope": {
+    "estimator": "pooled document-fixed-effects OLS",
+    "x": "actual_magnitude",
+    "unit": "graph drift per +0.10 actual masked-token fraction",
+    "complete_documents": 97,
+    "observations": 388,
+    "slope_per_0_10": 0.055343689565853726,
+    "ci95": [
+     0.04870775253300613,
+     0.06177974313000714
+    ],
+    "bootstrap": {
+     "unit": "document",
+     "draws": 2000,
+     "seed": 42002
+    },
+    "missing_policy": "valid base and all four valid dose endpoints; no failure imputation"
    },
    "monotone_document_fraction": 0.4020618556701031,
    "monotone_document_n": 97

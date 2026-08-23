@@ -62,7 +62,7 @@ def main() -> int:
 
     _S.apply_rc(font_size=9)
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.50),
-                                   gridspec_kw={"hspace": 0.5})
+                                   gridspec_kw={"hspace": 0.60})
 
     # ---- (a) amplification ------------------------------------------------
     w = 0.26
@@ -95,9 +95,11 @@ def main() -> int:
     handles, labs = ax1.get_legend_handles_labels()
     handles.append(Line2D([0], [0], color=_S.GRAY, linestyle="--", linewidth=0.8))
     labs.append(r"$D_1$ ref.")
-    ax1.legend(handles, labs, fontsize=6.5, ncol=4, frameon=False, loc="upper center",
-               bbox_to_anchor=(0.5, 1.06), handlelength=1.0, columnspacing=0.8)
-    ax1.set_title("(a) Extended-template amplification", fontsize=9)
+    ax1.legend(handles, labs, fontsize=6.5, ncol=4, frameon=False,
+               loc="upper left", bbox_to_anchor=(0.01, 1.04),
+               labelspacing=0.1, borderpad=0, borderaxespad=0,
+               handlelength=0.9, columnspacing=0.6, handletextpad=0.25)
+    ax1.set_title("(a) Query-topology amplification", fontsize=8)
     _S.despine(ax1)
 
     # ---- (b) regime dumbbells --------------------------------------------
@@ -119,14 +121,33 @@ def main() -> int:
         ax2.scatter(gx, qy, s=22, facecolor=fill[regime], edgecolor=color[regime],
                     linewidth=1.2, zorder=3,
                     label=f"{'local' if regime=='local' else 'multi-hop'}: query-aware")
+        x_offset = -3 if regime == "local" else 3
+        h_align = "right" if regime == "local" else "left"
+        for xi, g, q in zip(gx, gy, qy):
+            avoid_y_axis = regime == "local" and xi < 0
+            label_offset = 3 if avoid_y_axis else x_offset
+            label_align = "left" if avoid_y_axis else h_align
+            for value in (g, q):
+                ax2.annotate(
+                    f"{value:.2f}",
+                    xy=(xi, value),
+                    xytext=(label_offset, 0),
+                    textcoords="offset points",
+                    ha=label_align,
+                    va="center",
+                    fontsize=5.0,
+                    color=color[regime],
+                    clip_on=False,
+                )
     ax2.set_xticks(x); ax2.set_xticklabels(labels)
     ax2.set_ylabel("detector F1")
-    ax2.set_ylim(0.46, 1.02)
-    ax2.legend(fontsize=6.5, ncol=2, frameon=False, loc="lower right",
-               bbox_to_anchor=(1.0, 0.0), handletextpad=0.3, columnspacing=0.8)
+    ax2.set_ylim(0.46, 1.19)
+    ax2.legend(fontsize=6.5, ncol=2, frameon=False, loc="upper center",
+               bbox_to_anchor=(0.5, 0.99), labelspacing=0.1, borderpad=0,
+               borderaxespad=0, handletextpad=0.3, columnspacing=0.8)
     ax2.set_title(
-        "(b) Workload-visible change: graph-only vs. query-aware",
-        fontsize=9,
+        "(b) Workload-visible change",
+        fontsize=8,
     )
     _S.despine(ax2)
 

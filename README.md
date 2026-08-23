@@ -111,7 +111,7 @@ GraphGuard does **not** treat its default tolerances as universal constants. Thr
 
 ### 📏 Controlled intensity separates perturbation fields
 
-On 100 registered documents per corpus, nested token attenuation gives a reproducible four-level intensity scale. Evidence-text attenuation has a consistent response across all four corpora: high-minus-low drift is **+0.278 to +0.374**, with every 95% interval above zero. Schema-description effects are corpus-specific and reliable on Re-DocRED and SciERC, while prompt-instruction changes are small and show no consistent intensity effect. Natural paraphrases remain a separate presentation family because surface distance does not reliably encode semantic or task change.
+On 100 registered documents per corpus, nested token attenuation gives a reproducible four-level intensity scale. Unlike semantic rewriting, it provides ordered, nested interventions on a common measurable scale while identifiers, order, entities, and the output scaffold stay fixed. On complete four-level panels, evidence-text attenuation increases graph drift by **0.042–0.055 per additional 0.10 of actual masking**, with every 95% interval above zero. Schema-description effects are reliable only on Re-DocRED and SciERC, while prompt-instruction slopes show no consistent effect. Natural paraphrases remain a separate presentation family for realistic wording changes because surface distance does not provide the same ordered semantic or task dose.
 
 ### 🔌 Instability transfers to external extraction components
 
@@ -240,6 +240,9 @@ across the twelve family-by-level cells.
 | Evidence-text high-minus-low drift | +0.278 / +0.282 / +0.352 / +0.374; every 95% CI is above zero |
 | Schema-description high-minus-low drift | +0.012 / +0.111 / +0.077 / +0.046; reliable only on Re-DocRED and SciERC |
 | Prompt-instruction high-minus-low drift | +0.028 / +0.015 / +0.017 / +0.005; every 95% CI includes zero |
+| Evidence slope per +0.10 actual masking | +0.0420 / +0.0433 / +0.0553 / +0.0555; every 95% CI is above zero |
+| Schema slope per +0.10 actual masking | +0.0029 / +0.0169 / +0.0130 / +0.0064; reliable only on Re-DocRED and SciERC |
+| Prompt slope per +0.10 actual masking | +0.0048 / +0.0001 / +0.0019 / -0.0004; every 95% CI includes zero |
 
 ### §5.6 External toolchains (RQ6, Table 6)
 
@@ -395,10 +398,10 @@ Run all commands below from the repository root.
 | RQ10 budget planner | `run_budget_planner.py` | registered Kuzu cohort artifacts | `RC/budget_planner.json`, Fig. 12 |
 | Endpoint reuse | `run_endpoint_reuse_analysis.py` | four primary DBs + contract reports | `RC/endpoint_reuse.json` |
 | External toolchains and Kuzu Q1–Q4 | `run_langchain_toolchain.py`; `run_additional_toolchains.py --toolchain neo4j`; `run_external_toolchain_queries.py --workers 4` | primary DocRED DB; `RC/{langchain,neo4j}_toolchain_cache.jsonl` + hash-bound checkpoint metadata | `RC/{langchain,neo4j}_toolchain.json`; `RC/external_toolchain_q1q4_kuzu.json`; Table 6 and response table |
-| Final figures and tables | figure producers listed in step 3; `sync_paper_figures.py`; `verify_manuscript_artifacts.py` | authoritative JSON above | 13 active PNGs and seven active `main.tex` tables |
+| Final figures and tables | figure producers listed in step 3; `sync_paper_figures.py`; `verify_manuscript_artifacts.py` | authoritative JSON above | 13 active figures and seven active `main.tex` tables |
 
-`fig_contract_overview.png` is the one author-created conceptual
-figure; the other 12 active PNGs have the producers named above. The three
+`fig_contract_overview.pdf` is the one author-created conceptual vector
+figure; the other 12 active figures are PNGs with the producers named above. The three
 declarative tables (contracts, runs, and queries) are checked against the
 registries/configuration, while the four numerical tables and their
 response-letter counterparts are checked directly against JSON values.
@@ -446,7 +449,7 @@ below were taken on Linux with Python 3.10, a 16-thread Intel i7-12700KF, and
 | Level | Network / credentials | Local storage | Observed wall time | Peak RAM |
 | ----- | --------------------- | ------------: | -----------------: | -------: |
 | Cached result verification | package installation only | 92 MiB `reports/` | about 20 s | about 1.1 GiB |
-| Test suite (184 tests) | package installation only | repository checkout | about 25 s | about 1.2 GiB |
+| Test suite (186 tests) | package installation only | repository checkout | about 25 s | about 1.2 GiB |
 | External-toolchain Kuzu Q1–Q4 replay | no network; primary DocRED DB required | DB + two published checkpoints | about 2 min with four workers | about 1 GiB |
 | Cross-document maintainer replay | no network; BC5CDR source, CDR DB, and registered provider fingerprint required | DB + about 1.5 MiB public artifacts | about 30 s | under 1 GiB |
 | Cross-document joint extraction | Model Studio key | DB + about 1 MiB private checkpoint | about 25.5 min for 300 registered endpoints | under 1 GiB |

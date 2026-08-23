@@ -235,8 +235,8 @@ def build_figure():
             ax.spines[s].set_visible(False)
     axes[0].set_ylabel("Pub. harm rate", fontsize=6.5)
     fig.tight_layout()
-    leg = fig.legend(line_handles, line_labels, loc="upper center", ncol=3,
-                     bbox_to_anchor=(0.5, -0.46), bbox_transform=fig.transFigure,
+    leg = fig.legend(line_handles, line_labels, loc="lower center", ncol=3,
+                     bbox_to_anchor=(0.5, 1.02), bbox_transform=fig.transFigure,
                      fontsize=6, frameon=False, handlelength=1.5,
                      columnspacing=1.5, handletextpad=0.4)
     fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight", pad_inches=0.025,
