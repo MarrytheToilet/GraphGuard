@@ -20,6 +20,7 @@ from typing import Any
 
 from graphguard.deployment_evidence import (
     PRIMARY_RUNS,
+    load_downstream_evidence,
     load_kuzu_evidence,
     validate_evidence_package,
 )
@@ -160,6 +161,58 @@ def rank_auc(labels: list[int], scores: list[float]) -> float:
     return (
         rank_sum_pos - n_pos * (n_pos + 1) / 2.0
     ) / (n_pos * n_neg)
+
+
+def fixed_budget_flags(
+    scores: list[float], row_ids: list[str], n_review: int
+) -> list[bool]:
+    """Independent reconstruction of the label-blind exact top-k policy."""
+    ranked = sorted(
+        range(len(scores)),
+        key=lambda index: (
+            -scores[index],
+            hashlib.sha256(row_ids[index].encode()).hexdigest(),
+        ),
+    )
+    selected = set(ranked[:n_review])
+    return [index in selected for index in range(len(scores))]
+
+
+def confusion_from_flags(
+    flags: list[bool], labels: list[bool]
+) -> dict[str, float | int]:
+    tp = sum(flag and label for flag, label in zip(flags, labels))
+    fp = sum(flag and not label for flag, label in zip(flags, labels))
+    fn = sum(not flag and label for flag, label in zip(flags, labels))
+    tn = len(labels) - tp - fp - fn
+    precision = tp / (tp + fp) if tp + fp else 0.0
+    recall = tp / (tp + fn) if tp + fn else 0.0
+    f1 = (
+        2 * precision * recall / (precision + recall)
+        if precision + recall
+        else 0.0
+    )
+    return {
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "tn": tn,
+        "review_rate": (tp + fp) / len(labels),
+        "precision": round(precision, 4),
+        "recall": round(recall, 4),
+        "f1": round(f1, 4),
+    }
+
+
+def verify_confusion(
+    observed: dict[str, float | int],
+    expected: dict[str, float | int],
+    context: str,
+) -> None:
+    for key in ("tp", "fp", "fn", "tn"):
+        require(observed[key] == expected[key], f"{context}: {key} mismatch")
+    for key in ("review_rate", "precision", "recall", "f1"):
+        close(float(observed[key]), float(expected[key]), tol=1e-12)
 
 
 def pr_auc(labels: list[int], scores: list[float]) -> float:
@@ -1418,44 +1471,199 @@ def verify_query_results() -> None:
             tol=1e-12,
         )
 
-    pooled_deltas = []
+    budgets = (0.30, 0.50, 0.70, 0.90)
+    pooled_gains = []
+    regime_gains = []
+    registered = {
+        "local": ("deployment.lookup", "deployment.neighbor"),
+        "multihop": (
+            "deployment.shared_tail_join",
+            "deployment.typed_two_hop",
+        ),
+    }
     for run in RUNS.values():
-        monitors = load(
-            RC / f"graph_vs_query_{run}.json"
-        )["monitors_at_matched_alarm"]
-        close(
-            monitors["query_aware"]["alarm_rate"],
-            monitors["graph_only"]["alarm_rate"],
-            tol=1e-12,
+        source = load_downstream_evidence(ROOT, run)
+        pairs = source["per_pair"]
+        pooled = load(RC / f"graph_vs_query_{run}.json")
+        require(pooled["artifact_version"] == 2, f"{run}: stale pooled artifact")
+        require(
+            "primary score for the mean-change target"
+            in pooled["score_definitions"]["query_mean"],
+            f"{run}: target-aligned query score is not documented",
         )
-        pooled_deltas.append(
-            monitors["query_aware"]["f1"] - monitors["graph_only"]["f1"]
+        for pair in pairs:
+            families = list(pair["families"].values())
+            n_queries = sum(item["n_queries"] for item in families)
+            require(
+                n_queries == pair["n_queries"] and n_queries > 0,
+                f"{run}/{pair['run_id']}: registered query count mismatch",
+            )
+            weighted_mean = sum(
+                item.get("mean_answer_drift", 0.0) * item["n_queries"]
+                for item in families
+            ) / n_queries
+            close(
+                pair["mean_answer_drift"],
+                weighted_mean,
+                tol=1e-12,
+            )
+        labels = [row["mean_delta_f1_abs"] > 0.05 for row in pairs]
+        row_ids = [row["run_id"] for row in pairs]
+        graph_scores = [row["graph_drift"] for row in pairs]
+        mean_scores = [row["mean_answer_drift"] for row in pairs]
+        max_scores = [row["max_answer_drift"] for row in pairs]
+        for key, scores in (
+            ("graph_only", graph_scores),
+            ("query_mean", mean_scores),
+            ("query_max", max_scores),
+        ):
+            close(
+                pooled["threshold_free"][key]["auroc"],
+                rank_auc([int(label) for label in labels], scores),
+                tol=5e-5,
+            )
+        require(
+            pooled["threshold_free"]["query_mean_minus_graph_auroc"]
+            ["document_cluster_bootstrap_ci95"][0] > 0,
+            f"{run}: pooled query-mean AUROC bootstrap does not clear zero",
         )
-    require(
-        0.005 <= min(pooled_deltas) and max(pooled_deltas) <= 0.115,
-        f"pooled query-aware F1 deltas mismatch: {pooled_deltas}",
-    )
+        pooled_rng = pooled["threshold_free"][
+            "query_mean_minus_graph_auroc"
+        ]["rng"]
+        pooled_prefix = hashlib.sha256(run.encode()).hexdigest()[:8]
+        require(
+            pooled_rng == {
+                "base_seed": 20260831,
+                "seed_key": run,
+                "sha256_prefix8": pooled_prefix,
+                "seed_offset": int(pooled_prefix, 16),
+                "effective_seed": 20260831 + int(pooled_prefix, 16),
+                "derivation": "base_seed + int(SHA256(seed_key)[:8], 16)",
+            },
+            f"{run}: pooled bootstrap RNG metadata mismatch",
+        )
+        require(
+            [row["review_budget"] for row in pooled["fixed_review_budgets"]]
+            == list(budgets),
+            f"{run}: pooled fixed-budget grid mismatch",
+        )
+        for row in pooled["fixed_review_budgets"]:
+            n_review = round(row["review_budget"] * len(pairs))
+            require(row["n_review"] == n_review, f"{run}: pooled count mismatch")
+            graph = confusion_from_flags(
+                fixed_budget_flags(graph_scores, row_ids, n_review), labels
+            )
+            mean = confusion_from_flags(
+                fixed_budget_flags(mean_scores, row_ids, n_review), labels
+            )
+            maximum = confusion_from_flags(
+                fixed_budget_flags(max_scores, row_ids, n_review), labels
+            )
+            verify_confusion(row["graph_only"], graph, f"{run}/pooled/graph")
+            verify_confusion(row["query_mean"], mean, f"{run}/pooled/mean")
+            verify_confusion(row["query_max"], maximum, f"{run}/pooled/max")
+            close(
+                row["query_mean_minus_graph_f1"],
+                float(mean["f1"]) - float(graph["f1"]),
+                tol=1e-12,
+            )
+            pooled_gains.append(row["query_mean_minus_graph_f1"])
 
-    regime_deltas = []
-    unequal_alarm_regimes = 0
-    for run in RUNS.values():
-        regimes = load(
-            RC / f"regimes_{run}.json"
-        )["regimes"]
-        for row in regimes.values():
-            regime_deltas.append(row["delta_f1"])
-            if abs(
-                row["graph_only"]["alarm_rate"]
-                - row["query_aware"]["alarm_rate"]
-            ) > 0.05:
-                unequal_alarm_regimes += 1
+        regime_artifact = load(RC / f"regimes_{run}.json")
+        require(
+            regime_artifact["artifact_version"] == 2,
+            f"{run}: stale regime artifact",
+        )
+        for regime, families in registered.items():
+            eligible = []
+            for pair in pairs:
+                summaries = [pair["families"][family] for family in families]
+                n_queries = sum(item["n_queries"] for item in summaries)
+                if not n_queries or not any(
+                    item.get("has_nonempty_answer", False) for item in summaries
+                ):
+                    continue
+                eligible.append({
+                    "run_id": pair["run_id"],
+                    "graph": pair["graph_drift"],
+                    "label": (
+                        sum(
+                            item.get("mean_delta_f1_abs", 0.0) * item["n_queries"]
+                            for item in summaries
+                        ) / n_queries
+                    ) > 0.05,
+                    "mean": sum(
+                        item.get("mean_answer_drift", 0.0) * item["n_queries"]
+                        for item in summaries
+                    ) / n_queries,
+                    "max": max(
+                        item.get("max_answer_drift", 0.0) for item in summaries
+                    ),
+                })
+            observed = regime_artifact["regimes"][regime]
+            require(observed["n"] == len(eligible), f"{run}/{regime}: n mismatch")
+            regime_seed_key = f"{run}:{regime}"
+            regime_prefix = hashlib.sha256(
+                regime_seed_key.encode()
+            ).hexdigest()[:8]
+            require(
+                observed["threshold_free"][
+                    "query_mean_minus_graph_auroc"
+                ]["rng"] == {
+                    "base_seed": 20260831,
+                    "seed_key": regime_seed_key,
+                    "sha256_prefix8": regime_prefix,
+                    "seed_offset": int(regime_prefix, 16),
+                    "effective_seed": 20260831 + int(regime_prefix, 16),
+                    "derivation": (
+                        "base_seed + int(SHA256(seed_key)[:8], 16)"
+                    ),
+                },
+                f"{run}/{regime}: bootstrap RNG metadata mismatch",
+            )
+            regime_labels = [row["label"] for row in eligible]
+            regime_ids = [row["run_id"] for row in eligible]
+            regime_graph = [row["graph"] for row in eligible]
+            regime_mean = [row["mean"] for row in eligible]
+            regime_max = [row["max"] for row in eligible]
+            for row in observed["fixed_review_budgets"]:
+                n_review = round(row["review_budget"] * len(eligible))
+                results = {}
+                for key, scores in (
+                    ("graph_only", regime_graph),
+                    ("query_mean", regime_mean),
+                    ("query_max", regime_max),
+                ):
+                    results[key] = confusion_from_flags(
+                        fixed_budget_flags(scores, regime_ids, n_review),
+                        regime_labels,
+                    )
+                    verify_confusion(
+                        row[key], results[key], f"{run}/{regime}/{key}"
+                    )
+                    require(
+                        int(round(float(row[key]["review_rate"]) * len(eligible)))
+                        == n_review,
+                        f"{run}/{regime}/{key}: review count is not matched",
+                    )
+                close(
+                    row["query_mean_minus_graph_f1"],
+                    float(results["query_mean"]["f1"])
+                    - float(results["graph_only"]["f1"]),
+                    tol=1e-12,
+                )
+                regime_gains.append(row["query_mean_minus_graph_f1"])
     require(
-        0.095 <= min(regime_deltas) and max(regime_deltas) <= 0.205,
-        f"regime F1 deltas mismatch: {regime_deltas}",
+        sum(gain > 0 for gain in pooled_gains) == 14
+        and sum(gain == 0 for gain in pooled_gains) == 2
+        and not any(gain < 0 for gain in pooled_gains),
+        f"pooled fixed-budget result grid mismatch: {pooled_gains}",
     )
     require(
-        unequal_alarm_regimes > 0,
-        "regime artifacts unexpectedly look strictly alarm-matched",
+        sum(gain > 0 for gain in regime_gains) == 28
+        and sum(gain == 0 for gain in regime_gains) == 4
+        and not any(gain < 0 for gain in regime_gains),
+        f"regime fixed-budget result grid mismatch: {regime_gains}",
     )
     print("[PASS] query amplification and graph-vs-query comparisons")
 

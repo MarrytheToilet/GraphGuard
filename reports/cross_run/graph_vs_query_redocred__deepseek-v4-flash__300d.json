@@ -1,6 +1,6 @@
 {
   "artifact_type": "graphguard.graph_vs_query_ablation",
-  "artifact_version": 1,
+  "artifact_version": 2,
   "run": "redocred__deepseek-v4-flash__300d",
   "source": {
     "evidence_index": {
@@ -10,193 +10,215 @@
     "downstream_sha256": "6726fdecf952c765d977172f5abef61610782b149ff49a937bc926a148690e86"
   },
   "n_pairs": 6614,
-  "label_definition": "mean absolute per-query F1 change > threshold",
-  "query_monitor": "max answer-set Jaccard drift (gold-free at decision time)",
-  "graph_monitor": "canonicalized typed-edge Jaccard drift",
-  "matched_alarm_ties": "exact top-k selection; score ties broken by SHA-256(run_id), without target labels",
-  "harm_threshold_delta_f1": 0.05,
-  "harmful_base_rate": 0.4692,
-  "monitors_at_matched_alarm": {
-    "alarm_rate_target": 0.9253,
-    "tau_graph_fixed": 0.3,
-    "tau_query": 0.0769,
+  "label_definition": "mean absolute per-query gold-F1 change across registered Q1--Q4 > threshold",
+  "change_threshold_delta_f1": 0.05,
+  "positive_base_rate": 0.4692,
+  "score_definitions": {
+    "graph_only": "canonicalized typed-edge Jaccard drift",
+    "query_mean": "mean answer-set Jaccard drift across registered query instances; primary score for the mean-change target",
+    "query_max": "maximum answer-set Jaccard drift across registered query instances; sensitivity score for any-query change"
+  },
+  "decision_signal": "scores use paired graph and answer sets; gold answers define only the offline evaluation label",
+  "fixed_budget_ties": "exact top-k selection; score ties broken by SHA-256(run_id) without target labels",
+  "threshold_free": {
     "graph_only": {
-      "tp": 3013,
-      "fp": 3107,
-      "fn": 90,
-      "tn": 404,
-      "alarm_rate": 0.9253099485938917,
-      "precision": 0.4923,
-      "recall": 0.971,
-      "f1": 0.6534
+      "auroc": 0.6241,
+      "average_precision": 0.5459
     },
-    "query_aware": {
-      "tp": 3103,
-      "fp": 3017,
-      "fn": 0,
-      "tn": 494,
-      "alarm_rate": 0.9253099485938917,
-      "precision": 0.507,
-      "recall": 1.0,
-      "f1": 0.6729
+    "query_mean": {
+      "auroc": 0.9456,
+      "average_precision": 0.9271
     },
-    "hybrid_or": {
-      "tp": 3103,
-      "fp": 3364,
-      "fn": 0,
-      "tn": 147,
-      "alarm_rate": 0.9777744179014213,
-      "precision": 0.4798,
-      "recall": 1.0,
-      "f1": 0.6485
+    "query_max": {
+      "auroc": 0.7151,
+      "average_precision": 0.6082
+    },
+    "query_mean_minus_graph_auroc": {
+      "difference": 0.3215,
+      "document_cluster_bootstrap_ci95": [
+        0.2887,
+        0.3548
+      ],
+      "requested_draws": 1000,
+      "valid_draws": 1000,
+      "rng": {
+        "base_seed": 20260831,
+        "seed_key": "redocred__deepseek-v4-flash__300d",
+        "sha256_prefix8": "e61ea4a1",
+        "seed_offset": 3860767905,
+        "effective_seed": 3881028736,
+        "derivation": "base_seed + int(SHA256(seed_key)[:8], 16)"
+      }
     }
   },
-  "sweep": [
+  "fixed_review_budgets": [
     {
-      "target_alarm": 0.3,
-      "tau_graph": 0.8,
-      "tau_query": 1.0,
+      "review_budget": 0.3,
+      "n_review": 1984,
+      "score_boundary": {
+        "graph_only": 0.8,
+        "query_mean": 0.1569,
+        "query_max": 1.0
+      },
       "graph_only": {
         "tp": 1128,
         "fp": 856,
         "fn": 1975,
         "tn": 2655,
-        "alarm_rate": 0.29996976111279106,
+        "review_rate": 0.29996976111279106,
         "precision": 0.5685,
         "recall": 0.3635,
         "f1": 0.4435
       },
-      "query_aware": {
+      "query_mean": {
+        "tp": 1849,
+        "fp": 135,
+        "fn": 1254,
+        "tn": 3376,
+        "review_rate": 0.29996976111279106,
+        "precision": 0.932,
+        "recall": 0.5959,
+        "f1": 0.727
+      },
+      "query_max": {
         "tp": 1201,
         "fp": 783,
         "fn": 1902,
         "tn": 2728,
-        "alarm_rate": 0.29996976111279106,
+        "review_rate": 0.29996976111279106,
         "precision": 0.6053,
         "recall": 0.387,
         "f1": 0.4722
       },
-      "hybrid_or": {
-        "tp": 1891,
-        "fp": 1403,
-        "fn": 1212,
-        "tn": 2108,
-        "alarm_rate": 0.4980344723314182,
-        "precision": 0.5741,
-        "recall": 0.6094,
-        "f1": 0.5912
-      }
+      "query_mean_minus_graph_f1": 0.2835,
+      "query_max_minus_graph_f1": 0.0287,
+      "mean_graph_selection_disagreement": 2300
     },
     {
-      "target_alarm": 0.5,
-      "tau_graph": 0.7,
-      "tau_query": 1.0,
+      "review_budget": 0.5,
+      "n_review": 3307,
+      "score_boundary": {
+        "graph_only": 0.7,
+        "query_mean": 0.093,
+        "query_max": 1.0
+      },
       "graph_only": {
         "tp": 1839,
         "fp": 1468,
         "fn": 1264,
         "tn": 2043,
-        "alarm_rate": 0.5,
+        "review_rate": 0.5,
         "precision": 0.5561,
         "recall": 0.5927,
         "f1": 0.5738
       },
-      "query_aware": {
+      "query_mean": {
+        "tp": 2786,
+        "fp": 521,
+        "fn": 317,
+        "tn": 2990,
+        "review_rate": 0.5,
+        "precision": 0.8425,
+        "recall": 0.8978,
+        "f1": 0.8693
+      },
+      "query_max": {
         "tp": 2018,
         "fp": 1289,
         "fn": 1085,
         "tn": 2222,
-        "alarm_rate": 0.5,
+        "review_rate": 0.5,
         "precision": 0.6102,
         "recall": 0.6503,
         "f1": 0.6296
       },
-      "hybrid_or": {
-        "tp": 2662,
-        "fp": 2103,
-        "fn": 441,
-        "tn": 1408,
-        "alarm_rate": 0.7204414877532507,
-        "precision": 0.5587,
-        "recall": 0.8579,
-        "f1": 0.6767
-      }
+      "query_mean_minus_graph_f1": 0.2955,
+      "query_max_minus_graph_f1": 0.0558,
+      "mean_graph_selection_disagreement": 2492
     },
     {
-      "target_alarm": 0.7,
-      "tau_graph": 0.5714,
-      "tau_query": 1.0,
+      "review_budget": 0.7,
+      "n_review": 4630,
+      "score_boundary": {
+        "graph_only": 0.5714,
+        "query_mean": 0.0488,
+        "query_max": 1.0
+      },
       "graph_only": {
         "tp": 2501,
         "fp": 2129,
         "fn": 602,
         "tn": 1382,
-        "alarm_rate": 0.7000302388872089,
+        "review_rate": 0.7000302388872089,
         "precision": 0.5402,
         "recall": 0.806,
         "f1": 0.6468
       },
-      "query_aware": {
+      "query_mean": {
+        "tp": 3103,
+        "fp": 1527,
+        "fn": 0,
+        "tn": 1984,
+        "review_rate": 0.7000302388872089,
+        "precision": 0.6702,
+        "recall": 1.0,
+        "f1": 0.8025
+      },
+      "query_max": {
         "tp": 2822,
         "fp": 1808,
         "fn": 281,
         "tn": 1703,
-        "alarm_rate": 0.7000302388872089,
+        "review_rate": 0.7000302388872089,
         "precision": 0.6095,
         "recall": 0.9094,
         "f1": 0.7299
       },
-      "hybrid_or": {
-        "tp": 3047,
-        "fp": 2666,
-        "fn": 56,
-        "tn": 845,
-        "alarm_rate": 0.8637738131236771,
-        "precision": 0.5333,
-        "recall": 0.982,
-        "f1": 0.6912
-      }
+      "query_mean_minus_graph_f1": 0.1557,
+      "query_max_minus_graph_f1": 0.0831,
+      "mean_graph_selection_disagreement": 1854
     },
     {
-      "target_alarm": 0.9,
-      "tau_graph": 0.3571,
-      "tau_query": 0.3333,
+      "review_budget": 0.9,
+      "n_review": 5953,
+      "score_boundary": {
+        "graph_only": 0.3571,
+        "query_mean": 0.0093,
+        "query_max": 0.3333
+      },
       "graph_only": {
         "tp": 2972,
         "fp": 2981,
         "fn": 131,
         "tn": 530,
-        "alarm_rate": 0.9000604777744179,
+        "review_rate": 0.9000604777744179,
         "precision": 0.4992,
         "recall": 0.9578,
         "f1": 0.6564
       },
-      "query_aware": {
+      "query_mean": {
         "tp": 3103,
         "fp": 2850,
         "fn": 0,
         "tn": 661,
-        "alarm_rate": 0.9000604777744179,
+        "review_rate": 0.9000604777744179,
         "precision": 0.5212,
         "recall": 1.0,
         "f1": 0.6853
       },
-      "hybrid_or": {
+      "query_max": {
         "tp": 3103,
-        "fp": 3220,
+        "fp": 2850,
         "fn": 0,
-        "tn": 291,
-        "alarm_rate": 0.9560024191109767,
-        "precision": 0.4907,
+        "tn": 661,
+        "review_rate": 0.9000604777744179,
+        "precision": 0.5212,
         "recall": 1.0,
-        "f1": 0.6584
-      }
+        "f1": 0.6853
+      },
+      "query_mean_minus_graph_f1": 0.0289,
+      "query_max_minus_graph_f1": 0.0289,
+      "mean_graph_selection_disagreement": 790
     }
-  ],
-  "disagreement_at_matched_alarm": {
-    "pairs_disagree": 694,
-    "rate": 0.1049,
-    "graph_only_misses_harmful": 90,
-    "graph_only_false_alarms_on_benign": 347
-  }
+  ]
 }

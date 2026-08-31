@@ -133,7 +133,7 @@ The BC5CDR stress test jointly extracts 100 prediction-independent, document-dis
 
 ### 🎯 Drift signals track query divergence and directional regressions
 
-On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query workload, **43.6%** have a mean absolute per-query F1 change above 0.05. Graph drift has moderate correlations with absolute answer-side error: ρ(Drift, |ΔR|) = 0.219 and ρ(Drift, |ΔP|) = 0.135 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean |ΔR| = 0.070 and |ΔP| = 0.117, vs. 0.031 and 0.032 for satisfied pairs. At exactly matched alarm counts, query-aware detection improves F1 on every corpus (**+0.01–+0.02** on DocRED, Re-DocRED, and SciERC; **+0.11** on BC5CDR); local and multi-hop gains reach **+0.10–+0.20** at the nearest attainable alarm rates. In the separate directional-regression evaluation, AUROC is **0.58–0.89 for graph drift and 0.62–0.91 for answer-set drift**; answer drift leads on three corpora and is effectively tied with graph drift on SciERC.
+On 4,000 gold-annotated paired comparisons with a non-empty gold-derived query workload, **43.6%** have a mean absolute per-query F1 change above 0.05. Graph drift has moderate correlations with absolute answer-side error: ρ(Drift, |ΔR|) = 0.219 and ρ(Drift, |ΔP|) = 0.135 (p < 10⁻³). K1 violations show a sharper contrast: violating pairs have mean |ΔR| = 0.070 and |ΔP| = 0.117, vs. 0.031 and 0.032 for satisfied pairs. For this mean-change target, mean answer-set drift has AUROC **0.90–0.99**, compared with **0.61–0.91** for graph drift. At strictly identical review budgets, it improves detection F1 in **14 of 16** corpus–budget comparisons and ties in two; the local/multi-hop split improves in **28 of 32** comparisons and ties in four. In the separate directional-regression evaluation, which retains maximum answer drift as an any-query sensitivity signal, AUROC is **0.58–0.89 for graph drift and 0.62–0.91 for answer-set drift**.
 
 <div align="center">
   <img src="assets/figures/fig_auroc.png" alt="Harmful-regression ROC curves" width="92%">
@@ -317,26 +317,29 @@ Sources: `RC/drift_accuracy_docred__deepseek-v4-flash__300d.json` and the regist
 | Directional-regression AUPRC, graph vs. answer-set | 0.32–0.70 vs. 0.67–0.73 | Trapezoidal PR integration |
 | SciERC AUROC | Graph 0.627; answer 0.623; gate 0.643 | Effectively tied; answer-set leads on the other three corpora |
 
-### §6.2 Regime detection (Fig. 9b)
+### §6.2–6.3 Query-aware vs. graph-only detection (Fig. 9b, RQ9)
 
-Source: `RC/regimes_*.json`.
+Sources: `RC/graph_vs_query_*.json` and `RC/regimes_*.json`.
 
-| Claim | Value | Scope |
-| ----- | ----- | ----- |
-| Query-aware F1 improvement in both regimes | +0.10 to +0.20 | The local regime is lookup + neighbor; the multi-hop regime is join + two-hop. Alarm rates are not matched in this analysis. |
+The evaluation target is mean absolute per-query gold-F1 change above 0.05. The target-aligned query score is mean answer-set Jaccard drift over the same registered query instances; maximum answer drift is also emitted as an any-query sensitivity score. Gold defines the offline target, while both scores use paired predictions only.
 
-### §6.3 Query-aware vs. graph-only policy (RQ9)
+| Corpus | Graph AUROC | Query-mean AUROC | Query-max AUROC |
+| ------ | ----------: | ---------------: | --------------: |
+| DocRED | 0.611 | 0.956 | 0.843 |
+| Re-DocRED | 0.624 | 0.946 | 0.715 |
+| SciERC | 0.735 | 0.896 | 0.780 |
+| BC5CDR | 0.913 | 0.990 | 0.984 |
 
-Source: `RC/graph_vs_query_*.json`, field `monitors_at_matched_alarm`.
+Query-mean minus graph-only F1 at strictly identical review counts:
 
-| Corpus | Graph F1 (alarm rate) | Query F1 (alarm rate) | ΔF1 |
-| ------ | ---------------------: | ---------------------: | ---: |
-| BC5CDR | 0.780 (0.434) | 0.893 (0.434) | +0.11 |
-| DocRED | 0.628 (0.910) | 0.651 (0.910) | +0.02 |
-| Re-DocRED | 0.653 (0.925) | 0.673 (0.925) | +0.02 |
-| SciERC | 0.836 (0.937) | 0.845 (0.937) | +0.01 |
+| Corpus | 30% | 50% | 70% | 90% |
+| ------ | --: | --: | --: | --: |
+| DocRED | +0.342 | +0.329 | +0.160 | +0.028 |
+| Re-DocRED | +0.283 | +0.295 | +0.156 | +0.029 |
+| SciERC | +0.050 | +0.079 | +0.090 | +0.030 |
+| BC5CDR | +0.193 | +0.012 | 0.000 | 0.000 |
 
-The pooled comparison uses exactly equal alarm counts. Score ties are broken by SHA-256 of the run ID without using labels. The target is absolute query change, not directional harm.
+The query-mean score improves 14 of 16 corpus–budget cells and ties in two. The local and multi-hop analyses use the same four exact budgets and improve 28 of 32 cells, with four ties; at 30%, multi-hop gains are +0.068, +0.197, +0.106, and +0.164 for DocRED, Re-DocRED, SciERC, and BC5CDR. Ties at the review boundary are resolved by SHA-256 of the pair ID without using target labels.
 
 ### §6.4 Kuzu release gate (RQ10, Figs. 11 and 12)
 

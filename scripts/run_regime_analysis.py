@@ -1,24 +1,13 @@
 #!/usr/bin/env python3
-"""Workload-regime analysis: where do query-aware contracts beat graph drift?
-(PVLDB revision, Rev6-W3/D3.)
+"""Fixed-budget query-aware detection by registered workload regime.
 
-Splits the gold-grounded query-divergence detection task by workload
-regime instead of pooling all queries:
-
-  local regime     — mean absolute gold DeltaF1 over lookup + neighbor > 0.05
-  multi-hop regime — mean absolute gold DeltaF1 over join + two-hop > 0.05
-
-For each regime and corpus, two gold-free detectors target the regime's
-label base rate: graph-only (edge Jaccard drift) and query-aware (max
-answer-set drift over the regime's own templates). Thresholds are selected
-as close as possible to that target. Because these scores are discrete and
-often tied, the achieved alarm rates can differ; the regime split is
-therefore a diagnostic F1 comparison rather than a strictly alarm-matched
-experiment. The pooled policy comparison in run_graph_vs_query_ablation.py
-is the rate-matched analysis.
-
-Writes reports/cross_run/regimes_<run>.json.
+The local target averages Q1 lookup and Q2 neighbor changes; the multi-hop
+target averages Q3 join and Q4 two-hop changes. The primary score averages
+answer-set drift over the same query instances. Maximum drift remains a
+sensitivity score. Every graph-only/query-aware comparison uses an identical
+review count and a deterministic, label-blind tie break.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -35,6 +24,14 @@ from graphguard.deployment_evidence import (  # noqa: E402
     load_downstream_evidence,
 )
 from graphguard.sqlite_snapshot import sha256_file  # noqa: E402
+from scripts.run_graph_vs_query_ablation import (  # noqa: E402
+    BOOTSTRAP_DRAWS,
+    FIXED_REVIEW_BUDGETS,
+    confusion,
+    document_cluster_bootstrap,
+    flags_at_count,
+    score_summary,
+)
 
 MAIN_RUNS = [
     "docred__deepseek-v4-flash__300d",
@@ -42,9 +39,8 @@ MAIN_RUNS = [
     "scierc__deepseek-v4-flash__100d",
     "cdr__deepseek-v4-flash__300d",
 ]
-
 OUT_DIR = ROOT / "reports" / "cross_run"
-HARM_TAU = 0.05
+CHANGE_THRESHOLD = 0.05
 REGIMES = {"local": ("lookup", "neighbor"), "multihop": ("join", "twohop")}
 REGISTERED_FAMILIES = {
     "lookup": "deployment.lookup",
@@ -54,70 +50,44 @@ REGISTERED_FAMILIES = {
 }
 
 
-def confusion(flags, harm):
-    tp = sum(1 for a, h in zip(flags, harm) if a and h)
-    fp = sum(1 for a, h in zip(flags, harm) if a and not h)
-    fn = sum(1 for a, h in zip(flags, harm) if not a and h)
-    tn = sum(1 for a, h in zip(flags, harm) if not a and not h)
-    prec = tp / (tp + fp) if tp + fp else 0.0
-    rec = tp / (tp + fn) if tp + fn else 0.0
-    return {
-        "alarm_rate": (tp + fp) / max(1, len(harm)),
-        "precision": round(prec, 4), "recall": round(rec, 4),
-        "f1": round(2 * prec * rec / (prec + rec), 4) if prec + rec else 0.0,
-    }
-
-
-def flags_at_alarm(scores, target):
-    """Alarm flags whose rate is closest to target, robust to score ties.
-
-    Answer-drift scores saturate at 1.0 on dense corpora, so a strict '>'
-    against the tie value can yield zero alarms; pick the comparison
-    direction ('>' vs '>=') whose alarm rate lands closer to the target.
-    """
-    s = sorted(scores)
-    k = max(0, min(len(s) - 1, int(round((1 - target) * len(s)))))
-    tau = s[k]
-    n = len(scores)
-    gt = [x > tau for x in scores]
-    ge = [x >= tau for x in scores]
-    if abs(sum(gt) / n - target) <= abs(sum(ge) / n - target):
-        return gt, tau, ">"
-    return ge, tau, ">="
-
-
-def analyze_run(run: str) -> dict | None:
+def analyze_run(run: str) -> dict:
     artifact = load_downstream_evidence(ROOT, run)
     rows = []
     for pair in artifact["per_pair"]:
-        row = {"graph_drift": pair["graph_drift"]}
-        for regime, fams in REGIMES.items():
+        row = {
+            "run_id": pair["run_id"],
+            "document_id": pair["document_id"],
+            "graph_drift": pair["graph_drift"],
+        }
+        for regime, families in REGIMES.items():
             summaries = [
                 pair["families"][REGISTERED_FAMILIES[family]]
-                for family in fams
+                for family in families
             ]
             n_queries = sum(item["n_queries"] for item in summaries)
             has_answer = any(
-                item.get("has_nonempty_answer", False)
-                for item in summaries
+                item.get("has_nonempty_answer", False) for item in summaries
             )
-            if n_queries and has_answer:
-                mean_delta = sum(
-                    item.get("mean_delta_f1_abs", 0.0)
-                    * item["n_queries"]
-                    for item in summaries
-                ) / n_queries
-                row[f"{regime}_harm"] = mean_delta > HARM_TAU
-                row[f"{regime}_qdrift"] = max(
-                    item.get("max_answer_drift", 0.0)
-                    for item in summaries
-                )
+            if not n_queries or not has_answer:
+                continue
+            row[f"{regime}_mean_abs_delta_f1"] = sum(
+                item.get("mean_delta_f1_abs", 0.0) * item["n_queries"]
+                for item in summaries
+            ) / n_queries
+            row[f"{regime}_query_mean"] = sum(
+                item.get("mean_answer_drift", 0.0) * item["n_queries"]
+                for item in summaries
+            ) / n_queries
+            row[f"{regime}_query_max"] = max(
+                item.get("max_answer_drift", 0.0) for item in summaries
+            )
+            row[f"{regime}_n_queries"] = n_queries
         rows.append(row)
 
     index = load_artifact_index(ROOT)
     out = {
         "artifact_type": "graphguard.query_regime_analysis",
-        "artifact_version": 1,
+        "artifact_version": 2,
         "run": run,
         "source": {
             "evidence_index": {
@@ -130,46 +100,126 @@ def analyze_run(run: str) -> dict | None:
         },
         "n_pairs": len(rows),
         "label_definition": (
-            "regime mean absolute per-query F1 change > threshold"
+            "query-count-weighted mean absolute per-query gold-F1 change "
+            "within the regime > threshold"
         ),
-        "harm_tau": HARM_TAU,
+        "change_threshold_delta_f1": CHANGE_THRESHOLD,
+        "active_pair_filter": (
+            "registered regime has at least one query and at least one "
+            "nonempty paired answer"
+        ),
+        "score_definitions": {
+            "graph_only": "canonicalized typed-edge Jaccard drift",
+            "query_mean": (
+                "query-count-weighted mean answer-set Jaccard drift within "
+                "the regime; primary score for the mean-change target"
+            ),
+            "query_max": (
+                "maximum answer-set Jaccard drift within the regime; "
+                "sensitivity score for any-query change"
+            ),
+        },
+        "fixed_budget_ties": (
+            "exact top-k selection; score ties broken by SHA-256(run_id) "
+            "without target labels"
+        ),
         "regimes": {},
     }
+
     for regime in REGIMES:
-        rr = [r for r in rows if f"{regime}_harm" in r]
-        if len(rr) < 50:
+        eligible = [
+            row for row in rows
+            if f"{regime}_mean_abs_delta_f1" in row
+        ]
+        if len(eligible) < 50:
             continue
-        harm = [r[f"{regime}_harm"] for r in rr]
-        base_rate = sum(harm) / len(rr)
-        g_scores = [r["graph_drift"] for r in rr]
-        q_scores = [r[f"{regime}_qdrift"] for r in rr]
-        g_flags, tg, g_cmp = flags_at_alarm(g_scores, base_rate)
-        q_flags, tq, q_cmp = flags_at_alarm(q_scores, base_rate)
-        g_conf = confusion(g_flags, harm)
-        q_conf = confusion(q_flags, harm)
-        out["regimes"][regime] = {
-            "n": len(rr), "harm_base_rate": round(base_rate, 4),
-            "tau_graph": round(tg, 4), "cmp_graph": g_cmp,
-            "tau_query": round(tq, 4), "cmp_query": q_cmp,
-            "graph_only": g_conf, "query_aware": q_conf,
-            "delta_f1": round(q_conf["f1"] - g_conf["f1"], 4),
+        labels = [
+            row[f"{regime}_mean_abs_delta_f1"] > CHANGE_THRESHOLD
+            for row in eligible
+        ]
+        graph_scores = [row["graph_drift"] for row in eligible]
+        mean_scores = [row[f"{regime}_query_mean"] for row in eligible]
+        max_scores = [row[f"{regime}_query_max"] for row in eligible]
+        row_ids = [row["run_id"] for row in eligible]
+        graph_summary = score_summary(labels, graph_scores)
+        mean_summary = score_summary(labels, mean_scores)
+        max_summary = score_summary(labels, max_scores)
+        bootstrap_ci, valid_draws, bootstrap_seed = document_cluster_bootstrap(
+            eligible, labels, graph_scores, mean_scores, f"{run}:{regime}"
+        )
+        result = {
+            "n": len(eligible),
+            "positive_base_rate": round(sum(labels) / len(labels), 4),
+            "threshold_free": {
+                "graph_only": graph_summary,
+                "query_mean": mean_summary,
+                "query_max": max_summary,
+                "query_mean_minus_graph_auroc": {
+                    "difference": round(
+                        mean_summary["auroc"] - graph_summary["auroc"], 4
+                    ),
+                    "document_cluster_bootstrap_ci95": bootstrap_ci,
+                    "requested_draws": BOOTSTRAP_DRAWS,
+                    "valid_draws": valid_draws,
+                    "rng": bootstrap_seed,
+                },
+            },
+            "fixed_review_budgets": [],
         }
+        for budget in FIXED_REVIEW_BUDGETS:
+            n_review = round(budget * len(eligible))
+            graph_flags, graph_boundary = flags_at_count(
+                graph_scores, row_ids, n_review
+            )
+            mean_flags, mean_boundary = flags_at_count(
+                mean_scores, row_ids, n_review
+            )
+            max_flags, max_boundary = flags_at_count(
+                max_scores, row_ids, n_review
+            )
+            graph_result = confusion(graph_flags, labels)
+            mean_result = confusion(mean_flags, labels)
+            max_result = confusion(max_flags, labels)
+            result["fixed_review_budgets"].append({
+                "review_budget": budget,
+                "n_review": n_review,
+                "score_boundary": {
+                    "graph_only": round(graph_boundary, 4),
+                    "query_mean": round(mean_boundary, 4),
+                    "query_max": round(max_boundary, 4),
+                },
+                "graph_only": graph_result,
+                "query_mean": mean_result,
+                "query_max": max_result,
+                "query_mean_minus_graph_f1": round(
+                    mean_result["f1"] - graph_result["f1"], 4
+                ),
+                "query_max_minus_graph_f1": round(
+                    max_result["f1"] - graph_result["f1"], 4
+                ),
+            })
+        out["regimes"][regime] = result
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUT_DIR / f"regimes_{run}.json"
-    out_path.write_text(json.dumps(out, indent=1) + "\n")
+    out_path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
     print(f"[done] {run}: {len(rows)} pairs -> {out_path}")
-    for regime, s in out["regimes"].items():
-        print(f"  {regime:<9} n={s['n']:<6} base={s['harm_base_rate']:.2f} "
-              f"graphF1={s['graph_only']['f1']:.3f} queryF1={s['query_aware']['f1']:.3f} "
-              f"dF1={s['delta_f1']:+.3f}")
+    for regime, result in out["regimes"].items():
+        gains = ", ".join(
+            f"{row['review_budget']:.0%}={row['query_mean_minus_graph_f1']:+.3f}"
+            for row in result["fixed_review_budgets"]
+        )
+        print(
+            f"  {regime:<9} n={result['n']:<6} "
+            f"base={result['positive_base_rate']:.2f} gains: {gains}"
+        )
     return out
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--runs", nargs="*", default=MAIN_RUNS)
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--runs", nargs="*", default=MAIN_RUNS)
+    args = parser.parse_args()
     for run in args.runs:
         analyze_run(run)
     return 0

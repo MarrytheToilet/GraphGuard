@@ -67,9 +67,11 @@ Anything not listed here has been retired.
   endpoint fingerprints, token counts, and status history. It verifies the
   private manifest hash, rebinds the result to the byte-identical public
   manifest, and commits the hash audit last for fail-closed verification.
-- `run_regime_analysis.py` — graph-only vs. query-aware detection of
-  workload-visible query change, split by local / multi-hop regime
-  (Sec. 6.2 / Fig. 9b).
+- `run_graph_vs_query_ablation.py` — graph-only, mean-query, and maximum-query
+  scores for the RQ9 mean-change target, with threshold-free metrics and exact
+  30/50/70/90% review budgets (Sec. 6.3).
+- `run_regime_analysis.py` — the same exact-budget comparison split into local
+  and multi-hop registered workloads (Sec. 6.2 / Fig. 9b).
 - `run_drift_accuracy_analysis.py` — deterministic DocRED query-divergence
   correlations from the registered RQ8 cohort and the K1 accuracy contrast from
   the DocRED lineage DB (Sec. 6.2).
@@ -102,12 +104,15 @@ Anything not listed here has been retired.
 - `build_reproducibility_manifest.py` — sole producer of the seven-run
   provenance manifest; records named lineage DB paths, hashes, sizes, counts,
   and the four repeated-extraction baselines.
-- `verify_paper_results.py` — validates the deployment evidence package and checks
-  the paper's headline claims; `--lineage` additionally recounts events,
-  edges, counterfactual views, and tokens from the seven local run databases.
+- `verify_paper_results.py` — validates the deployment evidence package,
+  reconstructs every RQ9 fixed-budget cell from the registered pair records,
+  and checks the paper's headline claims; `--lineage` additionally recounts
+  events, edges, counterfactual views, and tokens from the seven local run
+  databases.
 - `verify_manuscript_artifacts.py` — final-mile checker for the private,
-  git-ignored manuscript: validates all 13 figure copies and the active
-  source-backed tables in `main.tex` and `response.tex`.
+  git-ignored manuscript: validates all 13 figure copies, the active
+  source-backed tables, and the RQ9 statements shared by `main.tex`,
+  `response.tex`, and the root README.
 - `sync_paper_figures.py` — checks the 13 `assets/figures` ↔ `paper/figures`
   pairs byte-for-byte; `--write` performs the explicit copy.
 - `make_paper_figures.py` — entry point for seven paper figures (cross-run

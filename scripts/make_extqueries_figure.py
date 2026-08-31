@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Paper figure for the extended-query + regime results (PVLDB revision).
 
-Replaces the wide two-part table with a single-column, two-panel figure:
+Builds the single-column, two-panel Figure 9:
   (a) mean amplification per corpus for Q5 (shortest path, with 95% CI),
       Q6 (aggregation), Q7 (RAG retrieval), dashed line at Amp = 1;
-  (b) gold-free detector F1 against workload-visible query change, graph-only vs
-      query-aware, per corpus and regime (dumbbells).
+  (b) query-mean minus graph-only detection F1 under strictly matched review
+      budgets, for local and multi-hop registered workloads.
 
 Reads reports/cross_run/extqueries_<run>.json and the registered regime
 artifacts; writes assets/figures/fig_extqueries.png.
@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT))
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.lines import Line2D
 import numpy as np
 
@@ -61,8 +62,13 @@ def main() -> int:
     x = np.arange(len(labels))
 
     _S.apply_rc(font_size=9)
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(3.6, 2.50),
-                                   gridspec_kw={"hspace": 0.60})
+    fig = plt.figure(figsize=(3.6, 2.50))
+    grid = fig.add_gridspec(
+        2, 2, height_ratios=(1.08, 0.92), hspace=0.78, wspace=0.10
+    )
+    ax1 = fig.add_subplot(grid[0, :])
+    ax_local = fig.add_subplot(grid[1, 0])
+    ax_multihop = fig.add_subplot(grid[1, 1])
 
     # ---- (a) amplification ------------------------------------------------
     w = 0.26
@@ -102,54 +108,58 @@ def main() -> int:
     ax1.set_title("(a) Query-topology amplification", fontsize=8)
     _S.despine(ax1)
 
-    # ---- (b) regime dumbbells --------------------------------------------
-    off = {"local": -0.16, "multihop": 0.16}
-    color = {"local": _S.BLUE_DARK, "multihop": _S.PINK_DARK}
-    fill = {"local": _S.BLUE, "multihop": _S.PINK}
-    for regime in ("local", "multihop"):
-        gx, gy, qy = [], [], []
-        for i, l in enumerate(labels):
-            s = reg[l][regime]
-            gx.append(i + off[regime])
-            gy.append(s["graph_only"]["f1"])
-            qy.append(s["query_aware"]["f1"])
-        for xi, g, q in zip(gx, gy, qy):
-            ax2.plot([xi, xi], [g, q], color=color[regime], linewidth=1.1, zorder=1)
-        ax2.scatter(gx, gy, s=18, facecolor="white", edgecolor=color[regime],
-                    linewidth=1.2, zorder=2,
-                    label=f"{'local' if regime=='local' else 'multi-hop'}: graph-only")
-        ax2.scatter(gx, qy, s=22, facecolor=fill[regime], edgecolor=color[regime],
-                    linewidth=1.2, zorder=3,
-                    label=f"{'local' if regime=='local' else 'multi-hop'}: query-aware")
-        x_offset = -3 if regime == "local" else 3
-        h_align = "right" if regime == "local" else "left"
-        for xi, g, q in zip(gx, gy, qy):
-            avoid_y_axis = regime == "local" and xi < 0
-            label_offset = 3 if avoid_y_axis else x_offset
-            label_align = "left" if avoid_y_axis else h_align
-            for value in (g, q):
-                ax2.annotate(
-                    f"{value:.2f}",
-                    xy=(xi, value),
-                    xytext=(label_offset, 0),
-                    textcoords="offset points",
-                    ha=label_align,
-                    va="center",
-                    fontsize=5.0,
-                    color=color[regime],
-                    clip_on=False,
+    # ---- (b) strictly matched review budgets -----------------------------
+    budgets = [0.30, 0.50, 0.70, 0.90]
+    cmap = LinearSegmentedColormap.from_list(
+        "query_gain", ["#F7FBFF", _S.BLUE, _S.BLUE_DARK]
+    )
+    for axis, regime, title in (
+        (ax_local, "local", "local"),
+        (ax_multihop, "multihop", "multi-hop"),
+    ):
+        values = np.array([
+            [
+                next(
+                    row["query_mean_minus_graph_f1"]
+                    for row in reg[label][regime]["fixed_review_budgets"]
+                    if row["review_budget"] == budget
                 )
-    ax2.set_xticks(x); ax2.set_xticklabels(labels)
-    ax2.set_ylabel("detector F1")
-    ax2.set_ylim(0.46, 1.19)
-    ax2.legend(fontsize=6.5, ncol=2, frameon=False, loc="upper center",
-               bbox_to_anchor=(0.5, 0.99), labelspacing=0.1, borderpad=0,
-               borderaxespad=0, handletextpad=0.3, columnspacing=0.8)
-    ax2.set_title(
-        "(b) Workload-visible change",
+                for budget in budgets
+            ]
+            for label in labels
+        ])
+        axis.imshow(values, cmap=cmap, vmin=0.0, vmax=0.25, aspect="auto")
+        axis.set_xticks(range(len(budgets)))
+        axis.set_xticklabels([f"{budget:.0%}" for budget in budgets], fontsize=5.5)
+        axis.set_yticks(range(len(labels)))
+        axis.set_yticklabels(labels if regime == "local" else [], fontsize=5.5)
+        axis.set_title(title, fontsize=6.5, pad=1.5)
+        axis.tick_params(length=0, pad=1.2)
+        for row_index in range(values.shape[0]):
+            for column_index in range(values.shape[1]):
+                value = values[row_index, column_index]
+                label = "0" if abs(value) < 0.0005 else f"+{value:.2f}"
+                axis.text(
+                    column_index,
+                    row_index,
+                    label,
+                    ha="center",
+                    va="center",
+                    fontsize=5.2,
+                    color="white" if value >= 0.14 else _S.BLACK,
+                )
+        for spine in axis.spines.values():
+            spine.set_linewidth(0.45)
+            spine.set_color(_S.GRAY)
+    fig.text(
+        0.55,
+        0.425,
+        "(b) Query-aware F1 gain at matched budgets",
+        ha="center",
+        va="bottom",
         fontsize=8,
     )
-    _S.despine(ax2)
+    fig.text(0.55, 0.025, "review budget", ha="center", fontsize=6.0)
 
     out = ROOT / "assets" / "figures" / "fig_extqueries.png"
     _S.save_fig(fig, out, pad=0.8)

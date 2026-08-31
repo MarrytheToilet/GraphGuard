@@ -468,6 +468,89 @@ def verify_magnitude_text() -> None:
     print("[PASS] magnitude estimator and manuscript/response text")
 
 
+def verify_rq9_text() -> None:
+    runs = (
+        "docred__deepseek-v4-flash__300d",
+        "redocred__deepseek-v4-flash__300d",
+        "scierc__deepseek-v4-flash__100d",
+        "cdr__deepseek-v4-flash__300d",
+    )
+    pooled = [
+        load_json(f"reports/cross_run/graph_vs_query_{run}.json")
+        for run in runs
+    ]
+    regimes = [
+        load_json(f"reports/cross_run/regimes_{run}.json")
+        for run in runs
+    ]
+    graph_auc = [row["threshold_free"]["graph_only"]["auroc"] for row in pooled]
+    query_auc = [row["threshold_free"]["query_mean"]["auroc"] for row in pooled]
+    pooled_gains = [
+        cell["query_mean_minus_graph_f1"]
+        for row in pooled
+        for cell in row["fixed_review_budgets"]
+    ]
+    regime_gains = [
+        cell["query_mean_minus_graph_f1"]
+        for artifact in regimes
+        for regime in artifact["regimes"].values()
+        for cell in regime["fixed_review_budgets"]
+    ]
+    require(
+        round(min(query_auc), 2) == 0.90
+        and round(max(query_auc), 2) == 0.99
+        and round(min(graph_auc), 2) == 0.61
+        and round(max(graph_auc), 2) == 0.91,
+        "RQ9 AUROC range no longer supports manuscript text",
+    )
+    require(
+        sum(gain > 0 for gain in pooled_gains) == 14
+        and sum(gain == 0 for gain in pooled_gains) == 2,
+        "RQ9 pooled win/tie count mismatch",
+    )
+    require(
+        sum(gain > 0 for gain in regime_gains) == 28
+        and sum(gain == 0 for gain in regime_gains) == 4,
+        "RQ9 regime win/tie count mismatch",
+    )
+
+    main = compact((ROOT / "paper" / "main.tex").read_text(encoding="utf-8"))
+    response = compact(
+        (ROOT / "paper" / "response.tex").read_text(encoding="utf-8")
+    )
+    readme = compact((ROOT / "README.md").read_text(encoding="utf-8"))
+    for fragment in (
+        "Mean answer-set drift yields AUROC $0.90$--$0.99$",
+        "all 16 corpus--budget comparisons",
+        "workload split favors it in 28 of 32 comparisons",
+        "identical review budgets",
+    ):
+        require_fragment(main, fragment, "main RQ9 result")
+    for fragment in (
+        "Its AUROC is 0.90--0.99",
+        "higher in 14 of 16 corpus--budget comparisons",
+        "pattern in 28 of 32 comparisons",
+        "strictly identical 30\\%, 50\\%, 70\\%, and 90\\% review budgets",
+    ):
+        require_fragment(response, fragment, "response RQ9 result")
+    for fragment in (
+        "Query-mean AUROC",
+        "improves 14 of 16 corpus–budget cells",
+        "improve 28 of 32 cells",
+    ):
+        require_fragment(readme, fragment, "README RQ9 result")
+    for stale in (
+        "nearest attainable alarm rates",
+        "+0.01$--$+0.02",
+        "monitors_at_matched_alarm",
+    ):
+        require(
+            stale not in main and stale not in response and stale not in readme,
+            f"stale RQ9 wording remains: {stale}",
+        )
+    print("[PASS] RQ9 manuscript, response, and README match fixed-budget artifacts")
+
+
 def main() -> int:
     try:
         require((ROOT / "paper").is_dir(), "private paper directory is absent")
@@ -486,6 +569,7 @@ def main() -> int:
         verify_external_toolchain_table(response)
         verify_response_k5()
         verify_magnitude_text()
+        verify_rq9_text()
     except (
         FileNotFoundError,
         KeyError,
