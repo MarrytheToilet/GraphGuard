@@ -31,16 +31,6 @@ The study covers four graph-extraction benchmarks and four LLM extractors, with 
 
 The complete paper-facing results are stored in `reports/runs/` and `reports/cross_run/` and checked directly by the verification script below.
 
-## Selected result figures
-
-![Query-topology amplification and query-aware detection gains](assets/figures/fig_extqueries.png)
-
-*Query topology can absorb or amplify graph drift, while query-aware scoring improves detection at the same review budget.*
-
-![Kuzu release-gate outcomes](assets/figures/fig_gate.png)
-
-*In the Kuzu-backed evaluation, the selected GraphGuard gate reduces harmful publications while retaining high paired-view F1 fidelity.*
-
 ## Quick verification
 
 GraphGuard targets Python 3.10. The locked environment includes Kuzu 0.11.3, the version used in the reported database experiments.
