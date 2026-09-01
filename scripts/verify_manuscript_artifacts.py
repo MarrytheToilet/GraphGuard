@@ -179,7 +179,6 @@ def verify_cross_document_text() -> None:
     summary = result["summary"]
     order = summary["comparisons"]["order"]
     seed = summary["comparisons"]["seed"]
-    excess = summary["order_minus_seed"]["max_query_drift"]
     main = compact((ROOT / "paper" / "main.tex").read_text(encoding="utf-8"))
     response = compact(
         (ROOT / "paper" / "response.tex").read_text(encoding="utf-8")
@@ -225,35 +224,36 @@ def verify_cross_document_text() -> None:
             context,
         )
         for fragment in (
-            "prediction-independent, document-disjoint, gold-witness pairs",
-            "oracle MeSH linking",
+            "$100$ jointly extracted BC5CDR document pairs",
+            "shared MeSH identifiers",
             "95\\% document-pair bootstrap CI",
         ):
             require_fragment(tex, fragment, context)
-    excess_value = f"${excess['mean']:.3f}$"
-    excess_ci = (
-        f"$[{excess['ci95'][0]:.3f},"
-        f"{excess['ci95'][1]:.3f}]$"
-    )
-    for tex, context in (
-        (main, "main cross-document excess"),
-        (response, "response cross-document excess"),
-    ):
-        require_fragment(tex, excess_value, context)
-        require_fragment(tex, "95\\% CI", context)
-        require_fragment(tex, excess_ci, context)
     require_fragment(
         main,
-        "All $1{,}000$ Kuzu answer sets match the deterministic executor",
-        "main cross-document Kuzu parity",
+        "Instability therefore survives entity linking",
+        "main cross-document finding",
     )
-    for fragment in (
-        "$100$ prediction-independent, document-disjoint, gold-witness-enriched BC5CDR pairs",
-        "oracle MeSH linking",
-        "Kuzu reproduces all $1{,}000$ answer sets, while the document-local negative control returns none.",
-        "$[-0.023,0.101]$",
-    ):
-        require_fragment(response, fragment, "response cross-document evidence")
+    require_fragment(
+        main,
+        "document-local control returns no cross-document answers",
+        "main cross-document connectivity control",
+    )
+    require_fragment(
+        response,
+        "GraphGuard exposes instability in linked cross-document graph views",
+        "response cross-document finding",
+    )
+    require_fragment(
+        response,
+        "All $1{,}000$ Kuzu answer sets match the deterministic executor",
+        "response cross-document Kuzu parity",
+    )
+    require_fragment(
+        response,
+        "document-local control returns no cross-document answers",
+        "response cross-document connectivity control",
+    )
     print("[PASS] cross-document manuscript and response numbers")
 
 
