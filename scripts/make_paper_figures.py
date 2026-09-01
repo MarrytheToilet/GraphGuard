@@ -1,9 +1,10 @@
 """Regenerate the seven paper figures owned by this script.
 
 Reads from existing report artefacts (no extraction re-run) and writes
-PNGs into assets/figures/ with friendly labels, larger fonts, and
-consistent palette.  Replaces the ad-hoc generators that leaked variable
-names (run IDs, family slugs, P-codes) into the camera-ready figures.
+vector PDFs plus matching PNG previews into assets/figures/ with publication
+labels, consistent typography, and a shared palette. These outputs replace
+legacy figure generators that exposed internal identifiers such as run IDs,
+family slugs, and P-codes.
 
 Inputs (relative to repo root):
   reports/cross_run/cross_run_summary.json      (per-run violation rates)
@@ -14,13 +15,13 @@ Inputs (relative to repo root):
       deterministic gzip transports                   (RQ8--RQ10 pairs)
 
 Outputs (assets/figures/):
-  fig_crossrun_violations.png   contract violation rates run x contract
-  fig_amp_crossrun.png          diagnostic amplification consistency
-  fig_strict_vs_soft.png        strict vs soft perturbation comparison
-  fig_calibration.png           harmful-edge calibration
-  fig_noise_floor.png           noise-floor across corpora
-  fig_2d_sensitivity.png        2-D threshold sweep
-  fig_auroc.png                 ROC / PR curves
+  fig_crossrun_violations.pdf   contract violation rates run x contract
+  fig_amp_crossrun.pdf          diagnostic amplification consistency
+  fig_strict_vs_soft.pdf        strict vs soft perturbation comparison
+  fig_calibration.pdf           harmful-edge calibration
+  fig_noise_floor.pdf           noise-floor across corpora
+  fig_2d_sensitivity.pdf        2-D threshold sweep
+  fig_auroc.pdf                 ROC / PR curves
 
 Run from repo root:
   python scripts/make_paper_figures.py
@@ -241,7 +242,21 @@ def make_crossrun_violations() -> None:
     from matplotlib.colors import LinearSegmentedColormap
     cmap = LinearSegmentedColormap.from_list(
         "ggblues", [_S.WHITE, _S.BLUE, _S.BLUE_DARK, "#1F4F70"])
-    im = ax.imshow(mat, cmap=cmap, vmin=0.0, vmax=1.0, aspect="auto")
+    x_edges = np.arange(mat.shape[1] + 1) - 0.5
+    y_edges = np.arange(mat.shape[0] + 1) - 0.5
+    im = ax.pcolormesh(
+        x_edges,
+        y_edges,
+        mat,
+        cmap=cmap,
+        vmin=0.0,
+        vmax=1.0,
+        shading="flat",
+        edgecolors="none",
+        antialiased=False,
+    )
+    ax.set_xlim(-0.5, mat.shape[1] - 0.5)
+    ax.set_ylim(mat.shape[0] - 0.5, -0.5)
     ax.set_xticks(range(len(order)))
     ax.set_xticklabels(short_runs, fontsize=6.5)
     ax.set_yticks(range(len(disp)))
@@ -253,10 +268,11 @@ def make_crossrun_violations() -> None:
                     fontsize=6.6,
                     color=_S.BLACK if v < 0.55 else _S.WHITE)
     cbar = fig.colorbar(im, ax=ax, shrink=0.85, pad=0.02)
+    cbar.solids.set_rasterized(False)
     cbar.set_label("violation rate", fontsize=7)
     cbar.ax.tick_params(labelsize=6.5)
     ax.set_title("Cross-run contract violation rates", fontsize=8)
-    _S.save_fig(fig, OUT / "fig_crossrun_violations.png")
+    _S.save_fig(fig, OUT / "fig_crossrun_violations.pdf")
 
 
 def make_amp_crossrun() -> None:
@@ -332,7 +348,7 @@ def make_amp_crossrun() -> None:
         ax.text(rect.get_x() + rect.get_width() / 2,
                 hi + 0.05, f"{v:.2f}",
                 ha="center", va="bottom", fontsize=5.5, color=_S.BLACK)
-    _S.save_fig(fig, OUT / "fig_amp_crossrun.png")
+    _S.save_fig(fig, OUT / "fig_amp_crossrun.pdf")
 
 
 def make_strict_vs_soft() -> None:
@@ -412,11 +428,9 @@ def make_strict_vs_soft() -> None:
         handletextpad=0.35,
     )
     fig.subplots_adjust(left=0.14, right=0.995, bottom=0.13, top=0.91)
-    out = OUT / "fig_strict_vs_soft.png"
-    fig.savefig(out, dpi=300, bbox_inches="tight", pad_inches=0.025,
-                facecolor=_S.WHITE)
+    out = OUT / "fig_strict_vs_soft.pdf"
+    _S.export_pdf_and_png(fig, out, dpi=300, facecolor=_S.WHITE)
     plt.close(fig)
-    print(f"  wrote {out}")
 
 
 
@@ -586,16 +600,16 @@ def make_calibration_figure():
         columnspacing=0.8,
         handletextpad=0.4,
     )
-    out = FIG_DIR / "fig_calibration.png"
-    fig.savefig(
-        str(out),
+    out = FIG_DIR / "fig_calibration.pdf"
+    _S.export_pdf_and_png(
+        fig,
+        out,
         dpi=400,
         bbox_inches="tight",
         pad_inches=0.025,
         bbox_extra_artists=[leg],
     )
     plt.close(fig)
-    print(f"[saved] {out}")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -676,16 +690,16 @@ def make_noise_floor_figure():
         columnspacing=0.8,
         handletextpad=0.4,
     )
-    out = FIG_DIR / "fig_noise_floor.png"
-    fig.savefig(
-        str(out),
+    out = FIG_DIR / "fig_noise_floor.pdf"
+    _S.export_pdf_and_png(
+        fig,
+        out,
         dpi=400,
         bbox_inches="tight",
         pad_inches=0.025,
         bbox_extra_artists=[leg],
     )
     plt.close(fig)
-    print(f"[saved] {out}")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -711,8 +725,21 @@ def make_2d_sensitivity_figure():
         "util", ["#FFFFFF", _S.BLUE, _S.BLUE_DARK, "#1F4F70"])
 
     def _draw_heatmap(ax, grid, cmap, vmin=0, vmax=1):
-        ax.imshow(grid, cmap=cmap, vmin=vmin, vmax=vmax,
-                  aspect="auto", interpolation="nearest")
+        x_edges = np.arange(grid.shape[1] + 1) - 0.5
+        y_edges = np.arange(grid.shape[0] + 1) - 0.5
+        ax.pcolormesh(
+            x_edges,
+            y_edges,
+            grid,
+            cmap=cmap,
+            vmin=vmin,
+            vmax=vmax,
+            shading="flat",
+            edgecolors="none",
+            antialiased=False,
+        )
+        ax.set_xlim(-0.5, grid.shape[1] - 0.5)
+        ax.set_ylim(grid.shape[0] - 0.5, -0.5)
         ax.set_xticks(range(len(TAU_Q)))
         ax.set_xticklabels([f"{t:.1f}" for t in TAU_Q], fontsize=6.5)
         ax.set_yticks(range(len(TAU_G)))
@@ -764,10 +791,9 @@ def make_2d_sensitivity_figure():
                                        linewidth=1.4, zorder=5))
 
     fig.tight_layout(h_pad=0.6, w_pad=0.5)
-    out = FIG_DIR / "fig_2d_sensitivity.png"
-    fig.savefig(str(out), dpi=300, bbox_inches="tight", pad_inches=0.025)
+    out = FIG_DIR / "fig_2d_sensitivity.pdf"
+    _S.export_pdf_and_png(fig, out, dpi=300)
     plt.close(fig)
-    print(f"[saved] {out}")
 
 # ──────────────────────────────────────────────────────────────────────────────
 # W4: AUROC + AUPRC figure
@@ -879,12 +905,10 @@ def make_auroc_figure():
         handletextpad=0.4,
     )
     fig.subplots_adjust(left=0.095, right=0.995, bottom=0.24, top=0.77)
-    out = FIG_DIR / "fig_auroc.png"
-    fig.savefig(str(out), dpi=300, bbox_inches="tight", pad_inches=0.025,
-                facecolor=_S.WHITE)
+    out = FIG_DIR / "fig_auroc.pdf"
+    _S.export_pdf_and_png(fig, out, dpi=300, facecolor=_S.WHITE)
     plt.close(fig)
 
-    print(f"[saved] {out}")
     print("\nAUROC/AUPRC summary:")
     for corpus, ms in roc_summary.items():
         print(f"  {corpus}:")

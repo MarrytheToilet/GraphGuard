@@ -127,8 +127,9 @@ Anything not listed here has been retired.
 - `make_extqueries_figure.py` — extended-template amplification + regime
   dumbbells (paper Fig. 9).
 
-`fig_contract_overview.pdf` is an author-created conceptual vector figure; it
-is the only active paper figure without a code producer.
+`fig_contract_overview.pdf` is an author-created mixed vector/raster PDF; it
+is the only active paper figure without a code producer. The 12 generated data
+figures are vector PDFs with matching PNG previews for the root README.
 `verify_manuscript_artifacts.py` still includes it in the canonical-asset hash
 check.
 
@@ -138,8 +139,8 @@ check.
 
 ## Conventions
 All Python scripts assume the repo root is on `PYTHONPATH` and read inputs from
-`reports/cross_run/` and `data/processed/runs/`; paper figures land in
-`assets/figures/`. Run `python scripts/sync_paper_figures.py --write` before
+`reports/cross_run/` and `data/processed/runs/`; paper PDFs and README PNG
+previews land in `assets/figures/`. Run `python scripts/sync_paper_figures.py --write` before
 `paper/build.sh`, then run `python scripts/verify_manuscript_artifacts.py`.
 The reported Kuzu workload uses the exact dependency pin `kuzu==0.11.3` from
 `pyproject.toml`.

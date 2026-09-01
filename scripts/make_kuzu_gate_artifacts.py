@@ -18,7 +18,7 @@ DATASETS = [
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
 OUT_TABLE = Path("reports/cross_run/tab_e2ekuzu.tex")
-OUT_FIG = Path("assets/figures/fig_riskcoverage.png")
+OUT_FIG = Path("assets/figures/fig_riskcoverage.pdf")
 
 TAU_GRAPH_DEFAULT = 0.45
 TAU_QUERY_DEFAULT = 0.70
@@ -239,9 +239,15 @@ def build_figure():
                      bbox_to_anchor=(0.5, 1.02), bbox_transform=fig.transFigure,
                      fontsize=6, frameon=False, handlelength=1.5,
                      columnspacing=1.5, handletextpad=0.4)
-    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight", pad_inches=0.025,
-                bbox_extra_artists=[leg])
-    print("wrote", OUT_FIG)
+    gg_style.export_pdf_and_png(
+        fig,
+        OUT_FIG,
+        dpi=400,
+        bbox_inches="tight",
+        pad_inches=0.025,
+        bbox_extra_artists=[leg],
+    )
+    plt.close(fig)
 
 
 if __name__ == "__main__":

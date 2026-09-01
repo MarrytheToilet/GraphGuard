@@ -19,18 +19,18 @@ TARGET = ROOT / "paper" / "figures"
 
 ACTIVE_FIGURES = (
     "fig_contract_overview.pdf",
-    "fig_crossrun_violations.png",
-    "fig_noise_floor.png",
-    "fig_calibration.png",
-    "fig_2d_sensitivity.png",
-    "fig_strict_vs_soft.png",
-    "fig_magnitude.png",
-    "fig_amp_crossrun.png",
-    "fig_extqueries.png",
-    "fig_auroc.png",
-    "fig_gate.png",
-    "fig_riskcoverage.png",
-    "fig_budget_planner.png",
+    "fig_crossrun_violations.pdf",
+    "fig_noise_floor.pdf",
+    "fig_calibration.pdf",
+    "fig_2d_sensitivity.pdf",
+    "fig_strict_vs_soft.pdf",
+    "fig_magnitude.pdf",
+    "fig_amp_crossrun.pdf",
+    "fig_extqueries.pdf",
+    "fig_auroc.pdf",
+    "fig_gate.pdf",
+    "fig_riskcoverage.pdf",
+    "fig_budget_planner.pdf",
 )
 
 

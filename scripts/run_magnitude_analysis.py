@@ -124,7 +124,7 @@ DEFAULT_CHECKPOINT = (
     ROOT / "data" / "processed" / "magnitude" / "controlled_magnitude.jsonl"
 )
 DEFAULT_OUT_DIR = ROOT / "reports" / "cross_run"
-DEFAULT_FIGURE = ROOT / "assets" / "figures" / "fig_magnitude.png"
+DEFAULT_FIGURE = ROOT / "assets" / "figures" / "fig_magnitude.pdf"
 
 def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -1478,7 +1478,8 @@ def make_figure(results: dict[str, dict], output: Path) -> None:
         wspace=0.16,
     )
     output.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(
+    S.export_pdf_and_png(
+        fig,
         output,
         dpi=300,
         bbox_inches="tight",

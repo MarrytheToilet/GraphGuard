@@ -8,7 +8,7 @@ Builds the single-column, two-panel Figure 9:
       budgets, for local and multi-hop registered workloads.
 
 Reads reports/cross_run/extqueries_<run>.json and the registered regime
-artifacts; writes assets/figures/fig_extqueries.png.
+artifacts; writes a vector PDF and matching PNG preview in assets/figures/.
 """
 from __future__ import annotations
 
@@ -128,7 +128,21 @@ def main() -> int:
             ]
             for label in labels
         ])
-        axis.imshow(values, cmap=cmap, vmin=0.0, vmax=0.25, aspect="auto")
+        x_edges = np.arange(values.shape[1] + 1) - 0.5
+        y_edges = np.arange(values.shape[0] + 1) - 0.5
+        axis.pcolormesh(
+            x_edges,
+            y_edges,
+            values,
+            cmap=cmap,
+            vmin=0.0,
+            vmax=0.25,
+            shading="flat",
+            edgecolors="none",
+            antialiased=False,
+        )
+        axis.set_xlim(-0.5, values.shape[1] - 0.5)
+        axis.set_ylim(values.shape[0] - 0.5, -0.5)
         axis.set_xticks(range(len(budgets)))
         axis.set_xticklabels([f"{budget:.0%}" for budget in budgets], fontsize=5.5)
         axis.set_yticks(range(len(labels)))
@@ -161,7 +175,7 @@ def main() -> int:
     )
     fig.text(0.55, 0.025, "review budget", ha="center", fontsize=6.0)
 
-    out = ROOT / "assets" / "figures" / "fig_extqueries.png"
+    out = ROOT / "assets" / "figures" / "fig_extqueries.pdf"
     _S.save_fig(fig, out, pad=0.8)
     print("wrote", out)
     return 0

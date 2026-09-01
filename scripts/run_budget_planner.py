@@ -35,7 +35,7 @@ DATASETS = [
     ("SciERC",    "scierc__deepseek-v4-flash__100d"),
     ("BC5CDR",    "cdr__deepseek-v4-flash__300d"),
 ]
-OUT_FIG = Path("assets/figures/fig_budget_planner.png")
+OUT_FIG = Path("assets/figures/fig_budget_planner.pdf")
 OUT_JSON = Path("reports/cross_run/budget_planner.json")
 
 BUDGETS = [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]
@@ -210,9 +210,15 @@ def main():
                      bbox_to_anchor=(0.5, 1.02), bbox_transform=fig.transFigure,
                      fontsize=6, frameon=False, handlelength=1.5,
                      columnspacing=1.5, handletextpad=0.4)
-    fig.savefig(OUT_FIG, dpi=400, bbox_inches="tight", pad_inches=0.025,
-                bbox_extra_artists=[leg])
-    print("wrote", OUT_FIG)
+    gg_style.export_pdf_and_png(
+        fig,
+        OUT_FIG,
+        dpi=400,
+        bbox_inches="tight",
+        pad_inches=0.025,
+        bbox_extra_artists=[leg],
+    )
+    plt.close(fig)
     # Print summary headline numbers.
     for ds_name, _ in DATASETS:
         i40 = BUDGETS.index(0.40)

@@ -72,18 +72,34 @@ def apply_rc(font_size: int = 11) -> None:
         "axes.grid":        False,
         "axes.spines.top":   False,
         "axes.spines.right": False,
+        # Embed TrueType fonts in vector exports instead of Matplotlib's
+        # default Type 3 glyphs.
+        "pdf.fonttype":      42,
+        "ps.fonttype":       42,
     })
 
 
-def save_fig(fig, path: Path, *, dpi: int = 180, pad: float = 0.4) -> None:
-    """Save a figure with consistent DPI and tight bbox."""
+def export_pdf_and_png(fig, path: Path, *, dpi: int = 300, **kwargs) -> None:
+    """Export a vector PDF plus a PNG preview from the same figure state."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
+    kwargs.setdefault("bbox_inches", "tight")
+    kwargs.setdefault("pad_inches", 0.025)
+    kwargs.setdefault("facecolor", fig.get_facecolor())
+    fig.savefig(path, dpi=dpi, **kwargs)
+    if path.suffix.lower() == ".pdf":
+        preview = path.with_suffix(".png")
+        fig.savefig(preview, dpi=dpi, **kwargs)
+        print(f"  wrote {path} and {preview}")
+    else:
+        print(f"  wrote {path}")
+
+
+def save_fig(fig, path: Path, *, dpi: int = 300, pad: float = 0.4) -> None:
+    """Finalize layout and export a paper PDF with a matching PNG preview."""
     fig.tight_layout(pad=pad)
-    fig.savefig(path, dpi=dpi, bbox_inches="tight", pad_inches=0.025,
-                facecolor=fig.get_facecolor())
+    export_pdf_and_png(fig, path, dpi=dpi)
     plt.close(fig)
-    print(f"  wrote {path}")
 
 
 def despine(ax) -> None:

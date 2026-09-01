@@ -8,7 +8,7 @@ Values are recomputed from the registered actual-Kuzu N=300 evidence (see
 make_kuzu_gate_artifacts.py); per-policy operating details remain in the
 generated table artifact.
 
-Writes assets/figures/fig_gate.png.
+Writes a vector PDF and matching PNG preview in assets/figures/.
 """
 from __future__ import annotations
 
@@ -106,7 +106,7 @@ def main() -> int:
     ax2.axhline(1.0, color=_S.GRAY, linestyle=":", linewidth=0.7)
     ax2.set_title(r"(b) $F_1$ fidelity", fontsize=8, pad=4)
 
-    out = ROOT / "assets" / "figures" / "fig_gate.png"
+    out = ROOT / "assets" / "figures" / "fig_gate.pdf"
     _S.save_fig(fig, out)
     print("wrote", out)
     return 0

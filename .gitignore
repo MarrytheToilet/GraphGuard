@@ -53,9 +53,8 @@ logs/
 # ---------- Project: pyvis HTML viewer assets (vendored) ----------
 lib/
 
-# ---------- Manuscript & reviews (kept out of the public repo) ----------
+# ---------- Manuscript (kept out of the public repo) ----------
 paper/
-review.md
 *.aux
 *.log
 *.bbl

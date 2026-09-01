@@ -403,8 +403,9 @@ Run all commands below from the repository root.
 | External toolchains and Kuzu Q1–Q4 | `run_langchain_toolchain.py`; `run_additional_toolchains.py --toolchain neo4j`; `run_external_toolchain_queries.py --workers 4` | primary DocRED DB; `RC/{langchain,neo4j}_toolchain_cache.jsonl` + hash-bound checkpoint metadata | `RC/{langchain,neo4j}_toolchain.json`; `RC/external_toolchain_q1q4_kuzu.json`; Table 6 and response table |
 | Final figures and tables | figure producers listed in step 3; `sync_paper_figures.py`; `verify_manuscript_artifacts.py` | authoritative JSON above | 13 active figures and seven active `main.tex` tables |
 
-`fig_contract_overview.pdf` is the one author-created conceptual vector
-figure; the other 12 active figures are PNGs with the producers named above. The three
+All 13 active manuscript figures are PDF inputs. The 12 data figures are
+exported as vector PDFs with matching PNG previews for this README;
+`fig_contract_overview.pdf` is an author-created mixed vector/raster PDF. The three
 declarative tables (contracts, runs, and queries) are checked against the
 registries/configuration, while the four numerical tables and their
 response-letter counterparts are checked directly against JSON values.
@@ -602,7 +603,7 @@ python scripts/run_budget_planner.py
 
 # Core figure set (cross-run violations, noise floor, calibration,
 # 2-D sensitivity, strict-vs-soft, Amp(Q) consistency, AUROC)
-python scripts/make_paper_figures.py            # writes assets/figures/*.png
+python scripts/make_paper_figures.py            # writes vector PDFs + PNG previews
 
 # Perturbation-magnitude figure (paper Fig. 7)
 python scripts/run_magnitude_analysis.py --fig-only
