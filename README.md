@@ -18,6 +18,10 @@ The checker materializes the required counterfactual graph views, reuses shared 
 
 The study covers four graph-extraction benchmarks and four LLM extractors, with additional tests on the LangChain `LLMGraphTransformer` and Neo4j GraphRAG `LLMEntityRelationExtractor` components.
 
+![Drift contracts for stochastic graph views](assets/figures/fig_contract_overview.png)
+
+*Controlled configuration perturbations produce paired counterfactual graph views that are compared at the graph level and through downstream query answers.*
+
 ## Main results
 
 - Controlled decoding resamples retain a mean edge overlap of 0.57 on DocRED and Re-DocRED, showing substantial stochastic variation even when the document and intended extraction task are fixed.
@@ -26,6 +30,16 @@ The study covers four graph-extraction benchmarks and four LLM extractors, with 
 - In the Kuzu-backed release-gating evaluation, combining graph and answer-set drift reduces harmful publications from 20–30% to 0–13% at the selected operating point and to 0–8% on held-out documents, with paired-view F1 fidelity of at least 0.96.
 
 The complete paper-facing results are stored in `reports/runs/` and `reports/cross_run/` and checked directly by the verification script below.
+
+## Selected result figures
+
+![Query-topology amplification and query-aware detection gains](assets/figures/fig_extqueries.png)
+
+*Query topology can absorb or amplify graph drift, while query-aware scoring improves detection at the same review budget.*
+
+![Kuzu release-gate outcomes](assets/figures/fig_gate.png)
+
+*In the Kuzu-backed evaluation, the selected GraphGuard gate reduces harmful publications while retaining high paired-view F1 fidelity.*
 
 ## Quick verification
 
